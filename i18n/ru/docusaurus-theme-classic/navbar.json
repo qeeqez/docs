@@ -1,0 +1,18 @@
+{
+  "title": {
+    "message": "Демо Проект",
+    "description": "The title in the navbar"
+  },
+  "item.label.Documentation": {
+    "message": "Документация",
+    "description": "Navbar item with label Documentation"
+  },
+  "item.label.API": {
+    "message": "API",
+    "description": "Navbar item with label API"
+  },
+  "item.label.Dashboard": {
+    "message": "Панель управления",
+    "description": "Navbar item with label Dashboard"
+  }
+}
