@@ -21,7 +21,10 @@ export default function ApiPage() {
             const link = document.createElement('link');
             link.rel = 'stylesheet';
             link.type = 'text/css';
-            link.href = 'https://cdn.jsdelivr.net/npm/@scalar/api-reference@latest/style.css';
+            link.href = 'https://cdn.jsdelivr.net/npm/@scalar/api-reference@1.34.6/style.css';
+            link.integrity = 'sha256-BFsdpd9mmRZmXLAEonVvJk3jmjhe8arXO5IPRwBdYnU=%';
+            link.crossOrigin = 'anonymous';
+            link.referrerPolicy = 'no-referrer';
 
             link.onload = () => setCssLoaded(true);
             link.onerror = () => {
