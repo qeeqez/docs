@@ -80,18 +80,18 @@ const config: Config = {
     ],
   ],
 
-  // Versioning configuration
-  plugins: [
-    [
-        '@docusaurus/plugin-content-docs',
-        {
-            id: 'api',
-            path: 'api',
-            routeBasePath: 'api',
-            sidebarPath: require.resolve('./sidebars.js'),
-        },
-    ],
-  ],
+  // Versioning switcher
+  // plugins: [
+  //   [
+  //       '@docusaurus/plugin-content-docs',
+  //       {
+  //           id: 'api',
+  //           path: 'api',
+  //           routeBasePath: 'api',
+  //           sidebarPath: require.resolve('./sidebars.js'),
+  //       },
+  //   ],
+  // ],
 
   themeConfig: {
     // Replace with your project's social card
