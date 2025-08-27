@@ -28,23 +28,20 @@ const config: Config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-      locales: ['en', 'ru', 'uk', 'tr', 'pl', 'it', 'fr', 'es', 'de'],
-      localeConfigs: {
-          en: { label: 'English' },
-          ru: { label: 'Русский' },
-          uk: { label: 'Українська' },
-          tr: { label: 'Türkçe' },
-          pl: { label: 'Polski' },
-          it: { label: 'Italiano' },
-          fr: { label: 'Français' },
-          es: { label: 'Español' },
-          de: { label: 'Deutsch' },
-      },
+    locales: ['en', 'de', 'es', 'fr', 'it', 'pl', 'ru', 'tr', 'uk'],
+    localeConfigs: {
+      en: {label: 'English'},
+      de: {label: 'Deutsch'},
+      es: {label: 'Español'},
+      fr: {label: 'Français'},
+      it: {label: 'Italiano'},
+      pl: {label: 'Polski'},
+      ru: {label: 'Русский'},
+      tr: {label: 'Türkçe'},
+      uk: {label: 'Українська'},
+    },
   },
 
   presets: [
@@ -111,10 +108,10 @@ const config: Config = {
         },
         {to: '/api', label: 'API', position: 'right'},
         {to: 'https://dash.rixl.com/', label: 'Dashboard', position: 'right'},
-          {
-              type: 'localeDropdown',
-              position: 'right',
-          },
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
       ],
     },
     footer: {
@@ -136,10 +133,10 @@ const config: Config = {
         {
           title: 'External',
           items: [
-              {
-                  label: 'Dashboard',
-                  href: 'https://dash.rixl.com/',
-              },
+            {
+              label: 'Dashboard',
+              href: 'https://dash.rixl.com/',
+            },
           ],
         },
         {
@@ -157,22 +154,22 @@ const config: Config = {
               label: 'X',
               href: 'https://x.com/RixlCloud',
             },
-              {
-                  label: 'Telegram',
-                  href: 'https://t.me/rixlcloud',
-              },
-              {
-                  label: 'Instagram',
-                  href: 'https://www.instagram.com/rixlcloud',
-              },
-              {
-                  label: 'LinkedIn',
-                  href: 'https://linkedin.com/company/rixl',
-              },
-              {
-                  label: 'Discord',
-                  href: 'https://discord.gg/GZr8G3KgcH',
-              },
+            {
+              label: 'Telegram',
+              href: 'https://t.me/rixlcloud',
+            },
+            {
+              label: 'Instagram',
+              href: 'https://www.instagram.com/rixlcloud',
+            },
+            {
+              label: 'LinkedIn',
+              href: 'https://linkedin.com/company/rixl',
+            },
+            {
+              label: 'Discord',
+              href: 'https://discord.gg/GZr8G3KgcH',
+            },
           ],
         },
         {
