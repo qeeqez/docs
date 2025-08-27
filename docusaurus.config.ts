@@ -49,12 +49,20 @@ const config: Config = {
       'classic',
       {
         docs: {
+            routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
+          pages: {
+              exclude: [
+                  '**/_*.{js,jsx,ts,tsx,md,mdx}',
+                  '**/*.test.{js,ts}',
+                  '**/index.{js,jsx,ts,tsx}',
+              ],
+          },
         blog: {
           showReadingTime: true,
           feedOptions: {
@@ -100,12 +108,6 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'right',
-          label: 'Documentation',
-        },
         {to: '/api', label: 'API', position: 'right'},
         {to: 'https://dash.rixl.com/', label: 'Dashboard', position: 'right'},
         {
@@ -122,7 +124,7 @@ const config: Config = {
           items: [
             {
               label: 'Documentation',
-              to: '/docs/intro',
+              to: '/intro',
             },
             {
               label: 'API Reference',
