@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '@theme/Layout';
 import { ApiReferenceReact } from '@scalar/api-reference-react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 export default function ApiPage() {
+    const specUrl = useBaseUrl('/api-specs/api.json');
     const [isClient, setIsClient] = useState(false);
     const [cssLoaded, setCssLoaded] = useState(false);
 
@@ -63,7 +65,7 @@ export default function ApiPage() {
             <div>
                 <ApiReferenceReact
                     configuration={{
-                        url: '/api-specs/api.json',
+                        url: specUrl,
                         theme: 'default'
                     }}
                 />
