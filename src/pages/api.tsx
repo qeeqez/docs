@@ -66,6 +66,7 @@ export default function ApiPage() {
       <div>
         <ApiReferenceReact
           configuration={{
+            baseServerURL: 'https://api.rixl.com',
             url: specUrl,
             theme: 'default',
             hideClientButton: true,
