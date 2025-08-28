@@ -1,0 +1,3 @@
+:root {
+    --scalar-custom-header-height: calc(var(--spacing) * 14);
+}
