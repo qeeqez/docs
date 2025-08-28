@@ -99,7 +99,7 @@ const config: Config = {
   // ],
 
   themeConfig: {
-    //TODO:  Replace with RIXL's social card
+    // TODO: Replace with RIXL's social card
     image: 'img/apple-touch-icon.png',
     navbar: {
       title: 'RIXL',
@@ -119,72 +119,32 @@ const config: Config = {
     footer: {
       style: 'dark',
       links: [
-        {
-          title: 'Docs',
-          items: [
             {
-              label: 'Documentation',
-              to: '/intro',
+                html:
+                    ` 
+                        <span style="color: #fff">
+                          Copyright © ${new Date().getFullYear()} RIXL Inc.
+                        </span>
+                    `
             },
-            {
-              label: 'API Reference',
-              to: '/api',
-            },
+          {
+              html:
+                  ` 
+                        <a href="https://rixl.com/privacy-policy" target="_blank" rel="noreferrer noopener" aria-label="Privacy Policy link" style="color: #fff">
+                          Privacy Policy
+                        </a>
+                    `
+          },
+              {
+                  html:
+                      ` 
+                            <a href="https://rixl.com/terms-of-use" target="_blank" rel="noreferrer noopener" aria-label="Terms of Use link" style="color: #fff">
+                              Terms of Use
+                            </a>
+                        `
+              },
+
           ],
-        },
-        {
-          title: 'External',
-          items: [
-            {
-              label: 'Dashboard',
-              href: 'https://dash.rixl.com/',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'TikTok',
-              href: 'https://www.tiktok.com/@rixlofficial',
-            },
-            {
-              label: 'YouTube',
-              href: 'https://www.youtube.com/@rixlcloud',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/RixlCloud',
-            },
-            {
-              label: 'Telegram',
-              href: 'https://t.me/rixlcloud',
-            },
-            {
-              label: 'Instagram',
-              href: 'https://www.instagram.com/rixlcloud',
-            },
-            {
-              label: 'LinkedIn',
-              href: 'https://linkedin.com/company/rixl',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discord.gg/GZr8G3KgcH',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'GitHub',
-              href: 'https://github.com/qeeqez',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
