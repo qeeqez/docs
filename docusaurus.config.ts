@@ -123,14 +123,14 @@ const config: Config = {
                 html:
                     ` 
                         <span style="color: #fff">
-                          Copyright © ${new Date().getFullYear()} RIXL, Inc.
+                          Copyright © ${new Date().getFullYear()} RIXL Inc.
                         </span>
                     `
             },
           {
               html:
                   ` 
-                        <a href="https://rixl.com/privacy-policy" target="_blank" rel="noreferrer noopener" aria-label="Deploys by Netlify" style="color: #fff">
+                        <a href="https://rixl.com/privacy-policy" target="_blank" rel="noreferrer noopener" aria-label="Privacy Policy link" style="color: #fff">
                           Privacy Policy
                         </a>
                     `
@@ -138,7 +138,7 @@ const config: Config = {
               {
                   html:
                       ` 
-                            <a href="https://rixl.com/terms-of-use" target="_blank" rel="noreferrer noopener" aria-label="Deploys by Netlify" style="color: #fff">
+                            <a href="https://rixl.com/terms-of-use" target="_blank" rel="noreferrer noopener" aria-label="Terms of Use link" style="color: #fff">
                               Terms of Use
                             </a>
                         `
