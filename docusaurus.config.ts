@@ -99,7 +99,7 @@ const config: Config = {
   // ],
 
   themeConfig: {
-    // Replace with your project's social card
+    //TODO:  Replace with RIXL's social card
     image: 'img/apple-touch-icon.png',
     navbar: {
       title: 'RIXL',
