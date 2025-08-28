@@ -100,12 +100,12 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/apple-touch-icon.png',
     navbar: {
       title: 'RIXL',
       logo: {
         alt: 'RIXL Logo',
-        src: 'img/logo.svg',
+        src: 'img/apple-touch-icon.png',
       },
       items: [
         {to: '/api', label: 'API', position: 'right'},
