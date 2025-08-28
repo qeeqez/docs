@@ -7,7 +7,7 @@
   },
   "routes": [
     {
-      "pattern": "dash.rixl.com",
+      "pattern": "rixl.com/docs",
       "custom_domain": true
     }
   ]
