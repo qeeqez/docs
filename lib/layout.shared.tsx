@@ -25,6 +25,21 @@ export function baseOptions(): BaseLayoutProps {
       ),
     },
     // see https://fumadocs.dev/docs/ui/navigation/links
-    links: [],
+    links: [
+      {
+        // icon: <BookIcon />,
+        text: 'Docs',
+        url: '/docs',
+        // secondary items will be displayed differently on navbar
+        secondary: false,
+      },
+      {
+        // icon: <BookIcon />,
+        text: 'API Reference',
+        url: '/api',
+        // secondary items will be displayed differently on navbar
+        secondary: false,
+      },
+    ],
   };
 }
