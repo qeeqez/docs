@@ -1,3 +1,5 @@
+"use client"
+
 import {ApiReferenceReact} from "@scalar/api-reference-react";
 import './custom.css';
 
