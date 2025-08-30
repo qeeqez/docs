@@ -3,19 +3,19 @@ definitions:
   File:
     properties:
       created_at:
-        example: "2023-01-01T00:00:00Z"
+        example: "2025-01-01T00:00:00Z"
         type: string
       format:
         example: avif
         type: string
       id:
-        example: file123456789
+        example: FpvLwyDMqu
         type: string
       name:
-        example: my-image.jpg
+        example: original.jpeg
         type: string
       project_id:
-        example: proj123456789
+        example: Bq4y3QB38S
         type: string
       size:
         example: 1048576
@@ -25,10 +25,10 @@ definitions:
         - $ref: '#/definitions/github_com_qeeqez_api_db_sqlc.FileStatus'
         example: ready
       updated_at:
-        example: "2023-01-01T00:00:00Z"
+        example: "2025-01-01T00:00:00Z"
         type: string
       url:
-        example: https://cdn.example.com/images/file123456789.avif
+        example: https://images.rixl.com/Bq4y3QB38S/FpvLwyDMqu
         type: string
     type: object
   Image:
@@ -372,6 +372,7 @@ paths:
       summary: List posts in a feed
       tags:
       - Feeds
+      x-order: 2
   /feeds/{feedId}/{postId}:
     get:
       description: Retrieve a post from feed by its ID
@@ -404,6 +405,7 @@ paths:
       summary: Get a post
       tags:
       - Feeds
+      x-order: 1
   /feeds/{feedId}/creators/{creatorId}:
     get:
       description: Retrieve posts in a feed by a specific creator, with pagination.
@@ -453,6 +455,7 @@ paths:
       summary: List posts by creator
       tags:
       - Feeds
+      x-order: 3
   /feeds/{feedId}/upload/complete:
     post:
       consumes:
@@ -495,9 +498,10 @@ paths:
             $ref: '#/definitions/ResponseError'
       security:
       - ApiKeyAuth: []
-      summary: Complete post upload
+      summary: 'Upload: Mark as complete'
       tags:
       - Feeds
+      x-order: 5
   /feeds/{feedId}/upload/init:
     post:
       consumes:
@@ -540,9 +544,10 @@ paths:
             $ref: '#/definitions/ResponseError'
       security:
       - ApiKeyAuth: []
-      summary: Initialize post creation with upload
+      summary: 'Upload: Init'
       tags:
       - Feeds
+      x-order: 4
   /images:
     get:
       description: Retrieve all images for a specific project, with pagination and
@@ -601,7 +606,47 @@ paths:
       summary: List images for a project
       tags:
       - Images
+      x-order: 2
   /images/{imageId}:
+    delete:
+      description: delete an image by marking it as deleted
+      parameters:
+      - description: Image ID
+        in: path
+        name: imageId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: Image deleted successfully
+        "400":
+          description: Invalid project ID or image ID
+          schema:
+            $ref: '#/definitions/ResponseError'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ResponseError'
+        "403":
+          description: Access denied
+          schema:
+            $ref: '#/definitions/ResponseError'
+        "404":
+          description: Image not found
+          schema:
+            $ref: '#/definitions/ResponseError'
+        "500":
+          description: Failed to delete image
+          schema:
+            $ref: '#/definitions/ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete image
+      tags:
+      - Images
+      x-order: 5
     get:
       description: Retrieve an image by its ID for a specific project.
       parameters:
@@ -642,6 +687,7 @@ paths:
       summary: Get image
       tags:
       - Images
+      x-order: 1
   /images/upload/complete:
     post:
       consumes:
@@ -684,9 +730,10 @@ paths:
             $ref: '#/definitions/ResponseError'
       security:
       - ApiKeyAuth: []
-      summary: Complete image upload
+      summary: 'Upload: Mark as complete'
       tags:
       - Images
+      x-order: 4
   /images/upload/init:
     post:
       consumes:
@@ -725,9 +772,10 @@ paths:
             $ref: '#/definitions/ResponseError'
       security:
       - ApiKeyAuth: []
-      summary: Initialize image upload
+      summary: 'Upload: Init'
       tags:
       - Images
+      x-order: 3
   /videos:
     get:
       description: Retrieve all videos for a specific project, with pagination and
@@ -786,7 +834,51 @@ paths:
       summary: List videos for a project
       tags:
       - Videos
+      x-order: 2
   /videos/{videoId}:
+    delete:
+      description: Delete a video by its ID within a project
+      parameters:
+      - description: Video ID
+        in: path
+        name: videoId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Invalid project ID or video ID
+          schema:
+            $ref: '#/definitions/ResponseError'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ResponseError'
+        "403":
+          description: Access denied
+          schema:
+            $ref: '#/definitions/ResponseError'
+        "404":
+          description: Video not found
+          schema:
+            $ref: '#/definitions/ResponseError'
+        "500":
+          description: Failed to delete video
+          schema:
+            $ref: '#/definitions/ResponseError'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete video
+      tags:
+      - Videos
+      x-order: 5
     get:
       description: Retrieve a video by its ID for a specific project.
       parameters:
@@ -824,9 +916,10 @@ paths:
             $ref: '#/definitions/ResponseError'
       security:
       - ApiKeyAuth: []
-      summary: Get video
+      summary: Get a video
       tags:
       - Videos
+      x-order: 1
   /videos/upload/complete:
     post:
       consumes:
@@ -869,9 +962,10 @@ paths:
             $ref: '#/definitions/ResponseError'
       security:
       - ApiKeyAuth: []
-      summary: Complete video upload
+      summary: 'Upload: Mark as complete'
       tags:
       - Videos
+      x-order: 4
   /videos/upload/init:
     post:
       consumes:
@@ -910,9 +1004,10 @@ paths:
             $ref: '#/definitions/ResponseError'
       security:
       - ApiKeyAuth: []
-      summary: Initialize video upload
+      summary: 'Upload: Init'
       tags:
       - Videos
+      x-order: 3
 schemes:
 - http
 - https
