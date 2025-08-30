@@ -2,6 +2,7 @@
 
 import {ApiReferenceReact} from "@scalar/api-reference-react";
 import './custom.css';
+import apiJson from './api.json';
 
 export default function Page() {
   return <div style={{
@@ -10,7 +11,7 @@ export default function Page() {
     <ApiReferenceReact
       configuration={{
         baseServerURL: 'https://api.rixl.com',
-        url: '/api.yaml',
+        content: apiJson,
         theme: 'default',
         darkMode: false,
         hideClientButton: true,
