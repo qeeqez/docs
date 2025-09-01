@@ -8,7 +8,7 @@ export function FooterBottom() {
   return <div className="flex flex-wrap justify-center space-x-2 text-xs text-fd-muted-foreground">
     <span>{`© ${new Date().getFullYear()} RIXL Inc.`}</span>
     {links.map((link, index) => (
-      <div key={`${index}-${link.text}`}>
+      <div key={`${index}-${link.text}`} className="space-x-2">
         <span>•</span>
         <FooterBottomLink url={link.url} text={link.text}/>
       </div>
