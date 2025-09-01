@@ -1,5 +1,9 @@
 import type {BaseLayoutProps} from 'fumadocs-ui/layouts/shared';
 import type {FooterSection} from "@/components/layout/home/footer-content-section";
+import DiscordIcon from '@/public/socials/discord.svg'
+import GithubIcon from '@/public/socials/github.svg'
+import XIcon from '@/public/socials/x.svg'
+import YoutubeIcon from '@/public/socials/youtube.svg'
 
 /**
  * Shared layout configurations
@@ -87,10 +91,10 @@ export function FooterSections(): FooterSection[] {
     {
       title: "Community",
       links: [
-        {text: "Discord", url: "https://discord.gg/...", external: true},
-        {text: "GitHub", url: "https://github.com/...", external: true},
-        {text: "Twitter", url: "https://twitter.com/...", external: true},
-        {text: "YouTube", url: "https://youtube.com/...", external: true},
+        {text: "X", url: "https://twitter.com/...", external: true, Icon: XIcon},
+        {text: "Discord", url: "https://discord.gg/...", external: true, Icon: DiscordIcon},
+        {text: "YouTube", url: "https://youtube.com/...", external: true, Icon: YoutubeIcon},
+        {text: "GitHub", url: "https://github.com/...", external: true, Icon: GithubIcon},
       ]
     }
   ];

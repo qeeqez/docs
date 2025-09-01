@@ -11,6 +11,11 @@ export function FooterContent() {
     "gap-6 md:gap-8",
     "lg:justify-items-center"
   )}>
-    {sections.map((section, index) => <FooterContentSection key={index} title={section.title} links={section.links}/>)}
+    {sections.map((section, index) =>
+      <FooterContentSection
+        key={`${index}-${section.title}`}
+        title={section.title}
+        links={section.links}/>
+    )}
   </div>
 }

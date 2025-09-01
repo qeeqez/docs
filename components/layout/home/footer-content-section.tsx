@@ -1,12 +1,8 @@
-import Link from "fumadocs-core/link";
+import {FooterContentSectionLink, type FooterSectionLinkProps} from "@/components/layout/home/footer-content-section-link";
 
 export interface FooterSection {
   title: string;
-  links: Array<{
-    text: string;
-    url: string;
-    external?: boolean;
-  }>;
+  links: FooterSectionLinkProps[];
 }
 
 export function FooterContentSection({title, links}: FooterSection) {
@@ -15,16 +11,14 @@ export function FooterContentSection({title, links}: FooterSection) {
       {title}
     </h3>
     <ul className="space-y-2">
-      {links.map((link, linkIndex) => (
-        <li key={linkIndex}>
-          <Link
-            href={link.url}
-            external={link.external}
-            className="text-xs text-fd-foreground hover:text-fd-primary transition-colors"
-          >
-            {link.text}
-          </Link>
-        </li>
+      {links.map((link, index) => (
+        <FooterContentSectionLink
+          key={`${index}-${link.text}`}
+          text={link.text}
+          url={link.url}
+          external={link.external}
+          Icon={link.Icon}
+        />
       ))}
     </ul>
   </div>
