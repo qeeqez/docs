@@ -17,7 +17,6 @@ export function Header({
                          i18n = false,
                          links,
                          githubUrl,
-                         themeSwitch = {},
                          searchToggle = {},
                        }: HomeLayoutProps) {
   const finalLinks = useMemo(
@@ -56,8 +55,7 @@ export function Header({
               hideIfDisabled
             />
           ))}
-        {themeSwitch.enabled !== false &&
-          (themeSwitch.component ?? <ThemeToggle mode={themeSwitch?.mode}/>)}
+        <ThemeToggle mode="light-dark"/>
         {i18n ? (
           <LanguageToggle>
             <Languages className="size-5"/>
@@ -106,10 +104,7 @@ export function Header({
                   <ChevronDown className="size-3 text-fd-muted-foreground"/>
                 </LanguageToggle>
               ) : null}
-              {themeSwitch.enabled !== false &&
-                (themeSwitch.component ?? (
-                  <ThemeToggle mode={themeSwitch?.mode}/>
-                ))}
+              <ThemeToggle mode="light-dark"/>
             </div>
           </MenuContent>
         </Menu>

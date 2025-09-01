@@ -1,11 +1,12 @@
-import {type HTMLAttributes} from 'react';
-import {cn} from '../../../lib/cn';
-import {
-  type BaseLayoutProps,
-  type NavOptions,
-} from '../shared/index';
 import {NavProvider} from 'fumadocs-ui/contexts/layout';
+import type {HTMLAttributes} from 'react';
+import {Footer} from "@/components/layout/home/footer";
 import {Header} from "@/components/layout/home/header";
+import {cn} from '../../../lib/cn';
+import type {
+  BaseLayoutProps,
+  NavOptions,
+} from '../shared/index';
 
 export interface HomeLayoutProps extends BaseLayoutProps {
   nav?: Partial<
@@ -26,8 +27,6 @@ export function HomeLayout(
     links,
     githubUrl,
     i18n,
-    disableThemeSwitch = false,
-    themeSwitch = {enabled: !disableThemeSwitch},
     searchToggle,
     ...rest
   } = props;
@@ -39,18 +38,15 @@ export function HomeLayout(
         {...rest}
         className={cn('flex flex-1 flex-col pt-14', rest.className)}
       >
-        {nav.enabled !== false &&
-          (nav.component ?? (
-            <Header
-              links={links}
-              nav={nav}
-              themeSwitch={themeSwitch}
-              searchToggle={searchToggle}
-              i18n={i18n}
-              githubUrl={githubUrl}
-            />
-          ))}
+        <Header
+          links={links}
+          nav={nav}
+          searchToggle={searchToggle}
+          i18n={i18n}
+          githubUrl={githubUrl}
+        />
         {props.children}
+        <Footer/>
       </main>
     </NavProvider>
   );
