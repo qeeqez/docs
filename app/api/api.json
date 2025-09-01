@@ -336,6 +336,73 @@
                     }
                 },
                 "x-order": 1
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "delete a post by ID",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Feeds"
+                ],
+                "summary": "Delete a post",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Feed ID",
+                        "name": "feedId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Post ID",
+                        "name": "postId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid project ID or query parameters",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseError"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseError"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseError"
+                        }
+                    }
+                },
+                "x-order": 6
             }
         },
         "/images": {
@@ -1091,7 +1158,7 @@
                 },
                 "id": {
                     "type": "string",
-                    "example": "img123456789"
+                    "example": "PS5IMKoFLm"
                 },
                 "thumbhash": {
                     "type": "string",
@@ -1107,28 +1174,43 @@
             "type": "object",
             "properties": {
                 "created_at": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2025-01-01T00:00:00Z"
                 },
                 "creator_id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "CR8y3QB38S"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "My awesome post"
                 },
                 "feed_id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "FD4y3QB38S"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "PS5IMKoFLm"
                 },
                 "image": {
                     "$ref": "#/definitions/Image"
                 },
                 "type": {
-                    "$ref": "#/definitions/github_com_qeeqez_api_db_sqlc.PostType"
+                    "enum": [
+                        "video",
+                        "image"
+                    ],
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/github_com_qeeqez_api_db_sqlc.PostType"
+                        }
+                    ],
+                    "example": "video"
                 },
                 "updated_at": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2025-01-01T00:00:00Z"
                 },
                 "video": {
                     "$ref": "#/definitions/Video"
@@ -1240,7 +1322,7 @@
                 },
                 "image_id": {
                     "type": "string",
-                    "example": "img123456789"
+                    "example": "PS5IMKoFLm"
                 }
             }
         },
@@ -1262,11 +1344,11 @@
             "properties": {
                 "image_id": {
                     "type": "string",
-                    "example": "img123456789"
+                    "example": "PS5IMKoFLm"
                 },
                 "presigned_url": {
                     "type": "string",
-                    "example": "https://s3.amazonaws.com/bucket/path?signature=..."
+                    "example": "https://images.rixl.com/Bq4y3QB38S/PS5IMKoFLm?X-Amz-Algorithm=AWS4-HMAC-SHA256\u0026X-Amz-Credential=AKIAEXAMPLE%2F20250831%2Fus-east-1%2Fs3%2Faws4_request\u0026X-Amz-Date=20250831T103000Z\u0026X-Amz-Expires=3600\u0026X-Amz-SignedHeaders=host\u0026X-Amz-Signature=b228dbec8c1008c80c162e1210e4503dceead1e4d4751b4d9787314fd6da4d55"
                 },
                 "upload_expires": {
                     "type": "integer",
@@ -1281,7 +1363,8 @@
             ],
             "properties": {
                 "post_id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "PS5IMKoFLm"
                 }
             }
         },
@@ -1298,22 +1381,28 @@
                     "enum": [
                         "image",
                         "video"
-                    ]
+                    ],
+                    "example": "video"
                 },
                 "creator_id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "CR8y3QB38S"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "My awesome post"
                 },
                 "file_name": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "my-video.mp4"
                 },
                 "format": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "mp4"
                 },
                 "image_format": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "jpg"
                 },
                 "video_quality": {
                     "enum": [
@@ -1325,7 +1414,8 @@
                         {
                             "$ref": "#/definitions/github_com_qeeqez_api_db_sqlc.VideoQuality"
                         }
-                    ]
+                    ],
+                    "example": "shorts"
                 }
             }
         },
@@ -1333,22 +1423,28 @@
             "type": "object",
             "properties": {
                 "content_id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "VI9VXQxWXQ"
                 },
                 "content_presigned_url": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "https://videos.rixl.com/Bq4y3QB38S/VI9VXQxWXQ?X-Amz-Algorithm=AWS4-HMAC-SHA256\u0026X-Amz-Credential=AKIAEXAMPLE%2F20250831%2Fus-east-1%2Fs3%2Faws4_request\u0026X-Amz-Date=20250831T103000Z\u0026X-Amz-Expires=3600\u0026X-Amz-SignedHeaders=host\u0026X-Amz-Signature=b228dbec8c1008c80c162e1210e4503dceead1e4d4751b4d9787314fd6da4d55"
                 },
                 "post_id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "PS5IMKoFLm"
                 },
                 "poster_id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "IM8y3QB38S"
                 },
                 "poster_presigned_url": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "https://images.rixl.com/Bq4y3QB38S/IM8y3QB38S?X-Amz-Algorithm=AWS4-HMAC-SHA256\u0026X-Amz-Credential=AKIAEXAMPLE%2F20250831%2Fus-east-1%2Fs3%2Faws4_request\u0026X-Amz-Date=20250831T103000Z\u0026X-Amz-Expires=3600\u0026X-Amz-SignedHeaders=host\u0026X-Amz-Signature=b228dbec8c1008c80c162e1210e4503dceead1e4d4751b4d9787314fd6da4d55"
                 },
                 "upload_expires": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 1640995200
                 }
             }
         },
@@ -1364,10 +1460,12 @@
             "type": "object",
             "properties": {
                 "file_name": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "my-video.mp4"
                 },
                 "image_format": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "jpg"
                 },
                 "video_quality": {
                     "enum": [
@@ -1379,7 +1477,8 @@
                         {
                             "$ref": "#/definitions/github_com_qeeqez_api_db_sqlc.VideoQuality"
                         }
-                    ]
+                    ],
+                    "example": "shorts"
                 }
             }
         },
@@ -1387,19 +1486,24 @@
             "type": "object",
             "properties": {
                 "poster_id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "PS5IMKoFLm"
                 },
                 "poster_presigned_url": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "https://images.rixl.com/Bq4y3QB38S/PS5IMKoFLm?X-Amz-Algorithm=AWS4-HMAC-SHA256\u0026X-Amz-Credential=AKIAEXAMPLE%2F20250831%2Fus-east-1%2Fs3%2Faws4_request\u0026X-Amz-Date=20250831T103000Z\u0026X-Amz-Expires=3600\u0026X-Amz-SignedHeaders=host\u0026X-Amz-Signature=b228dbec8c1008c80c162e1210e4503dceead1e4d4751b4d9787314fd6da4d55"
                 },
                 "upload_expires": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 1640995200
                 },
                 "video_id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "VI9VXQxWXQ"
                 },
                 "video_presigned_url": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "https://videos.rixl.com/Bq4y3QB38S/VI9VXQxWXQ?X-Amz-Algorithm=AWS4-HMAC-SHA256\u0026X-Amz-Credential=AKIAEXAMPLE%2F20250831%2Fus-east-1%2Fs3%2Faws4_request\u0026X-Amz-Date=20250831T103000Z\u0026X-Amz-Expires=3600\u0026X-Amz-SignedHeaders=host\u0026X-Amz-Signature=b228dbec8c1008c80c162e1210e4503dceead1e4d4751b4d9787314fd6da4d55"
                 }
             }
         },

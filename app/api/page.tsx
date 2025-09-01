@@ -17,6 +17,24 @@ export default function Page() {
         hideClientButton: true,
         documentDownloadType: "yaml",
         hideDarkModeToggle: true,
+
+        defaultHttpClient: {
+          targetKey: "js",
+          clientKey: "fetch"
+        },
+        authentication: {
+          preferredSecurityScheme: "ApiKeyAuth",
+
+          securitySchemes: {
+            ApiKeyAuth: {
+              type: "apiKey",
+              in: "header",
+              name: "X-API-Key",
+              description: "API key for protected endpoints"
+            },
+          }
+        },
+
         operationsSorter: (a, b) => {
           // 1. Sort by x-order if present
           if (a.operation && b.operation) {
@@ -46,7 +64,8 @@ export default function Page() {
 
           // 3. Sort by Path alphabetically
           return a.path.localeCompare(b.path);
-        }
+        },
+
       }}
     />
   </div>;
