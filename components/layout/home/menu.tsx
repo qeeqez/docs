@@ -1,6 +1,6 @@
 'use client';
-import { BaseLinkItem, type LinkItemType } from '../shared/index';
-import { cn } from '../../../lib/cn';
+import {BaseLinkItem, type LinkItemType} from '../shared/index';
+import {cn} from '../../../lib/cn';
 import {
   NavigationMenuContent,
   NavigationMenuItem,
@@ -8,9 +8,9 @@ import {
   NavigationMenuTrigger,
 } from '../../navigation-menu';
 import Link from 'fumadocs-core/link';
-import { cva } from 'class-variance-authority';
-import { buttonVariants } from '../../ui/button';
-import type { ComponentPropsWithoutRef } from 'react';
+import {cva} from 'class-variance-authority';
+import {buttonVariants} from '../../ui/button';
+import type {ComponentPropsWithoutRef} from 'react';
 
 const menuItemVariants = cva('', {
   variants: {
@@ -32,9 +32,9 @@ const menuItemVariants = cva('', {
 });
 
 export function MenuLinkItem({
-  item,
-  ...props
-}: {
+                               item,
+                               ...props
+                             }: {
   item: LinkItemType;
   className?: string;
 }) {
@@ -61,7 +61,7 @@ export function MenuLinkItem({
           )}
         </p>
         {item.items.map((child, i) => (
-          <MenuLinkItem key={i} item={child} />
+          <MenuLinkItem key={i} item={child}/>
         ))}
       </div>
     );
@@ -72,7 +72,7 @@ export function MenuLinkItem({
       <BaseLinkItem
         item={item}
         className={cn(
-          menuItemVariants({ variant: item.type }),
+          menuItemVariants({variant: item.type}),
           props.className,
         )}
         aria-label={item.type === 'icon' ? item.label : undefined}
@@ -87,9 +87,9 @@ export function MenuLinkItem({
 export const Menu = NavigationMenuItem;
 
 export function MenuTrigger({
-  enableHover = false,
-  ...props
-}: ComponentPropsWithoutRef<typeof NavigationMenuTrigger> & {
+                              enableHover = false,
+                              ...props
+                            }: ComponentPropsWithoutRef<typeof NavigationMenuTrigger> & {
   /**
    * Enable hover to trigger
    */

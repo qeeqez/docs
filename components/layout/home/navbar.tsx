@@ -1,9 +1,9 @@
 'use client';
-import { type ComponentProps, useState } from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-import Link, { type LinkProps } from 'fumadocs-core/link';
-import { cn } from '../../../lib/cn';
-import { BaseLinkItem } from '../shared/index';
+import {type ComponentProps, useState} from 'react';
+import {cva, type VariantProps} from 'class-variance-authority';
+import Link, {type LinkProps} from 'fumadocs-core/link';
+import {cn} from '../../../lib/cn';
+import {BaseLinkItem} from '../shared/index';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,12 +13,12 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from '../../navigation-menu';
-import { useNav } from 'fumadocs-ui/contexts/layout';
+import {useNav} from 'fumadocs-ui/contexts/layout';
 import type {
   NavigationMenuContentProps,
   NavigationMenuTriggerProps,
 } from '@radix-ui/react-navigation-menu';
-import { buttonVariants } from '../../ui/button';
+import {buttonVariants} from '../../ui/button';
 
 const navItemVariants = cva(
   'inline-flex items-center gap-1 p-2 text-fd-muted-foreground transition-colors hover:text-fd-accent-foreground data-[active=true]:text-fd-primary [&_svg]:size-4',
@@ -26,7 +26,7 @@ const navItemVariants = cva(
 
 export function Navbar(props: ComponentProps<'div'>) {
   const [value, setValue] = useState('');
-  const { isTransparent } = useNav();
+  const {isTransparent} = useNav();
 
   return (
     <NavigationMenu value={value} onValueChange={setValue} asChild>
@@ -50,7 +50,7 @@ export function Navbar(props: ComponentProps<'div'>) {
           <nav>{props.children}</nav>
         </NavigationMenuList>
 
-        <NavigationMenuViewport />
+        <NavigationMenuViewport/>
       </header>
     </NavigationMenu>
   );
@@ -119,17 +119,17 @@ const linkVariants = cva('', {
 });
 
 export function NavbarLink({
-  item,
-  variant,
-  ...props
-}: ComponentProps<typeof BaseLinkItem> & VariantProps<typeof linkVariants>) {
+                             item,
+                             variant,
+                             ...props
+                           }: ComponentProps<typeof BaseLinkItem> & VariantProps<typeof linkVariants>) {
   return (
     <NavigationMenuItem>
       <NavigationMenuLink asChild>
         <BaseLinkItem
           {...props}
           item={item}
-          className={cn(linkVariants({ variant }), props.className)}
+          className={cn(linkVariants({variant}), props.className)}
         >
           {props.children}
         </BaseLinkItem>
