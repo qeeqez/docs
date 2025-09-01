@@ -14,10 +14,7 @@ import {
   NavigationMenuViewport,
 } from '../../navigation-menu';
 import {useNav} from 'fumadocs-ui/contexts/layout';
-import type {
-  NavigationMenuContentProps,
-  NavigationMenuTriggerProps,
-} from '@radix-ui/react-navigation-menu';
+import type {NavigationMenu as Primitive} from "radix-ui";
 import {buttonVariants} from '../../ui/button';
 
 const navItemVariants = cva(
@@ -58,7 +55,7 @@ export function Navbar(props: ComponentProps<'div'>) {
 
 export const NavbarMenu = NavigationMenuItem;
 
-export function NavbarMenuContent(props: NavigationMenuContentProps) {
+export function NavbarMenuContent(props: Primitive.NavigationMenuContentProps) {
   return (
     <NavigationMenuContent
       {...props}
@@ -72,7 +69,7 @@ export function NavbarMenuContent(props: NavigationMenuContentProps) {
   );
 }
 
-export function NavbarMenuTrigger(props: NavigationMenuTriggerProps) {
+export function NavbarMenuTrigger(props: Primitive.NavigationMenuTriggerProps) {
   return (
     <NavigationMenuTrigger
       {...props}

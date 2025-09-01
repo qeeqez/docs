@@ -1,6 +1,6 @@
 'use client';
+import {NavigationMenu as Primitive} from "radix-ui";
 import * as React from 'react';
-import * as Primitive from '@radix-ui/react-navigation-menu';
 import { cn } from '../lib/cn';
 
 const NavigationMenu = Primitive.Root;
