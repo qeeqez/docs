@@ -46,7 +46,6 @@ export function Navbar(props: ComponentProps<'div'>) {
         >
           <nav>{props.children}</nav>
         </NavigationMenuList>
-
         <NavigationMenuViewport/>
       </header>
     </NavigationMenu>

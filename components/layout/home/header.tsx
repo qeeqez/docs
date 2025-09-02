@@ -48,24 +48,16 @@ export function Header({
           ))}
       </ul>
       <div className="flex flex-row items-center justify-end gap-1.5 flex-1 max-lg:hidden">
-        {searchToggle.enabled !== false &&
-          (searchToggle.components?.lg ?? (
-            <LargeSearchToggle
-              className="w-full rounded-full ps-2.5 max-w-[240px]"
-              hideIfDisabled
-            />
-          ))}
+        <LargeSearchToggle
+          className="w-full rounded-full ps-2.5 max-w-[240px]"
+          hideIfDisabled
+        />
         <ThemeToggle mode="light-dark"/>
         {i18n ? (
           <LanguageToggle>
             <Languages className="size-5"/>
           </LanguageToggle>
         ) : null}
-        <div className="flex flex-row items-center empty:hidden">
-          {navItems.filter(isSecondary).map((item, i) => (
-            <NavbarLinkItem key={i} item={item}/>
-          ))}
-        </div>
       </div>
       <ul className="flex flex-row items-center ms-auto -me-1.5 lg:hidden">
         {searchToggle.enabled !== false &&
