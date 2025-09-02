@@ -1,6 +1,6 @@
 'use client';
-import { ChevronDown, ExternalLink } from 'lucide-react';
-import { usePathname } from 'fumadocs-core/framework';
+import {ChevronDown, ExternalLink} from 'lucide-react';
+import {usePathname} from 'fumadocs-core/framework';
 import {
   type ComponentProps,
   createContext,
@@ -12,27 +12,26 @@ import {
   useRef,
   useState,
 } from 'react';
-import Link, { type LinkProps } from 'fumadocs-core/link';
-import { useOnChange } from 'fumadocs-core/utils/use-on-change';
-import { cn } from '../lib/cn';
-import { ScrollArea, ScrollViewport } from './ui/scroll-area';
-import { isActive } from '../lib/is-active';
+import Link, {type LinkProps} from 'fumadocs-core/link';
+import {useOnChange} from 'fumadocs-core/utils/use-on-change';
+import {cn} from '../lib/cn';
+import {ScrollArea, ScrollViewport} from './ui/scroll-area';
+import {isActive} from '../lib/is-active';
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from './ui/collapsible';
-import { type ScrollAreaProps } from '@radix-ui/react-scroll-area';
-import { useSidebar } from 'fumadocs-ui/contexts/sidebar';
-import { cva } from 'class-variance-authority';
 import type {
-  CollapsibleContentProps,
-  CollapsibleTriggerProps,
-} from '@radix-ui/react-collapsible';
-import type { PageTree } from 'fumadocs-core/server';
-import { useTreeContext, useTreePath } from 'fumadocs-ui/contexts/tree';
-import { useMediaQuery } from 'fumadocs-core/utils/use-media-query';
-import { Presence } from '@radix-ui/react-presence';
+  ScrollArea as ScrollAreaPrimitive,
+  Collapsible as CollapsiblePrimitive,
+}  from "radix-ui";
+import {useSidebar} from 'fumadocs-ui/contexts/sidebar';
+import {cva} from 'class-variance-authority';
+import type {PageTree} from 'fumadocs-core/server';
+import {useTreeContext, useTreePath} from 'fumadocs-ui/contexts/tree';
+import {useMediaQuery} from 'fumadocs-core/utils/use-media-query';
+import {Presence} from '@radix-ui/react-presence';
 
 export interface SidebarProps {
   /**
@@ -87,11 +86,11 @@ const FolderContext = createContext<{
 } | null>(null);
 
 export function Sidebar({
-  defaultOpenLevel = 0,
-  prefetch = true,
-  Mobile,
-  Content,
-}: SidebarProps) {
+                          defaultOpenLevel = 0,
+                          prefetch = true,
+                          Mobile,
+                          Content,
+                        }: SidebarProps) {
   const isMobile = useMediaQuery('(width < 768px)') ?? false;
   const context = useMemo<InternalContext>(() => {
     return {
@@ -109,7 +108,7 @@ export function Sidebar({
 }
 
 export function SidebarContent(props: ComponentProps<'aside'>) {
-  const { collapsed } = useSidebar();
+  const {collapsed} = useSidebar();
   const [hover, setHover] = useState(false);
   const timerRef = useRef(0);
   const closeTimeRef = useRef(0);
@@ -179,11 +178,11 @@ export function SidebarContent(props: ComponentProps<'aside'>) {
 }
 
 export function SidebarContentMobile({
-  className,
-  children,
-  ...props
-}: ComponentProps<'aside'>) {
-  const { open, setOpen } = useSidebar();
+                                       className,
+                                       children,
+                                       ...props
+                                     }: ComponentProps<'aside'>) {
+  const {open, setOpen} = useSidebar();
   const state = open ? 'open' : 'closed';
 
   return (
@@ -196,7 +195,7 @@ export function SidebarContentMobile({
         />
       </Presence>
       <Presence present={open}>
-        {({ present }) => (
+        {({present}) => (
           <aside
             id="nd-sidebar-mobile"
             {...props}
@@ -237,7 +236,7 @@ export function SidebarFooter(props: ComponentProps<'div'>) {
   );
 }
 
-export function SidebarViewport(props: ScrollAreaProps) {
+export function SidebarViewport(props: ScrollAreaPrimitive.ScrollAreaProps) {
   return (
     <ScrollArea {...props} className={cn('h-full', props.className)}>
       <ScrollViewport
@@ -271,33 +270,33 @@ export function SidebarSeparator(props: ComponentProps<'p'>) {
 }
 
 export function SidebarItem({
-  icon,
-  ...props
-}: LinkProps & {
+                              icon,
+                              ...props
+                            }: LinkProps & {
   icon?: ReactNode;
 }) {
   const pathname = usePathname();
   const active =
     props.href !== undefined && isActive(props.href, pathname, false);
-  const { prefetch } = useInternalContext();
+  const {prefetch} = useInternalContext();
 
   return (
     <Link
       {...props}
       data-active={active}
-      className={cn(itemVariants({ active }), props.className)}
+      className={cn(itemVariants({active}), props.className)}
       prefetch={prefetch}
     >
-      {icon ?? (props.external ? <ExternalLink /> : null)}
+      {icon ?? (props.external ? <ExternalLink/> : null)}
       {props.children}
     </Link>
   );
 }
 
 export function SidebarFolder({
-  defaultOpen = false,
-  ...props
-}: ComponentProps<'div'> & {
+                                defaultOpen = false,
+                                ...props
+                              }: ComponentProps<'div'> & {
   defaultOpen?: boolean;
 }) {
   const [open, setOpen] = useState(defaultOpen);
@@ -309,7 +308,7 @@ export function SidebarFolder({
   return (
     <Collapsible open={open} onOpenChange={setOpen} {...props}>
       <FolderContext.Provider
-        value={useMemo(() => ({ open, setOpen }), [open])}
+        value={useMemo(() => ({open, setOpen}), [open])}
       >
         {props.children}
       </FolderContext.Provider>
@@ -318,14 +317,14 @@ export function SidebarFolder({
 }
 
 export function SidebarFolderTrigger({
-  className,
-  ...props
-}: CollapsibleTriggerProps) {
-  const { open } = useFolderContext();
+                                       className,
+                                       ...props
+                                     }: CollapsiblePrimitive.CollapsibleTriggerProps) {
+  const {open} = useFolderContext();
 
   return (
     <CollapsibleTrigger
-      className={cn(itemVariants({ active: false }), 'w-full', className)}
+      className={cn(itemVariants({active: false}), 'w-full', className)}
       {...props}
     >
       {props.children}
@@ -338,8 +337,8 @@ export function SidebarFolderTrigger({
 }
 
 export function SidebarFolderLink(props: LinkProps) {
-  const { open, setOpen } = useFolderContext();
-  const { prefetch } = useInternalContext();
+  const {open, setOpen} = useFolderContext();
+  const {prefetch} = useInternalContext();
 
   const pathname = usePathname();
   const active =
@@ -349,7 +348,7 @@ export function SidebarFolderLink(props: LinkProps) {
     <Link
       {...props}
       data-active={active}
-      className={cn(itemVariants({ active }), 'w-full', props.className)}
+      className={cn(itemVariants({active}), 'w-full', props.className)}
       onClick={(e) => {
         if (
           e.target instanceof Element &&
@@ -372,8 +371,8 @@ export function SidebarFolderLink(props: LinkProps) {
   );
 }
 
-export function SidebarFolderContent(props: CollapsibleContentProps) {
-  const { level, ...ctx } = useInternalContext();
+export function SidebarFolderContent(props: CollapsiblePrimitive.CollapsibleContentProps) {
+  const {level, ...ctx} = useInternalContext();
 
   return (
     <CollapsibleContent
@@ -409,10 +408,10 @@ export function SidebarFolderContent(props: CollapsibleContentProps) {
 }
 
 export function SidebarTrigger({
-  children,
-  ...props
-}: ComponentProps<'button'>) {
-  const { setOpen } = useSidebar();
+                                 children,
+                                 ...props
+                               }: ComponentProps<'button'>) {
+  const {setOpen} = useSidebar();
 
   return (
     <button
@@ -426,7 +425,7 @@ export function SidebarTrigger({
 }
 
 export function SidebarCollapseTrigger(props: ComponentProps<'button'>) {
-  const { collapsed, setCollapsed } = useSidebar();
+  const {collapsed, setCollapsed} = useSidebar();
 
   return (
     <button
@@ -469,10 +468,10 @@ export interface SidebarComponents {
 export function SidebarPageTree(props: {
   components?: Partial<SidebarComponents>;
 }) {
-  const { root } = useTreeContext();
+  const {root} = useTreeContext();
 
   return useMemo(() => {
-    const { Separator, Item, Folder } = props.components ?? {};
+    const {Separator, Item, Folder} = props.components ?? {};
 
     function renderSidebarList(
       items: PageTree.Node[],
@@ -480,7 +479,7 @@ export function SidebarPageTree(props: {
     ): ReactNode[] {
       return items.map((item, i) => {
         if (item.type === 'separator') {
-          if (Separator) return <Separator key={i} item={item} />;
+          if (Separator) return <Separator key={i} item={item}/>;
           return (
             <SidebarSeparator key={i} className={cn(i !== 0 && 'mt-6')}>
               {item.icon}
@@ -505,7 +504,7 @@ export function SidebarPageTree(props: {
           );
         }
 
-        if (Item) return <Item key={item.url} item={item} />;
+        if (Item) return <Item key={item.url} item={item}/>;
         return (
           <SidebarItem
             key={item.url}
@@ -526,13 +525,13 @@ export function SidebarPageTree(props: {
 }
 
 function PageTreeFolder({
-  item,
-  ...props
-}: {
+                          item,
+                          ...props
+                        }: {
   item: PageTree.Folder;
   children: ReactNode;
 }) {
-  const { defaultOpenLevel, level } = useInternalContext();
+  const {defaultOpenLevel, level} = useInternalContext();
   const path = useTreePath();
 
   return (

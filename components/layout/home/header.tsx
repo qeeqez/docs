@@ -17,7 +17,6 @@ export function Header({
                          i18n = false,
                          links,
                          githubUrl,
-                         themeSwitch = {},
                          searchToggle = {},
                        }: HomeLayoutProps) {
   const finalLinks = useMemo(
@@ -49,25 +48,16 @@ export function Header({
           ))}
       </ul>
       <div className="flex flex-row items-center justify-end gap-1.5 flex-1 max-lg:hidden">
-        {searchToggle.enabled !== false &&
-          (searchToggle.components?.lg ?? (
-            <LargeSearchToggle
-              className="w-full rounded-full ps-2.5 max-w-[240px]"
-              hideIfDisabled
-            />
-          ))}
-        {themeSwitch.enabled !== false &&
-          (themeSwitch.component ?? <ThemeToggle mode={themeSwitch?.mode}/>)}
+        <LargeSearchToggle
+          className="w-full rounded-full ps-2.5 max-w-[240px]"
+          hideIfDisabled
+        />
+        <ThemeToggle mode="light-dark"/>
         {i18n ? (
           <LanguageToggle>
             <Languages className="size-5"/>
           </LanguageToggle>
         ) : null}
-        <div className="flex flex-row items-center empty:hidden">
-          {navItems.filter(isSecondary).map((item, i) => (
-            <NavbarLinkItem key={i} item={item}/>
-          ))}
-        </div>
       </div>
       <ul className="flex flex-row items-center ms-auto -me-1.5 lg:hidden">
         {searchToggle.enabled !== false &&
@@ -106,10 +96,7 @@ export function Header({
                   <ChevronDown className="size-3 text-fd-muted-foreground"/>
                 </LanguageToggle>
               ) : null}
-              {themeSwitch.enabled !== false &&
-                (themeSwitch.component ?? (
-                  <ThemeToggle mode={themeSwitch?.mode}/>
-                ))}
+              <ThemeToggle mode="light-dark"/>
             </div>
           </MenuContent>
         </Menu>
