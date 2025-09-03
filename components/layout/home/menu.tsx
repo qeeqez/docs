@@ -1,5 +1,8 @@
 'use client';
-import {BaseLinkItem, type LinkItemType} from '../shared/index';
+
+import {cva} from 'class-variance-authority';
+import Link from 'fumadocs-core/link';
+import type {ComponentPropsWithoutRef} from 'react';
 import {cn} from '../../../lib/cn';
 import {
   NavigationMenuContent,
@@ -7,10 +10,8 @@ import {
   NavigationMenuLink,
   NavigationMenuTrigger,
 } from '../../navigation-menu';
-import Link from 'fumadocs-core/link';
-import {cva} from 'class-variance-authority';
 import {buttonVariants} from '../../ui/button';
-import type {ComponentPropsWithoutRef} from 'react';
+import {BaseLinkItem, type LinkItemType} from '../shared/index';
 
 const menuItemVariants = cva('', {
   variants: {

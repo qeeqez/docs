@@ -1,4 +1,5 @@
-import type {LinkItemType} from "@/components/layout/shared";
+import Link from "fumadocs-core/link";
+import {Fragment} from "react";
 import {
   NavbarLink,
   NavbarMenu,
@@ -6,8 +7,7 @@ import {
   NavbarMenuLink,
   NavbarMenuTrigger
 } from "@/components/layout/home/navbar";
-import Link from "fumadocs-core/link";
-import {Fragment} from "react";
+import type {LinkItemType} from "@/components/layout/shared";
 
 export function NavbarLinkItem({
                                  item,

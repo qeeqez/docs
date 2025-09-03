@@ -20,7 +20,6 @@ import {
   getBreadcrumbItemsFromPath,
 } from 'fumadocs-core/breadcrumb';
 import { useNav } from 'fumadocs-ui/contexts/layout';
-import { isActive } from '../../../lib/is-active';
 import { useEffectEvent } from 'fumadocs-core/utils/use-effect-event';
 import {
   Collapsible,
@@ -30,6 +29,7 @@ import {
 import { useSidebar } from 'fumadocs-ui/contexts/sidebar';
 import { useTOCItems } from '../../ui/toc';
 import { useActiveAnchor } from 'fumadocs-core/toc';
+import {isActive} from "fumadocs-ui/utils/is-active";
 
 const TocPopoverContext = createContext<{
   open: boolean;
