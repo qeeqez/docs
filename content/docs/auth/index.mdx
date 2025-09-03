@@ -2,3 +2,53 @@
 title: Authentication
 description: Overview of authentication options and flows in RIXL.
 ---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+
+## API Key Authentication
+
+Before you can start uploading, you need to be authenticated. Rixl's API uses **API Keys (`X-API-KEY`)** for external scope operations. This is the key you will use in your mobile apps, web apps, or server-side tools to interact with our API directly.
+
+<Callout type="info">
+    You generate API keys from within a specific project in your Rixl dashboard. You can set their permissions and expiration dates.
+</Callout>
+
+## Key Features
+
+API keys provide secure and flexible authentication for your applications:
+
+**Secure Integration**: Designed to be embedded in your public-facing application code to upload images, videos, and posts securely.
+
+**Flexible Permissions**: Configure access levels for different operations within your project scope.
+
+**Expiration Control**: Set custom expiration dates for enhanced security management.
+
+**Project-Specific**: Each API key is tied to a specific project, ensuring proper access control.
+
+## Usage
+
+Use your **API Key** when your application's end-users are performing actions, like uploading content, or when your backend server needs to communicate with Rixl programmatically.
+
+### Example Request
+
+```bash
+curl -X POST "https://api.rixl.com/images/upload/init" \
+  -H "X-API-KEY: YOUR_PROJECT_API_KEY_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "my-image.jpg",
+    "format": "jpg"
+  }'
+```
+
+<Callout type="warn">
+    Keep your API keys secure and rotate them regularly. Never expose them in client-side code where they could be accessed by unauthorized users.
+</Callout>
+
+## Next Steps
+
+Now that you understand API key authentication, explore these resources:
+
+- **[Create Your Project](/docs/projects/create)** - Set up your project and generate API keys
+- **[Upload Basics](/uploads/index)** - Start uploading content with your API key
+- **[API Reference](/api-reference)** - Complete documentation of all authenticated endpoints
