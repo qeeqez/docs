@@ -11,7 +11,7 @@
   "dependencies": {
     "@orama/orama": "^3.1.12",
     "@radix-ui/react-presence": "^1.1.5",
-    "@rixl/videosdk-react": "^0.11.1",
+    "@rixl/videosdk-react": "^0.12.2",
     "@scalar/api-reference-react": "^0.7.42",
     "class-variance-authority": "^0.7.1",
     "fumadocs-core": "15.7.7",
