@@ -1,9 +1,11 @@
 'use client';
-import {type ComponentProps, useState} from 'react';
+
 import {cva, type VariantProps} from 'class-variance-authority';
 import Link, {type LinkProps} from 'fumadocs-core/link';
+import {useNav} from 'fumadocs-ui/contexts/layout';
+import type {NavigationMenu as Primitive} from "radix-ui";
+import {type ComponentProps, useState} from 'react';
 import {cn} from '../../../lib/cn';
-import {BaseLinkItem} from '../shared/index';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,9 +15,8 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from '../../navigation-menu';
-import {useNav} from 'fumadocs-ui/contexts/layout';
-import type {NavigationMenu as Primitive} from "radix-ui";
 import {buttonVariants} from '../../ui/button';
+import {BaseLinkItem} from '../shared/index';
 
 const navItemVariants = cva(
   'inline-flex items-center gap-1 p-2 text-fd-muted-foreground transition-colors hover:text-fd-accent-foreground data-[active=true]:text-fd-primary [&_svg]:size-4',

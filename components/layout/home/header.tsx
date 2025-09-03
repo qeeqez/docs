@@ -1,16 +1,16 @@
-import {useMemo} from "react";
-import {getLinks, type LinkItemType} from "@/components/layout/shared";
-import {Navbar} from "@/components/layout/home/navbar";
 import Link from "fumadocs-core/link";
+import {ChevronDown, Languages} from "lucide-react";
+import {useMemo} from "react";
+import {LanguageToggle, LanguageToggleText} from "@/components/language-toggle";
+import type {HomeLayoutProps} from "@/components/layout/home/index";
+import {Menu, MenuContent, MenuLinkItem, MenuTrigger} from "@/components/layout/home/menu";
+import {Navbar} from "@/components/layout/home/navbar";
+import {NavbarLinkItem} from "@/components/layout/home/navbar-link-item";
+import {getLinks, type LinkItemType} from "@/components/layout/shared";
 import {LargeSearchToggle, SearchToggle} from "@/components/search-toggle";
 import {ThemeToggle} from "@/components/theme-toggle";
-import {LanguageToggle, LanguageToggleText} from "@/components/language-toggle";
-import {ChevronDown, Languages} from "lucide-react";
-import {Menu, MenuContent, MenuLinkItem, MenuTrigger} from "@/components/layout/home/menu";
-import {cn} from "@/lib/cn";
 import {buttonVariants} from "@/components/ui/button";
-import {HomeLayoutProps} from "@/components/layout/home/index";
-import {NavbarLinkItem} from "@/components/layout/home/navbar-link-item";
+import {cn} from "@/lib/cn";
 
 export function Header({
                          nav = {},

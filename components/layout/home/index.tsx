@@ -1,3 +1,5 @@
+'use client';
+
 import {NavProvider} from 'fumadocs-ui/contexts/layout';
 import type {HTMLAttributes} from 'react';
 import {Footer} from "@/components/layout/home/footer";
