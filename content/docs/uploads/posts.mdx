@@ -1,0 +1,218 @@
+---
+title: Uploading Posts to Feeds
+description: Learn how to upload and manage posts within feeds on Rixl platform.
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+import { Steps, Step } from 'fumadocs-ui/components/steps';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+
+## Overview
+
+Feeds are the core of social experiences on **Rixl**. A Post is the fundamental unit within a Feed and can be either
+an image or a video. The upload process for a Post is a powerful combination of the previous flows, as it handles
+the media upload and simultaneously creates the post-object ready for your social timeline or content carousel.
+
+<Callout type="info">
+    The post upload process combines media upload with post creation, handling both video content
+    with automatically generated poster images, or standalone image posts.
+</Callout>
+
+## Post-Upload Process
+
+<Steps>
+    <Step>
+        ### Initialize a Post Upload
+
+        To create a new post, you start by initializing the upload using the `/feeds/{feedId}/upload/init` endpoint.
+        This single request can trigger the creation of both a video and its poster image, or just an image post.
+        You must specify the `feedId` of the Feed you want to publish to.
+
+        #### Required Parameters
+
+        **`content_type`**: Must be either `"image"` or `"video"`.
+
+        **`file_name`**: The name of your primary media file (e.g., `my-video.mp4`).
+
+        **`format`**: The file format of the primary media (e.g., `mp4`, `jpg`).
+
+        **`creator_id`**: A unique identifier for the user creating the post within your system.
+
+        **`description`**: The caption or text for the post.
+
+        #### Optional Parameters
+
+        **`video_quality`**: If `content_type` is `"video"`, you can set the quality (`basic`, `shorts`, `pro`).
+
+        **`image_format`**: If `content_type` is `"video"`, this sets the format for the automatically generated poster image.
+
+        <Tabs items={['Video Post', 'Image Post']}>
+            <Tab value="Video Post">
+                ```bash
+                curl -X POST "https://api.rixl.com/feeds/FD4y3QB38S/upload/init" \
+                -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
+                -H "Content-Type: application/json" \
+                -d '{
+                        "content_type": "video",
+                        "file_name": "my-awesome-clip.mp4",
+                        "format": "mp4",
+                        "creator_id": "CR8y3QB38S",
+                        "description": "Check out this amazing view!",
+                        "video_quality": "shorts",
+                        "image_format": "jpg"
+                    }'
+                ```
+
+                **Response:**
+                This response is comprehensive. It gives you everything you need to upload both the main content and the poster,
+                and provides the IDs you'll need for the next step.
+
+                ```json
+                {
+                    "post_id": "PS5IMKoFLm",
+                    "content_id": "VI9VXQxWXQ",
+                    "content_presigned_url": "https://videos.rixl.com/...signed-url-for-video...",
+                    "poster_id": "IM8y3QB38S",
+                    "poster_presigned_url": "https://images.rixl.com/...signed-url-for-poster...",
+                    "upload_expires": 1640995200
+                }
+                ```
+            </Tab>
+            <Tab value="Image Post">
+                ```bash
+                curl -X POST "https://api.rixl.com/feeds/FD4y3QB38S/upload/init" \
+                -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
+                -H "Content-Type: application/json" \
+                -d '{
+                        "content_type": "image",
+                        "file_name": "beautiful-sunset.jpg",
+                        "format": "jpg",
+                        "creator_id": "CR8y3QB38S",
+                        "description": "Beautiful sunset from my balcony"
+                    }'
+                ```
+
+                **Response:**
+                ```json
+                {
+                    "post_id": "PS5IMKoFLm",
+                    "content_id": "IM8y3QB38S",
+                    "content_presigned_url": "https://images.rixl.com/...signed-url-for-image...",
+                    "upload_expires": 1640995200
+                }
+                ```
+            </Tab>
+        </Tabs>
+    </Step>
+
+    <Step>
+        ### Upload Your Media Files
+
+        Just like before, you now use the provided pre-signed URLs to upload your files directly to our storage.
+        You need to upload both the main content (video) and the poster image.
+
+        <Tabs items={['Video Upload', 'Poster Upload']}>
+            <Tab value="Video Upload">
+                ```bash
+                curl -X PUT "{content_presigned_url}" \
+                -T "/path/to/your/local/file/my-awesome-clip.mp4" \
+                -H "Content-Type: video/mp4"
+                ```
+            </Tab>
+            <Tab value="Poster Upload">
+                ```bash
+                curl -X PUT "{poster_presigned_url}" \
+                -T "/path/to/your/local/thumbnail/poster-image.jpg" \
+                -H "Content-Type: image/jpeg"
+                ```
+
+                <Callout type="tip">
+                    You can upload a custom poster image. If you don't, Rixl will automatically generate one from the video.
+                </Callout>
+            </Tab>
+        </Tabs>
+    </Step>
+
+    <Step>
+        ### Mark the Post Upload as Complete
+
+        Once both files are uploaded, you finalize the process using `/feeds/{feedId}/upload/complete`.
+        This tells Rixl to process the media, create the relationships between the post, the video, and the image,
+        and publish it to the specified feed.
+
+        ```bash
+        curl -X POST "https://api.rixl.com/feeds/FD4y3QB38S/upload/complete" \
+        -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
+        -H "Content-Type: application/json" \
+        -d '{
+                "post_id": "PS5IMKoFLm"
+            }'
+        ```
+
+        <Callout type="success">
+            A successful response will return the complete Post object with all its details, confirming your new post is live in the feed.
+        </Callout>
+    </Step>
+</Steps>
+
+## Managing Your Posts
+
+After uploading, you can retrieve and manage your posts using the API. Here are the common operations you'll need for post management.
+
+### Retrieving Posts
+
+**Get a Specific Post**: Use this when you need to fetch details for a particular post within a feed.
+
+```bash
+curl "https://api.rixl.com/feeds/FD4y3QB38S/PS5IMKoFLm" \
+  -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE"
+```
+
+**List Posts in a Feed**: This is how you'd retrieve posts to display in your app with pagination support.
+
+```bash
+curl "https://api.rixl.com/feeds/FD4y3QB38S?limit=25&offset=0" \
+  -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE"
+```
+
+**List Posts by a Creator**: To show all content from a specific user in a feed.
+
+```bash
+curl "https://api.rixl.com/feeds/FD4y3QB38S/creators/CR8y3QB38S?limit=25&offset=0" \
+  -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE"
+```
+
+### Post Operations
+
+**Delete a Post**: Remove a post permanently from the feed.
+
+```bash
+curl -X DELETE "https://api.rixl.com/feeds/FD4y3QB38S/PS5IMKoFLm" \
+  -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE"
+```
+
+<Callout type="warn">
+    Deleting a post will permanently remove it from the feed and cannot be undone.
+</Callout>
+
+## Best Practices
+
+When working with posts and feeds, consider these recommendations for optimal performance and user experience.
+
+**Always upload poster images** for video posts to ensure consistent loading experiences across your application.
+
+**Use descriptive file names** to help with content organization and make debugging easier.
+
+**Implement proper error handling** for failed uploads, including retry mechanisms for network issues.
+
+**Consider file size limits** when uploading high-quality content to maintain good performance.
+
+**Use pagination** when retrieving large numbers of posts to avoid overwhelming your users and API limits.
+
+## Next Steps
+
+Now that you understand post management, explore these advanced topics:
+
+**[Analytics and Insights](https://dash.rixl.com)** - Track post-performance and engagement metrics.
+
+**[API Reference](/api-reference/feeds)** - Complete feed and post API documentation with all available parameters.

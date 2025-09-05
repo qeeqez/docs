@@ -51,9 +51,9 @@ The upload process is similar for Images, Videos, and Posts for feeds, with some
             -H "X-API-KEY: YOUR_PROJECT_API_KEY_HERE" \
             -H "Content-Type: application/json" \
             -d '{
-                    "name": "my-profile-picture.jpg",
-                    "format": "jpg"
-                }'
+            "name": "my-profile-picture.jpg",
+            "format": "jpg"
+        }'
             ```
         </Tab>
         <Tab value="Video Upload">
@@ -62,10 +62,10 @@ The upload process is similar for Images, Videos, and Posts for feeds, with some
             -H "X-API-KEY: YOUR_PROJECT_API_KEY_HERE" \
             -H "Content-Type: application/json" \
             -d '{
-                    "file_name": "my-vacation-video.mp4",
-                    "image_format": "jpg",
-                    "video_quality": "pro"
-                }'
+            "file_name": "my-vacation-video.mp4",
+            "image_format": "jpg",
+            "video_quality": "pro"
+        }'
             ```
 
             <Callout type="tip">
@@ -159,5 +159,5 @@ media directly to Rixl-managed storage without exposing your long-lived credenti
 
 Now that you understand the basic upload flow, explore these resources:
 
-- **[API Reference](/app/api/api.json)** - Complete documentation of all endpoints and parameters
-- **[Feed Posts](/feeds.mdx)** - Upload and manage social media feed content
+- **[API Reference](/docs/api-reference/overview)** - Complete documentation of all endpoints and parameters
+- **[Feed Posts](/docs/uploads/posts)** - Upload and manage social media feed content
