@@ -20,6 +20,7 @@ export function SidebarFolderLink(props: LinkProps) {
       {...props}
       data-active={active}
       className={cn(sidebarItemVariants({active}), 'w-full', props.className)}
+
       onClick={(e) => {
         if (
           e.target instanceof Element &&

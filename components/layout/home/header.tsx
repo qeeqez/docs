@@ -32,7 +32,7 @@ export function Header({
   );
 
   return (
-    <Navbar>
+    <Navbar className="sticky top-0 z-50 w-full">
       <Link
         href={nav.url ?? '/'}
         className="inline-flex items-center gap-2.5 font-semibold"

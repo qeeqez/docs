@@ -35,10 +35,10 @@ export function HomeLayout(
 
   return (
     <NavProvider transparentMode={nav?.transparentMode}>
-      <main
+      <div
         id="nd-home-layout"
         {...rest}
-        className={cn('flex flex-1 flex-col pt-14', rest.className)}
+        className={cn('bg-background relative z-10 flex min-h-svh flex-col', rest.className)}
       >
         <Header
           links={links}
@@ -49,7 +49,7 @@ export function HomeLayout(
         />
         {props.children}
         <Footer/>
-      </main>
+      </div>
     </NavProvider>
   );
 }
