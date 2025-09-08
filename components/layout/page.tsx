@@ -163,17 +163,6 @@ export function DocsPage({
         container?.className,
       )}
     >
-      {tocPopoverEnabled &&
-        (tocPopover ?? (
-          <PageTOCPopover>
-            <PageTOCPopoverTrigger />
-            <PageTOCPopoverContent>
-              {tocPopoverOptions.header}
-              <PageTOCPopoverItems variant={tocPopoverOptions.style} />
-              {tocPopoverOptions.footer}
-            </PageTOCPopoverContent>
-          </PageTOCPopover>
-        ))}
       <PageArticle {...article}>
         {breadcrumbEnabled &&
           (breadcrumb ?? <PageBreadcrumb {...breadcrumbProps} />)}
@@ -189,15 +178,6 @@ export function DocsPage({
         {footer.enabled !== false &&
           (footer.component ?? <PageFooter items={footer.items} />)}
       </PageArticle>
-      {tocEnabled &&
-        (tocReplace ?? (
-          <PageTOC>
-            {tocOptions.header}
-            <PageTOCTitle />
-            <PageTOCItems variant={tocOptions.style} />
-            {tocOptions.footer}
-          </PageTOC>
-        ))}
     </PageRoot>
   );
 }

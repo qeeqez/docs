@@ -9,19 +9,19 @@ export function LayoutBody(props: ComponentProps<'main'>) {
 
   return (
     <main
-      id="nd-docs-layout"
+      // id="nd-docs-layout"
       {...props}
       className={cn(
-        'flex flex-1 flex-col pt-(--fd-nav-height) transition-[padding]',
-        !collapsed && 'mx-(--fd-layout-offset)',
-        props.className,
+        // 'flex flex-1 flex-col pt-(--fd-nav-height) transition-[padding]',
+        // !collapsed && 'mx-(--fd-layout-offset)',
+        // props.className,
       )}
-      style={{
-        ...props.style,
-        paddingInlineStart: collapsed
-          ? 'min(calc(100vw - var(--fd-page-width)), var(--fd-sidebar-width))'
-          : 'var(--fd-sidebar-width)',
-      }}
+      // style={{
+      //   ...props.style,
+      //   paddingInlineStart: collapsed
+      //     ? 'min(calc(100vw - var(--fd-page-width)), var(--fd-sidebar-width))'
+      //     : 'var(--fd-sidebar-width)',
+      // >}}
     >
       {props.children}
     </main>

@@ -1,6 +1,20 @@
 'use client';
 
 import {
+  type BreadcrumbOptions,
+  getBreadcrumbItemsFromPath,
+} from 'fumadocs-core/breadcrumb';
+import { createContext, usePathname } from 'fumadocs-core/framework';
+import Link from 'fumadocs-core/link';
+import type { PageTree } from 'fumadocs-core/server';
+import { useActiveAnchor } from 'fumadocs-core/toc';
+import { useEffectEvent } from 'fumadocs-core/utils/use-effect-event';
+import { useI18n } from 'fumadocs-ui/contexts/i18n';
+import { useNav } from 'fumadocs-ui/contexts/layout';
+import { useSidebar } from 'fumadocs-ui/contexts/sidebar';
+import { useTreeContext, useTreePath } from 'fumadocs-ui/contexts/tree';
+import { ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import {
   type ComponentProps,
   Fragment,
   useEffect,
@@ -8,28 +22,14 @@ import {
   useRef,
   useState,
 } from 'react';
-import { ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
-import Link from 'fumadocs-core/link';
-import { cn } from '../../../lib/cn';
-import { useI18n } from 'fumadocs-ui/contexts/i18n';
-import { useTreeContext, useTreePath } from 'fumadocs-ui/contexts/tree';
-import type { PageTree } from 'fumadocs-core/server';
-import { createContext, usePathname } from 'fumadocs-core/framework';
-import {
-  type BreadcrumbOptions,
-  getBreadcrumbItemsFromPath,
-} from 'fumadocs-core/breadcrumb';
-import { useNav } from 'fumadocs-ui/contexts/layout';
-import { useEffectEvent } from 'fumadocs-core/utils/use-effect-event';
+import { cn } from '@/lib/cn';
+import { isActive } from '@/lib/is-active';
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from '../../ui/collapsible';
-import { useSidebar } from 'fumadocs-ui/contexts/sidebar';
 import { useTOCItems } from '../../ui/toc';
-import { useActiveAnchor } from 'fumadocs-core/toc';
-import {isActive} from "fumadocs-ui/utils/is-active";
 
 const TocPopoverContext = createContext<{
   open: boolean;
@@ -197,7 +197,7 @@ export function PageTOCPopover(props: ComponentProps<'div'>) {
           id="nd-tocnav"
           {...props}
           className={cn(
-            'fixed inset-x-0 z-10 border-b backdrop-blur-sm transition-colors xl:hidden',
+            'absolute xl:hidden w-full min-h-10 z-10 border-b backdrop-blur-sm transition-colors ',
             (!isTransparent || open) && 'bg-fd-background/80',
             open && 'shadow-lg',
             props.className,
@@ -208,6 +208,7 @@ export function PageTOCPopover(props: ComponentProps<'div'>) {
             insetInlineStart: collapsed
               ? '0px'
               : 'calc(var(--fd-sidebar-width) + var(--fd-layout-offset))',
+            insetInlineEnd: 0,
           }}
         >
           {props.children}
@@ -397,18 +398,20 @@ export function PageTOC(props: ComponentProps<'div'>) {
     <div
       id="nd-toc"
       {...props}
-      className={cn('fixed bottom-0 pb-2 pt-12 max-xl:hidden', props.className)}
+      className={cn(
+        "",
+        // 'fixed bottom-0 pt-12 pb-2 pr-(--removed-body-scroll-bar-size,0) max-xl:hidden',
+        props.className,
+      )}
       style={{
         ...props.style,
-        top: 'calc(var(--fd-banner-height) + var(--fd-nav-height))',
-        insetInlineEnd: collapsed
-          ? 'max(0px, calc(50vw - var(--fd-sidebar-width)/2 - var(--fd-page-width)/2))'
-          : 'max(var(--fd-layout-offset), calc(50vw - var(--fd-sidebar-width)/2 - var(--fd-page-width)/2))',
+        // top: 'calc(var(--fd-banner-height) + var(--fd-nav-height))',
+        // insetInlineEnd: `max(${offset}, calc(50vw - var(--fd-sidebar-width)/2 - var(--fd-page-width)/2))`,
       }}
     >
-      <div className="flex h-full w-(--fd-toc-width) max-w-full flex-col pe-4">
+      {/*<div className="flex h-full w-(--fd-toc-width) max-w-full flex-col pe-4">*/}
         {props.children}
-      </div>
+      {/*</div>*/}
     </div>
   );
 }

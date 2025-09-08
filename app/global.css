@@ -1,3 +1,21 @@
 @import 'tailwindcss';
 @import 'fumadocs-ui/css/black.css';
 @import 'fumadocs-ui/css/preset.css';
+
+@theme {
+    --width-sidebar: calc(var(--spacing) * 80);
+    --padding-sidebar: calc(var(--spacing) * 4);
+}
+
+@layer utilities {
+    /* Chrome, Safari, and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* IE, Edge, and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+}

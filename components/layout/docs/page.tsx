@@ -17,17 +17,6 @@ import { I18nLabel } from 'fumadocs-ui/contexts/i18n';
 import ClerkTOCItems from '../../ui/toc-clerk';
 import type { AnchorProviderProps } from 'fumadocs-core/toc';
 
-/**
- * Apply `prose` on div
- */
-export function PageProse(props: ComponentProps<'div'>) {
-  return (
-    <div {...props} className={cn('prose', props.className)}>
-      {props.children}
-    </div>
-  );
-}
-
 export function PageTOCTitle(props: ComponentProps<'h2'>) {
   return (
     <h3
