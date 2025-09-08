@@ -1,0 +1,10 @@
+{
+  "title": "Account Management",
+  "description": "Manage your account and team",
+  "pages": [
+    "profile",
+    "api_keys",
+    "members",
+    "billing"
+  ]
+}
