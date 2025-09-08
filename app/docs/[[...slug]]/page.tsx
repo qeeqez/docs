@@ -24,7 +24,7 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
     // TODO scroll from bottom to top should catch the page
     <main id="nd-page" className="flex flex-1 flex-col relative">
       <div className="flex flex-1">
-        <aside className="w-sidebar px-sidebar sticky top-0 h-screen hidden md:block">
+        <aside className="w-64 px-sidebar sticky top-0 h-screen hidden md:block">
           {/* TODO restore padding for sidebar links*/}
           <Sidebar/>
         </aside>
@@ -54,7 +54,7 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
               </DocsPage>
             </div>
           </main>
-          <aside className="w-sidebar p-sidebar hidden xl:block">
+          <aside className="w-64 p-sidebar hidden xl:block">
             <PageTOC className="">
               <PageTOCTitle/>
               <PageTOCItems variant="normal"/>
