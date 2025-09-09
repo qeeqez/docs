@@ -1,4 +1,246 @@
 ---
-title: API Overview
-description: Complete reference for the RIXL API with authentication, endpoints, and examples.
+title: API Overview 
+description: Reference for the RIXL API covering authentication, endpoints, and examples.
 ---
+
+import { Callout } from 'fumadocs-ui/components/callout'
+import { Card, Cards } from 'fumadocs-ui/components/card'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+
+With the RIXL API, you can connect your applications to all platform features and integrate them smoothly.
+
+## Base URL
+
+All API requests should be made to:
+
+```
+https://api.rixl.com
+```
+
+## Authentication
+
+To access the RIXL API, add your API key to the Authorization header:
+
+```bash
+Authorization: YOUR_PROJECT_API_KEY
+```
+
+[Learn more about authentication →](/docs/getting-started/authentication)
+
+## Core Resources
+
+<Cards>
+  <Card title="Projects" description="Manage projects and organizational structure">
+You can create, edit, and manage projects to organize your media and set team access.
+
+  </Card>
+  
+  <Card title="Media" description="Upload and manage videos and images">
+
+Upload, organize, and manage your media. The API optimizes your media automatically.
+
+  </Card>
+  
+  <Card title="Feeds" description="Create dynamic content collections">
+
+Group media into feeds to embed and update dynamically.
+  </Card>
+  
+  <Card title="Teams" description="Manage team members and permissions">
+Invite team members, assign roles, and control access.
+
+  </Card>
+</Cards>
+
+## Quick Start Example
+
+Here's how you can work with RIXL's API using the correct endpoints:
+
+<Tabs items={['cURL', 'JavaScript', 'Python']}>
+<Tab value="cURL">
+```bash
+# Initialize a video upload
+curl -X POST https://api.rixl.com/videos/upload/init \
+  -H "X-API-KEY: YOUR_PROJECT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "file_name": "my-video.mp4",
+    "video_quality": "shorts",
+    "image_format": "jpg"
+  }'
+
+# Get all videos in your project
+curl -X GET https://api.rixl.com/videos \
+  -H "X-API-KEY: YOUR_PROJECT_API_KEY" \
+  -G \
+  -d "limit=25" \
+  -d "offset=0"
+
+# Get a specific video
+curl -X GET https://api.rixl.com/videos/VI9VXQxWXQ \
+  -H "X-API-KEY: YOUR_PROJECT_API_KEY"
+```
+</Tab>
+
+<Tab value="JavaScript">
+```javascript
+// Initialize a video upload
+const initResponse = await fetch('https://api.rixl.com/videos/upload/init', {
+  method: 'POST',
+  headers: {
+    'X-API-KEY': 'YOUR_PROJECT_API_KEY',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    file_name: 'my-video.mp4',
+    video_quality: 'shorts',
+    image_format: 'jpg'
+  })
+});
+
+const uploadData = await initResponse.json();
+console.log(uploadData);
+
+// Get all videos in your project
+const videosResponse = await fetch('https://api.rixl.com/videos?limit=25&offset=0', {
+  headers: {
+    'X-API-KEY': 'YOUR_PROJECT_API_KEY'
+  }
+});
+
+const videos = await videosResponse.json();
+console.log(videos);
+```
+</Tab>
+
+<Tab value="Python">
+```python
+import requests
+
+# Initialize a video upload
+response = requests.post(
+    'https://api.rixl.com/videos/upload/init',
+    headers={
+        'X-API-KEY': 'YOUR_PROJECT_API_KEY',
+        'Content-Type': 'application/json'
+    },
+    json={
+        'file_name': 'my-video.mp4',
+        'video_quality': 'shorts',
+        'image_format': 'jpg'
+    }
+)
+
+upload_data = response.json()
+print(upload_data)
+
+# Get all videos in your project
+videos_response = requests.get(
+    'https://api.rixl.com/videos',
+    headers={'X-API-KEY': 'YOUR_PROJECT_API_KEY'},
+    params={'limit': 25, 'offset': 0}
+)
+
+videos = videos_response.json()
+print(videos)
+```
+</Tab>
+</Tabs>
+
+## Response Format
+
+Based on your API specification, responses follow standard REST patterns:
+
+**Successful Response (Video Upload Init):**
+```json
+{
+  "video_id": "VI9VXQxWXQ",
+  "video_presigned_url": "https://videos.rixl.com/Bq4y3QB38S/VI9VXQxWXQ?X-Amz-Algorithm=...",
+  "poster_id": "PS5IMKoFLm", 
+  "poster_presigned_url": "https://images.rixl.com/Bq4y3QB38S/PS5IMKoFLm?X-Amz-Algorithm=...",
+  "upload_expires": 1640995200
+}
+```
+
+**Paginated Response (List Videos):**
+```json
+{
+  "data": [
+    {
+      "id": "VI9VXQxWXQ",
+      "duration": 30.5,
+      "width": 1920,
+      "height": 1080,
+      "file": {
+        "id": "FpvLwyDMqu",
+        "name": "original.mp4",
+        "size": 1048576,
+        "url": "https://videos.rixl.com/Bq4y3QB38S/FpvLwyDMqu",
+        "status": "ready"
+      }
+    }
+  ],
+  "pagination": {
+    "limit": 25,
+    "offset": 0,
+    "total": 100
+  }
+}
+```
+
+## Error Handling
+
+Error responses follow the ResponseError schema:
+
+```json
+{
+  "code": 400,
+  "error": "Invalid request body",
+  "details": "The provided file format is not supported"
+}
+```
+
+## Rate Limits
+
+<Callout type="warning">
+Your subscription plan sets specific limits on the number of API calls you can make. If you reach your rate limit, additional requests may be denied until your usage resets. Monitor your API usage in your dashboard to avoid interruptions.
+</Callout>
+
+| Plan | Requests per Hour | Burst Limit |
+|------|-------------------|-------------|
+| Free | 100 | 10 per minute |
+| Pro | 1,000 | 50 per minute |
+| Enterprise | Custom | Custom |
+
+## Status Codes
+
+| Code | Meaning |
+|------|---------|
+| 200 | Success |
+| 201 | Created |
+| 400 | Bad Request |
+| 401 | Unauthorized |
+| 403 | Forbidden |
+| 404 | Not Found |
+| 429 | Rate Limited |
+| 500 | Server Error |
+
+## SDKs and Libraries
+
+<Callout type="info">
+We are developing official SDKs for widely used programming languages and will release them soon.
+</Callout>
+
+In the meantime, you can use any HTTP client in your preferred language to connect with the API.
+
+## Support
+
+If you need help with the API, our support team is here for you:
+
+- **Documentation**: Complete guides and examples
+- **Email**: For direct support, email us at [api@rixl.com](mailto:api@rixl.com)
+- **Status Page**: For platform updates, visit [status.rixl.com](https://status.rixl.com)
+
+<Callout type="tip">
+For latest API info and testing, visit [api.rixl.com/docs](https://api.rixl.com/docs).
+</Callout>
