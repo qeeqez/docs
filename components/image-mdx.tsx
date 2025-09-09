@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {Image} from "@rixl/videosdk-react";
 
@@ -7,5 +7,5 @@ interface Props {
 }
 
 export const ImageMDX = ({id}: Props) => {
-  return <Image id={id}/>;
+  return <Image id={id} />;
 };
