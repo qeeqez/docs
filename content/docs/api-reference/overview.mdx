@@ -1,60 +1,58 @@
 ---
-title: API Overview 
-description: Reference for the RIXL API covering authentication, endpoints, and examples.
+title: API Reference
+description: Complete API documentation for integrating RIXL into your applications.
 ---
 
 import { Callout } from 'fumadocs-ui/components/callout'
 import { Card, Cards } from 'fumadocs-ui/components/card'
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
 
-With the RIXL API, you can connect your applications to all platform features and integrate them smoothly.
+With the RIXL API, you can access all platform features and easily integrate them into your applications.
+
+<Callout type="info">
+
+Before you start, make sure you have [set up authentication](/docs/getting-started/authentication)and [create a project](/docs/getting-started/create-project) by following these guides.
+</Callout>
 
 ## Base URL
 
-All API requests should be made to:
+Use this base URL for all your API requests:
 
 ```
-https://api.rixl.com
+https://api.rixl.com/v1
 ```
 
 ## Authentication
 
-To access the RIXL API, add your API key to the Authorization header:
+Add your API key to the request header:
 
 ```bash
-Authorization: YOUR_PROJECT_API_KEY
+X-API-Key: YOUR_PROJECT_API_KEY
 ```
-
-[Learn more about authentication →](/docs/getting-started/authentication)
 
 ## Core Resources
 
 <Cards>
   <Card title="Projects" description="Manage projects and organizational structure">
-You can create, edit, and manage projects to organize your media and set team access.
-
+You can create, set up, and manage projects to organize your media and control who can access each project.
   </Card>
   
-  <Card title="Media" description="Upload and manage videos and images">
-
-Upload, organize, and manage your media. The API optimizes your media automatically.
-
+  <Card title="Media Upload" description="Upload and process videos and images">
+    Upload your media with automatic optimization, transcoding, and format conversion for optimal project delivery.
   </Card>
   
   <Card title="Feeds" description="Create dynamic content collections">
-
-Group media into feeds to embed and update dynamically.
+Organize your media into feeds that you can embed or use for dynamic project content sharing.
   </Card>
   
-  <Card title="Teams" description="Manage team members and permissions">
-Invite team members, assign roles, and control access.
-
+  <Card title="Team Management" description="Manage team members and permissions">
+Invite your team, assign roles, and manage who can access your projects and media.
   </Card>
 </Cards>
 
 ## Quick Start Example
 
-Here's how you can work with RIXL's API using the correct endpoints:
+Here are some examples of how to use the RIXL API with the right endpoints:
 
 <Tabs items={['cURL', 'JavaScript', 'Python']}>
 <Tab value="cURL">
@@ -149,7 +147,7 @@ print(videos)
 
 ## Response Format
 
-Based on your API specification, responses follow standard REST patterns:
+API responses follow standard REST patterns:
 
 **Successful Response (Video Upload Init):**
 ```json
@@ -190,7 +188,7 @@ Based on your API specification, responses follow standard REST patterns:
 
 ## Error Handling
 
-Error responses follow the ResponseError schema:
+If there is an error, the response will use the ResponseError format:
 
 ```json
 {
@@ -203,7 +201,7 @@ Error responses follow the ResponseError schema:
 ## Rate Limits
 
 <Callout type="warning">
-Your subscription plan sets specific limits on the number of API calls you can make. If you reach your rate limit, additional requests may be denied until your usage resets. Monitor your API usage in your dashboard to avoid interruptions.
+Each subscription plan has its own API call limits. If you reach your limit, new requests will be denied until your usage resets. You can check your usage in your dashboard to avoid any interruptions.
 </Callout>
 
 | Plan | Requests per Hour | Burst Limit |
@@ -228,14 +226,14 @@ Your subscription plan sets specific limits on the number of API calls you can m
 ## SDKs and Libraries
 
 <Callout type="info">
-We are developing official SDKs for widely used programming languages and will release them soon.
+We are working on official SDKs for popular programming languages and will release them soon.
 </Callout>
 
-In the meantime, you can use any HTTP client in your preferred language to connect with the API.
+For now, feel free to use any HTTP client in your favorite programming language to connect to the API.
 
 ## Support
 
-If you need help with the API, our support team is here for you:
+If you encounter issues or need clarification while using the API, support is available:
 
 - **Documentation**: Complete guides and examples
 - **Email**: For direct support, email us at [api@rixl.com](mailto:api@rixl.com)
