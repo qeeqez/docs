@@ -1,16 +1,252 @@
 ---
-title: RIXL's
-description: Welcome to the Rixl documentation. Use the sidebar section to navigate core concepts, APIs, and more.
+title: RIXL Cloud
+description: Find all you need to process, store, and deliver video content with RIXL.
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+import { Callout } from 'fumadocs-ui/components/callout';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Card, Cards } from 'fumadocs-ui/components/card';
 
-<VideoMDX id="D3OCjdLP60" />
+RIXL simplifies global video content processing, management, and delivery. Our API enables transcoding, storage, and structured media feeds for scalable, high-quality media.
 
-## What is Next?
+<Callout type="info" title="Global Scale">
+    Businesses and creators worldwide use RIXL to meet their video and image needs, processing millions of assets and serving billions of monthly requests across six continents.
+</Callout>
+
+Read our Getting Started guide for a quick introduction to RIXL.
+
+## Quick Start
 
 <Cards>
-    <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-    <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
+    <Card
+        title="Dashboard Guide"
+        description="Learn to manage media through our web interface"
+        href="/docs/dashboard/guide"
+    />
+    <Card
+        title="API Reference"
+        description="Integrate RIXL into your applications"
+        href="/docs/api-reference/overview"
+    />
+    <Card
+        title="Getting Started"
+        description="Learn RIXL's key principles"
+        href="/docs/getting-started"
+    />
+    <Card
+        title="Authentication"
+        description="Set up secure API access"
+        href="/docs/getting-started/authentication"
+    />
 </Cards>
 
+## Key Features
+
+### Media Processing
+**Video** • **Image**
+
+Video Processing: Upload, transcode, and stream video for a global audience instantly.
+
+Image Management: Upload, transform, and optimize images on demand with rapid processing.
+
+Format Support: Handle major video and image formats used across industries.
+
+Quality Optimization: Adjust video quality automatically for device and bandwidth.
+
+### Content Organization
+**Projects** • **Feeds**
+
+Feeds System: Build organized, updateable media feeds for efficient content updates.
+
+Project Management: Structure and manage media with projects and collections.
+
+Metadata Management: Attach searchable metadata to each asset for easy discovery.
+
+Version Control: Log every update and maintain a detailed media history.
+
+### Integration & Collaboration
+**API** • **Teams**
+
+API: Access all platform functions through direct programmable endpoints.
+
+Team Collaboration: Collaborate with detailed role-based permissions for project work.
+
+SDK Libraries: Official SDKs for top programming languages will be available soon.
+
+## Platform Components
+
+RIXL has two main parts that work together:
+
+<Tabs items={['Dashboard', 'API Platform']}>
+    <Tab value="Dashboard">
+        ### Main Dashboard
+
+        Access a unified interface for uploading, organizing, and managing all your media, projects, and settings in one place.
+
+        - Drag-and-drop uploads for immediate media addition
+        - Visual tools for efficient project organization
+        - Live updates on media processing status
+        - Integrated solutions for teamwork and collaboration
+        - Access to analytics for content performance insights
+
+        **Access:** [rixl's dashboard](https://dash.rixl.com)
+    </Tab>
+
+    <Tab value="API Platform">
+        ### Developer's API
+
+        Integrate RIXL seamlessly into existing applications using robust endpoints and real-time media management features.
+
+        - Perform full create, read, update, and delete operations
+        - Enable high-volume batch media processing
+        - Monitor usage via detailed rate limits and quotas
+        - Resolve integration issues with extensive error feedback
+
+        **Base URL:** `https://api.rixl.com/v1`
+    </Tab>
+</Tabs>
+
+## Getting Started
+
+<Steps>
+    <Step>
+        ### Create Your Account
+
+        Sign up for a RIXL account and verify your email to start using the platform.
+
+        <Callout type="tip">
+            New accounts include a generous free tier to help you explore RIXL's platform features.
+        </Callout>
+    </Step>
+
+    <Step>
+        ### Set Up Your Profile
+
+        Fill in your profile details and set your account preferences.
+
+        - Upload profile picture
+        - Set display name and bio
+        - Set up billing information (if needed)
+    </Step>
+
+    <Step>
+        ### Create Your First Project
+
+        Use projects to organize your media and control who can access it.
+
+        [Create your first project →](/docs/dashboard/project)
+    </Step>
+
+    <Step>
+        ### Upload Media Content
+
+        Upload your videos and images to see how RIXL processes your media.
+
+        [Upload your first video →](/docs/uploads/videos)
+    </Step>
+</Steps>
+
+### API Requirements
+
+- Protocol: HTTPS required for all API calls
+- Authentication: API keys (unique codes for secure access)
+- Content Type: JSON for request/response bodies (a common data format)
+- Rate Limits: See API documentation for details on request limits per time period
+
+### Supported Media Formats
+
+<Tabs items={['Video Formats', 'Image Formats', 'Audio Formats']}>
+    <Tab value="Video Formats">
+        | Format | Extension | Max Size | Notes |
+        |--------|-----------|----------|--------|
+        | MP4 | `.mp4` | 10GB | Recommended |
+        | MOV | `.mov` | 10GB | Apple format |
+        | AVI | `.avi` | 10GB | Legacy support |
+        | WMV | `.wmv` | 10GB | Windows format |
+        | WebM | `.webm` | 10GB | Web optimized |
+        | MKV | `.mkv` | 10GB | Open format |
+
+        [View complete format specifications →](/docs/uploads)
+    </Tab>
+
+    <Tab value="Image Formats">
+        | Format | Extension | Max Size | Features |
+        |--------|-----------|----------|----------|
+        | JPEG | `.jpg`, `.jpeg` | 50MB | Lossy compression |
+        | PNG | `.png` | 50MB | Transparency support |
+        | GIF | `.gif` | 50MB | Animation support |
+        | WebP | `.webp` | 50MB | Modern format |
+        | AVIF | `.avif` | 50MB | Next-gen format |
+        | HEIC/HEIF | `.heic`, `.heif` | 50MB | Apple format, high efficiency |
+        | TIFF | `.tiff`, `.tif` | 100MB | High quality |
+    </Tab>
+
+    <Tab value="Audio Formats">
+        | Format | Extension | Max Size | Quality |
+        |--------|-----------|----------|---------|
+        | MP3 | `.mp3` | 500MB | Compressed |
+        | WAV | `.wav` | 1GB | Lossless |
+        | FLAC | `.flac` | 1GB | Lossless |
+        | AAC | `.aac` | 500MB | High quality |
+        | OGG | `.ogg` | 500MB | Open format |
+    </Tab>
+</Tabs>
+
+## Popular Use Cases
+
+<Cards>
+    <Card
+        title="Social Media Apps"
+        description="Process user-generated content with real-time optimization"
+    />
+    <Card
+        title="E-learning Platforms"
+        description="Host and deliver educational video content with automatic transcoding"
+    />
+    <Card
+        title="Marketing Campaigns"
+        description="Manage campaign assets with structured feeds and global delivery"
+    />
+    <Card
+        title="Enterprise Training"
+        description="Secure video hosting for internal training and communication"
+    />
+</Cards>
+
+## Next Steps
+
+Take the next step with RIXL by exploring these actions:
+
+<Cards>
+    <Card
+        title="Explore the Dashboard"
+        description="Get familiar with the web interface and upload your first media"
+        href="/docs/dashboard/guide"
+    />
+    <Card
+        title="Generate API Keys"
+        description="Set up authentication for programmatic access"
+        href="/docs/getting-started/authentication"
+    />
+    <Card
+        title="View Upload Guide"
+        description="See practical upload examples for videos and images"
+        href="/docs/uploads"
+    />
+    <Card
+        title="Join the Community"
+        description="Connect with other developers using RIXL"
+        href="https://community.rixl.com"
+    />
+</Cards>
+
+<Callout type="tip" title="Need Help?">
+    Contact our support team any time via the chat widget or email [support@rixl.com](mailto:support@rixl.com).
+</Callout>
+
+---
+
+<div className="mt-12 text-sm text-gray-600">
+    **Platform Status:** All systems operational • **API Version:** vX.X.X • **Last Updated:** September 2025
+</div>

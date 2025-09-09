@@ -1,10 +1,10 @@
 {
   "title": "Documentation",
-  "description": "RIXL Platform Documentation",
+  "description": "RIXL Cloud Platform Documentation",
   "pages": [
     "getting-started",
+    "dashboard",
     "uploads", 
-    "account",
     "api-reference"
   ]
 }
