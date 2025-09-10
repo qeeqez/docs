@@ -35,7 +35,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
             </PageTOCPopover>
             <div>
               {/* TODO hide scrollbar when TOC is open*/}
-              <DocsPage full={page.data.full}>
+              <DocsPage full={page.data.full} lastUpdate={page.data.lastModified}>
                 <DocsTitle>{page.data.title}</DocsTitle>
                 <DocsDescription>{page.data.description}</DocsDescription>
                 <DocsBody>
