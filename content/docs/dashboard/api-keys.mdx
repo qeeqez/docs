@@ -34,7 +34,7 @@ Configure security parameters for each API key:
     ip_whitelist: {
       description: 'Allowed IP addresses or CIDR blocks',
       type: 'array',
-      default: ['192.168.1.0/24', '10.0.0.1']
+      default: ['192.168.1.0/24', '0.0.0.0']
     },
     rate_limit: {
       description: 'Maximum requests per hour',
@@ -44,7 +44,7 @@ Configure security parameters for each API key:
     expires_at: {
       description: 'ISO timestamp when key expires',
       type: 'string',
-      default: '2024-12-31T23:59:59Z'
+      default: '2025-08-10T23:59:59Z'
     }
   }}
 />
@@ -94,7 +94,6 @@ Configure security parameters for each API key:
 **IP Restrictions**
 - Allowlist specific IP addresses or ranges
 - Geographic restrictions for compliance
-- VPN and proxy detection
 
 **Rate Limiting**
 - Configure requests per minute/hour limits
@@ -333,17 +332,6 @@ curl -X GET "https://api.rixl.com/v1/feeds/FEED_ID" \
 
 <Callout type="tip">
 Regular key rotation (every 90-365 days) significantly enhances your security posture.
-</Callout>
-
-### Bulk Operations
-
-<Cards>
-  <Card title="Export Key List" description="Download CSV of all keys with usage statistics for auditing" />
-  <Card title="Bulk Revocation" description="Select multiple keys for simultaneous revocation during security incidents" />
-</Cards>
-
-<Callout type="warning">
-Bulk revocation operations cannot be undone. Ensure you have replacement keys ready before proceeding.
 </Callout>
 
 ## Next Steps
