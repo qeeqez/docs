@@ -17,7 +17,7 @@ export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
       title: (
-        <LogoWide className="h-14 fill-black dark:invert"/>
+        <LogoWide className="h-9 fill-black dark:invert"/>
       ),
     },
     // see https://fumadocs.dev/docs/ui/navigation/links
