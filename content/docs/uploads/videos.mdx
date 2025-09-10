@@ -1,0 +1,381 @@
+---
+title: Video Processing Pipeline
+description: Automated video transcoding system producing multiple quality levels and adaptive streaming formats for efficient delivery on any device.
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+import { Steps, Step } from 'fumadocs-ui/components/steps';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+import { Cards, Card } from 'fumadocs-ui/components/card';
+import { Banner } from 'fumadocs-ui/components/banner';
+
+<Banner variant="info">
+**Coming soon:** Advanced video processing will include AI-powered thumbnail generation and automated chapter detection, allowing for smarter preview selection and seamless navigation.
+
+</Banner>
+
+Once [video upload](https://api.rixl.com/videos) is complete, RIXL encodes the file into various quality levels and adaptive streaming formats for reliable playback across all devices and network conditions.
+
+</Callout>
+
+## Processing Architecture
+
+Video processing uses a three-phase pipeline converting uploaded content into streaming-ready assets:
+
+<Steps>
+    <Step>
+        **Analysis & Planning** - Content analysis determines optimal rendition ladder
+    </Step>
+    <Step>
+        **Multi-Quality Encoding** - Parallel transcoding to multiple resolutions and bitrates
+    </Step>
+    <Step>
+        **Adaptive Stream Packaging** - HLS/DASH manifest generation for seamless delivery
+    </Step>
+</Steps>
+
+## Quality Tiers Explained
+
+Choose a tier matching your content needs at upload initiation:
+
+<Tabs items={['Basic', 'Shorts', 'Pro']}>
+    <Tab value="Basic">
+        **Standard web viewing with bandwidth efficiency:**
+        - **720p HD** (1280×720) at 2.5 Mbps
+        - **480p SD** (854×480) at 1.0 Mbps
+        - **240p Mobile** (426×240) at 500 Kbps
+
+        *Best for: General web content, tutorials, presentations*
+    </Tab>
+    <Tab value="Shorts">
+        **Optimized for short-form vertical content:**
+        - **1080p Full HD** (1920×1080) at 4.0 Mbps, 60fps
+        - **720p HD** (1280×720) at 2.5 Mbps, 60fps
+        - **480p SD** (854×480) at 1.0 Mbps, 30fps
+
+        *Best for: Social media content, mobile-first videos, vertical format*
+    </Tab>
+    <Tab value="Pro">
+        **Premium quality with full resolution support:**
+        - **4K Ultra HD** (3840×2160) at 15 Mbps, 60fps
+        - **2K Quad HD** (2560×1440) at 8.0 Mbps, 60fps
+        - **1080p Full HD** (1920×1080) at 4.0 Mbps, 60fps
+        - **Additional lower resolutions** for adaptive streaming
+
+        *Pro tier is best suited for professional content, broadcasts, and media with high-quality requirements.*
+    </Tab>
+</Tabs>
+
+## Supported Input Formats
+
+<Tabs items={['Primary Formats', 'Other Support']}>
+    <Tab value="Primary Formats">
+        **Recommended for fastest processing:**
+        - **MP4** - H.264/H.265 video with AAC audio
+        - **MOV** - QuickTime containers (Apple ecosystem)
+        - **WebM** - VP8/VP9 with Vorbis/Opus audio
+    </Tab>
+    <Tab value="Other Support">
+        **Also supported but may require longer processing:**
+        - **MKV** - Matroska container format
+        - **AVI** - Legacy Windows format
+        - **FLV** - Flash video format
+    </Tab>
+</Tabs>
+
+## Processing Pipeline Details
+
+<Steps>
+    <Step>
+        ### Content Analysis
+        **Automatic metadata extraction:**
+        - Resolution, frame rate, and codec detection
+        - Audio track analysis and separation
+        - Content complexity assessment for bitrate optimization
+        - Aspect ratio preservation planning
+    </Step>
+
+    <Step>
+        ### Intelligent Encoding
+        **Multi-rendition transcoding:**
+        - **Primary codec**: H.265 (HEVC) for efficiency
+        - **Other codec**: H.264 for universal compatibility
+        - **Frame rate handling**: 24fps to 60fps with NTSC support
+        - **Adaptive bitrates**: Content-aware quality optimization
+    </Step>
+
+    <Step>
+        ### Adaptive Streaming
+        **Cross-platform delivery preparation:**
+        - **HLS packaging**: Apple-compatible `.m3u8` playlists
+        - **DASH manifests**: Universal `.mpd` format
+        - **6-second segments**: Optimized for low-latency streaming
+        - **CDN distribution**: Global edge deployment
+    </Step>
+</Steps>
+
+## Audio Processing
+
+RIXL conducts independent audio processing for efficient streaming:
+
+<Cards>
+    <Card
+        title="Codec: Opus"
+        description="128kbps, 48kHz for superior quality and compression"
+    />
+    <Card
+        title="Segmentation"
+        description="6-second audio segments for low-latency delivery"
+    />
+    <Card
+        title="Independent Streaming"
+        description="Audio served separately to optimize bandwidth usage"
+    />
+    <Card
+        title="Other Support"
+        description="AAC encoding for legacy device compatibility"
+    />
+</Cards>
+
+## Advanced Processing Features
+
+  <Cards>
+    <Card
+     title="Smart Resolution Scaling”
+     description="Preserves aspect ratios while targeting industry-standard resolutions"
+    />
+    <Card
+     title="Frame Rate Intelligence" description="Maintains native frame rates and optimizes for target platforms"
+    />
+    <Card
+       title="HDR Processing" description="Supports HDR with BT.2020 color space and 10-bit encoding"
+    />
+    <Card
+title="Adaptive Quality Ladders" description="Generates multiple renditions even from low-resolution sources"    />
+</Cards>
+
+## Performance Characteristics
+
+**Processing Speed:**
+- **Basic tier**: ~1x real-time processing
+- **Shorts tier**: ~1.5x real-time processing
+- **Pro tier**: ~2-3x real-time processing (4K content)
+
+**File Size Optimization:**
+- **H.265 encoding**: 30-50% smaller than H.264
+- **Adaptive bitrates**: Content-aware compression
+- **Multiple renditions**: Users receive optimal quality for their connection
+
+## Processing Status Monitoring
+
+Monitor your video's progress through the processing pipeline:
+
+<Tabs items={['Status Types', 'API Monitoring']}>
+    <Tab>
+        - **`uploaded`** - Video successfully uploaded, awaiting processing
+        - **`processing`** - Video is being transcoded and packaged
+        - **`ready`** - Processing complete, available for streaming
+        - **`error`** - Processing failed (check error message)
+    </Tab>
+    <Tab>
+        ```bash
+        # Check processing status
+        curl "https://api.rixl.com/v1/videos/{videoId}" \
+        -H "X-API-Key: YOUR_API_KEY"
+        ```
+
+        **Response includes:**
+        - Current status (uploaded, processing, ready, or error)
+        - Estimated completion time (when processing)
+        - Available renditions (when ready)
+        - Error details (if error occurred)
+    </Tab>
+</Tabs>
+
+## Upload Optimization Guidelines
+
+**Source File Recommendations:**
+
+<Cards>
+    <Card
+        title="Format: MP4 + H.264"
+        description="Fastest processing with universal compatibility"
+    />
+    <Card
+        title="Resolution: Upload Highest Available"
+        description="Up to 4K for Pro tier, system scales down appropriately"
+    />
+    <Card
+        title="Frame Rate: 30fps or 60fps"
+        description="Standard rates for optimal processing and compatibility"
+    />
+    <Card
+        title="Audio: AAC Codec"
+        description="Best compatibility and quality for source material"
+    />
+</Cards>
+
+**Large File Handling:**
+- **Multipart uploads** automatically enabled for files >100MB
+- **Resume capability** for interrupted uploads
+- **Parallel processing** of multiple quality renditions
+
+## Implementation Best Practices
+
+**Quality Tier Selection:**
+- **Basic**: Standard web content, bandwidth-conscious delivery
+- **Shorts**: Mobile-first content, social media optimization
+- **Pro**: Professional broadcasts, premium content experiences
+
+**Processing Optimization:**
+- Upload during off-peak hours for faster processing
+- Use recommended formats (MP4/H.264) to minimize processing time
+- Monitor processing status rather than polling continuously
+- Implement retry logic for failed uploads
+
+**Error Handling:**
+
+<Tabs items={['JavaScript', 'Python', 'cURL']}>
+<Tab value="JavaScript">
+```javascript
+// Initialize video upload
+const initResponse = await fetch('https://api.rixl.com/v1/videos/upload/init', {
+  method: 'POST',
+  headers: {
+    'X-API-Key': 'YOUR_PROJECT_API_KEY',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    file_name: 'my-video.mp4',
+    video_quality: 'pro',
+    image_format: 'jpg'
+  })
+});
+
+if (!initResponse.ok) {
+  throw new Error('Upload initialization failed');
+}
+
+const uploadData = await initResponse.json();
+
+// Upload video file
+const videoUpload = await fetch(uploadData.video_presigned_url, {
+  method: 'PUT',
+  body: videoFile,
+  headers: {
+    'Content-Type': 'video/mp4'
+  }
+});
+
+// Complete upload and start processing
+const completeResponse = await fetch(`https://api.rixl.com/v1/videos/upload/complete/${uploadData.video_id}`, {
+  method: 'POST',
+  headers: {
+    'X-API-Key': 'YOUR_PROJECT_API_KEY'
+  }
+});
+
+console.log('Video processing started!');
+```
+</Tab>
+
+<Tab value="Python">
+```python
+import requests
+
+# Initialize video upload
+response = requests.post(
+    'https://api.rixl.com/v1/videos/upload/init',
+    headers={
+        'X-API-Key': 'YOUR_PROJECT_API_KEY',
+        'Content-Type': 'application/json'
+    },
+    json={
+        'file_name': 'my-video.mp4',
+        'video_quality': 'pro',
+        'image_format': 'jpg'
+    }
+)
+
+if response.status_code != 200:
+    raise Exception('Upload initialization failed')
+
+upload_data = response.json()
+
+# Upload video file
+with open('my-video.mp4', 'rb') as video_file:
+    upload_response = requests.put(
+        upload_data['video_presigned_url'],
+        data=video_file,
+        headers={'Content-Type': 'video/mp4'}
+    )
+
+# Complete upload
+complete_response = requests.post(
+    f"https://api.rixl.com/v1/videos/upload/complete/{upload_data['video_id']}",
+    headers={'X-API-Key': 'YOUR_PROJECT_API_KEY'}
+)
+
+print('Video processing started!')
+```
+</Tab>
+
+<Tab value="cURL">
+```bash
+# 1. Initialize upload
+curl -X POST https://api.rixl.com/v1/videos/upload/init \
+  -H "X-API-Key: YOUR_PROJECT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "file_name": "my-video.mp4",
+    "video_quality": "pro",
+    "image_format": "jpg"
+  }'
+
+# 2. Upload video (using presigned URL from response)
+curl -X PUT "$VIDEO_PRESIGNED_URL" \
+  --upload-file my-video.mp4 \
+  -H "Content-Type: video/mp4"
+
+# 3. Complete upload
+curl -X POST https://api.rixl.com/v1/videos/upload/complete/$VIDEO_ID \
+  -H "X-API-Key: YOUR_PROJECT_API_KEY"
+```
+</Tab>
+</Tabs>
+
+## Security and Access Control
+
+**Upload Security:**
+- Time-limited signed URLs (valid for 1 hour)
+- MIME type and content validation
+
+**Delivery Security:**
+- Project-scoped access controls
+
+## Troubleshooting Common Issues
+
+<Callout type="warning">
+    **Upload Failures:**
+    - Verify file size under 2GB limit
+    - Check network stability for large files
+    - Ensure the signed URL hasn't expired
+
+    **Processing Delays:**
+    - Check current queue status via API
+    - Contact support for processing over 2 hours
+    - Consider using the Basic tier for faster turnaround
+
+    **Playback Issues:**
+    - Verify all renditions have completed processing
+    - Check CDN propagation status
+    - Test with different quality levels
+</Callout>
+
+---
+
+<Callout type="success">
+**RIXL's** video processing automatically optimizes your content for all viewing scenarios,
+    from mobile users on slow connections to desktop viewers with high-speed internet.
+    The adaptive streaming ensures the best possible experience for each viewer.
+</Callout>
