@@ -1,29 +1,21 @@
-import type {PageTree} from 'fumadocs-core/server';
+import type {PageTree} from "fumadocs-core/server";
+import type {Option} from "fumadocs-ui/components/layout/root-toggle";
 import type {SidebarComponents, SidebarProps} from "fumadocs-ui/components/layout/sidebar";
-import {TreeContextProvider} from 'fumadocs-ui/contexts/tree';
-import type {GetSidebarTabsOptions} from "fumadocs-ui/utils/get-sidebar-tabs";
-import type {ComponentProps, HTMLAttributes, ReactNode,} from 'react';
-import {Sidebar} from "@/components/layout/docs/sidebar/sidebar";
-
-import {HomeLayout} from "@/components/layout/home";
-import {baseOptions} from "@/lib/layout.shared";
-import {cn} from '../../../lib/cn';
-import type {BaseLayoutProps} from '../shared/index';
-import {LayoutBody} from './client';
-import {Option} from "fumadocs-ui/components/layout/root-toggle";
 import {NavProvider} from "fumadocs-ui/contexts/layout";
-import {
-  PageTOC,
-  PageTOCPopover,
-  PageTOCPopoverContent,
-  PageTOCPopoverTrigger
-} from "@/components/layout/docs/page-client";
+import {TreeContextProvider} from "fumadocs-ui/contexts/tree";
+import type {GetSidebarTabsOptions} from "fumadocs-ui/utils/get-sidebar-tabs";
+import type {ComponentProps, HTMLAttributes, ReactNode} from "react";
 import {PageTOCItems, PageTOCPopoverItems, PageTOCTitle} from "@/components/layout/docs/page";
+import {PageTOC, PageTOCPopover, PageTOCPopoverContent, PageTOCPopoverTrigger} from "@/components/layout/docs/page-client";
+import {Sidebar} from "@/components/layout/docs/sidebar/sidebar";
+import {HomeLayout} from "@/components/layout/home";
 import {TOCProvider} from "@/components/ui/toc";
+import {baseOptions} from "@/lib/layout.shared";
+import {cn} from "../../../lib/cn";
+import type {BaseLayoutProps} from "../shared/index";
+import {LayoutBody} from "./client";
 
-interface SidebarOptions
-  extends ComponentProps<'aside'>,
-    Pick<SidebarProps, 'defaultOpenLevel' | 'prefetch'> {
+interface SidebarOptions extends ComponentProps<"aside">, Pick<SidebarProps, "defaultOpenLevel" | "prefetch"> {
   enabled?: boolean;
   component?: ReactNode;
   components?: Partial<SidebarComponents>;
@@ -55,14 +47,7 @@ export interface DocsLayoutProps extends BaseLayoutProps {
   containerProps?: HTMLAttributes<HTMLDivElement>;
 }
 
-
-export function DocsLayout({
-                             nav: {transparentMode, ...nav} = {},
-                             searchToggle = {},
-                             i18n = false,
-                             children,
-                             ...props
-                           }: DocsLayoutProps) {
+export function DocsLayout({nav: {transparentMode, ...nav} = {}, searchToggle = {}, i18n = false, children, ...props}: DocsLayoutProps) {
   return (
     <TreeContextProvider tree={props.tree}>
       <NavProvider transparentMode={transparentMode}>

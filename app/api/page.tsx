@@ -1,72 +1,75 @@
-"use client"
+"use client";
 
 import {ApiReferenceReact} from "@scalar/api-reference-react";
-import './custom.css';
-import apiJson from './api.json';
+import "./custom.css";
+import apiJson from "./api.json";
 
 export default function Page() {
-  return <div style={{
-    height: '500px'
-  }}>
-    <ApiReferenceReact
-      configuration={{
-        baseServerURL: 'https://api.rixl.com',
-        content: apiJson,
-        theme: 'default',
-        darkMode: false,
-        hideClientButton: true,
-        documentDownloadType: "yaml",
-        hideDarkModeToggle: true,
+  return (
+    <div
+      style={{
+        height: "500px",
+      }}
+    >
+      <ApiReferenceReact
+        configuration={{
+          baseServerURL: "https://api.rixl.com",
+          content: apiJson,
+          theme: "default",
+          darkMode: false,
+          hideClientButton: true,
+          documentDownloadType: "yaml",
+          hideDarkModeToggle: true,
 
-        defaultHttpClient: {
-          targetKey: "js",
-          clientKey: "fetch"
-        },
-        authentication: {
-          preferredSecurityScheme: "ApiKeyAuth",
+          defaultHttpClient: {
+            targetKey: "js",
+            clientKey: "fetch",
+          },
+          authentication: {
+            preferredSecurityScheme: "ApiKeyAuth",
 
-          securitySchemes: {
-            ApiKeyAuth: {
-              type: "apiKey",
-              in: "header",
-              name: "X-API-Key",
-              description: "API key for protected endpoints"
+            securitySchemes: {
+              ApiKeyAuth: {
+                type: "apiKey",
+                in: "header",
+                name: "X-API-Key",
+                description: "API key for protected endpoints",
+              },
             },
-          }
-        },
+          },
 
-        operationsSorter: (a, b) => {
-          // 1. Sort by x-order if present
-          if (a.operation && b.operation) {
-            const aOrder = a.operation["x-order"];
-            const bOrder = b.operation["x-order"];
+          operationsSorter: (a, b) => {
+            // 1. Sort by x-order if present
+            if (a.operation && b.operation) {
+              const aOrder = a.operation["x-order"];
+              const bOrder = b.operation["x-order"];
 
-            if (aOrder !== undefined && bOrder === undefined) {
-              return -1; // a comes first
-            }
-            if (aOrder === undefined && bOrder !== undefined) {
-              return 1; // b comes first
-            }
-            if (aOrder !== undefined && bOrder !== undefined) {
-              if (aOrder !== bOrder) {
-                return aOrder - bOrder;
+              if (aOrder !== undefined && bOrder === undefined) {
+                return -1; // a comes first
+              }
+              if (aOrder === undefined && bOrder !== undefined) {
+                return 1; // b comes first
+              }
+              if (aOrder !== undefined && bOrder !== undefined) {
+                if (aOrder !== bOrder) {
+                  return aOrder - bOrder;
+                }
               }
             }
-          }
 
-          // 2. Sort by HTTP method
-          const methodOrder = ['get', 'post', 'put', 'delete'];
-          const methodComparison = methodOrder.indexOf(a.method) - methodOrder.indexOf(b.method);
+            // 2. Sort by HTTP method
+            const methodOrder = ["get", "post", "put", "delete"];
+            const methodComparison = methodOrder.indexOf(a.method) - methodOrder.indexOf(b.method);
 
-          if (methodComparison !== 0) {
-            return methodComparison;
-          }
+            if (methodComparison !== 0) {
+              return methodComparison;
+            }
 
-          // 3. Sort by Path alphabetically
-          return a.path.localeCompare(b.path);
-        },
-
-      }}
-    />
-  </div>;
+            // 3. Sort by Path alphabetically
+            return a.path.localeCompare(b.path);
+          },
+        }}
+      />
+    </div>
+  );
 }

@@ -1,8 +1,5 @@
 {
-  "schemes": [
-    "http",
-    "https"
-  ],
+  "schemes": ["http", "https"],
   "swagger": "2.0",
   "info": {
     "description": "**Build a powerful video experience from on-demand streaming to dynamic social feeds with a single API.**\n\nRIXL handles video processing, ingestion and global delivery so you don't have to.\nWith builtin support for transcoding, storage and structured media feeds, Our API makes it easy to deliver high-quality media content at scale.",
@@ -23,12 +20,8 @@
     "/feeds/{feedId}": {
       "get": {
         "description": "Retrieve posts in a feed, with pagination.",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "Feeds"
-        ],
+        "produces": ["application/json"],
+        "tags": ["Feeds"],
         "summary": "List posts in a feed",
         "parameters": [
           {
@@ -84,12 +77,8 @@
     "/feeds/{feedId}/creators/{creatorId}": {
       "get": {
         "description": "Retrieve posts in a feed by a specific creator, with pagination.",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "Feeds"
-        ],
+        "produces": ["application/json"],
+        "tags": ["Feeds"],
         "summary": "List posts by creator",
         "parameters": [
           {
@@ -157,15 +146,9 @@
           }
         ],
         "description": "Mark a post upload as complete after successful file upload using API key authentication",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "Feeds"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "tags": ["Feeds"],
         "summary": "Upload: Mark as complete",
         "parameters": [
           {
@@ -227,15 +210,9 @@
           }
         ],
         "description": "Initialize post creation and get presigned URLs for content upload using API key authentication",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "Feeds"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "tags": ["Feeds"],
         "summary": "Upload: Init",
         "parameters": [
           {
@@ -292,12 +269,8 @@
     "/feeds/{feedId}/{postId}": {
       "get": {
         "description": "Retrieve a post from feed by its ID",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "Feeds"
-        ],
+        "produces": ["application/json"],
+        "tags": ["Feeds"],
         "summary": "Get a post",
         "parameters": [
           {
@@ -344,9 +317,7 @@
           }
         ],
         "description": "delete a post by ID",
-        "tags": [
-          "Feeds"
-        ],
+        "tags": ["Feeds"],
         "summary": "Delete a post",
         "parameters": [
           {
@@ -404,12 +375,8 @@
           }
         ],
         "description": "Retrieve all images for a specific project, with pagination and sorting.",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "Images"
-        ],
+        "produces": ["application/json"],
+        "tags": ["Images"],
         "summary": "List images for a project",
         "parameters": [
           {
@@ -487,15 +454,9 @@
           }
         ],
         "description": "Complete the upload process and create the image record using API key authentication",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "Images"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "tags": ["Images"],
         "summary": "Upload: Mark as complete",
         "parameters": [
           {
@@ -557,15 +518,9 @@
           }
         ],
         "description": "Initialize a presigned URL upload for an image file using API key authentication",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "Images"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "tags": ["Images"],
         "summary": "Upload: Init",
         "parameters": [
           {
@@ -621,12 +576,8 @@
           }
         ],
         "description": "Retrieve an image by its ID for a specific project.",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "Images"
-        ],
+        "produces": ["application/json"],
+        "tags": ["Images"],
         "summary": "Get image",
         "parameters": [
           {
@@ -684,9 +635,7 @@
           }
         ],
         "description": "delete an image by marking it as deleted",
-        "tags": [
-          "Images"
-        ],
+        "tags": ["Images"],
         "summary": "Delete image",
         "parameters": [
           {
@@ -743,12 +692,8 @@
           }
         ],
         "description": "Retrieve all videos for a specific project, with pagination and sorting.",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "Videos"
-        ],
+        "produces": ["application/json"],
+        "tags": ["Videos"],
         "summary": "List videos for a project",
         "parameters": [
           {
@@ -826,15 +771,9 @@
           }
         ],
         "description": "Mark a video upload as complete after successful upload to storage using API key authentication",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "Videos"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "tags": ["Videos"],
         "summary": "Upload: Mark as complete",
         "parameters": [
           {
@@ -896,15 +835,9 @@
           }
         ],
         "description": "Initialize a video upload and get presigned URLs for video and poster using API key authentication",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "Videos"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "tags": ["Videos"],
         "summary": "Upload: Init",
         "parameters": [
           {
@@ -960,12 +893,8 @@
           }
         ],
         "description": "Retrieve a video by its ID for a specific project.",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "Videos"
-        ],
+        "produces": ["application/json"],
+        "tags": ["Videos"],
         "summary": "Get a video",
         "parameters": [
           {
@@ -1023,9 +952,7 @@
           }
         ],
         "description": "Delete a video by its ID within a project",
-        "tags": [
-          "Videos"
-        ],
+        "tags": ["Videos"],
         "summary": "Delete video",
         "parameters": [
           {
@@ -1176,10 +1103,7 @@
           "$ref": "#/definitions/Image"
         },
         "type": {
-          "enum": [
-            "video",
-            "image"
-          ],
+          "enum": ["video", "image"],
           "allOf": [
             {
               "$ref": "#/definitions/github_com_qeeqez_api_db_sqlc.PostType"
@@ -1253,44 +1177,18 @@
     },
     "github_com_qeeqez_api_db_sqlc.FileStatus": {
       "type": "string",
-      "enum": [
-        "uploading",
-        "uploaded",
-        "processing",
-        "ready",
-        "error"
-      ],
-      "x-enum-varnames": [
-        "FileStatusUploading",
-        "FileStatusUploaded",
-        "FileStatusProcessing",
-        "FileStatusReady",
-        "FileStatusError"
-      ]
+      "enum": ["uploading", "uploaded", "processing", "ready", "error"],
+      "x-enum-varnames": ["FileStatusUploading", "FileStatusUploaded", "FileStatusProcessing", "FileStatusReady", "FileStatusError"]
     },
     "github_com_qeeqez_api_db_sqlc.PostType": {
       "type": "string",
-      "enum": [
-        "image",
-        "video"
-      ],
-      "x-enum-varnames": [
-        "PostTypeImage",
-        "PostTypeVideo"
-      ]
+      "enum": ["image", "video"],
+      "x-enum-varnames": ["PostTypeImage", "PostTypeVideo"]
     },
     "github_com_qeeqez_api_db_sqlc.VideoQuality": {
       "type": "string",
-      "enum": [
-        "basic",
-        "shorts",
-        "pro"
-      ],
-      "x-enum-varnames": [
-        "VideoQualityBasic",
-        "VideoQualityShorts",
-        "VideoQualityPro"
-      ]
+      "enum": ["basic", "shorts", "pro"],
+      "x-enum-varnames": ["VideoQualityBasic", "VideoQualityShorts", "VideoQualityPro"]
     },
     "internal_images.UploadCompleteRequest": {
       "type": "object",
@@ -1337,9 +1235,7 @@
     },
     "internal_posts.PostUploadCompleteRequest": {
       "type": "object",
-      "required": [
-        "post_id"
-      ],
+      "required": ["post_id"],
       "properties": {
         "post_id": {
           "type": "string",
@@ -1349,18 +1245,11 @@
     },
     "internal_posts.PostUploadInitRequest": {
       "type": "object",
-      "required": [
-        "content_type",
-        "file_name",
-        "format"
-      ],
+      "required": ["content_type", "file_name", "format"],
       "properties": {
         "content_type": {
           "type": "string",
-          "enum": [
-            "image",
-            "video"
-          ],
+          "enum": ["image", "video"],
           "example": "video"
         },
         "creator_id": {
@@ -1384,11 +1273,7 @@
           "example": "jpg"
         },
         "video_quality": {
-          "enum": [
-            "basic",
-            "shorts",
-            "pro"
-          ],
+          "enum": ["basic", "shorts", "pro"],
           "allOf": [
             {
               "$ref": "#/definitions/github_com_qeeqez_api_db_sqlc.VideoQuality"
@@ -1447,11 +1332,7 @@
           "example": "jpg"
         },
         "video_quality": {
-          "enum": [
-            "basic",
-            "shorts",
-            "pro"
-          ],
+          "enum": ["basic", "shorts", "pro"],
           "allOf": [
             {
               "$ref": "#/definitions/github_com_qeeqez_api_db_sqlc.VideoQuality"

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {Video} from "@rixl/videosdk-react";
 
