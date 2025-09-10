@@ -1,0 +1,452 @@
+---
+title: Project Management
+description: Complete guide to creating and managing projects in RIXL
+---
+
+import { Callout } from 'fumadocs-ui/components/callout'
+import { Card, Cards } from 'fumadocs-ui/components/card'
+import { Step, Steps } from 'fumadocs-ui/components/steps'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+import { Banner } from 'fumadocs-ui/components/banner'
+import { Files, File, Folder } from 'fumadocs-ui/components/files'
+import { TypeTable } from 'fumadocs-ui/components/type-table'
+
+RIXL's advanced management features provide enhanced control over your projects, allowing you to streamline complex media workflows and strengthen team collaboration.
+
+<Banner variant="info">
+  **New Feature:** Project templates are now available to quickly set up common workflows and configurations.
+</Banner>
+
+<Callout type="info">
+For basic project creation, see the [Getting Started guide](/docs/getting-started/create-project). This guide focuses on advanced management features.
+</Callout>
+
+## Project Structure Overview
+
+Understanding how RIXL organizes your content helps you plan and manage your projects effectively:
+
+<Files>
+  <Folder name="Your Project" defaultOpen>
+    <Folder name="Media Assets" defaultOpen>
+      <File name="Videos" />
+      <File name="Images" />
+      <File name="Thumbnails" />
+    </Folder>
+    <Folder name="Feeds" defaultOpen>
+      <File name="Public Feeds" />
+      <File name="Private Collections" />
+    </Folder>
+    <Folder name="Settings" defaultOpen>
+      <File name="API Keys" />
+      <File name="Team Members" />
+      <File name="Webhooks" />
+    </Folder>
+  </Folder>
+</Files>
+
+## Project Architecture
+
+<Cards>
+  <Card title="Content Organization" description="Advanced media categorization and management with tagging, folders, and bulk operations" />
+  <Card title="Access Control" description="Granular team permissions and security for different roles and responsibilities" />
+  <Card title="Resource Management" description="Monitor usage and optimize performance with detailed analytics" />
+  <Card title="Integration Control" description="Manage API access and external integrations" />
+</Cards>
+
+## Advanced Project Configuration
+
+### Custom Workflows
+
+<Tabs items={['Content Workflows', 'Approval Processes', 'Automation Rules']}>
+<Tab value="Content Workflows">
+- Custom video optimization profiles
+- Automated content tagging and categorization
+- Content lifecycle management rules
+</Tab>
+<Tab value="Approval Processes">
+- Multi-stage content approval workflows
+- Reviewer assignment and notifications
+- Version control and rollback capabilities
+</Tab>
+<Tab value="Automation Rules">
+- Automated content publishing rules
+- Integration triggers and webhooks
+- Scheduled content operations
+</Tab>
+</Tabs>
+
+## Project Management Dashboard
+
+### Project Overview Interface
+
+<Tabs items={['Project Information', 'Usage Metrics', 'Team Overview']}>
+<Tab value="Project Information">
+- **Project Name**: Display name and identification
+- **Region**: Data storage and processing location
+- **Video Optimization**: Current optimization strategy
+- **Created Date**: Project creation timestamp
+- **Visibility Status**: Public or private access level
+</Tab>
+<Tab value="Usage Metrics">
+- **Storage Usage**: Current storage consumption and limits
+- **Bandwidth Usage**: Data transfer statistics
+- **Processing Activity**: Active transcoding and optimization jobs
+- **API Usage**: Request frequency and patterns
+</Tab>
+<Tab value="Team Overview">
+- **Team Members**: Number of active collaborators
+- **Recent Activity**: Latest project modifications and uploads
+- **Permission Distribution**: Role assignments across team members
+- **Invitation Status**: Pending team invitations
+</Tab>
+</Tabs>
+
+### Project Management Actions
+
+<Cards>
+  <Card title="Rename Project" description="Update project identification and display name">
+    Modify project name for better organization and maintain consistent naming conventions through [project settings](https://api.rixl.com/settings/project)
+  </Card>
+  <Card title="Change Video Optimization" description="Switch optimization strategy for new content">
+    - **Basic**: Standard processing for development
+    - **Shots**: Social media and feed optimization
+    - **Pro**: Premium VOD processing and delivery
+  </Card>
+  <Card title="Delete Project" description="Permanently remove project and all associated content">
+**Irreversible action**: This will permanently delete all videos, images, feeds, and settings. Confirmation and project name verification are required.
+  </Card>
+</Cards>
+
+<Callout type="error">
+**Critical Warning**: Deleting a project will permanently remove all content, settings, and data. This action is final and cannot be reversed.
+</Callout>
+
+## Project Dashboard Features
+
+### Assets & Content Overview
+
+<Cards>
+  <Card title="Video Assets" description="Complete video content management and analytics">
+    Total video count, storage usage, processing status, and performance metrics
+  </Card>
+  <Card title="Image Assets" description="Image library management and optimization">
+    Total image count, format distribution, optimization status, and delivery performance
+  </Card>
+  <Card title="Storage Analytics" description="Detailed storage usage and optimization insights">
+    Storage breakdown by type, optimization savings, growth trends, and cost allocation
+  </Card>
+</Cards>
+
+### Team Collaboration Hub
+
+- Complete list of project collaborators with roles
+- Real-time project activity feeds and team member contributions
+- **Invite new team members** with appropriate role assignments
+- Role-based access controls and permissions
+
+### API Integration Center
+
+- View and manage all project-associated API keys
+- Monitor API usage patterns and consumption
+- **Create new secure API keys** for application integration
+- RESTful API endpoint documentation and SDK integration examples
+
+### Quick Upload Interface
+
+- **Upload New Videos**: Drag-and-drop video content addition
+- **Upload New Images**: Batch image upload with optimization
+- Progress tracking with automatic processing pipeline integration
+
+## Project Features Navigation
+
+### Feeds Management Section
+
+<Tabs items={['Feed Operations', 'Template Library', 'Content Integration']}>
+<Tab value="Feed Operations">
+- **View All Feeds**: Browse project-specific feed collections
+- **Create New Feed**: Start a fresh feed with a custom configuration
+- **Add Posts**: Direct content addition to existing feeds
+- **Feed Analytics**: Performance tracking and engagement metrics
+</Tab>
+<Tab value="Template Library">
+- **TikTok-Style Feeds**: Vertical scrolling, mobile-optimized interface
+- **Instagram Stories**: Horizontal story-based navigation and display
+- **Grid Layouts**: Professional portfolio-style content arrangement
+- **Custom Templates**: Flexible layouts for specific use cases
+</Tab>
+<Tab value="Content Integration">
+- **Product Showcases**: E-commerce optimized displays
+- **Portfolio Presentations**: Creative work and project galleries
+- **Brand Content**: Marketing and promotional material organization
+- **Story Collections**: Narrative content and testimonial displays
+</Tab>
+</Tabs>
+
+<Callout type="tip">
+Feed templates are designed to maximize engagement by providing effective layouts, appropriate spacing, and interactive elements.
+</Callout>
+
+### Media Management Center
+
+<Tabs items={['Video Management', 'Image Management', 'Processing Pipeline']}>
+<Tab value="Video Management">
+**Video Asset Information:**
+- **Name**: Video title and identifier
+- **Duration**: Total video length
+- **Created At**: Upload timestamp
+- **Status**: Processing state (Uploaded, Processing, Completed, Error)
+
+**Scalable Video Pipeline:**
+RIXL builds a scalable pipeline to store, transcode, optimize, and deliver videos securely.
+</Tab>
+<Tab value="Image Management">
+**Image Asset Details:**
+- **Name**: Image title and identifier
+- **Dimensions**: Width and height specifications
+- **File Size**: Storage footprint and optimization level
+- **Format**: Image format and compatibility
+- **Created At**: Upload timestamp
+
+Images are automatically optimized for fast delivery across feeds and project features.
+</Tab>
+<Tab value="Processing Pipeline">
+**Automated Content Processing:**
+- **Secure Storage**: Enterprise-grade content protection
+- **Multi-Format Transcoding**: Optimization for various devices
+- **Global CDN Delivery**: Fast worldwide content distribution
+- **Real-time Status Tracking**: Processing updates and notifications
+</Tab>
+</Tabs>
+
+## Quick Actions Panel
+
+<Cards>
+  <Card title="Upload New Video" description="Add video content with automatic processing and optimization">
+    Drag-and-drop interface with real-time processing status and multi-format support
+  </Card>
+  <Card title="Upload New Image" description="Batch image upload with automatic optimization">
+    Bulk upload capabilities with format optimization and thumbnail generation
+  </Card>
+  <Card title="Create API Key" description="Generate secure API access tokens for application integration">
+    Project-scoped key generation with flexible expiration settings and usage tracking
+  </Card>
+  <Card title="Invite Team Member" description="Add collaborators with role-based permissions">
+    Email-based invitations with role assignment (Owner, Admin, Editor, Viewer)
+  </Card>
+</Cards>
+
+### API Key Creation Process
+
+<Steps>
+<Step>
+**Access Quick Actions**
+
+Click **Create API Key** in the Quick Actions panel
+</Step>
+<Step>
+**Configure Settings**
+
+<Tabs items={['Key Information', 'Security Settings']}>
+<Tab value="Key Information">
+- **API Key Name**: Descriptive identifier
+- **Project Association**: Pre-filled with current project
+- **Purpose Documentation**: Internal notes for usage tracking
+</Tab>
+<Tab value="Security Settings">
+**Expiration Options:**
+- **Forever**: Permanent access
+- **1 Week**: Short-term testing
+- **1 Year**: Long-term production
+- **Custom Duration**: Specific date-based expiration
+</Tab>
+</Tabs>
+</Step>
+<Step>
+**Generate and Secure Key**
+
+Click **Create** to generate, then immediately copy and store securely
+</Step>
+</Steps>
+
+<Callout type="error">
+    **Security Critical**: API keys are only displayed once during creation. Copy and store immediately as they cannot be retrieved later.
+</Callout>
+
+
+## Team Management System
+
+<Steps>
+<Step>
+**Access Team Management**
+
+Navigate to **Project Settings → Team**
+</Step>
+<Step>
+**Invite Team Members**
+
+<Tabs items={['Invitation Process', 'Role Selection', 'Requirements']}>
+<Tab value="Invitation Process">
+1. Click **Invite Team Member**
+2. Enter registered email address
+3. Select appropriate role and permissions
+4. Send an invitation with a personalized message
+5. Track invitation status
+</Tab>
+<Tab value="Role Selection">
+- **Admin**: Full project management access
+- **Editor**: Content creation, modification, and feed management
+- **Viewer**: Read-only access to project resources
+</Tab>
+<Tab value="Requirements">
+- **Account Requirement**: Invitees must have existing RIXL accounts
+- **Ownership Structure**: Project creators automatically receive Owner role
+- **Permission Hierarchy**: Owners can assign and modify all roles
+</Tab>
+</Tabs>
+</Step>
+<Step>
+**Manage Team Collaboration**
+
+Monitor team activity, adjust permissions, and facilitate collaboration
+</Step>
+</Steps>
+
+## Analytics & Performance Insights
+
+<Tabs items={['Usage Metrics', 'Content Performance', 'Cost Management']}>
+<Tab value="Usage Metrics">
+- **Storage Trends**: Historical usage and growth patterns
+- **Bandwidth Analytics**: Data transfer patterns and geographic distribution
+- **API Activity**: Request frequency and performance metrics
+- **Team Collaboration**: Activity levels and contribution tracking
+</Tab>
+<Tab value="Content Performance">
+- **View Analytics**: Content consumption patterns and engagement
+- **Delivery Performance**: Global content delivery speed and reliability
+- **Geographic Analytics**: Audience distribution and regional performance
+- **Device Insights**: Platform usage and device compatibility
+</Tab>
+<Tab value="Cost Management">
+- **Cost Allocation**: Resource usage breakdown and attribution
+- **Budget Monitoring**: Usage alerts and budget management
+- **Optimization Recommendations**: Efficiency improvements and cost reduction
+- **Trend Analysis**: Historical patterns and future projections
+</Tab>
+</Tabs>
+
+## Security & Compliance Framework
+
+<Cards>
+  <Card title="GDPR Compliance" description="European data protection regulation adherence">
+    EU-based data storage, privacy controls, retention policies, and consent management
+  </Card>
+  <Card title="Security Standards" description="Enterprise-grade security implementation">
+    Encrypted storage, secure authentication, regular monitoring, and incident response
+  </Card>
+</Cards>
+
+## Troubleshooting & Support
+
+<Tabs items={['Creation Problems', 'Access Issues', 'Performance Problems']}>
+<Tab value="Creation Problems">
+**Project Creation Issues:**
+
+<Steps>
+<Step>
+**Verify Permissions**
+
+Confirm organization-level creation rights and active subscription
+</Step>
+<Step>
+**Check Requirements**
+
+Ensure project name is unique and appropriate region is selected
+</Step>
+<Step>
+**Validate Billing**
+
+Confirm active subscription and available resources
+</Step>
+</Steps>
+</Tab>
+<Tab value="Access Issues">
+**Permission Resolution:**
+
+<Steps>
+<Step>
+**Review Roles**
+
+Check assigned team member roles and permissions
+</Step>
+<Step>
+**Validate Keys**
+
+Confirm API key validity and permission scope
+</Step>
+<Step>
+**Check Settings**
+
+Verify project visibility settings and account status
+</Step>
+</Steps>
+</Tab>
+<Tab value="Performance Problems">
+**Performance Optimization:**
+
+<Steps>
+<Step>
+**Check Upload Issues**
+
+Verify file size limits and network connectivity
+</Step>
+<Step>
+**Monitor Processing**
+
+Check transcoding queue and system status
+</Step>
+<Step>
+**Review Usage**
+
+Check API rate limits and usage patterns
+</Step>
+</Steps>
+</Tab>
+</Tabs>
+
+## Best Practices
+
+<Callout type="tip">
+Well-organized projects enable teams to collaborate more efficiently and improve content discoverability.
+</Callout>
+
+**Organization Principles:**
+- Use descriptive, consistent project names
+- Group related media content within projects
+- Review and update team permissions quarterly
+- Archive or delete unused content regularly
+- Maintain clear project descriptions and guidelines
+
+## Next Steps
+
+<Cards>
+  <Card 
+    title="Team Management" 
+    description="Advanced team collaboration features and permission management"
+    href="/docs/dashboard/team-management"
+  />
+  <Card 
+    title="Feeds Management" 
+    description="Create and optimize dynamic content feeds for engagement"
+    href="/docs/dashboard/feeds-management"
+  />
+  <Card 
+    title="Video Upload Workflows" 
+    description="Master efficient video processing and optimization workflows"
+    href="/docs/dashboard/media-management"
+  />
+  <Card 
+    title="API Integration" 
+    description="Comprehensive API integration and automation capabilities"
+    href="/docs/api-reference/overview"
+  />
+</Cards>

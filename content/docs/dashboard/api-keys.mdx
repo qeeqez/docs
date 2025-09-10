@@ -1,0 +1,367 @@
+---
+title: Advanced API Keys Management
+description: Complete guide to managing API keys, permissions, and security in RIXL
+---
+
+import { Callout } from 'fumadocs-ui/components/callout'
+import { Card, Cards } from 'fumadocs-ui/components/card'
+import { Step, Steps } from 'fumadocs-ui/components/steps'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+import { Banner } from 'fumadocs-ui/components/banner'
+import { TypeTable } from 'fumadocs-ui/components/type-table'
+
+This guide covers advanced [API key management](https://api.rixl.com/settings/api-keys) features for enterprise security and complex workflows.
+
+<Banner variant="warning">
+  **Security Notice:** API keys provide full access to your project. Use permission scoping and IP restrictions for production environments.
+</Banner>
+
+<Callout type="info">
+For basic API key setup, see the [Authentication guide](/docs/getting-started/authentication). This guide focuses on advanced management features.
+</Callout>
+
+## API Key Security Settings
+
+Configure security parameters for each API key:
+
+<TypeTable
+  type={{
+    permissions: {
+      description: 'Specific operations this key can perform',
+      type: 'array',
+      default: ['read', 'write', 'delete']
+    },
+    ip_whitelist: {
+      description: 'Allowed IP addresses or CIDR blocks',
+      type: 'array',
+      default: ['192.168.1.0/24', '10.0.0.1']
+    },
+    rate_limit: {
+      description: 'Maximum requests per hour',
+      type: 'number',
+      default: 1000
+    },
+    expires_at: {
+      description: 'ISO timestamp when key expires',
+      type: 'string',
+      default: '2024-12-31T23:59:59Z'
+    }
+  }}
+/>
+
+## Advanced API Key Features
+
+<Cards>
+  <Card title="Permission Scoping" description="Fine-grained control over API key capabilities">
+    Configure exactly which operations each key can perform within project boundaries.
+  </Card>
+  <Card title="Usage Analytics" description="Monitor and analyze API key usage patterns">
+    Track usage patterns, identify anomalies, and optimize your integrations.
+  </Card>
+  <Card title="Security Policies" description="Enterprise-grade security controls">
+    IP restrictions, rate limiting, and advanced security configurations.
+  </Card>
+  <Card title="Integration Management" description="Organize keys by application and environment">
+    Structure keys for different applications, environments, and team workflows.
+  </Card>
+</Cards>
+
+## Permission Scoping
+
+<Tabs items={['Media Operations', 'Project Management', 'Analytics Access']}>
+<Tab value="Media Operations">
+- Upload videos and images
+- Delete and modify content
+- Create and manage feeds
+- Access content metadata
+</Tab>
+<Tab value="Project Management">
+- Manage project settings
+- Invite team members
+- View billing information
+- Access usage analytics
+</Tab>
+<Tab value="Analytics Access">
+- View usage statistics
+- Export analytics data
+- Access performance metrics
+- Generate reports
+</Tab>
+</Tabs>
+
+## Security Policies
+
+**IP Restrictions**
+- Allowlist specific IP addresses or ranges
+- Geographic restrictions for compliance
+- VPN and proxy detection
+
+**Rate Limiting**
+- Configure requests per minute/hour limits
+- Burst handling for peak usage
+- Custom limits for different operations
+
+**Access Monitoring**
+- Real-time usage alerts
+- Suspicious activity detection
+- Audit logs and compliance reporting
+
+## API Key Management
+
+### Key Information
+
+<Tabs items={['Identification', 'Status', 'Usage']}>
+<Tab value="Identification">
+- **API Key ID**: Unique identifier
+- **Name**: Descriptive name provided
+- **Project**: Associated project (if scoped)
+- **Created Date**: Generation timestamp
+</Tab>
+<Tab value="Status">
+- **Expiration Date**: When key expires (if set)
+- **Status**: Active, Expired, or Revoked
+- **Last Used**: Most recent API call
+</Tab>
+<Tab value="Usage">
+- **Total Calls**: Number of API requests
+- **Success Rate**: Percentage of successful requests
+- **Rate Limit Status**: Current usage against limits
+</Tab>
+</Tabs>
+
+### Management Actions
+
+<Cards>
+  <Card title="View Details" description="Access usage statistics, activity logs, and permission reviews" />
+  <Card title="Update Settings" description="Modify key name, expiration date, and project associations" />
+  <Card title="Revoke Access" description="Immediately disable API key and prevent further calls (irreversible)" />
+</Cards>
+
+### Security Best Practices
+
+<Callout type="tip">
+Follow these practices to maintain API key security and organization efficiency.
+</Callout>
+
+**Security Guidelines:**
+- Use descriptive names to identify each key's purpose
+- Set reasonable expiration dates based on usage patterns
+- Regularly audit and clean up unused keys
+- Never share API keys in public repositories or forums
+- Use different keys for different applications or environments
+
+**Organization Standards:**
+- Create separate keys for production and development
+- Use project-specific keys when possible
+- Document the purpose of each key
+- Monitor usage patterns for unusual activity
+
+## Permission System
+
+### Project-Scoped Keys
+
+<Callout type="info">
+Project-scoped keys provide enhanced security through limited access control.
+</Callout>
+
+**Benefits:**
+- Access only to designated project resources
+- Enhanced security through principle of least privilege
+- Easier management and auditing
+- Reduced risk if a key is compromised
+
+### Organization-Level Keys
+
+**Capabilities:**
+- Access to all projects within the organization
+- Ability to create and manage projects
+- Team management capabilities
+- Billing and usage information access
+
+### Permission Levels
+
+<Tabs items={['Read-Only', 'Read-Write', 'Admin']}>
+<Tab value="Read-Only">
+- View project information
+- Access media files
+- Read feed data
+- Check usage statistics
+</Tab>
+<Tab value="Read-Write">
+- All read-only permissions
+- Upload media files
+- Create and modify feeds
+- Update project settings
+</Tab>
+<Tab value="Admin">
+- All read-write permissions
+- Manage team members
+- Create and revoke API keys
+- Access billing information
+</Tab>
+</Tabs>
+
+## Usage Monitoring & Analytics
+
+### Rate Limits by Plan
+
+<Cards>
+  <Card title="Free Plan" description="100 API calls per hour" />
+  <Card title="Pro Plan" description="1,000 API calls per hour" />
+  <Card title="Enterprise Plan" description="Custom API limits tailored to your needs" />
+</Cards>
+
+### Monitoring Dashboard
+
+**Real-time Metrics:**
+- Total API calls made
+- Calls per time period (hour, day, month)
+- Most active keys
+- Error rates and response times
+
+**Analytics Features:**
+- Successful requests vs. errors
+- Response time trends
+- Most frequently used endpoints
+- Geographic distribution of requests
+
+### Usage Alerts
+
+<Callout type="warning">
+Configure alerts to stay informed about your API usage patterns.
+</Callout>
+
+Set up notifications for:
+- High-usage patterns detected
+- Rate limit approaching a threshold
+- Unusual activity or potential security issues
+- Key expiration warnings
+
+## Integration Examples
+
+### Authentication Structure
+
+```bash
+curl -X GET "https://api.rixl.com/v1/videos" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+### Common API Operations
+
+<Tabs items={['Video Upload Init', 'Image Upload Init', 'Feed Posts']}>
+<Tab value="Video Upload Init">
+```bash
+curl -X POST "https://api.rixl.com/v1/videos/upload/init" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "file_name": "my-video.mp4",
+    "video_quality": "shorts",
+    "image_format": "jpg"
+  }'
+```
+</Tab>
+<Tab value="Image Upload Init">
+```bash
+curl -X POST "https://api.rixl.com/v1/images/upload/init" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "my-image.jpg",
+    "format": "jpg"
+  }'
+```
+</Tab>
+<Tab value="Feed Posts">
+```bash
+curl -X GET "https://api.rixl.com/v1/feeds/FEED_ID" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</Tab>
+</Tabs>
+
+## Troubleshooting
+
+<Tabs items={['Authentication', 'Authorization', 'Rate Limiting']}>
+<Tab value="Authentication">
+**401 Unauthorized**
+- Check that your API key is correct and properly formatted
+- Verify the key hasn't expired
+- Ensure the Authorization header is properly set
+</Tab>
+<Tab value="Authorization">
+**403 Forbidden**
+- Confirm the key has required permissions for the operation
+- Check if trying to access resources outside key scope
+- Verify project association is correct
+</Tab>
+<Tab value="Rate Limiting">
+**429 Rate Limited**
+- Monitor your usage against plan limits
+- Implement exponential backoff in your applications
+- Consider upgrading your plan for higher limits
+</Tab>
+</Tabs>
+
+### Error Response Format
+
+```json
+{
+  "error": {
+    "code": "INVALID_API_KEY",
+    "message": "The provided API key is invalid or expired",
+    "details": {
+      "key_id": "key_123456",
+      "expired_at": "2024-01-15T10:30:00Z"
+    }
+  }
+}
+```
+
+## Key Rotation & Security
+
+### Rotation Strategy
+
+<Steps>
+<Step>Generate a replacement key with identical or updated permissions</Step>
+<Step>Deploy the new key to all applications and services gradually</Step>
+<Step>Ensure old key usage drops to zero before proceeding</Step>
+<Step>Disable the previous key once migration is complete</Step>
+<Step>Update internal documentation and notify team members</Step>
+</Steps>
+
+<Callout type="tip">
+Regular key rotation (every 90-365 days) significantly enhances your security posture.
+</Callout>
+
+### Bulk Operations
+
+<Cards>
+  <Card title="Export Key List" description="Download CSV of all keys with usage statistics for auditing" />
+  <Card title="Bulk Revocation" description="Select multiple keys for simultaneous revocation during security incidents" />
+</Cards>
+
+<Callout type="warning">
+Bulk revocation operations cannot be undone. Ensure you have replacement keys ready before proceeding.
+</Callout>
+
+## Next Steps
+
+<Cards>
+  <Card 
+    title="Authentication Methods" 
+    description="Learn about different API authentication approaches and best practices"
+    href="/docs/api-reference/authentication"
+  />
+  <Card 
+    title="API Endpoints" 
+    description="Explore the complete API reference with examples and response formats"
+    href="/docs/api-reference/overview"
+  />
+  <Card 
+    title="Security Best Practices" 
+    description="Comprehensive security guidelines for API integration"
+    href="/docs/security"
+  />
+</Cards>
