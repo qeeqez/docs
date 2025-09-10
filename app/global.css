@@ -3,6 +3,8 @@
 @import "fumadocs-ui/css/preset.css";
 
 @theme {
+  --header-height: calc(var(--spacing) * 14);
+  --footer-height: calc(var(--spacing) * 144);
   --width-sidebar: calc(var(--spacing) * 80);
   --padding-sidebar: calc(var(--spacing) * 4);
 }
