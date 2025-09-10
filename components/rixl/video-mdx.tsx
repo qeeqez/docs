@@ -7,10 +7,10 @@ interface Props {
 }
 
 export const VideoMDX = ({id}: Props) => {
-  return <div className="flex overflow-hidden w-full h-full rounded-0.25 drop-shadow-xl max-w-fd-container">
+  return <div className="flex overflow-hidden w-full h-[500px] rounded-0.25 drop-shadow-xl max-w-fd-container">
     <Video
       id={id}
-      // className="w-full h-fit"
+      // className="w-fit h-fit bg-transparent"
       muted={false}
       progressBar={true}
       loop={false}

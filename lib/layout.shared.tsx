@@ -38,6 +38,13 @@ export function baseOptions(): BaseLayoutProps {
         // secondary items will be displayed differently on navbar
         secondary: false,
       },
+        {
+            // icon: <BookIcon />,
+            text: 'SDK',
+            url: '/sdk',
+            // secondary items will be displayed differently on navbar
+            secondary: false,
+        },
       {
         // icon: <BookIcon />,
         text: 'API Reference',
