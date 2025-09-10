@@ -1,9 +1,5 @@
 {
   "title": "Getting Started",
-  "description": "Essential setup steps to begin using RIXL",
-  "pages": [
-    "index",
-    "authentication",
-    "create-project"
-  ]
+  "description": "Start your journey with RIXL",
+  "pages": ["index", "create-project", "authentication"]
 }
