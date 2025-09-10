@@ -1,42 +1,74 @@
 ---
 title: Authentication
-description: Overview of authentication options and flows in RIXL.
+description: Set up secure API access for your RIXL projects.
 ---
 
 import { Callout } from 'fumadocs-ui/components/callout';
+import { Card, Cards } from 'fumadocs-ui/components/card';
+import { Steps, Step } from 'fumadocs-ui/components/steps';
+import { Banner } from 'fumadocs-ui/components/banner';
+import { Files, File, Folder } from 'fumadocs-ui/components/files';
 
-## API Key Authentication
+To keep your projects secure, RIXL uses API keys. Each project gets its own key for accessing the RIXL API.
 
-Before you can start uploading, you need to be authenticated. Rixl's API uses **API Keys (`X-API-KEY`)** for external scope operations.
-This is the key you will use in your mobile apps, web apps, or server-side tools to interact with our API directly.
+<Banner variant="warning">
+  **Security Notice:** API keys are shown only once at creation. Store them securely and never share them publicly.
+</Banner>
 
 <Callout type="info">
-    You generate API keys from within a specific project in your Rixl dashboard. You can set their permissions and expiration dates.
+API keys are project-specific and provide secure access to upload, manage, and deliver media within that project's scope.
 </Callout>
 
-## Key Features
+## Understanding API Keys
 
-API keys provide secure and flexible authentication for your applications:
+API keys are unique to each project and let you securely upload, manage, and deliver media for that project.
 
-**Secure Integration**: Designed to be embedded in your public-facing application code to upload images, videos, and posts securely.
+<Callout type="info">
+You'll create your API key after setting up your first project. This page explains how authentication works in RIXL.
+</Callout>
 
-**Flexible Permissions**: Configure access levels for different operations within your project scope.
+## How API Keys Work
 
-**Expiration Control**: Set custom expiration dates for enhanced security management.
+- **Project-Scoped**: Each API key belongs to a specific project
+- **Secure Access**: Keys provide authenticated access to the RIXL API
+- **Configurable**: Set expiration dates and permissions for enhanced security
+- **Single-Use Display**: Keys are only shown once at creation for security
 
-**Project-Specific**: Each API key is tied to a specific project, ensuring proper access control.
+## Creating an API Key
 
-## Usage
+After setting up your project, you can create API keys by following these steps:
 
-Use your **API Key** when your application's end-users are performing actions, like uploading content, or when your backend server needs to communicate with Rixl programmatically.
+<Steps>
+<Step>
+Navigate to your [project dashboard](https://api.rixl.com/)
+</Step>
+<Step>
+Go to **Quick Actions** or **[Organization Settings → API Keys](https://api.rixl.com/settings/api-keys)**
+</Step>
+<Step>
+Click **Create API Key**
+</Step>
+<Step>
+Configure the key name and expiration
+</Step>
+<Step>
+Copy and securely store the generated key
+</Step>
+</Steps>
+
+<Callout type="error">
+API keys are only shown once at creation. Save your key immediately as it cannot be retrieved later.
+</Callout>
+
+## Using Your API Key
+
+Include the API key in your requests using the `X-API-Key` header:
 
 ### Example Request
 
-[//]: # (<!-- TODO: Add code example showing complete authentication flow with response -->)
-
 ```bash
-curl -X POST "https://api.rixl.com/images/upload/init" \
-  -H "X-API-KEY: YOUR_PROJECT_API_KEY_HERE" \
+curl -X POST "https://api.rixl.com/v1/images/upload/init" \
+  -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "my-image.jpg",
@@ -44,13 +76,50 @@ curl -X POST "https://api.rixl.com/images/upload/init" \
   }'
 ```
 
-<Callout type="warn">
-    Keep your API keys secure and rotate them regularly. Never expose them in client-side code where they could be accessed by unauthorized users.
-</Callout>
+## Security Best Practices
+
+- Keep API keys secure and rotate them regularly
+- Never include keys in client-side code
+- Use environment variables for key storage
+- Set appropriate expiration dates
+- Monitor key usage for suspicious activity
 
 ## Next Steps
 
-Now that you understand API key authentication, explore these resources:
-- **[Upload Basics](/docs/uploads/index)** - Start uploading content with your API key
-- [Create feed posts](/docs/uploads/posts)
-- **[API Reference](/docs/api-reference)** - Complete documentation of all authenticated endpoints
+Now that authentication is set up, you can:
+
+<Cards>
+  <Card 
+    title="Create Your First Project" 
+    description="Set up a project container for your media"
+    href="/docs/getting-started/create-project"
+  />
+  <Card 
+    title="Upload Your First Media" 
+    description="Start processing content"
+    href="/docs/uploads"
+  />
+  <Card 
+    title="Explore the Dashboard" 
+    description="Learn the web interface"
+    href="/docs/dashboard/guide"
+  />
+</Cards>
+
+<Cards>
+    <Card
+        title="Upload Basics"
+        description="Start uploading content with your API key"
+        href="/docs/uploads/index"
+    />
+    <Card
+        title="Create Feed Posts"
+        description="Learn how to create posts for your feeds"
+        href="/docs/uploads/posts"
+    />
+    <Card
+        title="API Reference"
+        description="Complete documentation of all authenticated endpoints"
+        href="/docs/api-reference"
+    />
+</Cards>
