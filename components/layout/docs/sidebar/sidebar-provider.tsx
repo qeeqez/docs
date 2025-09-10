@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {useMediaQuery} from "fumadocs-core/utils/use-media-query";
 import {createContext, type ReactNode, useContext, useMemo} from "react";
@@ -16,7 +16,7 @@ interface InternalContext {
 
 export function useInternalContext(): InternalContext {
   const ctx = useContext(SidebarContext);
-  if (!ctx) throw new Error('<Sidebar /> component required.');
+  if (!ctx) throw new Error("<Sidebar /> component required.");
 
   return ctx;
 }
@@ -24,7 +24,7 @@ export function useInternalContext(): InternalContext {
 export const SidebarContext = createContext<InternalContext | null>(null);
 
 export function SidebarProvider({children}: SidebarProviderProps) {
-  const isMobile = useMediaQuery('(width < 768px)') ?? false;
+  const isMobile = useMediaQuery("(width < 768px)") ?? false;
   const context = useMemo<InternalContext>(() => {
     return {
       defaultOpenLevel: 0,
@@ -34,9 +34,5 @@ export function SidebarProvider({children}: SidebarProviderProps) {
     };
   }, [isMobile]);
 
-  return (
-    <SidebarContext.Provider value={context}>
-      {children}
-    </SidebarContext.Provider>
-  );
+  return <SidebarContext.Provider value={context}>{children}</SidebarContext.Provider>;
 }
