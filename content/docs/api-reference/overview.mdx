@@ -6,12 +6,17 @@ description: Complete API documentation for integrating RIXL into your applicati
 import { Callout } from 'fumadocs-ui/components/callout'
 import { Card, Cards } from 'fumadocs-ui/components/card'
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+import { Banner } from 'fumadocs-ui/components/banner'
+import { TypeTable } from 'fumadocs-ui/components/type-table'
 
 With the RIXL API, you can access all platform features and easily integrate them into your applications.
 
-<Callout type="info">
+<Banner variant="info">
+  **Important:** This API is currently in beta. Breaking changes may occur. Please check our [changelog](https://api.rixl.com/changelog) for updates.
+</Banner>
 
-Before you start, make sure you have [set up authentication](/docs/getting-started/authentication)and [create a project](/docs/getting-started/create-project) by following these guides.
+<Callout type="info">
+Before you start, make sure you have [set up authentication](/docs/getting-started/authentication) and [create a project](/docs/getting-started/create-project) by following these guides. You can also [manage API keys](https://api.rixl.com/settings/api-keys) directly in your dashboard.
 </Callout>
 
 ## Base URL
@@ -24,29 +29,35 @@ https://api.rixl.com/v1
 
 ## Authentication
 
-Add your API key to the request header:
+RIXL uses API keys for authentication. Include your API key in the request header:
 
-```bash
-X-API-Key: YOUR_PROJECT_API_KEY
-```
+<TypeTable
+  type={{
+    'X-API-Key': {
+      description: 'Your project API key obtained from dashboard settings',
+      type: 'string',
+      required: true
+    }
+  }}
+/>
 
 ## Core Resources
 
 <Cards>
   <Card title="Projects" description="Manage projects and organizational structure">
-You can create, set up, and manage projects to organize your media and control who can access each project.
+You can create, set up, and manage [projects](https://api.rixl.com/settings/projects) to organize your media and control who can access each project.
   </Card>
   
   <Card title="Media Upload" description="Upload and process videos and images">
-    Upload your media with automatic optimization, transcoding, and format conversion for optimal project delivery.
+    Upload your [videos](https://api.rixl.com/videos) and [images](https://api.rixl.com/images) with automatic optimization, transcoding, and format conversion for optimal project delivery.
   </Card>
   
   <Card title="Feeds" description="Create dynamic content collections">
-Organize your media into feeds that you can embed or use for dynamic project content sharing.
+Organize your media into [feeds](https://api.rixl.com/feeds) that you can embed or use for dynamic project content sharing.
   </Card>
   
   <Card title="Team Management" description="Manage team members and permissions">
-Invite your team, assign roles, and manage who can access your projects and media.
+Invite your [team](https://api.rixl.com/settings/team/members), assign roles, and manage who can access your projects and media.
   </Card>
 </Cards>
 
@@ -58,8 +69,8 @@ Here are some examples of how to use the RIXL API with the right endpoints:
 <Tab value="cURL">
 ```bash
 # Initialize a video upload
-curl -X POST https://api.rixl.com/videos/upload/init \
-  -H "X-API-KEY: YOUR_PROJECT_API_KEY" \
+curl -X POST https://api.rixl.com/v1/videos/upload/init \
+  -H "X-API-Key: YOUR_PROJECT_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "file_name": "my-video.mp4",
@@ -68,25 +79,25 @@ curl -X POST https://api.rixl.com/videos/upload/init \
   }'
 
 # Get all videos in your project
-curl -X GET https://api.rixl.com/videos \
-  -H "X-API-KEY: YOUR_PROJECT_API_KEY" \
+curl -X GET https://api.rixl.com/v1/videos \
+  -H "X-API-Key: YOUR_PROJECT_API_KEY" \
   -G \
   -d "limit=25" \
   -d "offset=0"
 
 # Get a specific video
-curl -X GET https://api.rixl.com/videos/VI9VXQxWXQ \
-  -H "X-API-KEY: YOUR_PROJECT_API_KEY"
+curl -X GET https://api.rixl.com/v1/videos/VI9VXQxWXQ \
+  -H "X-API-Key: YOUR_PROJECT_API_KEY"
 ```
 </Tab>
 
 <Tab value="JavaScript">
 ```javascript
 // Initialize a video upload
-const initResponse = await fetch('https://api.rixl.com/videos/upload/init', {
+const initResponse = await fetch('https://api.rixl.com/v1/videos/upload/init', {
   method: 'POST',
   headers: {
-    'X-API-KEY': 'YOUR_PROJECT_API_KEY',
+    'X-API-Key': 'YOUR_PROJECT_API_KEY',
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
@@ -100,9 +111,9 @@ const uploadData = await initResponse.json();
 console.log(uploadData);
 
 // Get all videos in your project
-const videosResponse = await fetch('https://api.rixl.com/videos?limit=25&offset=0', {
+const videosResponse = await fetch('https://api.rixl.com/v1/videos?limit=25&offset=0', {
   headers: {
-    'X-API-KEY': 'YOUR_PROJECT_API_KEY'
+    'X-API-Key': 'YOUR_PROJECT_API_KEY'
   }
 });
 
@@ -117,9 +128,9 @@ import requests
 
 # Initialize a video upload
 response = requests.post(
-    'https://api.rixl.com/videos/upload/init',
+    'https://api.rixl.com/v1/videos/upload/init',
     headers={
-        'X-API-KEY': 'YOUR_PROJECT_API_KEY',
+        'X-API-Key': 'YOUR_PROJECT_API_KEY',
         'Content-Type': 'application/json'
     },
     json={
@@ -134,8 +145,8 @@ print(upload_data)
 
 # Get all videos in your project
 videos_response = requests.get(
-    'https://api.rixl.com/videos',
-    headers={'X-API-KEY': 'YOUR_PROJECT_API_KEY'},
+    'https://api.rixl.com/v1/videos',
+    headers={'X-API-Key': 'YOUR_PROJECT_API_KEY'},
     params={'limit': 25, 'offset': 0}
 )
 
@@ -149,7 +160,37 @@ print(videos)
 
 API responses follow standard REST patterns:
 
-**Successful Response (Video Upload Init):**
+### Video Upload Init Response
+
+<TypeTable
+  type={{
+    video_id: {
+      description: 'Unique identifier for the uploaded video',
+      type: 'string',
+      default: 'VI9VXQxWXQ'
+    },
+    video_presigned_url: {
+      description: 'Pre-signed URL for uploading the video file',
+      type: 'string'
+    },
+    poster_id: {
+      description: 'Unique identifier for the video poster/thumbnail',
+      type: 'string',
+      default: 'PS5IMKoFLm'
+    },
+    poster_presigned_url: {
+      description: 'Pre-signed URL for uploading the poster image',
+      type: 'string'
+    },
+    upload_expires: {
+      description: 'Unix timestamp when the upload URLs expire',
+      type: 'number',
+      default: 1640995200
+    }
+  }}
+/>
+
+**Example Response:**
 ```json
 {
   "video_id": "VI9VXQxWXQ",
@@ -188,7 +229,29 @@ API responses follow standard REST patterns:
 
 ## Error Handling
 
-If there is an error, the response will use the ResponseError format:
+When an error occurs, the API returns a structured error response:
+
+<TypeTable
+  type={{
+    code: {
+      description: 'HTTP status code indicating the type of error',
+      type: 'number',
+      default: 400
+    },
+    error: {
+      description: 'Brief description of the error',
+      type: 'string',
+      default: 'Invalid request body'
+    },
+    details: {
+      description: 'Additional context about the error',
+      type: 'string',
+      default: 'The provided file format is not supported'
+    }
+  }}
+/>
+
+**Example Error Response:**
 
 ```json
 {
