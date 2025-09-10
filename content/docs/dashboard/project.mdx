@@ -8,8 +8,6 @@ import { Card, Cards } from 'fumadocs-ui/components/card'
 import { Step, Steps } from 'fumadocs-ui/components/steps'
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
 import { Banner } from 'fumadocs-ui/components/banner'
-import { Files, File, Folder } from 'fumadocs-ui/components/files'
-import { TypeTable } from 'fumadocs-ui/components/type-table'
 
 RIXL's advanced management features provide enhanced control over your projects, allowing you to streamline complex media workflows and strengthen team collaboration.
 
@@ -20,29 +18,6 @@ RIXL's advanced management features provide enhanced control over your projects,
 <Callout type="info">
 For basic project creation, see the [Getting Started guide](/docs/getting-started/create-project). This guide focuses on advanced management features.
 </Callout>
-
-## Project Structure Overview
-
-Understanding how RIXL organizes your content helps you plan and manage your projects effectively:
-
-<Files>
-  <Folder name="Your Project" defaultOpen>
-    <Folder name="Media Assets" defaultOpen>
-      <File name="Videos" />
-      <File name="Images" />
-      <File name="Thumbnails" />
-    </Folder>
-    <Folder name="Feeds" defaultOpen>
-      <File name="Public Feeds" />
-      <File name="Private Collections" />
-    </Folder>
-    <Folder name="Settings" defaultOpen>
-      <File name="API Keys" />
-      <File name="Team Members" />
-      <File name="Webhooks" />
-    </Folder>
-  </Folder>
-</Files>
 
 ## Project Architecture
 
@@ -66,11 +41,9 @@ Understanding how RIXL organizes your content helps you plan and manage your pro
 <Tab value="Approval Processes">
 - Multi-stage content approval workflows
 - Reviewer assignment and notifications
-- Version control and rollback capabilities
 </Tab>
 <Tab value="Automation Rules">
 - Automated content publishing rules
-- Integration triggers and webhooks
 - Scheduled content operations
 </Tab>
 </Tabs>
