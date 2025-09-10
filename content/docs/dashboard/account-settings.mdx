@@ -1,0 +1,250 @@
+---
+title: Personal Settings
+description: Complete guide to managing your personal account settings and preferences
+---
+
+import { Callout } from 'fumadocs-ui/components/callout'
+import { Card, Cards } from 'fumadocs-ui/components/card'
+import { Step, Steps } from 'fumadocs-ui/components/steps'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+
+Personal Settings enables you to control account preferences, security, and membership details. This section covers features for your individual RIXL account, not for organization settings.
+
+<Callout type="info">
+Go to **[Personal Settings > Account](https://api.rixl.com/settings/account/general)** to find all personal account features and preferences.
+</Callout>
+
+## Account Management
+
+### Profile Settings
+
+<Cards>
+  <Card title="Personal Information" description="Manage your name, username, and basic profile details" />
+  <Card title="Account Settings" description="Configure two-step verification and connected accounts" />
+  <Card title="Membership Management" description="View and manage team memberships and invitations" />
+</Cards>
+
+#### Basic Profile Information
+
+<Tabs items={['Name & Username', 'Profile Details']}>
+<Tab value="Name & Username">
+**Name**
+- Display name shown across the platform and visible to team members
+- Can be updated at any time
+
+**Username**
+- Automatically generated from your email address (uses part before @)
+- Serves as unique identifier and cannot be manually changed
+- Updates automatically when email changes
+</Tab>
+<Tab value="Profile Details">
+**Email Address**
+- Primary login credential and contact method
+- Must be verified to maintain account access
+
+**Profile Customization**
+- Upload custom profile picture
+- Set timezone and language preferences
+</Tab>
+</Tabs>
+
+<Callout type="tip">
+Your username is generated from your email address and will update automatically if your email changes.
+</Callout>
+
+## Security Settings
+
+### Two-Step Verification (2FA)
+
+<Steps>
+<Step>
+Navigate to [Personal Settings → Account → Security](https://api.rixl.com/settings/account/security) and click **Set up Two-Step Verification**
+</Step>
+<Step>
+Scan the QR code using Google Authenticator or Microsoft Authenticator
+</Step>
+<Step>
+Enter the 6-digit code from your app to verify setup
+</Step>
+</Steps>
+
+### Connected Accounts
+
+<Cards>
+  <Card title="Google Account" description="Sign in with Google for seamless authentication and enhanced security" />
+  <Card title="Apple Account" description="Use Apple ID for privacy-focused authentication with Touch ID or Face ID" />
+  <Card title="Telegram Account" description="Connect with Telegram for notifications and content sharing" />
+</Cards>
+
+<Tabs items={['Adding Connections', 'Managing Connections']}>
+<Tab value="Adding Connections">
+<Steps>
+<Step>Go to **[Personal Settings → Account → Security](https://api.rixl.com/settings/account/security)** → **Connected Accounts**</Step>
+<Step>Click **Connect** next to your preferred service</Step>
+<Step>Follow the authentication flow and authorize RIXL access</Step>
+</Steps>
+</Tab>
+<Tab value="Managing Connections">
+**Account Management:**
+- View all connected accounts and their status
+- Click **Disconnect** to remove connections
+- Ensure alternative login methods are available before disconnecting
+</Tab>
+</Tabs>
+
+<Callout type="info">
+Connected accounts offer enhanced security and convenience through single sign-on capabilities.
+</Callout>
+
+## Membership Management
+
+### Organizations & Team Membership
+
+<Cards>
+  <Card title="Organization Roles" description="View your role and permissions in each organization">
+    - **Owner**: Full administrative control
+    - **Admin**: Most administrative functions and member management
+    - **Member**: Standard access to resources and projects
+  </Card>
+  <Card title="Project Access" description="Monitor your participation across different projects and check specific permissions">
+    Access your [memberships dashboard](https://api.rixl.com/settings/account/memberships) to review all organization and project associations
+  </Card>
+</Cards>
+
+### Invitations Management
+
+<Tabs items={['Sent Invitations', 'Received Invitations']}>
+<Tab value="Sent Invitations">
+- View all [invitations sent](https://api.rixl.com/settings/account/invites) to potential team members
+- Track status: sent, viewed, accepted, or declined
+- Resend or cancel pending invitations
+</Tab>
+<Tab value="Received Invitations">
+- See all [pending invitations](https://api.rixl.com/settings/account/invites) from other organizations
+- Accept or decline invitations
+- Manage invitation preferences and notifications
+</Tab>
+</Tabs>
+
+<Callout type="tip">
+Review team memberships and invitations regularly to keep operations efficient and access controlled.
+</Callout>
+
+## Account Actions & Security
+
+### Session Management
+
+<Cards>
+  <Card title="Single Session Logout" description="Log out of current device only while keeping other devices signed in" />
+  <Card title="Complete Account Logout" description="Signs you out on all devices at once. Use this if your account is compromised." />
+</Cards>
+
+### Security Best Practices
+
+<Callout type="warning">
+Follow these practices to reduce the risk of unauthorized access and protect your content and collaborations.
+</Callout>
+
+**Essential Security Measures:**
+- Always enable two-step verification with an authenticator app
+- Use strong, unique passwords and update regularly
+- Review active sessions and connected accounts monthly
+- Monitor membership changes and invitation activity
+
+## Troubleshooting
+
+<Tabs items={['Login Issues', 'Two-Factor Problems', 'Connection Issues']}>
+<Tab value="Login Issues">
+**Common Login Problems:**
+
+<Steps>
+<Step>
+**Verify Credentials**
+
+Check email address and password accuracy, ensure caps lock is off
+</Step>
+<Step>
+**Clear Browser Data**
+
+Clear browser cache and cookies, ensure stable internet connection
+</Step>
+<Step>
+**Password Recovery**
+
+Use "Forgot Password" link on login page and check email for reset instructions
+</Step>
+<Step>
+**Contact Support**
+
+If issues persist, contact support with account verification details
+</Step>
+</Steps>
+</Tab>
+<Tab value="Two-Factor Problems">
+**2FA Troubleshooting Steps:**
+
+<Steps>
+<Step>
+**Check App Sync**
+
+Ensure authenticator app time is synchronized with your device
+</Step>
+<Step>
+**Verify Setup**
+
+Confirm QR code scanning was successful and app is updated
+</Step>
+<Step>
+**Reset 2FA**
+
+Re-set up 2FA if access is restored or contact support for assistance
+</Step>
+</Steps>
+</Tab>
+<Tab value="Connection Issues">
+**Connected Account Problems:**
+
+<Steps>
+<Step>
+**Verify Third-Party Account**
+
+Check if connected service credentials are correct and account is active
+</Step>
+<Step>
+**Re-authorize Connection**
+
+Disconnect and reconnect problematic accounts
+</Step>
+<Step>
+**Clear Service Data**
+
+Clear browser cookies for connected services and update account settings
+</Step>
+<Step>
+**Contact Support**
+
+Reach out for persistent connection issues with account details
+</Step>
+</Steps>
+</Tab>
+</Tabs>
+
+## Next Steps
+
+<Cards>
+  <Card 
+    title="Dashboard Overview" 
+    description="Learn to navigate the RIXL dashboard interface"
+    href="/docs/dashboard/guide"
+  />
+  <Card 
+    title="Team Management" 
+    description="Manage team members, roles, and collaboration"
+    href="/docs/dashboard/team-member"
+  />
+  <Card 
+    title="Security Guide" 
+    description="Best practices for account security and data protection"
+    href="/docs/getting-started/authentication"
+  />
+</Cards>

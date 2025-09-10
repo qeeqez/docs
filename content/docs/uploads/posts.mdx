@@ -1,24 +1,33 @@
 ---
-title: Uploading Posts to Feeds
-description: Learn how to upload and manage posts within feeds on Rixl platform.
+title: Feed Posts
+description: Create social media-style posts by uploading media directly to feeds.
 ---
 
 import { Callout } from 'fumadocs-ui/components/callout';
 import { Steps, Step } from 'fumadocs-ui/components/steps';
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+import { Cards, Card } from 'fumadocs-ui/components/card';
 
-## Overview
-
-Feeds are the core of social experiences on **Rixl**. A Post is the fundamental unit within a Feed and can be either
-an image or a video. The upload process for a Post is a powerful combination of the previous flows, as it handles
-the media upload and simultaneously creates the post-object ready for your social timeline or content carousel.
+Feed posts combine media uploads with social metadata to create rich content for structured feeds. This process uploads media and creates the post simultaneously.
 
 <Callout type="info">
-    The post upload process combines media upload with post creation, handling both video content
-    with automatically generated poster images, or standalone image posts.
+Feed posts require an existing [feed](https://api.rixl.com/feeds). Learn about [creating feeds](/docs/dashboard/feeds) if you haven't set one up yet.
 </Callout>
 
-## Post-Upload Process
+## Post Types
+
+<Cards>
+  <Card title="Video Posts" description="Upload videos with automatic poster generation">
+    Video content with automatically generated thumbnail images for feed display.
+  </Card>
+  <Card title="Image Posts" description="Upload standalone images for visual feeds">
+    High-quality images optimized for various display contexts and transformations.
+  </Card>
+</Cards>
+
+## Upload Process
+
+Posts combine media upload with feed creation in a single streamlined process:
 
 <Steps>
     <Step>
@@ -49,7 +58,7 @@ the media upload and simultaneously creates the post-object ready for your socia
         <Tabs items={['Video Post', 'Image Post']}>
             <Tab value="Video Post">
                 ```bash
-                curl -X POST "https://api.rixl.com/feeds/FD4y3QB38S/upload/init" \
+                curl -X POST "https://api.rixl.com/v1/feeds/FD4y3QB38S/upload/init" \
                 -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
                 -H "Content-Type: application/json" \
                 -d '{
@@ -80,7 +89,7 @@ the media upload and simultaneously creates the post-object ready for your socia
             </Tab>
             <Tab value="Image Post">
                 ```bash
-                curl -X POST "https://api.rixl.com/feeds/FD4y3QB38S/upload/init" \
+                curl -X POST "https://api.rixl.com/v1/feeds/FD4y3QB38S/upload/init" \
                 -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
                 -H "Content-Type: application/json" \
                 -d '{
@@ -127,7 +136,7 @@ the media upload and simultaneously creates the post-object ready for your socia
                 ```
 
                 <Callout type="tip">
-                    You can upload a custom poster image. If you don't, Rixl will automatically generate one from the video.
+                    You can upload a custom poster image. If you don't, RIXL will automatically generate one from the video.
                 </Callout>
             </Tab>
         </Tabs>
@@ -137,11 +146,11 @@ the media upload and simultaneously creates the post-object ready for your socia
         ### Mark the Post Upload as Complete
 
         Once both files are uploaded, you finalize the process using `/feeds/{feedId}/upload/complete`.
-        This tells Rixl to process the media, create the relationships between the post, the video, and the image,
+        This tells RIXL to process the media, create the relationships between the post, the video, and the image,
         and publish it to the specified feed.
 
         ```bash
-        curl -X POST "https://api.rixl.com/feeds/FD4y3QB38S/upload/complete" \
+        curl -X POST "https://api.rixl.com/v1/feeds/FD4y3QB38S/upload/complete" \
         -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
         -H "Content-Type: application/json" \
         -d '{
@@ -164,21 +173,21 @@ After uploading, you can retrieve and manage your posts using the API. Here are 
 **Get a Specific Post**: Use this when you need to fetch details for a particular post within a feed.
 
 ```bash
-curl "https://api.rixl.com/feeds/FD4y3QB38S/PS5IMKoFLm" \
+curl "https://api.rixl.com/v1/feeds/FD4y3QB38S/PS5IMKoFLm" \
   -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE"
 ```
 
 **List Posts in a Feed**: This is how you'd retrieve posts to display in your app with pagination support.
 
 ```bash
-curl "https://api.rixl.com/feeds/FD4y3QB38S?limit=25&offset=0" \
+curl "https://api.rixl.com/v1/feeds/FD4y3QB38S?limit=25&offset=0" \
   -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE"
 ```
 
 **List Posts by a Creator**: To show all content from a specific user in a feed.
 
 ```bash
-curl "https://api.rixl.com/feeds/FD4y3QB38S/creators/CR8y3QB38S?limit=25&offset=0" \
+curl "https://api.rixl.com/v1/feeds/FD4y3QB38S/creators/CR8y3QB38S?limit=25&offset=0" \
   -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE"
 ```
 
@@ -187,7 +196,7 @@ curl "https://api.rixl.com/feeds/FD4y3QB38S/creators/CR8y3QB38S?limit=25&offset=
 **Delete a Post**: Remove a post permanently from the feed.
 
 ```bash
-curl -X DELETE "https://api.rixl.com/feeds/FD4y3QB38S/PS5IMKoFLm" \
+curl -X DELETE "https://api.rixl.com/v1/feeds/FD4y3QB38S/PS5IMKoFLm" \
   -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE"
 ```
 

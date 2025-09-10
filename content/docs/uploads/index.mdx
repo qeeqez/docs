@@ -1,167 +1,122 @@
 ---
-title: Upload Basics
-description: Learn the common upload flow across media types on Rixl.
+title: Upload Guide
+description: Learn how to upload and process media content with RIXL.
 ---
 
 import { Callout } from 'fumadocs-ui/components/callout';
-import { Steps } from 'fumadocs-ui/components/steps';
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+import { Steps, Step } from 'fumadocs-ui/components/steps';
+import { Cards, Card } from 'fumadocs-ui/components/card';
+import { Banner } from 'fumadocs-ui/components/banner';
 
-## Overview
+RIXL's upload system uses signed URLs for secure, direct-to-cloud uploads while maintaining full control over processing and organization.
 
-**Rixl's** upload flow is structured similarly to common upload processes found in React applications,
-but it is distinguished by its enhanced security and flexibility through the use of signed URLs.
-This approach allows for the uploading of media assets (videos, images, and feed posts) directly to
-our integrated cloud storage while safeguarding security credentials.
+<Banner variant="success">
+  **New:** Batch uploads now available! Upload multiple files at once for improved efficiency.
+</Banner>
 
 <Callout type="info">
-    The primary use case for Direct Uploads with **Rixl's** API is within client applications,
-    such as mobile and web applications, as well as through interactive consoles connected
-    to local or remote servers.
+Before uploading media, make sure you have [created a project](/docs/getting-started/create-project) and [set up authentication](/docs/getting-started/authentication).
 </Callout>
 
-### Key Benefits
+## Upload Flow Overview
 
-- **Enhanced Security**: Uses signed URLs to protect credentials
-- **Direct Storage Upload**: Files go directly to cloud storage
-- **Flexible Processing**: Supports management, generation, and conversion of metadata and assets
-- **Optimized Efficiency**: Conserves storage space when original content is not required
-
-[//]: # (    <!-- TODO: Add diagram showing upload flow from client to API to cloud storage -->)
-
-## Prerequisites
-
-<Callout type="warn">
-    Ensure your project is set up and you have your API key ready before proceeding with uploads.
-</Callout>
-
-## Upload Process
-
-The upload process is similar for Images, Videos, and Posts for feeds, with some specific parameters for each media type.
+The upload process is consistent across all media types (images, videos, and posts) with specific parameters for each:
 
 <Steps>
-
-    ### Request a Signed Upload URL
-
-    The initial step is to request a signed URL for the file you want to upload. This includes metadata like
-    Rixl Asset settings and returns a signed URL for direct client app usage, plus an ID for status checking via the API.
-
-    <Tabs items={['Image Upload', 'Video Upload']}>
-        <Tab value="Image Upload">
-            ```bash
-            curl -X POST "https://api.rixl.com/images/upload/init" \
-            -H "X-API-KEY: YOUR_PROJECT_API_KEY_HERE" \
-            -H "Content-Type: application/json" \
-            -d '{
-            "name": "my-profile-picture.jpg",
-            "format": "jpg"
-        }'
-            ```
-        </Tab>
-        <Tab value="Video Upload">
-            ```bash
-            curl -X POST "https://api.rixl.com/videos/upload/init" \
-            -H "X-API-KEY: YOUR_PROJECT_API_KEY_HERE" \
-            -H "Content-Type: application/json" \
-            -d '{
-            "file_name": "my-vacation-video.mp4",
-            "image_format": "jpg",
-            "video_quality": "pro"
-        }'
-            ```
-
-            <Callout type="tip">
-                For videos, you can specify the desired quality and the format for the video's poster image.
-            </Callout>
-        </Tab>
-    </Tabs>
-
-    ### Upload File to Storage
-
-    Using the signed URL from the previous response, perform the upload from your client (mobile app, web browser, or server).
-    Use an HTTP `PUT` request with the file data in the request body.
-
-    <Callout type="info">
-        The signed URL contains all necessary authentication—you don't need your API key for this step. This happens directly
-        between your client and our storage system, which is fast and does not use your server's bandwidth.
-    </Callout>
-
-    #### Important Upload Guidelines
-
-    - Set the exact headers provided in the response
-    - Large files can be uploaded in parts
-    - Resumable uploads: If interrupted, resume from where you left off using the `Range` header
-
-    <Tabs items={['Image Upload', 'Video Upload']}>
-        <Tab value="Image Upload">
-            ```bash
-            curl -X PUT "{presigned_url}" \
-            -T "/path/to/your/local/file/my-profile-picture.jpg" \
-            -H "Content-Type: image/jpeg"
-            ```
-        </Tab>
-        <Tab value="Video Upload">
-            ```bash
-            curl -X PUT "{presigned_url}" \
-            -T "/path/to/your/local/file/my-vacation-video.mp4" \
-            -H "Content-Type: video/mp4"
-            ```
-        </Tab>
-    </Tabs>
-
-    <Callout type="warn">
-        Replace `{presigned_url}` with the actual URL received from the `init` call. The `Content-Type` header should match your file type.
-    </Callout>
-
-    ### Mark Upload as Complete
-
-    After successfully uploading to the pre-signed URL, notify **Rixl's** API that the upload is finished. This triggers the processing pipeline:
-
-    [//]: # (<!-- TODO: Add diagram showing processing pipeline: transcoding -->)
-
-    - Video transcoding for different qualities
-    - Image format optimization
-    - Thumbnail generation
-    - Proper format conversion
-
-    <Tabs items={['Complete Video', 'Complete Image']}>
-        <Tab value="Complete Video">
-            ```bash
-            curl -X POST "https://api.rixl.com/videos/upload/complete" \
-            -H "X-API-KEY: YOUR_PROJECT_API_KEY_HERE" \
-            -H "Content-Type: application/json" \
-            -d '{
-            "video_id": "VI9VXQxWXQ"
-        }'
-            ```
-        </Tab>
-        <Tab value="Complete Image">
-            ```bash
-            curl -X POST "https://api.rixl.com/images/upload/complete" \
-            -H "X-API-KEY: YOUR_PROJECT_API_KEY_HERE" \
-            -H "Content-Type: application/json" \
-            -d '{
-            "image_id": "PS5IMKoFLm",
-            "attached_to_video": true
-        }'
-            ```
-
-            <Callout type="tip">
-                For images, you can flag if the image is meant to be a poster for a video using the `attached_to_video` parameter.
-            </Callout>
-        </Tab>
-    </Tabs>
-
+<Step>
+**Request Signed URL** - Get a secure upload URL with processing configuration
+</Step>
+<Step>
+**Upload to Cloud Storage** - Direct upload from your application to our cloud storage
+</Step>
+<Step>
+**Monitor Processing** - Track status and receive notifications when complete
+</Step>
 </Steps>
 
-## Summary
+## Key Benefits
 
-Rixl supports secure, flexible direct uploads using signed URLs. With this approach, your clients (web, mobile, or server-side tools) upload
-media directly to Rixl-managed storage without exposing your long-lived credentials.
+- **Enhanced Security**: Signed URLs protect credentials and control access
+- **Direct Upload**: Files transfer directly to cloud storage for optimal performance  
+- **Flexible Processing**: Configure transcoding, optimization, and metadata during upload
+- **Real-time Status**: Monitor processing progress with webhooks and API polling
+
+## Upload Types
+
+Choose the appropriate upload method for your content:
+
+<Cards>
+    <Card
+        title="Images"
+        description="Upload and optimize images with transformations"
+        href="/docs/uploads/images"
+    />
+    <Card
+        title="Videos"
+        description="Upload videos with automatic transcoding and quality optimization"
+        href="/docs/uploads/videos"
+    />
+    <Card
+        title="Feed Posts"
+        description="Create social media-style posts combining media with metadata"
+        href="/docs/uploads/posts"
+    />
+</Cards>
+
+## Technical Implementation
+
+### 1. Request Signed URL
+
+Initialize the upload with your desired processing configuration:
+
+```bash
+curl -X POST "https://api.rixl.com/v1/{media_type}/upload/init" \
+  -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "file_name": "my-file.mp4",
+    "video_quality": "shorts",
+    "image_format": "jpg"
+  }'
+```
+
+### 2. Upload to Storage
+
+Use the returned signed URL for direct upload:
+
+```bash
+curl -X PUT "{presigned_url}" \
+  -T "/path/to/your/file" \
+  -H "Content-Type: {content_type}"
+```
+
+### 3. Complete Processing
+
+Notify RIXL to begin processing:
+
+```bash
+curl -X POST "https://api.rixl.com/v1/{media_type}/upload/complete" \
+  -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{"video_id": "YOUR_VIDEO_ID"}'
+```
 
 ## Next Steps
 
-Now that you understand the basic upload flow, explore these resources:
-
-- **[API Reference](/docs/api-reference/overview)** - Complete documentation of all endpoints and parameters
-- **[Feed Posts](/docs/uploads/posts)** - Upload and manage social media feed content
+<Cards>
+    <Card
+        title="Start with Images"
+        description="Quick uploads with instant transformations"
+        href="/docs/uploads/images"
+    />
+    <Card
+        title="Upload Videos"
+        description="Comprehensive video processing pipeline"
+        href="/docs/uploads/videos"
+    />
+    <Card
+        title="API Reference"
+        description="Complete endpoint documentation"
+        href="/docs/api-reference/overview"
+    />
+</Cards>
