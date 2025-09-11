@@ -1,7 +1,7 @@
 import type {TOCItemType} from "fumadocs-core/server";
 import type {AnchorProviderProps} from "fumadocs-core/toc";
 import {I18nLabel} from "fumadocs-ui/contexts/i18n";
-import {Edit} from "lucide-react";
+import {Edit, TriangleAlert} from "lucide-react";
 import {type ComponentProps, forwardRef, type ReactNode} from "react";
 import {cn} from "../../lib/cn";
 import {buttonVariants} from "../ui/button";
@@ -37,6 +37,7 @@ interface EditOnGitHubOptions extends Omit<ComponentProps<"a">, "href" | "childr
    * File path in the repo
    */
   path: string;
+  raiseIssue?: boolean
 }
 
 interface BreadcrumbOptions extends BreadcrumbProps {
@@ -110,18 +111,26 @@ type TableOfContentOptions = Pick<AnchorProviderProps, "single"> & {
 type TableOfContentPopoverOptions = Omit<TableOfContentOptions, "single">;
 
 export function DocsPage({
-  editOnGithub,
-  breadcrumb: {enabled: breadcrumbEnabled = true, component: breadcrumb, ...breadcrumbProps} = {},
-  footer = {},
-  lastUpdate,
-  container,
-  full = false,
-  tableOfContentPopover: {enabled: tocPopoverEnabled, component: tocPopover, ...tocPopoverOptions} = {},
-  tableOfContent: {enabled: tocEnabled, component: tocReplace, ...tocOptions} = {},
-  toc = [],
-  article,
-  children,
-}: DocsPageProps) {
+                           editOnGithub,
+                           breadcrumb: {
+                             enabled: breadcrumbEnabled = true,
+                             component: breadcrumb,
+                             ...breadcrumbProps
+                           } = {},
+                           footer = {},
+                           lastUpdate,
+                           container,
+                           full = false,
+                           tableOfContentPopover: {
+                             enabled: tocPopoverEnabled,
+                             component: tocPopover,
+                             ...tocPopoverOptions
+                           } = {},
+                           tableOfContent: {enabled: tocEnabled, component: tocReplace, ...tocOptions} = {},
+                           toc = [],
+                           article,
+                           children,
+                         }: DocsPageProps) {
   // disable TOC on full mode, you can still enable it with `enabled` option.
   tocEnabled ??= !full && (toc.length > 0 || tocOptions.footer !== undefined || tocOptions.header !== undefined);
 
@@ -132,9 +141,9 @@ export function DocsPage({
       toc={
         tocEnabled || tocPopoverEnabled
           ? {
-              toc,
-              single: tocOptions.single,
-            }
+            toc,
+            single: tocOptions.single,
+          }
           : false
       }
       {...container}
@@ -145,39 +154,55 @@ export function DocsPage({
         {children}
         <div className="flex flex-row flex-wrap items-center justify-between gap-4 empty:hidden">
           {editOnGithub && (
-            <EditOnGitHub
-              href={`https://github.com/${editOnGithub.owner}/${editOnGithub.repo}/blob/${editOnGithub.sha}/${editOnGithub.path.startsWith("/") ? editOnGithub.path.slice(1) : editOnGithub.path}`}
-            />
+            <div className="flex flex-row gap-2">
+              <EditOnGitHub mode="edit" owner="qeeqez" repo="docs" sha="main" path={editOnGithub.path}/>
+              {editOnGithub.raiseIssue && <EditOnGitHub mode="issue" owner="qeeqez" repo="docs" sha="main" path={editOnGithub.path}/>}
+            </div>
           )}
-          {lastUpdate && <PageLastUpdate date={new Date(lastUpdate)} />}
+          {lastUpdate && <PageLastUpdate date={new Date(lastUpdate)}/>}
         </div>
-        {footer.enabled !== false && (footer.component ?? <PageFooter items={footer.items} />)}
+        {footer.enabled !== false && (footer.component ?? <PageFooter items={footer.items}/>)}
       </PageArticle>
     </PageRoot>
   );
 }
 
-export function EditOnGitHub(props: ComponentProps<"a">) {
+interface GithubHelperProps extends ComponentProps<"a"> {
+  mode: "edit" | "issue";
+  owner: string;
+  repo: string;
+  sha: string;
+  path: string;
+  className?: string;
+}
+
+export function EditOnGitHub({mode, owner, repo, sha, path, className}: GithubHelperProps) {
+  const ghPath = path.startsWith("/") ? path.slice(1) : path;
+  const href = mode === "edit"
+    ? `https://github.com/${owner}/${repo}/blob/${sha}/${ghPath}`
+    : `https://github.com/${owner}/${repo}/issues/new?title=Issue%20on%20docs&body=Path:%20${ghPath}`;
   return (
     <a
+      href={href}
       target="_blank"
       rel="noreferrer noopener"
-      {...props}
       className={cn(
         buttonVariants({
           color: "secondary",
           size: "sm",
           className: "gap-1.5 not-prose",
         }),
-        props.className,
+        className,
       )}
     >
-      {props.children ?? (
-        <>
-          <Edit className="size-3.5" />
-          <I18nLabel label="editOnGithub" />
-        </>
-      )}
+      {mode === "edit" ? (<>
+        <Edit className="size-3.5"/>
+        <I18nLabel label="editOnGithub"/> {/* TODO add correct label */}
+      </>) : (<>
+        <TriangleAlert className="size-3.5"/>
+        <I18nLabel label="editOnGithub"/> {/* TODO add correct label */}
+      </>)
+      }
     </a>
   );
 }

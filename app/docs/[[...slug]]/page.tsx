@@ -35,7 +35,17 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
             </PageTOCPopover>
             <div>
               {/* TODO hide scrollbar when TOC is open*/}
-              <DocsPage full={page.data.full} lastUpdate={page.data.lastModified}>
+              <DocsPage
+                full={page.data.full}
+                lastUpdate={page.data.lastModified}
+                editOnGithub={{
+                  owner: "qeeqez",
+                  repo: "docs",
+                  path: `content/docs/${page.path}`,
+                  sha: "main",
+                  raiseIssue: true,
+                }}
+              >
                 <DocsTitle>{page.data.title}</DocsTitle>
                 <DocsDescription>{page.data.description}</DocsDescription>
                 <DocsBody>
