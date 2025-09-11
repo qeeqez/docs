@@ -1,11 +1,11 @@
 import type {BaseLayoutProps} from "fumadocs-ui/layouts/shared";
-import type {FooterSection} from "@/components/layout/home/footer-content-section";
+import {ChevronRightIcon} from "lucide-react";
+import LogoWide from "@/assets/logo_wide.svg";
+import type {FooterSection} from "@/components/layout/footer/footer-content-section";
 import DiscordIcon from "@/public/socials/discord.svg";
 import GithubIcon from "@/public/socials/github.svg";
 import XIcon from "@/public/socials/x.svg";
 import YoutubeIcon from "@/public/socials/youtube.svg";
-import LogoWide from "@/assets/logo_wide.svg";
-import {ChevronRightIcon} from "lucide-react";
 
 /**
  * Shared layout configurations

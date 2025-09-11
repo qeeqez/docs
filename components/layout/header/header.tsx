@@ -1,20 +1,13 @@
-import Link from "fumadocs-core/link";
-import {ChevronDown, Languages} from "lucide-react";
 import {useMemo} from "react";
-import {LanguageToggle, LanguageToggleText} from "@/components/language-toggle";
-import type {HomeLayoutProps} from "@/components/layout/home/index";
-import {NavbarLinkItem} from "@/components/layout/home/navbar-link-item";
-import {getLinks, type LinkItemType} from "@/components/layout/shared";
-import {NavigationMenu} from "@/components/navigation-menu";
-import {LargeSearchToggle, SearchToggle} from "@/components/search-toggle";
-import {ThemeToggle} from "@/components/theme-toggle";
-import {cn} from "@/lib/cn";
-import {Menu, MenuContent, MenuLinkItem, MenuTrigger} from "@/components/layout/home/menu";
-import {buttonVariants} from "@/components/ui/button";
-import {Navbar} from "@/components/layout/home/navbar";
-import {Logo} from "@/components/layout/header/logo";
 import {HeaderRight} from "@/components/layout/header/header-right";
 import {isSecondary} from "@/components/layout/header/is-secondary";
+import {Logo} from "@/components/layout/header/logo";
+import type {HomeLayoutProps} from "@/components/layout/home";
+import {Navbar} from "@/components/layout/home/navbar";
+import {NavbarLinkItem} from "@/components/layout/home/navbar-link-item";
+import {getLinks} from "@/components/layout/shared";
+import {LargeSearchToggle} from "@/components/search-toggle";
+import {cn} from "@/lib/cn";
 
 export function Header({nav = {}, i18n = false, links, githubUrl, searchToggle = {}}: HomeLayoutProps) {
   const finalLinks = useMemo(() => getLinks(links, githubUrl), [links, githubUrl]);

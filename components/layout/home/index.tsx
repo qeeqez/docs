@@ -2,10 +2,10 @@
 
 import {NavProvider} from "fumadocs-ui/contexts/layout";
 import type {HTMLAttributes} from "react";
-import {Footer} from "@/components/layout/home/footer";
-import {cn} from "../../../lib/cn";
-import type {BaseLayoutProps, NavOptions} from "../shared/index";
+import {Footer} from "@/components/layout/footer/footer";
 import {Header} from "@/components/layout/header/header";
+import {cn} from "@/lib/cn";
+import type {BaseLayoutProps, NavOptions} from "../shared/index";
 
 export interface HomeLayoutProps extends BaseLayoutProps {
   nav?: Partial<

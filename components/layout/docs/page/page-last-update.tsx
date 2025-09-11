@@ -4,9 +4,11 @@ import {useI18n} from "fumadocs-ui/contexts/i18n";
 import {type ComponentProps, useEffect, useState} from "react";
 import {cn} from "@/lib/cn";
 
-export function PageLastUpdate({date: value, ...props}: Omit<ComponentProps<"p">, "children"> & {
-  date: Date | string
-}) {
+interface LastUpdateProps extends Omit<ComponentProps<"p">, "children">  {
+  date: Date | string | number;
+}
+
+export function PageLastUpdate({date: value, ...props}: LastUpdateProps) {
   const {text} = useI18n();
   const [date, setDate] = useState("");
 

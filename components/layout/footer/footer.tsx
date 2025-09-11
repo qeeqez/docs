@@ -1,6 +1,6 @@
-import {FooterBottom} from "@/components/layout/home/footer-bottom";
-import {FooterContent} from "@/components/layout/home/footer-content";
 import {cn} from "@/lib/cn";
+import {FooterBottom} from "./footer-bottom";
+import {FooterContent} from "./footer-content";
 
 export function Footer() {
   return (
