@@ -8,6 +8,8 @@ import {FooterItem} from "@/components/layout/docs/page/page-footer-item";
 import type {Item} from "@/components/layout/docs/page/types";
 import {cn} from "@/lib/cn";
 import {isActive} from "@/lib/is-active";
+import {PageLastUpdate} from "@/components/layout/docs/page/page-last-update";
+import {GithubBlock, GithubBlockProps} from "@/components/layout/docs/page/page-github-block";
 
 const listCache = new Map<string, PageTree.Item[]>();
 
@@ -19,9 +21,12 @@ export interface FooterProps extends ComponentProps<"div"> {
     previous?: Item;
     next?: Item;
   };
+
+  github?: GithubBlockProps;
+  lastUpdate?: Date | string | number;
 }
 
-export function PageFooter({items, ...props}: FooterProps) {
+export function PageFooter({items, github, lastUpdate, className, ...props}: FooterProps) {
   const {root} = useTreeContext();
   const pathname = usePathname();
 
@@ -42,9 +47,17 @@ export function PageFooter({items, ...props}: FooterProps) {
   }, [items, pathname, root]);
 
   return (
-    <div {...props} className={cn("@container grid gap-4 pb-6", previous && next ? "grid-cols-2" : "grid-cols-1", props.className)}>
-      {previous ? <FooterItem item={previous} index={0} /> : null}
-      {next ? <FooterItem item={next} index={1} /> : null}
+    <div {...props} className={cn("space-y-4", className)}>
+      <div className="flex flex-row flex-wrap items-center justify-between gap-4 empty:hidden">
+        {github &&
+          <GithubBlock owner={github.owner} repo={github.repo} path={github.path} raiseIssue={github.raiseIssue}/>}
+        {lastUpdate && <PageLastUpdate date={lastUpdate}/>}
+      </div>
+      <div
+        className={cn("@container grid gap-4 pb-6", previous && next ? "grid-cols-2" : "grid-cols-1")}>
+        {previous ? <FooterItem item={previous} index={0}/> : null}
+        {next ? <FooterItem item={next} index={1}/> : null}
+      </div>
     </div>
   );
 }

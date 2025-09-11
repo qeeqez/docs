@@ -41,13 +41,16 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
             <DocsPage
               container={{className: "pt-[calc(var(--padding-sidebar)*2.5)]"}}
               full={page.data.full}
-              lastUpdate={page.data.lastModified}
-              editOnGithub={{
-                owner: "qeeqez",
-                repo: "docs",
-                path: `content/docs/${page.path}`,
-                sha: "main",
-                raiseIssue: true,
+              footer={{
+                enabled: true,
+                github: {
+                  owner: "qeeqez",
+                  repo: "docs",
+                  path: `content/docs/${page.path}`,
+                  sha: "main",
+                  raiseIssue: true,
+                },
+                lastUpdate: page.data.lastModified,
               }}
             >
               <DocsTitle>{page.data.title}</DocsTitle>

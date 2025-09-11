@@ -1,14 +1,11 @@
 import type {TOCItemType} from "fumadocs-core/server";
 import type {AnchorProviderProps} from "fumadocs-core/toc";
-import {I18nLabel} from "fumadocs-ui/contexts/i18n";
-import {Edit, TriangleAlert} from "lucide-react";
 import {type ComponentProps, forwardRef, type ReactNode} from "react";
-import {cn} from "../../lib/cn";
-import {buttonVariants} from "../ui/button";
 import {PageArticle, PageRoot} from "@/components/layout/docs/page";
-import {FooterProps, PageFooter} from "@/components/layout/docs/page/page-footer";
-import {BreadcrumbProps, PageBreadcrumb} from "@/components/layout/docs/page/page-breadcrumb";
-import {PageLastUpdate} from "@/components/layout/docs/page/page-last-update";
+import {type BreadcrumbProps, PageBreadcrumb} from "@/components/layout/docs/page/page-breadcrumb";
+import {type FooterProps, PageFooter} from "@/components/layout/docs/page/page-footer";
+import {cn} from "../../lib/cn";
+import {GithubBlockProps} from "@/components/layout/docs/page/page-github-block";
 
 interface EditOnGitHubOptions extends Omit<ComponentProps<"a">, "href" | "children"> {
   owner: string;
@@ -44,6 +41,9 @@ interface BreadcrumbOptions extends BreadcrumbProps {
 interface FooterOptions extends FooterProps {
   enabled: boolean;
   component: ReactNode;
+
+  github?: GithubBlockProps;
+  lastUpdate?: Date | string | number;
 }
 
 export interface DocsPageProps {
@@ -67,9 +67,6 @@ export interface DocsPageProps {
    * Footer navigation, you can disable it by passing `false`
    */
   footer?: Partial<FooterOptions>;
-
-  editOnGithub?: EditOnGitHubOptions;
-  lastUpdate?: Date | string | number;
 
   container?: ComponentProps<"div">;
   article?: ComponentProps<"article">;
@@ -99,14 +96,12 @@ type TableOfContentOptions = Pick<AnchorProviderProps, "single"> & {
 type TableOfContentPopoverOptions = Omit<TableOfContentOptions, "single">;
 
 export function DocsPage({
-                           editOnGithub,
                            breadcrumb: {
                              enabled: breadcrumbEnabled = true,
                              component: breadcrumb,
                              ...breadcrumbProps
                            } = {},
                            footer = {},
-                           lastUpdate,
                            container,
                            full = false,
                            tableOfContentPopover: {
@@ -140,60 +135,16 @@ export function DocsPage({
       <PageArticle {...article}>
         {breadcrumbEnabled && (breadcrumb ?? <PageBreadcrumb {...breadcrumbProps} />)}
         {children}
-        <div>
-          <div className="flex flex-row flex-wrap items-center justify-between gap-4 empty:hidden pt-12">
-            {editOnGithub && (
-              <div className="flex flex-row gap-2">
-                <EditOnGitHub mode="edit" owner="qeeqez" repo="docs" sha="main" path={editOnGithub.path}/>
-                {editOnGithub.raiseIssue && <EditOnGitHub mode="issue" owner="qeeqez" repo="docs" sha="main" path={editOnGithub.path}/>}
-              </div>
-            )}
-            {lastUpdate && <PageLastUpdate date={new Date(lastUpdate)}/>}
-          </div>
-          {footer.enabled !== false && (footer.component ?? <PageFooter items={footer.items}/>)}
-        </div>
+        {footer.enabled !== false && (footer.component ??
+          <PageFooter
+            items={footer.items}
+            github={footer.github}
+            lastUpdate={footer.lastUpdate}
+            className="py-8"
+          />)
+        }
       </PageArticle>
     </PageRoot>
-  );
-}
-
-interface GithubHelperProps extends ComponentProps<"a"> {
-  mode: "edit" | "issue";
-  owner: string;
-  repo: string;
-  sha: string;
-  path: string;
-  className?: string;
-}
-
-export function EditOnGitHub({mode, owner, repo, sha, path, className}: GithubHelperProps) {
-  const ghPath = path.startsWith("/") ? path.slice(1) : path;
-  const href = mode === "edit"
-    ? `https://github.com/${owner}/${repo}/blob/${sha}/${ghPath}`
-    : `https://github.com/${owner}/${repo}/issues/new?title=Issue%20on%20docs&body=Path:%20${ghPath}`;
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer noopener"
-      className={cn(
-        buttonVariants({
-          color: "secondary",
-          size: "sm",
-          className: "gap-1.5 not-prose",
-        }),
-        className,
-      )}
-    >
-      {mode === "edit" ? (<>
-        <Edit className="size-3.5"/>
-        <I18nLabel label="editOnGithub"/> {/* TODO add correct label */}
-      </>) : (<>
-        <TriangleAlert className="size-3.5"/>
-        <I18nLabel label="editOnGithub"/> {/* TODO add correct label */}
-      </>)
-      }
-    </a>
   );
 }
 
