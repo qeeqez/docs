@@ -5,22 +5,10 @@ import {Edit, TriangleAlert} from "lucide-react";
 import {type ComponentProps, forwardRef, type ReactNode} from "react";
 import {cn} from "../../lib/cn";
 import {buttonVariants} from "../ui/button";
-import {
-  type BreadcrumbProps,
-  type FooterProps,
-  PageArticle,
-  PageBreadcrumb,
-  PageFooter,
-  PageLastUpdate,
-  PageRoot,
-  PageTOC,
-  PageTOCItems,
-  PageTOCPopover,
-  PageTOCPopoverContent,
-  PageTOCPopoverItems,
-  PageTOCPopoverTrigger,
-  PageTOCTitle,
-} from "./docs/page";
+import {PageArticle, PageRoot} from "@/components/layout/docs/page";
+import {FooterProps, PageFooter} from "@/components/layout/docs/page/page-footer";
+import {BreadcrumbProps, PageBreadcrumb} from "@/components/layout/docs/page/page-breadcrumb";
+import {PageLastUpdate} from "@/components/layout/docs/page/page-last-update";
 
 interface EditOnGitHubOptions extends Omit<ComponentProps<"a">, "href" | "children"> {
   owner: string;
@@ -152,16 +140,18 @@ export function DocsPage({
       <PageArticle {...article}>
         {breadcrumbEnabled && (breadcrumb ?? <PageBreadcrumb {...breadcrumbProps} />)}
         {children}
-        <div className="flex flex-row flex-wrap items-center justify-between gap-4 empty:hidden">
-          {editOnGithub && (
-            <div className="flex flex-row gap-2">
-              <EditOnGitHub mode="edit" owner="qeeqez" repo="docs" sha="main" path={editOnGithub.path}/>
-              {editOnGithub.raiseIssue && <EditOnGitHub mode="issue" owner="qeeqez" repo="docs" sha="main" path={editOnGithub.path}/>}
-            </div>
-          )}
-          {lastUpdate && <PageLastUpdate date={new Date(lastUpdate)}/>}
+        <div>
+          <div className="flex flex-row flex-wrap items-center justify-between gap-4 empty:hidden pt-12">
+            {editOnGithub && (
+              <div className="flex flex-row gap-2">
+                <EditOnGitHub mode="edit" owner="qeeqez" repo="docs" sha="main" path={editOnGithub.path}/>
+                {editOnGithub.raiseIssue && <EditOnGitHub mode="issue" owner="qeeqez" repo="docs" sha="main" path={editOnGithub.path}/>}
+              </div>
+            )}
+            {lastUpdate && <PageLastUpdate date={new Date(lastUpdate)}/>}
+          </div>
+          {footer.enabled !== false && (footer.component ?? <PageFooter items={footer.items}/>)}
         </div>
-        {footer.enabled !== false && (footer.component ?? <PageFooter items={footer.items}/>)}
       </PageArticle>
     </PageRoot>
   );

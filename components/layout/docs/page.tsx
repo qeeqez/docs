@@ -5,17 +5,6 @@ import type {ComponentProps} from "react";
 import {cn} from "../../../lib/cn";
 import {TOCItems, TOCProvider, TOCScrollArea} from "../../ui/toc";
 import ClerkTOCItems from "../../ui/toc-clerk";
-import {
-  type BreadcrumbProps,
-  type FooterProps,
-  PageBreadcrumb,
-  PageFooter,
-  PageLastUpdate,
-  PageTOC,
-  PageTOCPopover,
-  PageTOCPopoverContent,
-  PageTOCPopoverTrigger,
-} from "./page-client";
 
 export function PageTOCTitle(props: ComponentProps<"h2">) {
   return (
@@ -60,15 +49,3 @@ export function PageRoot({toc = false, children, ...props}: RootProps) {
   if (toc) return <TOCProvider {...toc}>{content}</TOCProvider>;
   return content;
 }
-
-export {
-  PageBreadcrumb,
-  PageFooter,
-  PageLastUpdate,
-  PageTOC,
-  PageTOCPopover,
-  PageTOCPopoverTrigger,
-  PageTOCPopoverContent,
-  type FooterProps,
-  type BreadcrumbProps,
-};
