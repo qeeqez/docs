@@ -2,17 +2,17 @@ import {createRelativeLink} from "fumadocs-ui/mdx";
 import type {Metadata} from "next";
 import {notFound} from "next/navigation";
 import {PageTOCItems, PageTOCPopoverItems, PageTOCTitle} from "@/components/layout/docs/page";
-import {
-  PageTOC,
-  PageTOCPopover,
-  PageTOCPopoverContent,
-  PageTOCPopoverTrigger
-} from "@/components/layout/docs/page-client";
 import {Sidebar} from "@/components/layout/docs/sidebar/sidebar";
 import {DocsBody, DocsDescription, DocsPage, DocsTitle} from "@/components/layout/page";
 import {TOCProvider} from "@/components/ui/toc";
 import {source} from "@/lib/source";
 import {getMDXComponents} from "@/mdx-components";
+import {
+  PageTOC,
+  PageTOCPopover,
+  PageTOCPopoverContent,
+  PageTOCPopoverTrigger
+} from "@/components/layout/docs/page/page-toc";
 
 export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   const params = await props.params;
@@ -39,7 +39,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
               </PageTOCPopoverContent>
             </PageTOCPopover>
             <DocsPage
-              container={{className: "pt-sidebar"}}
+              container={{className: "pt-[calc(var(--padding-sidebar)*2.5)]"}}
               full={page.data.full}
               lastUpdate={page.data.lastModified}
               editOnGithub={{
