@@ -5,6 +5,7 @@ import GithubIcon from "@/public/socials/github.svg";
 import XIcon from "@/public/socials/x.svg";
 import YoutubeIcon from "@/public/socials/youtube.svg";
 import LogoWide from "@/assets/logo_wide.svg";
+import {ChevronRightIcon} from "lucide-react";
 
 /**
  * Shared layout configurations
@@ -17,25 +18,32 @@ export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
       title: (
-        <LogoWide className="h-9 fill-black dark:invert"/>
+        <LogoWide className="h-8 fill-black dark:invert"/>
       ),
+      transparentMode: "top"
     },
     // see https://fumadocs.dev/docs/ui/navigation/links
     links: [
       {
+        text: "Home",
+        url: "/",
+      },
+      {
         // icon: <BookIcon />,
         text: "Docs",
         url: "/docs",
-        // secondary items will be displayed differently on navbar
-        secondary: false,
       },
       {
         // icon: <BookIcon />,
         text: "API Reference",
         url: "/api",
-        // secondary items will be displayed differently on navbar
-        secondary: false,
       },
+      {
+        type: 'button',
+        text: <>Get Started <ChevronRightIcon /></>,
+        url: "https://dash.rixl.com",
+        secondary: true,
+      }
     ],
   };
 }
