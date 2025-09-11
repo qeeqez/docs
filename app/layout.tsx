@@ -11,7 +11,7 @@ const inter = Inter({
 
 export default function Layout({children}: LayoutProps<"/">) {
   return (
-    <html lang="en" className={cn()} suppressHydrationWarning>
+    <html lang="en" className={cn(inter.className)} suppressHydrationWarning>
       <body className={cn(
         "group/body",
         "overflow-hidden h-screen",

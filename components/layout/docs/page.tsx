@@ -36,7 +36,7 @@ export function PageTOCPopoverItems({variant = "normal", ...props}: ComponentPro
 
 export function PageArticle(props: ComponentProps<"article">) {
   return (
-    <article {...props} className={cn("flex min-w-0 w-full flex-col gap-4 pt-8 px-4 md:px-6 md:mx-auto", props.className)}>
+    <article {...props} className={cn("flex min-w-0 w-full flex-col gap-4 px-4 md:px-6 md:mx-auto", props.className)}>
       {props.children}
     </article>
   );

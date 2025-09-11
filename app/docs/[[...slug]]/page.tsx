@@ -2,7 +2,12 @@ import {createRelativeLink} from "fumadocs-ui/mdx";
 import type {Metadata} from "next";
 import {notFound} from "next/navigation";
 import {PageTOCItems, PageTOCPopoverItems, PageTOCTitle} from "@/components/layout/docs/page";
-import {PageTOC, PageTOCPopover, PageTOCPopoverContent, PageTOCPopoverTrigger} from "@/components/layout/docs/page-client";
+import {
+  PageTOC,
+  PageTOCPopover,
+  PageTOCPopoverContent,
+  PageTOCPopoverTrigger
+} from "@/components/layout/docs/page-client";
 import {Sidebar} from "@/components/layout/docs/sidebar/sidebar";
 import {DocsBody, DocsDescription, DocsPage, DocsTitle} from "@/components/layout/page";
 import {TOCProvider} from "@/components/ui/toc";
@@ -17,57 +22,55 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
 
   return (
     // TODO scroll from bottom to top should catch the page
-    <main id="nd-page" className="flex flex-1 flex-col relative">
-      <div className="flex flex-1">
-        <aside className="w-64 px-sidebar sticky top-0 h-screen hidden md:block">
+    <div id="nd-page" className="flex flex-1 flex-col relative">
+      <div className="flex flex-1 relative">
+        <aside className="w-sidebar p-sidebar sticky top-sidebar-top h-screen hidden md:block">
           {/* TODO restore padding for sidebar links*/}
-          <Sidebar />
+          <Sidebar/>
         </aside>
 
         <TOCProvider toc={page.data.toc}>
-          <main className="flex-1 p-6 overflow-y-auto max-h-screen relative">
+          <main className="flex-1 w-full overflow-y-auto min-h-screen relative">
             {/* TODO correct TOC popover position*/}
             <PageTOCPopover>
-              <PageTOCPopoverTrigger />
+              <PageTOCPopoverTrigger/>
               <PageTOCPopoverContent>
-                <PageTOCPopoverItems variant="normal" />
+                <PageTOCPopoverItems variant="normal"/>
               </PageTOCPopoverContent>
             </PageTOCPopover>
-            <div>
-              {/* TODO hide scrollbar when TOC is open*/}
-              <DocsPage
-                full={page.data.full}
-                lastUpdate={page.data.lastModified}
-                editOnGithub={{
-                  owner: "qeeqez",
-                  repo: "docs",
-                  path: `content/docs/${page.path}`,
-                  sha: "main",
-                  raiseIssue: true,
-                }}
-              >
-                <DocsTitle>{page.data.title}</DocsTitle>
-                <DocsDescription>{page.data.description}</DocsDescription>
-                <DocsBody>
-                  <MDXContent
-                    components={getMDXComponents({
-                      // this allows you to link to other pages with relative file paths
-                      a: createRelativeLink(source, page),
-                    })}
-                  />
-                </DocsBody>
-              </DocsPage>
-            </div>
+            <DocsPage
+              container={{className: "pt-sidebar"}}
+              full={page.data.full}
+              lastUpdate={page.data.lastModified}
+              editOnGithub={{
+                owner: "qeeqez",
+                repo: "docs",
+                path: `content/docs/${page.path}`,
+                sha: "main",
+                raiseIssue: true,
+              }}
+            >
+              <DocsTitle>{page.data.title}</DocsTitle>
+              <DocsDescription>{page.data.description}</DocsDescription>
+              <DocsBody>
+                <MDXContent
+                  components={getMDXComponents({
+                    // this allows you to link to other pages with relative file paths
+                    a: createRelativeLink(source, page),
+                  })}
+                />
+              </DocsBody>
+            </DocsPage>
           </main>
-          <aside className="w-64 p-sidebar hidden xl:block">
-            <PageTOC className="">
-              <PageTOCTitle />
-              <PageTOCItems variant="normal" />
+          <aside className="w-sidebar p-sidebar sticky top-sidebar-top h-screen hidden xl:block">
+            <PageTOC>
+              <PageTOCTitle/>
+              <PageTOCItems variant="normal"/>
             </PageTOC>
           </aside>
         </TOCProvider>
       </div>
-    </main>
+    </div>
   );
 }
 

@@ -1,9 +1,17 @@
 import Link from "fumadocs-core/link";
 import {Fragment} from "react";
-import {NavbarLink, NavbarMenu, NavbarMenuContent, NavbarMenuLink, NavbarMenuTrigger} from "@/components/layout/home/navbar";
+import {
+  NavbarLink,
+  NavbarMenu,
+  NavbarMenuContent,
+  NavbarMenuLink,
+  NavbarMenuTrigger
+} from "@/components/layout/home/navbar";
 import type {LinkItemType} from "@/components/layout/shared";
+import {isActive} from "@/lib/is-active";
+import {cn} from "@/lib/cn";
 
-export function NavbarLinkItem({item, ...props}: {item: LinkItemType; className?: string}) {
+export function NavbarLinkItem({item, ...props}: { item: LinkItemType; className?: string }) {
   if (item.type === "custom") return <div {...props}>{item.children}</div>;
 
   if (item.type === "menu") {
@@ -11,7 +19,8 @@ export function NavbarLinkItem({item, ...props}: {item: LinkItemType; className?
       if (child.type === "custom") return <Fragment key={j}>{child.children}</Fragment>;
 
       const {
-        banner = child.icon ? <div className="w-fit rounded-md border bg-fd-muted p-1 [&_svg]:size-4">{child.icon}</div> : null,
+        banner = child.icon ?
+          <div className="w-fit rounded-md border bg-fd-muted p-1 [&_svg]:size-4">{child.icon}</div> : null,
         ...rest
       } = child.menu ?? {};
 
@@ -37,8 +46,16 @@ export function NavbarLinkItem({item, ...props}: {item: LinkItemType; className?
   }
 
   return (
-    <NavbarLink {...props} item={item} variant={item.type} aria-label={item.type === "icon" ? item.label : undefined}>
-      {item.type === "icon" ? item.icon : item.text}
+    <NavbarLink className=""
+    //   className={cn(
+    //   "flex items-center gap-2 group relative h-full",
+    //   isActive() ? "bg-yellow-400" : "bg-g"
+    // )}
+      {...props} item={item} variant={item.type} aria-label={item.type === "icon" ? item.label : undefined}>
+      <div className="[&>[data-active]]:bg-yellow-400 data-[active=false]:bg-green-400">
+        {item.type === "icon" ? item.icon : item.text}
+        <div className="absolute bottom-0 h-[1.5px] w-full group-hover:bg-fd-primary dark:group-hover:bg-fd-primary-foreground"></div>
+      </div>
     </NavbarLink>
   );
 }
