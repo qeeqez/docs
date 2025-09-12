@@ -2,6 +2,8 @@
   "title": "SDK",
   "description": "RIXL SDK Documentation",
   "pages": [
-    "getting-started"
+    "getting-started",
+    "video-component",
+    "image-component"
   ]
 }

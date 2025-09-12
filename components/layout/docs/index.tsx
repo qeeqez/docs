@@ -97,7 +97,7 @@ export function DocsLayout({
         {/*  ))}*/}
         {/*<div className="flex flex-col min-h-screen">*/}
         {/*  <LayoutBody*/}
-        {/*    {...props.containerProps}*/}
+        {/*    {...props_reference.mdx.containerProps}*/}
         {/*    className={cn(*/}
         {/*      // "max-w-fd-container mx-auto w-full flex flex-1",*/}
         {/*      "flex flex-1",*/}
@@ -105,7 +105,7 @@ export function DocsLayout({
         {/*      // !nav.component &&*/}
         {/*      // nav.enabled !== false &&*/}
         {/*      // '[--fd-nav-height:56px] md:[--fd-nav-height:0px]',*/}
-        {/*      // props.containerProps?.className,*/}
+        {/*      // props_reference.mdx.containerProps?.className,*/}
         {/*    )}*/}
         {/*  >*/}
         {/*    <div className="w-64 bg-gray-100 p-4 sticky top-0 h-screen">*/}

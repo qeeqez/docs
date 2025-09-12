@@ -14,10 +14,10 @@ export function LayoutBody(props: ComponentProps<'main'>) {
       className={cn(
         // 'flex flex-1 flex-col pt-(--fd-nav-height) transition-[padding]',
         // !collapsed && 'mx-(--fd-layout-offset)',
-        // props.className,
+        // props_reference.mdx.className,
       )}
       // style={{
-      //   ...props.style,
+      //   ...props_reference.mdx.style,
       //   paddingInlineStart: collapsed
       //     ? 'min(calc(100vw - var(--fd-page-width)), var(--fd-sidebar-width))'
       //     : 'var(--fd-sidebar-width)',

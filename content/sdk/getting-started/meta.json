@@ -1,9 +1,8 @@
 {
   "title": "Getting Started",
-  "description": "Start your journey with RIXL",
+  "description": "Get started with RIXL Video SDK - optimized media components for modern web applications",
   "pages": [
-    "index",
-    "create-project",
-    "authentication"
+    "overview",
+    "installation"
   ]
 }
