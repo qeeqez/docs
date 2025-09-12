@@ -1,10 +1,5 @@
 {
   "title": "Documentation",
   "description": "RIXL Platform Documentation",
-  "pages": [
-    "getting-started",
-    "uploads", 
-    "account",
-    "api-reference"
-  ]
+  "pages": ["getting-started", "uploads", "account", "api-reference"]
 }

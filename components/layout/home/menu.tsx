@@ -1,48 +1,36 @@
-'use client';
+"use client";
 
-import {cva} from 'class-variance-authority';
-import Link from 'fumadocs-core/link';
-import type {ComponentPropsWithoutRef} from 'react';
-import {cn} from '../../../lib/cn';
-import {
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuTrigger,
-} from '../../navigation-menu';
-import {buttonVariants} from '../../ui/button';
-import {BaseLinkItem, type LinkItemType} from '../shared/index';
+import {cva} from "class-variance-authority";
+import Link from "fumadocs-core/link";
+import type {ComponentPropsWithoutRef} from "react";
+import {cn} from "../../../lib/cn";
+import {NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuTrigger} from "../../navigation-menu";
+import {buttonVariants} from "../../ui/button";
+import {BaseLinkItem, type LinkItemType} from "../shared/index";
 
-const menuItemVariants = cva('', {
+const menuItemVariants = cva("", {
   variants: {
     variant: {
-      main: 'inline-flex items-center gap-2 py-1.5 transition-colors hover:text-fd-popover-foreground/50 data-[active=true]:font-medium data-[active=true]:text-fd-primary [&_svg]:size-4',
+      main: "inline-flex items-center gap-2 py-1.5 transition-colors hover:text-fd-popover-foreground/50 data-[active=true]:font-medium data-[active=true]:text-fd-primary [&_svg]:size-4",
       icon: buttonVariants({
-        size: 'icon',
-        color: 'ghost',
+        size: "icon",
+        color: "ghost",
       }),
       button: buttonVariants({
-        color: 'secondary',
-        className: 'gap-1.5 [&_svg]:size-4',
+        color: "secondary",
+        className: "gap-1.5 [&_svg]:size-4",
       }),
     },
   },
   defaultVariants: {
-    variant: 'main',
+    variant: "main",
   },
 });
 
-export function MenuLinkItem({
-                               item,
-                               ...props
-                             }: {
-  item: LinkItemType;
-  className?: string;
-}) {
-  if (item.type === 'custom')
-    return <div className={cn('grid', props.className)}>{item.children}</div>;
+export function MenuLinkItem({item, ...props}: {item: LinkItemType; className?: string}) {
+  if (item.type === "custom") return <div className={cn("grid", props.className)}>{item.children}</div>;
 
-  if (item.type === 'menu') {
+  if (item.type === "menu") {
     const header = (
       <>
         {item.icon}
@@ -51,7 +39,7 @@ export function MenuLinkItem({
     );
 
     return (
-      <div className={cn('mb-4 flex flex-col', props.className)}>
+      <div className={cn("mb-4 flex flex-col", props.className)}>
         <p className="mb-1 text-sm text-fd-muted-foreground">
           {item.url ? (
             <NavigationMenuLink asChild>
@@ -62,7 +50,7 @@ export function MenuLinkItem({
           )}
         </p>
         {item.items.map((child, i) => (
-          <MenuLinkItem key={i} item={child}/>
+          <MenuLinkItem key={i} item={child} />
         ))}
       </div>
     );
@@ -72,14 +60,11 @@ export function MenuLinkItem({
     <NavigationMenuLink asChild>
       <BaseLinkItem
         item={item}
-        className={cn(
-          menuItemVariants({variant: item.type}),
-          props.className,
-        )}
-        aria-label={item.type === 'icon' ? item.label : undefined}
+        className={cn(menuItemVariants({variant: item.type}), props.className)}
+        aria-label={item.type === "icon" ? item.label : undefined}
       >
         {item.icon}
-        {item.type === 'icon' ? undefined : item.text}
+        {item.type === "icon" ? undefined : item.text}
       </BaseLinkItem>
     </NavigationMenuLink>
   );
@@ -88,32 +73,24 @@ export function MenuLinkItem({
 export const Menu = NavigationMenuItem;
 
 export function MenuTrigger({
-                              enableHover = false,
-                              ...props
-                            }: ComponentPropsWithoutRef<typeof NavigationMenuTrigger> & {
+  enableHover = false,
+  ...props
+}: ComponentPropsWithoutRef<typeof NavigationMenuTrigger> & {
   /**
    * Enable hover to trigger
    */
   enableHover?: boolean;
 }) {
   return (
-    <NavigationMenuTrigger
-      {...props}
-      onPointerMove={enableHover ? undefined : (e) => e.preventDefault()}
-    >
+    <NavigationMenuTrigger {...props} onPointerMove={enableHover ? undefined : (e) => e.preventDefault()}>
       {props.children}
     </NavigationMenuTrigger>
   );
 }
 
-export function MenuContent(
-  props: ComponentPropsWithoutRef<typeof NavigationMenuContent>,
-) {
+export function MenuContent(props: ComponentPropsWithoutRef<typeof NavigationMenuContent>) {
   return (
-    <NavigationMenuContent
-      {...props}
-      className={cn('flex flex-col p-4', props.className)}
-    >
+    <NavigationMenuContent {...props} className={cn("flex flex-col p-4", props.className)}>
       {props.children}
     </NavigationMenuContent>
   );

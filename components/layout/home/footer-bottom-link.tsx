@@ -6,5 +6,9 @@ interface Props {
 }
 
 export function FooterBottomLink({text, url}: Props) {
-  return <Link href={url} className="hover:text-fd-foreground transition-colors">{text}</Link>
+  return (
+    <Link href={url} className="hover:text-fd-foreground transition-colors">
+      {text}
+    </Link>
+  );
 }
