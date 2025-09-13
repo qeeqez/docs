@@ -3,6 +3,7 @@
   "description": "Feature-rich video player for RIXL content with HLS streaming, quality selection, and advanced controls",
   "pages": [
     "basic_usage",
-    "props_reference"
+    "props_reference",
+    "player_controls"
   ]
 }

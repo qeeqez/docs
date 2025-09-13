@@ -3,6 +3,6 @@
   "description": "Optimized image display with lazy loading, thumbhash placeholders, and automatic CDN delivery",
   "pages": [
     "basic_usage",
-    "props_reference"
+    "props_reference",
   ]
 }
