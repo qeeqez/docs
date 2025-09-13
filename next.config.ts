@@ -6,6 +6,9 @@ const withMDX = createMDX();
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   output: "export",
+    images: {
+        unoptimized: true
+    },
   turbopack: {
     rules: {
       "*.svg": {
