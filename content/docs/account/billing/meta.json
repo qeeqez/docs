@@ -1,0 +1,9 @@
+{
+  "title": "Billing & Payments",
+  "description": "Manage subscription plans, payment methods, and billing history",
+  "pages": [
+    "index",
+    "subscription-plans",
+    "payment_invoices"
+  ]
+}

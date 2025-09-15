@@ -1,0 +1,125 @@
+---
+title: Project Settings
+description: Configure and manage project settings through the dashboard
+---
+
+import { Callout } from '../../../../components'
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+
+Configure your project settings through the dashboard's settings section.
+
+<Callout type="info">
+Access project settings by going to Settings → Project Settings in the dashboard sidebar.
+</Callout>
+
+<Tabs items={['Basic Information', 'Video Processing', 'Project Management']}>
+    <Tab value="Basic Information">
+        ## Project Details
+        
+        You can modify the following basic project information:
+
+        | Setting | Description | Editable |
+        |---------|-------------|----------|
+        | **Project Name** | Display name of your project | ✓ |
+        | **Region** | Geographic region where project data is stored | ✗ |
+        | **Video Optimization** | Processing quality settings for uploaded videos | ✓ |
+        | **Created Date** | When the project was initially created | ✗ |
+        | **Storage Usage** | Current storage consumption and file counts | ✗ |
+
+        ### Changing Project Settings
+
+        1. Navigate to **Settings → Project Settings** in the dashboard
+        2. Update the fields you want to change
+        3. Click **Save Changes** to apply your updates
+
+        ### Region Information
+
+        Projects are created in a specific geographic region which determines:
+
+        - Where your media files are stored
+        - The primary processing location for uploads
+        - Content delivery optimization
+
+        <Callout type="info">
+        If you need to change your project's region, you'll need to create a new project in the desired region and migrate your content.
+        </Callout>
+    </Tab>
+
+    <Tab value="Video Processing">
+        ## Processing Strategies
+
+        Projects support different video processing strategies based on your content needs:
+
+        | Processing Tier | Quality | Resolution | Features | Best For |
+        |----------------|---------|------------|----------|----------|
+        | **Basic** | Standard | Up to 720p | Basic transcoding, standard formats | Development & Testing |
+        | **Shorts** | Mobile Optimized | Up to 1080p | Fast processing, mobile formats | Social Media Content |
+        | **Pro** | Professional | Up to 4K | Multiple formats, advanced options | Video-on-Demand |
+
+        ### Processing Features Comparison
+
+        | Feature | Basic | Shorts | Pro |
+        |---------|-------|--------|-----|
+        | Thumbnail Generation | ✓ | ✓ | ✓ |
+        | Multiple Quality Levels | - | ✓ | ✓ |
+        | Adaptive Bitrate | - | ✓ | ✓ |
+        | Custom Watermarks | - | - | ✓ |
+        | Priority Processing | - | ✓ | ✓ |
+        | Advanced Analytics | - | - | ✓ |
+
+        ### Changing Processing Settings
+
+        1. Go to **Settings → Project Settings**
+        2. Select your preferred **Video Optimization** level
+        3. Click **Save Changes** to apply the new setting
+
+        <Callout type="info">
+        Processing strategy changes only affect new uploads. Existing videos retain their original processing level.
+        </Callout>
+    </Tab>
+
+    <Tab value="Project Management">
+        ## Project Administration
+
+        ### Management Options
+
+        | Action | Description | Access Level |
+        |--------|-------------|--------------|
+        | **Rename Project** | Change project display name | Admin |
+        | **View Storage** | Monitor usage and file counts | Admin |
+        | **Change Processing** | Update video optimization tier | Admin |
+        | **Export Data** | Download project content | Admin |
+        | **Delete Project** | Permanently remove project | Owner |
+
+        ### Storage Information
+
+        The project settings page shows your current storage usage and file counts:
+
+        - **Total Storage Used** - Cumulative size of all project files
+        - **Video Files** - Count and size of video content
+        - **Image Files** - Count and size of image content
+        - **Processing Queue** - Files currently being processed
+
+        ### Project Deletion
+
+        <Callout type="error" title="Permanent Action">
+        Deleting a project permanently removes all videos, images, feeds, and settings. This action cannot be reversed.
+        </Callout>
+
+        **Before deleting a project:**
+        1. Export any content you want to keep
+        2. Update any applications using the project's API keys
+        3. Notify team members of the upcoming deletion
+        4. Confirm you have backups of important content
+
+        ### Access and Permissions
+
+        | Role | Basic Info | Video Processing | Project Management |
+        |------|------------|------------------|-------------------|
+        | **Owner** | Full Access | Full Access | Full Access |
+        | **Admin** | Edit | Edit | View Only |
+        | **Member** | View Only | View Only | No Access |
+
+        For team management and member permissions, visit [Account → Organizations](/docs/account/organizations).
+    </Tab>
+</Tabs>

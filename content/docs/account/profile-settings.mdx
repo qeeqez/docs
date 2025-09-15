@@ -1,0 +1,205 @@
+---
+title: Profile Settings
+description: Manage your profile settings, security, memberships, and invitations in one place.
+---
+
+import { Callout } from '../../../components';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+
+Access your profile settings by clicking your profile picture in the top-right corner and selecting **Profile Settings**,
+or navigate to **Account Settings → Profile Settings** from the sidebar.
+
+<Tabs items={['General', 'Security', 'Memberships', 'Invites']}>
+
+    <Tab value="General">
+
+        ## General Settings
+
+        Manage your personal information and account details.
+
+        ### About You
+
+        Update your display name and username as they appear across RIXL and your organizations.
+
+        <Steps>
+            <Step>
+                **Name:** Your display name visible to other organization members
+                - Click the edit icon next to your name to modify it
+            </Step>
+
+            <Step>
+                **Username:** Your unique identifier (e.g., `ayaaakinleye`)
+                - Click the edit icon to change your username
+            </Step>
+        </Steps>
+
+        ### Account Email
+
+        Your email address is used for logging in and account notifications.
+
+        <Steps>
+            <Step>
+                In the **Account Email** section, enter your new email address
+            </Step>
+
+            <Step>
+                Click **Update** or **Save Changes**
+            </Step>
+
+            <Step>
+                Check your inbox for a verification email
+                - You'll see a "Pending" status until verified
+                - Click "Resend" if you don't receive the verification code
+            </Step>
+        </Steps>
+
+        <Callout type="info">
+            The address shown (e.g., `youremail@gmail.com`) is used to identify your RIXL Account to you and others.
+        </Callout>
+
+    </Tab>
+
+    <Tab value="Security">
+
+        ## Security Settings
+
+        Keep your account secure with strong authentication and connected accounts.
+
+        ### Connected Accounts
+
+        Link third-party services for single sign-on (SSO) access to RIXL.
+
+        **Currently Supported:**
+        - **Google:** Quick and secure login with your Google account
+        - **Apple:** Privacy-focused authentication with Apple ID
+        - **Telegram:** Connect for additional security features
+
+        <Steps>
+            <Step>
+                **To Connect an Account:**
+                - Click **Connect** next to the desired service
+                - Follow the authorization prompts from the provider
+            </Step>
+
+            <Step>
+                **To Disconnect an Account:**
+                - Click **Disconnect** next to the connected service
+                - Confirm the action when prompted
+            </Step>
+        </Steps>
+
+        <Callout type="warn" title="Before Disconnecting">
+            If you use a connected account as your only sign-in method, set a password for your RIXL account **before** disconnecting it to avoid being locked out.
+        </Callout>
+
+        ### Two-Step Verification
+
+        Add an extra layer of security with authenticator app-based 2FA.
+
+        <Steps>
+            <Step>
+                Click **+ Setup authenticator** in the 2-Step Verification section
+            </Step>
+
+            <Step>
+                Scan the QR code with an authenticator app (Google Authenticator recommended)
+            </Step>
+
+            <Step>
+                Enter the 6-digit code from your authenticator app to complete setup
+            </Step>
+        </Steps>
+
+        The description notes: "Get verification codes from an authenticator app. It works even if your phone is offline."
+
+    </Tab>
+
+    <Tab value="Memberships">
+
+        ## Organization Memberships
+
+        View and manage your role in different organizations.
+
+        ### Current Memberships
+
+        This section displays:
+        - **Organization:** The name of each organization you belong to
+        - **Role:** Your role within the organization (e.g., "owner")
+        - **Actions:** Available management options
+
+        <Steps>
+            <Step>
+                Review your current organization memberships in the table
+            </Step>
+
+            <Step>
+                Click **Manage** next to any organization to access organization-specific settings
+            </Step>
+
+            <Step>
+                Use the **Actions** column to perform role-specific tasks
+            </Step>
+        </Steps>
+
+        ### Organization Management
+
+        For organizations where you have owner or admin privileges, you can:
+        - Manage team members
+        - Adjust organization settings
+        - Handle billing and subscription details
+        - Control access permissions
+
+    </Tab>
+
+    <Tab value="Invites">
+
+        ## Pending Invitations
+
+        Manage invitations to join organizations or projects.
+
+        ### Invitation Status
+
+        <Steps>
+            <Step>
+                **No Invites Found:** When you have no pending invitations, this section will display "No invites found"
+            </Step>
+
+            <Step>
+                **Refresh:** Click the **Refresh** button to check for new invitations
+            </Step>
+
+            <Step>
+                **Accept/Decline:** When invitations are present, you'll see options to accept or decline each invitation
+            </Step>
+        </Steps>
+
+        ### Managing Invitations
+
+        When you receive invitations, you can:
+        - View the organization or project name
+        - See who sent the invitation
+        - Check the proposed role or permissions
+        - Accept or decline the invitation
+        - View invitation expiration dates (if applicable)
+
+        <Callout type="info">
+            Invitations may have expiration dates. Be sure to respond promptly to avoid missing opportunities to join organizations or projects.
+        </Callout>
+
+    </Tab>
+
+</Tabs>
+
+## Quick Actions
+
+### Navigation
+Use the sidebar to quickly switch between different setting categories:
+- **Project Settings:** Manage individual project configurations
+- **Organization Settings:** Control organization-wide preferences
+- **API Keys:** Generate and manage API access tokens
+- **Billing:** View and manage payment information
+
+<Callout type="tip">
+    Changes to your profile information may take a few minutes to appear across all RIXL services.
+</Callout>
