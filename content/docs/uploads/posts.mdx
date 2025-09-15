@@ -1,29 +1,24 @@
 ---
-title: Feed Posts
+title: Posts
 description: Create social media-style posts by uploading media directly to feeds.
 ---
 
-import { Callout } from 'fumadocs-ui/components/callout';
-import { Steps, Step } from 'fumadocs-ui/components/steps';
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
-import { Cards, Card } from 'fumadocs-ui/components/card';
+import { Callout, Steps, Step, Tabs, Tab } from '../../../components';
 
-Feed posts combine media uploads with social metadata to create rich content for structured feeds. This process uploads media and creates the post simultaneously.
+Feed posts combine media uploads with social metadata to create rich content for structured feeds.
+This process uploads media and creates the post simultaneously.
+
+[//]: # (// TODO: Add a screenshot of the post creation interface.)
 
 <Callout type="info">
-Feed posts require an existing [feed](https://api.rixl.com/feeds). Learn about [creating feeds](/docs/dashboard/feeds) if you haven't set one up yet.
+    Feed posts require an existing feed. Learn about [creating feeds](/docs/dashboard/feeds) if you haven't set one up yet.
 </Callout>
 
 ## Post Types
 
-<Cards>
-  <Card title="Video Posts" description="Upload videos with automatic poster generation">
-    Video content with automatically generated thumbnail images for feed display.
-  </Card>
-  <Card title="Image Posts" description="Upload standalone images for visual feeds">
-    High-quality images optimized for various display contexts and transformations.
-  </Card>
-</Cards>
+**Video Posts** - Upload videos with automatic poster generation and thumbnail images for feed display.
+
+**Image Posts** - Upload standalone images optimized for various display contexts and transformations.
 
 ## Upload Process
 
@@ -31,138 +26,145 @@ Posts combine media upload with feed creation in a single streamlined process:
 
 <Steps>
     <Step>
-        ### Initialize a Post Upload
+        ### Initialize Upload
 
-        To create a new post, you start by initializing the upload using the `/feeds/{feedId}/upload/init` endpoint.
-        This single request can trigger the creation of both a video and its poster image, or just an image post.
-        You must specify the `feedId` of the Feed you want to publish to.
-
-        #### Required Parameters
-
-        **`content_type`**: Must be either `"image"` or `"video"`.
-
-        **`file_name`**: The name of your primary media file (e.g., `my-video.mp4`).
-
-        **`format`**: The file format of the primary media (e.g., `mp4`, `jpg`).
-
-        **`creator_id`**: A unique identifier for the user creating the post within your system.
-
-        **`description`**: The caption or text for the post.
-
-        #### Optional Parameters
-
-        **`video_quality`**: If `content_type` is `"video"`, you can set the quality (`basic`, `shorts`, `pro`).
-
-        **`image_format`**: If `content_type` is `"video"`, this sets the format for the automatically generated poster image.
-
-        <Tabs items={['Video Post', 'Image Post']}>
-            <Tab value="Video Post">
-                ```bash
-                curl -X POST "https://api.rixl.com/v1/feeds/FD4y3QB38S/upload/init" \
-                -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
-                -H "Content-Type: application/json" \
-                -d '{
-                        "content_type": "video",
-                        "file_name": "my-awesome-clip.mp4",
-                        "format": "mp4",
-                        "creator_id": "CR8y3QB38S",
-                        "description": "Check out this amazing view!",
-                        "video_quality": "shorts",
-                        "image_format": "jpg"
-                    }'
-                ```
-
-                **Response:**
-                This response is comprehensive. It gives you everything you need to upload both the main content and the poster,
-                and provides the IDs you'll need for the next step.
-
-                ```json
-                {
-                    "post_id": "PS5IMKoFLm",
-                    "content_id": "VI9VXQxWXQ",
-                    "content_presigned_url": "https://videos.rixl.com/...signed-url-for-video...",
-                    "poster_id": "IM8y3QB38S",
-                    "poster_presigned_url": "https://images.rixl.com/...signed-url-for-poster...",
-                    "upload_expires": 1640995200
-                }
-                ```
-            </Tab>
-            <Tab value="Image Post">
-                ```bash
-                curl -X POST "https://api.rixl.com/v1/feeds/FD4y3QB38S/upload/init" \
-                -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
-                -H "Content-Type: application/json" \
-                -d '{
-                        "content_type": "image",
-                        "file_name": "beautiful-sunset.jpg",
-                        "format": "jpg",
-                        "creator_id": "CR8y3QB38S",
-                        "description": "Beautiful sunset from my balcony"
-                    }'
-                ```
-
-                **Response:**
-                ```json
-                {
-                    "post_id": "PS5IMKoFLm",
-                    "content_id": "IM8y3QB38S",
-                    "content_presigned_url": "https://images.rixl.com/...signed-url-for-image...",
-                    "upload_expires": 1640995200
-                }
-                ```
-            </Tab>
-        </Tabs>
+        Use the `/feeds/{feedId}/upload/init` endpoint to create a new post. Specify the feed ID where you want to publish.
     </Step>
 
     <Step>
-        ### Upload Your Media Files
+        ### Set Parameters
 
-        Just like before, you now use the provided pre-signed URLs to upload your files directly to our storage.
-        You need to upload both the main content (video) and the poster image.
-
-        <Tabs items={['Video Upload', 'Poster Upload']}>
-            <Tab value="Video Upload">
-                ```bash
-                curl -X PUT "{content_presigned_url}" \
-                -T "/path/to/your/local/file/my-awesome-clip.mp4" \
-                -H "Content-Type: video/mp4"
-                ```
-            </Tab>
-            <Tab value="Poster Upload">
-                ```bash
-                curl -X PUT "{poster_presigned_url}" \
-                -T "/path/to/your/local/thumbnail/poster-image.jpg" \
-                -H "Content-Type: image/jpeg"
-                ```
-
-                <Callout type="tip">
-                    You can upload a custom poster image. If you don't, RIXL will automatically generate one from the video.
-                </Callout>
-            </Tab>
-        </Tabs>
+        Include content type (image/video), file name, format, creator ID, and description. Optionally set video quality and image format.
     </Step>
 
     <Step>
-        ### Mark the Post Upload as Complete
+        ### Upload Media
 
-        Once both files are uploaded, you finalize the process using `/feeds/{feedId}/upload/complete`.
-        This tells RIXL to process the media, create the relationships between the post, the video, and the image,
-        and publish it to the specified feed.
+        Use the returned presigned URLs to upload your media files directly to cloud storage.
+    </Step>
 
+    <Step>
+        ### Confirm Upload
+
+        Call the completion endpoint to finalize the post and trigger processing.
+    </Step>
+</Steps>
+
+## Required Parameters
+
+- **`content_type`** - Either "image" or "video"
+- **`file_name`** - Name of your media file (e.g., "my-video.mp4")
+- **`format`** - File format (e.g., "mp4", "jpg")
+- **`creator_id`** - Unique identifier for the user creating the post
+- **`description`** - Caption or text for the post
+
+## Optional Parameters
+
+- **`video_quality`** - For videos: "basic", "shorts", or "pro"
+- **`image_format`** - For video posts: format for auto-generated poster image
+
+## API Examples
+
+### Initialize Upload
+
+<Tabs>
+    <Tab value="Video Post">
         ```bash
-        curl -X POST "https://api.rixl.com/v1/feeds/FD4y3QB38S/upload/complete" \
+        curl -X POST "https://api.rixl.com/v1/feeds/FD4y3QB38S/upload/init" \
         -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
         -H "Content-Type: application/json" \
         -d '{
-                "post_id": "PS5IMKoFLm"
-            }'
+        "content_type": "video",
+        "file_name": "my-awesome-clip.mp4",
+        "format": "mp4",
+        "creator_id": "CR8y3QB38S",
+        "description": "Check out this amazing view!",
+        "video_quality": "shorts",
+        "image_format": "jpg"
+    }'
         ```
 
-        <Callout type="success">
-            A successful response will return the complete Post object with all its details, confirming your new post is live in the feed.
+        **Response:**
+        ```json
+        {
+            "post_id": "PS5IMKoFLm",
+            "content_id": "VI9VXQxWXQ",
+            "content_presigned_url": "https://videos.rixl.com/...signed-url-for-video...",
+            "poster_id": "IM8y3QB38S",
+            "poster_presigned_url": "https://images.rixl.com/...signed-url-for-poster...",
+            "upload_expires": 1640995200
+        }
+        ```
+    </Tab>
+
+    <Tab value="Image Post">
+        ```bash
+        curl -X POST "https://api.rixl.com/v1/feeds/FD4y3QB38S/upload/init" \
+        -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
+        -H "Content-Type: application/json" \
+        -d '{
+        "content_type": "image",
+        "file_name": "beautiful-sunset.jpg",
+        "format": "jpg",
+        "creator_id": "CR8y3QB38S",
+        "description": "Beautiful sunset from my balcony"
+    }'
+        ```
+
+        **Response:**
+        ```json
+        {
+            "post_id": "PS5IMKoFLm",
+            "content_id": "IM8y3QB38S",
+            "content_presigned_url": "https://images.rixl.com/...signed-url-for-image...",
+            "upload_expires": 1640995200
+        }
+        ```
+    </Tab>
+</Tabs>
+
+### Upload Media Files
+
+Use the provided presigned URLs to upload your files directly to storage:
+
+<Tabs items={['Video Upload', 'Poster Upload']}>
+    <Tab value="Video Upload">
+        ```bash
+        curl -X PUT "{content_presigned_url}" \
+        -T "/path/to/your/local/file/my-awesome-clip.mp4" \
+        -H "Content-Type: video/mp4"
+        ```
+    </Tab>
+
+    <Tab value="Poster Upload">
+        ```bash
+        curl -X PUT "{poster_presigned_url}" \
+        -T "/path/to/your/local/thumbnail/poster-image.jpg" \
+        -H "Content-Type: image/jpeg"
+        ```
+
+        <Callout type="tip">
+            You can upload a custom poster image. If you don't, RIXL will automatically generate one from the video.
         </Callout>
-    </Step>
-</Steps>
+    </Tab>
+</Tabs>
+
+### Complete Upload
+
+Once files are uploaded, finalize the process:
+
+```bash
+curl -X POST "https://api.rixl.com/v1/feeds/FD4y3QB38S/upload/complete" \
+-H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
+-H "Content-Type: application/json" \
+-d '{
+    "post_id": "PS5IMKoFLm"
+}'
+```
+
+<Callout type="success">
+    A successful response will return the complete Post object with all its details, confirming your new post is live in the feed.
+</Callout>
 
 ## Managing Your Posts
 
@@ -216,11 +218,9 @@ When working with posts and feeds, consider these recommendations for optimal pe
 
 **Consider file size limits** when uploading high-quality content to maintain good performance.
 
-**Use pagination** when retrieving large numbers of posts to avoid overwhelming your users and API limits.
-
 ## Next Steps
 
-Now that you understand post management, explore these advanced topics:
+Now that you understand post-management, explore these advanced topics:
 
 **[Analytics and Insights](https://dash.rixl.com)** - Track post-performance and engagement metrics.
 

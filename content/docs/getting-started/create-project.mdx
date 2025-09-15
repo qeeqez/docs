@@ -3,9 +3,8 @@ title: Create Your First Project
 description: Set up a project to organize your media and control access.
 ---
 
-import { Callout } from 'fumadocs-ui/components/callout';
-import { Steps, Step } from 'fumadocs-ui/components/steps';
-import { Card, Cards } from 'fumadocs-ui/components/card';
+import { Callout, InfoCard, InteractiveCard } from '../../../components';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 
 ## What are Projects on RIXL Cloud?
 
@@ -17,28 +16,22 @@ Projects serve as workspaces that contain all your content with dedicated settin
 
 ## Creating Your Project
 
+[//]: # (<div className="grid gap-6 sm:grid-cols-3 mt-6">)
+
+[//]: # (    <InfoCard title="Create a Project" description={`Choose a template or start from scratch\nInvite collaborators\nConfigure project settings`} />)
+
+[//]: # (    <InfoCard title="Upload Content" description={`Supported formats listed below\nAutomatic transcoding for video\nImage optimization and thumbnails`} />)
+
+[//]: # (    <InfoCard title="Integrate APIs" description={`Generate API keys\nUse SDKs and examples\nMonitor usage and quotas`} />)
+
+[//]: # (</div>)
+
+
 <Steps>
     <Step>
-        ### Access Project Creation
+        ### Choose Server Location
 
-        From your [dashboard](https://api.rixl.com/), navigate to **[Organization Settings → Projects](https://api.rixl.com/settings/projects)** and click **Create New Project**.
-    </Step>
-
-    <Step>
-        ### Configure Project Settings
-
-        **Project Name**: Choose a descriptive name for easy identification
-
-        **Server Location**: Select your preferred region (currently **EU Central - Germany**)
-        
-        **Video Quality**: Choose optimization level:
-        - **Basic**: Testing and development
-        - **Shorts**: Social content and vertical videos (recommended)
-        - **Pro**: Professional video-on-demand content
-
-        <Callout type="warn">
-            Server location affects performance for your users. Choose the region closest to your audience.
-        </Callout>
+        Server location affects performance for your users. Choose the region closest to your audience.
     </Step>
 
     <Step>

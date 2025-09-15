@@ -1,142 +1,137 @@
 ---
-title: RIXL Cloud
-description: Process, store, and deliver video and image content globally with RIXL.
+title: Introduction
+description: Welcome to the Rixl documentation. Get started with creating projects, uploading media, and managing your account.
 ---
 
-import { Callout } from 'fumadocs-ui/components/callout';
-import { Card, Cards } from 'fumadocs-ui/components/card';
-import { Banner } from 'fumadocs-ui/components/banner';
+import { Callout, InfoCard, InteractiveCard } from "../../components";
 
-RIXL processes and delivers media globally, handling video transcoding, image optimization, and large-scale content distribution.
+## Overview
 
-<Banner variant="success">
-  **New:** RIXL now supports 4K video processing and HDR content delivery!
-</Banner>
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InteractiveCard
+    title="Getting Started"
+    description="Follow a simple guide to create your first project and make your first API call."
+    href="/docs/getting-started"
+    icon="BookOpen"
+  />
+  <InteractiveCard
+    title="Dashboard"
+    description="Learn how to use the dashboard to manage projects and monitor activity."
+    href="/docs/dashboard"
+    icon="Settings"
+  />
+  <InteractiveCard
+    title="Account"
+    description="Manage your account settings, billing, and organization."
+    href="/docs/account"
+    icon="Users"
+  />
+  <InteractiveCard
+    title="Uploads"
+    description="Upload and manage your media content with processing pipelines."
+    href="/docs/uploads"
+    icon="FileText"
+  />
+  <InteractiveCard
+    title="API Reference"
+    description="Complete API documentation with code examples and integration guides."
+    href="/docs/api-reference"
+    icon="Code"
+  />
+</div>
 
-<Callout type="info" title="Global Scale">
-Organizations and creators worldwide use RIXL to manage millions of files and billions of monthly requests across six continents. [Get started](http://dash.rixl.com/login) with your free account today.
-</Callout>
+## Supported Media Formats
 
-## What RIXL Does
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8">
+  <InfoCard
+    title="Video Processing"
+    description="MP4, MOV, AVI, WebM — optimized for streaming (up to 10GB)."
+    icon="Video"
+  />
+  <InfoCard
+    title="Image Optimization"
+    description="JPEG, PNG, WebP, AVIF — compressed with high quality (up to 100MB)."
+    icon="Image"
+  />
+  <InfoCard
+    title="Audio Handling"
+    description="MP3, WAV, FLAC — compatible with cross-platform use (up to 1GB)."
+    icon="Music"
+  />
+</div>
 
-### Media Processing
-Instantly transcodes videos to device-optimized formats, compresses images for best performance without quality loss, and tailors delivery to any bandwidth or screen size in real time.
+## Industry Solutions
 
-### Content Organization
-Offers customizable projects for asset management, enables real-time team collaboration, structures media into searchable feeds, and boosts search accuracy with detailed metadata tagging.
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8">
+  <InfoCard
+    title="Social Platforms"
+    description="Automatic transcoding for device and network optimization."
+    icon="Users"
+  />
+  <InfoCard
+    title="Education & Training"
+    description="Adaptive streaming for smooth learning experiences."
+    icon="GraduationCap"
+  />
+  <InfoCard
+    title="Marketing & Commerce"
+    description="Fast-loading visuals for all channels and devices."
+    icon="ShoppingBag"
+  />
+  <InfoCard
+    title="Enterprise DAM"
+    description="Searchable archives with structured feeds and metadata."
+    icon="Archive"
+  />
+  <InfoCard
+    title="Mobile Apps"
+    description="Global CDN delivery with real-time media processing."
+    icon="Smartphone"
+  />
+  <InfoCard
+    title="Custom Solutions"
+    description="Flexible APIs for specialized workflows and integrations."
+    icon="Settings"
+  />
+</div>
 
-### Global Delivery
-Leverages a global CDN for immediate media access, powers smooth adaptive streaming for continuous playback, and transforms content on demand to meet user criteria instantly.
+## What's Next?
 
-### Developer Integration
-Offer a comprehensive API, deliver official SDKs for major languages (**coming soon**), and monitor events to simplify automation and workflow integration.
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8">
+  <InteractiveCard
+    title="Get Started"
+    description="Set up your account and upload your first media file."
+    href="/docs/getting-started"
+    icon="BookOpen"
+  />
+  <InteractiveCard
+    title="Explore Examples"
+    description="See practical examples and usage patterns."
+    href="/docs/uploads"
+    icon="Code"
+  />
+  <InteractiveCard
+    title="Developer Docs"
+    description="Full API reference and SDK documentation."
+    href="/docs/api-reference/overview"
+    icon="FileText"
+  />
+</div>
 
-## Get Started
-
-<Cards>
-    <Card
-        title="Quick Start"
-        description="Essential setup steps to begin using RIXL"
-        href="/docs/getting-started"
-    />
-    <Card
-        title="Dashboard Guide"
-        description="Learn the web interface for visual management"
-        href="/docs/dashboard/guide"
-    />
-    <Card
-        title="Upload Media"
-        description="Start processing your first videos and images"
-        href="/docs/uploads"
-    />
-    <Card
-        title="API Integration"
-        description="Build with programmatic access"
-        href="/docs/api-reference/overview"
-    />
-</Cards>
-
-## Platform Architecture
-
-RIXL offers two main ways to use the platform, and they work well together:
-
-**Dashboard** – Visually upload, organize, and manage media. Use drag-and-drop uploads, project organization, team collaboration, and analytics to streamline your workflow.
-
-**API Platform** – Integrate applications with REST endpoints. Perform full CRUD operations, process media in batches, and monitor activities in real time.
-
-## Supported Formats
-
-| Media Type | Formats | Max File Size | Output Formats | Notes |
-|------------|---------|---------------|----------------|-------|
-| **Video** | MP4, MOV, AVI, WMV, WebM, MKV | up to 10GB | MP4, WebM, HLS, DASH | Automatic transcoding to web-optimized formats |
-| **Images** | JPEG, PNG, GIF, WebP, AVIF, HEIC, TIFF | up to 100MB | JPEG, PNG, WebP, AVIF | Smart compression with quality preservation |
-| **Audio** | MP3, WAV, FLAC, AAC, OGG | up to 1GB | MP3, AAC, OGG | Audio extraction from video also supported |
-
-## Use Cases
-
-RIXL serves a wide range of projects across different industries:
-
-<Cards>
-    <Card
-        title="Social Media Platforms"
-        description="Handle user video uploads with automatic transcoding and optimization for different devices and network conditions."
-    />
-    <Card
-        title="E-Learning Portals"
-        description="Stream lectures and educational content with adaptive bitrate streaming for seamless learning experiences."
-    />
-    <Card
-        title="Marketing Campaigns"
-        description="Power promotional visuals with optimized images and videos that load instantly across all channels."
-    />
-    <Card
-        title="Enterprise Training"
-        description="Organize large media libraries with searchable metadata and team collaboration features."
-    />
-    <Card
-        title="Digital Asset Management"
-        description="Manage content archives with structured feeds and real-time processing capabilities."
-    />
-    <Card
-        title="Mobile Applications"
-        description="Support instant image and video processing at scale with global CDN delivery for optimal user experience."
-    />
-</Cards>
-
-## Next Steps
-
-Ready to get started? Choose the option that fits your needs:
-
-<Cards>
-    <Card
-        title="Create Account & First Project"
-        description="Get set up with the essentials"
-        href="/docs/getting-started"
-    />
-    <Card
-        title="Explore Examples"
-        description="See practical upload and integration examples"
-        href="/docs/uploads"
-    />
-    <Card
-        title="View API Documentation"
-        description="Complete reference for developers"
-        href="/docs/api-reference/overview"
-    />
-</Cards>
-
-<Callout type="tip" title="Need Help?">
-Contact support via chat or email at [support@rixl.com](mailto:support@rixl.com).
-</Callout>
+<div className="mt-12">
+  <Callout type="tip" title="Need Support?">
+    Reach out to our team via chat or email at [support@rixl.com](mailto:support@rixl.com).
+  </Callout>
+</div>
 
 ## Open Source
 
-Learn more about our development process and contribute to the RIXL ecosystem. You can find our repositories on GitHub and explore our open source projects.
+Learn more about our development process and contribute to the Rixl ecosystem. Visit our GitHub organization to explore projects and get involved.  
 
 <Callout type="info">
-Visit our GitHub organization at [github.com/rixl-cloud](https://github.com/rixl-cloud) to see all our projects and contribute.
+Check out [github.com/rixl-cloud](https://github.com/rixl-cloud) for all repositories and contributions.
 </Callout>
 
 ---
 
-*This documentation is updated regularly. For the latest API features and changes, visit [api.rixl.com/docs](https://api.rixl.com/docs).*
+*This documentation is updated regularly. For the latest features and API changes, visit [api.rixl.com/docs](https://api.rixl.com/docs).*

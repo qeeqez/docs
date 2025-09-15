@@ -3,8 +3,10 @@
   "description": "Complete guide to the RIXL media processing platform",
   "pages": [
     "getting-started",
-    "uploads", 
+    "account",
     "dashboard",
-    "api-reference"
+    "uploads",
+    "api-reference",
+    "support"
   ]
 }

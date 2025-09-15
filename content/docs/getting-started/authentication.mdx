@@ -3,56 +3,52 @@ title: Authentication
 description: Set up secure API access for your RIXL projects.
 ---
 
-import { Callout } from 'fumadocs-ui/components/callout';
-import { Card, Cards } from 'fumadocs-ui/components/card';
-import { Steps, Step } from 'fumadocs-ui/components/steps';
-import { Banner } from 'fumadocs-ui/components/banner';
-import { Files, File, Folder } from 'fumadocs-ui/components/files';
+import { Callout, InteractiveCard } from '../../../components';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-To keep your projects secure, RIXL uses API keys. Each project gets its own key for accessing the RIXL API.
+To keep your projects secure, RIXL uses API keys for authentication. Each project gets its own key for accessing the RIXL API.
 
-<Banner variant="warning">
-  **Security Notice:** API keys are shown only once at creation. Store them securely and never share them publicly.
-</Banner>
-
-<Callout type="info">
-API keys are project-specific and provide secure access to upload, manage, and deliver media within that project's scope.
+<Callout type="warning">
+API keys are shown only once at creation. Store them securely and never share them publicly.
 </Callout>
+
+Authentication is required to access the RIXL Cloud APIs. API keys are project-specific and provide secure access to upload, manage, and deliver media within that project's scope.
 
 ## Understanding API Keys
 
-API keys are unique to each project and let you securely upload, manage, and deliver media for that project.
+API keys are unique identifiers that let you securely upload, manage, and deliver media for a specific project. You'll create your API key after setting up your first project.
 
-<Callout type="info">
-You'll create your API key after setting up your first project. This page explains how authentication works in RIXL.
-</Callout>
-
-## How API Keys Work
-
+**Key characteristics:**
 - **Project-Scoped**: Each API key belongs to a specific project
-- **Secure Access**: Keys provide authenticated access to the RIXL API
+- **Secure Access**: Keys provide authenticated access to the RIXL API  
 - **Configurable**: Set expiration dates and permissions for enhanced security
 - **Single-Use Display**: Keys are only shown once at creation for security
 
 ## Creating an API Key
 
-After setting up your project, you can create API keys by following these steps:
-
 <Steps>
 <Step>
-Navigate to your [project dashboard](https://api.rixl.com/)
+**Navigate to Project Settings**
+
+Go to your project dashboard and select "API Keys" from the settings menu.
 </Step>
+
 <Step>
-Go to **Quick Actions** or **[Organization Settings → API Keys](https://api.rixl.com/settings/api-keys)**
+**Generate New Key**
+
+Click "Create API Key" and configure any security settings like expiration dates.
 </Step>
+
 <Step>
-Click **Create API Key**
+**Save Your Key Immediately**
+
+Copy and store the key securely - it will only be shown once.
 </Step>
+
 <Step>
-Configure the key name and expiration
-</Step>
-<Step>
-Copy and securely store the generated key
+**Test the Key**
+
+Verify your key works by making a test API request.
 </Step>
 </Steps>
 
@@ -78,48 +74,57 @@ curl -X POST "https://api.rixl.com/v1/images/upload/init" \
 
 ## Security Best Practices
 
+**API Key Management:**
 - Keep API keys secure and rotate them regularly
-- Never include keys in client-side code
+- Never include keys in client-side code or public repositories
 - Use environment variables for key storage
 - Set appropriate expiration dates
 - Monitor key usage for suspicious activity
 
+**Authentication Guidelines:**
+- Use keys for server-to-server authentication only
+- Create limited-scope API keys when possible
+- Rotate keys periodically as part of security maintenance
+- Revoke compromised keys immediately
+
 ## Next Steps
 
-Now that authentication is set up, you can:
+Now that authentication is set up, you can start using the RIXL platform:
 
-<Cards>
-  <Card 
+<div className="grid gap-6 sm:grid-cols-3 mt-6">
+  <InteractiveCard 
     title="Create Your First Project" 
     description="Set up a project container for your media"
     href="/docs/getting-started/create-project"
   />
-  <Card 
+  <InteractiveCard 
     title="Upload Your First Media" 
     description="Start processing content"
     href="/docs/uploads"
   />
-  <Card 
+  <InteractiveCard 
     title="Explore the Dashboard" 
     description="Learn the web interface"
     href="/docs/dashboard/guide"
   />
-</Cards>
+</div>
 
-<Cards>
-    <Card
-        title="Upload Basics"
-        description="Start uploading content with your API key"
-        href="/docs/uploads/index"
-    />
-    <Card
-        title="Create Feed Posts"
-        description="Learn how to create posts for your feeds"
-        href="/docs/uploads/posts"
-    />
-    <Card
-        title="API Reference"
-        description="Complete documentation of all authenticated endpoints"
-        href="/docs/api-reference"
-    />
-</Cards>
+**Additional Resources:**
+
+<div className="grid gap-6 sm:grid-cols-3 mt-6">
+  <InteractiveCard
+    title="Upload Basics"
+    description="Start uploading content with your API key"
+    href="/docs/uploads/index"
+  />
+  <InteractiveCard
+    title="Create Feed Posts"
+    description="Learn how to create posts for your feeds"
+    href="/docs/uploads/posts"
+  />
+  <InteractiveCard
+    title="API Reference"
+    description="Complete documentation of all authenticated endpoints"
+    href="/docs/api-reference"
+  />
+</div>

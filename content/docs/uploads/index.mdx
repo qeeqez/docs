@@ -1,122 +1,27 @@
 ---
-title: Upload Guide
-description: Learn how to upload and process media content with RIXL.
+title: Uploads
+description: Upload and process images, videos, and posts for your projects.
 ---
 
-import { Callout } from 'fumadocs-ui/components/callout';
-import { Steps, Step } from 'fumadocs-ui/components/steps';
-import { Cards, Card } from 'fumadocs-ui/components/card';
-import { Banner } from 'fumadocs-ui/components/banner';
+import { InteractiveCard } from '../../../components';
 
-RIXL's upload system uses signed URLs for secure, direct-to-cloud uploads while maintaining full control over processing and organization.
-
-<Banner variant="success">
-  **New:** Batch uploads now available! Upload multiple files at once for improved efficiency.
-</Banner>
-
-<Callout type="info">
-Before uploading media, make sure you have [created a project](/docs/getting-started/create-project) and [set up authentication](/docs/getting-started/authentication).
-</Callout>
-
-## Upload Flow Overview
-
-The upload process is consistent across all media types (images, videos, and posts) with specific parameters for each:
-
-<Steps>
-<Step>
-**Request Signed URL** - Get a secure upload URL with processing configuration
-</Step>
-<Step>
-**Upload to Cloud Storage** - Direct upload from your application to our cloud storage
-</Step>
-<Step>
-**Monitor Processing** - Track status and receive notifications when complete
-</Step>
-</Steps>
-
-## Key Benefits
-
-- **Enhanced Security**: Signed URLs protect credentials and control access
-- **Direct Upload**: Files transfer directly to cloud storage for optimal performance  
-- **Flexible Processing**: Configure transcoding, optimization, and metadata during upload
-- **Real-time Status**: Monitor processing progress with webhooks and API polling
-
-## Upload Types
-
-Choose the appropriate upload method for your content:
-
-<Cards>
-    <Card
-        title="Images"
-        description="Upload and optimize images with transformations"
-        href="/docs/uploads/images"
-    />
-    <Card
-        title="Videos"
-        description="Upload videos with automatic transcoding and quality optimization"
-        href="/docs/uploads/videos"
-    />
-    <Card
-        title="Feed Posts"
-        description="Create social media-style posts combining media with metadata"
-        href="/docs/uploads/posts"
-    />
-</Cards>
-
-## Technical Implementation
-
-### 1. Request Signed URL
-
-Initialize the upload with your desired processing configuration:
-
-```bash
-curl -X POST "https://api.rixl.com/v1/{media_type}/upload/init" \
-  -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "file_name": "my-file.mp4",
-    "video_quality": "shorts",
-    "image_format": "jpg"
-  }'
-```
-
-### 2. Upload to Storage
-
-Use the returned signed URL for direct upload:
-
-```bash
-curl -X PUT "{presigned_url}" \
-  -T "/path/to/your/file" \
-  -H "Content-Type: {content_type}"
-```
-
-### 3. Complete Processing
-
-Notify RIXL to begin processing:
-
-```bash
-curl -X POST "https://api.rixl.com/v1/{media_type}/upload/complete" \
-  -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
-  -H "Content-Type: application/json" \
-  -d '{"video_id": "YOUR_VIDEO_ID"}'
-```
-
-## Next Steps
-
-<Cards>
-    <Card
-        title="Start with Images"
-        description="Quick uploads with instant transformations"
-        href="/docs/uploads/images"
-    />
-    <Card
-        title="Upload Videos"
-        description="Comprehensive video processing pipeline"
-        href="/docs/uploads/videos"
-    />
-    <Card
-        title="API Reference"
-        description="Complete endpoint documentation"
-        href="/docs/api-reference/overview"
-    />
-</Cards>
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InteractiveCard
+    title="Images"
+    description="Upload and automatically optimize images for web delivery."
+    href="/docs/uploads/images"
+    icon="Image"
+  />
+  <InteractiveCard
+    title="Video Processing"
+    description="Upload videos with automatic transcoding and quality optimization."
+    href="/docs/uploads/video-processing"
+    icon="Video"
+  />
+  <InteractiveCard
+    title="Posts"
+    description="Create social media-style posts with integrated media uploads."
+    href="/docs/uploads/posts"
+    icon="FileText"
+  />
+</div>

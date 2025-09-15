@@ -2,13 +2,11 @@
   "title": "Dashboard",
   "description": "Visual interface for managing projects and media",
   "pages": [
+    "index",
     "guide",
-    "project",
+    "projects",
     "media",
-    "feeds",
-    "api-keys",
-    "team-member",
-    "billing",
-    "account-settings"
+    "feeds", 
+    "team"
   ]
 }
