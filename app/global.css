@@ -4,6 +4,13 @@
 
 :root {
     --sidebar-height: 100vh;
+    --color-fd-background: rgb(255, 255, 255);
+    --color-fd-card: rgb(255, 255, 255);
+}
+
+.dark {
+    --color-fd-background: rgb(14, 12, 11);
+    --color-fd-card: rgb(14, 12, 11);
 }
 
 @theme {
@@ -14,6 +21,23 @@
   --width-sidebar: calc(var(--spacing) * 64);
   --padding-sidebar: calc(var(--spacing) * 4);
   --spacing-sidebar-top: calc(var(--height-header) + var(--padding-sidebar));
+
+    --color-primary: rgb(255, 164, 28);
+    --color-primary-light: rgb(255, 164, 28);
+    --color-primary-dark: rgb(255, 164, 28);
+    --color-background-light: rgb(255, 255, 255);
+    --color-background-dark: rgb(14, 12, 11);
+    --gray-50: rgb(250, 247, 243);
+    --gray-100: rgb(245, 243, 238);
+    --gray-200: rgb(230, 227, 223);
+    --gray-300: rgb(213, 211, 206);
+    --gray-400: rgb(166, 163, 159);
+    --gray-500: rgb(119, 116, 112);
+    --gray-600: rgb(87, 85, 80);
+    --gray-700: rgb(70, 67, 63);
+    --gray-800: rgb(45, 42, 38);
+    --gray-900: rgb(30, 27, 23);
+    --gray-950: rgb(17, 15, 11);
 }
 
 @layer utilities {

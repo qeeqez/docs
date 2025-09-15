@@ -6,6 +6,7 @@ import {Footer} from "@/components/layout/footer/footer";
 import {Header} from "@/components/layout/header/header";
 import {cn} from "@/lib/cn";
 import type {BaseLayoutProps, NavOptions} from "../shared/index";
+import {Background} from "@/components/layout/home/background";
 
 export interface HomeLayoutProps extends BaseLayoutProps {
   nav?: Partial<
@@ -41,6 +42,7 @@ export function HomeLayout(props: HomeLayoutProps & HTMLAttributes<HTMLElement>)
     document.documentElement.style.setProperty("--sidebar-height", `${height}px`);
   }, []);
 
+  // TODO rework throttle update to prevent flickering
   useEffect(() => {
     const throttledUpdate = () => {
       if (animationFrameId.current) {
@@ -76,6 +78,7 @@ export function HomeLayout(props: HomeLayoutProps & HTMLAttributes<HTMLElement>)
   return (
     <NavProvider transparentMode={nav?.transparentMode}>
       <div id="nd-home-layout" {...rest} className={cn("relative z-10 flex min-h-svh flex-col", rest.className)}>
+        <Background />
         <Header links={links} nav={nav} searchToggle={searchToggle} i18n={i18n} githubUrl={githubUrl} ref={headerRef}/>
         <div className="w-full max-w-[92rem] mx-auto lg:px-8">
           {props.children}
