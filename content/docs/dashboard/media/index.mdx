@@ -1,40 +1,39 @@
 ---
-title: Media Management
-description: Upload, organize, and manage your videos and images.
+title: Media Library
+description: Your creative command center. Upload, optimize, and organize videos and images with RIXL's intelligent processing.
 ---
 
 import { Callout, InteractiveCard, InfoCard } from "../../../../components";
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
+Transform your raw media into web-optimized assets that load instantly and look stunning everywhere. The media library is where creativity meets cutting-edge optimization technology.
 
-Upload and manage videos and images through the RIXL dashboard. All media is automatically processed and optimized for delivery.
-
-## Quick Actions
+## What You Can Do
 
 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
   <InteractiveCard
-    title="Upload Videos"
-    description="Upload and transcode videos for web delivery with automatic optimization."
+    title="Video Processing"
+    description="Upload any video format and get back multiple quality levels with adaptive streaming."
     href="/docs/dashboard/media/upload-videos"
     icon="Video"
   />
   <InteractiveCard
-    title="Upload Images"
-    description="Add and optimize images with automatic compression and format selection."
+    title="Image Optimization"
+    description="Transform images into lightning-fast AVIF files with smart placeholders and instant loading."
     href="/docs/dashboard/media/upload-images"
     icon="Image"
   />
   <InteractiveCard
-    title="Organize Media"
-    description="Manage your media library and organize content effectively."
+    title="Library Organization"
+    description="Keep your creative assets organized with powerful search, filtering, and categorization tools."
     href="/docs/dashboard/media/organize-media"
     icon="FolderIcon"
   />
 </div>
 
-<Callout type="info">
-You must have an active project selected to upload media. Media belongs to the currently selected project.
+<Callout type="tip">
+**Quick tip:** Make sure you have a project selected before uploading. Each project keeps its media organized separately for better team collaboration and access control.
 </Callout>
 
 <Tabs items={['Upload & Processing', 'Media Library', 'Organization & Tools']}>

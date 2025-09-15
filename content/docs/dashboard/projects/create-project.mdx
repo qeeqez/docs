@@ -33,7 +33,7 @@ You'll need to create a project before uploading any media.
     <Step>
         ### Access Project Creation
 
-        From your [dashboard](https://api.rixl.com/), navigate to **[Organization Settings → Projects](https://api.rixl.com/settings/projects)** and click **Create New Project**.
+        From your dashboard, navigate to **Settings → Projects** and click **Create New Project**.
         
         [//]: # ([IMAGE NEEDED: Screenshot of project creation interface])
     </Step>
@@ -45,10 +45,14 @@ You'll need to create a project before uploading any media.
 
         **Server Location**: Select your preferred region (default: **EU Central - Germany**)
         
-        **Video Quality**: Choose optimization level (see [Video Processing table](#video-optimization) for detailed comparison):
+        **Video Quality**: Choose optimization level:
         - **Basic**: Testing and development
         - **Shorts**: Social content and vertical videos (recommended)
         - **Pro**: Professional video-on-demand content
+        
+        <Callout type="info">
+            For detailed tier specifications, see [Video Processing documentation](/docs/uploads/video-processing/quality-tiers).
+        </Callout>
 
         <Callout type="warn">
             Server location affects performance for your users. Choose the region closest to your audience.
@@ -100,27 +104,22 @@ You'll need to create a project before uploading any media.
     </Tab>
     
     <Tab value="Video Optimization">
-        ### Video Processing Tiers
+        ### Video Processing Overview
         
-        | Tier | Quality | Resolution | Use Case | Features |
-        |------|---------|------------|----------|----------|
-        | **Basic** | Standard | Up to 720p | Development & Testing | Basic transcoding, standard quality |
-        | **Shorts** | Mobile Optimized | Up to 1080p | Social Media Content | Fast processing, mobile-first optimization |
-        | **Pro** | Professional | Up to 4K | Video-on-Demand | Multiple quality levels, advanced analytics |
+        Choose the right processing tier for your content:
         
-        ### Processing Features by Tier
+        - **Basic**: Standard quality, up to 720p resolution
+        - **Shorts**: Mobile optimized, up to 1080p resolution  
+        - **Pro**: Professional quality, up to 4K resolution
         
-        | Feature | Basic | Shorts | Pro |
-        |---------|-------|--------|-----|
-        | Thumbnail Generation | ✓ | ✓ | ✓ |
-        | Multiple Quality Levels | - | ✓ | ✓ |
-        | Adaptive Bitrate | - | ✓ | ✓ |
-        | Advanced Analytics | - | - | ✓ |
-        | Custom Watermarks | - | - | ✓ |
-        | Priority Processing | - | ✓ | ✓ |
+        ### Key Features by Tier
+        
+        - **Basic**: Thumbnail generation, standard processing
+        - **Shorts**: Fast processing, mobile-first optimization, adaptive streaming
+        - **Pro**: Multiple quality levels, advanced analytics, priority processing
         
         <Callout type="info">
-            You can upgrade your video optimization tier at any time from project settings.
+            For complete specifications and feature comparisons, see [Video Processing documentation](/docs/uploads/video-processing).
         </Callout>
     </Tab>
     

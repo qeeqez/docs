@@ -5,7 +5,6 @@ description: Upload and process video content through the dashboard
 
 import { Callout, InfoCard} from '../../../../components';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 Upload and manage videos through the RIXL dashboard with automated transcoding and project integration.
 
@@ -44,32 +43,13 @@ Track transcoding progress with real-time status updates
 
 Choose the right processing tier for your content during upload:
 
-<Tabs items={['Basic', 'Shorts', 'Pro']}>
-    <Tab value="Basic">
-        **Standard Web Content**
-        
-        - 720p HD, 480p SD, 240p Mobile
-        - ~1x real-time processing
-        - Bandwidth efficient for general use
-        - Best for tutorials and presentations
-    </Tab>
-    <Tab value="Shorts">
-        **Mobile-Optimized Content**
-        
-        - 1080p Full HD with 60fps support
-        - ~1.5x real-time processing  
-        - Optimized for vertical/social content
-        - Best for mobile-first videos
-    </Tab>
-    <Tab value="Pro">
-        **Professional Quality**
-        
-        - 4K Ultra HD with full resolution support
-        - ~2-3x real-time processing
-        - Premium quality with additional renditions
-        - Best for professional broadcasts
-    </Tab>
-</Tabs>
+- **Basic**: Standard web content (720p, efficient processing)
+- **Shorts**: Mobile-optimized content (1080p, 60fps support)  
+- **Pro**: Professional quality (4K support, premium features)
+
+<Callout type="info">
+    For detailed specifications, features, and technical comparisons, see [Video Processing Quality Tiers](/docs/uploads/video-processing/quality-tiers).
+</Callout>
 
 ## Dashboard Integration
 
