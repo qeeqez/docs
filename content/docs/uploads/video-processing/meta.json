@@ -1,0 +1,10 @@
+{
+  "title": "Video Processing",
+  "pages": [
+    "index",
+    "quality-tiers",
+    "supported-formats",
+    "upload-implementation",
+    "monitoring-status"
+  ]
+}

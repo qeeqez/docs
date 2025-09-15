@@ -1,0 +1,177 @@
+---
+title: Upload Videos
+description: Upload and process video content through the dashboard
+---
+
+import { Callout, InfoCard} from '../../../../components';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+Upload and manage videos through the RIXL dashboard with automated transcoding and project integration.
+
+<Callout type="info">
+    For detailed technical specifications about video processing, quality tiers, and supported formats, see the complete [video processing documentation](/docs/uploads/video-processing).
+</Callout>
+
+## Dashboard Upload Workflow
+
+### Quick Upload Process
+
+<Steps>
+<Step>
+**Access Video Upload**
+
+Navigate to your project dashboard → Media → Upload Videos
+</Step>
+<Step>
+**Select Quality Tier**
+
+Choose processing level based on your content needs: Basic, Shorts, or Pro
+</Step>
+<Step>
+**Configure Video Settings**
+
+Set title, description, and project-specific metadata
+</Step>
+<Step>
+**Monitor Processing**
+
+Track transcoding progress with real-time status updates
+</Step>
+</Steps>
+
+## Quality Tier Selection
+
+Choose the right processing tier for your content during upload:
+
+- **Basic**: Standard web content (720p, efficient processing)
+- **Shorts**: Mobile-optimized content (1080p, 60fps support)  
+- **Pro**: Professional quality (4K support, premium features)
+
+<Callout type="info">
+    For detailed specifications, features, and technical comparisons, see [Video Processing Quality Tiers](/docs/uploads/video-processing/quality-tiers).
+</Callout>
+
+## Dashboard Integration
+
+### Project Management
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-6">
+  <InfoCard 
+    title="Project Assignment" 
+    description="Organize videos by project automatically"
+    icon="FolderPlus"
+  />
+  <InfoCard 
+    title="Processing Queue" 
+    description="Monitor transcoding progress in real-time"
+    icon="Clock"
+  />
+  <InfoCard 
+    title="Team Access" 
+    description="Share videos with team members"
+    icon="Users"
+  />
+</div>
+
+### Processing Status Tracking
+
+**Dashboard Processing States:**
+
+<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-6">
+  <InfoCard
+    title="Uploaded"
+    description="Video queued for processing"
+    icon="Upload"
+  />
+  <InfoCard
+    title="Processing"
+    description="Transcoding in progress"
+    icon="Loader"
+  />
+  <InfoCard
+    title="Ready"
+    description="All qualities available"
+    icon="CheckCircle"
+  />
+  <InfoCard
+    title="Failed"
+    description="Processing error occurred"
+    icon="AlertTriangle"
+  />
+</div>
+
+### Media Library Integration
+
+**Organization Features:**
+- **Smart Categorization** - Automatic sorting by project, date, and content type
+- **Thumbnail Management** - Custom thumbnails or auto-generated options
+- **Batch Operations** - Bulk editing, moving, and tagging capabilities
+- **Search & Filter** - Find videos quickly using metadata and processing status
+
+**Dashboard Views:**
+- **Processing Queue** - Monitor transcoding progress across all uploads
+- **Video Gallery** - Visual browsing with playback previews
+- **Analytics View** - Processing time and file size analytics
+
+## Usage & Integration
+
+### Content Creation Workflow
+
+<Steps>
+<Step>
+**Upload Videos**
+
+Add videos through dashboard with quality tier selection
+</Step>
+<Step>
+**Monitor Processing**
+
+Track transcoding progress in real-time processing queue
+</Step>
+<Step>
+**Organize Content**
+
+Use [media organization](/docs/dashboard/media/organize-media) to structure your library
+</Step>
+<Step>
+**Create Feeds**
+
+Add processed videos to [content feeds](/docs/dashboard/feeds) for distribution
+</Step>
+</Steps>
+
+### Export & Sharing Options
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-6">
+  <InfoCard 
+    title="Streaming URLs" 
+    description="Adaptive streaming for all devices"
+    icon="Play"
+  />
+  <InfoCard 
+    title="Embed Codes" 
+    description="Ready-to-use video player embeds"
+    icon="Code"
+  />
+  <InfoCard 
+    title="API Access" 
+    description="Programmatic video management"
+    icon="Database"
+  />
+  <InfoCard 
+    title="Download Links" 
+    description="Original and processed file downloads"
+    icon="Download"
+  />
+</div>
+
+## Technical Processing
+
+All uploaded videos receive automated processing across multiple quality levels. For complete technical details about:
+
+- **Quality tiers and specifications**
+- **Supported formats and encoding settings**
+- **Processing pipeline and adaptive streaming**
+- **Performance optimization and troubleshooting**
+
+See the comprehensive [video processing documentation](/docs/uploads/video-processing).

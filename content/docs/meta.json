@@ -2,9 +2,9 @@
   "title": "Documentation",
   "description": "Complete guide to the RIXL media processing platform",
   "pages": [
-    "getting-started",
-    "uploads", 
-    "dashboard",
+    "account",
+    "dashboard", 
+    "uploads",
     "api-reference"
   ]
 }
