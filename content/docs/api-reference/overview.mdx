@@ -1,41 +1,40 @@
 ---
-title: API Overview
-description: Complete guide to the RIXL API endpoints and authentication.
+title: Developer API
+description: Integrate RIXL's media optimization power directly into your applications. Clean REST APIs, comprehensive SDKs, and everything you need to build amazing media experiences.
 ---
 
-import { Callout, Tabs, Tab } from '../../../components';
+import { Callout } from '../../../components';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 
-Build powerful media workflows with RIXL's RESTful API. Handle uploads, processing, and global delivery programmatically.
 
-// TODO: Add API endpoint examples and response schemas.
+The RIXL API puts professional media optimization at your fingertips. Whether you're building a social platform, e-commerce site, or mobile app, our RESTful API makes it easy to upload, process, and deliver media at scale.
 
-<Callout type="info" title="Prerequisites">
-  Set up [authentication](/docs/getting-started/authentication), [create a project](/docs/getting-started/create-project), and [generate API keys](/docs/account/api-access/keys).
+<Callout type="tip" title="Ready to integrate?">
+  First, [grab your API keys](/docs/account/api-access/create-key) and [set up a project](/docs/dashboard/projects). Then you're just a few lines of code away from optimized media delivery.
 </Callout>
 
-### API Endpoint
+## API Fundamentals
 
+**Base URL**
 ```
 https://api.rixl.com/v1
 ```
 
-### Authentication
-
-Include your project API key in the request header:
-
+**Authentication**
+Every request needs your project API key in the header:
 ```
 X-API-Key: YOUR_PROJECT_API_KEY_HERE
 ```
 
-### Core Resources
+## What You Can Build
 
-**Projects** - Organize media and control access with project management. Create and manage projects for media organization and team access control.
+**Smart Media Uploads** — Drop any video or image into RIXL and get back multiple optimized formats, perfect for any device or connection.
 
-**Media Upload** - Upload videos and images with automatic transcoding and format conversion. Process videos and images with intelligent optimization.
+**Dynamic Content Feeds** — Create social-style feeds that automatically update as you add content. Perfect for user-generated content platforms.
 
-**Feeds** - Create structured content collections for dynamic delivery. Build social media-style experiences with organized content.
+**Real-time Processing** — Track upload progress, monitor transcoding status, and get notified when your media is ready for delivery.
 
-**Processing** - Monitor transcoding status and retrieve processed assets. Track video processing progress and access multiple quality renditions.
+**Global Media Delivery** — Access your optimized assets through our global CDN with automatic edge caching and real-time transformations.
 
 ### Getting Started
 
@@ -179,11 +178,11 @@ API errors include HTTP status codes and detailed error messages:
 
 API requests are rate-limited based on your subscription plan:
 
-| Plan | Requests per Hour | Burst Limit |
-|------|-------------------|-------------|
-| Free | 100 | 10 per minute |
-| Pro | 1,000 | 50 per minute |
-| Enterprise | Custom | Custom |
+| Plan       | Requests per Hour | Burst Limit   |
+|------------|-------------------|---------------|
+| Free       | 100               | 10 per minute |
+| Pro        | 1,000             | 50 per minute |
+| Enterprise | Custom            | Custom        |
 
 <Callout type="warning">
   Each subscription plan has its own API call limits. Check your usage in the dashboard to avoid interruptions.
@@ -191,16 +190,16 @@ API requests are rate-limited based on your subscription plan:
 
 ### Status Codes
 
-| Code | Meaning |
-|------|---------|
-| 200 | Success |
-| 201 | Created |
-| 400 | Bad Request |
-| 401 | Unauthorized |
-| 403 | Forbidden |
-| 404 | Not Found |
-| 429 | Rate Limited |
-| 500 | Server Error |
+| Code | Meaning      |
+|------|--------------|
+| 200  | Success      |
+| 201  | Created      |
+| 400  | Bad Request  |
+| 401  | Unauthorized |
+| 403  | Forbidden    |
+| 404  | Not Found    |
+| 429  | Rate Limited |
+| 500  | Server Error |
 
 ### SDKs and Libraries
 
