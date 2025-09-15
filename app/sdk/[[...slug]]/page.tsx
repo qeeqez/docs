@@ -10,7 +10,7 @@ import {
     PageTOCPopover,
     PageTOCPopoverContent,
     PageTOCPopoverTrigger
-} from "@/components/layout/docs/page-client";
+} from "@/components/layout/sdk/page/page-toc";
 import {PageTOCItems, PageTOCPopoverItems, PageTOCTitle} from "@/components/layout/docs/page";
 import {TOCProvider} from "@/components/ui/toc";
 
