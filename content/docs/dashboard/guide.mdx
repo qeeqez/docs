@@ -1,0 +1,267 @@
+---
+title: Guide
+description: Comprehensive guide to navigating the RIXL dashboard
+---
+
+import { Callout } from 'fumadocs-ui/components/callout'
+import { Card, Cards } from 'fumadocs-ui/components/card'
+import { Step, Steps } from 'fumadocs-ui/components/steps'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+
+This guide covers the RIXL dashboard interface and its core features for managing your media projects efficiently.
+
+The RIXL dashboard is organized into two main areas:
+
+<Cards>
+  <Card title="Organization Settings" description="Manage projects, team, API keys, and billing">
+    Central hub for organization-wide management including projects, team members, API keys, and billing information.
+  </Card>
+  <Card title="Personal Settings" description="Manage your individual account">
+    Individual account management including profile settings and personal preferences.
+  </Card>
+</Cards>
+
+## Organization Management
+
+### Projects Section
+
+Access all [projects](https://api.rixl.com/settings/projects) within your organization and create new ones when needed.
+
+<Callout type="info">
+For detailed project creation steps, see the [Getting Started guide](/docs/getting-started/create-project).
+</Callout>
+
+**Project List Features:**
+- View all organization projects
+- Quick access to [project settings](https://api.rixl.com/settings/project)
+- Project status and region information
+
+**Per-Project Management:**
+- Rename projects
+- Modify video optimization settings
+- Delete projects (with confirmation)
+
+### Project Dashboard
+
+When you select a project, you'll access comprehensive project management tools:
+
+<Tabs items={['Overview', 'Team', 'API Keys', 'Analytics']}>
+<Tab value="Overview">
+**Assets Summary**
+- Total videos and images uploaded
+- Storage usage statistics
+- Processing status overview
+</Tab>
+<Tab value="Team">
+**Team Management**
+- Current project members
+- [Invite new team members](https://api.rixl.com/settings/team/members)
+- Manage member roles and permissions
+</Tab>
+<Tab value="API Keys">
+**API Key Management**
+- View active [API keys](https://api.rixl.com/settings/api-keys) for this project
+- Create new project-specific keys
+- Manage key permissions and expiration
+
+<Callout type="info">
+For detailed API key management, see [API Keys documentation](/docs/dashboard/api-keys).
+</Callout>
+</Tab>
+<Tab value="Analytics">
+**Usage Analytics**
+- Upload activity and trends
+- Performance metrics
+- Resource usage insights
+</Tab>
+</Tabs>
+
+## Media Management
+
+Your project's media is organized into videos and images, each with dedicated management tools.
+
+<Callout type="info">
+For comprehensive media management details, see [Media Management](/docs/dashboard/media).
+</Callout>
+
+### Videos
+
+**Upload Process:**
+1. Click **[Upload Video](https://api.rixl.com/videos)** in the Videos section
+2. Select files and configure basic settings
+3. Monitor processing status (Uploading → Processing → Ready)
+
+**Management Features:**
+- Thumbnail previews and metadata
+- Processing status monitoring
+- Share URLs and embed codes
+- Analytics and view counts
+
+### Images
+
+**Upload and Processing:**
+1. Click **[Upload Image](https://api.rixl.com/images)** in the Images section  
+2. Configure settings and upload files
+3. Images are immediately available with transformation options
+
+**Key Features:**
+- Real-time URL-based transformations
+- Automatic optimization and format conversion
+- CDN delivery for optimal performance
+
+## URL Transformation Parameters
+
+| Parameter | Query Name | Example                             |
+|-----------|------------|-------------------------------------|
+| Format    | `format`   | `?format=webp`                      |
+| Quality   | `quality`  | `?quality=80`                       |
+
+<Callout type="tip">
+Use image transformations to optimize delivery without storing multiple versions.
+</Callout>
+
+### Feeds Section
+
+Create and manage dynamic [content feeds](https://api.rixl.com/feeds) for your applications.
+
+#### Feed Creation Process
+
+<Steps>
+<Step>
+Click **[Create Feed](https://api.rixl.com/feeds)** button
+</Step>
+<Step>
+Configure feed settings:
+- Enter feed name
+- Select feed type (video, image, mixed)
+- Choose content sources
+</Step>
+<Step>
+Set feed visibility and permissions
+</Step>
+<Step>
+Click **Create** to generate feed
+</Step>
+</Steps>
+
+## API & Security
+
+### API Keys Management
+
+<Callout type="warning">
+API keys provide access to your RIXL resources. Keep them secure and rotate regularly.
+</Callout>
+
+#### Creating API Keys
+
+<Steps>
+<Step>
+Click **Create API Key** button
+</Step>
+<Step>
+Enter key name and description
+</Step>
+<Step>
+Select appropriate permissions
+</Step>
+<Step>
+Set expiration date (optional)
+</Step>
+<Step>
+Click **Create** and copy the key immediately
+</Step>
+</Steps>
+
+<Callout type="error">
+API keys are only displayed once during creation. Store them securely.
+</Callout>
+
+**Key Management Features:**
+- Usage statistics and monitoring
+- Permission management
+- Rate limit configuration
+- Key revocation
+
+## Account & Team Management
+
+### Personal Account Settings
+
+<Tabs items={['Profile', 'Security', 'Organizations']}>
+<Tab value="Profile">
+**Profile Management**
+- Update personal information
+- Change display preferences
+- Configure notification settings
+</Tab>
+<Tab value="Security">
+**Security Settings**
+- Password management
+- Active session monitoring
+- Account activity logs
+</Tab>
+<Tab value="Organizations">
+**Organization Management**
+- View current memberships
+- Set default organization
+- Manage pending invitations
+</Tab>
+</Tabs>
+
+### Team & Organization
+
+**Team Management:**
+- [Invite and manage team members](https://api.rixl.com/settings/team/members)
+- Assign roles and permissions  
+- [Organization settings](https://api.rixl.com/settings/team/general) and branding
+
+**Billing & Usage:**
+- [Subscription plan management](https://api.rixl.com/settings/billing)
+- Usage monitoring and analytics
+- Payment history and invoices
+
+<Callout type="info">
+For detailed team and billing management, see [Team Management](/docs/dashboard/team-member) and [Billing](/docs/dashboard/billing) documentation.
+</Callout>
+
+## Quick Actions
+
+The dashboard provides several shortcuts for common tasks:
+
+- **[Upload Media](https://api.rixl.com/videos)**: Direct access from project dashboard
+- **[Create API Keys](https://api.rixl.com/settings/api-keys)**: Generate authentication tokens quickly
+- **View Analytics**: Monitor usage and performance metrics
+- **[Team Invitations](https://api.rixl.com/settings/team/members)**: Add members to projects or organization
+
+## Navigation Tips
+
+- Use the sidebar for primary navigation between sections
+- Project-specific features are accessible after selecting a project
+- Quick actions are available throughout the interface for common tasks
+- Use breadcrumbs to understand your current location
+
+## Next Steps
+
+Explore specific dashboard features in detail:
+
+<Cards>
+  <Card 
+    title="Project Management" 
+    description="Advanced project organization and settings"
+    href="/docs/dashboard/project"
+  />
+  <Card 
+    title="Media Management" 
+    description="Upload and manage videos and images"
+    href="/docs/dashboard/media"
+  />
+  <Card 
+    title="API Keys" 
+    description="Generate and manage authentication"
+    href="/docs/dashboard/api-keys"
+  />
+  <Card 
+    title="Team Collaboration" 
+    description="Manage team members and permissions"
+    href="/docs/dashboard/team-member"
+  />
+</Cards>

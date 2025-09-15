@@ -1,7 +1,7 @@
 import {useMemo} from "react";
-import {FooterContentSection} from "@/components/layout/home/footer-content-section";
 import {cn} from "@/lib/cn";
 import {FooterSections} from "@/lib/layout.shared";
+import {FooterContentSection} from "./footer-content-section";
 
 export function FooterContent() {
   const sections = useMemo(() => FooterSections(), []);

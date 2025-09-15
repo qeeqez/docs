@@ -1,0 +1,14 @@
+{
+  "title": "Dashboard",
+  "description": "Visual interface for managing projects and media",
+  "pages": [
+    "guide",
+    "project",
+    "media",
+    "feeds",
+    "api-keys",
+    "team-member",
+    "billing",
+    "account-settings"
+  ]
+}
