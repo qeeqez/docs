@@ -5,90 +5,84 @@ description: Create, manage, and secure API keys for programmatic access to your
 
 
 import { Step, Steps } from 'fumadocs-ui/components/steps';
-import { InteractiveCard, Callout } from '../../../../components';
+import { Callout } from '../../../../components';
 
-Control how external applications and services access your RIXL projects through secure API authentication.
+---
+title: Developer API Access
+description: Secure API keys for integrating RIXL's media optimization power into your applications, workflows, and services.
+---
 
-## Quick Start
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { Callout } from '../../../../components';
 
-To start using the RIXL API, you need an API key for secure authentication. API keys are project-specific and control which resources can be accessed.
+Ready to integrate RIXL into your applications? API keys are your gateway to programmatic access, letting you upload, process, and deliver media through our powerful REST API.
 
-### **Basic workflow**
+## Getting Your First API Key
+
 <Steps>
-
   <Step>
-
-  Create an API key for your project
+  **Create Project API Key**
   
+  Each project gets its own API keys for security isolation. Start by creating a key for your target project.
   </Step>
 
   <Step>
-
-  Configure security settings (optional)
+  **Configure Permissions** *(Optional)*
   
+  Set specific permissions to control exactly what each key can access—uploads, reads, analytics, or everything.
   </Step>
 
   <Step>
-
-  Use the key in your applications
-
+  **Integrate & Test**
+  
+  Use your key in applications and test with our comprehensive API documentation and examples.
   </Step>
+  
   <Step>
- 
-  Monitor usage and performance
- 
+  **Monitor & Scale**
+  
+  Track usage, monitor performance, and create additional keys as your integration grows.
   </Step>
-
 </Steps>
 
-## API Access Management
+## API Key Benefits
 
-**Configurable permissions**: Control exactly which operations each key can perform.
+**Project Isolation**: Each API key is scoped to a specific project, keeping your media and team access completely separate.
 
-**Usage monitoring**: Track API usage, performance metrics, and identify potential issues.
+**Granular Permissions**: Control whether keys can upload, read, manage feeds, or access analytics—perfect for different use cases.
 
-## Getting Started
+**Usage Analytics**: Monitor API calls, track performance, and identify optimization opportunities in real-time.
 
-<Callout type="info">
-Most users start with creating their first API key and testing it with basic API calls.
+**Enterprise Security**: Rotate keys easily, set expiration dates, and revoke access instantly when needed.
+
+## Perfect For Every Use Case
+
+**Web Applications**: Direct media uploads, real-time processing status, and CDN delivery integration.
+
+**Mobile Apps**: Secure backend integration for user-generated content and media optimization.
+
+**Content Workflows**: Automated bulk processing, scheduled uploads, and content management systems.
+
+**Analytics & Reporting**: Read-only access for usage analysis, performance monitoring, and business intelligence.
+
+**Third-Party Integrations**: Connect RIXL with your existing tools, platforms, and automated workflows.
+
+## Ready to Start Building?
+
+<Steps>
+  <Step>
+  [Create Your First API Key](/docs/account/api-access/create-key)
+  </Step>
+  
+  <Step>
+  [Explore the API Reference](/docs/api-reference/overview)
+  </Step>
+  
+  <Step>
+  [See Integration Examples](/docs/api-reference/overview)
+  </Step>
+</Steps>
+
+<Callout type="tip">
+**Pro tip**: Start with a test project to experiment with the API before integrating into production. You can always create new keys for your live projects later.
 </Callout>
-
-**For new users**: Start with the [API Keys overview](/docs/account/api-access/keys) to create your first key.
-
-**For developers**: Review the [Authentication Guide](/docs/account/api-access/authentication) for implementation details.
-
-[//]: # (**For security teams**: Check the [security settings]&#40;/docs/account/api-access/keys/security&#41; for advanced security controls.)
-
-## Common Use Cases
-
-**Third-party integrations**: Connect RIXL with other platforms and services
-
-**Web applications**: Upload and manage media content programmatically
-
-**Mobile apps**: Secure backend integration for media processing
-
-**Analytics services**: Read-only access for usage analysis and reporting
-
-**Content management**: Automated content workflows and bulk operations
-
-## Next Steps
-
-<Steps>
-  <Step>
-
-  [Create your first API key](/docs/account/api-access/create-key)
-  
-  </Step>
-  
-  <Step>
-
-  [Review authentication methods](/docs/getting-started/authentication)
-  
-  </Step>
-  
-  <Step>
-
-  [Explore the API reference](/docs/api-reference/overview)
-  
-  </Step>
-</Steps>
