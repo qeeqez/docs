@@ -6,7 +6,6 @@ import {TreeContextProvider} from "fumadocs-ui/contexts/tree";
 import type {GetSidebarTabsOptions} from "fumadocs-ui/utils/get-sidebar-tabs";
 import type {ComponentProps, HTMLAttributes, ReactNode} from "react";
 import {PageTOCItems, PageTOCPopoverItems, PageTOCTitle} from "@/components/layout/docs/page";
-import {PageTOC, PageTOCPopover, PageTOCPopoverContent, PageTOCPopoverTrigger} from "@/components/layout/docs/page-client";
 import {Sidebar} from "@/components/layout/docs/sidebar/sidebar";
 import {HomeLayout} from "@/components/layout/home";
 import {TOCProvider} from "@/components/ui/toc";

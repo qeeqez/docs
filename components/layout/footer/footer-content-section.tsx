@@ -1,4 +1,4 @@
-import {FooterContentSectionLink, type FooterSectionLinkProps} from "@/components/layout/home/footer-content-section-link";
+import {FooterContentSectionLink, type FooterSectionLinkProps} from "./footer-content-section-link";
 
 export interface FooterSection {
   title: string;

@@ -1,0 +1,212 @@
+---
+title: Image Processing Pipeline
+description: Automatic image optimization that converts uploads to web-optimized AVIF format with instant loading placeholders.
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+import { Steps, Step } from 'fumadocs-ui/components/steps';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+import { Cards, Card } from 'fumadocs-ui/components/card';
+
+<Callout type="info">
+    After completing any [upload](https://api.rixl.com/images) (individual images, videos, or feed posts), **Rixl** automatically processes your images
+    through an optimization pipeline that dramatically reduces file sizes while preserving visual quality.
+</Callout>
+
+## Processing Overview
+
+Every uploaded image undergoes automatic optimization:
+
+<Steps>
+    <Step>
+        **Format Conversion** - Raster images converted to AVIF, SVGs preserved
+    </Step>
+    <Step>
+        **Quality Optimization** - Intelligent compression with maintained visual fidelity
+    </Step>
+    <Step>
+        **Thumbhash Generation** - Ultra-compact placeholders for instant loading
+    </Step>
+    <Step>
+        **Metadata Extraction** - Dimensions, EXIF data, and format information preserved
+    </Step>
+    <Step>
+        **CDN Deployment** - Immediate global availability with cache invalidation
+    </Step>
+</Steps>
+
+## Supported Formats
+
+<Tabs items={['Raster Images', 'Vector Images']}>
+    <Tab value="Raster Images">
+        **Converted to AVIF:**
+        - **HEIC/HEIF** - Apple's modern image format
+        - **JPEG/JPG** - Standard photos and complex images
+        - **PNG** - Graphics with transparency support
+        - **WebP** - Google's modern web format
+        - **GIF** - Simple animations and graphics
+        - **BMP** - Windows bitmap images
+        - **TIFF/TIF** - High-quality uncompressed images
+        - **JPEG 2000 (JP2/JPX/J2K)** - Advanced JPEG successor
+        - **JPEG XR (JXR/WDP/HDP)** - Microsoft's JPEG successor
+        - **JPEG XL (JXL)** - Next-generation image format
+        - **WEBP2** - Google's next-gen WebP format
+        - **HDR** - Radiance HDR image format
+        - **JFIF** - JPEG File Interchange Format
+        - **AVIF** - AV1 image file format
+    </Tab>
+    <Tab value="Vector Images">
+        **Preserved as-is:**
+        - **SVG** - Scalable vector graphics with full interactivity and animations
+    </Tab>
+</Tabs>
+## AVIF Optimization Settings
+
+<Cards>
+    <Card
+        title="Quality: 50%"
+        description="Optimal balance between file size and visual quality"
+    />
+    <Card
+        title="8-bit Color Depth"
+        description="Universal browser compatibility"
+    />
+    <Card
+        title="Encoding Effort: 4"
+        description="Balanced processing speed and compression"
+    />
+    <Card
+        title="EXIF Preserved"
+        description="Camera metadata and color profiles maintained"
+    />
+    <Card
+        title="Auto-Rotation"
+        description="Correct orientation based on EXIF data"
+    />
+</Cards>
+
+<Callout type="tip">
+    AVIF at 50% quality produces visually identical results to JPEG at 85% while being 50-90% smaller in file size.
+</Callout>
+
+## Thumbhash Technology
+
+Every processed image generates a ~25-byte thumbhash for instant placeholder rendering:
+
+**Benefits:**
+- **Zero network requests** - Embedded in your application data
+- **Instant rendering** - Immediate visual feedback
+- **Color-accurate** - Preserves dominant colors and contrast
+- **Smooth transitions** - Natural blur-to-sharp loading effect
+
+**Implementation Example:**
+
+```md
+We can have an implementation example here
+```
+
+## Performance Impact
+
+**File Size Reductions:**
+- **Photography:** 70-90% smaller than JPEG
+- **Screenshots:** 60-80% reduction from PNG
+- **Graphics with text:** 50-70% improvement
+- **Web graphics:** 40-60% smaller than WebP
+
+**Loading Performance:**
+- Instant placeholders eliminate loading delays
+- Reduced bandwidth usage, especially on mobile
+- Improved Core Web Vitals scores
+- Better perceived performance
+
+## Browser Support
+
+<Callout type="info">
+    **AVIF supported by ~95% of modern browsers**
+</Callout>
+
+**Full Support:**
+
+[//]: # I need to check for broswer compatibility rate
+
+
+## Processing Pipeline Details
+
+<Steps>
+    <Step>
+        ### Queue and Validation
+        Images queued after upload completion with format and security validation
+    </Step>
+
+    <Step>
+        ### Format Detection
+        System routes SVG files for preservation, raster images for AVIF conversion
+    </Step>
+
+    <Step>
+        ### Optimization Processing
+        AVIF encoding with quality optimization and EXIF preservation
+    </Step>
+
+    <Step>
+        ### Thumbhash Generation
+        Ultra-compact placeholder generation for instant loading
+    </Step>
+
+    <Step>
+        ### CDN Deployment
+        Global deployment with automatic cache invalidation
+    </Step>
+</Steps>
+
+## Advanced Features
+
+<Cards>
+    <Card
+        title="Intelligent Auto-Orientation"
+        description="Automatic correction based on EXIF orientation data"
+    />
+    <Card
+        title="Metadata Intelligence"
+        description="Camera settings, GPS data, and color profiles preserved"
+    />
+    <Card
+        title="Smart CDN Management"
+        description="Automatic cache invalidation for immediate availability"
+    />
+    <Card
+        title="Content Security"
+        description="Automated scanning for policy compliance"
+    />
+</Cards>
+
+## Implementation Best Practices
+
+**Upload Strategy:**
+- Upload the highest quality originals—processing optimizes automatically
+- Use descriptive filenames for a better organization
+- Include alt text for accessibility
+
+**Loading Implementation:**
+- Always use thumb hash placeholders for instant feedback
+- Implement progressive loading patterns
+- Monitor processing completion for large files
+- Cache processed URLs to minimize API calls
+
+## Security Features
+
+**Upload Security:**
+- MIME type and content verification
+- File size limits are enforced at all stages
+
+**Access Control:**
+- Project-level image isolation
+- API key authentication required
+- Time-limited signed URLs for sensitive content
+
+---
+
+<Callout type="success">
+    **Rixl's** image processing delivers measurable performance improvements: 50-90% smaller files,
+    instant loading placeholders, and maintained visual quality across all modern browsers.
+</Callout>

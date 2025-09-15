@@ -2,13 +2,18 @@
 
 import {SidebarPageTree} from "@/components/layout/docs/sidebar/sidebar-page-tree";
 import {SidebarProvider} from "@/components/layout/docs/sidebar/sidebar-provider";
+import {cn} from "@/lib/cn";
 
-export function Sidebar() {
+interface Props {
+  className?: string;
+}
+
+export function Sidebar({className}: Props) {
   return (
-    <div className="text-sm">
+    // <div className={cn("text-sm", className)}>
       <SidebarProvider>
-        <SidebarPageTree />
+        <SidebarPageTree/>
       </SidebarProvider>
-    </div>
+    // </div>
   );
 }
