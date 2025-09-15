@@ -61,7 +61,7 @@ To authenticate an API request, include the key in the `X-API-Key` header.
 
 ```bash
 curl -X GET "https://api.rixl.com/v1/videos" \
-  -H "X-API-Key: YOUR_API_KEY"
+  -H "X-API-Key: YOUR_PROJECT_API_KEY"
 ```
 
 ### Common Examples
@@ -76,7 +76,7 @@ curl -X GET "https://api.rixl.com/v1/videos" \
     <Tab value="Initialize Video Upload">
         ```bash
         curl -X POST "https://api.rixl.com/v1/videos/upload/init" \
-        -H "X-API-Key: YOUR_API_KEY" \
+        -H "X-API-Key: YOUR_PROJECT_API_KEY" \
         -H "Content-Type: application/json" \
         -d '{
         "file_name": "my-video.mp4",
@@ -87,7 +87,7 @@ curl -X GET "https://api.rixl.com/v1/videos" \
     <Tab value="Initialize Image Upload">
         ```bash
         curl -X POST "https://api.rixl.com/v1/images/upload/init" \
-        -H "X-API-Key: YOUR_API_KEY" \
+        -H "X-API-Key: YOUR_PROJECT_API_KEY" \
         -H "Content-Type: application/json" \
         -d '{
         "file_name": "my-image.jpg"
