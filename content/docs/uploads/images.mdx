@@ -1,62 +1,69 @@
 ---
-title: Images
-description: Upload and automatically optimize images for web delivery.
+title: Image Optimization
+description: Transform any image into lightning-fast, web-optimized files. AVIF compression, smart placeholders, and global delivery—all automatic.
 ---
 
 import { Callout, InfoCard } from '../../../components';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
+Upload any image to RIXL and watch it transform into a web-optimized masterpiece. Our intelligent processing pipeline delivers files that are 90% smaller while looking identical to the original—it's like magic, but it's just really smart technology.
 
-Rixl automatically processes uploaded images through an optimization pipeline that reduces file sizes while preserving visual quality.
+## How Image Processing Works
 
-[//]: # (// TODO: Add a screenshot of the image upload interface.)
-
-### Processing Overview
-
-Every uploaded image undergoes automatic optimization:
+Every image you upload gets the full optimization treatment:
 
 <Steps>
   <Step>
-    **Format Conversion** - Raster images converted to AVIF, SVGs preserved
+    **Smart Format Selection** 
+    
+    Raster images become ultra-efficient AVIF files, while SVGs stay perfectly crisp as vectors.
   </Step>
   <Step>
-    **Quality Optimization** - Intelligent compression with maintained visual fidelity
+    **Intelligent Compression** 
+    
+    Advanced algorithms find the perfect balance between tiny file sizes and stunning visual quality.
   </Step>
   <Step>
-    **Thumbhash Generation** - Ultra-compact placeholders for instant loading
+    **Instant Placeholders** 
+    
+    Generate ultra-compact thumbhash placeholders so your pages load instantly, even on slow connections.
   </Step>
   <Step>
-    **Metadata Extraction** - Dimensions, EXIF data, and format information preserved
+    **Metadata Preservation** 
+    
+    Keep all the important stuff—dimensions, camera settings, color profiles—while ditching unnecessary bloat.
   </Step>
   <Step>
-    **CDN Deployment** - Immediate global availability
+    **Global Distribution** 
+    
+    Your optimized images hit our global CDN immediately, ready for lightning-fast delivery anywhere in the world.
   </Step>
 </Steps>
 
-### Supported Formats
+## What We Support
 
-**Raster Images (converted to AVIF):**
-- HEIC/HEIF, JPEG/JPG, PNG, WebP, GIF, BMP
-- TIFF/TIF, JPEG 2000, JPEG XR, JPEG XL
-- WEBP2, HDR, JFIF, AVIF
+**Raster Images** *(get the AVIF treatment)*
+- **Common formats**: JPEG, PNG, WebP, GIF, BMP
+- **Professional formats**: HEIC/HEIF, TIFF, JPEG 2000
+- **Next-gen formats**: JPEG XL, WEBP2, HDR, AVIF
 
-**Vector Images (preserved as-is):**
-- SVG - Scalable vector graphics with full interactivity
+**Vector Graphics** *(stay perfect as-is)*
+- **SVG files**: Keep all their scalability and interactivity intact
 
-<Callout type="info" title="AVIF Optimization">
-  AVIF at 50% quality produces visually identical results to JPEG at 85% while being 50-90% smaller in file size.
+<Callout type="info" title="The AVIF Advantage">
+  Here's the magic: AVIF at 50% quality looks identical to JPEG at 85% but is 50-90% smaller. Your users get faster loading, you save bandwidth costs—everyone wins.
 </Callout>
 
-### AVIF Settings
+## Behind the Scenes
 
-- **Quality:** 50% for optimal balance between size and quality
-- **Color Depth:** 8-bit for universal browser compatibility
-- **EXIF Data:** Camera metadata and color profiles preserved
-- **Auto-Rotation:** Correct orientation based on EXIF data
+**AVIF Optimization Settings**
+- **Quality Level**: 50% for the sweet spot between size and visual perfection
+- **Color Depth**: 8-bit for universal browser support (no compatibility worries)
+- **Smart Metadata**: Camera settings and color profiles preserved when useful
+- **Auto-Rotation**: Images display correctly based on their EXIF orientation data
 
-### Thumbhash Technology
-
-Every processed image generates a ~25-byte thumbhash for instant placeholder rendering:
+**Thumbhash Technology**
+Your images also generate tiny ~25-byte "thumbhash" placeholders that create beautiful, instant-loading previews while the full image loads in the background.
 
 - **Zero network requests** - Embedded in your application data
 - **Instant rendering** - Immediate visual feedback
