@@ -1,0 +1,13 @@
+{
+  "title": "Account",
+  "pages": [
+    "overview",
+    "profile-settings",
+    "security",
+    "connected-accounts",
+    "api-access",
+    "organizations",
+    "billing",
+    "troubleshooting"
+  ]
+}

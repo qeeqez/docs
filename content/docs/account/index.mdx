@@ -1,0 +1,39 @@
+---
+title: Account
+description: Manage your personal account settings, security, and preferences.
+---
+
+import { InteractiveCard } from '../../../components';
+
+<div className="grid gap-6 sm:grid-cols-2">
+  <InteractiveCard
+    title="Overview"
+    description="A summary of your account details and quick access to settings."
+    href="/docs/account/overview"
+    icon="Users"
+  />
+  <InteractiveCard
+    title="Profile Settings"
+    description="Manage your profile settings, security, memberships, and invitations in one place"
+    href="/docs/account/profile-settings"
+    icon="Settings"
+  />
+  <InteractiveCard
+    title="API Access"
+    description="Create and manage API keys for your applications."
+    href="/docs/account/api-access"
+    icon="Key"
+  />
+  <InteractiveCard
+    title="Billing"
+    description="Manage your subscription, payment methods, and view invoices."
+    href="/docs/account/billing"
+    icon="CreditCard"
+  />
+  <InteractiveCard
+    title="Organizations"
+    description="Create and manage organizations, invite team members, and set permissions."
+    href="/docs/account/organizations"
+    icon="Building"
+  />
+</div>
