@@ -2,10 +2,10 @@ import type {TOCItemType} from "fumadocs-core/server";
 import type {AnchorProviderProps} from "fumadocs-core/toc";
 import {type ComponentProps, forwardRef, type ReactNode} from "react";
 import {PageArticle, PageRoot} from "@/components/layout/docs/page";
-import {type BreadcrumbProps, PageBreadcrumb} from "@/components/layout/docs/page/page-breadcrumb";
+import type {BreadcrumbProps} from "@/components/layout/docs/page/page-breadcrumb";
 import {type FooterProps, PageFooter} from "@/components/layout/docs/page/page-footer";
+import type {GithubBlockProps} from "@/components/layout/docs/page/page-github-block";
 import {cn} from "../../lib/cn";
-import {GithubBlockProps} from "@/components/layout/docs/page/page-github-block";
 
 interface EditOnGitHubOptions extends Omit<ComponentProps<"a">, "href" | "children"> {
   owner: string;
@@ -133,7 +133,6 @@ export function DocsPage({
       className={cn(!tocEnabled && "[--fd-toc-width:0px]", container?.className)}
     >
       <PageArticle {...article}>
-        {breadcrumbEnabled && (breadcrumb ?? <PageBreadcrumb {...breadcrumbProps} />)}
         {children}
         {footer.enabled !== false && (footer.component ??
           <PageFooter
@@ -152,7 +151,7 @@ export function DocsPage({
  * Add typography styles
  */
 export const DocsBody = forwardRef<HTMLDivElement, ComponentProps<"div">>((props, ref) => (
-  <div ref={ref} {...props} className={cn("prose flex-1", props.className)}>
+  <div ref={ref} {...props} className={cn("mt-8 prose flex-1", props.className)}>
     {props.children}
   </div>
 ));
@@ -164,7 +163,7 @@ export const DocsDescription = forwardRef<HTMLParagraphElement, ComponentProps<"
   if (props.children === undefined) return null;
 
   return (
-    <p ref={ref} {...props} className={cn("mb-8 text-lg text-fd-muted-foreground", props.className)}>
+    <p ref={ref} {...props} className={cn("text-sm text-fd-muted-foreground", props.className)}>
       {props.children}
     </p>
   );

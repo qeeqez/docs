@@ -54,6 +54,11 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
               }}
             >
               <DocsTitle>{page.data.title}</DocsTitle>
+            <header className="relative space-y-2">
+              <div className="space-y-2.5">
+                <PageBreadcrumb/>
+                <DocsTitle>{page.data.title}</DocsTitle>
+              </div>
               <DocsDescription>{page.data.description}</DocsDescription>
               <DocsBody>
                 <MDXContent
@@ -73,6 +78,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
           </aside>
         </TOCProvider>
       </div>
+            </header>
     </div>
   );
 }
