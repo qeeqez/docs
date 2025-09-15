@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7b615deb-3ae2-41d7-a505-402e93ac99bb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/content/docs/api/endpoints/content.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/api/endpoints/content.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/api/endpoints/media.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/api/endpoints/media.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/api/endpoints/overview.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/api/endpoints/overview.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/api/endpoints/projects.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/api/endpoints/projects.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/api/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/api/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/api/quickstart.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/api/quickstart.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/auth/api-keys.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/auth/api-keys.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/auth/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/auth/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/content/feeds/custom.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/content/feeds/custom.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/content/feeds/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/content/feeds/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/content/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/content/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/content/posts/create-edit.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/content/posts/create-edit.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/content/posts/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/content/posts/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/content/posts/media-attachment.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/content/posts/media-attachment.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/core-concepts/api-basics.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/core-concepts/api-basics.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/core-concepts/authentication.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/core-concepts/authentication.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/core-concepts/overview.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/core-concepts/overview.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/core-concepts/rate-limits.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/core-concepts/rate-limits.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/getting-started/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/getting-started/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/media/delivery/cdn.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/media/delivery/cdn.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/media/delivery/formats.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/media/delivery/formats.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/media/delivery/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/media/delivery/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/media/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/media/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/media/management/deletion.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/media/management/deletion.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/media/management/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/media/management/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/media/management/organization.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/media/management/organization.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/media/management/retention.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/media/management/retention.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/media/processing/images.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/media/processing/images.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/media/processing/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/media/processing/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/media/processing/optimization.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/media/processing/optimization.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/media/processing/videos.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/media/processing/videos.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/media/upload/files.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/media/upload/files.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/media/upload/images.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/media/upload/images.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/media/upload/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/media/upload/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/media/upload/videos.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/media/upload/videos.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/projects/create-config.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/projects/create-config.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/projects/create.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/projects/create.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/projects/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/projects/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/projects/manage.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/projects/manage.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/projects/settings.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/projects/settings.mdx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="329ZQGZfQfjYZar8I0aFsXoMlOi" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "git-widget-placeholder": "main",
+    "go.import.settings.migrated": "true",
+    "js.debugger.nextJs.config.created.client": "true",
+    "js.debugger.nextJs.config.created.server": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/yusuf/Desktop/workspace/golang/rixl/docs",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "/home/yusuf/Desktop/workspace/golang/rixl/docs/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
+        <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="RunManager" selected="npm.Next.js: server-side">
+    <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
+      <method v="2" />
+    </configuration>
+    <configuration name="Next.js: server-side" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7b615deb-3ae2-41d7-a505-402e93ac99bb" name="Changes" comment="" />
+      <created>1756834736410</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1756834736410</updated>
+      <workItem from="1756834750773" duration="6005000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+</project>

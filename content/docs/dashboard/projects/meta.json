@@ -1,0 +1,9 @@
+{
+  "title": "Projects",
+  "description": "Create and manage your media projects",
+  "pages": [
+    "index",
+    "create-project",
+    "project-settings"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Media Management",
+  "description": "Upload, organize, and manage your content",
+  "pages": [
+    "index",
+    "upload-images",
+    "upload-videos", 
+    "organize-media"
+  ]
+}
