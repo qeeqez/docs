@@ -4,7 +4,7 @@ import {cva, type VariantProps} from "class-variance-authority";
 import Link, {type LinkProps} from "fumadocs-core/link";
 import {useNav} from "fumadocs-ui/contexts/layout";
 import type {NavigationMenu as Primitive} from "radix-ui";
-import {type ComponentProps, useState} from "react";
+import {type ComponentProps, ForwardedRef, useState} from "react";
 import {cn} from "../../../lib/cn";
 import {
   NavigationMenu,

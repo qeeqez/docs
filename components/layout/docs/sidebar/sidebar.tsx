@@ -10,10 +10,10 @@ interface Props {
 
 export function Sidebar({className}: Props) {
   return (
-    <div className={cn("text-sm", className)}>
+    // <div className={cn("text-sm", className)}>
       <SidebarProvider>
         <SidebarPageTree/>
       </SidebarProvider>
-    </div>
+    // </div>
   );
 }

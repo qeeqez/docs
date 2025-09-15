@@ -54,7 +54,7 @@ export function NavbarLinkItem({item, ...props}: { item: LinkItemType; className
       {...props} item={item} variant={item.type} aria-label={item.type === "icon" ? item.label : undefined}>
       <div className="[&>[data-active]]:bg-yellow-400 data-[active=false]:bg-green-400">
         {item.type === "icon" ? item.icon : item.text}
-        <div className="absolute bottom-0 h-[1.5px] w-full group-hover:bg-fd-primary dark:group-hover:bg-fd-primary-foreground"></div>
+        {/*<div className="absolute bottom-0 h-[1.5px] w-full group-hover:bg-fd-primary dark:group-hover:bg-fd-primary-foreground"></div>*/}
       </div>
     </NavbarLink>
   );
