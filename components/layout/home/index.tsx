@@ -77,7 +77,7 @@ export function HomeLayout(props: HomeLayoutProps & HTMLAttributes<HTMLElement>)
     <NavProvider transparentMode={nav?.transparentMode}>
       <div id="nd-home-layout" {...rest} className={cn("relative z-10 flex min-h-svh flex-col", rest.className)}>
         <Header links={links} nav={nav} searchToggle={searchToggle} i18n={i18n} githubUrl={githubUrl} ref={headerRef}/>
-        <div className="max-w-[92rem] mx-auto lg:px-8">
+        <div className="w-full max-w-[92rem] mx-auto lg:px-8">
           {props.children}
         </div>
         <Footer ref={footerRef}/>
