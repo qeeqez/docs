@@ -1,0 +1,214 @@
+---
+title: Dashboard
+description: Your command center for managing projects, media, and teams.
+---
+
+import { Callout, InteractiveCard, InfoCard } from '../../../components';
+
+The RIXL dashboard is your central interface for managing projects, media, and team collaboration.
+
+## Quick Start
+
+<div className="grid gap-6 sm:grid-cols-2">
+  <InteractiveCard
+    title="Getting Started Guide"
+    description="Complete walkthrough from account setup to media management."
+    href="/docs/dashboard/guide"
+    icon="BookOpen"
+  />
+  <InteractiveCard
+    title="Create Project"
+    description="Set up your first project to start managing media and content."
+    href="/docs/dashboard/projects/create-project"
+    icon="FolderPlus"
+  />
+  <InteractiveCard
+    title="Upload Media"
+    description="Add videos and images to your projects for processing and delivery."
+    href="/docs/dashboard/media"
+    icon="Upload"
+  />
+  <InteractiveCard
+    title="API Setup"
+    description="Generate API keys for programmatic access to your content."
+    href="/docs/account/api-access/create-key"
+    icon="Key"
+  />
+</div>
+
+## Main Sections
+
+<div className="grid gap-6 sm:grid-cols-2">
+  <InteractiveCard
+    title="Getting Started Guide"
+    description="Step-by-step walkthrough of dashboard features and workflows."
+    href="/docs/dashboard/guide"
+    icon="BookOpen"
+  />
+  <InteractiveCard
+    title="Projects"
+    description="Create and manage projects to organize your media and team access."
+    href="/docs/dashboard/projects"
+    icon="FolderOpen"
+  />
+  <InteractiveCard
+    title="Media Management"
+    description="Upload, organize, and manage your videos and images with automatic optimization."
+    href="/docs/dashboard/media"
+    icon="Image"
+  />
+  <InteractiveCard
+    title="Content Feeds"
+    description="Create and manage dynamic content feeds for structured content distribution."
+    href="/docs/dashboard/feeds"
+    icon="Activity"
+  />
+    <InteractiveCard
+    title="Team Management"
+    description="Manage your organization and team members."
+    href="/docs/account/organizations"
+    icon="Users"
+  />
+</div>
+
+## Main Overview
+
+### Layout Structure
+
+<div className="grid gap-6 sm:grid-cols-2 mt-6">
+  <InfoCard 
+    title="Main Dashboard" 
+    description="Project-specific features including media management, feeds, and quick actions for day-to-day content operations."
+    icon="BarChart3"
+  />
+  <InfoCard 
+    title="Settings Panel" 
+    description="Organization and account management options for team collaboration and system configuration."
+    icon="Settings"
+  />
+</div>
+
+<Callout type="info">
+  You need to create a project before accessing media features. Without any projects, you'll be redirected to the projects page.
+</Callout>
+
+## Navigation Areas
+
+### Project Dashboard
+
+<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-6">
+  <InfoCard 
+    title="Home" 
+    description="Project overview and quick actions"
+    icon="BookOpen"
+  />
+  <InfoCard 
+    title="Videos" 
+    description="Upload and manage video content"
+    icon="Video"
+  />
+  <InfoCard 
+    title="Images" 
+    description="Upload and organize images"
+    icon="Image"
+  />
+  <InfoCard 
+    title="Feeds" 
+    description="Create and manage content feeds"
+    icon="Activity"
+  />
+</div>
+
+### Settings Panel
+
+<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-6">
+  <InfoCard 
+    title="Projects" 
+    description="Create and manage all projects"
+    icon="FolderIcon"
+  />
+  <InfoCard 
+    title="Team" 
+    description="Invite members and manage permissions"
+    icon="Users"
+  />
+  <InfoCard 
+    title="API Keys" 
+    description="Create authentication tokens"
+    icon="Key"
+  />
+  <InfoCard 
+    title="Billing" 
+    description="Manage subscription and payments"
+    icon="CreditCard"
+  />
+</div>
+
+## Core Management Areas
+
+### Account & Team Management
+
+<div className="grid gap-6 sm:grid-cols-2">
+  <InteractiveCard
+    title="Team Management"
+    description="Comprehensive team management including inviting members, managing roles, and organization settings."
+    href="/docs/account/organizations"
+    icon="Users"
+  />
+  <InteractiveCard
+    title="Account Settings"
+    description="Personal account management including profile settings, security, and organization memberships."
+    href="/docs/account"
+    icon="Settings"
+  />
+</div>
+
+### API & Security Management
+
+<div className="grid gap-6 sm:grid-cols-2">
+  <InteractiveCard
+    title="API Keys"
+    description="Create, manage, and secure API keys for programmatic access to your projects."
+    href="/docs/account/api-access"
+    icon="Key"
+  />
+  <InteractiveCard
+    title="Billing Management"
+    description="Complete billing and payment management including subscription plans and invoices."
+    href="/docs/account/billing"
+    icon="CreditCard"
+  />
+</div>
+
+## Quick Actions & Shortcuts
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+  <InteractiveCard
+    title="Upload Media"
+    description="Direct access from project dashboard"
+    href="https://api.rixl.com/videos"
+    icon="Upload"
+  />
+  <InteractiveCard
+    title="Create API Keys"
+    description="Generate authentication tokens quickly"
+    href="/docs/account/api-access/create-key"
+    icon="Key"
+  />
+  <InteractiveCard
+    title="View Analytics"
+    description="Monitor usage and performance metrics"
+    href="/docs/dashboard"
+    icon="BarChart3"
+  />
+  <InteractiveCard
+    title="Team Invitations"
+    description="Add members to projects or organization"
+    href="/docs/account/organizations/team-management"
+    icon="UserPlus"
+  />
+</div>
+
+<Callout type="tip">
+For the best experience, start by creating a project, then explore the media management features. Use the Settings panel for account and organization management.
+</Callout>
