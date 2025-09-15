@@ -17,8 +17,8 @@ const menuItemVariants = cva("", {
         color: "ghost",
       }),
       button: buttonVariants({
-        color: "secondary",
-        className: "gap-1.5 [&_svg]:size-4",
+        color: "primary",
+        className: "gap-1.5 [&_svg]:size-4 rounded-full p-2 px-4 font-medium",
       }),
     },
   },

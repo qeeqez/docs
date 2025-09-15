@@ -1,6 +1,6 @@
 import {useMemo} from "react";
-import {FooterBottomLink} from "@/components/layout/home/footer-bottom-link";
 import {FooterBottomLinks} from "@/lib/layout.shared";
+import {FooterBottomLink} from "./footer-bottom-link";
 
 export function FooterBottom() {
   const links = useMemo(() => FooterBottomLinks(), []);

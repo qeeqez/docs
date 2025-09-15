@@ -11,14 +11,14 @@
   "dependencies": {
     "@orama/orama": "^3.1.13",
     "@radix-ui/react-presence": "^1.1.5",
-    "@rixl/videosdk-react": "^0.14.0",
-    "@scalar/api-reference-react": "^0.7.44",
+    "@rixl/videosdk-react": "^0.14.1",
+    "@scalar/api-reference-react": "^0.7.48",
     "class-variance-authority": "^0.7.1",
-    "fumadocs-core": "15.7.10",
-    "fumadocs-mdx": "11.9.0",
-    "fumadocs-ui": "15.7.10",
-    "lucide-react": "^0.543.0",
-    "next": "15.5.2",
+    "fumadocs-core": "15.7.11",
+    "fumadocs-mdx": "11.9.1",
+    "fumadocs-ui": "15.7.11",
+    "lucide-react": "^0.544.0",
+    "next": "15.5.3",
     "next-themes": "^0.4.6",
     "radix-ui": "^1.4.3",
     "react": "^19.1.1",
@@ -27,15 +27,15 @@
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.2.3",
+    "@biomejs/biome": "2.2.4",
     "@svgr/webpack": "^8.1.0",
     "@tailwindcss/postcss": "^4.1.13",
     "@types/mdx": "^2.0.13",
-    "@types/node": "24.3.1",
-    "@types/react": "^19.1.12",
+    "@types/node": "24.4.0",
+    "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2"
   },
-  "packageManager": "pnpm@10.15.1"
+  "packageManager": "pnpm@10.16.1"
 }

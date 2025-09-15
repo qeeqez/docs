@@ -1,26 +1,11 @@
 import type {TOCItemType} from "fumadocs-core/server";
 import type {AnchorProviderProps} from "fumadocs-core/toc";
-import {I18nLabel} from "fumadocs-ui/contexts/i18n";
-import {Edit} from "lucide-react";
 import {type ComponentProps, forwardRef, type ReactNode} from "react";
+import {PageArticle, PageRoot} from "@/components/layout/docs/page";
+import type {BreadcrumbProps} from "@/components/layout/docs/page/page-breadcrumb";
+import {type FooterProps, PageFooter} from "@/components/layout/docs/page/page-footer";
+import type {GithubBlockProps} from "@/components/layout/docs/page/page-github-block";
 import {cn} from "../../lib/cn";
-import {buttonVariants} from "../ui/button";
-import {
-  type BreadcrumbProps,
-  type FooterProps,
-  PageArticle,
-  PageBreadcrumb,
-  PageFooter,
-  PageLastUpdate,
-  PageRoot,
-  PageTOC,
-  PageTOCItems,
-  PageTOCPopover,
-  PageTOCPopoverContent,
-  PageTOCPopoverItems,
-  PageTOCPopoverTrigger,
-  PageTOCTitle,
-} from "./docs/page";
 
 interface EditOnGitHubOptions extends Omit<ComponentProps<"a">, "href" | "children"> {
   owner: string;
@@ -37,6 +22,7 @@ interface EditOnGitHubOptions extends Omit<ComponentProps<"a">, "href" | "childr
    * File path in the repo
    */
   path: string;
+  raiseIssue?: boolean
 }
 
 interface BreadcrumbOptions extends BreadcrumbProps {
@@ -55,6 +41,9 @@ interface BreadcrumbOptions extends BreadcrumbProps {
 interface FooterOptions extends FooterProps {
   enabled: boolean;
   component: ReactNode;
+
+  github?: GithubBlockProps;
+  lastUpdate?: Date | string | number;
 }
 
 export interface DocsPageProps {
@@ -78,9 +67,6 @@ export interface DocsPageProps {
    * Footer navigation, you can disable it by passing `false`
    */
   footer?: Partial<FooterOptions>;
-
-  editOnGithub?: EditOnGitHubOptions;
-  lastUpdate?: Date | string | number;
 
   container?: ComponentProps<"div">;
   article?: ComponentProps<"article">;
@@ -110,18 +96,24 @@ type TableOfContentOptions = Pick<AnchorProviderProps, "single"> & {
 type TableOfContentPopoverOptions = Omit<TableOfContentOptions, "single">;
 
 export function DocsPage({
-  editOnGithub,
-  breadcrumb: {enabled: breadcrumbEnabled = true, component: breadcrumb, ...breadcrumbProps} = {},
-  footer = {},
-  lastUpdate,
-  container,
-  full = false,
-  tableOfContentPopover: {enabled: tocPopoverEnabled, component: tocPopover, ...tocPopoverOptions} = {},
-  tableOfContent: {enabled: tocEnabled, component: tocReplace, ...tocOptions} = {},
-  toc = [],
-  article,
-  children,
-}: DocsPageProps) {
+                           breadcrumb: {
+                             enabled: breadcrumbEnabled = true,
+                             component: breadcrumb,
+                             ...breadcrumbProps
+                           } = {},
+                           footer = {},
+                           container,
+                           full = false,
+                           tableOfContentPopover: {
+                             enabled: tocPopoverEnabled,
+                             component: tocPopover,
+                             ...tocPopoverOptions
+                           } = {},
+                           tableOfContent: {enabled: tocEnabled, component: tocReplace, ...tocOptions} = {},
+                           toc = [],
+                           article,
+                           children,
+                         }: DocsPageProps) {
   // disable TOC on full mode, you can still enable it with `enabled` option.
   tocEnabled ??= !full && (toc.length > 0 || tocOptions.footer !== undefined || tocOptions.header !== undefined);
 
@@ -132,53 +124,26 @@ export function DocsPage({
       toc={
         tocEnabled || tocPopoverEnabled
           ? {
-              toc,
-              single: tocOptions.single,
-            }
+            toc,
+            single: tocOptions.single,
+          }
           : false
       }
       {...container}
       className={cn(!tocEnabled && "[--fd-toc-width:0px]", container?.className)}
     >
       <PageArticle {...article}>
-        {breadcrumbEnabled && (breadcrumb ?? <PageBreadcrumb {...breadcrumbProps} />)}
         {children}
-        <div className="flex flex-row flex-wrap items-center justify-between gap-4 empty:hidden">
-          {editOnGithub && (
-            <EditOnGitHub
-              href={`https://github.com/${editOnGithub.owner}/${editOnGithub.repo}/blob/${editOnGithub.sha}/${editOnGithub.path.startsWith("/") ? editOnGithub.path.slice(1) : editOnGithub.path}`}
-            />
-          )}
-          {lastUpdate && <PageLastUpdate date={new Date(lastUpdate)} />}
-        </div>
-        {footer.enabled !== false && (footer.component ?? <PageFooter items={footer.items} />)}
+        {footer.enabled !== false && (footer.component ??
+          <PageFooter
+            items={footer.items}
+            github={footer.github}
+            lastUpdate={footer.lastUpdate}
+            className="py-8"
+          />)
+        }
       </PageArticle>
     </PageRoot>
-  );
-}
-
-export function EditOnGitHub(props: ComponentProps<"a">) {
-  return (
-    <a
-      target="_blank"
-      rel="noreferrer noopener"
-      {...props}
-      className={cn(
-        buttonVariants({
-          color: "secondary",
-          size: "sm",
-          className: "gap-1.5 not-prose",
-        }),
-        props.className,
-      )}
-    >
-      {props.children ?? (
-        <>
-          <Edit className="size-3.5" />
-          <I18nLabel label="editOnGithub" />
-        </>
-      )}
-    </a>
   );
 }
 
@@ -186,7 +151,7 @@ export function EditOnGitHub(props: ComponentProps<"a">) {
  * Add typography styles
  */
 export const DocsBody = forwardRef<HTMLDivElement, ComponentProps<"div">>((props, ref) => (
-  <div ref={ref} {...props} className={cn("prose flex-1", props.className)}>
+  <div ref={ref} {...props} className={cn("mt-8 prose flex-1", props.className)}>
     {props.children}
   </div>
 ));
@@ -198,7 +163,7 @@ export const DocsDescription = forwardRef<HTMLParagraphElement, ComponentProps<"
   if (props.children === undefined) return null;
 
   return (
-    <p ref={ref} {...props} className={cn("mb-8 text-lg text-fd-muted-foreground", props.className)}>
+    <p ref={ref} {...props} className={cn("text-sm text-fd-muted-foreground", props.className)}>
       {props.children}
     </p>
   );

@@ -1,0 +1,235 @@
+---
+title: Billing and Subscription
+description: Complete guide to managing billing, subscriptions, and usage in RIXL
+---
+
+import { Callout } from 'fumadocs-ui/components/callout'
+import { Card, Cards } from 'fumadocs-ui/components/card'
+import { Step, Steps } from 'fumadocs-ui/components/steps'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+
+The [Billing section](https://api.rixl.com/settings/billing) allows you to manage your subscription plans, payment methods, usage tracking, and invoice history.
+
+<Callout type="info">
+Navigate to **[Organization Settings → Billing](https://api.rixl.com/settings/billing)** to access all billing features.
+</Callout>
+
+## Subscription Plans
+
+<Cards>
+  <Card title="Free Plan - $0/month" description="Perfect for side projects and small teams">
+    - 50 GB video, 1 GB image storage
+    - Up to 3 team members
+    - 100 API calls/hour
+    - Basic analytics, community support
+  </Card>
+  
+  <Card title="Pro Plan - $49/month" description="For professionals and growing teams">
+    - 50 GB video, 10 GB image storage
+    - Up to 10 team members
+    - 1,000 API calls/hour
+    - Advanced analytics, priority support, custom domains
+  </Card>
+  
+  <Card title="Enterprise Plan - $229/month" description="For large organizations">
+    - Custom storage and API limits
+    - Unlimited team members
+    - 24/7 priority support, SLA
+    - Custom analytics, dedicated account manager
+  </Card>
+</Cards>
+
+<Callout type="tip">
+Please contact our Sales Team to discuss custom pricing and solutions for the Enterprise plan.
+</Callout>
+
+## Plan Management
+
+Your dashboard displays:
+
+<Tabs items={['Plan Details', 'Usage Status', 'Billing Cycle']}>
+<Tab value="Plan Details">
+- Plan name, pricing, and feature limits
+- Support level and active add-ons
+</Tab>
+<Tab value="Usage Status">
+- Storage and API usage vs. limits
+- Team member count and trends
+</Tab>
+<Tab value="Billing Cycle">
+- Current period, next billing date
+- Payment method and upcoming charges
+</Tab>
+</Tabs>
+
+### Upgrading Your Plan
+
+<Steps>
+<Step>Go to **Organization Settings → Billing** → **Upgrade Plan**</Step>
+<Step>Select target plan and billing cycle (monthly/annual)</Step>
+<Step>Review pro-rated billing and confirm upgrade</Step>
+</Steps>
+
+### Downgrading Your Plan
+
+<Callout type="warning">
+Downgrades take effect at the start of your next billing cycle. Please ensure your usage stays within the new plan limits.
+</Callout>
+
+## Payment Methods
+
+### Supported Options
+- Credit cards: Visa, Mastercard, American Express, Discover
+- Debit cards with major networks
+- Multi-currency international support
+
+### Managing Payment Methods
+
+<Tabs items={['Add Method', 'Update Cards', 'Set Default']}>
+<Tab value="Add Method">
+<Steps>
+<Step>Go to **Billing → Payment Methods** → **Add Payment Method**</Step>
+<Step>Enter card details and complete billing address</Step>
+<Step>Save and verify the payment method</Step>
+</Steps>
+</Tab>
+<Tab value="Update Cards">
+You may update card information, billing addresses, and expiration dates for your existing payment methods at any time.
+</Tab>
+<Tab value="Set Default">
+Set your preferred card for automatic billing and subscription renewals.
+</Tab>
+</Tabs>
+
+## Usage Tracking
+
+<Tabs items={['Storage Usage', 'API Usage', 'Team Usage']}>
+<Tab value="Storage Usage">
+- Video/image storage vs. limits
+- Project-level breakdown and trends
+- Optimization savings achieved
+</Tab>
+<Tab value="API Usage">
+- Current usage vs. hourly limits
+- Usage trends by API key
+- Rate limit status and patterns
+</Tab>
+<Tab value="Team Usage">
+- Member count vs. limits
+- Activity levels and role distribution
+- Pending invitation tracking
+</Tab>
+</Tabs>
+
+Configure alerts for storage limits, API usage, team limits, and unusual activity as needed.
+
+## Invoice Management
+
+<Cards>
+  <Card title="Invoice History" description="Access all billing records">
+    - Invoice numbers, dates, and amounts
+    - Plan details and payment status
+  </Card>
+  <Card title="Download Options" description="Flexible export options">
+    - Individual PDF or bulk ZIP downloads
+    - Accounting software compatibility
+  </Card>
+</Cards>
+
+Each invoice includes charge breakdown, tax calculations, and administrative details.
+
+## Usage Overages
+
+<Callout type="warning">
+If you exceed your plan limits, additional fees will apply to ensure uninterrupted service.
+</Callout>
+
+<Tabs items={['Storage Overages', 'API Overages', 'Cost Control']}>
+<Tab value="Storage Overages">
+Additional storage is billed monthly, with automatic scaling and detailed usage tracking provided.
+</Tab>
+<Tab value="API Overages">
+Exceeding hourly API limits results in volume-based charges, with real-time monitoring available.
+</Tab>
+<Tab value="Cost Control">
+- Monitor usage dashboards and set alerts
+- Optimize storage and API usage
+- Consider plan upgrades for better value
+</Tab>
+</Tabs>
+
+## Billing Notifications
+
+Automated email notifications for:
+- Payment confirmations and failures
+- Invoice generation and plan changes
+- Usage warnings and recommendations
+
+## Tax Compliance
+
+<Tabs items={['Global Support', 'EU VAT', 'Documentation']}>
+<Tab value="Global Support">
+Automatic tax calculation based on billing address with compliance for local regulations.
+</Tab>
+<Tab value="EU VAT">
+Country-specific VAT calculations, B2B exemptions, and EU digital services compliance.
+</Tab>
+<Tab value="Documentation">
+Detailed tax information on invoices with annual summaries and accounting export capabilities.
+</Tab>
+</Tabs>
+
+## Payment Issues
+
+<Callout type="info">
+A 7-day grace period is provided for failed payments, including multiple retry attempts and notification alerts.
+</Callout>
+
+<Steps>
+<Step>Verify payment method and billing address accuracy</Step>
+<Step>Confirm sufficient account balance and no bank restrictions</Step>
+<Step>Update payment information if needed</Step>
+<Step>Contact billing support for persistent issues</Step>
+</Steps>
+
+## Support
+
+<Tabs items={['Pro Support', 'Enterprise Support', 'General Support']}>
+<Tab value="Pro Support">
+Priority support with dedicated billing specialists and faster response times.
+</Tab>
+<Tab value="Enterprise Support">
+24/7 support, dedicated account manager, and SLA with custom billing arrangements.
+</Tab>
+<Tab value="General Support">
+Support tickets, documentation, community forums, and self-service tools.
+</Tab>
+</Tabs>
+
+## Security & Privacy
+
+- Encrypted billing data with limited access
+- International privacy regulation compliance
+- No full card number storage on servers
+
+## Next Steps
+
+<Cards>
+  <Card 
+    title="Team Management" 
+    description="Learn how to effectively manage team members and permissions"
+    href="/docs/dashboard/team"
+  />
+    [//]: # (TODO We should have this in place )
+    <Card
+      title="Usage Optimization"
+    description="Discover strategies to optimize your resource usage and costs"
+    href="/docs/platform/optimization"
+  />
+    [//]: # ( TODO  )
+  <Card 
+    title="Security Features" 
+    description="Review comprehensive security features and best practices"
+    href="/docs/security"
+  />
+</Cards>

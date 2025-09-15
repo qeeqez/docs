@@ -1,5 +1,7 @@
 import type {BaseLayoutProps} from "fumadocs-ui/layouts/shared";
-import type {FooterSection} from "@/components/layout/home/footer-content-section";
+import {ChevronRightIcon} from "lucide-react";
+import LogoWide from "@/assets/logo_wide.svg";
+import type {FooterSection} from "@/components/layout/footer/footer-content-section";
 import DiscordIcon from "@/public/socials/discord.svg";
 import GithubIcon from "@/public/socials/github.svg";
 import XIcon from "@/public/socials/x.svg";
@@ -16,30 +18,32 @@ export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
       title: (
-        <>
-          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" aria-label="Logo">
-            <circle cx={12} cy={12} r={12} fill="currentColor" />
-          </svg>
-          My App
-        </>
+        <LogoWide className="h-8 fill-black dark:invert"/>
       ),
+      transparentMode: "top"
     },
     // see https://fumadocs.dev/docs/ui/navigation/links
     links: [
       {
+        text: "Home",
+        url: "/",
+      },
+      {
         // icon: <BookIcon />,
         text: "Docs",
         url: "/docs",
-        // secondary items will be displayed differently on navbar
-        secondary: false,
       },
       {
         // icon: <BookIcon />,
         text: "API Reference",
         url: "/api",
-        // secondary items will be displayed differently on navbar
-        secondary: false,
       },
+      {
+        type: 'button',
+        text: <>Get Started <ChevronRightIcon /></>,
+        url: "https://dash.rixl.com",
+        secondary: true,
+      }
     ],
   };
 }
