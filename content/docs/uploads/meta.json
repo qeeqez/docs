@@ -1,5 +1,10 @@
 {
   "title": "Uploads",
   "description": "Upload and manage your content",
-  "pages": ["index", "images", "videos", "posts"]
+  "pages": [
+    "index", 
+    "images",
+    "video-processing",
+    "posts"
+  ]
 }
