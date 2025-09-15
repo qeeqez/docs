@@ -15,6 +15,9 @@ import {cn} from "@/lib/cn";
 
 export function PageTOC(props: ComponentProps<"div">) {
   const {collapsed} = useSidebar();
+  const items = useTOCItems();
+
+  if(items.length === 0) return null;
 
   return (
     <div
