@@ -13,7 +13,7 @@ export const docs = defineDocs({
 });
 
 export const sdk = defineDocs({
-    dir: 'content/sdk',
+    dir: 'content/docs/sdk',
     docs: {
         schema: frontmatterSchema
     },

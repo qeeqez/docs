@@ -7,7 +7,7 @@ export const docsSource = loader({
 });
 
 export const sdkSource = loader({
-    baseUrl: '/sdk',
+    baseUrl: '/docs/sdk',
     source: sdk.toFumadocsSource()
 });
 

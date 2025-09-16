@@ -11,10 +11,10 @@ import {
     PageTOCPopoverContent,
     PageTOCPopoverTrigger
 } from "@/components/layout/sdk/page/page-toc";
-import {PageTOCItems, PageTOCPopoverItems, PageTOCTitle} from "@/components/layout/docs/page";
+import {PageTOCItems, PageTOCPopoverItems, PageTOCTitle} from "@/components/layout/sdk/page";
 import {TOCProvider} from "@/components/ui/toc";
 
-export default async function Page(props: PageProps<'/sdk/[[...slug]]'>) {
+export default async function Page(props: PageProps<'/docs/sdk/[[...slug]]'>) {
     const params = await props.params;
     const page = sdkSource.getPage(params.slug);
     if (!page) notFound();
@@ -66,7 +66,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-    props: PageProps<'/sdk/[[...slug]]'>,
+    props: PageProps<'/docs/sdk/[[...slug]]'>,
 ): Promise<Metadata> {
     const params = await props.params;
     const page = sdkSource.getPage(params.slug);
