@@ -1,0 +1,126 @@
+---
+title: Video Processing
+description: Automated video transcoding with multiple quality levels and adaptive streaming.
+---
+
+import { InteractiveCard, Callout, InfoCard} from '../../../../components';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+
+
+Our automated video system converts your uploads into multiple quality levels and streaming formats for smooth playback on all devices.
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <InteractiveCard
+        title="Quality Tiers"
+        description="Choose the right processing tier for your content."
+        href="/docs/uploads/video-processing/quality-tiers"
+        icon="Settings"
+    />
+    <InteractiveCard
+        title="Supported Formats"
+        description="Video formats and encoding specifications."
+        href="/docs/uploads/video-processing/supported-formats"
+        icon="FileType"
+    />
+    <InteractiveCard
+        title="Processing Pipeline"
+        description="How videos are transcoded and optimized."
+        href="/docs/uploads/video-processing/processing-pipeline"
+        icon="Workflow"
+    />
+    <InteractiveCard
+        title="Upload Implementation"
+        description="Code examples for implementing video uploads."
+        href="/docs/uploads/video-processing/upload-implementation"
+        icon="Code"
+    />
+    <InteractiveCard
+        title="Monitoring Status"
+        description="Track processing progress and handle errors."
+        href="/docs/uploads/video-processing/monitoring-status"
+        icon="Activity"
+    />
+</div>
+
+## How Video Processing Works
+
+<Steps>
+    <Step>
+        **Analysis & Planning**
+
+        We analyze your video to determine the best quality settings and formats for your content.
+    </Step>
+
+    <Step>
+        **Multi-Quality Encoding**
+
+        Your video is processed into multiple resolutions and quality levels at the same time for faster results.
+    </Step>
+
+    <Step>
+        **Streaming Package Creation**
+
+        We create streaming formats (HLS/DASH) that automatically adjust quality based on viewer's internet speed.
+    </Step>
+</Steps>
+
+## Key Features
+
+<div className="grid gap-6 sm:grid-cols-2 mt-6">
+    <InfoCard
+        title="Smart Encoding"
+        description="Automatically optimizes quality while keeping file sizes small using advanced H.265 compression"
+    />
+    <InfoCard
+        title="Adaptive Streaming"
+        description="Creates HLS and DASH formats that adjust video quality in real-time based on connection speed"
+    />
+    <InfoCard
+        title="Global Delivery"
+        description="Distributes your videos to servers worldwide for fast loading anywhere"
+    />
+    <InfoCard
+        title="Audio Optimization"
+        description="Processes audio separately with Opus and AAC formats for the best sound quality"
+    />
+</div>
+
+## Quality Tiers Overview
+
+Choose the right processing tier for your content needs:
+
+| Tier       | Best For                 | Resolutions       | Features                               | Processing Speed |
+|------------|--------------------------|-------------------|----------------------------------------|------------------|
+| **Basic**  | Standard web content     | 720p, 480p, 240p  | Bandwidth efficient                    | ~1x real-time    |
+| **Shorts** | Mobile & vertical videos | 1080p, 720p, 480p | 60fps support                          | ~1.5x real-time  |
+| **Pro**    | Professional broadcasts  | 4K, 2K, 1080p+    | Premium quality, additional renditions | ~2-3x real-time  |
+
+For complete specifications and detailed comparisons, see [Quality Tiers documentation](/docs/uploads/video-processing/quality-tiers).
+
+## Performance Benefits
+
+<Callout type="success">
+    Our H.265 encoding creates files that are 30-50% smaller than older H.264 formats while maintaining the same visual quality.
+</Callout>
+
+<Tabs items={['File Size', 'Upload Handling', 'Streaming']}>
+    <Tab value="File Size">
+        - Advanced compression reduces bandwidth usage
+        - Multiple quality levels ensure smooth playback on any connection
+        - Smart bitrate selection based on content complexity
+    </Tab>
+
+    <Tab value="Upload Handling">
+        - Files over 100MB automatically use multipart uploads
+        - Resume capability if uploads are interrupted
+        - Multiple quality versions processed simultaneously for faster delivery
+    </Tab>
+
+    <Tab value="Streaming">
+        - 6-second video segments for quick quality switching
+        - Content-aware compression optimizes each scene
+        - Automatic quality adjustment based on viewer's connection speed
+    </Tab>
+
+</Tabs>
