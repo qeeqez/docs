@@ -3,10 +3,33 @@ title: Image Optimization
 description: Transform any image into lightning-fast, web-optimized files. AVIF compression, smart placeholders, and global delivery—all automatic.
 ---
 
-import { Callout, InfoCard } from '../../../components';
+import { Callout, InfoCard, InteractiveCard } from '../../../components';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
 Upload any image to RIXL and watch it transform into a web-optimized masterpiece. Our intelligent processing pipeline delivers files that are 90% smaller while looking identical to the original—it's like magic, but it's just really smart technology.
+
+## Quick Actions
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InteractiveCard
+    title="Upload Images"
+    description="Start uploading and optimizing your images now."
+    href="/docs/dashboard/media"
+    icon="Upload"
+  />
+  <InteractiveCard
+    title="API Integration"
+    description="Integrate image optimization into your applications."
+    href="/docs/api-reference"
+    icon="Code"
+  />
+  <InteractiveCard
+    title="Bulk Upload"
+    description="Process multiple images efficiently with batch operations."
+    href="/docs/uploads/bulk-uploads"
+    icon="Archive"
+  />
+</div>
 
 ## How Image Processing Works
 

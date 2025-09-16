@@ -3,25 +3,64 @@ title: Upload & Optimize
 description: Transform your raw media into web-optimized assets. Automatic processing, multiple formats, global delivery—all handled seamlessly.
 ---
 
-import { InteractiveCard } from '../../../components';
+import { InteractiveCard, InfoCard } from '../../../components';
+
+## Quick Upload Actions
 
 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
   <InteractiveCard
-    title="Image Optimization"
-    description="Turn any image into lightning-fast AVIF files with smart placeholders and global delivery."
+    title="Upload Images"
+    description="Transform any image into lightning-fast AVIF files with smart placeholders."
     href="/docs/uploads/images"
     icon="Image"
   />
   <InteractiveCard
-    title="Video Processing"
-    description="Professional video transcoding with adaptive streaming, multiple qualities, and instant delivery."
-    href="/docs/uploads/video-processing"
+    title="Upload Videos"
+    description="Professional video transcoding with adaptive streaming and instant delivery."
+    href="/docs/uploads/videos"
     icon="Video"
   />
   <InteractiveCard
-    title="Social Posts"
-    description="Create engaging social media content with seamless media integration and optimization."
-    href="/docs/uploads/posts"
-    icon="FileText"
+    title="Bulk Upload"
+    description="Process multiple files efficiently with batch operations."
+    href="/docs/uploads/bulk-uploads"
+    icon="Archive"
   />
 </div>
+
+## Upload Methods
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-6">
+  <InfoCard
+    title="Dashboard Upload"
+    description="Drag and drop files directly in the web interface with real-time progress tracking."
+    icon="Upload"
+  />
+  <InfoCard
+    title="API Integration"
+    description="Programmatic uploads via REST API for seamless app integration."
+    icon="Code"
+  />
+  <InfoCard
+    title="Bulk Processing"
+    description="Handle large volumes of content with automated workflows and batch operations."
+    icon="Workflow"
+  />
+</div>
+
+## Supported Formats
+
+**Images** *(converted to optimized AVIF)*
+- **Common**: JPEG, PNG, WebP, GIF, BMP
+- **Professional**: HEIC/HEIF, TIFF, JPEG 2000
+- **Vector**: SVG (preserved as-is)
+
+**Videos** *(transcoded for adaptive streaming)*
+- **Input**: MP4, MOV, AVI, MKV, WebM, FLV
+- **Output**: Adaptive HLS with multiple quality tiers
+- **Thumbnails**: AVIF format with instant placeholders
+
+**File Limits**
+- Images: Up to 100MB each
+- Videos: Up to 2GB each
+- Bulk uploads: No limit on quantity
