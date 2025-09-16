@@ -1,0 +1,142 @@
+---
+title: "Props Reference"
+description: "Complete API reference for all Video component props and TypeScript interfaces"
+---
+
+import { Callout } from 'fumadocs-ui/components/callout'
+
+## Core Props
+
+### `id` **(Required)**
+
+**Type:** `string`
+
+The unique media identifier from your RIXL dashboard. Upload your video to [dash.rixl.com](https://dash.rixl.com) to get this ID.
+
+```tsx
+<Video id="D3OCjdLP60" />
+```
+
+### `className` **(Optional)**
+
+**Type:** `string` | **Default:** `undefined`
+
+CSS classes for styling the video container. Supports all CSS frameworks including TailwindCSS.
+
+```tsx
+<Video
+  id="D3OCjdLP60"
+  className="w-full h-auto rounded-lg shadow-lg"
+/>
+```
+
+## Playback Controls
+
+### `muted` **(Optional)**
+
+**Type:** `boolean` | **Default:** `false`
+
+Controls the initial mute state of the video. Required for autoplay in most browsers.
+
+```tsx
+<Video id="D3OCjdLP60" muted={true} />
+```
+
+### `autoPlay` **(Optional)**
+
+**Type:** `boolean` | **Default:** `false`
+
+Automatically starts playback when the component loads. Must be combined with `muted={true}` for browser compliance.
+
+```tsx
+<Video
+  id="D3OCjdLP60"
+  autoPlay={true}
+  muted={true} // Required for autoplay
+/>
+```
+
+<Callout type="warning">
+    Many modern browsers block videos from playing audio automatically to improve user experience.
+    To ensure a video starts playing without user interaction, you must use both the `muted={true}` and `autoPlay={true}` attributes.
+    This allows the video to begin playing silently until the user decides to unmute it.
+</Callout>
+
+### `loop` **(Optional)**
+
+**Type:** `boolean` | **Default:** `false`
+
+Automatically restarts the video when it reaches the end.
+
+```tsx
+<Video id="D3OCjdLP60" loop={true} />
+```
+
+### `volume` **(Optional)**
+
+**Type:** `number` (0.0 - 1.0) | **Default:** `1.0`
+
+Sets the initial volume level. Must be between 0.0 (silent) and 1.0 (full volume).
+
+```tsx
+<Video id="D3OCjdLP60" volume={0.8} />
+```
+
+## UI Controls
+
+### `progressBar` **(Optional)**
+
+**Type:** `boolean` | **Default:** `true`
+
+Shows or hides the video progress bar and scrub controls.
+
+```tsx
+<Video id="D3OCjdLP60" progressBar={false} />
+```
+
+### `allowPlayPause` **(Optional)**
+
+**Type:** `boolean` | **Default:** `true`
+
+Enables or disables play/pause controls and click-to-play functionality.
+
+```tsx
+<Video id="D3OCjdLP60" allowPlayPause={false} />
+```
+
+### `allowFullscreen` **(Optional)**
+
+**Type:** `boolean` | **Default:** `true`
+
+Shows or hides the fullscreen button and enables fullscreen functionality.
+
+```tsx
+<Video id="D3OCjdLP60" allowFullscreen={true} />
+```
+
+### `allowPictureInPicture` **(Optional)**
+
+**Type:** `boolean` | **Default:** `true`
+
+Enables Picture-in-Picture mode support for supported browsers.
+
+```tsx
+<Video id="D3OCjdLP60" allowPictureInPicture={true} />
+```
+
+## Advanced Features
+
+### `theme` **(Optional)**
+
+**Type:** `'default' | 'minimal' | 'hidden'` | **Default:** `'default'`
+
+Selects the player theme and control styling.
+
+```tsx
+<Video id="D3OCjdLP60" theme="minimal" />
+```
+
+**Available Themes:**
+- `'default'` - Full-featured player with all standard controls
+- `'minimal'` - Clean, simplified interface with Progressbar and Mute button only
+- `'hidden'` -  No UI is shown and all playback controls are completely hidden, providing the user with no control over the video.
