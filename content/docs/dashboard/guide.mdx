@@ -8,6 +8,29 @@ import { Step, Steps } from 'fumadocs-ui/components/steps';
 
 Welcome to RIXL! This guide will have you uploading and optimizing media in just a few minutes. We've designed the onboarding to be as smooth as possible—no complex configuration required.
 
+## Quick Actions
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InteractiveCard
+    title="Create Project"
+    description="Set up your first workspace for media organization."
+    href="/docs/dashboard/project"
+    icon="FolderPlus"
+  />
+  <InteractiveCard
+    title="Upload Media"
+    description="Start optimizing videos and images immediately."
+    href="/docs/dashboard/media"
+    icon="Upload"
+  />
+  <InteractiveCard
+    title="Generate API Key"
+    description="Get keys for integrating RIXL into your apps."
+    href="/docs/dashboard/api-keys"
+    icon="Key"
+  />
+</div>
+
 ## What You'll Need
 
 **Before we start:**
@@ -36,17 +59,6 @@ You'll have uploaded your first media files, seen RIXL's optimization in action,
     </Callout>
   </Step>
   <Step>
-    **Get Your API Keys** *(You can skip this for now)*
-    
-    If you plan to integrate RIXL into an app or website, you'll need [API keys](/docs/account/api-access/create-key). Each project gets its own set of keys for security.
-    
-    Don't worry about this step if you're just testing things out—you can always come back to it later.
-    
-    <Callout type="warning">
-      API keys are like passwords for your project. Keep them secure and never share them publicly.
-    </Callout>
-  </Step>
-  <Step>
     **Upload Something Awesome**
     
     Time for the fun part! Go to the [Media section](/docs/dashboard/media) and drag in some files.
@@ -56,6 +68,17 @@ You'll have uploaded your first media files, seen RIXL's optimization in action,
     - **Images**: JPG, PNG, HEIC, SVG, and others (up to 100MB each)
     
     RIXL will automatically optimize everything for web delivery—you'll see the magic happen in real-time.
+  </Step>
+  <Step>
+    **Get Your API Keys** *(Optional for getting started)*
+    
+    If you plan to integrate RIXL into an app or website, you'll need [API keys](/docs/dashboard/api-keys). Each project gets its own set of keys for security.
+    
+    Don't worry about this step if you're just testing things out—you can always come back to it later.
+    
+    <Callout type="warning">
+      API keys are like passwords for your project. Keep them secure and never share them publicly.
+    </Callout>
   </Step>
   <Step>
     **Invite Your Team** *(Optional but recommended)*
@@ -73,6 +96,107 @@ You'll have uploaded your first media files, seen RIXL's optimization in action,
 <Callout type="tip">
   **First time with media optimization?** Don't worry! Check out our [Dashboard Overview](/docs/dashboard) to get familiar with the interface, then come back here to start uploading.
 </Callout>
+
+## Interface Overview
+
+### Primary Work Areas
+
+The dashboard is organized into functional modules for efficient content management:
+
+<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-6">
+  <InfoCard 
+    title="Project Home" 
+    description="Dashboard overview with usage metrics and quick actions"
+    icon="BookOpen"
+  />
+  <InfoCard 
+    title="Video Library" 
+    description="Upload, transcode, and manage video content"
+    icon="Video"
+  />
+  <InfoCard 
+    title="Image Library" 
+    description="Upload and process images with real-time transformations"
+    icon="Image"
+  />
+  <InfoCard 
+    title="Content Feeds" 
+    description="Organize content into structured feeds for distribution"
+    icon="Activity"
+  />
+</div>
+
+### First Upload Workflows
+
+#### Upload Your First Video
+
+<Steps>
+  <Step>
+    **Select Files**
+    
+    Drag and drop videos into the upload area or browse to select files.
+  </Step>
+  <Step>
+    **Configure Processing**
+    
+    Choose transcoding quality, thumbnail settings, and optimization preferences.
+  </Step>
+  <Step>
+    **Monitor Progress**
+    
+    Watch real-time processing status with detailed progress indicators.
+  </Step>
+  <Step>
+    **Access Content**
+    
+    Get share URLs, embed codes, and view analytics.
+  </Step>
+</Steps>
+
+#### Upload Your First Image
+
+<Steps>
+  <Step>
+    **Start Upload**
+    
+    Navigate to the Images section in your dashboard and click the upload button to select your files.
+  </Step>
+  <Step>
+    **Configure Settings**
+    
+    Set upload preferences and transformation options.
+  </Step>
+  <Step>
+    **Immediate Availability**
+    
+    Images are instantly available with real-time transformation capabilities.
+  </Step>
+  <Step>
+    **Optimize Delivery**
+    
+    Use URL-based transformations for automatic optimization and CDN delivery.
+  </Step>
+</Steps>
+
+## Navigation Essentials
+
+<div className="grid gap-6 sm:grid-cols-3 mt-6">
+  <InfoCard 
+    title="Project Switching" 
+    description="Use the project selector in the sidebar to switch between projects"
+    icon="Workflow"
+  />
+  <InfoCard 
+    title="Quick Actions" 
+    description="Most sections include quick action buttons for common tasks"
+    icon="Activity"
+  />
+  <InfoCard 
+    title="Usage Monitoring" 
+    description="Storage usage and recent activity are visible on the project home page"
+    icon="BarChart3"
+  />
+</div>
 
 ## Interface Overview
 
@@ -225,7 +349,7 @@ The dashboard is organized into functional modules for efficient content managem
   <InteractiveCard
     title="Create API Keys"
     description="Generate your first API keys for programmatic access."
-    href="/docs/account/api-access/create-key"
+    href="/docs/account/api-access"
     icon="Key"
   />
   <InteractiveCard

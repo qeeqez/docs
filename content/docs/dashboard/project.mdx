@@ -1,52 +1,166 @@
 ---
-title: Project
-description: Complete guide to creating and managing projects in RIXL
+title: Project Management
+description: Create and manage projects to organize your media, team access, and optimization settings.
 ---
 
-import { Callout } from 'fumadocs-ui/components/callout'
-import { Card, Cards } from 'fumadocs-ui/components/card'
-import { Step, Steps } from 'fumadocs-ui/components/steps'
-import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
-import { Banner } from 'fumadocs-ui/components/banner'
+import { Callout, InteractiveCard, InfoCard } from '../../../components';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-RIXL's advanced management features provide enhanced control over your projects, allowing you to streamline complex media workflows and strengthen team collaboration.
+Projects organize your media content and team access in RIXL. Each project is isolated with its own media, settings, and team permissions.
 
-<Banner variant="info">
-  **New Feature:** Project templates are now available to quickly set up common workflows and configurations.
-</Banner>
+## Quick Actions
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InteractiveCard
+    title="Create Project"
+    description="Set up a new project to organize your media and team access."
+    href="#create-a-new-project"
+    icon="FolderPlus"
+  />
+  <InteractiveCard
+    title="Project Settings"
+    description="Configure optimization preferences and team access."
+    href="#project-configuration"
+    icon="Settings"
+  />
+  <InteractiveCard
+    title="Team Management"
+    description="Invite collaborators and manage permissions."
+    href="/docs/account/organizations/team-management"
+    icon="Users"
+  />
+</div>
 
 <Callout type="info">
-For basic project creation, see the [Getting Started guide](/docs/getting-started/create-project). This guide focuses on advanced management features.
+You need at least one project to access the main dashboard features. If you don't have any projects, you'll be redirected to create one.
 </Callout>
 
-## Project Architecture
+## Create a New Project
 
-<Cards>
-  <Card title="Content Organization" description="Advanced media categorization and management with tagging, folders, and bulk operations" />
-  <Card title="Access Control" description="Granular team permissions and security for different roles and responsibilities" />
-  <Card title="Resource Management" description="Monitor usage and optimize performance with detailed analytics" />
-  <Card title="Integration Control" description="Manage API access and external integrations" />
-</Cards>
+<Steps>
+  <Step>
+    **Project Details**
+    
+    Navigate to **Settings → Projects → Create New Project** and provide:
+    - **Project Name**: Something descriptive (e.g., "Marketing Videos", "Product Photos")
+    - **Description**: Optional context for team members
+  </Step>
+  
+  <Step>
+    **Server Location**
+    
+    Choose the region closest to your users for optimal performance:
+    - **US East**: Best for North America and Eastern regions
+    - **US West**: Ideal for Pacific regions and Asia
+    - **Europe**: Optimal for European and African users
+    
+    <Callout type="warning">
+      Server location cannot be changed after project creation—choose carefully!
+    </Callout>
+  </Step>
+  
+  <Step>
+    **Optimization Settings**
+    
+    Select default video quality based on your content type:
+    - **Shorts**: Optimized for social media and mobile viewing
+    - **Standard**: Balanced quality for general web content  
+    - **Pro**: High quality for professional and cinematic content
+  </Step>
+  
+  <Step>
+    **Create & Start Uploading**
+    
+    Once created, you can immediately start [uploading media](/docs/uploads) and [generating API keys](/docs/dashboard/api-keys).
+  </Step>
+</Steps>
 
-## Advanced Project Configuration
+## Project Structure
 
-### Custom Workflows
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-6">
+  <InfoCard 
+    title="Media Storage" 
+    description="Videos, images, and other content organized within the project"
+    icon="Archive"
+  />
+  <InfoCard 
+    title="Team Access" 
+    description="Organization members who can access this project"
+    icon="Users"
+  />
+  <InfoCard 
+    title="Processing Settings" 
+    description="Video optimization preferences and quality tiers"
+    icon="Settings"
+  />
+  <InfoCard 
+    title="API Keys" 
+    description="Project-specific access credentials for integrations"
+    icon="Key"
+  />
+</div>
 
-<Tabs items={['Content Workflows', 'Approval Processes', 'Automation Rules']}>
-<Tab value="Content Workflows">
-- Custom video optimization profiles
-- Automated content tagging and categorization
-- Content lifecycle management rules
-</Tab>
-<Tab value="Approval Processes">
-- Multi-stage content approval workflows
-- Reviewer assignment and notifications
-</Tab>
-<Tab value="Automation Rules">
-- Automated content publishing rules
-- Scheduled content operations
-</Tab>
-</Tabs>
+## Project Configuration
+
+### Optimization Settings
+
+Configure how RIXL processes your media:
+
+**Video Settings**
+- **Quality Tiers**: Shorts, Standard, or Pro transcoding
+- **Thumbnail Generation**: Automatic poster frames and previews
+- **Format Support**: MP4, HLS adaptive streaming
+
+**Image Settings**
+- **Format Conversion**: Automatic AVIF optimization
+- **Placeholder Generation**: Instant-loading thumbhash previews
+- **Transformation**: Real-time URL-based image editing
+
+### Access Control
+
+**Project Permissions**
+- **Owner**: Full control including deletion and billing
+- **Admin**: Manage content, settings, and team members
+- **Editor**: Upload and edit content
+- **Viewer**: Read-only access to content
+
+**API Access**
+- Generate project-specific API keys
+- Set granular permissions per key
+- Monitor usage and rate limits
+
+### Usage Monitoring
+
+Track your project's resource consumption:
+
+- **Storage Usage**: Total media storage across all formats
+- **Bandwidth**: Monthly delivery and processing usage
+- **API Calls**: Request volume and rate limit status
+- **Team Activity**: Member actions and upload history
+
+## Project Navigation
+
+<div className="grid gap-6 sm:grid-cols-3 mt-6">
+  <InfoCard 
+    title="Project Switching" 
+    description="Use the project selector in the dashboard sidebar to switch between your projects"
+    icon="Workflow"
+  />
+  <InfoCard 
+    title="Dashboard Context" 
+    description="The main dashboard will show content for the currently selected project"
+    icon="BarChart3"
+  />
+  <InfoCard 
+    title="Cross-Project Actions" 
+    description="Account settings and billing apply across all projects in your organization"
+    icon="Building"
+  />
+</div>
+
+<Callout type="tip">
+**Pro tip**: Create separate projects for different environments (development, staging, production) or business units to maintain clean separation of content and access.
+</Callout>
 
 ## Project Management Dashboard
 
