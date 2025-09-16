@@ -8,8 +8,6 @@ import {
   NavbarMenuTrigger
 } from "@/components/layout/home/navbar";
 import type {LinkItemType} from "@/components/layout/shared";
-import {isActive} from "@/lib/is-active";
-import {cn} from "@/lib/cn";
 
 export function NavbarLinkItem({item, ...props}: { item: LinkItemType; className?: string }) {
   if (item.type === "custom") return <div {...props}>{item.children}</div>;

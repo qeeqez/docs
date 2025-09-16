@@ -60,7 +60,7 @@ export function PageTOCPopoverTrigger(props: ComponentProps<"button">) {
     <CollapsibleTrigger
       {...props}
       className={cn(
-        "flex w-full h-(--fd-tocnav-height) items-center text-sm text-fd-muted-foreground gap-2.5 px-4 py-2.5 text-start focus-visible:outline-none [&_svg]:size-4 md:px-6",
+        "flex w-full h-(--fd-tocnav-height) items-center text-sm text-fd-muted-foreground gap-2.5 px-6 py-2.5 text-start focus-visible:outline-none [&_svg]:size-4 ",
         props.className,
       )}
     >
