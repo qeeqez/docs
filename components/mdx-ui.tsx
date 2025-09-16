@@ -41,7 +41,14 @@ import {
   Archive,
   ShoppingBag,
   Smartphone,
-  HelpCircle
+  HelpCircle,
+    Zap,
+    Eye,
+    Play,
+    ShoppingCart,
+    Target,
+    Monitor,
+    RotateCcw
 } from 'lucide-react';
 
 // Icon mapping object
@@ -85,7 +92,14 @@ const iconMap = {
   Info,
   AlertTriangle,
   AlertCircle,
-  X
+  X,
+    Zap,
+    Eye,
+    Play,
+    ShoppingCart,
+    Target,
+    Monitor,
+    RotateCcw
 } as const;
 
 type IconName = keyof typeof iconMap;
