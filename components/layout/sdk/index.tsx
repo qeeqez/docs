@@ -5,14 +5,7 @@ import {NavProvider} from "fumadocs-ui/contexts/layout";
 import {TreeContextProvider} from "fumadocs-ui/contexts/tree";
 import type {GetSidebarTabsOptions} from "fumadocs-ui/utils/get-sidebar-tabs";
 import type {ComponentProps, HTMLAttributes, ReactNode} from "react";
-import {PageTOCItems, PageTOCPopoverItems, PageTOCTitle} from "@/components/layout/docs/page";
-import {Sidebar} from "@/components/layout/docs/sidebar/sidebar";
-import {HomeLayout} from "@/components/layout/home";
-import {TOCProvider} from "@/components/ui/toc";
-import {baseOptions} from "@/lib/layout.shared";
-import {cn} from "../../../lib/cn";
 import type {BaseLayoutProps} from "../shared/index";
-import {LayoutBody} from "./client";
 
 interface SidebarOptions extends ComponentProps<"aside">, Pick<SidebarProps, "defaultOpenLevel" | "prefetch"> {
   enabled?: boolean;

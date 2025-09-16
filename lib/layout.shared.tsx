@@ -33,6 +33,13 @@ export function baseOptions(): BaseLayoutProps {
         text: "Docs",
         url: "/docs",
       },
+        {
+            // icon: <BookIcon />,
+            text: 'SDK',
+            url: '/docs/sdk',
+            // secondary items will be displayed differently on navbar
+            secondary: false,
+        },
       {
         // icon: <BookIcon />,
         text: "API Reference",
@@ -82,7 +89,7 @@ export function FooterSections(): FooterSection[] {
       title: "Tools",
       links: [
         {text: "CLI", url: "/cli"},
-        {text: "SDK", url: "/sdk"},
+        {text: "SDK", url: "/docs/sdk"},
         {text: "Integrations", url: "/integrations"},
         {text: "Extensions", url: "/extensions"},
       ],
