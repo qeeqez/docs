@@ -1,7 +1,7 @@
 import {CollapsibleContent} from "fumadocs-ui/components/ui/collapsible";
 import type {Collapsible as Primitive} from "radix-ui";
 import {useMemo} from "react";
-import {SidebarContext, useInternalContext} from "@/components/layout/docs/sidebar/sidebar-provider";
+import {SidebarContext, useInternalContext} from "@/components/layout/sdk/sidebar/sidebar-provider";
 import {cn} from "@/lib/cn";
 
 export function SidebarFolderContent(props: Primitive.CollapsibleContentProps) {
