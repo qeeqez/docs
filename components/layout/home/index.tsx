@@ -24,7 +24,7 @@ export function HomeLayout(props: HomeLayoutProps & HTMLAttributes<HTMLElement>)
 
   const headerRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
-  const animationFrameId = useRef<number>();
+  const animationFrameId = useRef<number>(0);
 
   const calculateDynamicHeight = useCallback(() => {
     if (!headerRef.current || !footerRef.current) return;
