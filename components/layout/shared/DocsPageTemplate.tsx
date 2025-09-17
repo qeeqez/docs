@@ -36,7 +36,7 @@ export function DocsPageTemplate({
             </SidebarWrapper>
 
             <TOCProvider toc={page.data.toc}>
-                <main className="grow overflow-y-auto min-h-screen relative">
+                <main className="grow min-h-screen relative">
                     {/* TODO correct TOC popover position*/}
                     <PageTOCPopover>
                         <PageTOCPopoverTrigger/>
