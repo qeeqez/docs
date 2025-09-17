@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
-import { 
-  ArrowUpRight, 
-  CheckCircle, 
-  Info, 
-  AlertTriangle, 
-  AlertCircle, 
+import React, {useState} from 'react';
+import {
+  ArrowUpRight,
+  CheckCircle,
+  Info,
+  AlertTriangle,
+  AlertCircle,
   X,
   BookOpen,
   Settings,
@@ -28,6 +28,7 @@ import {
   Lock,
   Upload,
   FolderIcon,
+  FolderOpen,
   Tag,
   Trash2,
   Search,
@@ -42,13 +43,14 @@ import {
   ShoppingBag,
   Smartphone,
   HelpCircle,
-    Zap,
-    Eye,
-    Play,
-    ShoppingCart,
-    Target,
-    Monitor,
-    RotateCcw
+  Zap,
+  Eye,
+  Play,
+  ShoppingCart,
+  Target,
+  Monitor,
+  RotateCcw,
+  Rss
 } from 'lucide-react';
 
 // Icon mapping object
@@ -73,6 +75,7 @@ const iconMap = {
   Lock,
   Upload,
   FolderIcon,
+  FolderOpen,
   Tag,
   Trash2,
   Search,
@@ -93,13 +96,14 @@ const iconMap = {
   AlertTriangle,
   AlertCircle,
   X,
-    Zap,
-    Eye,
-    Play,
-    ShoppingCart,
-    Target,
-    Monitor,
-    RotateCcw
+  Zap,
+  Eye,
+  Play,
+  ShoppingCart,
+  Target,
+  Monitor,
+  RotateCcw,
+  Rss
 } as const;
 
 type IconName = keyof typeof iconMap;
@@ -115,25 +119,28 @@ interface InteractiveCardProps {
  * InteractiveCard - Theme-aware card component with hover effects and accessibility
  * Supports both dark and light modes with smooth transitions
  */
-export const InteractiveCard = ({ title, description, href, icon }: InteractiveCardProps) => {
+export const InteractiveCard = ({title, description, href, icon}: InteractiveCardProps) => {
   const IconComponent = (icon && (iconMap as Record<string, any>)[icon]) ? (iconMap as Record<string, any>)[icon] : ArrowUpRight; // Default to ArrowUpRight if none provided
-  
+
   const CardContent = () => (
     <>
       {icon && IconComponent && (
         <div className="flex items-start justify-between mb-3">
           <div className="p-2 bg-fd-primary/10 dark:bg-fd-primary/20 rounded-lg transition-colors">
-            <IconComponent className="h-5 w-5 text-fd-primary" />
+            <IconComponent className="h-5 w-5 text-fd-primary"/>
           </div>
-          <ArrowUpRight className="h-4 w-4 text-fd-muted-foreground group-hover:text-fd-primary transition-colors duration-200" />
+          <ArrowUpRight
+            className="h-4 w-4 text-fd-muted-foreground group-hover:text-fd-primary transition-colors duration-200"/>
         </div>
       )}
       {!icon && (
         <div className="flex items-start justify-between mb-3">
-          <ArrowUpRight className="h-4 w-4 text-fd-muted-foreground group-hover:text-fd-primary transition-colors duration-200 ml-auto" />
+          <ArrowUpRight
+            className="h-4 w-4 text-fd-muted-foreground group-hover:text-fd-primary transition-colors duration-200 ml-auto"/>
         </div>
       )}
-      <h3 className="text-lg font-semibold text-fd-foreground mb-2 group-hover:text-fd-primary transition-colors duration-200">
+      <h3
+        className="text-lg font-semibold text-fd-foreground mb-2 group-hover:text-fd-primary transition-colors duration-200">
         {title}
       </h3>
       <p className="text-fd-muted-foreground text-sm leading-relaxed">
@@ -146,19 +153,19 @@ export const InteractiveCard = ({ title, description, href, icon }: InteractiveC
 
   if (href) {
     return (
-      <a 
-        href={href} 
+      <a
+        href={href}
         className={`${baseClasses} cursor-pointer hover:-translate-y-1 block no-underline`}
         aria-label={`Navigate to ${title}`}
       >
-        <CardContent />
+        <CardContent/>
       </a>
     );
   }
 
   return (
     <div className={baseClasses}>
-      <CardContent />
+      <CardContent/>
     </div>
   );
 };
@@ -174,16 +181,16 @@ interface InfoCardProps {
  * InfoCard - Static information card with theme-aware styling
  * Used for displaying non-interactive content with consistent visual hierarchy
  */
-export const InfoCard = ({ title, description, icon, children }: InfoCardProps) => {
+export const InfoCard = ({title, description, icon, children}: InfoCardProps) => {
   // Resolve icon defensively: if icon is provided but not found in iconMap, fall back to Info
   const IconComponent = (icon && (iconMap as Record<string, any>)[icon]) ? (iconMap as Record<string, any>)[icon] : Info; // Default to Info icon if none provided
-  
+
   return (
     <div className="bg-fd-muted/30 dark:bg-fd-muted/20 rounded-xl border border-fd-border p-4 sm:p-6 transition-colors">
       {IconComponent && (
         <div className="flex items-start justify-between mb-3">
           <div className="p-2 bg-fd-background rounded-lg border border-fd-border shadow-sm">
-            <IconComponent className="h-5 w-5 text-fd-muted-foreground" />
+            <IconComponent className="h-5 w-5 text-fd-muted-foreground"/>
           </div>
         </div>
       )}
@@ -208,7 +215,7 @@ interface CalloutProps {
  * Callout - Theme-aware alert component with semantic colors
  * Provides proper contrast ratios and accessibility for all themes
  */
-export const Callout = ({ type, title, children }: CalloutProps) => {
+export const Callout = ({type, title, children}: CalloutProps) => {
   const config = {
     tip: {
       icon: CheckCircle,
@@ -247,12 +254,12 @@ export const Callout = ({ type, title, children }: CalloutProps) => {
     }
   };
 
-  const { icon: IconComponent, bgClass, borderClass, textClass, iconClass } = config[type] || config.info;
-  
+  const {icon: IconComponent, bgClass, borderClass, textClass, iconClass} = config[type] || config.info;
+
   return (
     <div className={`rounded-lg border p-4 my-4 transition-colors ${bgClass} ${borderClass} ${textClass}`}>
       <div className="flex items-start gap-3">
-        <IconComponent className={`h-5 w-5 mt-0.5 flex-shrink-0 ${iconClass}`} />
+        <IconComponent className={`h-5 w-5 mt-0.5 flex-shrink-0 ${iconClass}`}/>
         <div className="flex-1 min-w-0">
           {title && (
             <h4 className="font-semibold mb-2 text-current">{title}</h4>
