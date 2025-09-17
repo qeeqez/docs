@@ -2,7 +2,7 @@ import type {Metadata} from "next";
 import {notFound} from "next/navigation";
 import {Sidebar} from "@/components/layout/docs/sidebar/sidebar";
 import {source} from "@/lib/source";
-import {DocsPageTemplate} from "@/components/shared/DocsPageTemplate";
+import {DocsPageTemplate} from "@/components/layout/shared/DocsPageTemplate";
 
 export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
     const params = await props.params;

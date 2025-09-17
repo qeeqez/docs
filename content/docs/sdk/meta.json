@@ -4,6 +4,7 @@
   "pages": [
     "getting-started",
     "video-component",
-    "image-component"
+    "image-component",
+    "video-component-examples"
   ]
 }
