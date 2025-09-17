@@ -2,12 +2,12 @@
   "title": "Account",
   "pages": [
     "overview",
-    "profile-settings",
     "security",
-    "connected-accounts",
+    "membership", 
+    "general-settings",
+    "invitations",
     "api-access",
     "organizations",
-    "billing",
-    "troubleshooting"
+    "billing"
   ]
 }

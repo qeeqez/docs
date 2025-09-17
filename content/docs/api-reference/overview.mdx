@@ -3,22 +3,62 @@ title: Developer API
 description: Integrate RIXL's media optimization power directly into your applications. Clean REST APIs, comprehensive SDKs, and everything you need to build amazing media experiences.
 ---
 
-import { Callout } from '@/components';
+import { Callout, InteractiveCard, InfoCard } from '@/components';
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
-
 
 The RIXL API puts professional media optimization at your fingertips. Whether you're building a social platform, e-commerce site, or mobile app, our RESTful API makes it easy to upload, process, and deliver media at scale.
 
+## Quick Actions
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InteractiveCard
+    title="Get API Keys"
+    description="Generate secure project keys for API access."
+    href="/docs/account/api-access"
+    icon="Key"
+  />
+  <InteractiveCard
+    title="Create Project"
+    description="Set up a new project for organizing your media."
+    href="/docs/dashboard/projects/create-project"
+    icon="FolderPlus"
+  />
+  <InteractiveCard
+    title="View Examples"
+    description="Ready-to-use code snippets and implementation guides."
+    href="#quick-start-examples"
+    icon="Code"
+  />
+</div>
+
 <Callout type="tip" title="Ready to integrate?">
-  First, [grab your API keys](/docs/account/api-access/create-key) and [set up a project](/docs/dashboard/projects). Then you're just a few lines of code away from optimized media delivery.
+  First, [grab your API keys](/docs/account/api-access) and [set up a project](/docs/dashboard/projects). Then you're just a few lines of code away from optimized media delivery.
 </Callout>
 
 ## API Fundamentals
 
-**Base URL**
-```
-https://api.rixl.com/v1
-```
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-6">
+  <InfoCard
+    title="Base URL"
+    description="https://api.rixl.com/v1"
+    icon="Globe"
+  />
+  <InfoCard
+    title="Authentication"
+    description="X-API-Key header with project key"
+    icon="Shield"
+  />
+  <InfoCard
+    title="Format"
+    description="JSON requests and responses"
+    icon="FileText"
+  />
+  <InfoCard
+    title="Rate Limits"
+    description="1000 requests/minute per key"
+    icon="Zap"
+  />
+</div>
 
 **Authentication**
 Every request needs your project API key in the header:
@@ -28,13 +68,38 @@ X-API-Key: YOUR_PROJECT_API_KEY_HERE
 
 ## What You Can Build
 
-**Smart Media Uploads** — Drop any video or image into RIXL and get back multiple optimized formats, perfect for any device or connection.
-
-**Dynamic Content Feeds** — Create social-style feeds that automatically update as you add content. Perfect for user-generated content platforms.
-
-**Real-time Processing** — Track upload progress, monitor transcoding status, and get notified when your media is ready for delivery.
-
-**Global Media Delivery** — Access your optimized assets through our global CDN with automatic edge caching and real-time transformations.
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-6">
+  <InfoCard
+    title="Smart Media Uploads"
+    description="Drop any video or image into RIXL and get back multiple optimized formats, perfect for any device or connection."
+    icon="Upload"
+  />
+  <InfoCard
+    title="Dynamic Content Feeds"
+    description="Create social-style feeds that automatically update as you add content. Perfect for user-generated content platforms."
+    icon="Activity"
+  />
+  <InfoCard
+    title="Real-time Processing"
+    description="Track upload progress, monitor transcoding status, and get notified when your media is ready for delivery."
+    icon="Monitor"
+  />
+  <InfoCard
+    title="Global Media Delivery"
+    description="Access your optimized assets through our global CDN with automatic edge caching and real-time transformations."
+    icon="Zap"
+  />
+  <InfoCard
+    title="Web Applications"
+    description="Direct media uploads, real-time processing status, and CDN delivery integration for seamless user experiences."
+    icon="Monitor"
+  />
+  <InfoCard
+    title="Mobile Apps"
+    description="Secure backend integration for user-generated content and automatic media optimization on any device."
+    icon="Smartphone"
+  />
+</div>
 
 ### Getting Started
 
