@@ -1,6 +1,5 @@
 # deps
 /node_modules
-.idea/
 
 # generated content
 .contentlayer

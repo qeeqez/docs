@@ -25,7 +25,7 @@ export function PageTOCPopoverItems({variant = "normal", ...props}: ComponentPro
 
 export function PageArticle(props: ComponentProps<"article">) {
   return (
-    <article {...props} className={cn("flex min-w-0 w-full flex-col px-4 md:px-6 md:mx-auto", props.className)}>
+    <article {...props} className={cn("flex min-w-0 w-full flex-col px-6 lg:mx-auto", props.className)}>
       {props.children}
     </article>
   );
@@ -40,7 +40,7 @@ export function PageRoot({toc = false, children, ...props}: RootProps) {
     <div
       id="nd-page"
       {...props}
-      className={cn("flex flex-1 w-full mx-auto max-w-(--fd-page-width) pt-(--fd-tocnav-height) pe-(--fd-toc-width)", props.className)}
+      className={cn("flex flex-1 w-full max-w-full mx-auto pt-(--fd-tocnav-height) pe-(--fd-toc-width)", props.className)}
     >
       {children}
     </div>
