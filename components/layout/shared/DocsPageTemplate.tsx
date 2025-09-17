@@ -11,11 +11,12 @@ import {
 } from "@/components/layout/docs/page/page-toc";
 import {SidebarWrapper} from "@/components/layout/docs/sidebar/sidebar-wrapper";
 import {PageBreadcrumb} from "@/components/layout/docs/page/page-breadcrumb";
+import type {ComponentType} from "react";
 
 interface DocsPageTemplateProps {
     page: any;
     source: any;
-    SidebarComponent: React.ComponentType;
+    SidebarComponent: ComponentType;
     githubPath: string;
 }
 
@@ -68,7 +69,6 @@ export function DocsPageTemplate({
                         <DocsBody>
                             <MDXContent
                                 components={getMDXComponents({
-                                    // this allows you to link to other pages with relative file paths
                                     a: createRelativeLink(source, page),
                                 })}
                             />
