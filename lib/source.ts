@@ -1,14 +1,9 @@
-import { docs, sdk } from '@/.source';
-import { loader } from 'fumadocs-core/source';
+import {loader} from 'fumadocs-core/source';
+import {docs} from '@/.source';
 
-export const docsSource = loader({
-    baseUrl: '/docs',
-    source: docs.toFumadocsSource()
+// See https://fumadocs.vercel.app/docs/headless/source-api for more info
+export const source = loader({
+  // it assigns a URL to your pages
+  baseUrl: '/docs',
+  source: docs.toFumadocsSource(),
 });
-
-export const sdkSource = loader({
-    baseUrl: '/docs/sdk',
-    source: sdk.toFumadocsSource()
-});
-
-export const source = docsSource;
