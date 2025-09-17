@@ -1,10 +1,3 @@
 {
-  "title": "Documentation",
-  "description": "Complete guide to the RIXL media processing platform",
-  "pages": [
-    "account",
-    "dashboard", 
-    "uploads",
-    "api-reference"
-  ]
+  "pages": ["platform", "sdk"]
 }
