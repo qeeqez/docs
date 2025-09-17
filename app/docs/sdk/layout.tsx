@@ -1,4 +1,4 @@
-import {DocsLayout} from "@/components/layout/sdk";
+import {DocsLayout} from "@/components/layout/docs";
 import {baseOptions} from '@/lib/layout.shared';
 import {sdkSource} from '@/lib/source';
 
