@@ -30,8 +30,8 @@ export function baseOptions(): BaseLayoutProps {
       },
       {
         // icon: <BookIcon />,
-        text: "Docs",
-        url: "/docs",
+        text: "Platform",
+        url: "/docs/platform",
       },
         {
             // icon: <BookIcon />,
