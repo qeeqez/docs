@@ -4,12 +4,17 @@ import {HomeLayout} from "@/components/layout/home";
 import {baseOptions} from "@/lib/layout.shared";
 import {Provider} from "@/provider";
 import {cn} from "@/lib/cn";
+import type {ReactNode} from "react";
 
 const inter = Inter({
   subsets: ["latin"],
 });
 
-export default function Layout({children}: LayoutProps<"/">) {
+interface LayoutProps {
+  children: ReactNode;
+}
+
+export default function Layout({children}: LayoutProps) {
   return (
     <html lang="en" className={cn(
       "scroll-smooth overscroll-y-none",
