@@ -3,7 +3,8 @@ title: Monitoring Status
 description: Track video processing progress and handle errors effectively.
 ---
 
-import { Callout, Steps, Tabs, Tab } from '../../../../components';
+import { Callout} from '../../../../components';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 Monitor video processing status, track progress through the pipeline, and implement robust error handling for reliable video uploads.
 
@@ -166,7 +167,7 @@ class VideoStatusMonitor {
 // Usage examples
 const monitor = new VideoStatusMonitor('YOUR_API_KEY');
 
-// Monitor single video
+// Monitor a single video
 try {
   const result = await monitor.waitForProcessing('video_123', {
     onProgress: (statustatus.estimated_completion_time = undefined;

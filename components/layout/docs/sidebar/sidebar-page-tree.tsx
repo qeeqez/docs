@@ -44,7 +44,7 @@ export function SidebarPageTree(props: {components?: Partial<SidebarComponents>}
 
         if (Item) return <Item key={item.url} item={item} />;
         return (
-          <SidebarItem key={item.url} href={item.url} external={item.external} icon={item.icon}>
+          <SidebarItem key={item.url} href={item.url} external={item.external} icon={item.icon} >
             {item.name}
           </SidebarItem>
         );
