@@ -2,9 +2,9 @@
   "title": "Dashboard",
   "description": "Visual interface for managing projects and media",
   "pages": [
-    "index",
     "guide",
-    "projects",
+    "project",
+    "api-keys", 
     "media",
     "feeds"
   ]
