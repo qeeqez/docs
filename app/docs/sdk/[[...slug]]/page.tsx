@@ -1,11 +1,11 @@
 import { Sidebar } from "@/components/layout/docs/sidebar/sidebar";
-import { source } from "@/lib/source";
+import { sdkSource } from "@/lib/source";
 import { createDocsPages } from "@/components/page-factory";
 
 const { Page, generateStaticParams, generateMetadata } = createDocsPages({
-    source,
+    source: sdkSource,
     SidebarComponent: Sidebar,
-    githubPrefix: "content/docs"
+    githubPrefix: "content/sdk"
 });
 
 export default Page;
