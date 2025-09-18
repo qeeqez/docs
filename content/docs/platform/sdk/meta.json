@@ -1,7 +1,9 @@
 {
+  "root": true,
   "title": "SDK",
   "description": "RIXL SDK Documentation",
   "pages": [
+    "index",
     "getting-started",
     "video-component",
     "image-component"
