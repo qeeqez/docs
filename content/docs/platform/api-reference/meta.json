@@ -1,5 +1,10 @@
 {
   "title": "API Reference",
   "description": "Complete API documentation and reference",
-  "pages": ["overview"]
+  "pages": [
+    "overview",
+    "authentication",
+    "media",
+    "feeds"
+  ]
 }
