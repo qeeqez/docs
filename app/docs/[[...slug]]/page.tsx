@@ -15,6 +15,7 @@ import {DocsBody, DocsDescription, DocsPage, DocsTitle} from "@/components/layou
 import {TOCProvider} from "@/components/ui/toc";
 import {source} from "@/lib/source";
 import {getMDXComponents} from "@/mdx-components";
+import {Footer} from "@/components/layout/footer/footer";
 
 export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   const params = await props.params;
@@ -69,6 +70,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
               />
             </DocsBody>
           </DocsPage>
+          <Footer />
         </main>
         <SidebarWrapper className="hidden xl:block">
           <PageTOC>
