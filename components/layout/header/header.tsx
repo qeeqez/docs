@@ -18,7 +18,7 @@ export function Header({nav = {}, i18n = false, links, githubUrl, searchToggle =
   const border = cn("border-b border-gray-500/5 dark:border-gray-300/[0.06]");
 
   return (
-    <Navbar className={cn("sticky top-0 left-0 right-0 w-full z-50", border)}>
+    <Navbar className={cn("sticky top-0 left-0 right-0 w-full z-[9999]", border)}>
       <div className="flex items-center h-header-top min-w-0 lg:px-12 mx-4 lg:mx-0">
         <div className={cn("h-full relative flex-1 flex items-center gap-x-4 min-w-0", border)}>
           <Logo title={nav?.title} url={nav?.url} className="flex-1 flex items-center gap-x-4"/>

@@ -1,14 +1,9 @@
 import {createRelativeLink} from "fumadocs-ui/mdx";
 import type {Metadata} from "next";
 import {notFound} from "next/navigation";
-import {PageTOCItems, PageTOCPopoverItems, PageTOCTitle} from "@/components/layout/docs/page";
+import {PageTOCItems, PageTOCTitle} from "@/components/layout/docs/page";
 import {PageBreadcrumb} from "@/components/layout/docs/page/page-breadcrumb";
-import {
-  PageTOC,
-  PageTOCPopover,
-  PageTOCPopoverContent,
-  PageTOCPopoverTrigger
-} from "@/components/layout/docs/page/page-toc";
+import {PageTOC} from "@/components/layout/docs/page/page-toc";
 import {Sidebar} from "@/components/layout/docs/sidebar/sidebar";
 import {SidebarWrapper} from "@/components/layout/docs/sidebar/sidebar-wrapper";
 import {DocsBody, DocsDescription, DocsPage, DocsTitle} from "@/components/layout/page";
@@ -32,13 +27,6 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
 
       <TOCProvider toc={page.data.toc}>
         <main className="grow overflow-y-auto min-h-screen relative">
-          {/* TODO correct TOC popover position*/}
-          <PageTOCPopover>
-            <PageTOCPopoverTrigger/>
-            <PageTOCPopoverContent>
-              <PageTOCPopoverItems variant="normal"/>
-            </PageTOCPopoverContent>
-          </PageTOCPopover>
           <DocsPage
             container={{className: "pt-[calc(var(--padding-sidebar)*2)]"}}
             full={page.data.full}
