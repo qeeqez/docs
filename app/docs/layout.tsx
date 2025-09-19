@@ -13,6 +13,6 @@ export default function Layout({children}: LayoutProps) {
   };
 
   return (
-    <HomeLayout footer={true} {...options}>{children}</HomeLayout>
+    <HomeLayout {...options}>{children}</HomeLayout>
   );
 }

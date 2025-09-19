@@ -8,5 +8,5 @@ interface LayoutProps {
 
 export default function Layout({children}: LayoutProps) {
   const options = baseOptions();
-  return <HomeLayout {...options} footer={false}>{children}</HomeLayout>;
+  return <HomeLayout {...options}>{children}</HomeLayout>;
 }
