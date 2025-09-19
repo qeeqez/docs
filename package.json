@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "next build --turbopack",
     "dev": "next dev --turbo",
-    "serve": "npx serve@latest out",
+    "serve": "pnpx serve@latest out",
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
