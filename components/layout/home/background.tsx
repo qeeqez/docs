@@ -1,6 +1,7 @@
 export function Background() {
   return <>
     <span className="fixed inset-0 bg-background-light dark:bg-background-dark -z-10 pointer-events-none"></span>
+    {/* TOP COLOR + SVG */}
     <span className="block absolute inset-0 overflow-hidden pointer-events-none h-[64rem]"
           style={{
             background: "radial-gradient(49.63% 57.02% at 58.99% 7.2%, rgba(255, 164, 28, 0.1) 39.4%, rgba(0, 0, 0, 0) 100%)",
@@ -30,6 +31,12 @@ export function Background() {
             </radialGradient>
           </defs>
           </svg>
-        </span>
+    </span>
+    {/* BOTTOM COLOR */}
+    <span className="block absolute inset-x-0 bottom-0 overflow-hidden pointer-events-none h-[64rem]"
+          style={{
+            background: "radial-gradient(49.63% 57.02% at 50% 100%, rgba(255, 164, 28, 0.1) 39.4%, rgba(0, 0, 0, 0) 100%)",
+          }}
+    />
   </>
 }
