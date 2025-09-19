@@ -7,9 +7,7 @@ import apiJson from "./api.json";
 export default function Page() {
   return (
     <div
-      style={{
-        height: "500px",
-      }}
+      className="relative"
     >
       <ApiReferenceReact
         configuration={{
