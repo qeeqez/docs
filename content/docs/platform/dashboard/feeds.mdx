@@ -1,6 +1,6 @@
 ---
 title: Feeds
-description: Complete guide to creating and managing content feeds in RIXL
+description: Learn how to create, manage, and distribute content feeds in RIXL for dynamic media delivery.
 ---
 
 import { Callout } from 'fumadocs-ui/components/callout'
@@ -8,89 +8,93 @@ import { Card, Cards } from 'fumadocs-ui/components/card'
 import { Step, Steps } from 'fumadocs-ui/components/steps'
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
 
-Content [feeds](https://api.rixl.com/feeds) provide structured organization and distribution of your media content within projects. 
-This guide covers creating and managing feeds for dynamic content delivery.
+Content [feeds](/docs/platform/dashboard/feeds) let you organize and distribute media across your projects.  
+This guide walks you through **what feeds are, how to create them, manage content, and integrate them into your website or app.**
 
 <Callout type="info">
-Feeds are project-specific content collections. Make sure you have 
-[created a project](/docs/getting-started/create-project) before working with feeds.
+Before creating feeds, make sure you have 
+[created a project](/docs/getting-started/create-project).  
+Feeds are always linked to projects.
 </Callout>
+
+---
 
 ## Understanding Feeds
 
 <Cards>
-  <Card title="Structured Content" description="Organize media with custom ordering and filtering">
-    Arrange content with specific criteria, sorting, and automated filtering rules
+  <Card title="Structured Content" description="Organize media with custom sorting and filtering">
+    Arrange items by rules, tags, or manual order.
   </Card>
-  <Card title="Dynamic Distribution" description="Embed feeds into websites and applications">
-    API-driven content delivery that updates automatically as you add new media
+  <Card title="Dynamic Distribution" description="Embed feeds into websites and apps">
+    API-driven delivery that updates automatically.
   </Card>
-  <Card title="Social Integration" description="Build social media-style experiences">
-    Support for likes, comments, shares, and user interactions
+  <Card title="Social Integration" description="Enable interactive user experiences">
+    Support for likes, comments, shares, and engagement.
   </Card>
-  <Card title="Embeddable Widgets" description="Pre-built components for quick integration">
-    Ready-to-use feed widgets for common use cases and platforms
+  <Card title="Embeddable Widgets" description="Use pre-built components">
+    Ready-to-use widgets for quick integration.
   </Card>
 </Cards>
 
-### Feed Types
+## Feed Types
 
 <Tabs items={['Basic Types', 'Advanced Types', 'Specialized Feeds']}>
 <Tab value="Basic Types">
-- **Video Feeds**: Collections of video content only
-- **Image Feeds**: Collections of image content only  
-- **Mixed Media Feeds**: Combinations of videos and images
+- **Video Feeds**: Video-only collections
+- **Image Feeds**: Image-only collections  
+- **Mixed Media Feeds**: Combine videos and images
 </Tab>
 <Tab value="Advanced Types">
-- **Dynamic Feeds**: Automatically updated based on rules and criteria
-- **Custom Feeds**: Manually curated content collections
-- **Creator Feeds**: Content organized by specific creators
+- **Dynamic Feeds**: Update automatically by rules  
+- **Custom Feeds**: Manually curated collections  
+- **Creator Feeds**: Organized by specific creators
 </Tab>
 <Tab value="Specialized Feeds">
-- **Infinite Scroll Feeds**: Social media-style continuous loading
+- **Infinite Scroll Feeds**: Social media-style loading
 - **Interactive Feeds**: Enhanced with likes, comments, and sharing
 </Tab>
 </Tabs>
+
+---
 
 ## Feed Templates
 
 <Cards>
   <Card title="TikTok-Style Feeds" description="Vertical scrolling optimized for short-form video content">
-    Vertical scrolling layout with full-screen video display, optimized for mobile viewing and short-form content
+    Full-screen mobile-first video experience.
   </Card>
   <Card title="Instagram Stories" description="Horizontal story-based layout for sequential content">
-    Horizontal story progression with tap-to-advance navigation and time-based auto-advance
+    Horizontal story progression with tap-to-advance navigation and auto-play.
   </Card>
   <Card title="Portfolio Grid" description="Professional grid layouts for showcasing work">
-    Responsive grid layouts with high-quality image display and category filtering
+    Responsive grids with high-quality image display and category filtering.
   </Card>
   <Card title="News Feed" description="Article-style layout with rich content organization">
-    Article-style presentation with rich text content support and chronological organization
+    Rich text and media organization for updates.
   </Card>
 </Cards>
 
 <Callout type="info">
-Feed templates provide great engagement content feeds in different styles, perfect for showcasing products, portfolios, and stories across various platforms.
+Templates let you match feeds to familiar content styles like TikTok, Instagram, or professional grids.
 </Callout>
+
+---
 
 ## Creating Feeds
 
-### Dashboard Creation Method
+### Dashboard Method
 
 <Steps>
 <Step>
-**Access Feed Creation**
-
 Navigate to the [Feeds section](https://api.rixl.com/feeds) from the sidebar and click **Create Feed**
 </Step>
-<Step>
-**Select Feed Type**
 
-Choose from available feed types based on your content strategy and use case
+<Step>
+Choose from available feed types based on your content strategy and use case (video, image, mixed)
 </Step>
+
 <Step>
 **Configure Feed Settings**
-
 <Tabs items={['Basic Settings', 'Visibility Options']}>
 <Tab value="Basic Settings">
 - **Feed Name**: Enter a descriptive, memorable name
@@ -98,28 +102,31 @@ Choose from available feed types based on your content strategy and use case
 - **Project**: Select the project this feed belongs to
 </Tab>
 <Tab value="Visibility Options">
-- **Public**: Accessible to anyone with the feed URL
-- **Unlisted**: Accessible with direct link but not discoverable
-- **Private**: Restricted access with permission controls
+- **Public**: Accessible to anyone  
+- **Unlisted**: Hidden, but shareable via link  
+- **Private**: Restricted to authorized users
 </Tab>
 </Tabs>
 </Step>
-<Step>
-**Finalize Creation**
 
-Review your settings and click **Create** to generate your new feed
+<Step>
+Review your settings and click **Create** to generate new feed
 </Step>
+
 </Steps>
 
-### API Creation Method
+### API Method
 
 For programmatic feed creation, use the dashboard or contact support for API access to feed management endpoints.
 
 <Callout type="info">
-Feed creation is currently available through the dashboard interface. Programmatic feed management will be available in future API versions.
+At this time, feeds can only be created through the dashboard.  
+Programmatic creation will be available in future API versions.
 </Callout>
 
-## Feed Management Dashboard
+---
+
+## Managing Feeds
 
 <Cards>
   <Card title="Feed Overview" description="View feed settings, performance metrics, and configuration options" />
@@ -128,7 +135,7 @@ Feed creation is currently available through the dashboard interface. Programmat
   <Card title="Integration Tools" description="Access embedding codes, API endpoints, and sharing options" />
 </Cards>
 
-### Content Addition Methods
+### Adding Content
 
 <Tabs items={['Manual Addition', 'Bulk Operations', 'Dynamic Rules']}>
 <Tab value="Manual Addition">
@@ -136,7 +143,7 @@ Feed creation is currently available through the dashboard interface. Programmat
 <Step>Navigate to the feed dashboard and click **Add Content**</Step>
 <Step>Browse or search through your media library</Step>
 <Step>Select individual items to add to the feed</Step>
-<Step>Arrange content order using drag-and-drop interface</Step>
+<Step>Arrange content order using drag-and-drop</Step>
 <Step>Click **Add to Feed** to confirm additions</Step>
 </Steps>
 </Tab>
@@ -155,29 +162,30 @@ Feed creation is currently available through the dashboard interface. Programmat
 </Steps>
 </Tab>
 <Tab value="Dynamic Rules">
-**Automated Dynamic Rules:**
-- **Content Type**: Specify video, image, or mixed media
-- **Tags & Categories**: Include content with specific metadata
-- **Date Criteria**: Set upload date ranges or recency rules
-- **Performance Thresholds**: Include based on view counts or engagement
-- **Ordering Rules**: Automatic sorting by newest, most viewed, trending
+Define rules once, and content is added automatically:  
+- By type (video, image, mixed)  
+- Tags or categories  
+- Upload date ranges  
+- Performance thresholds  
+- Sorting rules (newest, trending, most viewed)
 </Tab>
 </Tabs>
 
-### Content Reordering
+### Reordering Content
 
 <Steps>
-<Step>Navigate to your feed dashboard</Step>
-<Step>Click **Reorder** to enter reorder mode</Step>
+<Step>Click **Reorder** to enter reorder mode in feed dashboard</Step>
 <Step>Drag items to desired positions using the drag handles</Step>
 <Step>Click **Save Order** to apply changes</Step>
 </Steps>
 
 <Callout type="tip">
-Schedule content to appear or disappear from feeds automatically to maintain fresh, timely content delivery.
+You can schedule items to appear or expire automatically for fresh, timely feeds.
 </Callout>
 
-## Feed Configuration
+--- 
+
+## Configuring Feeds
 
 <Tabs items={['Basic Settings', 'Display Options', 'Access Control']}>
 <Tab value="Basic Settings">
@@ -224,7 +232,7 @@ Customize embedded feed appearance:
 <Step>
 **Generate Embed Code**
 
-Copy the provided iframe code for your website integration
+Copy the generated iframe code for your website integration
 </Step>
 <Step>
 **Implement on Website**
