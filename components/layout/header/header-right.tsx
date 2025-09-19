@@ -1,24 +1,23 @@
 import type {I18nConfig} from "fumadocs-core/i18n";
 import {ChevronDown, Languages} from "lucide-react";
-import {LanguageToggle, LanguageToggleText} from "@/components/language-toggle";
-import {ThemeToggle} from "@/components/theme-toggle";
-import {cn} from "@/lib/cn";
-import {SearchToggle} from "@/components/search-toggle";
-import {Menu, MenuContent, MenuLinkItem, MenuTrigger} from "@/components/layout/home/menu";
-import {buttonVariants} from "@/components/ui/button";
-import type {LinkItemType} from "@/components/layout/shared";
-import {isSecondary} from "@/components/layout/header/is-secondary";
-import {Sidebar} from "@/components/layout/docs/sidebar/sidebar";
+import {LanguageToggle} from "@/components/language-toggle";
 import {HeaderMobileMenuContent} from "@/components/layout/header/header-mobile-menu-content";
+import {isSecondary} from "@/components/layout/header/is-secondary";
+import {Menu, MenuLinkItem, MenuTrigger} from "@/components/layout/home/menu";
+import {BaseLayoutProps, LinkItemType} from "@/components/layout/shared";
+import {SearchToggle} from "@/components/search-toggle";
+import {ThemeToggle} from "@/components/theme-toggle";
+import {buttonVariants} from "@/components/ui/button";
+import {cn} from "@/lib/cn";
 
-interface HeaderRightProps {
+interface HeaderRightProps extends BaseLayoutProps{
   i18n: boolean | I18nConfig<string>;
   menuItems: LinkItemType[];
   menuEnableHoverToOpen?: boolean;
   className?: string;
 }
 
-export function HeaderRight({i18n, menuItems, menuEnableHoverToOpen = false, className}: HeaderRightProps) {
+export function HeaderRight({i18n, menuItems, menuEnableHoverToOpen = false, searchToggle, className}: HeaderRightProps) {
   return <div className={cn("flex items-center space-x-4", className)}>
     <div className="hidden lg:flex space-x-4">
       {menuItems.filter(isSecondary).map((item, i) => (
@@ -32,7 +31,7 @@ export function HeaderRight({i18n, menuItems, menuEnableHoverToOpen = false, cla
       ) : null}
     </div>
     <div className="flex lg:hidden space-x-4">
-      <SearchToggle hideIfDisabled/>
+      {searchToggle?.enabled && <SearchToggle hideIfDisabled/>}
       <Menu>
         <MenuTrigger
           aria-label="Toggle Menu"
