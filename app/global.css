@@ -3,7 +3,6 @@
 @import "fumadocs-ui/css/preset.css";
 
 :root {
-    --sidebar-height: 100vh;
     --color-fd-background: rgb(255, 255, 255);
     --color-fd-card: rgb(255, 255, 255);
 }
@@ -16,7 +15,10 @@
 @theme {
   --height-header-top: calc(var(--spacing) * 16);
   --height-header-bottom: calc(var(--spacing) * 12);
-  --height-header: calc(calc(var(--height-header-top) + var(--height-header-bottom)) + 2px);
+  --height-header: calc(var(--height-header-top) + var(--height-header-bottom));
+
+  --height-footer: calc(var(--spacing) * 60);
+  --sidebar-height: calc(100vh - var(--height-header) - var(--height-footer));
 
   --width-sidebar: calc(var(--spacing) * 64);
   --padding-sidebar: calc(var(--spacing) * 4);

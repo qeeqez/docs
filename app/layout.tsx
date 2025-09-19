@@ -1,10 +1,11 @@
 import "@/app/global.css";
 import {Inter} from "next/font/google";
-import {HomeLayout} from "@/components/layout/home";
-import {baseOptions} from "@/lib/layout.shared";
 import {Provider} from "@/provider";
 import {cn} from "@/lib/cn";
 import type {ReactNode} from "react";
+import {source} from "@/lib/source";
+import {TreeContextProvider} from "fumadocs-ui/contexts/tree";
+import {NextProvider} from "fumadocs-core/framework/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,9 +22,13 @@ export default function Layout({children}: LayoutProps) {
       inter.className
     )} suppressHydrationWarning>
     <body>
-    <Provider>
-      <HomeLayout {...baseOptions()}>{children}</HomeLayout>
-    </Provider>
+    <NextProvider>
+      <TreeContextProvider tree={source.pageTree}>
+        <Provider>
+          {children}
+        </Provider>
+      </TreeContextProvider>
+    </NextProvider>
     </body>
     </html>
   );

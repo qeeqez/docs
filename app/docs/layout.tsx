@@ -1,16 +1,18 @@
 import type {ReactNode} from "react";
-import {DocsLayout} from "@/components/layout/docs";
 import {baseOptions} from "@/lib/layout.shared";
-import {source} from "@/lib/source";
+import {HomeLayout} from "@/components/layout/home";
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 export default function Layout({children}: LayoutProps) {
+  const options = baseOptions();
+  options.searchToggle = {
+    enabled: true
+  };
+
   return (
-    <DocsLayout tree={source.pageTree} {...baseOptions()}>
-      {children}
-    </DocsLayout>
+    <HomeLayout footer={true} {...options}>{children}</HomeLayout>
   );
 }
