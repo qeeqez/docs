@@ -5,8 +5,9 @@
   "pages": [
     "index",
     "account",
-    "dashboard", 
+    "dashboard",
     "uploads",
-    "api-reference"
+    "api-reference",
+    "sdk"
   ]
 }
