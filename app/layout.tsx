@@ -1,14 +1,15 @@
 import "@/app/global.css";
-import {Inter} from "next/font/google";
-import {Provider} from "@/provider";
-import {cn} from "@/lib/cn";
-import type {ReactNode} from "react";
-import {source} from "@/lib/source";
-import {TreeContextProvider} from "fumadocs-ui/contexts/tree";
 import {NextProvider} from "fumadocs-core/framework/next";
+import {TreeContextProvider} from "fumadocs-ui/contexts/tree";
+import {Inter} from "next/font/google";
+import type {ReactNode} from "react";
+import {cn} from "@/lib/cn";
+import {source} from "@/lib/source";
+import {Provider} from "@/provider";
 
 const inter = Inter({
   subsets: ["latin"],
+  display: 'swap',
 });
 
 interface LayoutProps {
