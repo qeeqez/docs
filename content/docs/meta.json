@@ -1,3 +1,13 @@
 {
-  "pages": ["platform", "sdk"]
+  "root": true,
+  "title": "Documentation",
+  "description": "Complete guide to the RIXL media processing platform",
+  "pages": [
+    "---Getting Started---",
+    "...getting-started",
+    "---Platform---",
+    "...platform",
+    "---Legal---",
+    "...legal"
+  ]
 }
