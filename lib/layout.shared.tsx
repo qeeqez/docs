@@ -32,6 +32,7 @@ export function baseOptions(): BaseLayoutProps {
         // icon: <BookIcon />,
         text: "Platform",
         url: "/docs/platform",
+        active: "nested-url",
       },
         {
             // icon: <BookIcon />,
@@ -40,10 +41,13 @@ export function baseOptions(): BaseLayoutProps {
             // secondary items will be displayed differently on navbar
             secondary: false,
         },
+        active: "nested-url",
+        active: "nested-url",
       {
         // icon: <BookIcon />,
         text: "API Reference",
         url: "/api",
+        active: "nested-url",
       },
       {
         type: 'button',

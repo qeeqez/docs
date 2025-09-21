@@ -18,6 +18,7 @@
   --color-fd-background: rgb(255, 255, 255);
   --color-fd-card: rgb(255, 255, 255);
 
+  --color-fd-primary-foreground: var(--color-gray-200);
   --color-fd-accent-foreground: var(--color-gray-900);
   --color-fd-muted-foreground: var(--color-gray-500);
 
@@ -41,6 +42,7 @@
   --color-fd-background: rgb(14, 12, 11);
   --color-fd-card: rgb(14, 12, 11);
 
+  --color-fd-primary-foreground: var(--color-gray-700);
   --color-fd-accent-foreground: var(--color-gray-300);
   --color-fd-muted-foreground: var(--color-gray-400);
 
