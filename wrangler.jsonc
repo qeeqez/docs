@@ -8,8 +8,8 @@
   },
   "routes": [
     {
-      "pattern": "rixl.com/docs",
-      "zone_name": "rixl.com"
+      "pattern": "docs.rixl.com",
+      "custom_domain": true
     }
   ]
 }
