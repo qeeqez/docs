@@ -7,6 +7,9 @@ import GithubIcon from "@/public/socials/github.svg";
 import XIcon from "@/public/socials/x.svg";
 import YoutubeIcon from "@/public/socials/youtube.svg";
 
+export const rootURL = "/docs";
+export const firstPageURL = "/docs/getting-started";
+
 /**
  * Shared layout configurations
  *
@@ -20,38 +23,34 @@ export function baseOptions(): BaseLayoutProps {
       title: (
         <LogoWide className="h-8 fill-black dark:invert"/>
       ),
+      url: rootURL,
       transparentMode: "top"
     },
     // see https://fumadocs.dev/docs/ui/navigation/links
     links: [
       {
         text: "Home",
-        url: "/",
-      },
-      {
-        // icon: <BookIcon />,
-        text: "Platform",
-        url: "/docs/platform",
+        url: "/docs/getting-started",
         active: "nested-url",
       },
-        {
-            // icon: <BookIcon />,
-            text: 'SDK',
-            url: '/docs/sdk',
-            // secondary items will be displayed differently on navbar
-            secondary: false,
-        },
-        active: "nested-url",
-        active: "nested-url",
       {
-        // icon: <BookIcon />,
-        text: "API Reference",
-        url: "/api",
+        text: 'Platform',
+        url: '/docs/platform',
+        active: "nested-url",
+      },
+      {
+        text: 'SDKs',
+        url: '/docs/sdk',
+        active: "nested-url",
+      },
+      {
+        text: "APIs",
+        url: "/docs/api",
         active: "nested-url",
       },
       {
         type: 'button',
-        text: <>Get Started <ChevronRightIcon /></>,
+        text: <>Get Started <ChevronRightIcon/></>,
         url: "https://dash.rixl.com",
         secondary: true,
       }
@@ -110,7 +109,7 @@ export function FooterSections(): FooterSection[] {
   ];
 }
 
-export function FooterBottomLinks(): {text: string; url: string}[] {
+export function FooterBottomLinks(): { text: string; url: string }[] {
   // TODO translations and proper links
   return [
     {text: "Privacy Policy", url: "/privacy"},
