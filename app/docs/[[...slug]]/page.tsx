@@ -1,6 +1,6 @@
 import {createRelativeLink} from "fumadocs-ui/mdx";
 import type {Metadata} from "next";
-import {notFound} from "next/navigation";
+import {notFound, redirect} from "next/navigation";
 import {PageTOCItems, PageTOCTitle} from "@/components/layout/docs/page";
 import {PageBreadcrumb} from "@/components/layout/docs/page/page-breadcrumb";
 import {PageTOC} from "@/components/layout/docs/page/page-toc";
