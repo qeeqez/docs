@@ -58,7 +58,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
               />
             </DocsBody>
           </DocsPage>
-          <Footer />
+          <Footer/>
         </main>
         <SidebarWrapper className="hidden xl:block">
           <PageTOC>
