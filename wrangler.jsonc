@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "docs",
+  "compatibility_date": "2025-09-21",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "single-page-application"
+  },
+  "routes": [
+    {
+      "pattern": "rixl.com/docs",
+      "custom_domain": true
+    }
+  ]
+}
