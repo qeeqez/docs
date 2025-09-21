@@ -5,11 +5,13 @@ function normalize(url: string) {
   return url;
 }
 
-export function isActive(url: string, pathname: string, nested = true): boolean {
+export function isActive(url: string, pathname: string, nested = true, activeSubfolders?: string[]): boolean {
   url = normalize(url);
   pathname = normalize(pathname);
 
-  return url === pathname || (nested && pathname.startsWith(`${url}/`));
+  return url === pathname
+    || (nested && pathname.startsWith(`${url}/`))
+    || (activeSubfolders?.some((subfolder) => pathname.startsWith(`${subfolder}`)) ?? false);
 }
 
 export function isTabActive(tab: SidebarTab, pathname: string) {

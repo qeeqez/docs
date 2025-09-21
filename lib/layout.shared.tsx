@@ -32,6 +32,11 @@ export function baseOptions(): BaseLayoutProps {
         text: "Home",
         url: "/docs/getting-started",
         active: "nested-url",
+        activeSubfolders: [
+          "/docs/getting-started",
+          "/docs/platform",
+          "/docs/legal",
+        ]
       },
       {
         text: 'Platform',
