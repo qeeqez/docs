@@ -77,6 +77,7 @@ export interface BaseLinkType extends BaseItem {
    * @defaultValue 'url'
    */
   active?: "url" | "nested-url" | "none";
+  activeSubfolders?: string[];
   external?: boolean;
 }
 
