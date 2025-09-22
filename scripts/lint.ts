@@ -30,6 +30,8 @@ async function checkLinks() {
       markdown: {
         components: {
           Card: {attributes: ['href']},
+          InteractiveCard: {attributes: ['href']},
+          Link: {attributes: ['href']},
         },
       },
       // check relative paths
