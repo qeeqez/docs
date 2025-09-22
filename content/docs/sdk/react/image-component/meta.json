@@ -2,6 +2,7 @@
   "title": "Image Component",
   "description": "Optimized image display with lazy loading, thumbhash placeholders, and automatic CDN delivery",
   "pages": [
+    "overview",
     "basic_usage",
     "props_reference"
   ]

@@ -2,6 +2,7 @@
   "title": "Video Component",
   "description": "Feature-rich video player for RIXL content with HLS streaming, quality selection, and advanced controls",
   "pages": [
+    "overview",
     "basic_usage",
     "props_reference",
     "player_controls"
