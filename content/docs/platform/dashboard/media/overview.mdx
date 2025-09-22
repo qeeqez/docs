@@ -1,13 +1,18 @@
 ---
 title: Media Library
-description: Your creative command center. Upload, optimize, and organize videos and images with RIXL's intelligent processing.
+description: Manage and optimize videos and images in your RIXL projects with intelligent processing, secure delivery, and advanced organization tools.
 ---
 
 import { Callout, InteractiveCard, InfoCard } from "@/components";
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+import { Card, Cards } from "fumadocs-ui/components/card";
 
-Transform your raw media into web-optimized assets that load instantly and look stunning everywhere. The media library is where creativity meets cutting-edge optimization technology.
+The **Media Library** is your creative hub where you upload, optimize, and manage all your video and image assets. RIXL handles the heavy lifting—from transcoding and compression to secure delivery—so you can focus on creating and shipping.
+
+<Callout type="info">
+Select a project and open **Media** from the left sidebar to get started.
+</Callout>
 
 ## What You Can Do
 
@@ -33,12 +38,44 @@ Transform your raw media into web-optimized assets that load instantly and look 
 </div>
 
 <Callout type="tip">
-**Quick tip:** Make sure you have a project selected before uploading. Each project keeps its media organized separately for better team collaboration and access control.
+**Quick tip:** Each project keeps its media organized separately for better team collaboration and access control.
 </Callout>
+
+---
+
+## Quick Actions
+
+<Cards>
+  <Card
+    title="Upload New Video"
+    description="Quickly add video content to your project"
+    href="/platform/dashboard/media/upload-videos"
+  />
+  <Card
+    title="Upload New Image"
+    description="Add new image assets instantly"
+    href="/platform/dashboard/media/upload-images"
+  />
+  <Card
+    title="Create API Key"
+    description="Generate API keys for media workflows"
+    href="/platform/account/api-access/overview"
+  />
+  <Card
+    title="Invite Team Member"
+    description="Collaborate with teammates on your media library"
+    href="/platform/account/organizations/overview"
+  />
+</Cards>
+
+---
+
+## Library Features
 
 <Tabs items={['Upload & Processing', 'Media Library', 'Organization & Tools']}>
     <Tab value="Upload & Processing">
-        ## Quick Upload Workflow
+        
+        ### Quick Upload Workflow
         
         <Steps>
           <Step>
@@ -63,9 +100,7 @@ Transform your raw media into web-optimized assets that load instantly and look 
           </Step>
         </Steps>
 
-        ## Processing Features
-
-        ### Video Processing Capabilities
+        ### Processing Features
 
         | Processing Tier | Quality | Resolution | Features |
         |----------------|---------|------------|----------|
@@ -94,9 +129,7 @@ Transform your raw media into web-optimized assets that load instantly and look 
     </Tab>
 
     <Tab value="Media Library">
-        ## Library Management
-
-        ### Content Overview
+        ### Content Management
 
         <div className="grid gap-6 sm:grid-cols-3 mt-6">
           <InfoCard 
@@ -116,7 +149,7 @@ Transform your raw media into web-optimized assets that load instantly and look 
           />
         </div>
 
-        ### Library Features
+        ### Key Features
 
         | Feature | Videos | Images | Description |
         |---------|--------|--------|-------------|
@@ -127,24 +160,11 @@ Transform your raw media into web-optimized assets that load instantly and look 
         | **Advanced Search** | ✓ | ✓ | Filter by type, date, tags |
         | **Usage Analytics** | ✓ | ✓ | View counts and performance |
 
-        ### Content Analytics
-
-        **Available Metrics:**
-        - Usage statistics and performance data
-        - View counts and engagement metrics
-        - Storage usage monitoring
-        - Processing status tracking
-        - API access patterns
-
-        <Callout type="info">
-        Analytics data is available for all content and updates in real-time as your media is accessed.
-        </Callout>
     </Tab>
 
     <Tab value="Organization & Tools">
-        ## Organization Methods
 
-        ### Content Organization
+        ### Organization Methods
 
         <div className="grid gap-6 sm:grid-cols-2 mt-6">
           <InfoCard 
@@ -159,36 +179,46 @@ Transform your raw media into web-optimized assets that load instantly and look 
           />
         </div>
 
-        ### Management Tools
+        ### Best Practices
 
-        | Tool | Purpose | Functionality |
-        |------|---------|---------------|
-        | **Bulk Operations** | Mass content management | Delete, tag, move multiple files |
-        | **Advanced Search** | Content discovery | Filter by type, date, tags, metadata |
-        | **Folder Management** | Content organization | Create, rename, move folder structures |
-        | **Tag Management** | Content categorization | Create, apply, remove tags |
-        | **Metadata Editor** | Content information | Edit titles, descriptions, custom fields |
-
-        ### Organization Best Practices
-
-        **Recommended Structure:**
-        - Organize by project or campaign
-        - Use consistent naming conventions
-        - Apply relevant tags for searchability
-        - Maintain folder hierarchies
-        - Regular content audits and cleanup
-
-        **Tagging Strategies:**
-        - Content type tags (video, image, thumbnail)
-        - Campaign or project tags
-        - Quality or processing tier tags
-        - Usage context tags (web, mobile, print)
+        - Organize by project or campaign  
+        - Apply consistent naming conventions  
+        - Use tags for faster discovery  
+        - Audit and clean up content regularly 
 
         <Callout type="tip">
         Well-organized media libraries improve team productivity and make content discovery much faster.
         </Callout>
     </Tab>
 </Tabs>
+
+---
+
+## Analytics & Security
+
+### Media Analytics
+
+Track how your media is being processed, stored, and accessed:
+
+- Storage usage and growth trends  
+- Processing metrics and optimization tips  
+- Access patterns and engagement insights  
+- API usage tracking  
+
+### Security & Permissions
+
+Media access follows your project’s security model:
+
+- Team roles define dashboard permissions ([Membership Settings](/platform/account/membership))  
+- API keys control programmatic access ([API Access](/platform/account/api-access/overview))
+- Assets can be private or shared via secure URLs  
+
+<Callout type="warning">
+For critical media, always maintain backups in addition to RIXL’s secure storage.
+</Callout>
+
+
+---
 
 ## Common Use Cases
 
@@ -215,9 +245,9 @@ Transform your raw media into web-optimized assets that load instantly and look 
   />
 </div>
 
-## Next Steps
+---
 
-After uploading your media:
+## Next Steps
 
 <Steps>
   <Step>
@@ -228,12 +258,12 @@ After uploading your media:
   <Step>
     **Create Feeds**
     
-    Structure content with [content feeds](/platform/dashboard/feeds) for dynamic distribution
+    Structure content with [content feeds](/platform/dashboard/feeds/overview) for dynamic distribution
   </Step>
   <Step>
     **API Integration**
     
-    Access media through [API keys](/platform/account/api-access) for programmatic usage
+    Access media through [API keys](/platform/account/api-access/overview) for programmatic usage
   </Step>
   <Step>
     **Team Sharing**

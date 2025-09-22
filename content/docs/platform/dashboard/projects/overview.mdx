@@ -1,0 +1,98 @@
+---
+title: Projects
+description: Create and manage projects to organize your media and team access.
+---
+
+import { Callout, InteractiveCard, InfoCard } from '@/components';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+Projects in **RIXL** are workspaces that organize your media, team members, and settings. Each project is isolated, giving you a clean separation of content, permissions, and analytics.
+
+<Callout type="info">
+You need at least one project to use the main dashboard. If you don’t have one, you’ll be prompted to create it on first login.
+</Callout>
+
+---
+
+## Quick Actions
+
+<div className="grid gap-6 sm:grid-cols-2">
+  <InteractiveCard
+    title="Create Project"
+    description="Set up a new project to organize your media and team access."
+    href="/platform/dashboard/projects/create-project"
+    icon="FolderPlus"
+  />
+  <InteractiveCard
+    title="Project Settings"
+    description="Configure project preferences, optimization settings, and team access."
+    href="/platform/dashboard/projects/project-settings"
+    icon="Settings"
+  />
+</div>
+
+---
+
+## Getting Started
+
+<Steps>
+  <Step>
+    **Create Project**
+    
+    Go to Settings → Projects → [Create New Project](/platform/dashboard/projects/create-project) to set up your first workspace.
+  </Step>
+  <Step>
+    **Configure Settings**
+    
+    Adjust [Project Settings](platform/dashboard/projects/project-settings) such as region, optimization, and access.
+  </Step>
+  <Step>
+    **Add Team Members**
+    
+    Invite collaborators via [Team Management](/platform/account/organizations/team-management).
+  </Step>
+  <Step>
+    **Upload Media**
+    
+    Start adding [videos](/platform/dashboard/media/upload-videos) and [images](/platform/dashboard/media/upload-images).
+  </Step>
+</Steps>
+
+---
+
+## Key Features
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-6">
+  <InfoCard 
+    title="Media Storage" 
+    description="Organize all your videos, images, and feeds within the project."
+    icon="Archive"
+  />
+  <InfoCard 
+    title="Team Access" 
+    description="Control who can view, upload, or manage content."
+    icon="Users"
+  />
+  <InfoCard 
+    title="Processing Settings" 
+    description="Fine-tune media delivery and performance."
+    icon="Settings"
+  />
+  <InfoCard 
+    title="API Keys" 
+    description="Generate credentials for secure integrations."
+    icon="Key"
+  />
+</div>
+
+---
+
+## Next Steps
+
+After creating a project, you can:
+
+- [Upload Media](/platform/dashboard/media/overview)
+- [Set Team Permissions](/platform/account/organizations/team-management)
+- [Organize Content with Feeds](/platform/dashboard/feeds/overview)
+- Explore Advanced Project Features
+
