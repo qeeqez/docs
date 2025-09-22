@@ -2,7 +2,7 @@
   "title": "Getting Started",
   "description": "Welcome to RIXL - start here to learn the basics and choose your path",
   "pages": [
-    "index",
+    "overview",
     "best-practices",
     "quick-links"
   ]
