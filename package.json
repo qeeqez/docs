@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "next build --turbopack",
+    "build": "pnpm lint && next build --turbopack",
     "dev": "next dev --turbo",
     "serve": "pnpx serve@latest out",
-    "lint": "fumadocs-mdx && bun ./scripts/lint.ts && eslint .",
+    "lint": "fumadocs-mdx && bun ./scripts/lint.ts",
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
