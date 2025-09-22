@@ -1,4 +1,6 @@
 {
+  "title": "Getting Started",
+  "description": "Welcome to RIXL - start here to learn the basics and choose your path",
   "pages": [
     "index",
     "best-practices",

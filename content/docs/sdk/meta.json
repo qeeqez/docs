@@ -1,7 +1,7 @@
 {
   "root": true,
-  "title": "SDK",
-  "description": "RIXL SDK Documentation",
+  "title": "Video SDK",
+  "description": "Build modern media experiences with optimized React components",
   "pages": [
     "index",
     "getting-started",
