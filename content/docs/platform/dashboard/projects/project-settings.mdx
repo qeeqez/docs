@@ -6,11 +6,13 @@ description: Configure and manage project settings through the dashboard
 import { Callout } from '@/components'
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
-Configure your project settings through the dashboard's settings section.
+Each project in **RIXL** has configurable settings that control its name, media optimization, storage, and access. You can update most options from the dashboard at any time.
 
 <Callout type="info">
-Access project settings by going to Settings → Project Settings in the dashboard sidebar.
+Access project settings from Dashboard → Settings → Project Settings.
 </Callout>
+
+---
 
 <Tabs items={['Basic Information', 'Video Processing', 'Project Management']}>
     <Tab value="Basic Information">
@@ -26,70 +28,66 @@ Access project settings by going to Settings → Project Settings in the dashboa
         | **Created Date** | When the project was initially created | ✗ |
         | **Storage Usage** | Current storage consumption and file counts | ✗ |
 
-        ### Changing Project Settings
-
-        1. Navigate to **Settings → Project Settings** in the dashboard
-        2. Update the fields you want to change
-        3. Click **Save Changes** to apply your updates
+        ### How to Update
+        1. Go to **Settings → Project Settings**.  
+        2. Edit the fields you want to change.  
+        3. Click **Save Changes**.  
 
         ### Region Information
 
-        Projects are created in a specific geographic region which determines:
+        A project’s region determines:  
+        - Where your media files live  
+        - Processing performance for uploads  
+        - Delivery optimization for end-users  
 
-        - Where your media files are stored
-        - The primary processing location for uploads
-        - Content delivery optimization
+<Callout type="warn">
+The **region cannot be changed** after creation. To move regions, create a new project and migrate your content.
+</Callout>
+</Tab>
 
-        <Callout type="info">
-        If you need to change your project's region, you'll need to create a new project in the desired region and migrate your content.
-        </Callout>
-    </Tab>
+<Tab value="Video Processing">
+        
+## Processing Tiers
 
-    <Tab value="Video Processing">
-        ## Processing Strategies
+Projects support different video processing strategies based on your content needs:
 
-        Projects support different video processing strategies based on your content needs:
+Choose the right optimization tier based on your content:
 
-        | Processing Tier | Quality | Resolution | Features | Best For |
-        |----------------|---------|------------|----------|----------|
-        | **Basic** | Standard | Up to 720p | Basic transcoding, standard formats | Development & Testing |
-        | **Shorts** | Mobile Optimized | Up to 1080p | Fast processing, mobile formats | Social Media Content |
-        | **Pro** | Professional | Up to 4K | Multiple formats, advanced options | Video-on-Demand |
+| Tier | Quality | Resolution | Features | Best For |
+|------|---------|------------|----------|----------|
+| **Basic** | Standard | Up to 720p | Basic transcoding | Development & Testing |
+| **Shorts** | Mobile Optimized | Up to 1080p | Fast processing, adaptive streaming | Social Media Content |
+| **Pro** | Professional | Up to 4K | Multiple quality levels, analytics | Video-on-Demand |
 
-        ### Processing Features Comparison
+    ### Features Comparison
 
-        | Feature | Basic | Shorts | Pro |
-        |---------|-------|--------|-----|
-        | Thumbnail Generation | ✓ | ✓ | ✓ |
-        | Multiple Quality Levels | - | ✓ | ✓ |
-        | Adaptive Bitrate | - | ✓ | ✓ |
-        | Custom Watermarks | - | - | ✓ |
-        | Priority Processing | - | ✓ | ✓ |
-        | Advanced Analytics | - | - | ✓ |
+    | Feature | Basic | Shorts | Pro |
+    |---------|-------|--------|-----|
+    | Thumbnail Generation | ✓ | ✓ | ✓ |
+    | Multiple Quality Levels | - | ✓ | ✓ |
+    | Adaptive Bitrate | - | ✓ | ✓ |
+    | Custom Watermarks | - | - | ✓ |
+    | Priority Processing | - | ✓ | ✓ |
+    | Advanced Analytics | - | - | ✓ |
 
-        ### Changing Processing Settings
+<Callout type="info">
+Processing changes only apply to **new uploads**. Existing videos keep their current processing.
+</Callout>
 
-        1. Go to **Settings → Project Settings**
-        2. Select your preferred **Video Optimization** level
-        3. Click **Save Changes** to apply the new setting
+</Tab>
 
-        <Callout type="info">
-        Processing strategy changes only affect new uploads. Existing videos retain their original processing level.
-        </Callout>
-    </Tab>
+<Tab value="Project Management">
+## Administration & Controls
 
-    <Tab value="Project Management">
-        ## Project Administration
+    ### Management Actions
 
-        ### Management Options
-
-        | Action | Description | Access Level |
-        |--------|-------------|--------------|
-        | **Rename Project** | Change project display name | Admin |
-        | **View Storage** | Monitor usage and file counts | Admin |
-        | **Change Processing** | Update video optimization tier | Admin |
-        | **Export Data** | Download project content | Admin |
-        | **Delete Project** | Permanently remove project | Owner |
+    | Action | Description | Access |
+    |--------|-------------|--------|
+    | **Rename Project** | Update the display name | Admin |
+    | **View Storage** | Monitor usage & file counts | Admin |
+    | **Change Processing** | Switch optimization tier | Admin |
+    | **Export Data** | Download all project content | Admin |
+    | **Delete Project** | Permanently remove a project | Owner |
 
         ### Storage Information
 
@@ -112,7 +110,7 @@ Access project settings by going to Settings → Project Settings in the dashboa
         3. Notify team members of the upcoming deletion
         4. Confirm you have backups of important content
 
-        ### Access and Permissions
+        ### Access & Permissions
 
         | Role | Basic Info | Video Processing | Project Management |
         |------|------------|------------------|-------------------|
@@ -120,6 +118,6 @@ Access project settings by going to Settings → Project Settings in the dashboa
         | **Admin** | Edit | Edit | View Only |
         | **Member** | View Only | View Only | No Access |
 
-    For team management and member permissions, visit [Account → Organizations](/platform/account/organizations/overview).
-    </Tab>
+        For team management and member permissions, visit [Account → Organizations](/platform/account/organizations/overview).
+</Tab>
 </Tabs>

@@ -4,6 +4,7 @@
   "pages": [
     "overview",
     "create-project",
-    "project-settings"
+    "project-settings",
+    "project-management"
   ]
 }
