@@ -303,9 +303,9 @@ async def main():
     
     for video_id, result in results.items():
         if result['processing_status'] == 'ready':
-            print(f"✓ {video_id} completed successfully")
+            print(f"{video_id} completed successfully")
         else:
-            print(f"✗ {video_id} failed: {result.get('error_message', 'Unknown error')}")
+            print(f"{video_id} failed: {result.get('error_message', 'Unknown error')}")
 
 # Run the async monitoring
 asyncio.run(main())
