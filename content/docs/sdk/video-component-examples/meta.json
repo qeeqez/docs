@@ -1,7 +1,6 @@
 {
-  "title": "Example: Video",
-  "description": "Real-world video component examples.",
   "pages": [
-    "autoplay_background"
+    "autoplay_background",
+    "..."
   ]
 }

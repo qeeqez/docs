@@ -1,0 +1,291 @@
+---
+title: Media
+description: Manage and optimize videos and images in your RIXL projects with storage, transcoding, transformations, and secure delivery.
+---
+
+import { Callout } from "fumadocs-ui/components/callout";
+import { Card, Cards } from "fumadocs-ui/components/card";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+The **Media** section is where you upload, optimize, and manage all your video and image assets. RIXL handles the heavy lifting—from transcoding and compression to secure delivery—so you can focus on creating and shipping.
+
+<Callout type="info">
+  Select a project and open **Media** from the left sidebar to get started.
+</Callout>
+
+## Media Overview
+
+<Cards>
+  <Card
+    title="Videos"
+    description="Upload and optimize video content automatically"
+  >
+    Manage video files with built-in transcoding, adaptive streaming, and
+    metadata controls.
+  </Card>
+  <Card
+    title="Images"
+    description="Handle image assets with on-demand transformations"
+  >
+    Upload and organize images, apply real-time transformations, and deliver
+    optimized versions instantly.
+  </Card>
+</Cards>
+
+## Video Management
+
+### Uploading Videos
+
+<Steps>
+<Step>
+**Navigate to Videos**
+
+Go to your selected project, then choose **Media → Videos** from the left sidebar.
+
+</Step>
+<Step>
+**Upload New Video**
+
+Click **Upload New Video** from Quick Actions or the Videos page.  
+For step-by-step uploads, see the [Video API Reference](/api).
+
+</Step>
+<Step>
+**Configure Details**
+
+Choose your file(s), then add a title, description, and project-specific settings.
+
+</Step>
+<Step>
+**Monitor Processing**
+
+Track your video upload and see progress as RIXL processes your video.
+
+</Step>
+</Steps>
+
+### Processing Pipeline
+
+Every uploaded video passes through RIXL's automated pipeline:
+
+<Tabs items={['Processing Stages', 'Status Tracking', 'Optimization Types']}>
+<Tab value="Processing Stages">
+1. **Upload** - File transfer to RIXL servers  
+2. **Analysis** - Format and quality checks  
+3. **Transcoding** - Conversion into optimized delivery formats  
+4. **Optimization** - Compression and quality balancing  
+5. **Ready** - Video available for playback and distribution  
+</Tab>
+
+<Tab value="Status Tracking">
+  **Indicators:** - **Uploading** - File transfer in progress - **Processing** -
+  Video analysis, optimization, and transcoding - **Ready** - Video is available
+  - **Error** - Processing failed (error details shown)
+</Tab>
+
+<Tab value="Optimization Types">
+- **Basic** - For testing and development  
+- **Shots** - Optimized for infinite feed apps  
+- **Pro** - Optimized for VOD and high-quality streaming  
+</Tab>
+</Tabs>
+
+### Managing Videos Library
+
+Video list features include:
+
+- Thumbnail preview
+- Editable video name
+- Duration and created date
+- Live processing status
+- Actions menu (delete, manage)
+
+## Image Management
+
+### Uploading Images
+
+<Steps>
+<Step>
+**Navigate to Images**
+
+Go to **Media → Images** within your project.
+
+</Step>
+<Step>
+**Upload New Image**
+
+Click **Upload New Image** from Quick Actions or the Images page.  
+For uploads, see the [Image API Reference](/api).
+
+</Step>
+<Step>
+**Configure Details**
+
+Choose your file(s) and add basic metadata.
+
+</Step>
+<Step>
+**Complete Upload**
+
+RIXL processes the file automatically—your optimized image is ready immediately.
+
+</Step>
+</Steps>
+
+### Real-Time Transformations
+
+<Callout type="tip">
+  Avoid storing multiple versions. Apply transformations on the fly using URL
+  parameters.
+</Callout>
+
+| Transformation    | Parameter | Example Usage           | Description                     |
+| ----------------- | --------- | ----------------------- | ------------------------------- |
+| **Format**        | `format`  | `?format=webp`          | Convert file format             |
+| **Quality**       | `quality` | `?quality=80`           | Adjust compression level        |
+| **Auto-Optimize** | `auto`    | `?auto=format,compress` | Apply best format & compression |
+
+### Managing Images
+
+List view includes:
+
+- Thumbnail preview
+- Editable image name
+- File size and dimensions
+- Created date
+- Original format
+
+## Quick Actions
+
+<Cards>
+  <Card
+    title="Upload New Video"
+    description="Quickly add video content to your project"
+  >
+    Access the video upload interface with project pre-selection.
+  </Card>
+  <Card title="Upload New Image" description="Add new image assets instantly">
+    Upload images with immediate optimization and transformation options.
+  </Card>
+  <Card
+    title="Create API Key"
+    description="Generate API keys for media workflows"
+    href="/platform/account/api-access"
+  >
+    Secure programmatic access with project-specific permissions.
+  </Card>
+  <Card
+    title="Invite Team Member"
+    description="Collaborate with teammates"
+    href="/platform/account/organizations"
+  >
+    Invite colleagues to your project and assign roles.
+  </Card>
+</Cards>
+
+## Media Analytics
+
+Track how your media is being processed, stored, and accessed:
+
+<Tabs items={['Storage Analytics', 'Processing Metrics', 'Access Patterns']}>
+
+<Tab value="Storage Analytics">
+  - Video and image storage by project - Usage trends and growth patterns -
+  Allocations vs. limits - Optimization recommendations
+</Tab>
+
+<Tab value="Processing Metrics">
+  - Average processing times - Queue status and backlog - Success and error
+  rates - Cost breakdown and optimization tips
+</Tab>
+
+<Tab value="Access Patterns">
+- Most accessed media  
+- Downloads and view stats  
+- API usage  
+- Team access patterns  
+- Content performance insights  
+</Tab>
+</Tabs>
+
+## Security & Permissions
+
+Media access follows your project's security model:
+
+- Team member roles define in-dashboard permissions ([Membership Settings](/platform/account/membership))
+- API keys control programmatic access ([API Access](/platform/account/api-access))
+- Assets can be set as private or shared via direct URLs
+
+<Callout type="warning">
+  For critical media, always maintain backups in addition to RIXL’s secure
+  storage.
+</Callout>
+
+## Best Practices
+
+### Video
+
+- Select optimization type based on use case
+- Use descriptive names and metadata
+- Monitor status and resolve errors quickly
+- Review storage usage regularly
+
+### Images
+
+- Upload in high quality and use transformations for delivery
+- Use `auto=format,compress` for best performance
+- Apply consistent naming conventions
+
+### Organization
+
+- Group assets by project
+- Archive unused files regularly
+- Use workflows for approval and publishing
+
+## Troubleshooting
+
+<Tabs items={['Video Issues', 'Image Issues']}>
+
+<Tab value="Video Issues">
+**Common Video Problems:**
+
+<Steps>
+<Step>Check **Processing Status** — verify format compatibility and file integrity.</Step>
+
+<Step>Review **Optimization Settings** — ensure they match your use case.</Step>
+
+<Step>Verify **Upload Requirements** — confirm connection and supported formats.</Step>
+</Steps>
+</Tab>
+
+<Tab value="Image Issues">
+<Steps>
+<Step>Optimize **Transformations** — adjust parameters for faster delivery.</Step>
+
+<Step>Adjust **Quality Settings** — tweak format and compression levels.</Step>
+
+<Step>Check **Permissions** — ensure correct URLs and access roles.</Step>
+</Steps>
+</Tab>
+</Tabs>
+
+## Next Steps
+
+<Cards>
+  <Card
+    title="API Reference"
+    description="Manage media programmatically with RIXL APIs"
+    href="/api"
+  />
+  <Card
+    title="Feeds Management"
+    description="Organize media into dynamic feeds for apps and websites"
+    href="/platform/dashboard/feeds"
+  />
+  <Card
+    title="Project Settings"
+    description="Configure project-level media preferences"
+    href="/platform/dashboard/projects/project-settings"
+  />
+</Cards>

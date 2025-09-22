@@ -1,10 +1,16 @@
 {
-  "title": "SDK",
-  "description": "RIXL SDK Documentation",
+  "root": true,
+  "title": "Documentation",
+  "description": "Complete guide to the RIXL media processing platform",
   "pages": [
-    "getting-started",
-    "video-component",
-    "image-component",
-    "video-component-examples"
+    "index",
+    "---Getting Started---",
+    "...getting-started",
+    "---Video---",
+    "...video-component",
+    "---Image---",
+    "...image-component",
+    "---Video Examples---",
+    "...video-component-examples"
   ]
 }

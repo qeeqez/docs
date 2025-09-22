@@ -1,75 +1,17 @@
-"use client";
-
-import {ApiReferenceReact} from "@scalar/api-reference-react";
 import "./custom.css";
-import apiJson from "./api.json";
+import type {Metadata} from "next";
+import {ApiWrapper} from "@/components/api-wrapper";
 
-export default function Page() {
-  return (
-    <div
-      style={{
-        height: "500px",
-      }}
-    >
-      <ApiReferenceReact
-        configuration={{
-          baseServerURL: "https://api.rixl.com",
-          content: apiJson,
-          theme: "default",
-          darkMode: false,
-          hideClientButton: true,
-          documentDownloadType: "yaml",
-          hideDarkModeToggle: true,
+export default async function Page() {
+  return <ApiWrapper/>;
+}
 
-          defaultHttpClient: {
-            targetKey: "js",
-            clientKey: "fetch",
-          },
-          authentication: {
-            preferredSecurityScheme: "ApiKeyAuth",
+export async function generateMetadata(): Promise<Metadata> {
+  const appName = "Rixl";
 
-            securitySchemes: {
-              ApiKeyAuth: {
-                type: "apiKey",
-                in: "header",
-                name: "X-API-Key",
-                description: "API key for protected endpoints",
-              },
-            },
-          },
-
-          operationsSorter: (a, b) => {
-            // 1. Sort by x-order if present
-            if (a.operation && b.operation) {
-              const aOrder = a.operation["x-order"];
-              const bOrder = b.operation["x-order"];
-
-              if (aOrder !== undefined && bOrder === undefined) {
-                return -1; // a comes first
-              }
-              if (aOrder === undefined && bOrder !== undefined) {
-                return 1; // b comes first
-              }
-              if (aOrder !== undefined && bOrder !== undefined) {
-                if (aOrder !== bOrder) {
-                  return aOrder - bOrder;
-                }
-              }
-            }
-
-            // 2. Sort by HTTP method
-            const methodOrder = ["get", "post", "put", "delete"];
-            const methodComparison = methodOrder.indexOf(a.method) - methodOrder.indexOf(b.method);
-
-            if (methodComparison !== 0) {
-              return methodComparison;
-            }
-
-            // 3. Sort by Path alphabetically
-            return a.path.localeCompare(b.path);
-          },
-        }}
-      />
-    </div>
-  );
+  return {
+    title: `API Reference - ${appName}`,
+    description: "Complete reference documentation for the Rixl API, including examples and code snippets for our endpoints in Python, cURL, and Node.js.",
+    applicationName: appName,
+  };
 }

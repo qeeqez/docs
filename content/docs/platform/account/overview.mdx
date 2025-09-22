@@ -1,0 +1,70 @@
+---
+title: Account Overview
+description: Your RIXL account dashboard—everything you need to manage your profile, security, team memberships, and preferences in one place.
+---
+
+import { Callout, InteractiveCard, InfoCard } from '@/components';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+Welcome to your RIXL account hub. From here, you can update your personal information, protect your account with security tools, manage team memberships, and keep track of billing. This section helps you stay in control of everything tied to your RIXL account.
+
+## Quick Actions
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InteractiveCard
+    title="Update Profile"
+    description="Edit your display name, username, and email address."
+    href="/platform/account/general-settings"
+    icon="Settings"
+  />
+  <InteractiveCard
+    title="Secure Account"
+    description="Set up two-factor authentication and manage sessions."
+    href="/platform/account/security"
+    icon="Shield"
+  />
+  <InteractiveCard
+    title="Generate API Key"
+    description="Create secure keys for integrating with RIXL's API."
+    href="/platform/account/api-access"
+    icon="Key"
+  />
+</div>
+
+## Your Account Essentials
+
+<Steps>
+	<Step>
+    **Profile & Personal Info**
+
+    Keep your display name, email, and username up to date so your team can easily recognize and connect with you.
+    </Step>
+
+	<Step>
+    **Security & Privacy**
+
+    Protect your account with strong passwords, two-factor authentication, and monitor active login sessions for suspicious activity.
+    </Step>
+
+	<Step>
+    **Team Collaboration**
+
+    View all your organization memberships, manage your roles, and respond to team invitations from colleagues.
+    </Step>
+
+	<Step>
+    **Developer Tools**
+
+    Generate and manage API keys for integrating RIXL into your applications and automated workflows.
+    </Step>
+
+	<Step>
+    **Billing & Usage**
+
+    Track your usage across projects and manage billing for organizations where you have admin access.
+    </Step>
+</Steps>
+
+<Callout type="tip">
+**Quick access:** Click your profile picture in the top-right corner and select **Account Settings** to jump straight to any of these sections.
+</Callout>

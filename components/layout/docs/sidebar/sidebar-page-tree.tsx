@@ -1,11 +1,12 @@
 "use client";
 
 import type {PageTree} from "fumadocs-core/server";
-import {type SidebarComponents, SidebarSeparator} from "fumadocs-ui/components/layout/sidebar";
 import {useTreeContext} from "fumadocs-ui/contexts/tree";
 import {Fragment, type ReactNode, useMemo} from "react";
+import type {SidebarComponents} from "@/components/layout/docs/sidebar/sidebar-components";
 import {SidebarItem} from "@/components/layout/docs/sidebar/sidebar-item";
 import {PageTreeFolder} from "@/components/layout/docs/sidebar/sidebar-page-tree-folder";
+import {SidebarSeparator} from "@/components/layout/docs/sidebar/sidebar-separator";
 import {cn} from "@/lib/cn";
 
 export function SidebarPageTree(props: {components?: Partial<SidebarComponents>}) {
@@ -19,7 +20,7 @@ export function SidebarPageTree(props: {components?: Partial<SidebarComponents>}
         if (item.type === "separator") {
           if (Separator) return <Separator key={i} item={item} />;
           return (
-            <SidebarSeparator key={i} className={cn(i !== 0 && "mt-6")}>
+            <SidebarSeparator key={i} className={cn(i !== 0 && "mt-6 lg:mt-8")}>
               {item.icon}
               {item.name}
             </SidebarSeparator>

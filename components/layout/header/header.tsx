@@ -1,4 +1,4 @@
-import {ForwardedRef, useMemo} from "react";
+import {useMemo} from "react";
 import {HeaderRight} from "@/components/layout/header/header-right";
 import {isSecondary} from "@/components/layout/header/is-secondary";
 import {Logo} from "@/components/layout/header/logo";
@@ -9,11 +9,7 @@ import {getLinks} from "@/components/layout/shared";
 import {LargeSearchToggle} from "@/components/search-toggle";
 import {cn} from "@/lib/cn";
 
-interface Props extends HomeLayoutProps{
-  ref: ForwardedRef<HTMLDivElement>;
-}
-
-export function Header({nav = {}, i18n = false, links, githubUrl, searchToggle = {}, ref}: Props) {
+export function Header({nav = {}, i18n = false, links, githubUrl, searchToggle = {}}: HomeLayoutProps) {
   const finalLinks = useMemo(() => getLinks(links, githubUrl), [links, githubUrl]);
 
   const navItems = finalLinks.filter((item) => ["nav", "all"].includes(item.on ?? "all"));
@@ -22,17 +18,18 @@ export function Header({nav = {}, i18n = false, links, githubUrl, searchToggle =
   const border = cn("border-b border-gray-500/5 dark:border-gray-300/[0.06]");
 
   return (
-    <Navbar className={cn("sticky top-0 w-full z-30", border)} ref={ref}>
+    <Navbar className={cn("sticky top-0 left-0 right-0 w-full z-[9999]", border)}>
       <div className="flex items-center h-header-top min-w-0 lg:px-12 mx-4 lg:mx-0">
         <div className={cn("h-full relative flex-1 flex items-center gap-x-4 min-w-0", border)}>
           <Logo title={nav?.title} url={nav?.url} className="flex-1 flex items-center gap-x-4"/>
-          <LargeSearchToggle
+          {searchToggle.enabled && <LargeSearchToggle
             className="relative hidden lg:flex items-center gap-2.5 flex-1 cursor-pointer"
-            hideIfDisabled/>
+            hideIfDisabled/>}
           <HeaderRight
             i18n={i18n}
             menuItems={finalLinks}
             menuEnableHoverToOpen={nav?.enableHoverToOpen}
+            searchToggle={searchToggle}
             className="flex-1 relative ml-auto justify-end"
           />
         </div>

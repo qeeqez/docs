@@ -5,9 +5,6 @@ import {TOCProvider} from "@/components/ui/toc";
 import {getMDXComponents} from "@/mdx-components";
 import {
     PageTOC,
-    PageTOCPopover,
-    PageTOCPopoverContent,
-    PageTOCPopoverTrigger
 } from "@/components/layout/docs/page/page-toc";
 import {SidebarWrapper} from "@/components/layout/docs/sidebar/sidebar-wrapper";
 import {PageBreadcrumb} from "@/components/layout/docs/page/page-breadcrumb";
@@ -38,12 +35,12 @@ export function DocsPageTemplate({
             <TOCProvider toc={page.data.toc}>
                 <main className="grow min-h-screen relative">
                     {/* TODO correct TOC popover position*/}
-                    <PageTOCPopover>
-                        <PageTOCPopoverTrigger/>
-                        <PageTOCPopoverContent>
-                            <PageTOCPopoverItems variant="normal"/>
-                        </PageTOCPopoverContent>
-                    </PageTOCPopover>
+                    {/*<PageTOCPopover>*/}
+                    {/*    <PageTOCPopoverTrigger/>*/}
+                    {/*    <PageTOCPopoverContent>*/}
+                    {/*        <PageTOCPopoverItems variant="normal"/>*/}
+                    {/*    </PageTOCPopoverContent>*/}
+                    {/*</PageTOCPopover>*/}
                     <DocsPage
                         container={{className: "pt-[calc(var(--padding-sidebar)*2)]"}}
                         full={page.data.full}

@@ -1,0 +1,54 @@
+---
+title: API Key Error Solutions
+description: Resolve common API authentication errors with step-by-step troubleshooting guides.
+---
+import { Callout, InfoCard} from '@/components';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+
+This guide helps you fix the most common problems when using Rixl API keys.
+
+### 401 Unauthorized
+
+<InfoCard title="401 Unauthorized" description="This error means your API key isn't working or is missing.">
+- Make sure you copied the full API key with no extra spaces or missing parts.
+- Add `X-API-Key` in the Request header.
+- Go to your dashboard and make sure your key hasn't expired or been deleted.
+</InfoCard>
+
+### 403 Forbidden
+
+<InfoCard title="403 Forbidden" description="Your key works, but it doesn't have permission to do what you're trying to do.">
+- Your key only works for the project where you created it. Make sure you're not trying to access a different project.
+</InfoCard>
+
+### 429 Too Many Requests
+
+<InfoCard title="429 Too Many Requests" description="You're making too many requests too quickly.">
+- Add Delays and try again after a short break when this happens.
+- Make fewer calls to reduce requests by saving responses or combining operations.
+- If this keeps happening, you need to **Upgrade Your Plan** with higher limits.
+</InfoCard>
+
+### Lost API Key
+
+<Callout type="error" title="Lost Keys Can't Be Found">
+  If you lose an API key, we can't show it to you again. For security, we only show keys once when you create them. You need to delete the lost key and create a new one.
+</Callout>
+
+### To delete a key
+<Steps>
+
+  <Step>
+  Go to your API key section on your RIXL Dashboard.
+  </Step>
+
+  <Step>
+  Find the key you want to delete and click **Revoke**.
+  </Step>
+
+  <Step>
+  Confirm you want to delete it. The key will stop working immediately.
+  </Step>
+
+</Steps>
