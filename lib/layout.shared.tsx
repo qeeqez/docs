@@ -36,7 +36,7 @@ export function baseOptions(): BaseLayoutProps {
       },
       {
         text: 'SDKs',
-        url: '/sdk',
+        url: '/sdk/getting-started',
         active: "nested-url",
       },
       {
