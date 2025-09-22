@@ -12,7 +12,7 @@ import {TOCProvider} from "@/components/ui/toc";
 import {source} from "@/lib/source";
 import {getMDXComponents} from "@/mdx-components";
 
-export default async function Page(props: PageProps<"/[[...slug]]">) {
+export default async function Page(props: PageProps<"/[...slug]">) {
   const params = await props.params;
   const page = source.getPage(params.slug);
 
@@ -75,7 +75,7 @@ export async function generateStaticParams() {
   return source.generateParams();
 }
 
-export async function generateMetadata(props: PageProps<"/[[...slug]]">): Promise<Metadata> {
+export async function generateMetadata(props: PageProps<"/[...slug]">): Promise<Metadata> {
   const params = await props.params;
   const page = source.getPage(params.slug);
   if (!page) notFound();
