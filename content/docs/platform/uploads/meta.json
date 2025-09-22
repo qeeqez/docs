@@ -2,8 +2,10 @@
   "title": "Upload & Optimize",
   "description": "Upload and transform your media",
   "pages": [
+    "index",
     "images",
+    "videos-guide",
     "videos",
-    "bulk-uploads"
+    "posts"
   ]
 }

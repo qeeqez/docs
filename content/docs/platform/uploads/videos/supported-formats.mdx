@@ -14,7 +14,7 @@ Understanding supported input formats helps you prepare videos for optimal proce
 <Tabs>
     <Tab value="Primary Formats">
         **Recommended for fastest processing:**
-        - **MP4** - H.264/H.265 video with AAC audio
+        - **MP4** - H.264/H.265 video with Opus audio
         - **MOV** - QuickTime containers (Apple ecosystem)
         - **WebM** - VP8/VP9 with Vorbis/Opus audio
     </Tab>
@@ -32,7 +32,7 @@ Understanding supported input formats helps you prepare videos for optimal proce
 
 **Optimal format for processing**:
 - **Video codecs**: H.264 (AVC), H.265 (HEVC)
-- **Audio codecs**: AAC, MP3
+- **Audio codecs**: Opus, MP3
 - **Processing speed**: Fastest transcoding times
 - **Compatibility**: Universal browser and device support
 
@@ -46,7 +46,7 @@ Understanding supported input formats helps you prepare videos for optimal proce
 
 **Apple ecosystem optimized**:
 - **Video codecs**: H.264, H.265, ProRes (limited support)
-- **Audio codecs**: AAC, PCM
+- **Audio codecs**: Opus, PCM
 - **Processing speed**: Fast transcoding, especially from Apple devices
 - **Use cases**: Content from iPhone, iPad, Mac recording applications
 
@@ -69,7 +69,7 @@ Understanding supported input formats helps you prepare videos for optimal proce
 
 **Feature-rich container**:
 - **Video codecs**: H.264, H.265, VP8, VP9, and others
-- **Audio codecs**: AAC, MP3, FLAC, Vorbis, Opus
+- **Audio codecs**: Opus, MP3, FLAC, Vorbis
 - **Processing impact**: Longer transcoding due to format complexity
 - **Use cases**: High-quality archival content, advanced subtitle support
 
@@ -85,7 +85,7 @@ Understanding supported input formats helps you prepare videos for optimal proce
 
 **Legacy web format**:
 - **Video codecs**: H.264, VP6
-- **Audio codecs**: AAC, MP3
+- **Audio codecs**: Opus, MP3
 - **Processing impact**: Conversion overhead for modern delivery
 - **Use cases**: Legacy Flash content migration
 
@@ -117,7 +117,7 @@ Understanding supported input formats helps you prepare videos for optimal proce
 
 ## Audio Codec Support
 
-### AAC - Recommended
+### Opus - Recommended
 
 **Standard web audio**:
 - **Bitrates**: 64kbps to 320kbps
@@ -159,7 +159,7 @@ Understanding supported input formats helps you prepare videos for optimal proce
         description="Standard rates for optimal processing and compatibility"
     />
     <InfoCard
-        title="Audio: AAC Codec"
+        title="Audio: Opus Codec"
         description="Best compatibility and quality for source material"
     />
 </div>
@@ -169,7 +169,7 @@ Understanding supported input formats helps you prepare videos for optimal proce
 **Before upload**:
 - **Container format**: Convert to MP4 if using other formats
 - **Video codec**: Ensure H.264 encoding for the fastest processing
-- **Audio codec**: Use AAC for optimal quality and compatibility
+- **Audio codec**: Use Opus for optimal quality and compression
 - **Resolution**: Keep source resolution, avoid upscaling
 
 ## Processing Time Impact
@@ -194,7 +194,7 @@ Understanding supported input formats helps you prepare videos for optimal proce
 ### Optimization Strategies
 
 **For fastest processing**:
-1. **Use MP4 container** with H.264 video and AAC audio
+1. **Use MP4 container** with H.264 video and Opus audio
 2. **Match standard resolutions** (720p, 1080p, 4K)
 3. **Use standard frame rates** (24fps, 30fps, 60fps)
 4. **Avoid exotic codecs** or unusual encoding parameters
@@ -276,6 +276,6 @@ Understanding supported input formats helps you prepare videos for optimal proce
 
 ## Next Steps
 
-- Learn about the [detailed processing pipeline](/docs/uploads/video-processing/processing-pipeline) architecture
-- Choose the right [quality tier](/docs/uploads/video-processing/quality-tiers) for your content
-- Implement [video uploads](/docs/uploads/video-processing/upload-implementation) with optimal format settings
+- Learn about the [detailed processing pipeline](/platform/uploads/videos-guide) architecture
+- Choose the right [quality tier](/platform/uploads/videos/quality-tiers) for your content
+- Implement [video uploads](/platform/uploads/videos/upload-implementation) with optimal format settings
