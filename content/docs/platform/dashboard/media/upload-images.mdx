@@ -1,87 +1,82 @@
 ---
 title: Upload Images
-description: Add and optimize image content through the dashboard
+description: Add and optimize image content in the RIXL dashboard with multiple workflows and integration options.
 ---
 
 import { Callout, InfoCard } from '@/components';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
-Upload and manage images through the RIXL dashboard with streamlined workflows and project integration.
+Upload images directly through the RIXL dashboard with **single, batch, or drag-and-drop workflows**. Each upload is automatically processed and optimized for delivery.
 
 <Callout type="info">
-    For detailed technical specifications about image processing, formats, and optimization, see the complete [image upload documentation](/platform/uploads/images).
+  For technical details about formats, optimization, and processing specs, see the [full image upload documentation](/platform/uploads/images).
 </Callout>
 
-## Dashboard Upload Workflow
+---
 
-### Quick Upload Process
+## Upload Workflows
+
 
 <Steps>
 <Step>
 **Access Media Section**
 
-Navigate to your project dashboard → Media → Upload Images
+Go to **Media → Images** in your project dashboard.
 </Step>
 <Step>
 **Choose Upload Method**
 
-Select single image, batch upload, or drag-and-drop multiple files
+Choose **Single Upload**, **Batch Upload**, or **Drag & Drop**.
 </Step>
 <Step>
 **Configure Project Settings**
 
-Set titles, tags, and organize into project folders
+Add metadata (title, tags, folders, project assignment).
 </Step>
 <Step>
 **Monitor Progress**
 
-Track upload and processing status with real-time updates
+Track progress with real-time status updates.
 </Step>
 </Steps>
 
 ## Upload Methods
 
 <Tabs items={['Single Upload', 'Batch Upload', 'Drag & Drop']}>
-    <Tab value="Single Upload">
-        **Individual Image Management**
-        
-        - Custom metadata for each image
-        - Specific project assignment
-        - Individual processing settings
-        - Focused workflow for important assets
+  <Tab value="Single Upload">
+    Focused workflow for high-value assets:  
+    - Add unique metadata and tags  
+    - Assign to a specific project  
+    - Adjust individual processing settings  
     </Tab>
     <Tab value="Batch Upload">
-        **Efficient Mass Upload**
-        
-        - Upload multiple images simultaneously  
-        - Shared metadata and settings
-        - Bulk project assignment
-        - Progress tracking for entire batch
+    Efficient upload for many files:  
+    - Upload multiple images at once  
+    - Apply shared settings or metadata  
+    - Track overall batch progress  
     </Tab>
     <Tab value="Drag & Drop">
-        **Quick File Addition**
-        
-        - Drag files directly from desktop
-        - Automatic format detection
-        - Instant upload initiation
-        - Visual feedback during transfer
-    </Tab>
+    Fastest way to add files:  
+    - Drop images directly from your desktop  
+    - Automatic format detection  
+    - Upload begins instantly  
+  </Tab>
 </Tabs>
 
-## Dashboard Integration
+---
 
-### Project Management
+## Project Management
 
 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-6">
   <InfoCard 
     title="Project Assignment" 
-    description="Automatically organize images by project"
+    description="Automatically link images to active projects"
     icon="FolderPlus"
   />
   <InfoCard 
     title="Team Collaboration" 
-    description="Share images with team members"
+    description="Share uploaded images with teammates"
     icon="Users"
   />
   <InfoCard 
@@ -91,22 +86,25 @@ Track upload and processing status with real-time updates
   />
 </div>
 
-### Media Library Features
+---
 
-**Organization Tools:**
-- **Smart Folders** - Automatic categorization by project and date
-- **Tag Management** - Custom tags for easy searching and filtering  
-- **Bulk Operations** - Move, delete, or update multiple images
-- **Search & Filter** - Find images quickly using metadata and tags
+### Library Features
+
+Once uploaded, images are available in your **Media Library** with the following tools:
+
+- **Smart folders** – Auto-organized by project and date  
+- **Tags** – Add custom tags for fast search and filtering  
+- **Bulk operations** – Move, update, or delete multiple items  
+- **Search & filters** – Find assets quickly by metadata, tags, or dates  
 
 **Dashboard Views:**
-- **Grid View** - Visual thumbnail browsing with quick actions
-- **List View** - Detailed metadata display with sorting options
-- **Timeline View** - Chronological organization by upload date
+- **Grid view** – Thumbnail browsing with quick actions  
+- **List view** – Detailed metadata with sorting  
+- **Timeline view** – Chronological upload organization  
 
-## Usage & Integration
+---
 
-### Content Creation Workflow
+## Using Uploaded Images
 
 <Steps>
 <Step>
@@ -117,7 +115,7 @@ Add images through dashboard upload interface
 <Step>
 **Organize & Tag**
 
-Use [media organization](/platform/dashboard/media/organize-media) tools to structure your library
+Apply tags and folders with [media organization tools](/platform/dashboard/media/organize-media).
 </Step>
 <Step>
 **Create Content**
@@ -127,16 +125,16 @@ Add images to [content feeds](/platform/dashboard/feeds/overview) or project gal
 <Step>
 **Share & Distribute**
 
-Generate embed codes or shareable links for integration
+Use embed codes, shareable links, or APIs for distribution.
 </Step>
 </Steps>
 
-### Export Options
+### Export & Distribution
 
 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-6">
   <InfoCard 
     title="Direct URLs" 
-    description="Optimized image links for web integration"
+    description="Optimized links for websites and apps"
     icon="Link"
   />
   <InfoCard 
@@ -151,18 +149,20 @@ Generate embed codes or shareable links for integration
   />
   <InfoCard 
     title="Download Options" 
-    description="Original and optimized file downloads"
+    description="Access original or optimized files"
     icon="Download"
   />
 </div>
 
-## Technical Processing
+---
 
-All uploaded images receive automatic optimization. For complete technical details about:
+## Behind the Scenes
 
-- **Format conversion and AVIF optimization**
-- **Thumbhash generation and implementation** 
-- **Supported formats and specifications**
-- **Performance benchmarks and browser support**
+All uploads are automatically optimized:
 
-See the comprehensive [image upload documentation](/platform/uploads/images).
+- **Format conversion** – WebP/AVIF with fallbacks  
+- **Thumbhash** – Lightweight previews for fast UI rendering  
+- **Compression & resizing** – Balanced quality and performance  
+- **Metadata handling** – Retains essential details for search and SEO  
+
+For deep technical specifications, see the [image upload reference](/platform/uploads/images).
