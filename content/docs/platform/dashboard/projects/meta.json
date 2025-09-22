@@ -2,7 +2,7 @@
   "title": "Projects",
   "description": "Create and manage your media projects",
   "pages": [
-    "index",
+    "overview",
     "create-project",
     "project-settings"
   ]

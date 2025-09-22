@@ -2,7 +2,7 @@
   "title": "Billing & Payments",
   "description": "Manage subscription plans, payment methods, and billing history",
   "pages": [
-    "index",
+    "overview",
     "subscription-plans",
     "payment_invoices"
   ]

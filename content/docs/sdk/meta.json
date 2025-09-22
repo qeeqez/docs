@@ -1,11 +1,9 @@
 {
   "root": true,
-  "title": "Video SDK",
-  "description": "Build modern media experiences with optimized React components",
+  "title": "SDKs",
+  "description": "Build modern media experiences with our comprehensive SDKs",
   "pages": [
     "index",
-    "getting-started",
-    "video-component",
-    "image-component"
+    "react"
   ]
 }
