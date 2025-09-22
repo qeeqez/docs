@@ -1,59 +1,62 @@
 ---
 title: Upload Videos
-description: Upload and process video content through the dashboard
+description: Upload, process, and distribute videos in the RIXL dashboard with automated transcoding and integration features.
 ---
 
-import { Callout, InfoCard} from '@/components';
+import { Callout, InfoCard } from '@/components';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-Upload and manage videos through the RIXL dashboard with automated transcoding and project integration.
+
+Upload videos directly through the RIXL dashboard with **automatic transcoding, quality tiers, and project integration**.
 
 <Callout type="info">
-    For detailed technical specifications about video processing, quality tiers, and supported formats, see the complete [video processing documentation](/platform/uploads/videos-guide).
+  For detailed technical specifications, formats, and encoding, see the [video processing documentation](/platform/uploads/videos-guide).
 </Callout>
 
-## Dashboard Upload Workflow
+---
 
-### Quick Upload Process
+## Upload Workflow
 
 <Steps>
 <Step>
 **Access Video Upload**
 
-Navigate to your project dashboard → Media → Upload Videos
+Go to **Media → Videos** in your project dashboard.
 </Step>
 <Step>
 **Select Quality Tier**
 
-Choose processing level based on your content needs: Basic, Shorts, or Pro
+Choose a **Quality Tier**: Basic, Shorts, or Pro.
 </Step>
 <Step>
 **Configure Video Settings**
 
-Set title, description, and project-specific metadata
+Set metadata: title, description, tags, and project assignment.
 </Step>
 <Step>
 **Monitor Processing**
 
-Track transcoding progress with real-time status updates
+Track progress with real-time transcoding updates.
 </Step>
 </Steps>
 
-## Quality Tier Selection
+---
+
+## Quality Tiers
 
 Choose the right processing tier for your content during upload:
 
 - **Basic**: Standard web content (720p, efficient processing)
-- **Shorts**: Mobile-optimized content (1080p, 60fps support)  
-- **Pro**: Professional quality (4K support, premium features)
+- **Shorts**: Optimized for mobile (1080p, 60fps support)  
+- **Pro**: High-quality production (4K support, premium features)
 
 <Callout type="info">
-    For detailed specifications, features, and technical comparisons, see [Video Processing Quality Tiers](/platform/uploads/videos/quality-tiers).
+  See full details in [Video Processing Quality Tiers](/platform/uploads/videos/quality-tiers).
 </Callout>
 
-## Dashboard Integration
+---
 
-### Project Management
+## Project Integration
 
 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-6">
   <InfoCard 
@@ -63,19 +66,21 @@ Choose the right processing tier for your content during upload:
   />
   <InfoCard 
     title="Processing Queue" 
-    description="Monitor transcoding progress in real-time"
+    description="Track transcoding progress in real-time"
     icon="Clock"
   />
   <InfoCard 
     title="Team Access" 
-    description="Share videos with team members"
+    description="Collaborate and share with teammates"
     icon="Users"
   />
 </div>
 
-### Processing Status Tracking
+---
 
-**Dashboard Processing States:**
+## Processing Status
+
+Each video moves through clear dashboard states:
 
 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-6">
   <InfoCard
@@ -90,7 +95,7 @@ Choose the right processing tier for your content during upload:
   />
   <InfoCard
     title="Ready"
-    description="All qualities available"
+    description="Available in all selected qualities"
     icon="CheckCircle"
   />
   <InfoCard
@@ -100,28 +105,30 @@ Choose the right processing tier for your content during upload:
   />
 </div>
 
-### Media Library Integration
+---
 
-**Organization Features:**
+## Media Library Features
+
+Uploaded videos appear in the **Media Library** with:
+
 - **Smart Categorization** - Automatic sorting by project, date, and content type
 - **Thumbnail Management** - Custom thumbnails or auto-generated options
-- **Batch Operations** - Bulk editing, moving, and tagging capabilities
+- **Batch Operations** - Bulk editing, moving, and tagging
 - **Search & Filter** - Find videos quickly using metadata and processing status
 
 **Dashboard Views:**
 - **Processing Queue** - Monitor transcoding progress across all uploads
-- **Video Gallery** - Visual browsing with playback previews
+- **Video Gallery** - Playback previews with actions
 - **Analytics View** - Processing time and file size analytics
 
-## Usage & Integration
 
-### Content Creation Workflow
+## Using Uploaded Videos
 
 <Steps>
 <Step>
 **Upload Videos**
 
-Add videos through dashboard with quality tier selection
+Add videos through dashboard with with your chosen tier.
 </Step>
 <Step>
 **Monitor Processing**
@@ -131,47 +138,49 @@ Track transcoding progress in real-time processing queue
 <Step>
 **Organize Content**
 
-Use [media organization](/platform/dashboard/media/organize-media) to structure your library
+Structure your library with [media organization tools](/platform/dashboard/media/organize-media).
 </Step>
 <Step>
 **Create Feeds**
 
-Add processed videos to [content feeds](/platform/dashboard/feeds/overview) for distribution
+Add finished videos to [content feeds](/platform/dashboard/feeds/overview) for distribution.
 </Step>
 </Steps>
 
-### Export & Sharing Options
+### Export & Sharing 
 
 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-6">
   <InfoCard 
     title="Streaming URLs" 
-    description="Adaptive streaming for all devices"
+    description="Adaptive playback across devices"
     icon="Play"
   />
   <InfoCard 
     title="Embed Codes" 
-    description="Ready-to-use video player embeds"
+    description="Player-ready HTML or Markdown snippets"
     icon="Code"
   />
   <InfoCard 
     title="API Access" 
-    description="Programmatic video management"
+    description="Programmatic upload and management"
     icon="Database"
   />
   <InfoCard 
     title="Download Links" 
-    description="Original and processed file downloads"
+    description="Access original or processed versions"
     icon="Download"
   />
 </div>
 
-## Technical Processing
+---
 
-All uploaded videos receive automated processing across multiple quality levels. For complete technical details about:
+## Behind the Scenes
 
-- **Quality tiers and specifications**
-- **Supported formats and encoding settings**
-- **Processing pipeline and adaptive streaming**
-- **Performance optimization and troubleshooting**
+All videos are transcoded automatically into multiple qualities with:
 
-See the comprehensive [video processing documentation](/platform/uploads/videos-guide).
+- **Tier-based encoding settings**  
+- **Adaptive streaming support**  
+- **Optimized compression** for performance  
+- **Error handling** with retry and failure states  
+
+For complete specifications, see the [video processing reference](/platform/uploads/videos-guide).
