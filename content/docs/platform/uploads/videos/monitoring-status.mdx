@@ -23,9 +23,14 @@ Monitor your video's progress through the processing pipeline with real-time sta
     </Tab>
     <Tab value="API Monitoring">
         ```bash
-        # Check processing status
-        curl "https://api.rixl.com/videos/{videoId}" \
-        -H "X-API-Key: YOUR_API_KEY"
+        # Check processing status with error handling
+        curl -f -s -S \
+          "https://api.rixl.com/videos/{videoId}" \
+          -H "X-API-Key: YOUR_API_KEY" \
+          -H "Accept: application/json" \
+          --retry 3 \
+          --retry-delay 1 \
+          --max-time 30
         ```
 
         **Response includes:**

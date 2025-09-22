@@ -302,12 +302,15 @@ log_info "Starting upload for $(basename "$VIDEO_FILE")"
 
 # Step 1: Initialize upload with error handling
 log_info "Initializing upload..."
-INIT_RESPONSE=$(curl -s -w "%{http_code}" \
+INIT_RESPONSE=$(curl -f -s -w "%{http_code}" \
     -X POST https://api.rixl.com/videos/upload/init \
     -H "X-API-Key: $API_KEY" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d "{
+    --retry 3 \
+    --retry-delay 1 \
+    --max-time 30 \
+    --data "{
         \"file_name\": \"$(basename "$VIDEO_FILE")\",
         \"video_quality\": \"$VIDEO_QUALITY\",
         \"image_format\": \"$IMAGE_FORMAT\"
@@ -347,10 +350,14 @@ log_info "Video uploaded successfully"
 
 # Step 3: Complete upload
 log_info "Completing upload..."
-if ! curl -s -f \
+if ! curl -f -s -S \
     -X POST "https://api.rixl.com/videos/$VIDEO_ID/upload/complete/" \
     -H "X-API-Key: $API_KEY" \
     -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    --retry 3 \
+    --retry-delay 1 \
+    --max-time 30 \
     -o /dev/null; then
     log_error "Upload completion failed"
     exit 1
