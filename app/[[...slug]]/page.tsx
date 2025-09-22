@@ -1,18 +1,18 @@
 import {createRelativeLink} from "fumadocs-ui/mdx";
 import type {Metadata} from "next";
-import {notFound, redirect} from "next/navigation";
+import {notFound} from "next/navigation";
 import {PageTOCItems, PageTOCTitle} from "@/components/layout/docs/page";
 import {PageBreadcrumb} from "@/components/layout/docs/page/page-breadcrumb";
 import {PageTOC} from "@/components/layout/docs/page/page-toc";
 import {Sidebar} from "@/components/layout/docs/sidebar/sidebar";
 import {SidebarWrapper} from "@/components/layout/docs/sidebar/sidebar-wrapper";
+import {Footer} from "@/components/layout/footer/footer";
 import {DocsBody, DocsDescription, DocsPage, DocsTitle} from "@/components/layout/page";
 import {TOCProvider} from "@/components/ui/toc";
 import {source} from "@/lib/source";
 import {getMDXComponents} from "@/mdx-components";
-import {Footer} from "@/components/layout/footer/footer";
 
-export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
+export default async function Page(props: PageProps<"/[[...slug]]">) {
   const params = await props.params;
   const page = source.getPage(params.slug);
 
@@ -75,7 +75,7 @@ export async function generateStaticParams() {
   return source.generateParams();
 }
 
-export async function generateMetadata(props: PageProps<"/docs/[[...slug]]">): Promise<Metadata> {
+export async function generateMetadata(props: PageProps<"/[[...slug]]">): Promise<Metadata> {
   const params = await props.params;
   const page = source.getPage(params.slug);
   if (!page) notFound();
