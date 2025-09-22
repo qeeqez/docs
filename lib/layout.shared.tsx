@@ -1,4 +1,3 @@
-import type {BaseLayoutProps} from "fumadocs-ui/layouts/shared";
 import {ChevronRightIcon} from "lucide-react";
 import LogoWide from "@/assets/logo_wide.svg";
 import type {FooterSection} from "@/components/layout/footer/footer-content-section";
@@ -6,6 +5,7 @@ import DiscordIcon from "@/public/socials/discord.svg";
 import GithubIcon from "@/public/socials/github.svg";
 import XIcon from "@/public/socials/x.svg";
 import YoutubeIcon from "@/public/socials/youtube.svg";
+import type {BaseLayoutProps} from "@/components/layout/shared";
 
 /**
  * Shared layout configurations
@@ -26,28 +26,27 @@ export function baseOptions(): BaseLayoutProps {
     links: [
       {
         text: "Home",
-        url: "/",
+        url: "/getting-started",
+        active: "nested-url",
+        activeSubfolders: [
+          "/getting-started",
+          "/platform",
+          "/legal",
+        ]
       },
       {
-        // icon: <BookIcon />,
-        text: "Docs",
-        url: "/docs",
+        text: 'SDKs',
+        url: '/sdk',
+        active: "nested-url",
       },
-        {
-            // icon: <BookIcon />,
-            text: 'SDK',
-            url: '/docs/sdk',
-            // secondary items will be displayed differently on navbar
-            secondary: false,
-        },
       {
-        // icon: <BookIcon />,
-        text: "API Reference",
+        text: "APIs",
         url: "/api",
+        active: "nested-url",
       },
       {
         type: 'button',
-        text: <>Get Started <ChevronRightIcon /></>,
+        text: <>Get Started <ChevronRightIcon/></>,
         url: "https://dash.rixl.com",
         secondary: true,
       }
@@ -79,17 +78,18 @@ export function FooterSections(): FooterSection[] {
     {
       title: "Company",
       links: [
+        {text: "rixl.com", url: "https://www.rixl.com"},
         {text: "About", url: "/about"},
         {text: "Blog", url: "/blog"},
         {text: "Careers", url: "/careers"},
-        {text: "Privacy", url: "/privacy"},
+        {text: "Privacy", url: "/legal/privacy-policy"},
       ],
     },
     {
       title: "Tools",
       links: [
         {text: "CLI", url: "/cli"},
-        {text: "SDK", url: "/docs/sdk"},
+        {text: "SDK", url: "/sdk"},
         {text: "Integrations", url: "/integrations"},
         {text: "Extensions", url: "/extensions"},
       ],
@@ -97,20 +97,20 @@ export function FooterSections(): FooterSection[] {
     {
       title: "Community",
       links: [
-        {text: "X", url: "https://twitter.com/...", external: true, Icon: XIcon},
+        {text: "X", url: "https://x.com/rixlcloud", external: true, Icon: XIcon},
         {text: "Discord", url: "https://discord.gg/...", external: true, Icon: DiscordIcon},
-        {text: "YouTube", url: "https://youtube.com/...", external: true, Icon: YoutubeIcon},
-        {text: "GitHub", url: "https://github.com/...", external: true, Icon: GithubIcon},
+        {text: "YouTube", url: "https://youtube.com/@rixlcloud", external: true, Icon: YoutubeIcon},
+        {text: "GitHub", url: "https://github.com/qeeqez", external: true, Icon: GithubIcon}, // TODO replace github when migrated
       ],
     },
   ];
 }
 
-export function FooterBottomLinks(): {text: string; url: string}[] {
-  // TODO translations and proper links
+export function FooterBottomLinks(): { text: string; url: string }[] {
+  // TODO translations
   return [
-    {text: "Privacy Policy", url: "/privacy"},
-    {text: "Terms of Use", url: "/terms"},
-    {text: "Cookie Preferences", url: "/cookies"},
+    {text: "Privacy Policy", url: "/legal/privacy-policy"},
+    {text: "Terms of Service", url: "/legal/terms-of-service"},
+    {text: "Cookie Policy", url: "/legal/cookie-policy"},
   ];
 }

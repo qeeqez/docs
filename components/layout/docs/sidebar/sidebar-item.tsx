@@ -8,12 +8,26 @@ import {useInternalContext} from "@/components/layout/docs/sidebar/sidebar-provi
 import {cn} from "@/lib/cn";
 
 export const sidebarItemVariants = cva(
-  "relative flex flex-row items-center gap-2 rounded-xl p-2 ps-(--sidebar-item-offset) text-start text-fd-muted-foreground text-sm [overflow-wrap:anywhere] [&_svg]:size-4 [&_svg]:shrink-0",
+  cn(
+    "relative flex flex-row items-center",
+    "gap-2 rounded-xl p-2 ps-(--sidebar-item-offset)",
+    "text-start text-sm font-normal antialiased",
+    "[overflow-wrap:anywhere]",
+    "[&_svg]:size-4 [&_svg]:shrink-0",
+    "transition-colors hover:transition-none cursor-pointer"
+  ),
   {
     variants: {
       active: {
-        true: "bg-fd-primary/10 text-fd-primary",
-        false: "transition-colors hover:bg-fd-accent/50 hover:text-fd-accent-foreground/80 hover:transition-none",
+        true: cn(
+          "bg-fd-primary/10 dark:bg-fd-primary/10",
+          "text-fd-primary",
+          "font-semibold"
+        ),
+        false: cn(
+          "hover:bg-gray-600/5 dark:hover:bg-gray-200/5",
+          "text-fd-muted-foreground hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
+        ),
       },
     },
   },

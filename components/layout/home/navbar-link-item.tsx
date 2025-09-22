@@ -37,23 +37,22 @@ export function NavbarLinkItem({item, ...props}: { item: LinkItemType; className
 
     return (
       <NavbarMenu>
-        <NavbarMenuTrigger {...props}>{item.url ? <Link href={item.url}>{item.text}</Link> : item.text}</NavbarMenuTrigger>
+        <NavbarMenuTrigger {...props}>
+          {item.url ? <Link href={item.url}>{item.text}</Link> : item.text}
+        </NavbarMenuTrigger>
         <NavbarMenuContent>{children}</NavbarMenuContent>
       </NavbarMenu>
     );
   }
 
   return (
-    <NavbarLink className=""
-    //   className={cn(
-    //   "flex items-center gap-2 group relative h-full",
-    //   isActive() ? "bg-yellow-400" : "bg-g"
-    // )}
-      {...props} item={item} variant={item.type} aria-label={item.type === "icon" ? item.label : undefined}>
-      <div className="[&>[data-active]]:bg-yellow-400 data-[active=false]:bg-green-400">
-        {item.type === "icon" ? item.icon : item.text}
-        {/*<div className="absolute bottom-0 h-[1.5px] w-full group-hover:bg-fd-primary dark:group-hover:bg-fd-primary-foreground"></div>*/}
-      </div>
+    <NavbarLink
+      className="relative h-full"
+      {...props} item={item} variant={item.type} aria-label={item.type === "icon" ? item.label : undefined}
+    >
+      {item.type === "icon" ? item.icon : item.text}
+      <div
+        className="absolute bottom-0 h-[1.5px] w-full group-data-[active=true]:bg-fd-primary group-hover:bg-fd-primary-foreground"/>
     </NavbarLink>
   );
 }

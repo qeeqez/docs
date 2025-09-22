@@ -19,7 +19,7 @@ import {buttonVariants} from "../../ui/button";
 import {BaseLinkItem} from "../shared/index";
 
 const navItemVariants = cva(
-  "inline-flex items-center gap-1 p-2 text-fd-muted-foreground transition-colors hover:text-fd-accent-foreground font-medium data-[active=true]:text-fd-primary [&_svg]:size-4",
+  "inline-flex items-center gap-1 py-2 text-fd-muted-foreground transition-colors hover:text-fd-accent-foreground font-medium data-[active=true]:text-fd-primary [&_svg]:size-4",
 );
 
 export function Navbar(props: ComponentProps<"div">) {
@@ -109,7 +109,7 @@ export function NavbarLink({
                              ...props
                            }: ComponentProps<typeof BaseLinkItem> & VariantProps<typeof linkVariants>) {
   return (
-    <NavigationMenuItem>
+    <NavigationMenuItem asChild>
       <NavigationMenuLink asChild>
         <BaseLinkItem {...props} item={item} className={cn(linkVariants({variant}), props.className)}>
           {props.children}

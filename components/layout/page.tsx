@@ -151,7 +151,7 @@ export function DocsPage({
  * Add typography styles
  */
 export const DocsBody = forwardRef<HTMLDivElement, ComponentProps<"div">>((props, ref) => (
-  <div ref={ref} {...props} className={cn("mt-8 prose flex-1", props.className)}>
+  <div ref={ref} {...props} className={cn("mt-8 prose prose-gray dark:prose-gray-invert flex-1", props.className)}>
     {props.children}
   </div>
 ));

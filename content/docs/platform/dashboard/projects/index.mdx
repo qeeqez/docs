@@ -1,0 +1,180 @@
+---
+title: Projects
+description: Create and manage projects to organize your media and team access.
+---
+
+import { Callout, InteractiveCard, InfoCard } from '@/components';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+Projects organize your media content and team access in RIXL. Each project is isolated with its own media, settings, and team permissions.
+
+## Quick Actions
+
+<div className="grid gap-6 sm:grid-cols-2">
+  <InteractiveCard
+    title="Create Project"
+    description="Set up a new project to organize your media and team access."
+    href="/platform/dashboard/projects/create-project"
+    icon="FolderPlus"
+  />
+  <InteractiveCard
+    title="Project Settings"
+    description="Configure project preferences, optimization settings, and team access."
+    href="/platform/dashboard/projects/project-settings"
+    icon="Settings"
+  />
+</div>
+
+## Getting Started
+
+<Callout type="info">
+You need at least one project to access the main dashboard features. If you don't have any projects, you'll be redirected to create one.
+</Callout>
+
+### **Quick Project Setup**
+<Steps>
+  <Step>
+    **Create Project**
+    
+    Go to Settings → Projects → [Create New Project](/platform/dashboard/projects/create-project)
+  </Step>
+  <Step>
+    **Configure Settings**
+    
+    Choose your preferred region and video optimization settings
+  </Step>
+  <Step>
+    **Add Team Members**
+    
+    Invite collaborators through [Team Management](/platform/account/organizations/team-management)
+  </Step>
+  <Step>
+    **Start Uploading**
+    
+    Begin adding media content to your new project
+  </Step>
+</Steps>
+
+## Project Structure
+
+### Core Components
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-6">
+  <InfoCard 
+    title="Media Storage" 
+    description="Videos, images, and other content organized within the project"
+    icon="Archive"
+  />
+  <InfoCard 
+    title="Team Access" 
+    description="Organization members who can access this project"
+    icon="Users"
+  />
+  <InfoCard 
+    title="Processing Settings" 
+    description="Video optimization preferences and quality tiers"
+    icon="Settings"
+  />
+  <InfoCard 
+    title="API Keys" 
+    description="Project-specific access credentials for integrations"
+    icon="Key"
+  />
+</div>
+
+## Project Management
+
+### Project Navigation
+
+<div className="grid gap-6 sm:grid-cols-3 mt-6">
+  <InfoCard 
+    title="Project Switching" 
+    description="Use the project selector in the dashboard sidebar to switch between your projects"
+    icon="Workflow"
+  />
+  <InfoCard 
+    title="Dashboard Context" 
+    description="The main dashboard will show content for the currently selected project"
+    icon="BarChart3"
+  />
+  <InfoCard 
+    title="Isolated Content" 
+    description="Each project maintains separate media, settings, and team access"
+    icon="Shield"
+  />
+</div>
+
+### Project Configuration
+
+**Basic Settings:**
+- Project name and description updates
+- Video optimization preferences (see table below)
+- Storage region (view only after creation)
+
+**Advanced Settings:**
+- Team access and permissions
+- API key management
+- Processing and quality settings
+
+#### Video Processing Tiers
+
+| Tier       | Quality          | Resolution  | Processing Speed | Use Case              |
+|------------|------------------|-------------|------------------|-----------------------|
+| **Basic**  | Standard         | Up to 720p  | Standard         | Development & Testing |
+| **Shorts** | Mobile Optimized | Up to 1080p | Fast             | Social Media Content  |
+| **Pro**    | Professional     | Up to 4K    | Priority         | Video-on-Demand       |
+
+<Callout type="info">
+You can upgrade your video optimization tier at any time from [project settings](/platform/dashboard/projects/project-settings).
+</Callout>
+
+<Callout type="error" title="Project Deletion">
+Deleting a project permanently removes all videos, images, feeds, and settings. This action cannot be reversed.
+</Callout>
+
+## Common Use Cases
+
+**Content Organization**: Separate projects for different brands, campaigns, or content types
+
+**Team Collaboration**: Project-specific access control for different team members
+
+**Development Workflows**: Separate staging and production environments
+
+**Client Management**: Individual projects for different clients or stakeholders
+
+## Next Steps
+
+After creating your project:
+1. **Upload Media** - Start adding [videos](/platform/dashboard/media/upload-videos) and [images](/platform/dashboard/media/upload-images)
+2. **Configure Team Access** - Set up [team permissions](/platform/account/organizations/team-management)
+3. **Generate API Keys** - Create [authentication tokens](/platform/account/api-access) for integrations
+4. **Organize Content** - Use [feeds](/platform/dashboard/feeds) to structure your media
+
+Your project dashboard shows:
+
+- **Storage usage** and file counts
+- **Recent uploads** and processing status
+- **Team activity** and collaboration metrics
+- **Quick actions** for uploading content
+
+### Next Steps
+
+Once you have a project set up, you can start [uploading media](/platform/dashboard/media),
+[creating feeds](/platform/dashboard/feeds), or [inviting team members](/platform/account/organizations/team-management).
+- **Invite new team members** with appropriate role assignments
+- Role-based access controls and permissions
+
+### API Integration Center
+
+- View and manage all project-associated API keys
+- Monitor API usage patterns and consumption
+- **Create new secure API keys** for application integration
+- RESTful API endpoint documentation and SDK integration examples
+
+### Quick Upload Interface
+
+- **Upload New Videos**: Drag-and-drop video content addition
+- **Upload New Images**: Batch image upload with optimization
+- Progress tracking with automatic processing pipeline integration
+
+[//]: # ([DIAGRAM NEEDED: Project architecture and workflow overview])
