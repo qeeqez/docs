@@ -2,7 +2,7 @@
   "title": "API Access",
   "description": "Manage API keys and authentication settings",
   "pages": [
-    "index",
+    "overview",
     "create-key",
     "error"
   ]

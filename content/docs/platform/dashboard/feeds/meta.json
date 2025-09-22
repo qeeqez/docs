@@ -2,7 +2,7 @@
   "title": "Feeds",
   "description": "Manage project and team activity feeds",
   "pages": [
-    "index",
+    "overview",
     "create-feed",
     "manage-feeds"
   ]
