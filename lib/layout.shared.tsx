@@ -26,7 +26,7 @@ export function baseOptions(): BaseLayoutProps {
     links: [
       {
         text: "Home",
-        url: "/getting-started",
+        url: "/getting-started/overview",
         active: "nested-url",
         activeSubfolders: [
           "/getting-started",
