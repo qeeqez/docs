@@ -7,9 +7,6 @@ import XIcon from "@/public/socials/x.svg";
 import YoutubeIcon from "@/public/socials/youtube.svg";
 import type {BaseLayoutProps} from "@/components/layout/shared";
 
-export const rootURL = "/docs";
-export const firstPageURL = "/docs/getting-started";
-
 /**
  * Shared layout configurations
  *
@@ -23,29 +20,28 @@ export function baseOptions(): BaseLayoutProps {
       title: (
         <LogoWide className="h-8 fill-black dark:invert"/>
       ),
-      url: rootURL,
       transparentMode: "top"
     },
     // see https://fumadocs.dev/docs/ui/navigation/links
     links: [
       {
         text: "Home",
-        url: "/docs/getting-started",
+        url: "/getting-started",
         active: "nested-url",
         activeSubfolders: [
-          "/docs/getting-started",
-          "/docs/platform",
-          "/docs/legal",
+          "/getting-started",
+          "/platform",
+          "/legal",
         ]
       },
       {
         text: 'SDKs',
-        url: '/docs/sdk',
+        url: '/sdk',
         active: "nested-url",
       },
       {
         text: "APIs",
-        url: "/docs/api",
+        url: "/api",
         active: "nested-url",
       },
       {
@@ -86,14 +82,14 @@ export function FooterSections(): FooterSection[] {
         {text: "About", url: "/about"},
         {text: "Blog", url: "/blog"},
         {text: "Careers", url: "/careers"},
-        {text: "Privacy", url: "/docs/legal/privacy-policy"},
+        {text: "Privacy", url: "/legal/privacy-policy"},
       ],
     },
     {
       title: "Tools",
       links: [
         {text: "CLI", url: "/cli"},
-        {text: "SDK", url: "/docs/sdk"},
+        {text: "SDK", url: "/sdk"},
         {text: "Integrations", url: "/integrations"},
         {text: "Extensions", url: "/extensions"},
       ],
@@ -113,8 +109,8 @@ export function FooterSections(): FooterSection[] {
 export function FooterBottomLinks(): { text: string; url: string }[] {
   // TODO translations
   return [
-    {text: "Privacy Policy", url: "/docs/legal/privacy-policy"},
-    {text: "Terms of Service", url: "/docs/legal/terms-of-service"},
-    {text: "Cookie Policy", url: "/docs/legal/cookie-policy"},
+    {text: "Privacy Policy", url: "/legal/privacy-policy"},
+    {text: "Terms of Service", url: "/legal/terms-of-service"},
+    {text: "Cookie Policy", url: "/legal/cookie-policy"},
   ];
 }
