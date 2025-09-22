@@ -8,7 +8,7 @@ export function SidebarViewport(props: Props) {
   return (
     <ScrollArea {...props} className={cn('h-full', props.className)}>
       <ScrollViewport
-        className="p-4 overscroll-contain"
+        className="p-4 py-8 overscroll-contain"
         style={
           {
             '--sidebar-item-offset': 'calc(var(--spacing) * 2)',
