@@ -38,6 +38,12 @@ export function baseOptions(): BaseLayoutProps {
         text: 'SDKs',
         url: '/sdk/getting-started',
         active: "nested-url",
+        activeSubfolders: [
+          "/sdk/getting-started",
+          "/sdk/video-component",
+          "/sdk/image-component",
+          "/sdk/video-component-examples"
+        ]
       },
       {
         text: "APIs",
