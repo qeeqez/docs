@@ -80,8 +80,11 @@ export async function generateMetadata(props: PageProps<"/[...slug]">): Promise<
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
+  const appName = "Rixl";
+
   return {
-    title: page.data.title,
+    title: `${page.data.title} - ${appName}`,
     description: page.data.description,
+    applicationName: appName,
   };
 }
