@@ -1,8 +1,8 @@
 {
   "pages": [
+    "index",
     "basic_usage",
     "props_reference",
-    "player_controls",
-    "..."
+    "player_controls"
   ]
 }

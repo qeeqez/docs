@@ -4,11 +4,11 @@
   "description": "Complete guide to the RIXL media processing platform",
   "pages": [
     "index",
-    "---Getting Started---",
+    "---Video SDK---",
     "...getting-started",
-    "---Video---",
+    "---<Video>---",
     "...video-component",
-    "---Image---",
+    "---<Image>---",
     "...image-component",
     "---Video Examples---",
     "...video-component-examples"
