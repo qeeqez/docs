@@ -44,7 +44,7 @@ Implement video uploads with comprehensive code examples and best practices for 
 <Tab value="JavaScript">
 ```javascript
 // Initialize video upload
-const initResponse = await fetch('https://api.rixl.com/v1/videos/upload/init', {
+const initResponse = await fetch('https://api.rixl.com/videos/upload/init', {
   method: 'POST',
   headers: {
     'X-API-Key': 'YOUR_PROJECT_API_KEY',
@@ -77,7 +77,7 @@ if (!videoUpload.ok) {
 }
 
 // Complete upload and start processing
-const completeResponse = await fetch(`https://api.rixl.com/v1/videos/${uploadData.video_id}/upload/complete/`, {
+const completeResponse = await fetch(`https://api.rixl.com/videos/${uploadData.video_id}/upload/complete/`, {
   method: 'POST',
   headers: {
     'X-API-Key': 'YOUR_PROJECT_API_KEY'
@@ -99,7 +99,7 @@ import requests
 
 # Initialize video upload
 response = requests.post(
-    'https://api.rixl.com/v1/videos/upload/init',
+    'https://api.rixl.com/videos/upload/init',
     headers={
         'X-API-Key': 'YOUR_PROJECT_API_KEY',
         'Content-Type': 'application/json'
@@ -129,7 +129,7 @@ if upload_response.status_code != 200:
 
 # Complete upload
 complete_response = requests.post(
-    f"https://api.rixl.com/v1/videos/{upload_data['video_id']}/upload/complete/",
+    f"https://api.rixl.com/videos/{upload_data['video_id']}/upload/complete/",
     headers={'X-API-Key': 'YOUR_PROJECT_API_KEY'}
 )
 
@@ -144,7 +144,7 @@ print(f"Video ID: {upload_data['video_id']}")
 <Tab value="cURL">
 ```bash
 # 1. Initialize upload
-INIT_RESPONSE=$(curl -X POST https://api.rixl.com/v1/videos/upload/init \
+INIT_RESPONSE=$(curl -X POST https://api.rixl.com/videos/upload/init \
   -H "X-API-Key: YOUR_PROJECT_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -163,7 +163,7 @@ curl -X PUT "$PRESIGNED_URL" \
   -H "Content-Type: video/mp4"
 
 # 3. Complete upload
-curl -X POST https://api.rixl.com/v1/videos/$VIDEO_ID/upload/complete/ \
+curl -X POST https://api.rixl.com/videos/$VIDEO_ID/upload/complete/ \
   -H "X-API-Key: YOUR_PROJECT_API_KEY"
 
 echo "Video processing started! Video ID: $VIDEO_ID"
@@ -182,7 +182,7 @@ async function uploadVideoWithRetry(file, maxRetries = 3) {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       // Initialize upload
-      const initResponse = await fetch('https://api.rixl.com/v1/videos/upload/init', {
+      const initResponse = await fetch('https://api.rixl.com/videos/upload/init', {
         method: 'POST',
         headers: {
           'X-API-Key': 'YOUR_PROJECT_API_KEY',
@@ -210,7 +210,7 @@ async function uploadVideoWithRetry(file, maxRetries = 3) {
 
       // Complete upload
       const completeResponse = await fetch(
-        `https://api.rixl.com/v1/videos/${uploadData.video_id}/upload/complete/`,
+        `https://api.rixl.com/videos/${uploadData.video_id}/upload/complete/`,
         {
           method: 'POST',
           headers: { 'X-API-Key': 'YOUR_PROJECT_API_KEY' }
@@ -279,7 +279,7 @@ def upload_large_video(file_path, progress_callback=None):
     
     # Initialize upload
     init_response = requests.post(
-        'https://api.rixl.com/v1/videos/upload/init',
+        'https://api.rixl.com/videos/upload/init',
         headers={
             'X-API-Key': 'YOUR_PROJECT_API_KEY',
             'Content-Type': 'application/json'
@@ -320,7 +320,7 @@ def upload_large_video(file_path, progress_callback=None):
     
     # Complete upload
     complete_response = requests.post(
-        f"https://api.rixl.com/v1/videos/{upload_data['video_id']}/upload/complete/",
+        f"https://api.rixl.com/videos/{upload_data['video_id']}/upload/complete/",
         headers={'X-API-Key': 'YOUR_PROJECT_API_KEY'}
     )
     
@@ -422,7 +422,7 @@ class SecureVideoUploader {
   constructor(apiKey, projectId) {
     this.apiKey = apiKey;
     this.projectId = projectId;
-    this.baseUrl = 'https://api.rixl.com/v1';
+    this.baseUrl = 'https://api.rixl.com';
   }
   
   async validateFile(file) {

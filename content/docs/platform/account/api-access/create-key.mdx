@@ -60,7 +60,7 @@ You can create an API key either from your dashboard's **Quick Actions** or from
 To authenticate an API request, include the key in the `X-API-Key` header.
 
 ```bash
-curl -X GET "https://api.rixl.com/v1/videos" \
+curl -X GET "https://api.rixl.com/videos" \
   -H "X-API-Key: YOUR_PROJECT_API_KEY"
 ```
 
@@ -69,13 +69,13 @@ curl -X GET "https://api.rixl.com/v1/videos" \
 <Tabs items={['Get Projects', 'Initialize Video Upload', 'Initialize Image Upload']}>
     <Tab value="Get Projects">
         ```bash
-        curl -X GET "https://api.rixl.com/v1/projects" \
+        curl -X GET "https://api.rixl.com/projects" \
         -H "X-API-Key: YOUR_PROJECT_API_KEY"
         ```
     </Tab>
     <Tab value="Initialize Video Upload">
         ```bash
-        curl -X POST "https://api.rixl.com/v1/videos/upload/init" \
+        curl -X POST "https://api.rixl.com/videos/upload/init" \
         -H "X-API-Key: YOUR_PROJECT_API_KEY" \
         -H "Content-Type: application/json" \
         -d '{
@@ -86,7 +86,7 @@ curl -X GET "https://api.rixl.com/v1/videos" \
     </Tab>
     <Tab value="Initialize Image Upload">
         ```bash
-        curl -X POST "https://api.rixl.com/v1/images/upload/init" \
+        curl -X POST "https://api.rixl.com/images/upload/init" \
         -H "X-API-Key: YOUR_PROJECT_API_KEY" \
         -H "Content-Type: application/json" \
         -d '{
@@ -101,7 +101,7 @@ curl -X GET "https://api.rixl.com/v1/videos" \
 Test your new API key with a simple API call to verify it's working correctly:
 
 ```bash
-curl -X GET "https://api.rixl.com/v1/projects" \
+curl -X GET "https://api.rixl.com/projects" \
   -H "X-API-Key: YOUR_PROJECT_API_KEY"
 ```
 

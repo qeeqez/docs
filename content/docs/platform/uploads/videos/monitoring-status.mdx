@@ -24,7 +24,7 @@ Monitor your video's progress through the processing pipeline with real-time sta
     <Tab value="API Monitoring">
         ```bash
         # Check processing status
-        curl "https://api.rixl.com/v1/videos/{videoId}" \
+        curl "https://api.rixl.com/videos/{videoId}" \
         -H "X-API-Key: YOUR_API_KEY"
         ```
 
@@ -46,7 +46,7 @@ Monitor your video's progress through the processing pipeline with real-time sta
 class VideoStatusMonitor {
   constructor(apiKey) {
     this.apiKey = apiKey;
-    this.baseUrl = 'https://api.rixl.com/v1';
+    this.baseUrl = 'https://api.rixl.com';
   }
   
   async getVideoStatus(videoId) {
@@ -204,7 +204,7 @@ from typing import Dict, List, Optional, Callable
 class AsyncVideoStatusMonitor:
     def __init__(self, api_key: str):
         self.api_key = api_key
-        self.base_url = 'https://api.rixl.com/v1'
+        self.base_url = 'https://api.rixl.com'
         
     async def get_video_status(self, session: aiohttp.ClientSession, video_id: str) -> Dict:
         """Get current status of a video."""
@@ -449,7 +449,7 @@ class ProcessingErrorHandler {
   
   static async retryProcessing(videoId, apiKey) {
     try {
-      const response = await fetch(`https://api.rixl.com/v1/videos/${videoId}/retry`, {
+      const response = await fetch(`https://api.rixl.com/videos/${videoId}/retry`, {
         method: 'POST',
         headers: {
           'X-API-Key': apiKey,
@@ -629,7 +629,7 @@ console.log('Processing Report:', report);
 
 ```javascript
 async function checkQueueStatus(apiKey) {
-  const response = await fetch('https://api.rixl.com/v1/processing/queue', {
+  const response = await fetch('https://api.rixl.com/processing/queue', {
     headers: { 'X-API-Key': apiKey }
   });
   
@@ -674,4 +674,4 @@ console.log(`Recommendation: ${queueStatus.recommendation}`);
 
 - Learn about [quality tiers](/docs/platform/uploads/videos/quality-tiers) to optimize processing choices
 - Review [upload implementation](/docs/platform/uploads/videos/upload-implementation) best practices
-- Understand the [processing pipeline](/docs/platform/uploads/videos) for better troubleshooting
+- Understand the [processing pipeline](/docs/platform/uploads/videos-guide) for better troubleshooting

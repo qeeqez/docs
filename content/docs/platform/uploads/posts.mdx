@@ -60,7 +60,7 @@ Posts combine media upload with feed creation in a single streamlined process:
 
 ## Optional Parameters
 
-- **`video_quality`** - For videos: "basic", "shorts", or "pro" (see [Quality Tiers](/docs/platform/uploads/video-processing/quality-tiers) for details)
+- **`video_quality`** - For videos: "basic", "shorts", or "pro" (see [Quality Tiers](/docs/platform/uploads/videos/quality-tiers) for details)
 - **`image_format`** - For video posts: format for auto-generated poster image
 
 ## API Examples
@@ -70,7 +70,7 @@ Posts combine media upload with feed creation in a single streamlined process:
 <Tabs>
     <Tab value="Video Post">
         ```bash
-        curl -X POST "https://api.rixl.com/v1/feeds/FD4y3QB38S/upload/init" \
+        curl -X POST "https://api.rixl.com/feeds/FD4y3QB38S/upload/init" \
         -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
         -H "Content-Type: application/json" \
         -d '{
@@ -99,7 +99,7 @@ Posts combine media upload with feed creation in a single streamlined process:
 
     <Tab value="Image Post">
         ```bash
-        curl -X POST "https://api.rixl.com/v1/feeds/FD4y3QB38S/upload/init" \
+        curl -X POST "https://api.rixl.com/feeds/FD4y3QB38S/upload/init" \
         -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
         -H "Content-Type: application/json" \
         -d '{
@@ -154,7 +154,7 @@ Use the provided presigned URLs to upload your files directly to storage:
 Once files are uploaded, finalize the process:
 
 ```bash
-curl -X POST "https://api.rixl.com/v1/feeds/FD4y3QB38S/upload/complete" \
+curl -X POST "https://api.rixl.com/feeds/FD4y3QB38S/upload/complete" \
 -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE" \
 -H "Content-Type: application/json" \
 -d '{
@@ -175,21 +175,21 @@ After uploading, you can retrieve and manage your posts using the API. Here are 
 **Get a Specific Post**: Use this when you need to fetch details for a particular post within a feed.
 
 ```bash
-curl "https://api.rixl.com/v1/feeds/FD4y3QB38S/PS5IMKoFLm" \
+curl "https://api.rixl.com/feeds/FD4y3QB38S/PS5IMKoFLm" \
   -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE"
 ```
 
 **List Posts in a Feed**: This is how you'd retrieve posts to display in your app with pagination support.
 
 ```bash
-curl "https://api.rixl.com/v1/feeds/FD4y3QB38S?limit=25&offset=0" \
+curl "https://api.rixl.com/feeds/FD4y3QB38S?limit=25&offset=0" \
   -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE"
 ```
 
 **List Posts by a Creator**: To show all content from a specific user in a feed.
 
 ```bash
-curl "https://api.rixl.com/v1/feeds/FD4y3QB38S/creators/CR8y3QB38S?limit=25&offset=0" \
+curl "https://api.rixl.com/feeds/FD4y3QB38S/creators/CR8y3QB38S?limit=25&offset=0" \
   -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE"
 ```
 
@@ -198,7 +198,7 @@ curl "https://api.rixl.com/v1/feeds/FD4y3QB38S/creators/CR8y3QB38S?limit=25&offs
 **Delete a Post**: Remove a post permanently from the feed.
 
 ```bash
-curl -X DELETE "https://api.rixl.com/v1/feeds/FD4y3QB38S/PS5IMKoFLm" \
+curl -X DELETE "https://api.rixl.com/feeds/FD4y3QB38S/PS5IMKoFLm" \
   -H "X-API-Key: YOUR_PROJECT_API_KEY_HERE"
 ```
 

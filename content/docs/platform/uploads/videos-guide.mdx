@@ -1,6 +1,6 @@
 ---
-title: Video Processing Pipeline
-description: Automated video transcoding system producing multiple quality levels and adaptive streaming formats for efficient delivery on any device.
+title: Video Processing Guide
+description: Complete guide to automated video transcoding system producing multiple quality levels and adaptive streaming formats for efficient delivery on any device.
 ---
 
 import { Callout } from 'fumadocs-ui/components/callout';
@@ -183,7 +183,7 @@ Monitor your video's progress through the processing pipeline:
     <Tab>
         ```bash
         # Check processing status
-        curl "https://api.rixl.com/v1/videos/{videoId}" \
+        curl "https://api.rixl.com/videos/{videoId}" \
         -H "X-API-Key: YOUR_API_KEY"
         ```
 
@@ -242,7 +242,7 @@ Monitor your video's progress through the processing pipeline:
 <Tab value="JavaScript">
 ```javascript
 // Initialize video upload
-const initResponse = await fetch('https://api.rixl.com/v1/videos/upload/init', {
+const initResponse = await fetch('https://api.rixl.com/videos/upload/init', {
   method: 'POST',
   headers: {
     'X-API-Key': 'YOUR_PROJECT_API_KEY',
@@ -271,7 +271,7 @@ const videoUpload = await fetch(uploadData.video_presigned_url, {
 });
 
 // Complete upload and start processing
-const completeResponse = await fetch(`https://api.rixl.com/v1/videos/${uploadData.video_id}/upload/complete/`, {
+const completeResponse = await fetch(`https://api.rixl.com/videos/${uploadData.video_id}/upload/complete/`, {
   method: 'POST',
   headers: {
     'X-API-Key': 'YOUR_PROJECT_API_KEY'
@@ -288,7 +288,7 @@ import requests
 
 # Initialize video upload
 response = requests.post(
-    'https://api.rixl.com/v1/videos/upload/init',
+    'https://api.rixl.com/videos/upload/init',
     headers={
         'X-API-Key': 'YOUR_PROJECT_API_KEY',
         'Content-Type': 'application/json'
@@ -315,7 +315,7 @@ with open('my-video.mp4', 'rb') as video_file:
 
 # Complete upload
 complete_response = requests.post(
-    f"https://api.rixl.com/v1/videos/{upload_data['video_id']}upload/complete/",
+    f"https://api.rixl.com/videos/{upload_data['video_id']}upload/complete/",
     headers={'X-API-Key': 'YOUR_PROJECT_API_KEY'}
 )
 
@@ -326,7 +326,7 @@ print('Video processing started!')
 <Tab value="cURL">
 ```bash
 # 1. Initialize upload
-curl -X POST https://api.rixl.com/v1/videos/upload/init \
+curl -X POST https://api.rixl.com/videos/upload/init \
   -H "X-API-Key: YOUR_PROJECT_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -341,7 +341,7 @@ curl -X PUT "$VIDEO_PRESIGNED_URL" \
   -H "Content-Type: video/mp4"
 
 # 3. Complete upload
-curl -X POST https://api.rixl.com/v1/videos/upload/complete/$VIDEO_ID \
+curl -X POST https://api.rixl.com/videos/upload/complete/$VIDEO_ID \
   -H "X-API-Key: YOUR_PROJECT_API_KEY"
 ```
 </Tab>
