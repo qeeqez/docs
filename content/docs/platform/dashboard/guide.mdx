@@ -1,12 +1,13 @@
 ---
 title: Quick Start Guide
-description: Get up and running with RIXL in under 5 minutes. From account setup to uploading your first media—we'll walk you through everything.
+description: Get up and running with RIXL in under 5 minutes — from account setup to uploading your first media.
+
 ---
 
 import { Callout, InteractiveCard, InfoCard } from '@/components';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-Welcome to RIXL! This guide will have you uploading and optimizing media in just a few minutes. We've designed the onboarding to be as smooth as possible—no complex configuration required.
+Welcome to **RIXL**! This quick guide will have you uploading and optimizing media in a few minutes. Onboard with no complex setup — just create a project, upload media, and watch RIXL optimize automatically.
 
 ## Quick Actions
 
@@ -14,19 +15,19 @@ Welcome to RIXL! This guide will have you uploading and optimizing media in just
   <InteractiveCard
     title="Create Project"
     description="Set up your first workspace for media organization."
-    href="/docs/dashboard/project"
+    href="/platform/dashboard/project"
     icon="FolderPlus"
   />
   <InteractiveCard
     title="Upload Media"
     description="Start optimizing videos and images immediately."
-    href="/docs/dashboard/media"
+    href="/platform/dashboard/media"
     icon="Upload"
   />
   <InteractiveCard
     title="Generate API Key"
     description="Get keys for integrating RIXL into your apps."
-    href="/docs/dashboard/api-keys"
+    href="/platform/dashboard/api-keys"
     icon="Key"
   />
 </div>
@@ -34,12 +35,11 @@ Welcome to RIXL! This guide will have you uploading and optimizing media in just
 ## What You'll Need
 
 **Before we start:**
-- A RIXL account ([create one here](https://app.rixl.com) if you haven't already)
-- Some sample files to test with (any video or image will do)
-- 5 minutes of your time
+- A RIXL account ([create one here](https://app.rixl.com))
+- Some sample media files (video or image)
+- About 5 minutes
 
-**By the end of this guide:**
-You'll have uploaded your first media files, seen RIXL's optimization in action, and understand how to navigate the platform. Plus, you'll be ready to invite your team and start building something amazing.
+**By the end of this guide:** you'll have a project, uploaded media, seen optimization in action, and optionally created API keys and invited teammates.
 
 ## Your First RIXL Project
 
@@ -47,32 +47,48 @@ You'll have uploaded your first media files, seen RIXL's optimization in action,
   <Step>
     **Create Your Workspace**
     
-    Think of projects as your organized workspaces—each one keeps your media, team, and settings neatly separated.
-    
-    Head to **Settings → Projects → Create New Project** and set up:
+    Projects keep your media, team, and settings separate. Go to **Settings → Projects → Create New Project** and fill in:
     - **Project Name**: Something you'll recognize (like "Marketing Videos" or "Product Photos")
-    - **Server Location**: Pick the region closest to where most of your users are
-    - **Video Quality**: Start with "Shorts" for social content or "Pro" for professional videos
-    
-    <Callout type="info">
-      Choose your server location carefully—it affects how fast your content loads for users and can't be changed later.
+    - **Description** (optional)
+
+  <Step>
+    **Pick Server Location**  
+    Choose the region closest to your users for best delivery performance:
+    - **US East**, **US West**, **Europe**  
+    <Callout type="warning">
+      Server location cannot be changed after creation — choose carefully.
     </Callout>
+
+  <Step>
+    **Select Default Optimization**  
+    Pick a default video quality tier:
+    - **Shorts** — social/mobile  
+    - **Standard** — general web delivery  
+    - **Pro** — VOD / high-fidelity
   </Step>
   <Step>
-    **Upload Something Awesome**
+    **Create & Continue**  
+    After creation you can immediately start [uploading media](/platform/dashboard/media) and create [API keys](/platform/dashboard/api-keys) if needed.
+  </Step>
+
+  </Step>
+
+
+  ## Upload Something (Quick)
     
-    Time for the fun part! Go to the [Media section](/docs/dashboard/media) and drag in some files.
+    In your project, go to the [Media section](/platform/dashboard/media) and drag in some files.
     
     **What you can upload:**
     - **Videos**: MP4, MOV, AVI, and more (up to 2GB each)
     - **Images**: JPG, PNG, HEIC, SVG, and others (up to 100MB each)
     
     RIXL will automatically optimize everything for web delivery—you'll see the magic happen in real-time.
+  
   </Step>
   <Step>
     **Get Your API Keys** *(Optional for getting started)*
     
-    If you plan to integrate RIXL into an app or website, you'll need [API keys](/docs/dashboard/api-keys). Each project gets its own set of keys for security.
+    If you plan to integrate RIXL into an app or website, you'll need [API keys](/platform/dashboard/api-keys). Each project gets its own set of keys for security.
     
     Don't worry about this step if you're just testing things out—you can always come back to it later.
     
@@ -83,7 +99,7 @@ You'll have uploaded your first media files, seen RIXL's optimization in action,
   <Step>
     **Invite Your Team** *(Optional but recommended)*
     
-    Working with others? Set up an [Organization](/docs/account/organizations/team-management) and invite your team.
+    Working with others? Set up an [Organization](/platform/account/organizations/team-management) and invite your team.
     
     **Available roles:**
     - **Owner**: Can do everything (including manage billing)
@@ -94,7 +110,7 @@ You'll have uploaded your first media files, seen RIXL's optimization in action,
 </Steps>
 
 <Callout type="tip">
-  **First time with media optimization?** Don't worry! Check out our [Dashboard Overview](/docs/dashboard) to get familiar with the interface, then come back here to start uploading.
+New to the UI? Visit the [Dashboard Overview](/platform/dashboard) to see where features live and how to switch projects.
 </Callout>
 
 ## Interface Overview
@@ -121,7 +137,7 @@ The dashboard is organized into functional modules for efficient content managem
   />
   <InfoCard 
     title="Content Feeds" 
-    description="Organize content into structured feeds for distribution"
+    description="Organize content into structured feeds"
     icon="Activity"
   />
 </div>
@@ -332,13 +348,13 @@ The dashboard is organized into functional modules for efficient content managem
   <InteractiveCard
     title="Team Management"
     description="Set up your team and assign roles for collaborative work."
-    href="/docs/account/organizations"
+    href="/platform/account/organizations"
     icon="Users"
   />
   <InteractiveCard
     title="Account Settings"
     description="Configure your personal account settings and security."
-    href="/docs/account"
+    href="/platform/account"
     icon="Settings"
   />
 </div>
@@ -349,13 +365,13 @@ The dashboard is organized into functional modules for efficient content managem
   <InteractiveCard
     title="Create API Keys"
     description="Generate your first API keys for programmatic access."
-    href="/docs/account/api-access"
+    href="/platform/account/api-access"
     icon="Key"
   />
   <InteractiveCard
     title="Billing Setup"
     description="Configure your billing and subscription preferences."
-    href="/docs/account/billing"
+    href="/platform/account/billing"
     icon="CreditCard"
   />
 </div>
@@ -364,10 +380,10 @@ The dashboard is organized into functional modules for efficient content managem
 
 After completing this guide:
 
-1. **Explore Media Management** - Learn advanced features in [Media Management](/docs/dashboard/media)
-2. **Set Up Content Feeds** - Create dynamic feeds in [Feeds Management](/docs/dashboard/feeds)  
-3. **Team Collaboration** - Learn about [Organizations & Team Management](/docs/account/organizations)
-4. **API Integration** - Explore the [API Reference](/docs/api-reference/overview)
+1. **Explore Media Management** - Learn advanced features in [Media Management](/platform/dashboard/media)
+2. **Set Up Content Feeds** - Create dynamic feeds in [Feeds Management](/platform/dashboard/feeds)
+3. **Team Collaboration** - Learn about [Organizations & Team Management](/platform/account/organizations)
+4. **API Integration** - Explore the [API Reference](/platform/api-reference/overview)
 
 <Callout type="tip">
 Take your time exploring each section. The dashboard is designed to be intuitive, and most features include helpful tooltips and guidance.

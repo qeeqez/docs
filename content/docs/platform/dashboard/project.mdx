@@ -1,19 +1,25 @@
 ---
-title: Project Management
+title: Projects
 description: Create and manage projects to organize your media, team access, and optimization settings.
 ---
 
 import { Callout, InteractiveCard, InfoCard } from '@/components';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-Projects organize your media content and team access in RIXL. Each project is isolated with its own media, settings, and team permissions.
+Projects are the backbone of RIXL. Each project is a **self-contained workspace** for your media, team, and settings—giving you a clean separation of content and permissions.
+
+<Callout type="info">
+You need at least one project to use the main dashboard. If you don’t have one, you’ll be prompted to create it on first login.
+</Callout>
+
+---
 
 ## Quick Actions
 
 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
   <InteractiveCard
     title="Create Project"
-    description="Set up a new project to organize your media and team access."
+    description="Set up a new workspace for your media and team."
     href="#create-a-new-project"
     icon="FolderPlus"
   />
@@ -26,143 +32,111 @@ Projects organize your media content and team access in RIXL. Each project is is
   <InteractiveCard
     title="Team Management"
     description="Invite collaborators and manage permissions."
-    href="/docs/account/organizations/team-management"
+    href="/platform/account/membership"
     icon="Users"
   />
 </div>
 
-<Callout type="info">
-You need at least one project to access the main dashboard features. If you don't have any projects, you'll be redirected to create one.
-</Callout>
 
 ## Create a New Project
 
 <Steps>
   <Step>
-    **Project Details**
-    
-    Navigate to **Settings → Projects → Create New Project** and provide:
-    - **Project Name**: Something descriptive (e.g., "Marketing Videos", "Product Photos")
-    - **Description**: Optional context for team members
+  **Project Details**  
+  Navigate to **Settings → Projects → Create New Project** and provide:
+  - **Name**: e.g., “Marketing Videos” or “Product Photos”
+  - **Description**: Optional context for your team
   </Step>
+
+  <Step>
+  **Server Location**  
+  Choose the region closest to your users for best performance:
+  - **US East** - North America, Eastern regions  
+  - **US West** - Pacific regions, Asia  
+  - **Europe** - Europe, Africa  
+
+  <Callout type="warning">
+  Server location cannot be changed after creation.
+  </Callout>
+  </Step>
+
   
   <Step>
-    **Server Location**
-    
-    Choose the region closest to your users for optimal performance:
-    - **US East**: Best for North America and Eastern regions
-    - **US West**: Ideal for Pacific regions and Asia
-    - **Europe**: Optimal for European and African users
-    
-    <Callout type="warning">
-      Server location cannot be changed after project creation—choose carefully!
-    </Callout>
-  </Step>
-  
-  <Step>
-    **Optimization Settings**
-    
-    Select default video quality based on your content type:
-    - **Shorts**: Optimized for social media and mobile viewing
-    - **Standard**: Balanced quality for general web content  
-    - **Pro**: High quality for professional and cinematic content
+  **Optimization Settings**
+  Select a default video quality tier based on your content type:
+  - **Shorts** – Social media & mobile  
+  - **Standard** – Balanced web delivery  
+  - **Pro** – Premium VOD & cinematic  
   </Step>
   
   <Step>
     **Create & Start Uploading**
     
-    Once created, you can immediately start [uploading media](/docs/uploads) and [generating API keys](/docs/dashboard/api-keys).
+    Once created, you can immediately start [uploading media](/platform/uploads/) and [generating API keys](/platform/dashboard/api-keys).
   </Step>
 </Steps>
+
+---
 
 ## Project Structure
 
 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-6">
-  <InfoCard 
-    title="Media Storage" 
-    description="Videos, images, and other content organized within the project"
-    icon="Archive"
-  />
-  <InfoCard 
-    title="Team Access" 
-    description="Organization members who can access this project"
-    icon="Users"
-  />
-  <InfoCard 
-    title="Processing Settings" 
-    description="Video optimization preferences and quality tiers"
-    icon="Settings"
-  />
-  <InfoCard 
-    title="API Keys" 
-    description="Project-specific access credentials for integrations"
-    icon="Key"
-  />
+  <InfoCard title="Media Storage" description="All project videos, images, and feeds" icon="Archive" />
+  <InfoCard title="Team Access" description="Organization members and roles" icon="Users" />
+  <InfoCard title="Processing Settings" description="Optimization tiers and defaults" icon="Settings" />
+  <InfoCard title="API Keys" description="Project-scoped access credentials" icon="Key" />
 </div>
+
+---
+
 
 ## Project Configuration
 
 ### Optimization Settings
 
-Configure how RIXL processes your media:
+Configure how RIXL automatically optimizes media, and you can adjust default:
 
-**Video Settings**
-- **Quality Tiers**: Shorts, Standard, or Pro transcoding
-- **Thumbnail Generation**: Automatic poster frames and previews
-- **Format Support**: MP4, HLS adaptive streaming
+**Video**  
+- Quality tiers (Shorts, Standard, Pro)  
+- Automatic thumbnails  
+- MP4 + adaptive HLS support  
 
-**Image Settings**
-- **Format Conversion**: Automatic AVIF optimization
-- **Placeholder Generation**: Instant-loading thumbhash previews
-- **Transformation**: Real-time URL-based image editing
+**Image**  
+- Automatic AVIF/WEBP conversion  
+- Thumbhash placeholders  
+- On-the-fly transformations  
 
 ### Access Control
+Roles define what team members can do:
+- **Owner** - Full control (billing + deletion)  
+- **Admin** - Manage settings, content, and members  
+- **Editor** - Upload & edit content  
+- **Viewer** - Read-only access  
 
-**Project Permissions**
-- **Owner**: Full control including deletion and billing
-- **Admin**: Manage content, settings, and team members
-- **Editor**: Upload and edit content
-- **Viewer**: Read-only access to content
-
-**API Access**
-- Generate project-specific API keys
-- Set granular permissions per key
-- Monitor usage and rate limits
+**API Access**  
+Generate project-specific keys with granular permissions. See [API Access docs](/platform/account/api-access).
 
 ### Usage Monitoring
+Track real-time consumption:  
+- Storage, bandwidth, and API call volume  
+- Processing queue and job stats  
+- Team activity and contribution logs  
 
-Track your project's resource consumption:
-
-- **Storage Usage**: Total media storage across all formats
-- **Bandwidth**: Monthly delivery and processing usage
-- **API Calls**: Request volume and rate limit status
-- **Team Activity**: Member actions and upload history
+---
 
 ## Project Navigation
 
 <div className="grid gap-6 sm:grid-cols-3 mt-6">
-  <InfoCard 
-    title="Project Switching" 
-    description="Use the project selector in the dashboard sidebar to switch between your projects"
-    icon="Workflow"
-  />
-  <InfoCard 
-    title="Dashboard Context" 
-    description="The main dashboard will show content for the currently selected project"
-    icon="BarChart3"
-  />
-  <InfoCard 
-    title="Cross-Project Actions" 
-    description="Account settings and billing apply across all projects in your organization"
-    icon="Building"
-  />
+  <InfoCard title="Project Switching" description="Switch between projects via the sidebar selector" icon="Workflow" />
+  <InfoCard title="Dashboard Context" description="Dashboard always reflects the currently selected project" icon="BarChart3" />
+  <InfoCard title="Cross-Project Actions" description="Billing and account settings apply org-wide" icon="Building" />
 </div>
 
 <Callout type="tip">
 **Pro tip**: Create separate projects for different environments (development, staging, production) or business units to maintain clean separation of content and access.
 </Callout>
 
-## Project Management Dashboard
+## Project Dashboard
 
 ### Project Overview Interface
 
@@ -191,17 +165,20 @@ Track your project's resource consumption:
 ### Project Management Actions
 
 <Cards>
-  <Card title="Rename Project" description="Update project identification and display name">
-    Modify project name for better organization and maintain consistent naming conventions through [project settings](https://api.rixl.com/settings/project)
-  </Card>
-  <Card title="Change Video Optimization" description="Switch optimization strategy for new content">
-    - **Basic**: Standard processing for development
-    - **Shots**: Social media and feed optimization
-    - **Pro**: Premium VOD processing and delivery
-  </Card>
-  <Card title="Delete Project" description="Permanently remove project and all associated content">
-**Irreversible action**: This will permanently delete all videos, images, feeds, and settings. Confirmation and project name verification are required.
-  </Card>
+  <Card 
+    title="Rename Project" 
+    description="Update project display name" 
+  />
+  
+  <Card 
+    title="Change Video Optimization" 
+    description="Switch default video processing tier" 
+  />
+  
+  <Card 
+    title="Delete Project" 
+    description="Permanently remove all project media, feeds, and settings" 
+  />
 </Cards>
 
 <Callout type="error">
@@ -213,16 +190,19 @@ Track your project's resource consumption:
 ### Assets & Content Overview
 
 <Cards>
-  <Card title="Video Assets" description="Complete video content management and analytics">
-    Total video count, storage usage, processing status, and performance metrics
-  </Card>
-  <Card title="Image Assets" description="Image library management and optimization">
-    Total image count, format distribution, optimization status, and delivery performance
-  </Card>
-  <Card title="Storage Analytics" description="Detailed storage usage and optimization insights">
-    Storage breakdown by type, optimization savings, growth trends, and cost allocation
-  </Card>
+  <Card 
+    title="Video Assets" 
+    description="Complete video content management and analytics including video count, storage usage, processing status, and performance metrics"/>
+  
+  <Card 
+    title="Image Assets" 
+    description="Image library management, optimization status and delivery performance"/>
+  
+  <Card 
+    title="Storage Analytics" 
+    description="Detailed storage usage, cost allocation and optimization insights"/>
 </Cards>
+
 
 ### Team Collaboration Hub
 
@@ -305,22 +285,7 @@ Images are automatically optimized for fast delivery across feeds and project fe
 </Tab>
 </Tabs>
 
-## Quick Actions Panel
 
-<Cards>
-  <Card title="Upload New Video" description="Add video content with automatic processing and optimization">
-    Drag-and-drop interface with real-time processing status and multi-format support
-  </Card>
-  <Card title="Upload New Image" description="Batch image upload with automatic optimization">
-    Bulk upload capabilities with format optimization and thumbnail generation
-  </Card>
-  <Card title="Create API Key" description="Generate secure API access tokens for application integration">
-    Project-scoped key generation with flexible expiration settings and usage tracking
-  </Card>
-  <Card title="Invite Team Member" description="Add collaborators with role-based permissions">
-    Email-based invitations with role assignment (Owner, Admin, Editor, Viewer)
-  </Card>
-</Cards>
 
 ### API Key Creation Process
 
@@ -424,20 +389,19 @@ Monitor team activity, adjust permissions, and facilitate collaboration
 ## Security & Compliance Framework
 
 <Cards>
-  <Card title="GDPR Compliance" description="European data protection regulation adherence">
-    EU-based data storage, privacy controls, retention policies, and consent management
-  </Card>
-  <Card title="Security Standards" description="Enterprise-grade security implementation">
-    Encrypted storage, secure authentication, regular monitoring, and incident response
-  </Card>
+  <Card title="GDPR Compliance" description="EU storage, privacy controls, consent policies"/>
+
+  <Card title="Enterprise Security" description="Encryption, authentication, monitoring, incident response"/>
+
 </Cards>
 
 ## Troubleshooting & Support
 
-<Tabs items={['Creation Problems', 'Access Issues', 'Performance Problems']}>
-<Tab value="Creation Problems">
-**Project Creation Issues:**
 
+<Tabs items={['Creation', 'Access Issues', 'Performance Problems']}>
+
+<Tab value="Creation">
+**Project Creation Issues:**
 <Steps>
 <Step>
 **Verify Permissions**
@@ -456,6 +420,7 @@ Confirm active subscription and available resources
 </Step>
 </Steps>
 </Tab>
+
 <Tab value="Access Issues">
 **Permission Resolution:**
 
@@ -471,12 +436,13 @@ Check assigned team member roles and permissions
 Confirm API key validity and permission scope
 </Step>
 <Step>
-**Check Settings**
+**Verify Settings**
 
-Verify project visibility settings and account status
+Check project visibility settings and account status
 </Step>
 </Steps>
 </Tab>
+
 <Tab value="Performance Problems">
 **Performance Optimization:**
 
@@ -503,37 +469,39 @@ Check API rate limits and usage patterns
 ## Best Practices
 
 <Callout type="tip">
-Well-organized projects enable teams to collaborate more efficiently and improve content discoverability.
+Well-organized projects enables team collaborate more efficiently and makes scaling easier.
 </Callout>
 
 **Organization Principles:**
 - Use descriptive, consistent project names
-- Group related media content within projects
+- Separate environments into distinct projects
 - Review and update team permissions quarterly
 - Archive or delete unused content regularly
-- Maintain clear project descriptions and guidelines
+- Document project purpose clearly
+
+---
 
 ## Next Steps
 
 <Cards>
   <Card 
     title="Team Membership"
-    description="Advanced team collaboration features and permission management"
-    href="/docs/dashboard/team-member"
+    description="Manage roles and organization-level collaboration"
+    href="/platform/account/organizations/team-management"
   />
   <Card 
     title="Feeds"
-    description="Create and optimize dynamic content feeds for engagement"
-    href="/docs/dashboard/feeds"
+    description="Build dynamic content feeds"
+    href="/platform/dashboard/feeds"
   />
   <Card 
     title="Video Upload Workflows" 
-    description="Master efficient video processing and optimization workflows"
-    href="/docs/dashboard/media"
+    description="Upload and optimize videos/images"
+    href="/platform/dashboard/media"
   />
   <Card 
     title="API Integration" 
-    description="Comprehensive API integration and automation capabilities"
-    href="/docs/api-reference/overview"
+    description="Automate via RIXL APIs"
+    href="/platform/api-reference/overview"
   />
 </Cards>
