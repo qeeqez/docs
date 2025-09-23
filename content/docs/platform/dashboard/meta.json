@@ -6,8 +6,11 @@
     "guide",
     "project",
     "api-keys", 
-    "media",
-    "projects",
-    "feeds"
+    "---Media Management---",
+    "...media",
+    "---Feeds Management---",
+    "...feeds",
+    "---Projects Management---",
+    "...projects"
   ]
 }
