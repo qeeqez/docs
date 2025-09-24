@@ -1,0 +1,385 @@
+---
+title: Guides & Examples
+description: Step-by-step tutorials, real-world examples, and practical implementation guides for building amazing media experiences with RIXL.
+---
+
+import { Callout, InfoCard, InteractiveCard } from "@/components";
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+
+Welcome to the **RIXL Guides**—your comprehensive resource for building media-rich applications. Whether you're implementing video streaming, optimizing images, or creating dynamic content feeds, these guides provide practical, step-by-step instructions to help you succeed.
+
+## Quick Actions
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InteractiveCard
+    title="React Integration"
+    description="Drop-in components for video players, optimized images, and content feeds."
+    href="/sdk/getting-started/overview"
+    icon="Layers"
+  />
+  <InteractiveCard
+    title="API Implementation"
+    description="Build custom workflows with our comprehensive REST API."
+    href="/platform/api-reference/overview"
+    icon="Code"
+  />
+  <InteractiveCard
+    title="Dashboard Workflow"
+    description="Upload, manage, and optimize media through our web interface."
+    href="/platform/dashboard/guide"
+    icon="Monitor"
+  />
+</div>
+
+## Implementation Guides
+
+### Frontend Integration
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="React Components"
+    description="Video, Image, and Feed components with automatic optimization and global delivery."
+    icon="Layers"
+  />
+  <InfoCard
+    title="JavaScript SDK"
+    description="Vanilla JavaScript integration for any web application or framework."
+    icon="Code"
+  />
+  <InfoCard
+    title="Mobile Integration"
+    description="Responsive components that work seamlessly across all devices and screen sizes."
+    icon="Smartphone"
+  />
+</div>
+
+### Backend Integration
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="Upload Workflows"
+    description="Programmatic media uploads with progress tracking and status monitoring."
+    icon="Upload"
+  />
+  <InfoCard
+    title="Processing Automation"
+    description="Automated media processing pipelines with quality tier selection."
+    icon="Workflow"
+  />
+  <InfoCard
+    title="Content Management"
+    description="Organize and manage media libraries through API endpoints."
+    icon="FolderOpen"
+  />
+</div>
+
+## Real-World Use Cases
+
+### Video Applications
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="Video Streaming Platform"
+    description="Build Netflix-style streaming with adaptive quality, HLS & DASH delivery, and global CDN."
+    icon="Play"
+  />
+  <InfoCard
+    title="Social Media App"
+    description="User-generated content with automatic optimization and mobile-first delivery."
+    icon="Users"
+  />
+  <InfoCard
+    title="E-learning Platform"
+    description="Educational content with progress tracking, quality controls, and accessibility features."
+    icon="BookOpen"
+  />
+</div>
+
+### Image Applications
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="E-commerce Store"
+    description="Product galleries with AVIF optimization, lazy loading, and responsive images."
+    icon="ShoppingCart"
+  />
+  <InfoCard
+    title="Portfolio Website"
+    description="High-quality image galleries with smart placeholders and instant loading."
+    icon="Camera"
+  />
+  <InfoCard
+    title="Content Management"
+    description="Editorial workflows with automatic optimization and multi-format delivery."
+    icon="FileText"
+  />
+</div>
+
+### Content Feed Applications
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="Social Feed"
+    description="Instagram-style feeds with automatic updates and infinite scroll."
+    icon="Activity"
+  />
+  <InfoCard
+    title="News Platform"
+    description="Dynamic content feeds with real-time updates and personalization."
+    icon="Newspaper"
+  />
+  <InfoCard
+    title="Creator Platform"
+    description="Multi-creator content feeds with subscription and monetization features."
+    icon="Star"
+  />
+</div>
+
+## Code Examples
+
+### React Components
+
+<Tabs items={['Video Player', 'Image Gallery', 'Content Feed']}>
+<Tab value="Video Player">
+```jsx
+import { Video, useProgressBar } from '@rixl/videosdk-react';
+import { useRef } from 'react';
+
+function VideoPlayer({ videoId }) {
+  const videoRef = useRef(null);
+  const { progress, duration } = useProgressBar({ video: videoRef.current });
+
+  return (
+    <div className="video-container">
+      <Video
+        ref={videoRef}
+        id={videoId}
+        className="w-full h-auto rounded-lg"
+        progressBar={true}
+        allowFullscreen={true}
+        autoplay={false}
+        muted={false}
+      />
+      <div className="video-info">
+        <p>Progress: {Math.round(progress * 100)}%</p>
+        <p>Duration: {duration}s</p>
+      </div>
+    </div>
+  );
+}
+```
+</Tab>
+
+<Tab value="Image Gallery">
+```jsx
+import { Image } from '@rixl/videosdk-react';
+
+function ImageGallery({ images }) {
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {images.map((image) => (
+        <div key={image.id} className="aspect-square">
+          <Image
+            id={image.id}
+            alt={image.description}
+            className="w-full h-full object-cover rounded-lg hover:scale-105 transition-transform"
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+</Tab>
+
+<Tab value="Content Feed">
+```jsx
+import { Feed } from '@rixl/videosdk-react';
+
+function ContentFeed({ feedId, creatorId }) {
+  return (
+    <div className="max-w-2xl mx-auto">
+      <Feed
+        feedId={feedId}
+        creatorId={creatorId}
+        className="w-full space-y-6"
+        showHeader={true}
+        enableInfiniteScroll={true}
+        itemsPerPage={10}
+      />
+    </div>
+  );
+}
+```
+</Tab>
+</Tabs>
+
+### API Integration Examples
+
+<Tabs items={['Upload Video', 'Process Image', 'Get Feed Content']}>
+<Tab value="Upload Video">
+```javascript
+// Initialize video upload
+const uploadVideo = async (file) => {
+  const initResponse = await fetch('https://api.rixl.com/videos/upload/init', {
+    method: 'POST',
+    headers: {
+      'X-API-Key': 'YOUR_PROJECT_API_KEY',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      file_name: file.name,
+      video_quality: 'pro',
+      image_format: 'jpg'
+    })
+  });
+
+  const { video_id, video_presigned_url } = await initResponse.json();
+
+  // Upload file to presigned URL
+  await fetch(video_presigned_url, {
+    method: 'PUT',
+    body: file
+  });
+
+  return video_id;
+};
+```
+</Tab>
+
+<Tab value="Process Image">
+```javascript
+// Upload and process image
+const uploadImage = async (imageFile) => {
+  // Initialize upload
+  const initResponse = await fetch('https://api.rixl.com/images/upload/init', {
+    method: 'POST',
+    headers: {
+      'X-API-Key': 'YOUR_PROJECT_API_KEY',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: imageFile.name,
+      format: 'jpg'
+    })
+  });
+
+  const { image_id, presigned_url } = await initResponse.json();
+
+  // Upload file to presigned URL
+  await fetch(presigned_url, {
+    method: 'PUT',
+    body: imageFile
+  });
+
+  // Complete upload
+  const completeResponse = await fetch('https://api.rixl.com/images/upload/complete', {
+    method: 'POST',
+    headers: {
+      'X-API-Key': 'YOUR_PROJECT_API_KEY',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      image_id: image_id
+    })
+  });
+
+  const result = await completeResponse.json();
+  return result.data;
+};
+```
+</Tab>
+
+<Tab value="Get Feed Content">
+```javascript
+// Get feed content
+const getFeedContent = async (feedId, creatorId = null) => {
+  const params = new URLSearchParams();
+  if (creatorId) params.append('creator_id', creatorId);
+
+  const response = await fetch(`https://api.rixl.com/feeds/${feedId}?${params}`, {
+    headers: {
+      'X-API-Key': 'YOUR_PROJECT_API_KEY'
+    }
+  });
+
+  const result = await response.json();
+  return result.data;
+};
+```
+</Tab>
+</Tabs>
+
+## Implementation Patterns
+
+### Progressive Enhancement
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="Start Simple"
+    description="Begin with basic Video and Image components, then add advanced features as needed."
+    icon="Play"
+  />
+  <InfoCard
+    title="Add Interactivity"
+    description="Implement progress tracking, quality controls, and user preferences."
+    icon="Settings"
+  />
+  <InfoCard
+    title="Scale Globally"
+    description="Leverage CDN delivery and adaptive streaming for worldwide performance."
+    icon="Globe"
+  />
+</div>
+
+### Performance Optimization
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="Lazy Loading"
+    description="Load media only when needed to improve initial page performance."
+    icon="Zap"
+  />
+  <InfoCard
+    title="Smart Caching"
+    description="Utilize browser caching and CDN edge locations for instant delivery."
+    icon="Database"
+  />
+  <InfoCard
+    title="Adaptive Quality"
+    description="Automatically adjust quality based on user connection and device capabilities."
+    icon="Wifi"
+  />
+</div>
+
+## Next Steps
+
+Ready to start building? Choose your path:
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InteractiveCard
+    title="React SDK Setup"
+    description="Install and configure RIXL components in your React application."
+    href="/sdk/getting-started/overview"
+    icon="Layers"
+  />
+  <InteractiveCard
+    title="API Integration"
+    description="Build custom workflows with our comprehensive REST API."
+    href="/platform/api-reference/overview"
+    icon="Code"
+  />
+  <InteractiveCard
+    title="Dashboard Upload"
+    description="Start uploading and optimizing media through our web interface."
+    href="/platform/dashboard/guide"
+    icon="Upload"
+  />
+</div>
+
+<div className="mt-12">
+<Callout type="tip" title="Need inspiration?">
+  Explore our [Best Practices](/getting-started/best-practices) for optimization tips, check out the [Platform Documentation](/platform) for comprehensive features, or dive into the [API Reference](/platform/api-reference/overview) for detailed technical documentation.
+</Callout>
+</div>

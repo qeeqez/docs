@@ -4,10 +4,12 @@
   "pages": [
     "overview",
     "guide",
-    "project",
-    "api-keys", 
-    "media",
-    "projects",
-    "feeds"
+    "api-keys",
+    "---Media Management---",
+    "...media",
+    "---Feeds Management---",
+    "...feeds",
+    "---Projects Management---",
+    "...projects"
   ]
 }

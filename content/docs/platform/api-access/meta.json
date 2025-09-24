@@ -1,0 +1,9 @@
+{
+  "title": "API Access",
+  "description": "Manage API keys and authentication settings",
+  "pages": [
+    "overview",
+    "create-key",
+    "error"
+  ]
+}

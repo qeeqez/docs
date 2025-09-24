@@ -1,0 +1,125 @@
+---
+title: Developer API Access
+description: Secure API keys for integrating RIXL's media optimization power into your applications, workflows, and services.
+---
+
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { Callout, InfoCard, InteractiveCard } from '@/components';
+
+Ready to integrate RIXL into your applications? API keys are your gateway to programmatic access,
+letting you upload, process, and deliver media through our powerful REST API.
+
+## Getting Your First API Key
+
+<Steps>
+    <Step>
+        **Create Project API Key**
+
+        Each project gets its own API keys for security isolation. Start by creating a key for your target project.
+    </Step>
+
+    <Step>
+        **Configure Permissions** *(Optional)*
+
+        Set specific permissions to control exactly what each key can access—uploads, reads, analytics, or everything.
+    </Step>
+
+    <Step>
+        **Integrate & Test**
+
+        Use your key in applications and test with our comprehensive API documentation and examples.
+    </Step>
+
+    <Step>
+        **Monitor & Scale**
+
+        Track usage, monitor performance, and create additional keys as your integration grows.
+    </Step>
+</Steps>
+
+## API Key Benefits
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-6">
+    <InfoCard
+        title="Project Isolation"
+        description="Each API key is scoped to a specific project, keeping your media and team access completely separate"
+        icon="Shield"
+    />
+    <InfoCard
+        title="Granular Permissions"
+        description="Control whether keys can upload, read, manage feeds, or access analytics—perfect for different use cases"
+        icon="Settings"
+    />
+    <InfoCard
+        title="Usage Analytics"
+        description="Monitor API calls, track performance, and identify optimization opportunities in real-time"
+        icon="BarChart3"
+    />
+    <InfoCard
+        title="Enterprise Security"
+        description="Rotate keys easily, set expiration dates, and revoke access instantly when needed"
+        icon="Lock"
+    />
+</div>
+
+## What You Can Build
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-6">
+    <InfoCard
+        title="Web Applications"
+        description="Direct media uploads, real-time processing status, and CDN delivery integration for seamless user experiences"
+        icon="Globe"
+    />
+    <InfoCard
+        title="Mobile Apps"
+        description="Secure backend integration for user-generated content and automatic media optimization on any device"
+        icon="Smartphone"
+    />
+    <InfoCard
+        title="Content Workflows"
+        description="Automated bulk processing, scheduled uploads, and content management systems for efficient operations"
+        icon="Workflow"
+    />
+    <InfoCard
+        title="Analytics & Reporting"
+        description="Read-only access for usage analysis, performance monitoring, and business intelligence dashboards"
+        icon="BarChart3"
+    />
+    <InfoCard
+        title="Third-Party Integrations"
+        description="Connect RIXL with your existing tools, platforms, and automated workflows for seamless operations"
+        icon="Puzzle"
+    />
+    <InfoCard
+        title="Custom Solutions"
+        description="Build unique media experiences with our flexible API that adapts to your specific requirements"
+        icon="Code"
+    />
+</div>
+
+## Ready to Start Building?
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <InteractiveCard
+        title="Create Your First API Key"
+        description="Generate a secure API key for your project and start integrating RIXL today."
+    href="/platform/api-access/overview"
+        icon="Key"
+    />
+    <InteractiveCard
+        title="Explore API Documentation"
+        description="Dive into our comprehensive API reference with examples and detailed endpoints."
+        href="/platform/api-reference/overview"
+        icon="BookOpen"
+    />
+    <InteractiveCard
+        title="Integration Examples"
+        description="See real-world code examples and best practices for common integration patterns."
+        href="/platform/api-reference/overview"
+        icon="Code"
+    />
+</div>
+
+<Callout type="tip">
+    **Pro tip**: Start with a test project to experiment with the API before integrating into production. You can always create new keys for your live projects later.
+</Callout>

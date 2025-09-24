@@ -1,0 +1,357 @@
+---
+title: Reference Documentation
+description: Complete technical reference for RIXL APIs, React SDK components, platform specifications, and integration guides.
+---
+
+import { Callout, InfoCard, InteractiveCard } from "@/components";
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+
+Welcome to the **RIXL Reference Documentation**—your comprehensive technical resource for APIs, SDKs, and platform specifications. Whether you're implementing REST endpoints, configuring React components, or understanding platform limits, find everything you need here.
+
+## Quick Actions
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InteractiveCard
+    title="REST API Reference"
+    description="Complete API documentation with live examples and response schemas."
+    href="/platform/api-reference/overview"
+    icon="Code"
+  />
+  <InteractiveCard
+    title="React SDK Components"
+    description="Video and Image component props and implementation guides. Feed component available."
+    href="/sdk/getting-started/overview"
+    icon="Layers"
+  />
+  <InfoCard
+    title="Interactive API Docs"
+    description="Test API endpoints directly in your browser with live data. (Coming Soon)"
+    icon="Play"
+  />
+</div>
+
+## API Documentation
+
+### Core Endpoints
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="Video API"
+    description="Upload, process, and manage video content with quality tier selection and HLS streaming."
+    icon="Video"
+  />
+  <InfoCard
+    title="Image API"
+    description="Upload and optimize images with AVIF compression and responsive delivery."
+    icon="Image"
+  />
+  <InfoCard
+    title="Feed API"
+    description="Retrieve dynamic content feeds with creator filtering and pagination."
+    icon="Activity"
+  />
+</div>
+
+### Authentication & Security
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="API Keys"
+    description="Project-based authentication with secure key management and rotation."
+    icon="Key"
+  />
+  <InfoCard
+    title="Rate Limiting"
+    description="Request limits, burst handling, and quota management across subscription tiers."
+    icon="Shield"
+  />
+  <InfoCard
+    title="Error Handling"
+    description="Comprehensive error codes, messages, and troubleshooting guides."
+    icon="AlertTriangle"
+  />
+</div>
+
+## React SDK Reference
+
+### Component Library
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InteractiveCard
+    title="Video Component"
+    description="HLS video player with progress tracking, quality controls, and fullscreen support."
+    href="/sdk/video-component"
+    icon="Video"
+  />
+  <InteractiveCard
+    title="Image Component"
+    description="Optimized images with AVIF compression, lazy loading, and responsive sizing."
+    href="/sdk/image-component"
+    icon="Image"
+  />
+  <InfoCard
+    title="Feed Component"
+    description="Dynamic content feeds with infinite scroll and real-time updates. (Coming Soon)"
+    icon="Activity"
+  />
+</div>
+
+### Hooks & Utilities
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="useProgressBar"
+    description="Track video playback progress and duration with real-time updates."
+    icon="BarChart"
+  />
+  <InfoCard
+    title="TypeScript Support"
+    description="Full TypeScript definitions for all components and hooks."
+    icon="Code"
+  />
+  <InfoCard
+    title="Browser Compatibility"
+    description="Chrome 88+, Firefox 85+, Safari 14+, Edge 88+ support."
+    icon="Monitor"
+  />
+</div>
+
+## Platform Specifications
+
+### Media Processing
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="Video Formats"
+    description="MP4, MOV, AVI, WebM, MKV input. HLS output with adaptive streaming."
+    icon="Video"
+  />
+  <InfoCard
+    title="Image Formats"
+    description="JPEG, PNG, WebP, HEIC input. AVIF output with fallbacks."
+    icon="Image"
+  />
+  <InfoCard
+    title="Quality Tiers"
+    description="Basic (720p), Shorts (1080p), Pro (4K) with different processing speeds."
+    icon="Settings"
+  />
+</div>
+
+### Platform Limits
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="File Size Limits"
+    description="Videos: 2GB max | Images: 100MB max | No quantity limits."
+    icon="HardDrive"
+  />
+  <InfoCard
+    title="API Rate Limits"
+    description="1000 requests/minute per key | Burst handling included."
+    icon="Zap"
+  />
+  <InfoCard
+    title="Processing Times"
+    description="Basic: ~1x | Shorts: ~1.5x | Pro: ~2-3x video length."
+    icon="Clock"
+  />
+</div>
+
+## API Quick Reference
+
+### Core Endpoints
+
+<Tabs items={['Video API', 'Image API', 'Feed API']}>
+<Tab value="Video API">
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/videos/upload/init` | POST | Initialize video upload |
+| `/videos` | GET | List videos with pagination |
+| `/videos/{id}` | GET | Get video details and status |
+| `/videos/{id}` | DELETE | Delete video and assets |
+| `/videos/{id}/thumbnail` | GET | Get video thumbnail |
+
+**Authentication:** `X-API-Key: YOUR_PROJECT_API_KEY`
+</Tab>
+
+<Tab value="Image API">
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/images/upload/init` | POST | Initialize image upload |
+| `/images/upload/complete` | POST | Complete image upload |
+| `/images` | GET | List images with pagination |
+| `/images/{id}` | GET | Get image details |
+| `/images/{id}` | DELETE | Delete image |
+
+**Authentication:** `X-API-Key: YOUR_PROJECT_API_KEY`
+</Tab>
+
+<Tab value="Feed API">
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/feeds/{id}` | GET | Get feed content with optional creator filtering |
+
+**Authentication:** `X-API-Key: YOUR_PROJECT_API_KEY`
+
+**Query Parameters:**
+- `creator_id` (optional): Filter feed content by specific creator
+- `limit` (optional): Number of items to return (default: 10, max: 100)
+- `offset` (optional): Pagination offset (default: 0)
+</Tab>
+</Tabs>
+
+### Response Format
+
+All API responses follow a consistent JSON structure:
+
+```json
+{
+  "status": "success",
+  "data": { /* response data */ },
+  "message": "Operation completed successfully",
+  "pagination": { /* pagination info for list endpoints */ }
+}
+```
+
+### HTTP Status Codes
+
+| Code | Status | Description | Action |
+|------|--------|-------------|---------|
+| 200 | OK | Request successful | Continue |
+| 201 | Created | Resource created | Use returned ID |
+| 400 | Bad Request | Invalid parameters | Check request format |
+| 401 | Unauthorized | Invalid API key | Verify authentication |
+| 403 | Forbidden | Insufficient permissions | Check project access |
+| 404 | Not Found | Resource doesn't exist | Verify resource ID |
+| 429 | Too Many Requests | Rate limit exceeded | Implement backoff |
+| 500 | Internal Server Error | Server error | Retry or contact support |
+
+### Common Request Parameters
+
+| Parameter | Type | Required | Description | Example |
+|-----------|------|----------|-------------|---------|
+| `file_name` | string | Yes | Original filename | `"video.mp4"` |
+| `video_quality` | string | No | Processing tier | `"basic"`, `"shorts"`, `"pro"` |
+| `image_format` | string | No | Thumbnail format | `"jpg"`, `"png"`, `"webp"` |
+| `limit` | integer | No | Items per page (max 100) | `25` |
+| `offset` | integer | No | Pagination offset | `0` |
+
+## React SDK Component Reference
+
+### Video Component Props
+
+```typescript
+type VideoTheme = "default" | "minimal" | "hideUI";
+
+interface VideoProps extends HTMLProps<HTMLVideoElement> {
+  id?: string;                   // Optional: Video ID from RIXL
+  progressBar?: boolean;         // Show progress bar
+  allowPlayPause?: boolean;      // Allow play/pause controls
+  allowFullscreen?: boolean;     // Enable fullscreen mode
+  allowPictureInPicture?: boolean; // Enable picture-in-picture
+  volume?: number;               // Volume level (0-1)
+  theme?: VideoTheme;            // UI theme: "default" | "minimal" | "hideUI"
+  // Inherits all standard HTML video props: autoplay, muted, loop, controls, poster, onPlay, onPause, onEnded, etc.
+}
+```
+
+### Image Component Props
+
+```typescript
+interface ImageProps extends HTMLProps<HTMLImageElement> {
+  id?: string;                   // Optional: Image ID from RIXL
+  // Inherits all standard HTML image props: alt, className, loading, sizes, onLoad, onError, etc.
+}
+```
+
+### Feed Component Props
+
+```typescript
+interface FeedProps extends HTMLProps<HTMLDivElement> {
+  feedId: string;               // Required: Feed ID from RIXL
+  creatorId: string;            // Required: Creator ID to filter content
+  startPostId?: string;         // Optional: Starting post ID for pagination
+}
+```
+
+## Technical Specifications
+
+### Browser Requirements
+
+| Browser | Minimum Version | Features Supported |
+|---------|----------------|-------------------|
+| Chrome | 88+ | Full HLS, AVIF, WebP |
+| Firefox | 85+ | Full HLS, WebP (AVIF fallback) |
+| Safari | 14+ | Full HLS, HEIC, WebP |
+| Edge | 88+ | Full HLS, AVIF, WebP |
+| Mobile Safari | 14+ | Full HLS, HEIC support |
+| Chrome Mobile | 88+ | Full HLS, AVIF support |
+
+### CDN & Performance
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="Global Edge Locations"
+    description="200+ edge locations worldwide with intelligent routing and caching."
+    icon="Globe"
+  />
+  <InfoCard
+    title="Adaptive Streaming"
+    description="HLS with multiple quality levels based on connection speed."
+    icon="Wifi"
+  />
+  <InfoCard
+    title="Smart Caching"
+    description="Intelligent cache invalidation and edge optimization."
+    icon="Database"
+  />
+</div>
+
+## Developer Resources
+
+### Integration Tools
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="OpenAPI Specification"
+    description="Complete API specification for code generation and testing tools. (Coming Soon)"
+    icon="FileText"
+  />
+  <InfoCard
+    title="Postman Collection"
+    description="Ready-to-use Postman collection for API testing and exploration. (Coming Soon)"
+    icon="Download"
+  />
+  <InfoCard
+    title="TypeScript Definitions"
+    description="Full TypeScript support included with @rixl/videosdk-react package."
+    icon="Code"
+  />
+</div>
+
+### Support & Updates
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="API Versioning"
+    description="Semantic versioning with backward compatibility and migration guides."
+    icon="GitBranch"
+  />
+  <InfoCard
+    title="Status Page"
+    description="Real-time platform status and incident notifications."
+    icon="Monitor"
+  />
+  <InfoCard
+    title="Developer Support"
+    description="Direct technical support for integration questions and issues."
+    icon="MessageCircle"
+  />
+</div>
+
+<div className="mt-12">
+<Callout type="tip" title="Ready to integrate?">
+  Start with our [API Reference](/platform/api-reference/overview) for REST endpoints, or explore [React SDK Components](/sdk/getting-started/overview) for frontend integration.
+</Callout>
+</div>
