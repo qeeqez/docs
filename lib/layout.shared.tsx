@@ -6,6 +6,7 @@ import GithubIcon from "@/public/socials/github.svg";
 import XIcon from "@/public/socials/x.svg";
 import YoutubeIcon from "@/public/socials/youtube.svg";
 import type {BaseLayoutProps} from "@/components/layout/shared";
+import { i18n } from '@/lib/i18n';
 
 /**
  * Shared layout configurations
@@ -16,6 +17,7 @@ import type {BaseLayoutProps} from "@/components/layout/shared";
  */
 export function baseOptions(): BaseLayoutProps {
   return {
+      i18n,
     nav: {
       title: (
         <LogoWide className="h-8 fill-black dark:invert"/>
