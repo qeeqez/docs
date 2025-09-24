@@ -1,3 +1,5 @@
+'use client';
+
 import {I18nLabel} from "fumadocs-ui/contexts/i18n";
 import {Edit, TriangleAlert} from "lucide-react";
 import type {ComponentProps} from "react";
@@ -6,11 +8,12 @@ import {cn} from "@/lib/cn";
 import type {GithubProps} from "@/components/layout/docs/page/page-github-type";
 import { useTranslations } from '@/hooks/use-translations';
 
+
 interface GithubEditOrIssueProps extends GithubProps, ComponentProps<"a"> {
   mode: "edit" | "issue";
 }
 
-export function GithubEditOrIssue({mode, owner, repo, sha, path, className}: GithubEditOrIssueProps) {
+export function GithubEditOrIssue({mode, owner, repo, sha = "main", path, className}: GithubEditOrIssueProps) {
     const { t } = useTranslations();
     const ghPath = path.startsWith("/") ? path.slice(1) : path;
   const href = mode === "edit"
