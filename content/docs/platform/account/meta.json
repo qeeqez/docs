@@ -1,13 +1,11 @@
 {
   "title": "Account",
+  "description": "Manage your personal account settings and preferences",
   "pages": [
     "overview",
     "security",
-    "membership", 
+    "membership",
     "general-settings",
-    "invitations",
-    "api-access",
-    "organizations",
-    "billing"
+    "invitations"
   ]
 }

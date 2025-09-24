@@ -1,0 +1,380 @@
+---
+title: Image Optimization
+description: Transform any image into lightning-fast AVIF files with smart placeholders, responsive delivery, and global CDN optimization.
+---
+
+import { Callout, InfoCard, InteractiveCard } from "@/components";
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+Welcome to **RIXL Image Optimization**—where every image becomes a performance powerhouse. Upload any format and get back perfectly optimized AVIF files with smart placeholders, responsive sizing, and instant global delivery.
+
+## Quick Actions
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InteractiveCard
+    title="Upload Images"
+    description="Transform images with automatic AVIF compression and smart placeholders."
+    href="/platform/uploads/images"
+    icon="Upload"
+  />
+  <InteractiveCard
+    title="React Component"
+    description="Drop-in Image component with lazy loading and responsive sizing."
+    href="/sdk/image-component"
+    icon="Layers"
+  />
+  <InteractiveCard
+    title="Dashboard Management"
+    description="Upload, organize, and manage images through our web interface."
+    href="/platform/dashboard/media/overview"
+    icon="Monitor"
+  />
+</div>
+
+## How RIXL Transforms Your Images
+
+<Steps>
+  <Step>
+    **Upload Any Format**
+
+    Drop in JPEG, PNG, WebP, HEIC, or any common image format. RIXL accepts files up to 100MB each.
+  </Step>
+
+  <Step>
+    **Automatic AVIF Conversion**
+
+    Every image is converted to AVIF format for 50% smaller file sizes with no visible quality loss.
+  </Step>
+
+  <Step>
+    **Smart Placeholder Generation**
+
+    Instant blur placeholders are created for smooth loading experiences while full images load.
+  </Step>
+
+  <Step>
+    **Global CDN Delivery**
+
+    Your optimized images are distributed to 200+ edge locations worldwide for instant loading anywhere.
+  </Step>
+</Steps>
+
+## Image Processing Features
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="AVIF Optimization"
+    description="50% smaller files than JPEG with no visible quality loss. Automatic fallbacks included."
+    icon="Zap"
+  />
+  <InfoCard
+    title="Smart Placeholders"
+    description="Instant blur placeholders prevent layout shift and improve perceived performance."
+    icon="Eye"
+  />
+  <InfoCard
+    title="Responsive Delivery"
+    description="Automatic sizing for different devices and screen densities."
+    icon="Smartphone"
+  />
+  <InfoCard
+    title="Lazy Loading"
+    description="Built-in lazy loading reduces initial page load and saves bandwidth."
+    icon="Clock"
+  />
+  <InfoCard
+    title="Format Fallbacks"
+    description="Automatic WebP and JPEG fallbacks for older browsers."
+    icon="Shield"
+  />
+  <InfoCard
+    title="Global CDN"
+    description="Edge caching and intelligent routing for instant delivery worldwide."
+    icon="Globe"
+  />
+</div>
+
+## Supported Formats
+
+### Input Formats
+RIXL accepts all common image formats for processing:
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="Common Formats"
+    description="JPEG, PNG, WebP, GIF, BMP - the formats you use every day."
+    icon="Image"
+  />
+  <InfoCard
+    title="Professional Formats"
+    description="HEIC/HEIF, TIFF, JPEG 2000 - high-quality formats from cameras and professional tools."
+    icon="Camera"
+  />
+  <InfoCard
+    title="Vector Graphics"
+    description="SVG files are preserved as-is for crisp scaling at any size."
+    icon="Layers"
+  />
+</div>
+
+### Output Optimization
+Every image is automatically optimized for web delivery:
+
+- **Primary:** AVIF format (50% smaller than JPEG)
+- **Fallback:** WebP format (30% smaller than JPEG)
+- **Legacy:** JPEG format (universal compatibility)
+- **Placeholders:** Instant blur placeholders for smooth loading
+
+## Implementation Examples
+
+### React Component Usage
+
+<Tabs items={['Basic Usage', 'Responsive Gallery', 'E-commerce Product']}>
+<Tab value="Basic Usage">
+```jsx
+import { Image } from '@rixl/videosdk-react';
+
+function ProfilePhoto({ imageId }) {
+  return (
+    <Image
+      id={imageId}
+      alt="User profile photo"
+      className="w-32 h-32 rounded-full object-cover"
+      loading="eager"
+      priority={true}
+    />
+  );
+}
+```
+</Tab>
+
+<Tab value="Responsive Gallery">
+```jsx
+import { Image } from '@rixl/videosdk-react';
+
+function ImageGallery({ images }) {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {images.map((image, index) => (
+        <div key={image.id} className="aspect-square">
+          <Image
+            id={image.id}
+            alt={image.description}
+            className="w-full h-full object-cover rounded-lg hover:scale-105 transition-transform"
+            loading={index < 6 ? "eager" : "lazy"}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+</Tab>
+
+<Tab value="E-commerce Product">
+```jsx
+import { Image } from '@rixl/videosdk-react';
+
+function ProductImage({ product }) {
+  return (
+    <div className="product-image-container">
+      <Image
+        id={product.mainImageId}
+        alt={`${product.name} - main product image`}
+        className="w-full h-96 object-cover rounded-lg"
+        priority={true}
+        sizes="(max-width: 768px) 100vw, 50vw"
+        onLoad={() => console.log('Product image loaded')}
+      />
+
+      <div className="flex gap-2 mt-4">
+        {product.thumbnailIds.map((thumbId, index) => (
+          <Image
+            key={thumbId}
+            id={thumbId}
+            alt={`${product.name} - view ${index + 1}`}
+            className="w-16 h-16 object-cover rounded cursor-pointer hover:opacity-75"
+            loading="lazy"
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+</Tab>
+</Tabs>
+
+### API Integration
+
+<Tabs items={['Upload Image', 'Get Image Details', 'List Images']}>
+<Tab value="Upload Image">
+```javascript
+// Upload image via API
+const uploadImage = async (imageFile) => {
+  // Initialize upload
+  const initResponse = await fetch('https://api.rixl.com/images/upload/init', {
+    method: 'POST',
+    headers: {
+      'X-API-Key': 'YOUR_PROJECT_API_KEY',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: imageFile.name,
+      format: 'jpg'
+    })
+  });
+
+  const { image_id, presigned_url } = await initResponse.json();
+
+  // Upload file to presigned URL
+  await fetch(presigned_url, {
+    method: 'PUT',
+    body: imageFile
+  });
+
+  // Complete upload
+  const completeResponse = await fetch('https://api.rixl.com/images/upload/complete', {
+    method: 'POST',
+    headers: {
+      'X-API-Key': 'YOUR_PROJECT_API_KEY',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      image_id: image_id
+    })
+  });
+
+  const result = await completeResponse.json();
+  return result.data.image_id;
+};
+```
+</Tab>
+
+<Tab value="Get Image Details">
+```javascript
+// Get image details and optimization status
+const getImageDetails = async (imageId) => {
+  const response = await fetch(`https://api.rixl.com/images/${imageId}`, {
+    headers: {
+      'X-API-Key': 'YOUR_PROJECT_API_KEY'
+    }
+  });
+
+  const result = await response.json();
+  return result.data;
+};
+```
+</Tab>
+
+<Tab value="List Images">
+```javascript
+// List images with pagination
+const listImages = async (page = 0, limit = 25) => {
+  const response = await fetch(`https://api.rixl.com/images?offset=${page * limit}&limit=${limit}`, {
+    headers: {
+      'X-API-Key': 'YOUR_PROJECT_API_KEY'
+    }
+  });
+
+  const result = await response.json();
+  return result.data;
+};
+```
+</Tab>
+</Tabs>
+
+## Real-World Use Cases
+
+### E-commerce Applications
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="Product Galleries"
+    description="High-quality product images with instant loading and zoom functionality."
+    icon="ShoppingCart"
+  />
+  <InfoCard
+    title="User-Generated Content"
+    description="Customer photos and reviews with automatic optimization and moderation."
+    icon="Users"
+  />
+  <InfoCard
+    title="Category Banners"
+    description="Hero images and promotional banners optimized for all devices."
+    icon="Layout"
+  />
+</div>
+
+### Content & Media
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="Editorial Content"
+    description="News articles, blog posts, and magazine-style layouts with optimized images."
+    icon="FileText"
+  />
+  <InfoCard
+    title="Portfolio Websites"
+    description="Photography and design portfolios with high-quality image delivery."
+    icon="Camera"
+  />
+  <InfoCard
+    title="Social Platforms"
+    description="User profiles, posts, and feeds with automatic image optimization."
+    icon="Users"
+  />
+</div>
+
+### Performance Benefits
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    title="50% Smaller Files"
+    description="AVIF compression reduces file sizes by 50% compared to JPEG with no quality loss."
+    icon="Zap"
+  />
+  <InfoCard
+    title="Faster Page Loads"
+    description="Lazy loading and smart placeholders improve perceived performance."
+    icon="Clock"
+  />
+  <InfoCard
+    title="Better SEO"
+    description="Faster loading images improve Core Web Vitals and search rankings."
+    icon="TrendingUp"
+  />
+</div>
+
+## What's Next?
+
+Ready to optimize your images? Choose your approach:
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <InteractiveCard
+    title="Upload Your First Image"
+    description="See AVIF optimization in action with our dashboard upload."
+    href="/platform/uploads/images"
+    icon="Upload"
+  />
+  <InteractiveCard
+    title="React Integration"
+    description="Add the Image component to your React application."
+    href="/sdk/image-component"
+    icon="Layers"
+  />
+  <InteractiveCard
+    title="API Implementation"
+    description="Build custom image workflows with our REST API."
+    href="/platform/api-reference/overview"
+    icon="Code"
+  />
+</div>
+
+<div className="mt-12">
+<Callout type="tip" title="Ready to see the difference?">
+  Start with our [Dashboard Upload](/platform/uploads/images) to see AVIF optimization in action, or jump into the [React Component Guide](/sdk/image-component) to add optimized images to your application. For custom workflows, explore our [API Documentation](/platform/api-reference/overview).
+</Callout>
+</div>

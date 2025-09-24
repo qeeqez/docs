@@ -4,6 +4,6 @@
   "pages": [
     "overview",
     "subscription-plans",
-    "payment_invoices"
+    "payment_invoice"
   ]
 }
