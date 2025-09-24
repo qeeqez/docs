@@ -2,7 +2,6 @@
   "title": "Documentation",
   "description": "Complete guide to the RIXL media processing platform",
   "pages": [
-    "index",
     "---Getting Started---",
     "...getting-started",
     "---Video Processing---",
@@ -11,8 +10,6 @@
     "...images",
     "---Platform---",
     "...platform",
-    "---SDKs & Integration---",
-    "...sdk",
     "---Guides & Examples---",
     "...guides",
     "---Reference---",
