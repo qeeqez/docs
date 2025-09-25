@@ -9,11 +9,11 @@ import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 Get the most out of **RIXL** with these proven best practices. Whether you're just getting started or optimizing an existing workflow, these guidelines will help you achieve better performance, quality, and efficiency.
 
-## Media Optimization Best Practices
+## Media Processing Best Practices
 
 ### Video Format Selection
 
-**Choose the right format for optimal processing speed and quality:**
+**Choose the right format for best processing speed and quality:**
 
 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
   <InfoCard
@@ -91,7 +91,7 @@ Upload the highest quality version you have. RIXL will optimize down to appropri
 - **Resolution**: Keep original resolution, avoid upscaling
 </Step>
 <Step>
-**Audio Optimization**
+**Audio Processing**
 
 Use recommended audio settings for best results:
 - **Codec**: Opus (preferred) or MP3
@@ -303,7 +303,7 @@ import { Image } from '@rixl/videosdk-react';
 **Ensure broad compatibility:**
 
 - **Modern Browsers**: Full feature support (Chrome 88+, Firefox 85+, Safari 14+, Edge 88+)
-- **Mobile Browsers**: Native iOS Safari and Android Chrome optimization
+- **Mobile Browsers**: Native iOS Safari and Android Chrome support
 - **Graceful Fallbacks**: Automatic degradation for older browsers
 - **Testing**: Test across target browsers and devices
 
@@ -347,9 +347,9 @@ Implement comprehensive error handling:
 - Network error recovery
 </Step>
 <Step>
-**Optimization**
+**Performance**
 
-Optimize upload performance:
+Improve upload performance:
 - Use multipart uploads for files >100MB
 - Implement resume capability for interrupted uploads
 - Monitor upload progress and provide feedback
@@ -413,17 +413,17 @@ const monitorProcessing = async (videoId) => {
   />
 </div>
 
-### Performance Optimization
+### Performance Enhancement
 
-**Optimize for speed and efficiency:**
+**Improve speed and efficiency:**
 
-**Processing Optimization:**
+**Processing Performance:**
 - Upload during off-peak hours for faster processing
 - Use recommended formats (MP4/H.264) to minimize processing time
 - Choose appropriate quality tiers for your use case
 - Monitor processing status rather than polling continuously
 
-**Delivery Optimization:**
+**Delivery Performance:**
 - Leverage RIXL's global CDN with 200+ edge locations
 - Use adaptive streaming for automatic quality selection
 - Implement lazy loading for off-screen content
@@ -432,7 +432,7 @@ const monitorProcessing = async (videoId) => {
 **Storage Management:**
 - Regular content audits and cleanup
 - Archive unused or outdated content
-- Monitor storage usage and optimization impact
+- Monitor storage usage and performance impact
 - Use duplicate detection to reduce storage costs
 
 ### Analytics and Monitoring
@@ -449,7 +449,7 @@ const monitorProcessing = async (videoId) => {
 </Tab>
 <Tab value="Performance Metrics">
 **Track technical performance:**
-- Loading times and optimization impact
+- Loading times and performance impact
 - Processing times and success rates
 - CDN performance and cache hit rates
 - Error rates and failure patterns
@@ -486,5 +486,5 @@ When you need assistance:
 4. **Test Systematically**: Isolate issues by testing with recommended formats and settings
 
 <Callout type="tip">
-Following these best practices will help you build reliable, performant media experiences with RIXL. Start with the basics and gradually implement advanced optimizations as your needs grow.
+Following these best practices will help you build reliable, performant media experiences with RIXL. Start with the basics and gradually implement advanced features as your needs grow.
 </Callout>
