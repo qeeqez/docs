@@ -1,9 +1,0 @@
-{
-  "title": "Organizations & Teams",
-  "description": "Manage organizations, team members, roles, and permissions",
-  "pages": [
-    "overview",
-    "create-organization",
-    "team-management"
-  ]
-}
