@@ -8,8 +8,6 @@ import {Tab, Tabs} from "fumadocs-ui/components/tabs";
 import {Step, Steps} from "fumadocs-ui/components/steps";
 import {Callout as FumadocsCallout} from "fumadocs-ui/components/callout";
 import Link from "fumadocs-core/link";
-import {CompanyInfo, CompanyAddress} from "./components/shared/company-info";
-import {LegalContactCards, PrivacyContactCards, CookieContactCards, AcceptableUseContactCards} from "./components/shared/contact-cards";
 
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
@@ -28,13 +26,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     Step,
     Steps,
     Link,
-    FumadocsCallout,
-    CompanyInfo,
-    CompanyAddress,
-    LegalContactCards,
-    PrivacyContactCards,
-    CookieContactCards,
-    AcceptableUseContactCards,
+    FumadocsCallout
   };
 
   return {
