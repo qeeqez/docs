@@ -1,0 +1,263 @@
+---
+title: API Reference
+description: Complete REST API reference with endpoints, parameters, and response examples
+---
+
+import { Callout, InteractiveCard, InfoCard } from '@/components';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+
+Complete reference for all RIXL API endpoints. For interactive testing and real-time examples, visit our [Interactive API Documentation](/api).
+
+## Base URL
+
+All API requests should be made to:
+```
+https://api.rixl.com
+```
+
+## Authentication
+
+Include your project API key in the request header:
+```
+X-API-Key: YOUR_PROJECT_API_KEY
+```
+
+## Rate Limits
+
+API requests are rate-limited based on your subscription plan:
+
+| Plan       | Requests per Hour | Burst Limit   |
+|------------|-------------------|---------------|
+| Free       | 100               | 10 per minute |
+| Pro        | 1,000             | 50 per minute |
+| Enterprise | Custom            | Custom        |
+
+## Error Handling
+
+API errors include HTTP status codes and detailed error messages:
+
+```json
+{
+  "code": 400,
+  "error": "Invalid request body",
+  "details": "The provided file format is not supported"
+}
+```
+
+### Status Codes
+
+| Code | Meaning      |
+|------|--------------|
+| 200  | Success      |
+| 201  | Created      |
+| 400  | Bad Request  |
+| 401  | Unauthorized |
+| 403  | Forbidden    |
+| 404  | Not Found    |
+| 429  | Rate Limited |
+| 500  | Server Error |
+
+## Video Endpoints
+
+### Initialize Video Upload
+
+Initialize a video upload and get presigned URLs for direct upload.
+
+**POST** `/videos/upload/init`
+
+**Request Body:**
+```json
+{
+  "file_name": "my-video.mp4",
+  "video_quality": "shorts",
+  "image_format": "jpg"
+}
+```
+
+**Response:**
+```json
+{
+  "video_id": "VI9VXQxWXQ",
+  "video_presigned_url": "https://videos.rixl.com/...",
+  "poster_id": "PS5IMKoFLm", 
+  "poster_presigned_url": "https://images.rixl.com/...",
+  "upload_expires": 1640995200
+}
+```
+
+### List Videos
+
+Get all videos in your project with pagination.
+
+**GET** `/videos`
+
+**Query Parameters:**
+- `limit` (integer): Number of videos to return (default: 25, max: 100)
+- `offset` (integer): Number of videos to skip (default: 0)
+
+**Response:**
+```json
+{
+  "data": [
+    {
+      "id": "VI9VXQxWXQ",
+      "duration": 30.5,
+      "width": 1920,
+      "height": 1080,
+      "file": {
+        "id": "FpvLwyDMqu",
+        "name": "original.mp4",
+        "size": 1048576,
+        "url": "https://videos.rixl.com/Bq4y3QB38S/FpvLwyDMqu",
+        "status": "ready"
+      }
+    }
+  ],
+  "pagination": {
+    "limit": 25,
+    "offset": 0,
+    "total": 100
+  }
+}
+```
+
+### Get Video Details
+
+Get detailed information about a specific video.
+
+**GET** `/videos/{video_id}`
+
+**Response:**
+```json
+{
+  "id": "VI9VXQxWXQ",
+  "duration": 30.5,
+  "width": 1920,
+  "height": 1080,
+  "created_at": "2023-01-01T00:00:00Z",
+  "file": {
+    "id": "FpvLwyDMqu",
+    "name": "original.mp4",
+    "size": 1048576,
+    "url": "https://videos.rixl.com/Bq4y3QB38S/FpvLwyDMqu",
+    "status": "ready"
+  },
+  "poster": {
+    "id": "PS5IMKoFLm",
+    "url": "https://images.rixl.com/Bq4y3QB38S/PS5IMKoFLm",
+    "status": "ready"
+  }
+}
+```
+
+## Image Endpoints
+
+### Initialize Image Upload
+
+Initialize an image upload and get presigned URL for direct upload.
+
+**POST** `/images/upload/init`
+
+**Request Body:**
+```json
+{
+  "file_name": "my-image.jpg",
+  "image_format": "jpg"
+}
+```
+
+**Response:**
+```json
+{
+  "image_id": "IM9VXQxWXQ",
+  "presigned_url": "https://images.rixl.com/...",
+  "upload_expires": 1640995200
+}
+```
+
+### List Images
+
+Get all images in your project with pagination.
+
+**GET** `/images`
+
+**Query Parameters:**
+- `limit` (integer): Number of images to return (default: 25, max: 100)
+- `offset` (integer): Number of images to skip (default: 0)
+
+## Feed Endpoints
+
+### Create Feed
+
+Create a new content feed.
+
+**POST** `/feeds`
+
+**Request Body:**
+```json
+{
+  "name": "My Content Feed",
+  "description": "A feed for my latest content"
+}
+```
+
+### List Feeds
+
+Get all feeds in your project.
+
+**GET** `/feeds`
+
+### Add Content to Feed
+
+Add videos or images to a specific feed.
+
+**POST** `/feeds/{feed_id}/content`
+
+**Request Body:**
+```json
+{
+  "content_ids": ["VI9VXQxWXQ", "IM9VXQxWXQ"],
+  "content_type": "mixed"
+}
+```
+
+## Project Endpoints
+
+### Get Project Info
+
+Get information about your current project.
+
+**GET** `/project`
+
+**Response:**
+```json
+{
+  "id": "PR9VXQxWXQ",
+  "name": "My Project",
+  "created_at": "2023-01-01T00:00:00Z",
+  "storage_used": 1048576,
+  "storage_limit": 10737418240
+}
+```
+
+<Callout type="info">
+  For complete interactive API documentation with live testing capabilities, visit our [Interactive API Reference](/api).
+</Callout>
+
+## SDKs and Libraries
+
+The RIXL API uses standard REST principles, making it compatible with any HTTP client library:
+
+- **cURL** for command-line testing
+- **Fetch API** for JavaScript/Node.js
+- **Requests** for Python
+- **HTTPClient** for Go
+- **OkHttp** for Java
+
+## Support
+
+If you encounter issues while using the API:
+
+- **Documentation** - Complete guides and examples
+- **Email** - Direct support at [api@rixl.com](mailto:api@rixl.com)
+- **Status Page** - Platform updates at [status.rixl.com](https://status.rixl.com)

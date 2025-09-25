@@ -1,12 +1,12 @@
 ---
-title: Developer API
-description: Integrate RIXL's media optimization power directly into your applications. Clean REST APIs, comprehensive SDKs, and everything you need to build amazing media experiences.
+title: API Documentation
+description: Complete API reference, authentication, and security guide for integrating RIXL's media optimization platform
 ---
 
 import { Callout, InteractiveCard, InfoCard } from '@/components';
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 
-The RIXL API puts professional media optimization at your fingertips. Whether you're building a social platform, e-commerce site, or mobile app, our RESTful API makes it easy to upload, process, and deliver media at scale.
+The RIXL API puts professional content delivery at your fingertips. Whether you're building a social platform, e-commerce site, or mobile app, our RESTful API makes it easy to upload, process, and deliver media at scale.
 
 ## Quick Actions
 
@@ -14,7 +14,7 @@ The RIXL API puts professional media optimization at your fingertips. Whether yo
   <InteractiveCard
     title="Get API Keys"
     description="Generate secure project keys for API access."
-    href="/platform/account/api-access/overview"
+    href="/platform/api-documentation/create-key"
     icon="Key"
   />
   <InteractiveCard
@@ -32,7 +32,7 @@ The RIXL API puts professional media optimization at your fingertips. Whether yo
 </div>
 
 <Callout type="tip" title="Ready to integrate?">
-  First, [grab your API keys](/platform/account/api-access/overview) and [set up a project](/platform/dashboard/projects/overview). Then you're just a few lines of code away from optimized media delivery.
+  First, [grab your API keys](/platform/api-documentation/create-key) and [set up a project](/platform/dashboard/projects/overview). Then you're just a few lines of code away from optimized media delivery.
 </Callout>
 
 ## API Fundamentals
@@ -71,7 +71,7 @@ X-API-Key: YOUR_PROJECT_API_KEY_HERE
 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-6">
   <InfoCard
     title="Smart Media Uploads"
-    description="Drop any video or image into RIXL and get back multiple optimized formats, perfect for any device or connection."
+    description="Drop any video or image into RIXL and get back multiple formats, perfect for any device or connection."
     icon="Upload"
   />
   <InfoCard
@@ -226,63 +226,6 @@ All API responses use JSON format with consistent structure:
   }
 }
 ```
-
-### Error Handling
-
-API errors include HTTP status codes and detailed error messages:
-
-```json
-{
-  "code": 400,
-  "error": "Invalid request body",
-  "details": "The provided file format is not supported"
-}
-```
-
-### Rate Limits
-
-API requests are rate-limited based on your subscription plan:
-
-| Plan       | Requests per Hour | Burst Limit   |
-|------------|-------------------|---------------|
-| Free       | 100               | 10 per minute |
-| Pro        | 1,000             | 50 per minute |
-| Enterprise | Custom            | Custom        |
-
-<Callout type="warning">
-  Each subscription plan has its own API call limits. Check your usage in the dashboard to avoid interruptions.
-</Callout>
-
-### Status Codes
-
-| Code | Meaning      |
-|------|--------------|
-| 200  | Success      |
-| 201  | Created      |
-| 400  | Bad Request  |
-| 401  | Unauthorized |
-| 403  | Forbidden    |
-| 404  | Not Found    |
-| 429  | Rate Limited |
-| 500  | Server Error |
-
-### SDKs and Libraries
-
-The RIXL API uses standard REST principles, making it compatible with any HTTP client library:
-
-- **cURL** for command-line testing
-- **Fetch API** for JavaScript/Node.js
-- **Requests** for Python
-- **HTTPClient** for Go
-- **OkHttp** for Java
-
-### Support
-
-If you encounter issues while using the API:
-
-- **Documentation** - Complete guides and examples
-- **Email** - Direct support at [api@rixl.com](mailto:api@rixl.com)
-- **Status Page** - Platform updates at [status.rixl.com](https://status.rixl.com)
 
 <Callout type="info">
   For complete API documentation with interactive testing, visit our [Interactive API Reference](/api).

@@ -32,6 +32,10 @@ export function baseOptions(): BaseLayoutProps {
           "/getting-started",
           "/platform",
           "/legal",
+          "/guides",
+          "/reference",
+          "/images",
+          "/video"
         ]
       },
       {

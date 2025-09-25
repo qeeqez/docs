@@ -26,7 +26,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     Step,
     Steps,
     Link,
-    FumadocsCallout,
+    FumadocsCallout
   };
 
   return {
