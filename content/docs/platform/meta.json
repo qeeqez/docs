@@ -4,9 +4,19 @@
   "description": "Upload, manage, and optimize media through the RIXL platform",
   "pages": [
     "index",
-    "account",
-    "dashboard",
-    "uploads",
-    "api-reference"
+    "---Account---",
+    "...account",
+    "---Dashboard---",
+    "...dashboard",
+    "---Upload & Optimize---",
+    "...uploads",
+    "---API Reference---",
+    "...api-reference",
+    "---API Access & Security---",
+    "...api-access",
+    "---Billing & Payments---",
+    "...billing",
+    "---Organizations & Teams---",
+    "...organizations"
   ]
 }
