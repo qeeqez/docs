@@ -22,10 +22,13 @@ export const Icon = ({name, icon, ...props}: IconProps) => {
     return React.cloneElement(icon, props);
   }
 
-  const LucideIcon = dynamic(() =>
-    import(`lucide-react/dist/esm/icons/${name.toLowerCase()}`)
-      .catch(() => SVGIcon),
-    {ssr: false,}
+  const LucideIcon = dynamic(
+    () => import(`lucide-react/dist/esm/icons/${name.toLowerCase()}`)
+      .catch(() => () => <SVGIcon {...props}/>),
+    {
+      loading: () => <SVGIcon {...props}/>,
+      ssr: false,
+    }
   );
 
   return <LucideIcon {...props} />;
