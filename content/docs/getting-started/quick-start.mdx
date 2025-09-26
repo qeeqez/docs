@@ -3,8 +3,9 @@ title: Quick Start
 description: Get up and running with RIXL in under 5 minutes—from account setup to uploading your first media and seeing optimization in action.
 ---
 
-import { Callout, Columns, Card } from "@/components";
-import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+import {Callout, Card, Columns} from "@/components";
+import {Step, Steps} from 'fumadocs-ui/components/steps';
 
 Welcome to **RIXL**! This quick start guide will have you uploading and optimizing media in just a few minutes. No complex setup required—just create an account, upload media, and watch RIXL optimize automatically.
 
@@ -98,9 +99,9 @@ Welcome to **RIXL**! This quick start guide will have you uploading and optimizi
     **API Upload:**
     ```bash
     curl -X POST https://api.rixl.com/videos/upload/init \
-      -H "X-API-Key: YOUR_PROJECT_API_KEY" \
-      -H "Content-Type: application/json" \
-      -d '{"file_name": "your-video.mp4", "video_quality": "pro"}'
+    -H "X-API-Key: YOUR_PROJECT_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{"file_name": "your-video.mp4", "video_quality": "pro"}'
     ```
   </Step>
 
@@ -121,10 +122,10 @@ Welcome to **RIXL**! This quick start guide will have you uploading and optimizi
 
     **React Components:**
     ```jsx
-    import { Video, Image } from '@rixl/videosdk-react';
+    import {Video, Image} from '@rixl/videosdk-react';
 
-    <Video id="your-video-id" progressBar={true} allowFullscreen={true} />
-    <Image id="your-image-id" alt="Description" className="w-full h-auto" />
+    <Video id="your-video-id" progressBar={true} allowFullscreen={true}/>
+    <Image id="your-image-id" alt="Description" className="w-full h-auto"/>
     ```
 
     **Direct URLs:**
@@ -183,7 +184,9 @@ Now that you've uploaded your first media, explore these next steps:
 </Columns>
 
 <div class="mt-12">
-<Callout type="tip" title="Ready to build?">
-  Start with our [Dashboard Guide](/platform/dashboard/guide) to explore all features, or jump into the [API Reference](/platform/api-documentation/overview) to start building programmatically. For React developers, check out our [SDK Components](/sdk/getting-started/overview) for drop-in media optimization.
-</Callout>
+  <Callout type="tip" title="Ready to build?">
+    Start with our [Dashboard Guide](/platform/dashboard/guide) to explore all features, or jump into the [API
+    Reference](/platform/api-documentation/overview) to start building programmatically. For React developers, check out
+    our [SDK Components](/sdk/getting-started/overview) for drop-in media optimization.
+  </Callout>
 </div>

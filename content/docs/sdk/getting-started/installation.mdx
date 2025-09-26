@@ -2,9 +2,10 @@
 title: "Installation"
 description: "Install and configure RIXL Video SDK for React in your project"
 ---
-import { Callout } from 'fumadocs-ui/components/callout';
-import { Steps } from 'fumadocs-ui/components/steps';
-import { Tabs, TabsContent, TabsList, TabsTrigger  } from 'fumadocs-ui/components/tabs';
+
+import {Callout} from 'fumadocs-ui/components/callout';
+import {Steps} from 'fumadocs-ui/components/steps';
+import {Tabs, TabsContent, TabsList, TabsTrigger} from 'fumadocs-ui/components/tabs';
 
 ## Requirements
 
@@ -19,36 +20,36 @@ Before installing the RIXL Video SDK for React, ensure your project meets these 
 Install the RIXL Video SDK for React using your preferred package manager:
 
 <Tabs defaultValue="npm">
-    <TabsList>
-        <TabsTrigger value="npm">npm</TabsTrigger>
-        <TabsTrigger value="yarn">yarn</TabsTrigger>
-        <TabsTrigger value="pnpm">pnpm</TabsTrigger>
-        <TabsTrigger value="bun">bun</TabsTrigger>
-    </TabsList>
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="bun">bun</TabsTrigger>
+  </TabsList>
 
-    <TabsContent value="npm">
-        ```bash
-        npm install @rixl/videosdk-react
-        ```
-    </TabsContent>
+  <TabsContent value="npm">
+    ```bash
+    npm install @rixl/videosdk-react
+    ```
+  </TabsContent>
 
-    <TabsContent value="yarn">
-        ```bash
-        yarn add @rixl/videosdk-react
-        ```
-    </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn add @rixl/videosdk-react
+    ```
+  </TabsContent>
 
-    <TabsContent value="pnpm">
-        ```bash
-        pnpm add @rixl/videosdk-react
-        ```
-    </TabsContent>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm add @rixl/videosdk-react
+    ```
+  </TabsContent>
 
-    <TabsContent value="bun">
-        ```bash
-        bun add @rixl/videosdk-react
-        ```
-    </TabsContent>
+  <TabsContent value="bun">
+    ```bash
+    bun add @rixl/videosdk-react
+    ```
+  </TabsContent>
 </Tabs>
 
 ## Setting Up Your First Video
@@ -58,21 +59,21 @@ Install the RIXL Video SDK for React using your preferred package manager:
 Before using the SDK, you need to upload your media content:
 
 <Steps>
-    <Step>
-        **Upload to Dashboard**
+  <Step>
+    **Upload to Dashboard**
 
-        Go to [dash.rixl.com](https://dash.rixl.com) and upload your video or image files
-    </Step>
-    <Step>
-        **Get Media ID**
+    Go to [dash.rixl.com](https://dash.rixl.com) and upload your video or image files
+  </Step>
+  <Step>
+    **Get Media ID**
 
-        Copy the generated media ID (e.g., `"FU9aVtA88m"`)
-    </Step>
-    <Step>
-        **Use in Your App**
+    Copy the generated media ID (e.g., `"FU9aVtA88m"`)
+  </Step>
+  <Step>
+    **Use in Your App**
 
-        Reference the media ID in your React components
-    </Step>
+    Reference the media ID in your React components
+  </Step>
 </Steps>
 
 ### 2. Import the Components
@@ -213,22 +214,22 @@ You can use regular CSS classes or CSS-in-JS solutions:
 ### Troubleshooting
 
 <Callout type="warning">
-    **Media not loading?**
-    - Verify your media ID is correct
-    - Check that the media exists in your RIXL dashboard
-    - Ensure you have proper network connectivity
+  **Media not loading?**
+  - Verify your media ID is correct
+  - Check that the media exists in your RIXL dashboard
+  - Ensure you have proper network connectivity
 </Callout>
 
 <Callout type="info">
-    **TypeScript errors?**
-    - Ensure you're using React 18+
-    - Update your `@types/react` package if needed
+  **TypeScript errors?**
+  - Ensure you're using React 18+
+  - Update your `@types/react` package if needed
 </Callout>
 
 <Callout type="default">
-    **Style issues?**
-    - Check that your CSS framework is properly configured
-    - Verify className props are being applied correctly
+  **Style issues?**
+  - Check that your CSS framework is properly configured
+  - Verify className props are being applied correctly
 </Callout>
 
 ## What's Next?

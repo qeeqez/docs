@@ -3,10 +3,10 @@ title: Best Practices
 description: Essential guidelines and recommendations for optimizing your RIXL workflow, from media preparation to production deployment.
 ---
 
-import { Callout } from "@/components";
-import { Columns, Card } from "@/components";
-import { Step, Steps } from 'fumadocs-ui/components/steps';
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+
+import {Callout, Card, Columns} from "@/components";
+import {Step, Steps} from 'fumadocs-ui/components/steps';
+import {Tab, Tabs} from 'fumadocs-ui/components/tabs';
 
 Get the most out of **RIXL** with these proven best practices. Whether you're just getting started or optimizing an existing workflow, these guidelines will help you achieve better performance, quality, and efficiency.
 
@@ -33,74 +33,74 @@ Get the most out of **RIXL** with these proven best practices. Whether you're ju
 Choose the right [quality tier](/platform/uploads/videos/quality-tiers) based on your content and audience:
 
 <Tabs items={['Basic Tier', 'Shorts Tier', 'Pro Tier']}>
-<Tab value="Basic Tier">
-**Best for:**
-- Web content and tutorials
-- Desktop-focused viewing
-- Fast processing requirements
-- Bandwidth-conscious delivery
+  <Tab value="Basic Tier">
+    **Best for:**
+    - Web content and tutorials
+    - Desktop-focused viewing
+    - Fast processing requirements
+    - Bandwidth-conscious delivery
 
-**Specifications:**
-- 720p HD maximum resolution
-- 24fps/30fps frame rates
-- Fastest processing times
-- Smallest file sizes
-</Tab>
-<Tab value="Shorts Tier">
-**Best for:**
-- Social media content
-- Mobile-first experiences
-- Vertical video content
-- 60fps smooth motion
+    **Specifications:**
+    - 720p HD maximum resolution
+    - 24fps/30fps frame rates
+    - Fastest processing times
+    - Smallest file sizes
+  </Tab>
+  <Tab value="Shorts Tier">
+    **Best for:**
+    - Social media content
+    - Mobile-first experiences
+    - Vertical video content
+    - 60fps smooth motion
 
-**Specifications:**
-- 1080p Full HD maximum
-- Up to 60fps frame rates
-- Mobile-optimized encoding
-- Medium processing times
-</Tab>
-<Tab value="Pro Tier">
-**Best for:**
-- Professional broadcasts
-- 4K/HDR content
-- Premium streaming experiences
-- Production-quality output
+    **Specifications:**
+    - 1080p Full HD maximum
+    - Up to 60fps frame rates
+    - Mobile-optimized encoding
+    - Medium processing times
+  </Tab>
+  <Tab value="Pro Tier">
+    **Best for:**
+    - Professional broadcasts
+    - 4K/HDR content
+    - Premium streaming experiences
+    - Production-quality output
 
-**Specifications:**
-- 4K Ultra HD support
-- Up to 60fps with HDR
-- Professional audio processing
-- Longest processing times
-</Tab>
+    **Specifications:**
+    - 4K Ultra HD support
+    - Up to 60fps with HDR
+    - Professional audio processing
+    - Longest processing times
+  </Tab>
 </Tabs>
 
 ### File Preparation Guidelines
 
 <Steps>
-<Step>
-**Source Quality**
+  <Step>
+    **Source Quality**
 
-Upload the highest quality version you have. RIXL will optimize down to appropriate sizes automatically.
-- **Video**: Up to 2GB per file
-- **Images**: Up to 100MB per file
-- **Resolution**: Keep original resolution, avoid upscaling
-</Step>
-<Step>
-**Audio Processing**
+    Upload the highest quality version you have. RIXL will optimize down to appropriate sizes automatically.
+    - **Video**: Up to 2GB per file
+    - **Images**: Up to 100MB per file
+    - **Resolution**: Keep original resolution, avoid upscaling
+  </Step>
+  <Step>
+    **Audio Processing**
 
-Use recommended audio settings for best results:
-- **Codec**: Opus (preferred) or MP3
-- **Bitrate**: 128kbps for most content
-- **Channels**: Stereo for standard content
-</Step>
-<Step>
-**Frame Rate Standards**
+    Use recommended audio settings for best results:
+    - **Codec**: Opus (preferred) or MP3
+    - **Bitrate**: 128kbps for most content
+    - **Channels**: Stereo for standard content
+  </Step>
+  <Step>
+    **Frame Rate Standards**
 
-Stick to standard frame rates for optimal processing:
-- **24fps**: Cinematic content
-- **30fps**: Standard web video
-- **60fps**: Smooth motion (Shorts/Pro tiers)
-</Step>
+    Stick to standard frame rates for optimal processing:
+    - **24fps**: Cinematic content
+    - **30fps**: Standard web video
+    - **60fps**: Smooth motion (Shorts/Pro tiers)
+  </Step>
 </Steps>
 
 ## Platform Workflow Best Practices
@@ -147,33 +147,33 @@ Follow these organization strategies for efficient content management:
 **Set up effective team workflows:**
 
 <Steps>
-<Step>
-**Role-Based Access**
+  <Step>
+    **Role-Based Access**
 
-Assign appropriate roles based on team member responsibilities:
-- **Owner**: Full access including billing
-- **Admin**: Project and team management
-- **Member**: Content upload and management
-- **Viewer**: Read-only access
-</Step>
-<Step>
-**Approval Workflows**
+    Assign appropriate roles based on team member responsibilities:
+    - **Owner**: Full access including billing
+    - **Admin**: Project and team management
+    - **Member**: Content upload and management
+    - **Viewer**: Read-only access
+  </Step>
+  <Step>
+    **Approval Workflows**
 
-Implement content approval processes:
-- Draft → Review → Published workflow
-- Team comments and feedback
-- Version history tracking
-- Content status management
-</Step>
-<Step>
-**Project Templates**
+    Implement content approval processes:
+    - Draft → Review → Published workflow
+    - Team comments and feedback
+    - Version history tracking
+    - Content status management
+  </Step>
+  <Step>
+    **Project Templates**
 
-Create reusable project structures:
-- Pre-configured folder hierarchies
-- Standard tag sets
-- Default processing settings
-- Team permission templates
-</Step>
+    Create reusable project structures:
+    - Pre-configured folder hierarchies
+    - Standard tag sets
+    - Default processing settings
+    - Team permission templates
+  </Step>
 </Steps>
 
 ## SDK Implementation Best Practices
@@ -183,7 +183,7 @@ Create reusable project structures:
 **Follow proper installation procedures for reliable performance:**
 
 <Callout type="info">
-Always use the latest stable version of the SDK and ensure your React version is 18.0 or higher.
+  Always use the latest stable version of the SDK and ensure your React version is 18.0 or higher.
 </Callout>
 
 **Package Management:**
@@ -204,48 +204,48 @@ yarn add @rixl/videosdk-react
 **Video Component Best Practices:**
 
 <Tabs items={['Basic Usage', 'Advanced Features', 'Performance']}>
-<Tab value="Basic Usage">
-```tsx
-import { Video } from '@rixl/videosdk-react';
+  <Tab value="Basic Usage">
+    ```tsx
+    import {Video} from '@rixl/videosdk-react';
 
-// Basic implementation
-<Video
-  id="your-media-id"
-  className="w-full h-auto rounded-lg"
-  autoPlay={false}
-  muted={false}
-  progressBar={true}
-  allowFullscreen={true}
-/>
-```
-</Tab>
-<Tab value="Advanced Features">
-```tsx
-// Advanced configuration
-<Video
-  id="your-media-id"
-  className="aspect-video"
-  autoPlay={true}
-  muted={true}
-  loop={true}
-  progressBar={false}
-  allowPlayPause={false}
-  // For background videos
-/>
-```
-</Tab>
-<Tab value="Performance">
-```tsx
-// Performance optimized
-<Video
-  id="your-media-id"
-  className="w-full h-auto"
-  // Let RIXL handle quality selection
-  // Enable lazy loading for off-screen content
-  loading="lazy"
-/>
-```
-</Tab>
+    // Basic implementation
+    <Video
+      id="your-media-id"
+      className="w-full h-auto rounded-lg"
+      autoPlay={false}
+      muted={false}
+      progressBar={true}
+      allowFullscreen={true}
+    />
+    ```
+  </Tab>
+  <Tab value="Advanced Features">
+    ```tsx
+    // Advanced configuration
+    <Video
+      id="your-media-id"
+      className="aspect-video"
+      autoPlay={true}
+      muted={true}
+      loop={true}
+      progressBar={false}
+      allowPlayPause={false}
+      // For background videos
+    />
+    ```
+  </Tab>
+  <Tab value="Performance">
+    ```tsx
+    // Performance optimized
+    <Video
+      id="your-media-id"
+      className="w-full h-auto"
+      // Let RIXL handle quality selection
+      // Enable lazy loading for off-screen content
+      loading="lazy"
+    />
+    ```
+  </Tab>
 </Tabs>
 
 **Image Component Best Practices:**
@@ -300,7 +300,8 @@ import { Image } from '@rixl/videosdk-react';
 **Protect your API keys and implement secure practices:**
 
 <Callout type="warning">
-API keys are like passwords for your project. Keep them secure and never share them publicly or commit them to version control.
+  API keys are like passwords for your project. Keep them secure and never share them publicly or commit them to version
+  control.
 </Callout>
 
 **Security Guidelines:**
@@ -315,32 +316,32 @@ API keys are like passwords for your project. Keep them secure and never share t
 **Follow proven patterns for reliable uploads:**
 
 <Steps>
-<Step>
-**Initialize Upload**
+  <Step>
+    **Initialize Upload**
 
-Use the three-step upload process:
-1. Initialize upload to get presigned URLs
-2. Upload file directly to secure cloud storage
-3. Complete upload to trigger processing
-</Step>
-<Step>
-**Error Handling**
+    Use the three-step upload process:
+    1. Initialize upload to get presigned URLs
+    2. Upload file directly to secure cloud storage
+    3. Complete upload to trigger processing
+  </Step>
+  <Step>
+    **Error Handling**
 
-Implement comprehensive error handling:
-- Retry logic for failed uploads
-- Progress tracking and user feedback
-- Timeout handling for large files
-- Network error recovery
-</Step>
-<Step>
-**Performance**
+    Implement comprehensive error handling:
+    - Retry logic for failed uploads
+    - Progress tracking and user feedback
+    - Timeout handling for large files
+    - Network error recovery
+  </Step>
+  <Step>
+    **Performance**
 
-Improve upload performance:
-- Use multipart uploads for files >100MB
-- Implement resume capability for interrupted uploads
-- Monitor upload progress and provide feedback
-- Batch multiple uploads efficiently
-</Step>
+    Improve upload performance:
+    - Use multipart uploads for files >100MB
+    - Implement resume capability for interrupted uploads
+    - Monitor upload progress and provide feedback
+    - Batch multiple uploads efficiently
+  </Step>
 </Steps>
 
 ### Monitoring and Status Tracking

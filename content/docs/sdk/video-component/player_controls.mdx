@@ -3,8 +3,9 @@ title: "Player Controls"
 description: "Complete guide to using the video player controls, settings, and customization options"
 ---
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from 'fumadocs-ui/components/tabs'
-import { Callout } from 'fumadocs-ui/components/callout'
+
+import {Tabs, TabsContent, TabsList, TabsTrigger} from 'fumadocs-ui/components/tabs'
+import {Callout} from 'fumadocs-ui/components/callout'
 
 ## Control Bar Overview
 
@@ -37,31 +38,31 @@ The player offers multiple playback speeds:
 ### Custom Speed Control
 
 <Tabs defaultValue="slider">
-    <TabsList>
-        <TabsTrigger value="slider">Speed Slider</TabsTrigger>
-        <TabsTrigger value="presets">Speed Presets</TabsTrigger>
-    </TabsList>
+  <TabsList>
+    <TabsTrigger value="slider">Speed Slider</TabsTrigger>
+    <TabsTrigger value="presets">Speed Presets</TabsTrigger>
+  </TabsList>
 
-    <TabsContent value="slider">
-        Use the custom speed slider to set any speed between 0.25x and 2x:
+  <TabsContent value="slider">
+    Use the custom speed slider to set any speed between 0.25x and 2x:
 
-        1. Click the **Settings** gear icon
-        2. Select **Playback Speed**
-        3. Use the slider at the top to set a custom speed (e.g., 1.15x)
-        4. The current speed is displayed as you adjust
-    </TabsContent>
+    1. Click the **Settings** gear icon
+    2. Select **Playback Speed**
+    3. Use the slider at the top to set a custom speed (e.g., 1.15x)
+    4. The current speed is displayed as you adjust
+  </TabsContent>
 
-    <TabsContent value="presets">
-        Choose from preset speed options:
+  <TabsContent value="presets">
+    Choose from preset speed options:
 
-        1. Click the **Settings** gear icon
-        2. Select **Playback Speed**
-        3. Click any preset speed option
-        4. The selected speed is marked with a checkmark
-    </TabsContent>
+    1. Click the **Settings** gear icon
+    2. Select **Playback Speed**
+    3. Click any preset speed option
+    4. The selected speed is marked with a checkmark
+  </TabsContent>
 </Tabs>
 
-[//]: # (![Playback Speed control]&#40;/images/playback_speed.png&#41;)
+[//]  # (![Playback Speed control]&#40;/images/playback_speed.png&#41;)
 
 ## Subtitle Controls
 
@@ -75,7 +76,7 @@ To Enable subtitle:
 - *(Additional languages available based on video)*
 
 <Callout type="info">
-    Subtitle availability depends on the specific video content. Not all videos have subtitles in all languages.
+  Subtitle availability depends on the specific video content. Not all videos have subtitles in all languages.
 </Callout>
 
 ### Subtitle Customization
@@ -125,13 +126,14 @@ The **Auto** setting automatically adjusts video quality based on:
 - Buffer health
 
 <Callout type="default">
-    Auto quality provides the best balance of video quality and smooth playback. It will automatically upgrade or downgrade quality as needed.
+  Auto quality provides the best balance of video quality and smooth playback. It will automatically upgrade or
+  downgrade quality as needed.
 
-    The **Auto** setting automatically adjusts video quality based on:
-    - Your internet connection speed
-    - Current network conditions
-    - Device capabilities
-    - Buffer health
+  The **Auto** setting automatically adjusts video quality based on:
+  - Your internet connection speed
+  - Current network conditions
+  - Device capabilities
+  - Buffer health
 </Callout>
 
 Choose a specific quality when you want to:
@@ -158,67 +160,71 @@ Videos may include multiple audio tracks:
 5. Audio switches immediately without interrupting playback
 
 <Callout type="info">
-    Audio track availability varies by video. Educational and professional content often includes multiple language options and commentary tracks.
+  Audio track availability varies by video. Educational and professional content often includes multiple language
+  options and commentary tracks.
 </Callout>
 
 ## Keyboard Shortcuts
 
 ### Playback Controls
 
-| Action | Keyboard Shortcut | Alternative |
-|--------|------------------|-------------|
-| Play/Pause | `Spacebar` | `K` |
-| Play/Pause (Media Keys) | `MediaPlayPause` | `MediaPlay` / `MediaPause` |
+| Action                  | Keyboard Shortcut | Alternative                |
+|-------------------------|-------------------|----------------------------|
+| Play/Pause              | `Spacebar`        | `K`                        |
+| Play/Pause (Media Keys) | `MediaPlayPause`  | `MediaPlay` / `MediaPause` |
 
 ### Seeking Controls
 
-| Action | Keyboard Shortcut | Description |
-|--------|------------------|-------------|
-| Seek Forward 5s | `→` (Right Arrow) | Jump ahead 10 seconds |
-| Seek Backward 5s | `←` (Left Arrow) | Jump back 10 seconds |
-| Seek Forward 10s | `L` | Quick forward jump |
-| Seek Backward 10s | `J` | Quick backward jump |
+| Action            | Keyboard Shortcut | Description           |
+|-------------------|-------------------|-----------------------|
+| Seek Forward 5s   | `→` (Right Arrow) | Jump ahead 10 seconds |
+| Seek Backward 5s  | `←` (Left Arrow)  | Jump back 10 seconds  |
+| Seek Forward 10s  | `L`               | Quick forward jump    |
+| Seek Backward 10s | `J`               | Quick backward jump   |
 
 ### Audio Controls
 
-| Action | Keyboard Shortcut | Description |
-|--------|------------------|-------------|
-| Volume Up | `↑` (Up Arrow) | Increase volume |
-| Volume Down | `↓` (Down Arrow) | Decrease volume |
-| Mute/Unmute | `M` | Toggle audio on/off |
+| Action      | Keyboard Shortcut | Description         |
+|-------------|-------------------|---------------------|
+| Volume Up   | `↑` (Up Arrow)    | Increase volume     |
+| Volume Down | `↓` (Down Arrow)  | Decrease volume     |
+| Mute/Unmute | `M`               | Toggle audio on/off |
 
 ### Display Controls
 
-| Action | Keyboard Shortcut | Alternative |
-|--------|------------------|-------------|
-| Toggle Fullscreen | `F` | Enter/exit fullscreen |
-| Information/Stats | `I` | Enter/exit Picture-picture |
+| Action            | Keyboard Shortcut | Alternative                |
+|-------------------|-------------------|----------------------------|
+| Toggle Fullscreen | `F`               | Enter/exit fullscreen      |
+| Information/Stats | `I`               | Enter/exit Picture-picture |
 
 ### Quick Navigation
 
-| Action | Keyboard Shortcut | Description |
-|--------|------------------|-------------|
-| Jump to 0% | `0` | Start of video |
-| Jump to 10% | `1` | 10% through video |
-| Jump to 20% | `2` | 20% through video |
-| Jump to 30% | `3` | 30% through video |
-| Jump to 40% | `4` | 40% through video |
-| Jump to 50% | `5` | 50% through video |
-| Jump to 60% | `6` | 60% through video |
-| Jump to 70% | `7` | 70% through video |
-| Jump to 80% | `8` | 80% through video |
-| Jump to 90% | `9` | 90% through video |
+| Action      | Keyboard Shortcut | Description       |
+|-------------|-------------------|-------------------|
+| Jump to 0%  | `0`               | Start of video    |
+| Jump to 10% | `1`               | 10% through video |
+| Jump to 20% | `2`               | 20% through video |
+| Jump to 30% | `3`               | 30% through video |
+| Jump to 40% | `4`               | 40% through video |
+| Jump to 50% | `5`               | 50% through video |
+| Jump to 60% | `6`               | 60% through video |
+| Jump to 70% | `7`               | 70% through video |
+| Jump to 80% | `8`               | 80% through video |
+| Jump to 90% | `9`               | 90% through video |
 
 <Callout type="info">
-    **Case Insensitive**: Letter shortcuts work with both uppercase and lowercase (e.g., both `f` and `F` trigger fullscreen).
+  **Case Insensitive**: Letter shortcuts work with both uppercase and lowercase (e.g., both `f` and `F` trigger
+  fullscreen).
 </Callout>
 
 <Callout type="default">
-    **Context Aware**: Keyboard shortcuts are disabled when typing in input fields, text areas, or content-editable elements to prevent conflicts.
+  **Context Aware**: Keyboard shortcuts are disabled when typing in input fields, text areas, or content-editable
+  elements to prevent conflicts.
 </Callout>
 
 <Callout type="warning">
-    **Focus Required**: The video player area must have focus for keyboard shortcuts to work. Click on the video if shortcuts aren't responding.
+  **Focus Required**: The video player area must have focus for keyboard shortcuts to work. Click on the video if
+  shortcuts aren't responding.
 </Callout>
 
 ## Picture-in-Picture Mode
@@ -245,7 +251,7 @@ The floating window includes basic controls:
 - Use "i" key
 
 <Callout type="warning">
-    Picture-in-Picture support varies by browser. It works best in Chrome, Firefox, and Safari on desktop platforms.
+  Picture-in-Picture support varies by browser. It works best in Chrome, Firefox, and Safari on desktop platforms.
 </Callout>
 
 ## Fullscreen Mode

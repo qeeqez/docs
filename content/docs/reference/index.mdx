@@ -3,7 +3,8 @@ title: Reference Documentation
 description: Complete technical reference for RIXL APIs, React SDK components, platform specifications, and integration guides.
 ---
 
-import {Callout, Columns, Card} from "@/components";
+
+import {Callout, Card, Columns} from "@/components";
 import {Tab, Tabs} from 'fumadocs-ui/components/tabs';
 
 Welcome to the **RIXL Reference Documentation**—your comprehensive technical resource for APIs, SDKs, and platform specifications. Whether you're implementing REST endpoints, configuring React components, or understanding platform limits, find everything you need here.
@@ -191,26 +192,26 @@ All API responses follow a consistent JSON structure:
 
 ### HTTP Status Codes
 
-| Code | Status | Description | Action |
-|------|--------|-------------|---------|
-| 200 | OK | Request successful | Continue |
-| 201 | Created | Resource created | Use returned ID |
-| 400 | Bad Request | Invalid parameters | Check request format |
-| 401 | Unauthorized | Invalid API key | Verify authentication |
-| 403 | Forbidden | Insufficient permissions | Check project access |
-| 404 | Not Found | Resource doesn't exist | Verify resource ID |
-| 429 | Too Many Requests | Rate limit exceeded | Implement backoff |
-| 500 | Internal Server Error | Server error | Retry or contact support |
+| Code | Status                | Description              | Action                   |
+|------|-----------------------|--------------------------|--------------------------|
+| 200  | OK                    | Request successful       | Continue                 |
+| 201  | Created               | Resource created         | Use returned ID          |
+| 400  | Bad Request           | Invalid parameters       | Check request format     |
+| 401  | Unauthorized          | Invalid API key          | Verify authentication    |
+| 403  | Forbidden             | Insufficient permissions | Check project access     |
+| 404  | Not Found             | Resource doesn't exist   | Verify resource ID       |
+| 429  | Too Many Requests     | Rate limit exceeded      | Implement backoff        |
+| 500  | Internal Server Error | Server error             | Retry or contact support |
 
 ### Common Request Parameters
 
-| Parameter | Type | Required | Description | Example |
-|-----------|------|----------|-------------|---------|
-| `file_name` | string | Yes | Original filename | `"video.mp4"` |
-| `video_quality` | string | No | Processing tier | `"basic"`, `"shorts"`, `"pro"` |
-| `image_format` | string | No | Thumbnail format | `"jpg"`, `"png"`, `"webp"` |
-| `limit` | integer | No | Items per page (max 100) | `25` |
-| `offset` | integer | No | Pagination offset | `0` |
+| Parameter       | Type    | Required | Description              | Example                        |
+|-----------------|---------|----------|--------------------------|--------------------------------|
+| `file_name`     | string  | Yes      | Original filename        | `"video.mp4"`                  |
+| `video_quality` | string  | No       | Processing tier          | `"basic"`, `"shorts"`, `"pro"` |
+| `image_format`  | string  | No       | Thumbnail format         | `"jpg"`, `"png"`, `"webp"`     |
+| `limit`         | integer | No       | Items per page (max 100) | `25`                           |
+| `offset`        | integer | No       | Pagination offset        | `0`                            |
 
 ## React SDK Component Reference
 
@@ -254,14 +255,14 @@ interface FeedProps extends HTMLProps<HTMLDivElement> {
 
 ### Browser Requirements
 
-| Browser | Minimum Version | Features Supported |
-|---------|----------------|-------------------|
-| Chrome | 88+ | Full HLS, AVIF, WebP |
-| Firefox | 85+ | Full HLS, WebP (AVIF fallback) |
-| Safari | 14+ | Full HLS, HEIC, WebP |
-| Edge | 88+ | Full HLS, AVIF, WebP |
-| Mobile Safari | 14+ | Full HLS, HEIC support |
-| Chrome Mobile | 88+ | Full HLS, AVIF support |
+| Browser       | Minimum Version | Features Supported             |
+|---------------|-----------------|--------------------------------|
+| Chrome        | 88+             | Full HLS, AVIF, WebP           |
+| Firefox       | 85+             | Full HLS, WebP (AVIF fallback) |
+| Safari        | 14+             | Full HLS, HEIC, WebP           |
+| Edge          | 88+             | Full HLS, AVIF, WebP           |
+| Mobile Safari | 14+             | Full HLS, HEIC support         |
+| Chrome Mobile | 88+             | Full HLS, AVIF support         |
 
 ### CDN & Performance
 

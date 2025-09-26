@@ -3,124 +3,129 @@ title: Team Management
 description: Manage your organization's team settings, invite members, and control access.
 ---
 
-import { Callout } from '@/components';
-import { Step, Steps } from 'fumadocs-ui/components/steps';
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+
+import {Callout} from '@/components';
+import {Step, Steps} from 'fumadocs-ui/components/steps';
+import {Tab, Tabs} from 'fumadocs-ui/components/tabs';
 
 Access team management by navigating to **Organization Settings → Team** from your dashboard sidebar.
 
 <Tabs items={['General', 'Members']}>
 
-    <Tab value="General">
+  <Tab value="General">
 
-        ## General Team Settings
+    ## General Team Settings
 
-        Configure your organization's basic team information and settings.
+    Configure your organization's basic team information and settings.
 
-        ### About You (Organization Owner)
+    ### About You (Organization Owner)
 
-        Your profile information as it appears to team members:
+    Your profile information as it appears to team members:
 
-        - **Name:** Your display name (e.g., "James")
-        - **Username:** Your unique identifier (e.g., "james123")
+    - **Name:** Your display name (e.g., "James")
+    - **Username:** Your unique identifier (e.g., "james123")
 
-        <Steps>
-            <Step>
-                Click the edit icon next to your name or username to modify
-            </Step>
+    <Steps>
+      <Step>
+        Click the edit icon next to your name or username to modify
+      </Step>
 
-            <Step>
-                Make your changes and save
-            </Step>
+      <Step>
+        Make your changes and save
+      </Step>
 
-            <Step>
-                Changes will be reflected across the organization
-            </Step>
-        </Steps>
+      <Step>
+        Changes will be reflected across the organization
+      </Step>
+    </Steps>
 
-    </Tab>
+  </Tab>
 
-    <Tab value="Members">
+  <Tab value="Members">
 
-        ## Team Members Management
+    ## Team Members Management
 
-        View and manage all members of your organization.
+    View and manage all members of your organization.
 
-        ### Current Team Members
+    ### Current Team Members
 
-        The members table shows:
-        - **Member:** Name and username with profile avatar
-        - **Role:** Current role (Owner, Admin, Member)
-        - **Status:** Account status (pending, accepted)
-        - **Joined At:** When they joined the organization
-        - **Actions:** Available management options
+    The members table shows:
+    - **Member:** Name and username with profile avatar
+    - **Role:** Current role (Owner, Admin, Member)
+    - **Status:** Account status (pending, accepted)
+    - **Joined At:** When they joined the organization
+    - **Actions:** Available management options
 
-        ### Inviting New Members
+    ### Inviting New Members
 
-        <Steps>
-            <Step>
-                Click **Invite Member** button in the top-right corner
-            </Step>
+    <Steps>
+      <Step>
+        Click **Invite Member** button in the top-right corner
+      </Step>
 
-            <Step>
-                **Fill out the invitation form:**
-                - **Username:** Enter the username of the person to invite
-                - **Role:** Select from dropdown (Admin or Member)
-            </Step>
+      <Step>
+        **Fill out the invitation form:**
+        - **Username:** Enter the username of the person to invite
+        - **Role:** Select from dropdown (Admin or Member)
+      </Step>
 
-            <Step>
-                Click **Send Invitation**
-            </Step>
-        </Steps>
+      <Step>
+        Click **Send Invitation**
+      </Step>
+    </Steps>
 
-        <Callout type="info" title="Username Required">
-            You must enter the exact username of the person you want to invite. They need to already have a RIXL account to receive invitations.
-        </Callout>
+    <Callout type="info" title="Username Required">
+      You must enter the exact username of the person you want to invite. They need to already have a RIXL account to
+      receive invitations.
+    </Callout>
 
-        ### Managing Existing Members
+    ### Managing Existing Members
 
-        **Change Member Roles:**
-        - Click on the role dropdown next to any member
-        - Select new role (Admin or Member)
-        - Confirm the role change
+    **Change Member Roles:**
+    - Click on the role dropdown next to any member
+    - Select new role (Admin or Member)
+    - Confirm the role change
 
-        **Remove Members:**
-        - Click **Remove** in the Actions column next to the member
-        - Confirm the removal when prompted
+    **Remove Members:**
+    - Click **Remove** in the Actions column next to the member
+    - Confirm the removal when prompted
 
-    </Tab>
+  </Tab>
 
 </Tabs>
 
 ## Role Permissions Reference
 
 <table>
-    <thead>
-    <tr>
-        <th>Role</th>
-        <th>Permissions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td><strong>Owner</strong></td>
-        <td>
-            Complete control over organization settings, billing management, add/remove all members, create/modify/delete any project, cannot be removed by other members
-        </td>
-    </tr>
-    <tr>
-        <td><strong>Admin</strong></td>
-        <td>
-            Create/manage projects, invite/manage team members (excluding Owner), configure organization settings, cannot access billing or remove Owner
-        </td>
-    </tr>
-    <tr>
-        <td><strong>Member</strong></td>
-        <td>
-            Access assigned projects only, create/manage content within permitted projects, cannot create projects or manage organization settings
-        </td>
-    </tr>
-    </tbody>
+  <thead>
+  <tr>
+    <th>Role</th>
+    <th>Permissions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><strong>Owner</strong></td>
+    <td>
+      Complete control over organization settings, billing management, add/remove all members, create/modify/delete any
+      project, cannot be removed by other members
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Admin</strong></td>
+    <td>
+      Create/manage projects, invite/manage team members (excluding Owner), configure organization settings, cannot
+      access billing or remove Owner
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Member</strong></td>
+    <td>
+      Access assigned projects only, create/manage content within permitted projects, cannot create projects or manage
+      organization settings
+    </td>
+  </tr>
+  </tbody>
 </table>
 
 ## Security Best Practices
@@ -135,21 +140,22 @@ Access team management by navigating to **Organization Settings → Team** from 
 ### Managing Project Access
 
 <Steps>
-    <Step>
-        Navigate to the specific project settings
-    </Step>
+  <Step>
+    Navigate to the specific project settings
+  </Step>
 
-    <Step>
-        Go to **Project Settings → Team**
-    </Step>
+  <Step>
+    Go to **Project Settings → Team**
+  </Step>
 
-    <Step>
-        Add team members to the project with appropriate roles
-    </Step>
+  <Step>
+    Add team members to the project with appropriate roles
+  </Step>
 </Steps>
 
 <Callout type="warning" title="Important">
-    Organization-level permissions can override project-level permissions. An organization Admin can access any project, regardless of project-specific role assignments.
+  Organization-level permissions can override project-level permissions. An organization Admin can access any project,
+  regardless of project-specific role assignments.
 </Callout>
 
 ## Troubleshooting
