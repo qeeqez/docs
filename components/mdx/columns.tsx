@@ -13,7 +13,7 @@ export const Columns = ({cols = 2, ...props}: Props) => {
   return (
     <div
       className={cn(
-        'card-group not-prose grid gap-x-4',
+        'card-group grid gap-x-4',
         validCols === 2 && 'sm:grid-cols-2',
         validCols === 3 && 'sm:grid-cols-3',
         validCols === 4 && 'sm:grid-cols-4',
