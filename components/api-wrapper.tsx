@@ -1,7 +1,13 @@
 "use client";
 
-import {ApiReferenceReact} from "@scalar/api-reference-react";
+import dynamic from "next/dynamic";
 import apiJson from "@/api.json";
+
+const ApiReferenceReact = dynamic(
+  () => import("@scalar/api-reference-react")
+    .then((mod) => mod.ApiReferenceReact || mod.ApiReferenceReact || mod),
+  {ssr: true}
+);
 
 export function ApiWrapper() {
   return <div className="relative">

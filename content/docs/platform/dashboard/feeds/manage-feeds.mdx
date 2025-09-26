@@ -3,18 +3,21 @@ title: Manage Feeds
 description: Learn how to edit, configure, and analyze feeds.
 ---
 
-import { Callout } from 'fumadocs-ui/components/callout'
-import { Step, Steps } from 'fumadocs-ui/components/steps'
-import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+
+import {Callout} from 'fumadocs-ui/components/callout'
+import {Step, Steps} from 'fumadocs-ui/components/steps'
+import {Tab, Tabs} from 'fumadocs-ui/components/tabs'
+import {Card} from '@/components/mdx/card';
+import {Columns} from '@/components/mdx/columns';
 
 ## Feed Overview
 
-<Cards>
-  <Card title="Feed Overview" description="View feed settings, performance metrics, and configuration options" />
-  <Card title="Content Management" description="Add, remove, and organize feed content with drag-and-drop tools" />
-  <Card title="Analytics Dashboard" description="Monitor feed performance, engagement, and usage statistics" />
-  <Card title="Integration Tools" description="Access embedding codes, API endpoints, and sharing options" />
-</Cards>
+<Columns cols={4}>
+  <Card title="Feed Overview">View feed settings, performance metrics, and configuration options</Card>
+  <Card title="Content Management">Add, remove, and organize feed content with drag-and-drop tools</Card>
+  <Card title="Analytics Dashboard">Monitor feed performance, engagement, and usage statistics</Card>
+  <Card title="Integration Tools">Access embedding codes, API endpoints, and sharing options</Card>
+</Columns>
 
 ## Adding Content
 
@@ -43,11 +46,11 @@ import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
     </Steps>
   </Tab>
   <Tab value="Dynamic Rules">
-    Define rules once, and content is added automatically:  
-    - By type (video, image, mixed)  
-    - Tags or categories  
-    - Upload date ranges  
-    - Performance thresholds  
+    Define rules once, and content is added automatically:
+    - By type (video, image, mixed)
+    - Tags or categories
+    - Upload date ranges
+    - Performance thresholds
     - Sorting rules (newest, trending, most viewed)
   </Tab>
 </Tabs>
@@ -62,31 +65,31 @@ import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
 </Steps>
 
 <Callout type="tip">
-You can schedule items to appear or expire automatically for fresh, timely feeds.
+  You can schedule items to appear or expire automatically for fresh, timely feeds.
 </Callout>
 
 ## Configuring Feeds
 
 <Tabs items={['Basic Settings', 'Display Options', 'Access Control']}>
   <Tab value="Basic Settings">
-  - **Feed Name**: Update feed identification  
-  - **Description**: Modify feed description and purpose  
-  - **Visibility Level**: Change public, unlisted, or private status  
-  - **Project Association**: Move feed between projects  
-  - **Feed Type**: Modify feed type (when compatible)  
+    - **Feed Name**: Update feed identification
+    - **Description**: Modify feed description and purpose
+    - **Visibility Level**: Change public, unlisted, or private status
+    - **Project Association**: Move feed between projects
+    - **Feed Type**: Modify feed type (when compatible)
   </Tab>
   <Tab value="Display Options">
-  - **Thumbnail Style**: Grid, list, carousel, masonry layouts  
-  - **Default Sorting**: Newest, oldest, most popular, custom order  
-  - **Pagination**: Items per page configuration  
-  - **Cover Image**: Featured image representing the feed  
-  - **Preview Settings**: Thumbnail sizes and aspect ratios  
+    - **Thumbnail Style**: Grid, list, carousel, masonry layouts
+    - **Default Sorting**: Newest, oldest, most popular, custom order
+    - **Pagination**: Items per page configuration
+    - **Cover Image**: Featured image representing the feed
+    - **Preview Settings**: Thumbnail sizes and aspect ratios
   </Tab>
   <Tab value="Access Control">
-  - **Visibility Levels**: Public, unlisted, private access  
-  - **User Permissions**: Specific user access for private feeds  
-  - **Domain Restrictions**: Limit embedding to specific domains  
-  - **API Access**: Control programmatic access permissions  
+    - **Visibility Levels**: Public, unlisted, private access
+    - **User Permissions**: Specific user access for private feeds
+    - **Domain Restrictions**: Limit embedding to specific domains
+    - **API Access**: Control programmatic access permissions
   </Tab>
 </Tabs>
 
@@ -123,43 +126,43 @@ curl -X GET https://api.rixl.com/feeds/{feedId} \
 
 ### Creator-Based Feeds
 
-<Cards>
-  <Card title="Single Creator" description="Showcase content from one specific creator" />
-  <Card title="Multi-Creator" description="Combine content from multiple selected creators" />
-  <Card title="Creator Collections" description="Organize creators into themed collections" />
-</Cards>
+<Columns cols={3}>
+  <Card title="Single Creator">Showcase content from one specific creator</Card>
+  <Card title="Multi-Creator">Combine content from multiple selected creators</Card>
+  <Card title="Creator Collections">Organize creators into themed collections</Card>
+</Columns>
 
 ### Interactive Feed Features
 
 <Tabs items={['Engagement Tools', 'Social Features', 'Call-to-Actions']}>
   <Tab value="Engagement Tools">
-  - Like/favorite buttons with counts  
-  - Comment sections with moderation  
-  - View tracking and analytics  
-  - Share counters and viral metrics  
+    - Like/favorite buttons with counts
+    - Comment sections with moderation
+    - View tracking and analytics
+    - Share counters and viral metrics
   </Tab>
   <Tab value="Social Features">
-  - Social media sharing buttons  
-  - User-generated content integration  
-  - Community features and discussions  
-  - Creator interaction tools  
+    - Social media sharing buttons
+    - User-generated content integration
+    - Community features and discussions
+    - Creator interaction tools
   </Tab>
   <Tab value="Call-to-Actions">
-  - Custom call-to-action buttons  
-  - Lead capture forms  
-  - E-commerce integration  
-  - Newsletter subscription options  
+    - Custom call-to-action buttons
+    - Lead capture forms
+    - E-commerce integration
+    - Newsletter subscription options
   </Tab>
 </Tabs>
 
 ## Analytics & Performance
 
-<Cards>
-  <Card title="Engagement Metrics" description="Views, clicks, time spent, and interaction rates" />
-  <Card title="Audience Insights" description="Geographic data, device types, and referral sources" />
-  <Card title="Content Performance" description="Individual item performance and trending analysis" />
-  <Card title="Real-time Data" description="Live feed performance and usage statistics" />
-</Cards>
+<Columns cols={4}>
+  <Card title="Engagement Metrics">Views, clicks, time spent, and interaction rates</Card>
+  <Card title="Audience Insights">Geographic data, device types, and referral sources</Card>
+  <Card title="Content Performance">Individual item performance and trending analysis</Card>
+  <Card title="Real-time Data">Live feed performance and usage statistics</Card>
+</Columns>
 
 **Key Performance Metrics:**
 - Total Views, Unique Visitors, Session Duration, Engagement Rate
@@ -176,13 +179,13 @@ curl -X GET https://api.rixl.com/feeds/{feedId} \
 
 <Tabs items={['Playback Settings', 'Quality Options', 'Player Theme']}>
   <Tab value="Playback Settings">
-  - Autoplay, continuous play, loop options, mute settings  
+    - Autoplay, continuous play, loop options, mute settings
   </Tab>
   <Tab value="Quality Options">
-  - Default quality, adaptive streaming, manual selection, mobile optimization  
+    - Default quality, adaptive streaming, manual selection, mobile optimization
   </Tab>
   <Tab value="Player Theme">
-  - Dark/light themes, branding, custom styling for controls and progress bar  
+    - Dark/light themes, branding, custom styling for controls and progress bar
   </Tab>
 </Tabs>
 
@@ -190,43 +193,38 @@ curl -X GET https://api.rixl.com/feeds/{feedId} \
 
 <Tabs items={['Display Issues', 'Content Problems', 'Integration Issues']}>
   <Tab value="Display Issues">
-    - Verify visibility and permissions  
-    - Optimize performance (pagination, asset sizes)  
-    - Check domain whitelist for embedding  
+    - Verify visibility and permissions
+    - Optimize performance (pagination, asset sizes)
+    - Check domain whitelist for embedding
   </Tab>
   <Tab value="Content Problems">
-    - Ensure items match feed rules  
-    - Review ordering settings  
-    - Check dynamic rules for freshness  
+    - Ensure items match feed rules
+    - Review ordering settings
+    - Check dynamic rules for freshness
   </Tab>
   <Tab value="Integration Issues">
-    - Verify API key and rate limits  
-    - Validate embed HTML and check console errors  
-    - Refresh RSS output settings if applicable  
+    - Verify API key and rate limits
+    - Validate embed HTML and check console errors
+    - Refresh RSS output settings if applicable
   </Tab>
 </Tabs>
 
 ## Best Practices
 
 <Callout type="tip">
-Well-organized feeds significantly improve engagement and discoverability.
+  Well-organized feeds significantly improve engagement and discoverability.
 </Callout>
 
 **Organization:** Related themes, consistent updates, metadata for search.  
-**Performance:** Optimize images, limit feed size, use lazy loading, caching.  
+**Performance:** Optimize images, limit feed size, use lazy loading, caching.
 
 ## Next Steps
 
-<Cards>
-  <Card 
-    title="Feed API Integration" 
-    description="Implement custom feed integrations and advanced API usage"
+<Columns cols={1}>
+  <Card
+    title="Feed API Integration"
     href="/api"
-  />
-</Cards>
-
-
-
-
-
-
+  >
+    Implement custom feed integrations and advanced API usage
+  </Card>
+</Columns>

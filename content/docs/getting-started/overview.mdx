@@ -3,9 +3,10 @@ title: Introduction
 description: Transform your media workflow with intelligent processing, global delivery, and effortless integration. Get started with RIXL in minutes.
 ---
 
-import { Callout, InfoCard, InteractiveCard } from "@/components";
 
-**RIXL** makes it easy to manage media in your applications. Whether you're building a social platform, e-commerce site, or mobile app, **RIXL** optimizes videos and images for smooth delivery on any device and network. 
+import {Callout, Card, Columns} from "@/components";
+
+**RIXL** makes it easy to manage media in your applications. Whether you're building a social platform, e-commerce site, or mobile app, **RIXL** optimizes videos and images for smooth delivery on any device and network.
 
 Start building professional media experiences in minutes with our intuitive platform and developer-friendly SDKs.
 
@@ -14,66 +15,87 @@ Start building professional media experiences in minutes with our intuitive plat
 
 Get up and running with RIXL in just a few minutes:
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="Dashboard"
-    description="Upload and manage your media files through our intuitive web interface."
     href="/platform/dashboard/guide"
-    icon="Upload"
-  />
-  <InteractiveCard
+    icon="upload"
+  >
+    Upload and manage your media files through our intuitive web interface.
+  </Card>
+  <Card
     title="Developer APIs"
-    description="Integrate RIXL directly with clean REST APIs and comprehensive documentation."
-    href="/platform/api-reference/overview"
-    icon="Code"
-  />
-  <InteractiveCard
+    href="/platform/api-documentation/overview"
+    icon="code"
+  >
+    Integrate RIXL directly with clean REST APIs and comprehensive documentation.
+  </Card>
+  <Card
     title="Video SDK"
-    description="Drop-in components for video players, optimized images, and media feeds."
     href="/sdk/getting-started/overview"
-    icon="Layers"
-  />
-</div>
+    icon="layers"
+  >
+    Drop-in components for video players and optimized images.
+  </Card>
+</Columns>
 
 ## How RIXL Works
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8">
-  <InfoCard
-    title="Upload Your Media"
-    description="Drop files into the dashboard or upload programmatically via API. RIXL accepts all common video and image formats."
-    icon="Upload"
-  />
-  <InfoCard
-    title="Automatic Optimization"
-    description="Every file is automatically processed, compressed, and optimized for different devices and network conditions."
-    icon="Zap"
-  />
-  <InfoCard
-    title="Global Delivery"
-    description="Your optimized media is distributed across 200+ edge locations worldwide for instant loading anywhere."
-    icon="Globe"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="Upload Your Media" icon="upload">
+    Drop files into the dashboard or upload programmatically via API. RIXL
+    accepts all common video and image formats.
+  </Card>
+  <Card title="Automatic Processing" icon="zap">
+    Every file is automatically processed, compressed, and prepared for different
+    devices and network conditions.
+  </Card>
+  <Card title="Global Delivery" icon="globe">
+    Your processed media is distributed across 200+ edge locations worldwide for
+    instant loading anywhere.
+  </Card>
+</Columns>
 
 ## Choose Your Path
 
-<div className="grid gap-6 sm:grid-cols-2 mt-8">
-  <InteractiveCard
+<Columns cols={4}>
+  <Card
     title="Upload and manage media"
-    description="Start with the RIXL Platform to upload, organize, and optimize your media files."
     href="/platform"
-    icon="Upload"
-  />
-  <InteractiveCard
+    icon="upload"
+  >
+    Start with the RIXL Platform to upload, organize, and optimize your media
+    files.
+  </Card>
+  <Card
     title="Build with code"
-    description="Jump straight into our SDK documentation and start building media experiences."
     href="/sdk/getting-started"
-    icon="Code"
-  />
-</div>
+    icon="code"
+  >
+    Jump straight into our SDK documentation and start building media
+    experiences.
+  </Card>
+  <Card
+    title="Explore guides"
+    href="/guides"
+    icon="book-open"
+  >
+    Follow step-by-step tutorials for common use cases and integration patterns.
+  </Card>
+  <Card
+    title="API reference"
+    href="/reference"
+    icon="file-text"
+  >
+    Comprehensive documentation for all RIXL APIs, endpoints, and parameters.
+  </Card>
+</Columns>
 
 <div className="mt-12">
-<Callout type="tip" title="New to media optimization?">
-  Check out our [Best Practices](/getting-started/best-practices) guide to learn how to get the most out of RIXL, or explore our [Quick Links](/getting-started/quick-links) for common use cases.
-</Callout>
+  <Callout type="tip" title="New to media optimization?">
+    Check out our [Best Practices](/getting-started/best-practices) guide to learn how to get the most out of RIXL, or
+    explore our [Quick Links](/getting-started/quick-links) for common use cases. You could start building your app
+    right now using our complete [SDK documentation](/sdk/getting-started) or browse our [practical guides](/guides) for
+    step-by-step tutorials.
+  </Callout>
 </div>

@@ -1,35 +1,39 @@
 ---
-title: Image Optimization
-description: Transform any image into lightning-fast, web-optimized files. AVIF compression, smart placeholders, and global delivery—all automatic.
+title: Image Processing
+description: Transform any image into lightning-fast, web-ready files. AVIF format, smart placeholders, and global delivery—all automatic.
 ---
 
-import { Callout, InfoCard, InteractiveCard } from '@/components';
-import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-Upload any image to RIXL and watch it transform into a web-optimized masterpiece. Our intelligent processing pipeline delivers files that are 90% smaller while looking identical to the original—it's like magic, but it's just really smart technology.
+import {Callout, Card, Columns} from '@/components';
+import {Step, Steps} from 'fumadocs-ui/components/steps';
+
+Upload any image to RIXL and watch it transform into a web-ready masterpiece. Our intelligent processing pipeline delivers files that are 90% smaller while looking identical to the original—it's like magic, but it's just really smart technology.
 
 ## Quick Actions
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="Upload Images"
-    description="Start uploading and optimizing your images now."
     href="/platform/dashboard/media/overview"
-    icon="Upload"
-  />
-  <InteractiveCard
+    icon="upload"
+  >
+    Start uploading and optimizing your images now.
+  </Card>
+  <Card
     title="API Integration"
-    description="Integrate image optimization into your applications."
-    href="/platform/api-reference/overview"
-    icon="Code"
-  />
-  <InteractiveCard
+    href="/platform/api-documentation/overview"
+    icon="code"
+  >
+    Integrate image optimization into your applications.
+  </Card>
+  <Card
     title="Posts"
-    description="Create social media-style posts by uploading images directly to feeds."
     href="/platform/uploads/posts"
-    icon="Archive"
-  />
-</div>
+    icon="archive"
+  >
+    Create social media-style posts by uploading images directly to feeds.
+  </Card>
+</Columns>
 
 ## How Image Processing Works
 
@@ -37,28 +41,28 @@ Every image you upload gets the full optimization treatment:
 
 <Steps>
   <Step>
-    **Smart Format Selection** 
-    
+    **Smart Format Selection**
+
     Raster images become ultra-efficient AVIF files, while SVGs stay perfectly crisp as vectors.
   </Step>
   <Step>
-    **Intelligent Compression** 
-    
+    **Intelligent Compression**
+
     Advanced algorithms find the perfect balance between tiny file sizes and stunning visual quality.
   </Step>
   <Step>
-    **Instant Placeholders** 
-    
+    **Instant Placeholders**
+
     Generate ultra-compact thumbhash placeholders so your pages load instantly, even on slow connections.
   </Step>
   <Step>
-    **Metadata Preservation** 
-    
+    **Metadata Preservation**
+
     Keep all the important stuff—dimensions, camera settings, color profiles—while ditching unnecessary bloat.
   </Step>
   <Step>
-    **Global Distribution** 
-    
+    **Global Distribution**
+
     Your optimized images hit our global CDN immediately, ready for lightning-fast delivery anywhere in the world.
   </Step>
 </Steps>
@@ -74,7 +78,8 @@ Every image you upload gets the full optimization treatment:
 - **SVG files**: Keep all their scalability and interactivity intact
 
 <Callout type="info" title="The AVIF Advantage">
-  Here's the magic: AVIF at 50% quality looks identical to JPEG at 85% but is 50-90% smaller. Your users get faster loading, you save bandwidth costs—everyone wins.
+  Here's the magic: AVIF at 50% quality looks identical to JPEG at 85% but is 50-90% smaller. Your users get faster
+  loading, you save bandwidth costs—everyone wins.
 </Callout>
 
 ## Behind the Scenes
@@ -95,11 +100,11 @@ Your images also generate tiny ~25-byte "thumbhash" placeholders that create bea
 
 **Implementation Example:**
 
-[//]: # (```md)
+[//]  # (```md)
 
-[//]: # (We can have an implementation example here)
+[//]  # (We can have an implementation example here)
 
-[//]: # (```)
+[//]  # (```)
 
 ## Performance Impact
 
@@ -118,62 +123,58 @@ Your images also generate tiny ~25-byte "thumbhash" placeholders that create bea
 ## Browser Support
 
 <Callout type="info">
-    **AVIF supported by ~95% of modern browsers**
+  **AVIF supported by ~95% of modern browsers**
 </Callout>
 
 **Full Support:**
 
-[//]: # ([//]: # I need to check for broswer compatibility rate)
+[//]  # ([//]: # I need to check for broswer compatibility rate)
 
 ## Processing Pipeline Details
 
 <Steps>
-    <Step>
-        ### Upload and Check
-        Images are added to the processing queue and checked for valid formats and security issues.
-    </Step>
+  <Step>
+    ### Upload and Check
+    Images are added to the processing queue and checked for valid formats and security issues.
+  </Step>
 
-    <Step>
-        ### File Type Detection
-        The system identifies SVG files to keep unchanged and sends other images for conversion.
-    </Step>
+  <Step>
+    ### File Type Detection
+    The system identifies SVG files to keep unchanged and sends other images for conversion.
+  </Step>
 
-    <Step>
-        ### Image Optimization
-        Images are converted to AVIF format for smaller file sizes while keeping quality high.
-    </Step>
+  <Step>
+    ### Image Optimization
+    Images are converted to AVIF format for smaller file sizes while keeping quality high.
+  </Step>
 
-    <Step>
-        ### Create Placeholders
-        Small preview images are generated for fast loading while the full image loads.
-    </Step>
+  <Step>
+    ### Create Placeholders
+    Small preview images are generated for fast loading while the full image loads.
+  </Step>
 
-    <Step>
-        ### Distribute Globally
-        Optimized images are deployed to servers worldwide for fast delivery to users.
-    </Step>
+  <Step>
+    ### Distribute Globally
+    Optimized images are deployed to servers worldwide for fast delivery to users.
+  </Step>
 </Steps>
 
 ## Advanced Features
 
-<div className="grid gap-6 sm:grid-cols-2 mt-6">
-    <InfoCard
-        title="Auto-Rotate Images"
-        description="Automatically fixes rotated photos based on camera data"
-    />
-    <InfoCard
-        title="Keep Photo Details"
-        description="Preserves camera settings, location data, and color information"
-    />
-    <InfoCard
-        title="Fast Global Delivery"
-        description="Updates images instantly on servers worldwide"
-    />
-    <InfoCard
-        title="Content Checking"
-        description="Scans uploads to ensure they meet content guidelines"
-    />
-</div>
+<Columns cols={2}>
+  <Card title="Auto-Rotate Images">
+    Automatically fixes rotated photos based on camera data
+  </Card>
+  <Card title="Keep Photo Details">
+    Preserves camera settings, location data, and color information
+  </Card>
+  <Card title="Fast Global Delivery">
+    Updates images instantly on servers worldwide
+  </Card>
+  <Card title="Content Checking">
+    Scans uploads to ensure they meet content guidelines
+  </Card>
+</Columns>
 
 ## Best Practices
 
@@ -199,6 +200,6 @@ Your images also generate tiny ~25-byte "thumbhash" placeholders that create bea
 - API keys required for all access
 
 <Callout type="success">
-    RIXL's image processing delivers real improvements: files are 50-90% smaller,
-    placeholders load instantly, and image quality stays high across all modern browsers.
+  RIXL's image processing delivers real improvements: files are 50-90% smaller,
+  placeholders load instantly, and image quality stays high across all modern browsers.
 </Callout>

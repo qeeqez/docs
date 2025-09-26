@@ -4,8 +4,16 @@
   "pages": [
     "---Getting Started---",
     "...getting-started",
+    "---Video Processing---",
+    "...video",
+    "---Image Processing---",
+    "...images",
     "---Platform---",
     "...platform",
+    "---Guides & Examples---",
+    "...guides",
+    "---Reference---",
+    "...reference",
     "---Legal---",
     "...legal"
   ]

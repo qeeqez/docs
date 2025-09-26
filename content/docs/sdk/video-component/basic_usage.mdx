@@ -3,7 +3,8 @@ title: "Basic Usage"
 description: "Learn how to implement the Video component with common patterns and use cases"
 ---
 
-import { Callout } from 'fumadocs-ui/components/callout';
+
+import {Callout} from 'fumadocs-ui/components/callout';
 
 ## Importing the Video Component
 
@@ -173,13 +174,14 @@ function ResponsiveVideo() {
 ## Best Practices
 
 <Callout type="info">
-    **Aspect Ratio**: Use `w-fit h-fit` classes to respect the video's natural aspect ratio, preventing distortion.
+  **Aspect Ratio**: Use `w-fit h-fit` classes to respect the video's natural aspect ratio, preventing distortion.
 </Callout>
 
 <Callout type="warning">
-    **Autoplay**: Always set `muted={true}` when using `autoPlay={true}` to comply with browser autoplay policies.
+  **Autoplay**: Always set `muted={true}` when using `autoPlay={true}` to comply with browser autoplay policies.
 </Callout>
 
 <Callout type="default">
-    **Performance**: For video galleries, use the `key` prop to ensure proper component re-initialization when switching videos.
+  **Performance**: For video galleries, use the `key` prop to ensure proper component re-initialization when switching
+  videos.
 </Callout>

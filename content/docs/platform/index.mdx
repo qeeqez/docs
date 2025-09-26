@@ -3,119 +3,117 @@ title: RIXL Platform
 description: Upload, manage, and optimize your media through the RIXL dashboard and APIs. Complete platform guide for teams and developers.
 ---
 
-import { Callout, InfoCard, InteractiveCard } from "@/components";
 
-The **RIXL Platform** provides everything you need to upload, manage, and optimize media at scale. Whether you prefer to upload your media using the [RIXL dashboard](/platform/dashboard/overview) or connect directly with the [API](/platform/api-reference/overview).
+import {Callout, Card, Columns} from "@/components";
 
-**RIXL** transform your files and returns optimized media that loads quickly and looks great everywhere.
+The **RIXL Platform** provides everything you need to upload, manage, and optimize media at scale. Whether you prefer to upload your media using the [RIXL dashboard](/platform/dashboard/overview) or connect directly with the [API](/platform/api-documentation/overview).
+
+**RIXL** transforms your files and returns optimized media that loads quickly and looks great everywhere.
 
 ## Platform Features
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="Dashboard Guide"
-    description="Upload your first media file and explore the dashboard in under 5 minutes."
     href="/platform/dashboard/guide"
-    icon="BookOpen"
-  />
-  <InteractiveCard
+    icon="book-open"
+  >
+    Upload your first media file and explore the dashboard in under 5 minutes.
+  </Card>
+  <Card
     title="Account & Teams"
-    description="Set up your workspace, invite collaborators, and manage team access"
-    href="/platform/account/overview"
-    icon="Users"
-  />
-  <InteractiveCard
+    href="/platform/account-teams/overview"
+    icon="users"
+  >
+    Set up your workspace, invite collaborators, and manage team access
+  </Card>
+  <Card
     title="Upload & Process"
-    description="Turn raw media into delivery-ready assets instantly."
     href="/platform/uploads/overview"
-    icon="Upload"
-  />
-  <InteractiveCard
+    icon="upload"
+  >
+    Turn raw media into delivery-ready assets instantly.
+  </Card>
+  <Card
     title="API Reference"
-    description="Integrate RIXL directly with clean REST APIs and SDKs."
-href="/platform/api-reference/overview"
-    icon="Code"
-  />
-</div>
+    href="/platform/api-documentation/overview"
+    icon="code"
+  >
+    Integrate RIXL directly with clean REST APIs and SDKs.
+  </Card>
+</Columns>
 
 ## Platform Capabilities
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8">
-  <InfoCard
-    title="Intelligent Processing"
-    description="Automatic video transcoding and image optimization with adaptive quality based on user connections."
-    icon="Zap"
-  />
-  <InfoCard
-    title="Team Collaboration"
-    description="Shared workspaces with granular permissions and role-based access control."
-    icon="Users"
-  />
-  <InfoCard
-    title="Global CDN"
-    description="200+ edge locations worldwide with intelligent caching and real-time optimization."
-    icon="Globe"
-  />
-  <InfoCard
-    title="REST APIs"
-    description="REST APIs with SDKs, webhooks, and clear documentation for fast integration."
-    icon="Code"
-  />
-  <InfoCard
-    title="Analytics & Insights"
-    description="Detailed usage analytics, performance metrics, and optimization recommendations."
-    icon="BarChart"
-  />
-  <InfoCard
-    title="Enterprise Security"
-    description="SOC 2 compliance, SSO integration, and enterprise-grade security controls."
-    icon="Shield"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="Intelligent Processing" icon="zap">
+    Automatic video transcoding and image processing with adaptive quality based
+    on user connections.
+  </Card>
+  <Card title="Team Collaboration" icon="users">
+    Shared workspaces with granular permissions and role-based access control.
+  </Card>
+  <Card title="Global CDN" icon="globe">
+    200+ edge locations worldwide with intelligent caching and real-time
+    delivery.
+  </Card>
+  <Card title="REST APIs" icon="code">
+    REST APIs with SDKs, webhooks, and clear documentation for fast integration.
+  </Card>
+  <Card title="Analytics & Insights" icon="bar-chart">
+    Detailed usage analytics, performance metrics, and optimization
+    recommendations.
+  </Card>
+  <Card title="Enterprise Security" icon="shield">
+    SOC 2 compliance, SSO integration, and enterprise-grade security controls.
+  </Card>
+</Columns>
 
 ## Supported Media Types
 
 RIXL supports a wide range of video and image formats, optimized automatically for size and performance.
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8">
-  <InfoCard
-    title="Video Formats"
-    description="MP4, MOV, AVI, WebM, MKV, and more. Up to 2GB per file with automatic HLS and DASH transcoding."
-    icon="Video"
-  />
-  <InfoCard
-    title="Image Formats"
-    description="JPEG, PNG, WebP, HEIC, SVG, and more. Up to 100MB per file with AVIF format conversion."
-    icon="Image"
-  />
-  <InfoCard
-    title="Smart Analysis"
-    description="Every upload is analyzed and optimized automatically for your use case audience."
-    icon="Eye"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="Video Formats" icon="video">
+    MP4, MOV, AVI, WebM, MKV, and more. Up to 2GB per file with automatic HLS and
+    DASH transcoding.
+  </Card>
+  <Card title="Image Formats" icon="image">
+    JPEG, PNG, WebP, HEIC, SVG, and more. Up to 100MB per file with AVIF format
+    conversion.
+  </Card>
+  <Card title="Smart Analysis" icon="eye">
+    Every upload is analyzed and optimized automatically for your use case
+    audience.
+  </Card>
+</Columns>
 
 ## Integration Options
 
 Choose the approach that works best for your team and technical requirements.
 
-<div className="grid gap-6 sm:grid-cols-2 mt-8">
-  <InteractiveCard
+<Columns cols={2}>
+  <Card
     title="Web Dashboard"
-    description="Upload, organize, and manage media through our intuitive web interface. Perfect for content teams."
     href="/platform/dashboard/overview"
-    icon="Monitor"
-  />
-  <InteractiveCard
+    icon="monitor"
+  >
+    Upload, organize, and manage media through our intuitive web interface.
+    Perfect for content teams.
+  </Card>
+  <Card
     title="REST APIs"
-    description="Programmatic access to all platform features. Build custom workflows and integrations."
-    href="/platform/api-reference/overview"
-    icon="Code"
-  />
-</div>
+    href="/platform/api-documentation/overview"
+    icon="code"
+  >
+    Programmatic access to all platform features. Build custom workflows and
+    integrations.
+  </Card>
+</Columns>
 
-<div className="mt-12">
-<Callout type="tip" title="Ready to get started?">
-  Begin with our [Dashboard Guide](/platform/dashboard/guide) to upload your first file, or jump into the [API Reference](/platform/api-reference/overview) to start building programmatically.
-</Callout>
+<div class="mt-12">
+  <Callout type="tip" title="Ready to get started?">
+    Begin with our [Dashboard Guide](/platform/dashboard/guide) to upload your first file, or jump into the [API
+    Reference](/platform/api-documentation/overview) to start building programmatically.
+  </Callout>
 </div>

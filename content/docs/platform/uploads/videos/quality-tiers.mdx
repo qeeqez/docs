@@ -3,10 +3,12 @@ title: Quality Tiers
 description: Choose the right video processing tier for your content.
 ---
 
-import { Cards, Card } from 'fumadocs-ui/components/card';
-import { Step, Steps } from 'fumadocs-ui/components/steps';
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
-import { Callout } from '@/components';
+
+import {Card} from '@/components/mdx/card';
+import {Columns} from '@/components/mdx/columns';
+import {Step, Steps} from 'fumadocs-ui/components/steps';
+import {Tab, Tabs} from 'fumadocs-ui/components/tabs';
+import {Callout} from '@/components';
 
 
 Pick a quality tier when you upload your videos. Each tier works best for different content types and viewing situations.
@@ -14,42 +16,42 @@ Pick a quality tier when you upload your videos. Each tier works best for differ
 ## Compare quality tiers
 
 <Tabs items={["Basic", "Shorts", "Pro"]}>
-    <Tab value="Basic">
+  <Tab value="Basic">
 
-        Standard web videos that load fast:
+    Standard web videos that load fast:
 
-        - 720p HD (1280×720) — 2.5 Mbps
-        - 480p SD (854×480) — 1.0 Mbps
-        - 240p Mobile (426×240) — 500 Kbps
+    - 720p HD (1280×720) — 2.5 Mbps
+    - 480p SD (854×480) — 1.0 Mbps
+    - 240p Mobile (426×240) — 500 Kbps
 
-        Best for: web content, tutorials, presentations
+    Best for: web content, tutorials, presentations
 
-    </Tab>
+  </Tab>
 
-    <Tab value="Shorts">
+  <Tab value="Shorts">
 
-        Made for short vertical videos:
+    Made for short vertical videos:
 
-        - 1080p Full HD (1920×1080) — 4.0 Mbps, up to 60fps
-        - 720p HD (1280×720) — 2.5 Mbps, up to 60fps
-        - 480p SD (854×480) — 1.0 Mbps, typically 30fps
+    - 1080p Full HD (1920×1080) — 4.0 Mbps, up to 60fps
+    - 720p HD (1280×720) — 2.5 Mbps, up to 60fps
+    - 480p SD (854×480) — 1.0 Mbps, typically 30fps
 
-        Best for: social media, mobile videos, vertical content
+    Best for: social media, mobile videos, vertical content
 
-    </Tab>
+  </Tab>
 
-    <Tab value="Pro">
+  <Tab value="Pro">
 
-        High-quality videos with full resolution:
+    High-quality videos with full resolution:
 
-        - 4K Ultra HD (3840×2160) — 15 Mbps, up to 60fps
-        - 2K Quad HD (2560×1440) — 8.0 Mbps, up to 60fps
-        - 1080p Full HD (1920×1080) — 4.0 Mbps, up to 60fps
-        - Lower resolutions included for all devices
+    - 4K Ultra HD (3840×2160) — 15 Mbps, up to 60fps
+    - 2K Quad HD (2560×1440) — 8.0 Mbps, up to 60fps
+    - 1080p Full HD (1920×1080) — 4.0 Mbps, up to 60fps
+    - Lower resolutions included for all devices
 
-        Best for: professional content, broadcasts, high-quality media
+    Best for: professional content, broadcasts, high-quality media
 
-    </Tab>
+  </Tab>
 </Tabs>
 
 ## Tier details
@@ -62,72 +64,75 @@ Pick a quality tier when you upload your videos. Each tier works best for differ
 | **Special Features** | Standard compression, web optimized                                  | Vertical video optimization, mobile-focused encoding, enhanced motion handling              | HDR support, 10-bit encoding, AV1 codec, professional audio                                                                   |
 | **Processing Speed** | ~1x video length                                                     | ~1.5x video length                                                                          | ~2-3x video length                                                                                                            |
 | **File Size**        | Smallest                                                             | Medium                                                                                      | Largest                                                                                                                       |
-| **Audio**            | Opus 128kbps                                                          | Opus 128kbps                                                                                 | Professional audio processing                                                                                                 |
+| **Audio**            | Opus 128kbps                                                         | Opus 128kbps                                                                                | Professional audio processing                                                                                                 |
 
 ## How to Choose
 
 ### Look at Your Content
 
 <Steps>
-    <Step>
+  <Step>
     ### Check your video resolution
     Pick a tier that matches or exceeds your source video quality.
-    </Step>
-    <Step>
+  </Step>
+  <Step>
     ### Consider your audience
     Think about what devices they use and their internet speeds.
-    </Step>
-    <Step>
+  </Step>
+  <Step>
     ### Decide on quality vs speed
     Balance quality needs with processing time requirements.
-    </Step>
-    <Step>
+  </Step>
+  <Step>
     ### Plan for the future
     Consider scalability and future quality requirements.
-    </Step>
+  </Step>
 </Steps>
 
 ### Quick decision guide
 
-<Cards>
-    <Card
-        title="Choose Basic"
-        description="Source is 1080p or smaller. Fast loading, desktop-focused, quick processing."
-    />
+<Columns cols={3}>
+  <Card
+    title="Choose Basic"
+  >
+    Source is 1080p or smaller. Fast loading, desktop-focused, quick processing.
+  </Card>
 
-    <Card
-        title="Choose Shorts"
-        description="Mobile/vertical-first content, 60fps source, social platforms, primarily phone viewers."
-    />
+  <Card
+    title="Choose Shorts"
+  >
+    Mobile/vertical-first content, 60fps source, social platforms, primarily phone viewers.
+  </Card>
 
-    <Card
-        title="Choose Pro"
-        description="2K/4K or higher source, HDR or broadcast requirements, production-quality output."
-    />
-</Cards>
+  <Card
+    title="Choose Pro"
+  >
+    2K/4K or higher source, HDR or broadcast requirements, production-quality output.
+  </Card>
+</Columns>
 
 ## Technical Details
 
 ### Processing Times
 
 <Tabs items={['Basic', 'Shorts', 'Pro']}>
-<Tab value="Basic">
-**Fastest processing** - great for quick uploads and fast turnaround times.
-</Tab>
-<Tab value="Shorts">
-**Medium speed** with 60fps optimization for smooth motion content.
-</Tab>
-<Tab value="Pro">
-**Slowest processing** but delivers the highest quality results.
-</Tab>
+  <Tab value="Basic">
+    **Fastest processing** - great for quick uploads and fast turnaround times.
+  </Tab>
+  <Tab value="Shorts">
+    **Medium speed** with 60fps optimization for smooth motion content.
+  </Tab>
+  <Tab value="Pro">
+    **Slowest processing** but delivers the highest quality results.
+  </Tab>
 </Tabs>
 
 ### File Sizes and Storage
 
 <Callout type="info">
-**Basic**: Smallest files across all video sizes  
-**Shorts**: Medium size with better quality for key resolutions  
-**Pro**: Largest files with complete video size range
+  **Basic**: Smallest files across all video sizes
+  **Shorts**: Medium size with better quality for key resolutions
+  **Pro**: Largest files with complete video size range
 </Callout>
 
 ### Device Support
@@ -147,43 +152,43 @@ The system automatically:
 
 ### Performance Benefits
 
-<Cards>
-<Card title="Optimal Quality" description="Viewers get the best quality their connection can handle" />
-<Card title="Fast Startup" description="Videos start playing faster with less buffering" />
-<Card title="Efficient Bandwidth" description="Uses internet bandwidth efficiently" />
-<Card title="Reliable Playback" description="Still works well on slow connections" />
-</Cards>
+<Columns cols={4}>
+  <Card title="Optimal Quality">Viewers get the best quality their connection can handle</Card>
+  <Card title="Fast Startup">Videos start playing faster with less buffering</Card>
+  <Card title="Efficient Bandwidth">Uses internet bandwidth efficiently</Card>
+  <Card title="Reliable Playback">Still works well on slow connections</Card>
+</Columns>
 
 ## Best Practices
 
 ### Choosing Your Tier
 
 <Steps>
-<Step>
-### Match source quality
-Select a tier that matches your source video resolution and quality.
-</Step>
-<Step>
-### Consider distribution
-Think about where and how people will watch your content.
-</Step>
-    <Step>
-### Balance needs
-Weigh processing speed against quality requirements.
-</Step>
-<Step>
+  <Step>
+    ### Match source quality
+    Select a tier that matches your source video resolution and quality.
+  </Step>
+  <Step>
+    ### Consider distribution
+    Think about where and how people will watch your content.
+  </Step>
+  <Step>
+    ### Balance needs
+    Weigh processing speed against quality requirements.
+  </Step>
+  <Step>
     ### Plan ahead
-Consider future scalability and changing quality needs.
-</Step>
+    Consider future scalability and changing quality needs.
+  </Step>
 </Steps>
 
 ### Getting the Best Results
 
 <Callout type="tip">
-- Upload the highest quality video you have
-- Use recommended file formats for faster processing
-- Consider your content type (motion-heavy vs static)
-- Test across different devices and connection speeds
+  - Upload the highest quality video you have
+  - Use recommended file formats for faster processing
+  - Consider your content type (motion-heavy vs static)
+  - Test across different devices and connection speeds
 </Callout>
 
 ## Next Steps

@@ -3,193 +3,191 @@ title: Media Library
 description: Manage and optimize videos and images in your RIXL projects with intelligent processing, secure delivery, and advanced organization tools.
 ---
 
-import { Callout, InteractiveCard, InfoCard } from "@/components";
-import { Step, Steps } from 'fumadocs-ui/components/steps';
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
-import { Card, Cards } from "fumadocs-ui/components/card";
+
+import {Callout, Card, Columns} from "@/components";
+import {Step, Steps} from 'fumadocs-ui/components/steps';
+import {Tab, Tabs} from 'fumadocs-ui/components/tabs';
 
 The **Media Library** is your creative hub where you upload, optimize, and manage all your video and image assets. RIXL handles the heavy lifting—from transcoding and compression to secure delivery—so you can focus on creating and shipping.
 
 <Callout type="info">
-Select a project and open **Media** from the left sidebar to get started.
+  Select a project and open **Media** from the left sidebar to get started.
 </Callout>
 
 ## What You Can Do
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="Video Processing"
-    description="Upload any video format and get back multiple quality levels with adaptive streaming."
     href="/platform/dashboard/media/upload-videos"
-    icon="Video"
-  />
-  <InteractiveCard
+    icon="video"
+  >
+    Upload any video format and get back multiple quality levels with adaptive streaming.
+  </Card>
+  <Card
     title="Image Optimization"
-    description="Transform images into lightning-fast AVIF files with smart placeholders and instant loading."
     href="/platform/dashboard/media/upload-images"
-    icon="Image"
-  />
-  <InteractiveCard
+    icon="image"
+  >
+    Transform images into lightning-fast AVIF files with smart placeholders and instant loading.
+  </Card>
+  <Card
     title="Library Organization"
-    description="Keep your creative assets organized with powerful search, filtering, and categorization tools."
     href="/platform/dashboard/media/organize-media"
-    icon="FolderIcon"
-  />
-</div>
+    icon="folder"
+  >
+    Keep your creative assets organized with powerful search, filtering, and categorization tools.
+  </Card>
+</Columns>
 
 <Callout type="tip">
-**Quick tip:** Each project keeps its media organized separately for better team collaboration and access control.
+  **Quick tip:** Each project keeps its media organized separately for better team collaboration and access control.
 </Callout>
 
 ---
 
 ## Quick Actions
 
-<Cards>
+<Columns cols={2}>
   <Card
     title="Upload New Video"
-    description="Quickly add video content to your project"
     href="/platform/dashboard/media/upload-videos"
-  />
+  >
+    Quickly add video content to your project
+  </Card>
   <Card
     title="Upload New Image"
-    description="Add new image assets instantly"
     href="/platform/dashboard/media/upload-images"
-  />
+  >
+    Add new image assets instantly
+  </Card>
   <Card
     title="Create API Key"
-    description="Generate API keys for media workflows"
-    href="/platform/account/api-access/overview"
-  />
+    href="/platform/api-documentation/create-key"
+  >
+    Generate API keys for media workflows
+  </Card>
   <Card
     title="Invite Team Member"
-    description="Collaborate with teammates on your media library"
-    href="/platform/account/organizations/overview"
-  />
-</Cards>
+    href="/platform/account-teams/organizations-overview"
+  >
+    Collaborate with teammates on your media library
+  </Card>
+</Columns>
 
 ---
 
 ## Library Features
 
 <Tabs items={['Upload & Processing', 'Media Library', 'Organization & Tools']}>
-    <Tab value="Upload & Processing">
-        
-        ### Quick Upload Workflow
-        
-        <Steps>
-          <Step>
-            **Select Upload Type**
-            
-            Click "Upload Video" or "Upload Image" from the dashboard home page
-          </Step>
-          <Step>
-            **Choose Files**
-            
-            Select one or more files from your device using the file browser
-          </Step>
-          <Step>
-            **Add Metadata**
-            
-            Enter titles, descriptions, and tags for your content
-          </Step>
-          <Step>
-            **Upload & Process**
-            
-            Files begin uploading and processing automatically with real-time status updates
-          </Step>
-        </Steps>
+  <Tab value="Upload & Processing">
 
-        ### Processing Features
+    ### Quick Upload Workflow
 
-        | Processing Tier | Quality | Resolution | Features |
-        |----------------|---------|------------|----------|
-        | **Basic** | Standard | Up to 720p | Basic transcoding, standard formats |
-        | **Shorts** | Mobile Optimized | Up to 1080p | Fast processing, mobile optimization |
-        | **Pro** | Professional | Up to 4K | Multiple formats, advanced options |
+    <Steps>
+      <Step>
+        **Select Upload Type**
 
-        **Additional Video Features:**
-        - Automatic thumbnail generation
-        - Web-optimized formats (MP4, WebM)
-        - Adaptive bitrate streaming support
-        - Processing status monitoring
+        Click "Upload Video" or "Upload Image" from the dashboard home page
+      </Step>
+      <Step>
+        **Choose Files**
 
-        ### Image Processing Capabilities
+        Select one or more files from your device using the file browser
+      </Step>
+      <Step>
+        **Add Metadata**
 
-        | Feature | Description | Benefit |
-        |---------|-------------|---------|
-        | **Smart Compression** | Automatic optimization algorithms | Reduced file sizes without quality loss |
-        | **Format Optimization** | WebP, AVIF, JPEG selection | Modern format support |
-        | **Responsive Variants** | Multiple size generations | Optimized for different screen sizes |
-        | **URL Transformations** | Real-time image modifications | Dynamic image delivery |
+        Enter titles, descriptions, and tags for your content
+      </Step>
+      <Step>
+        **Upload & Process**
 
-        <Callout type="tip">
-        Processing settings are inherited from your project's video optimization tier. You can change this in [Project Settings](/platform/dashboard/projects/project-settings).
-        </Callout>
-    </Tab>
+        Files begin uploading and processing automatically with real-time status updates
+      </Step>
+    </Steps>
 
-    <Tab value="Media Library">
-        ### Content Management
+    ### Processing Features
 
-        <div className="grid gap-6 sm:grid-cols-3 mt-6">
-          <InfoCard 
-            title="Video Library" 
-            description="View all videos with thumbnails, processing status, and metadata management"
-            icon="Video"
-          />
-          <InfoCard 
-            title="Image Library" 
-            description="Browse and organize your image collection with preview and search capabilities"
-            icon="Image"
-          />
-          <InfoCard 
-            title="Content Search" 
-            description="Advanced search and filtering options to find media quickly"
-            icon="Search"
-          />
-        </div>
+    | Processing Tier | Quality | Resolution | Features |
+    |----------------|---------|------------|----------|
+    | **Basic** | Standard | Up to 720p | Basic transcoding, standard formats |
+    | **Shorts** | Mobile Optimized | Up to 1080p | Fast processing, mobile optimization |
+    | **Pro** | Professional | Up to 4K | Multiple formats, advanced options |
 
-        ### Key Features
+    **Additional Video Features:**
+    - Automatic thumbnail generation
+    - Web-optimized formats (MP4, WebM)
+    - Adaptive bitrate streaming support
+    - Processing status monitoring
 
-        | Feature | Videos | Images | Description |
-        |---------|--------|--------|-------------|
-        | **Thumbnail Preview** | ✓ | ✓ | Visual content preview |
-        | **Processing Status** | ✓ | ✓ | Real-time processing updates |
-        | **Metadata Management** | ✓ | ✓ | Custom titles, descriptions, tags |
-        | **Bulk Operations** | ✓ | ✓ | Multi-select actions |
-        | **Advanced Search** | ✓ | ✓ | Filter by type, date, tags |
-        | **Usage Analytics** | ✓ | ✓ | View counts and performance |
+    ### Image Processing Capabilities
 
-    </Tab>
+    | Feature | Description | Benefit |
+    |---------|-------------|---------|
+    | **Smart Compression** | Automatic optimization algorithms | Reduced file sizes without quality loss |
+    | **Format Optimization** | WebP, AVIF, JPEG selection | Modern format support |
+    | **Responsive Variants** | Multiple size generations | Optimized for different screen sizes |
+    | **URL Transformations** | Real-time image modifications | Dynamic image delivery |
 
-    <Tab value="Organization & Tools">
+    <Callout type="tip">
+      Processing settings are inherited from your project's video optimization tier. You can change this in [Project
+      Settings](/platform/dashboard/projects/project-settings).
+    </Callout>
+  </Tab>
 
-        ### Organization Methods
+  <Tab value="Media Library">
+    ### Content Management
 
-        <div className="grid gap-6 sm:grid-cols-2 mt-6">
-          <InfoCard 
-            title="Folder Structure" 
-            description="Create logical folder hierarchies for better content organization"
-            icon="FolderIcon"
-          />
-          <InfoCard 
-            title="Tagging System" 
-            description="Apply custom tags for flexible content categorization and search"
-            icon="Tag"
-          />
-        </div>
+    <Columns cols={3}>
+      <Card title="Video Library" icon="video">
+        View all videos with thumbnails, processing status, and metadata management
+      </Card>
+      <Card title="Image Library" icon="image">
+        Browse and organize your image collection with preview and search capabilities
+      </Card>
+      <Card title="Content Search" icon="search">
+        Advanced search and filtering options to find media quickly
+      </Card>
+    </Columns>
 
-        ### Best Practices
+    ### Key Features
 
-        - Organize by project or campaign  
-        - Apply consistent naming conventions  
-        - Use tags for faster discovery  
-        - Audit and clean up content regularly 
+    | Feature | Videos | Images | Description |
+    |---------|--------|--------|-------------|
+    | **Thumbnail Preview** | ✓ | ✓ | Visual content preview |
+    | **Processing Status** | ✓ | ✓ | Real-time processing updates |
+    | **Metadata Management** | ✓ | ✓ | Custom titles, descriptions, tags |
+    | **Bulk Operations** | ✓ | ✓ | Multi-select actions |
+    | **Advanced Search** | ✓ | ✓ | Filter by type, date, tags |
+    | **Usage Analytics** | ✓ | ✓ | View counts and performance |
 
-        <Callout type="tip">
-        Well-organized media libraries improve team productivity and make content discovery much faster.
-        </Callout>
-    </Tab>
+  </Tab>
+
+  <Tab value="Organization & Tools">
+
+    ### Organization Methods
+
+    <Columns cols={2}>
+      <Card title="Folder Structure" icon="folder">
+        Create logical folder hierarchies for better content organization
+      </Card>
+      <Card title="Tagging System" icon="tag">
+        Apply custom tags for flexible content categorization and search
+      </Card>
+    </Columns>
+
+    ### Best Practices
+
+    - Organize by project or campaign
+    - Apply consistent naming conventions
+    - Use tags for faster discovery
+    - Audit and clean up content regularly
+
+    <Callout type="tip">
+      Well-organized media libraries improve team productivity and make content discovery much faster.
+    </Callout>
+  </Tab>
 </Tabs>
 
 ---
@@ -200,21 +198,21 @@ Select a project and open **Media** from the left sidebar to get started.
 
 Track how your media is being processed, stored, and accessed:
 
-- Storage usage and growth trends  
-- Processing metrics and optimization tips  
-- Access patterns and engagement insights  
-- API usage tracking  
+- Storage usage and growth trends
+- Processing metrics and optimization tips
+- Access patterns and engagement insights
+- API usage tracking
 
 ### Security & Permissions
 
 Media access follows your project’s security model:
 
-- Team roles define dashboard permissions ([Membership Settings](/platform/account/membership))  
-- API keys control programmatic access ([API Access](/platform/account/api-access/overview))
-- Assets can be private or shared via secure URLs  
+- Team roles define dashboard permissions ([Membership Settings](/platform/account-teams/membership))
+- API keys control programmatic access ([API Access](/platform/api-documentation/create-key))
+- Assets can be private or shared via secure URLs
 
 <Callout type="warning">
-For critical media, always maintain backups in addition to RIXL’s secure storage.
+  For critical media, always maintain backups in addition to RIXL’s secure storage.
 </Callout>
 
 
@@ -222,28 +220,20 @@ For critical media, always maintain backups in addition to RIXL’s secure stora
 
 ## Common Use Cases
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-6">
-  <InfoCard 
-    title="Content Creation" 
-    description="Upload and process raw media for web delivery"
-    icon="Upload"
-  />
-  <InfoCard 
-    title="Team Collaboration" 
-    description="Organize media for team access and collaboration"
-    icon="Users"
-  />
-  <InfoCard 
-    title="API Integration" 
-    description="Programmatic media management through API"
-    icon="Code"
-  />
-  <InfoCard 
-    title="Content Distribution" 
-    description="Optimized delivery for websites and applications"
-    icon="Activity"
-  />
-</div>
+<Columns cols={4}>
+  <Card title="Content Creation" icon="upload">
+    Upload and process raw media for web delivery
+  </Card>
+  <Card title="Team Collaboration" icon="users">
+    Organize media for team access and collaboration
+  </Card>
+  <Card title="API Integration" icon="code">
+    Programmatic media management through API
+  </Card>
+  <Card title="Content Distribution" icon="activity">
+    Optimized delivery for websites and applications
+  </Card>
+</Columns>
 
 ---
 
@@ -252,22 +242,22 @@ For critical media, always maintain backups in addition to RIXL’s secure stora
 <Steps>
   <Step>
     **Organize Content**
-    
+
     Use [media organization](/platform/dashboard/media/organize-media) tools to structure your library
   </Step>
   <Step>
     **Create Feeds**
-    
+
     Structure content with [content feeds](/platform/dashboard/feeds/overview) for dynamic distribution
   </Step>
   <Step>
     **API Integration**
-    
-    Access media through [API keys](/platform/account/api-access/overview) for programmatic usage
+
+    Access media through [API keys](/platform/api-documentation/create-key) for programmatic usage
   </Step>
   <Step>
     **Team Sharing**
-    
-    Configure [team access](/platform/account/organizations/team-management) for collaboration
+
+    Configure [team access](/platform/account-teams/team-management) for collaboration
   </Step>
 </Steps>

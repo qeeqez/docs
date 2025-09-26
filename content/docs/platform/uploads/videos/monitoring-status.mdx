@@ -3,8 +3,9 @@ title: Monitoring Status
 description: Track video processing progress and handle errors effectively.
 ---
 
-import { Callout} from '@/components';
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+
+import {Callout} from '@/components';
+import {Tab, Tabs} from 'fumadocs-ui/components/tabs';
 
 Monitor video processing status, track progress through the pipeline, and implement robust error handling for reliable video uploads.
 
@@ -15,30 +16,30 @@ Monitor your video's progress through the processing pipeline with real-time sta
 ### Status Types
 
 <Tabs items={['Status Types', 'API Monitoring']}>
-    <Tab value="Status Types">
-        - **`uploaded`** - Video successfully uploaded, awaiting processing
-        - **`processing`** - Video is being transcoded and packaged
-        - **`ready`** - Processing complete, available for streaming
-        - **`error`** - Processing failed (check error message)
-    </Tab>
-    <Tab value="API Monitoring">
-        ```bash
-        # Check processing status with error handling
-        curl -f -s -S \
-          "https://api.rixl.com/videos/{videoId}" \
-          -H "X-API-Key: YOUR_API_KEY" \
-          -H "Accept: application/json" \
-          --retry 3 \
-          --retry-delay 1 \
-          --max-time 30
-        ```
+  <Tab value="Status Types">
+    - **`uploaded`** - Video successfully uploaded, awaiting processing
+    - **`processing`** - Video is being transcoded and packaged
+    - **`ready`** - Processing complete, available for streaming
+    - **`error`** - Processing failed (check error message)
+  </Tab>
+  <Tab value="API Monitoring">
+    ```bash
+    # Check processing status with error handling
+    curl -f -s -S \
+    "https://api.rixl.com/videos/{videoId}" \
+    -H "X-API-Key: YOUR_API_KEY" \
+    -H "Accept: application/json" \
+    --retry 3 \
+    --retry-delay 1 \
+    --max-time 30
+    ```
 
-        **Response includes:**
-        - Current status (uploaded, processing, ready, or error)
-        - Estimated completion time (when processing)
-        - Available renditions (when ready)
-        - Error details (if error occurred)
-    </Tab>
+    **Response includes:**
+    - Current status (uploaded, processing, ready, or error)
+    - Estimated completion time (when processing)
+    - Available renditions (when ready)
+    - Error details (if error occurred)
+  </Tab>
 </Tabs>
 
 ## Status Monitoring Implementation
@@ -612,20 +613,20 @@ console.log('Processing Report:', report);
 ### Processing Failures
 
 <Callout type="warning">
-    **Upload Failures:**
-    - Verify file size under 2GB limit
-    - Check network stability for large files
-    - Ensure the signed URL hasn't expired
+  **Upload Failures:**
+  - Verify file size under 2GB limit
+  - Check network stability for large files
+  - Ensure the signed URL hasn't expired
 
-    **Processing Delays:**
-    - Check current queue status via API
-    - Contact support for processing over 2 hours
-    - Consider using the Basic tier for faster turnaround
+  **Processing Delays:**
+  - Check current queue status via API
+  - Contact support for processing over 2 hours
+  - Consider using the Basic tier for faster turnaround
 
-    **Playback Issues:**
-    - Verify all renditions have completed processing
-    - Check CDN propagation status
-    - Test with different quality levels
+  **Playback Issues:**
+  - Verify all renditions have completed processing
+  - Check CDN propagation status
+  - Test with different quality levels
 </Callout>
 
 ### Queue Management

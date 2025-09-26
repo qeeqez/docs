@@ -3,7 +3,8 @@ title: "Props Reference"
 description: "Complete API reference for all Video component props and TypeScript interfaces"
 ---
 
-import { Callout } from 'fumadocs-ui/components/callout'
+
+import {Callout} from 'fumadocs-ui/components/callout'
 
 ## Core Props
 
@@ -57,9 +58,10 @@ Automatically starts playback when the component loads. Must be combined with `m
 ```
 
 <Callout type="warning">
-    Many modern browsers block videos from playing audio automatically to improve user experience.
-    To ensure a video starts playing without user interaction, you must use both the `muted={true}` and `autoPlay={true}` attributes.
-    This allows the video to begin playing silently until the user decides to unmute it.
+  Many modern browsers block videos from playing audio automatically to improve user experience.
+  To ensure a video starts playing without user interaction, you must use both the `muted={true}` and `autoPlay={true}`
+  attributes.
+  This allows the video to begin playing silently until the user decides to unmute it.
 </Callout>
 
 ### `loop` **(Optional)**

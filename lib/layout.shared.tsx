@@ -35,6 +35,10 @@ export function baseOptions(lang: string): BaseLayoutProps {
           "/getting-started",
           "/platform",
           "/legal",
+          "/guides",
+          "/reference",
+          "/images",
+          "/video"
         ]
       },
       {

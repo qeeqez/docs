@@ -1,0 +1,45 @@
+---
+title: Account & Settings
+description: Manage your RIXL account, security, team access, and billing in one place.
+---
+
+
+import {Card, Columns} from '@/components';
+
+<Columns cols={2}>
+  <Card
+    title="Account Overview"
+    href="/platform/account-teams/overview"
+    icon="users"
+  >
+    View your account details, recent activity, and key settings.
+  </Card>
+  <Card
+    title="Profile & Security"
+    href="/platform/account-teams/general-settings"
+    icon="settings"
+  >
+    Update your profile, change your password, and enable two-factor authentication.
+  </Card>
+  <Card
+    title="Developer Access"
+    href="/platform/api-documentation/create-key"
+    icon="key"
+  >
+    Create and manage API keys to connect RIXL to your applications.
+  </Card>
+  <Card
+    title="Billing & Usage"
+    href="/platform/billing/overview"
+    icon="credit-card"
+  >
+    Check your plan, track usage, update payment methods, and download invoices.
+  </Card>
+  <Card
+    title="Team & Organizations"
+    href="/platform/account-teams/organizations-overview"
+    icon="building"
+  >
+    Create organizations, invite team members, and manage roles across projects.
+  </Card>
+</Columns>
