@@ -6,8 +6,8 @@ import {Step, Steps} from "fumadocs-ui/components/steps";
 import {Tab, Tabs} from "fumadocs-ui/components/tabs";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type {MDXComponents} from "mdx/types";
-import {Callout, InfoCard, InteractiveCard } from "@/components";
-import {VideoMDX} from "@/components/mdx/video-mdx";
+import {Callout, Columns, InfoCard, InteractiveCard} from "@/components";
+import {Video} from "@/components";
 
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
@@ -17,7 +17,8 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     InteractiveCard,
     InfoCard,
     Callout,
-    VideoMDX,
+    Video,
+    Columns,
     Banner,
     Card,
     Cards,
