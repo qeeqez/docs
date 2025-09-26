@@ -3,8 +3,8 @@ title: Reference Documentation
 description: Complete technical reference for RIXL APIs, React SDK components, platform specifications, and integration guides.
 ---
 
-import { Callout, Columns, Card } from "@/components";
-import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import {Callout, Columns, Card} from "@/components";
+import {Tab, Tabs} from 'fumadocs-ui/components/tabs';
 
 Welcome to the **RIXL Reference Documentation**—your comprehensive technical resource for APIs, SDKs, and platform specifications. Whether you're implementing REST endpoints, configuring React components, or understanding platform limits, find everything you need here.
 
@@ -138,42 +138,42 @@ Welcome to the **RIXL Reference Documentation**—your comprehensive technical r
 ### Core Endpoints
 
 <Tabs items={['Video API', 'Image API', 'Feed API']}>
-<Tab value="Video API">
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/videos/upload/init` | POST | Initialize video upload |
-| `/videos` | GET | List videos with pagination |
-| `/videos/{id}` | GET | Get video details and status |
-| `/videos/{id}` | DELETE | Delete video and assets |
-| `/videos/{id}/thumbnail` | GET | Get video thumbnail |
+  <Tab value="Video API">
+    | Endpoint | Method | Description |
+    |----------|--------|-------------|
+    | `/videos/upload/init` | POST | Initialize video upload |
+    | `/videos` | GET | List videos with pagination |
+    | `/videos/{id}` | GET | Get video details and status |
+    | `/videos/{id}` | DELETE | Delete video and assets |
+    | `/videos/{id}/thumbnail` | GET | Get video thumbnail |
 
-**Authentication:** `X-API-Key: YOUR_PROJECT_API_KEY`
-</Tab>
+    **Authentication:** `X-API-Key: YOUR_PROJECT_API_KEY`
+  </Tab>
 
-<Tab value="Image API">
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/images/upload/init` | POST | Initialize image upload |
-| `/images/upload/complete` | POST | Complete image upload |
-| `/images` | GET | List images with pagination |
-| `/images/{id}` | GET | Get image details |
-| `/images/{id}` | DELETE | Delete image |
+  <Tab value="Image API">
+    | Endpoint | Method | Description |
+    |----------|--------|-------------|
+    | `/images/upload/init` | POST | Initialize image upload |
+    | `/images/upload/complete` | POST | Complete image upload |
+    | `/images` | GET | List images with pagination |
+    | `/images/{id}` | GET | Get image details |
+    | `/images/{id}` | DELETE | Delete image |
 
-**Authentication:** `X-API-Key: YOUR_PROJECT_API_KEY`
-</Tab>
+    **Authentication:** `X-API-Key: YOUR_PROJECT_API_KEY`
+  </Tab>
 
-<Tab value="Feed API">
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/feeds/{id}` | GET | Get feed content with optional creator filtering |
+  <Tab value="Feed API">
+    | Endpoint | Method | Description |
+    |----------|--------|-------------|
+    | `/feeds/{id}` | GET | Get feed content with optional creator filtering |
 
-**Authentication:** `X-API-Key: YOUR_PROJECT_API_KEY`
+    **Authentication:** `X-API-Key: YOUR_PROJECT_API_KEY`
 
-**Query Parameters:**
-- `creator_id` (optional): Filter feed content by specific creator
-- `limit` (optional): Number of items to return (default: 10, max: 100)
-- `offset` (optional): Pagination offset (default: 0)
-</Tab>
+    **Query Parameters:**
+    - `creator_id` (optional): Filter feed content by specific creator
+    - `limit` (optional): Number of items to return (default: 10, max: 100)
+    - `offset` (optional): Pagination offset (default: 0)
+  </Tab>
 </Tabs>
 
 ### Response Format
@@ -310,7 +310,8 @@ interface FeedProps extends HTMLProps<HTMLDivElement> {
 </Columns>
 
 <div className="mt-12">
-<Callout type="tip" title="Ready to integrate?">
-  Start with our [API Reference](/platform/api-documentation/overview) for REST endpoints, or explore [React SDK Components](/sdk/getting-started/overview) for frontend integration.
-</Callout>
+  <Callout type="tip" title="Ready to integrate?">
+    Start with our [API Reference](/platform/api-documentation/overview) for REST endpoints, or explore [React SDK
+    Components](/sdk/getting-started/overview) for frontend integration.
+  </Callout>
 </div>

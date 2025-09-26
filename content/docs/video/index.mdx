@@ -3,9 +3,9 @@ title: Video Streaming
 description: Professional video transcoding with adaptive streaming, instant delivery, and automatic processing for any device or connection.
 ---
 
-import { Callout, Columns, Card } from "@/components";
-import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
-import { Step, Steps } from 'fumadocs-ui/components/steps';
+import {Callout, Columns, Card} from "@/components";
+import {Tab, Tabs} from 'fumadocs-ui/components/tabs';
+import {Step, Steps} from 'fumadocs-ui/components/steps';
 
 Welcome to **RIXL Video Streaming**—where every video becomes a streaming powerhouse. Upload any format and get back professional HLS & DASH streams with adaptive quality, instant thumbnails, and global CDN delivery.
 
@@ -94,50 +94,50 @@ Welcome to **RIXL Video Streaming**—where every video becomes a streaming powe
 Choose the right processing tier for your content and audience:
 
 <Tabs items={['Basic Tier', 'Shorts Tier', 'Pro Tier']}>
-<Tab value="Basic Tier">
-**Perfect for:**
-- Web content and tutorials
-- Desktop-focused viewing
-- Fast processing requirements
-- Bandwidth-conscious delivery
+  <Tab value="Basic Tier">
+    **Perfect for:**
+    - Web content and tutorials
+    - Desktop-focused viewing
+    - Fast processing requirements
+    - Bandwidth-conscious delivery
 
-**Specifications:**
-- 720p HD maximum resolution
-- 24fps/30fps frame rates
-- Fastest processing times (~1x video length)
-- Smallest file sizes
-- Ideal for educational content and web videos
-</Tab>
+    **Specifications:**
+    - 720p HD maximum resolution
+    - 24fps/30fps frame rates
+    - Fastest processing times (~1x video length)
+    - Smallest file sizes
+    - Ideal for educational content and web videos
+  </Tab>
 
-<Tab value="Shorts Tier">
-**Perfect for:**
-- Social media content
-- Mobile-first experiences
-- Vertical video content
-- 60fps smooth motion
+  <Tab value="Shorts Tier">
+    **Perfect for:**
+    - Social media content
+    - Mobile-first experiences
+    - Vertical video content
+    - 60fps smooth motion
 
-**Specifications:**
-- 1080p Full HD maximum
-- Up to 60fps frame rates
-- Mobile-ready encoding
-- Medium processing times (~1.5x video length)
-- Perfect for social platforms and mobile viewing
-</Tab>
+    **Specifications:**
+    - 1080p Full HD maximum
+    - Up to 60fps frame rates
+    - Mobile-ready encoding
+    - Medium processing times (~1.5x video length)
+    - Perfect for social platforms and mobile viewing
+  </Tab>
 
-<Tab value="Pro Tier">
-**Perfect for:**
-- Professional broadcasts
-- 4K/HDR content
-- Premium streaming experiences
-- Production-quality output
+  <Tab value="Pro Tier">
+    **Perfect for:**
+    - Professional broadcasts
+    - 4K/HDR content
+    - Premium streaming experiences
+    - Production-quality output
 
-**Specifications:**
-- 4K Ultra HD support
-- Up to 60fps with HDR
-- Professional audio processing
-- Longest processing times (~2-3x video length)
-- Cinema-quality output for premium content
-</Tab>
+    **Specifications:**
+    - 4K Ultra HD support
+    - Up to 60fps with HDR
+    - Professional audio processing
+    - Longest processing times (~2-3x video length)
+    - Cinema-quality output for premium content
+  </Tab>
 </Tabs>
 
 ## Implementation Examples
@@ -145,135 +145,135 @@ Choose the right processing tier for your content and audience:
 ### React Component Usage
 
 <Tabs items={['Basic Player', 'Advanced Player', 'Custom Controls']}>
-<Tab value="Basic Player">
-```jsx
-import { Video } from '@rixl/videosdk-react';
+  <Tab value="Basic Player">
+    ```jsx
+    import {Video} from '@rixl/videosdk-react';
 
-function VideoPlayer({ videoId }) {
-  return (
+    function VideoPlayer({videoId}) {
+    return (
     <Video
-      id={videoId}
-      className="w-full h-auto rounded-lg"
-      progressBar={true}
-      allowFullscreen={true}
-      autoplay={false}
-      muted={false}
-    />
+    id={videoId}
+       className="w-full h-auto rounded-lg"
+       progressBar={true}
+       allowFullscreen={true}
+       autoplay={false}
+       muted={false}
+  />
   );
-}
-```
+  }
+  ```
 </Tab>
 
 <Tab value="Advanced Player">
-```jsx
-import { Video, useProgressBar } from '@rixl/videosdk-react';
-import { useRef } from 'react';
+  ```jsx
+  import {Video, useProgressBar} from '@rixl/videosdk-react';
+  import {useRef} from 'react';
 
-function AdvancedVideoPlayer({ videoId, onComplete }) {
+  function AdvancedVideoPlayer({videoId, onComplete}) {
   const videoRef = useRef(null);
-  const { progress, duration, isPlaying } = useProgressBar({ video: videoRef.current });
+  const {progress, duration, isPlaying} = useProgressBar({video: videoRef.current});
 
   return (
-    <div className="video-container">
-      <Video
-        ref={videoRef}
-        id={videoId}
-        className="w-full h-auto rounded-lg shadow-lg"
-        progressBar={true}
-        allowFullscreen={true}
-        controls={true}
-        poster={`https://cdn.rixl.com/${videoId}/thumbnail.jpg`}
-        onPlay={() => console.log('Video started')}
-        onPause={() => console.log('Video paused')}
-        onEnded={onComplete}
-      />
+  <div className="video-container">
+  <Video
+  ref={videoRef}
+     id={videoId}
+     className="w-full h-auto rounded-lg shadow-lg"
+     progressBar={true}
+     allowFullscreen={true}
+     controls={true}
+     poster={`https://cdn.rixl.com/${videoId}/thumbnail.jpg`}
+     onPlay={() => console.log('Video started')}
+     onPause={() => console.log('Video paused')}
+     onEnded={onComplete}
+/>
 
-      <div className="video-info mt-4 p-4 bg-gray-100 rounded">
-        <div className="flex justify-between items-center">
-          <span>Progress: {Math.round(progress * 100)}%</span>
-          <span>Duration: {Math.round(duration)}s</span>
-          <span className={`status ${isPlaying ? 'text-green-600' : 'text-gray-600'}`}>
+<div className="video-info mt-4 p-4 bg-gray-100 rounded">
+  <div className="flex justify-between items-center">
+    <span>Progress: {Math.round(progress * 100)}%</span>
+    <span>Duration: {Math.round(duration)}s</span>
+    <span className={`status ${isPlaying ? 'text-green-600' : 'text-gray-600'}`}>
             {isPlaying ? 'Playing' : 'Paused'}
           </span>
-        </div>
-      </div>
-    </div>
-  );
+  </div>
+</div>
+</div>
+);
 }
 ```
 </Tab>
 
 <Tab value="Custom Controls">
-```jsx
-import { Video, useProgressBar } from '@rixl/videosdk-react';
-import { useState, useRef } from 'react';
+  ```jsx
+  import {Video, useProgressBar} from '@rixl/videosdk-react';
+  import {useState, useRef} from 'react';
 
-function CustomVideoPlayer({ videoId }) {
+  function CustomVideoPlayer({videoId}) {
   const videoRef = useRef(null);
-  const { progress, duration, isPlaying } = useProgressBar({ video: videoRef.current });
+  const {progress, duration, isPlaying} = useProgressBar({video: videoRef.current});
   const [showControls, setShowControls] = useState(true);
 
   const handlePlayPause = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-    }
-  };
+  if (videoRef.current) {
+  if (isPlaying) {
+  videoRef.current.pause();
+} else {
+  videoRef.current.play();
+}
+}
+};
 
   const handleSeek = (value) => {
-    if (videoRef.current && duration) {
-      videoRef.current.currentTime = value * duration;
-    }
-  };
+  if (videoRef.current && duration) {
+  videoRef.current.currentTime = value * duration;
+}
+};
 
   return (
-    <div
-      className="relative video-container"
-      onMouseEnter={() => setShowControls(true)}
-      onMouseLeave={() => setShowControls(false)}
-    >
-      <Video
-        ref={videoRef}
-        id={videoId}
-        className="w-full h-auto"
-        progressBar={false}
-        controls={false}
-        allowFullscreen={true}
-      />
+  <div
+  className="relative video-container"
+  onMouseEnter={() => setShowControls(true)}
+     onMouseLeave={() => setShowControls(false)}
+>
+  <Video
+    ref={videoRef}
+    id={videoId}
+    className="w-full h-auto"
+    progressBar={false}
+    controls={false}
+    allowFullscreen={true}
+  />
 
-      {showControls && (
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-          <div className="flex items-center gap-4">
-            <button
-              onClick={handlePlayPause}
-              className="text-white hover:text-gray-300"
-            >
-              {isPlaying ? '⏸️' : '▶️'}
-            </button>
+  {showControls && (
+    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+      <div className="flex items-center gap-4">
+        <button
+          onClick={handlePlayPause}
+          className="text-white hover:text-gray-300"
+        >
+          {isPlaying ? '⏸️' : '▶️'}
+        </button>
 
-            <div className="flex-1">
-              <input
-                type="range"
-                min="0"
-                max="1"
-                step="0.01"
-                value={progress}
-                onChange={(e) => handleSeek(parseFloat(e.target.value))}
-                className="w-full"
-              />
-            </div>
+        <div className="flex-1">
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value={progress}
+            onChange={(e) => handleSeek(parseFloat(e.target.value))}
+            className="w-full"
+          />
+        </div>
 
-            <span className="text-white text-sm">
+        <span className="text-white text-sm">
               {Math.round(progress * duration)}s / {Math.round(duration)}s
             </span>
-          </div>
-        </div>
-      )}
+      </div>
     </div>
-  );
+  )}
+</div>
+);
 }
 ```
 </Tab>
@@ -282,88 +282,88 @@ function CustomVideoPlayer({ videoId }) {
 ### API Integration
 
 <Tabs items={['Upload Video', 'Monitor Processing', 'Get Video Details']}>
-<Tab value="Upload Video">
-```javascript
-// Initialize video upload with quality tier
-const uploadVideo = async (videoFile, qualityTier = 'pro') => {
-  const initResponse = await fetch('https://api.rixl.com/videos/upload/init', {
+  <Tab value="Upload Video">
+    ```javascript
+    // Initialize video upload with quality tier
+    const uploadVideo = async (videoFile, qualityTier = 'pro') => {
+    const initResponse = await fetch('https://api.rixl.com/videos/upload/init', {
     method: 'POST',
     headers: {
-      'X-API-Key': 'YOUR_PROJECT_API_KEY',
-      'Content-Type': 'application/json'
-    },
+    'X-API-Key': 'YOUR_PROJECT_API_KEY',
+    'Content-Type': 'application/json'
+  },
     body: JSON.stringify({
-      file_name: videoFile.name,
-      video_quality: qualityTier,
-      image_format: 'jpg'
-    })
+    file_name: videoFile.name,
+    video_quality: qualityTier,
+    image_format: 'jpg'
+  })
   });
 
-  const { video_id, video_presigned_url, upload_expires } = await initResponse.json();
+    const {video_id, video_presigned_url, upload_expires} = await initResponse.json();
 
-  // Upload file to presigned URL
-  await fetch(video_presigned_url, {
+    // Upload file to presigned URL
+    await fetch(video_presigned_url, {
     method: 'PUT',
     body: videoFile,
     headers: {
-      'Content-Type': videoFile.type
-    }
+    'Content-Type': videoFile.type
+  }
   });
 
-  return video_id;
-};
-```
-</Tab>
+    return video_id;
+  };
+    ```
+  </Tab>
 
-<Tab value="Monitor Processing">
-```javascript
-// Monitor video processing status
-const monitorProcessing = async (videoId) => {
-  const checkStatus = async () => {
+  <Tab value="Monitor Processing">
+    ```javascript
+    // Monitor video processing status
+    const monitorProcessing = async (videoId) => {
+    const checkStatus = async () => {
     const response = await fetch(`https://api.rixl.com/videos/${videoId}`, {
-      headers: {
-        'X-API-Key': 'YOUR_PROJECT_API_KEY'
-      }
-    });
+    headers: {
+    'X-API-Key': 'YOUR_PROJECT_API_KEY'
+  }
+  });
 
     const result = await response.json();
     return result.data;
   };
 
-  // Poll every 5 seconds until processing is complete
-  return new Promise((resolve) => {
+    // Poll every 5 seconds until processing is complete
+    return new Promise((resolve) => {
     const interval = setInterval(async () => {
-      const video = await checkStatus();
+    const video = await checkStatus();
 
-      console.log(`Processing status: ${video.file.status}`);
+    console.log(`Processing status: ${video.file.status}`);
 
-      if (video.file.status === 'ready') {
-        clearInterval(interval);
-        resolve(video);
-      } else if (video.file.status === 'error') {
-        clearInterval(interval);
-        throw new Error('Video processing failed');
-      }
-    }, 5000);
+    if (video.file.status === 'ready') {
+    clearInterval(interval);
+    resolve(video);
+  } else if (video.file.status === 'error') {
+    clearInterval(interval);
+    throw new Error('Video processing failed');
+  }
+  }, 5000);
   });
-};
-```
-</Tab>
+  };
+    ```
+  </Tab>
 
-<Tab value="Get Video Details">
-```javascript
-// Get video details and streaming URLs
-const getVideoDetails = async (videoId) => {
-  const response = await fetch(`https://api.rixl.com/videos/${videoId}`, {
+  <Tab value="Get Video Details">
+    ```javascript
+    // Get video details and streaming URLs
+    const getVideoDetails = async (videoId) => {
+    const response = await fetch(`https://api.rixl.com/videos/${videoId}`, {
     headers: {
-      'X-API-Key': 'YOUR_PROJECT_API_KEY'
-    }
+    'X-API-Key': 'YOUR_PROJECT_API_KEY'
+  }
   });
 
-  const result = await response.json();
-  const video = result.data;
+    const result = await response.json();
+    const video = result.data;
 
-  return {
+    return {
     id: video.id,
     duration: video.duration,
     width: video.width,
@@ -373,9 +373,9 @@ const getVideoDetails = async (videoId) => {
     status: video.file.status,
     createdAt: video.created_at
   };
-};
-```
-</Tab>
+  };
+    ```
+  </Tab>
 </Tabs>
 
 ## Real-World Use Cases
@@ -445,7 +445,9 @@ Ready to stream your videos? Choose your approach:
 </Columns>
 
 <div className="mt-12">
-<Callout type="tip" title="Ready to stream?">
-  Start with our [Video Upload Guide](/platform/uploads/videos-guide) to see HLS streaming in action, or jump into the [React Component Guide](/sdk/video-component) to add professional video players to your application. For custom workflows, explore our [API Documentation](/platform/api-documentation/overview).
-</Callout>
+  <Callout type="tip" title="Ready to stream?">
+    Start with our [Video Upload Guide](/platform/uploads/videos-guide) to see HLS streaming in action, or jump into the
+    [React Component Guide](/sdk/video-component) to add professional video players to your application. For custom
+    workflows, explore our [API Documentation](/platform/api-documentation/overview).
+  </Callout>
 </div>

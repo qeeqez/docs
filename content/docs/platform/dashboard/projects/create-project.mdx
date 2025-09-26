@@ -3,17 +3,16 @@ title: Create New Project
 description: Set up a project to organize your media and control access
 ---
 
-import { Callout, Columns, Card } from '@/components';
-import { Step, Steps } from 'fumadocs-ui/components/steps';
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
-
+import {Callout, Columns, Card} from '@/components';
+import {Step, Steps} from 'fumadocs-ui/components/steps';
+import {Tabs, Tab} from 'fumadocs-ui/components/tabs';
 
 Every workspace in **RIXL** begins with a project.  
 A project organizes your media, permissions, and API access in one place.
 
 <Callout type="info">
-Projects are workspaces with dedicated storage, team access, and API keys.  
-You must create at least one project before uploading media.
+  Projects are workspaces with dedicated storage, team access, and API keys.
+  You must create at least one project before uploading media.
 </Callout>
 
 ---
@@ -22,16 +21,16 @@ You must create at least one project before uploading media.
 
 <Steps>
   <Step>
-    **Access Project Creation**  
+    **Access Project Creation**
     From your dashboard, go to **Settings → Projects** and click **Create New Project**.
   </Step>
 
   <Step>
-    **Configure Project Settings**  
+    **Configure Project Settings**
 
-    - **Name** → Choose a descriptive name (e.g., “Brand X Campaign”).  
-    - **Region** → Pick the server closest to your audience for best performance.  
-    - **Video Quality** → Select a processing tier (see below).  
+    - **Name** → Choose a descriptive name (e.g., “Brand X Campaign”).
+    - **Region** → Pick the server closest to your audience for best performance.
+    - **Video Quality** → Select a processing tier (see below).
 
     <Callout type="warn">
       Server region cannot be changed after project creation.
@@ -39,8 +38,9 @@ You must create at least one project before uploading media.
   </Step>
 
   <Step>
-    **Confirm Setup**  
-    Review your choices and click **Create Project**. Most settings can be adjusted later in [Project Settings](./project-settings).
+    **Confirm Setup**
+    Review your choices and click **Create Project**. Most settings can be adjusted later in [Project
+    Settings](./project-settings).
   </Step>
 </Steps>
 
@@ -55,7 +55,7 @@ You must create at least one project before uploading media.
 | **Pro**    | Professional     | Up to 4K    | Priority         | Video-on-Demand       |
 
 <Callout type="info">
-See full details in the [Video Processing Guide](/platform/uploads/videos/quality-tiers).
+  See full details in the [Video Processing Guide](/platform/uploads/videos/quality-tiers).
 </Callout>
 
 
@@ -65,24 +65,24 @@ See full details in the [Video Processing Guide](/platform/uploads/videos/qualit
 
 <Columns cols={2}>
   <Card title="Social Media">
-    Shorts video optimization
-    Fast processing for social feeds
-    Mobile-first delivery settings
+    - Shorts video optimization
+    - Fast processing for social feeds
+    - Mobile-first delivery settings
   </Card>
   <Card title="Professional VOD">
-    Pro video optimization
-    Multiple quality levels
-    Advanced analytics
+    - Pro video optimization
+    - Multiple quality levels
+    - Advanced analytics
   </Card>
   <Card title="E-commerce">
-    Image optimization for product galleries
-    Video previews and demonstrations
-    Fast loading for commerce sites
+    - Image optimization for product galleries
+    - Video previews and demonstrations
+    - Fast loading for commerce sites
   </Card>
   <Card title="Custom Setup">
-    Full Manual configuration of all settings
-    Flexible optimization profiles
-    Custom workflows and automation
+    - Full Manual configuration of all settings
+    - Flexible optimization profiles
+    - Custom workflows and automation
   </Card>
 </Columns>
 
@@ -92,26 +92,26 @@ See full details in the [Video Processing Guide](/platform/uploads/videos/qualit
 
 <Tabs items={['Storage & Processing', 'Video Optimization', 'Security & Access']}>
   <Tab value="Storage & Processing">
-    - **Server Locations**: EU Central (Germany), US East, Asia Pacific  
-    - **Automatic transcoding**: Web-ready video formats  
-    - **Image optimization**: Smart compression and adaptive formats  
-    - **CDN delivery**: Global fast content distribution  
+    - **Server Locations**: EU Central (Germany), US East, Asia Pacific
+    - **Automatic transcoding**: Web-ready video formats
+    - **Image optimization**: Smart compression and adaptive formats
+    - **CDN delivery**: Global fast content distribution
   </Tab>
 
   <Tab value="Video Optimization">
-    - **Basic**: Standard processing for testing  
-    - **Shorts**: Fast, mobile-first streaming  
-    - **Pro**: Multiple resolutions, priority processing  
+    - **Basic**: Standard processing for testing
+    - **Shorts**: Fast, mobile-first streaming
+    - **Pro**: Multiple resolutions, priority processing
     <Callout type="info">
       Advanced analytics available in **Pro** tier.
     </Callout>
   </Tab>
 
   <Tab value="Security & Access">
-    - Project visibility: Organization-wide, team-specific, or private  
-    - Role-based access control for collaborators  
-    - API key scoping & monitoring  
-    - Webhook security, rate limits, and access logs  
+    - Project visibility: Organization-wide, team-specific, or private
+    - Role-based access control for collaborators
+    - API key scoping & monitoring
+    - Webhook security, rate limits, and access logs
   </Tab>
 </Tabs>
 
@@ -121,30 +121,30 @@ See full details in the [Video Processing Guide](/platform/uploads/videos/qualit
 
 
 <Steps>
-<Step>
-**Generate API Key**
+  <Step>
+    **Generate API Key**
 
-Create your first secure API key for integartions
-</Step>
-<Step>
-**Configure Team Access**
+    Create your first secure API key for integartions
+  </Step>
+  <Step>
+    **Configure Team Access**
 
-Invite team members and set up role-based permissions
-</Step>
-<Step>
-**Test Upload**
+    Invite team members and set up role-based permissions
+  </Step>
+  <Step>
+    **Test Upload**
 
-Test with your first video or image file
-</Step>
-<Step>
-**Organize with Feeds**
+    Test with your first video or image file
+  </Step>
+  <Step>
+    **Organize with Feeds**
 
-Start building feeds for structured delivery
-</Step>
+    Start building feeds for structured delivery
+  </Step>
 </Steps>
 
 <Callout type="error" title="Project Deletion">
-Deleting a project permanently removes all associated media, feeds, and settings. This cannot be undone.
+  Deleting a project permanently removes all associated media, feeds, and settings. This cannot be undone.
 </Callout>
 
 ---
