@@ -1,11 +1,8 @@
-"use client";
-
-import type {icons, LucideProps} from 'lucide-react';
+import type {LucideProps} from 'lucide-react';
+import type {IconName} from "lucide-react/dynamic";
 import dynamic from 'next/dynamic';
 import React, {type ComponentProps, type ReactElement} from 'react';
 import {cn} from "@/lib/cn";
-
-export type IconName = keyof typeof icons;
 
 type IconProps = Omit<LucideProps, 'name'> &
   ({
@@ -25,10 +22,7 @@ export const Icon = ({name, icon, ...props}: IconProps) => {
   const LucideIcon = dynamic(
     () => import(`lucide-react/dist/esm/icons/${name.toLowerCase()}`)
       .catch(() => () => <SVGIcon {...props}/>),
-    {
-      loading: () => <SVGIcon {...props}/>,
-      ssr: false,
-    }
+    {ssr: true}
   );
 
   return <LucideIcon {...props} />;
