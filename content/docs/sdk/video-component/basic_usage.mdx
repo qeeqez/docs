@@ -4,7 +4,7 @@ description: "Learn how to implement the Video component with common patterns an
 ---
 
 
-import {Callout} from "@/components/mdx";
+import {Callout} from "@/components";
 
 ## Importing the Video Component
 
@@ -181,7 +181,7 @@ function ResponsiveVideo() {
   **Autoplay**: Always set `muted={true}` when using `autoPlay={true}` to comply with browser autoplay policies.
 </Callout>
 
-<Callout type="default">
+<Callout type="info">
   **Performance**: For video galleries, use the `key` prop to ensure proper component re-initialization when switching
   videos.
 </Callout>
