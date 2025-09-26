@@ -5,15 +5,30 @@ import type {HTMLAttributes, ReactNode} from "react";
 import {Icon} from "@/components/mdx/icon";
 import {cn} from "@/lib/cn";
 
+type ArrowType = boolean | "true" | "false";
+
 type Props = Omit<HTMLAttributes<HTMLElement>, 'title'> & {
   icon?: IconName;
   title: ReactNode;
   description?: ReactNode;
 
   href?: string;
-  arrow?: boolean;
+  arrow?: ArrowType;
   cta?: string;
 };
+
+const isExternalLink = (href: string): boolean => {
+  return href.startsWith("http://") || href.startsWith("https://");
+}
+
+const showArrow = (href?: string, arrow?: ArrowType) => {
+  if (!href) return false;
+
+  if (arrow === true || arrow === "true") return true;
+  if (arrow === false || arrow === "false") return false;
+
+  return isExternalLink(href);
+}
 
 export const Card = ({icon, title, description, href, arrow, cta, ...props}: Props) => {
   const E = href ? Link : 'div';
@@ -32,7 +47,7 @@ export const Card = ({icon, title, description, href, arrow, cta, ...props}: Pro
     )}
     aria-label={href ? `Navigate to ${title}` : undefined}
   >
-    {href && arrow &&
+    {showArrow(href, arrow) &&
       <ArrowUpRight
         className={cn(
           "absolute top-5 right-5 h-4 w-4",
