@@ -3,7 +3,7 @@ title: Video Streaming
 description: Professional video transcoding with adaptive streaming, instant delivery, and automatic processing for any device or connection.
 ---
 
-import { Callout, InfoCard, InteractiveCard } from "@/components";
+import { Callout, Columns, Card } from "@/components";
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
@@ -11,26 +11,29 @@ Welcome to **RIXL Video Streaming**—where every video becomes a streaming powe
 
 ## Quick Actions
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="Upload Videos"
-    description="Professional video transcoding with adaptive streaming and instant delivery."
     href="/platform/uploads/videos-guide"
-    icon="Upload"
-  />
-  <InteractiveCard
+    icon="upload"
+  >
+    Professional video transcoding with adaptive streaming and instant delivery.
+  </Card>
+  <Card
     title="Video Component"
-    description="Drop-in video player with HLS streaming, progress tracking, and controls."
     href="/sdk/video-component"
-    icon="Video"
-  />
-  <InteractiveCard
+    icon="video"
+  >
+    Drop-in video player with HLS streaming, progress tracking, and controls.
+  </Card>
+  <Card
     title="Dashboard Management"
-    description="Upload, organize, and manage videos through our web interface."
     href="/platform/dashboard/media/overview"
-    icon="Monitor"
-  />
-</div>
+    icon="monitor"
+  >
+    Upload, organize, and manage videos through our web interface.
+  </Card>
+</Columns>
 
 ## How RIXL Transforms Your Videos
 
@@ -62,38 +65,29 @@ Welcome to **RIXL Video Streaming**—where every video becomes a streaming powe
 
 ## Video Processing Features
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="Adaptive HLS Streaming"
-    description="Multiple quality levels that automatically adjust based on connection speed and device capabilities."
-    icon="Wifi"
-  />
-  <InfoCard
-    title="Instant Thumbnails"
-    description="Automatic thumbnail generation in AVIF format with smart frame selection."
-    icon="Image"
-  />
-  <InfoCard
-    title="Quality Tiers"
-    description="Basic (720p), Shorts (1080p), Pro (4K) processing options for different use cases."
-    icon="Settings"
-  />
-  <InfoCard
-    title="Progress Tracking"
-    description="Real-time processing status and progress monitoring through dashboard and API."
-    icon="BarChart"
-  />
-  <InfoCard
-    title="Global CDN"
-    description="Edge caching and intelligent routing for instant video delivery worldwide."
-    icon="Globe"
-  />
-  <InfoCard
-    title="Smart Compression"
-    description="Optimal encoding settings that balance file size and visual quality automatically."
-    icon="Zap"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="Adaptive HLS Streaming" icon="wifi">
+    Multiple quality levels that automatically adjust based on connection speed
+    and device capabilities.
+  </Card>
+  <Card title="Instant Thumbnails" icon="image">
+    Automatic thumbnail generation in AVIF format with smart frame selection.
+  </Card>
+  <Card title="Quality Tiers" icon="settings">
+    Basic (720p), Shorts (1080p), Pro (4K) processing options for different use
+    cases.
+  </Card>
+  <Card title="Progress Tracking" icon="bar-chart">
+    Real-time processing status and progress monitoring through dashboard and API.
+  </Card>
+  <Card title="Global CDN" icon="globe">
+    Edge caching and intelligent routing for instant video delivery worldwide.
+  </Card>
+  <Card title="Smart Compression" icon="zap">
+    Optimal encoding settings that balance file size and visual quality
+    automatically.
+  </Card>
+</Columns>
 
 ## Quality Tiers
 
@@ -386,110 +380,69 @@ const getVideoDetails = async (videoId) => {
 
 ## Real-World Use Cases
 
-### Streaming Applications
-
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="Video Streaming Platform"
-    description="Netflix-style streaming with adaptive quality, progress tracking, and global delivery."
-    icon="Play"
-  />
-  <InfoCard
-    title="Live Event Streaming"
-    description="Professional broadcasts with multiple quality levels and real-time delivery."
-    icon="Radio"
-  />
-  <InfoCard
-    title="Educational Platform"
-    description="Course videos with progress tracking, bookmarks, and accessibility features."
-    icon="BookOpen"
-  />
-</div>
-
-### Content & Social
-
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="Social Media Platform"
-    description="User-generated content with automatic optimization and mobile-first delivery."
-    icon="Users"
-  />
-  <InfoCard
-    title="Marketing Videos"
-    description="Promotional content optimized for web, social media, and email campaigns."
-    icon="Megaphone"
-  />
-  <InfoCard
-    title="Product Demos"
-    description="High-quality product videos with instant loading and professional presentation."
-    icon="Monitor"
-  />
-</div>
-
-### Enterprise Applications
-
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="Training Videos"
-    description="Corporate training content with progress tracking and completion analytics."
-    icon="GraduationCap"
-  />
-  <InfoCard
-    title="Video Conferencing"
-    description="Recorded meetings and presentations with automatic processing."
-    icon="Video"
-  />
-  <InfoCard
-    title="Documentation"
-    description="Technical tutorials and product documentation with searchable content."
-    icon="FileText"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="Video Streaming Platform" icon="play">
+    Netflix-style streaming with adaptive quality, progress tracking, and global
+    delivery.
+  </Card>
+  <Card title="Live Event Streaming" icon="radio">
+    Professional broadcasts with multiple quality levels and real-time delivery.
+  </Card>
+  <Card title="Social Media Integration" icon="share-2">
+    Seamlessly embed videos on social platforms with mobile-ready encoding.
+  </Card>
+  <Card title="E-Learning Platforms" icon="book-open">
+    Deliver educational content with fast load times and reliable playback.
+  </Card>
+  <Card title="Marketing & Advertising" icon="megaphone">
+    High-impact video ads with instant delivery and global reach.
+  </Card>
+  <Card title="Enterprise Video Solutions" icon="building">
+    Secure and scalable video infrastructure for internal and external use.
+  </Card>
+</Columns>
 
 ## Performance Benefits
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="Adaptive Streaming"
-    description="Automatic quality adjustment based on connection speed prevents buffering."
-    icon="Wifi"
-  />
-  <InfoCard
-    title="Global CDN"
-    description="200+ edge locations ensure instant video delivery worldwide."
-    icon="Globe"
-  />
-  <InfoCard
-    title="Smart Compression"
-    description="Optimal encoding reduces file sizes while maintaining visual quality."
-    icon="Zap"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="Adaptive Streaming" icon="wifi">
+    Automatic quality adjustment based on connection speed prevents buffering.
+  </Card>
+  <Card title="Global CDN" icon="globe">
+    200+ edge locations ensure instant video delivery worldwide.
+  </Card>
+  <Card title="Smart Compression" icon="zap">
+    Optimal encoding reduces file sizes while maintaining visual quality.
+  </Card>
+</Columns>
 
 ## What's Next?
 
 Ready to stream your videos? Choose your approach:
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="Upload Your First Video"
-    description="See HLS streaming and adaptive quality in action with our dashboard."
     href="/platform/uploads/videos-guide"
-    icon="Upload"
-  />
-  <InteractiveCard
+    icon="upload"
+  >
+    See HLS streaming and adaptive quality in action with our dashboard.
+  </Card>
+  <Card
     title="React Integration"
-    description="Add the Video component with progress tracking to your application."
     href="/sdk/video-component"
-    icon="Video"
-  />
-  <InteractiveCard
+    icon="video"
+  >
+    Add the Video component with progress tracking to your application.
+  </Card>
+  <Card
     title="API Implementation"
-    description="Build custom video workflows with our comprehensive REST API."
     href="/platform/api-documentation/overview"
-    icon="Code"
-  />
-</div>
+    icon="code"
+  >
+    Build custom video workflows with our comprehensive REST API.
+  </Card>
+</Columns>
 
 <div className="mt-12">
 <Callout type="tip" title="Ready to stream?">

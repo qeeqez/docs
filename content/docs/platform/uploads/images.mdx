@@ -3,33 +3,36 @@ title: Image Processing
 description: Transform any image into lightning-fast, web-ready files. AVIF format, smart placeholders, and global delivery—all automatic.
 ---
 
-import { Callout, InfoCard, InteractiveCard } from '@/components';
+import { Callout, Columns, Card } from '@/components';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
 Upload any image to RIXL and watch it transform into a web-ready masterpiece. Our intelligent processing pipeline delivers files that are 90% smaller while looking identical to the original—it's like magic, but it's just really smart technology.
 
 ## Quick Actions
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="Upload Images"
-    description="Start uploading and optimizing your images now."
     href="/platform/dashboard/media/overview"
-    icon="Upload"
-  />
-  <InteractiveCard
+    icon="upload"
+  >
+    Start uploading and optimizing your images now.
+  </Card>
+  <Card
     title="API Integration"
-    description="Integrate image optimization into your applications."
     href="/platform/api-documentation/overview"
-    icon="Code"
-  />
-  <InteractiveCard
+    icon="code"
+  >
+    Integrate image optimization into your applications.
+  </Card>
+  <Card
     title="Posts"
-    description="Create social media-style posts by uploading images directly to feeds."
     href="/platform/uploads/posts"
-    icon="Archive"
-  />
-</div>
+    icon="archive"
+  >
+    Create social media-style posts by uploading images directly to feeds.
+  </Card>
+</Columns>
 
 ## How Image Processing Works
 
@@ -156,24 +159,20 @@ Your images also generate tiny ~25-byte "thumbhash" placeholders that create bea
 
 ## Advanced Features
 
-<div className="grid gap-6 sm:grid-cols-2 mt-6">
-    <InfoCard
-        title="Auto-Rotate Images"
-        description="Automatically fixes rotated photos based on camera data"
-    />
-    <InfoCard
-        title="Keep Photo Details"
-        description="Preserves camera settings, location data, and color information"
-    />
-    <InfoCard
-        title="Fast Global Delivery"
-        description="Updates images instantly on servers worldwide"
-    />
-    <InfoCard
-        title="Content Checking"
-        description="Scans uploads to ensure they meet content guidelines"
-    />
-</div>
+<Columns cols={2}>
+    <Card title="Auto-Rotate Images">
+        Automatically fixes rotated photos based on camera data
+    </Card>
+    <Card title="Keep Photo Details">
+        Preserves camera settings, location data, and color information
+    </Card>
+    <Card title="Fast Global Delivery">
+        Updates images instantly on servers worldwide
+    </Card>
+    <Card title="Content Checking">
+        Scans uploads to ensure they meet content guidelines
+    </Card>
+</Columns>
 
 ## Best Practices
 

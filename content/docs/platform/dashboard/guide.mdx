@@ -4,33 +4,37 @@ description: Get up and running with RIXL in under 5 minutes — from account se
 
 ---
 
-import { Callout, InteractiveCard, InfoCard } from '@/components';
+import { Callout } from '@/components';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { Columns, Card } from '@/components';
 
 Welcome to **RIXL**! This quick guide will have you uploading and optimizing media in a few minutes. Onboard with no complex setup — just create a project, upload media, and watch RIXL optimize automatically.
 
 ## Quick Actions
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="Create Project"
-    description="Set up your first workspace for media organization."
     href="/platform/dashboard/projects/overview"
-    icon="FolderPlus"
-  />
-  <InteractiveCard
+    icon="folder-plus"
+  >
+    Set up your first workspace for media organization.
+  </Card>
+  <Card
     title="Upload Media"
-    description="Start optimizing videos and images immediately."
     href="/platform/dashboard/media/overview"
-    icon="Upload"
-  />
-  <InteractiveCard
+    icon="upload"
+  >
+    Start optimizing videos and images immediately.
+  </Card>
+  <Card
     title="Generate API Key"
-    description="Get keys for integrating RIXL into your apps."
     href="/platform/dashboard/api-keys"
-    icon="Key"
-  />
-</div>
+    icon="key"
+  >
+    Get keys for integrating RIXL into your apps.
+  </Card>
+</Columns>
 
 ## What You'll Need
 
@@ -46,62 +50,78 @@ Welcome to **RIXL**! This quick guide will have you uploading and optimizing med
 <Steps>
   <Step>
     **Create Your Workspace**
-    
-    Projects keep your media, team, and settings separate. Go to **Settings → Projects → Create New Project** and fill in:
-    - **Project Name**: Something you'll recognize (like "Marketing Videos" or "Product Photos")
-    - **Description** (optional)
 
+    Projects keep your media, team, and settings separate. Go to **Settings →
+    Projects → Create New Project** and fill in:
+
+    - **Project Name**: Something you'll recognize (like "Marketing Videos" or
+      "Product Photos")
+    - **Description** (optional)
+  </Step>
   <Step>
-    **Pick Server Location**  
+    **Pick Server Location**
+
     Choose the region closest to your users for best delivery performance:
-    - **US East**, **US West**, **Europe**  
+
+    - **US East**, **US West**, **Europe**
+
     <Callout type="warning">
       Server location cannot be changed after creation — choose carefully.
     </Callout>
-
+  </Step>
   <Step>
-    **Select Default Optimization**  
+    **Select Default Optimization**
+
     Pick a default video quality tier:
-    - **Shorts** — social/mobile  
-    - **Standard** — general web delivery  
+
+    - **Shorts** — social/mobile
+    - **Standard** — general web delivery
     - **Pro** — VOD / high-fidelity
   </Step>
   <Step>
-    **Create & Continue**  
-    After creation you can immediately start [uploading media](/platform/dashboard/media/overview) and create [API keys](/platform/dashboard/api-keys) if needed.
+    **Create & Continue**
+
+    After creation you can immediately start
+    [uploading media](/platform/dashboard/media/overview) and create
+    [API keys](/platform/dashboard/api-keys) if needed.
   </Step>
+  <Step>
+    **Upload Something (Quick)**
 
-  </Step>
+    In your project, go to the
+    [Media section](/platform/dashboard/media/overview) and drag in some files.
 
-
-  ## Upload Something (Quick)
-    
-    In your project, go to the [Media section](/platform/dashboard/media/overview) and drag in some files.
-    
     **What you can upload:**
+
     - **Videos**: MP4, MOV, AVI, and more (up to 2GB each)
     - **Images**: JPG, PNG, HEIC, SVG, and others (up to 100MB each)
-    
-    RIXL will automatically optimize everything for web delivery—you'll see the magic happen in real-time.
-  
+
+    RIXL will automatically optimize everything for web delivery—you'll see the
+    magic happen in real-time.
   </Step>
   <Step>
     **Get Your API Keys** *(Optional for getting started)*
-    
-    If you plan to integrate RIXL into an app or website, you'll need [API keys](/platform/dashboard/api-keys). Each project gets its own set of keys for security.
-    
-    Don't worry about this step if you're just testing things out—you can always come back to it later.
-    
+
+    If you plan to integrate RIXL into an app or website, you'll need
+    [API keys](/platform/dashboard/api-keys). Each project gets its own set of
+    keys for security.
+
+    Don't worry about this step if you're just testing things out—you can always
+    come back to it later.
+
     <Callout type="warning">
-      API keys are like passwords for your project. Keep them secure and never share them publicly.
+      API keys are like passwords for your project. Keep them secure and never
+      share them publicly.
     </Callout>
   </Step>
   <Step>
     **Invite Your Team** *(Optional but recommended)*
-    
-    Working with others? Set up an [Organization](/platform/account-teams/team-management) and invite your team.
-    
+
+    Working with others? Set up an
+    [Organization](/platform/account-teams/team-management) and invite your team.
+
     **Available roles:**
+
     - **Owner**: Can do everything (including manage billing)
     - **Admin**: Can manage projects and team members
     - **Member**: Can upload and manage content
@@ -119,28 +139,20 @@ New to the UI? Visit the [Dashboard Overview](/platform/dashboard/overview) to s
 
 The dashboard is organized into functional modules for efficient content management:
 
-<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-6">
-  <InfoCard 
-    title="Project Home" 
-    description="Dashboard overview with usage metrics and quick actions"
-    icon="BookOpen"
-  />
-  <InfoCard 
-    title="Video Library" 
-    description="Upload, transcode, and manage video content"
-    icon="Video"
-  />
-  <InfoCard 
-    title="Image Library" 
-    description="Upload and process images with real-time transformations"
-    icon="Image"
-  />
-  <InfoCard 
-    title="Content Feeds" 
-    description="Organize content into structured feeds"
-    icon="Activity"
-  />
-</div>
+<Columns cols={4}>
+  <Card title="Project Home" icon="book-open">
+    Dashboard overview with usage metrics and quick actions
+  </Card>
+  <Card title="Video Library" icon="video">
+    Upload, transcode, and manage video content
+  </Card>
+  <Card title="Image Library" icon="image">
+    Upload and process images with real-time transformations
+  </Card>
+  <Card title="Content Feeds" icon="activity">
+    Organize content into structured feeds
+  </Card>
+</Columns>
 
 ### First Upload Workflows
 
@@ -149,22 +161,22 @@ The dashboard is organized into functional modules for efficient content managem
 <Steps>
   <Step>
     **Select Files**
-    
+
     Drag and drop videos into the upload area or browse to select files.
   </Step>
   <Step>
     **Configure Processing**
-    
+
     Choose transcoding quality, thumbnail settings, and optimization preferences.
   </Step>
   <Step>
     **Monitor Progress**
-    
+
     Watch real-time processing status with detailed progress indicators.
   </Step>
   <Step>
     **Access Content**
-    
+
     Get share URLs, embed codes, and view analytics.
   </Step>
 </Steps>
@@ -174,207 +186,97 @@ The dashboard is organized into functional modules for efficient content managem
 <Steps>
   <Step>
     **Start Upload**
-    
-    Navigate to the Images section in your dashboard and click the upload button to select your files.
+
+    Navigate to the Images section in your dashboard and click the upload button
+    to select your files.
   </Step>
   <Step>
     **Configure Settings**
-    
+
     Set upload preferences and transformation options.
   </Step>
   <Step>
     **Immediate Availability**
-    
+
     Images are instantly available with real-time transformation capabilities.
   </Step>
   <Step>
     **Optimize Delivery**
-    
+
     Use URL-based transformations for automatic optimization and CDN delivery.
   </Step>
 </Steps>
 
 ## Navigation Essentials
 
-<div className="grid gap-6 sm:grid-cols-3 mt-6">
-  <InfoCard 
-    title="Project Switching" 
-    description="Use the project selector in the sidebar to switch between projects"
-    icon="Workflow"
-  />
-  <InfoCard 
-    title="Quick Actions" 
-    description="Most sections include quick action buttons for common tasks"
-    icon="Activity"
-  />
-  <InfoCard 
-    title="Usage Monitoring" 
-    description="Storage usage and recent activity are visible on the project home page"
-    icon="BarChart3"
-  />
-</div>
-
-## Interface Overview
-
-### Primary Work Areas
-
-The dashboard is organized into functional modules for efficient content management:
-
-<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-6">
-  <InfoCard 
-    title="Project Home" 
-    description="Dashboard overview with usage metrics and quick actions"
-    icon="BookOpen"
-  />
-  <InfoCard 
-    title="Video Library" 
-    description="Upload, transcode, and manage video content"
-    icon="Video"
-  />
-  <InfoCard 
-    title="Image Library" 
-    description="Upload and process images with real-time transformations"
-    icon="Image"
-  />
-  <InfoCard 
-    title="Content Feeds" 
-    description="Organize media into structured feeds for dynamic delivery"
-    icon="Activity"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="Project Switching" icon="workflow">
+    Use the project selector in the sidebar to switch between projects
+  </Card>
+  <Card title="Quick Actions" icon="activity">
+    Most sections include quick action buttons for common tasks
+  </Card>
+  <Card title="Usage Monitoring" icon="bar-chart-3">
+    Storage usage and recent activity are visible on the project home page
+  </Card>
+</Columns>
 
 ### Administrative Functions
 
-<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-6">
-  <InfoCard 
-    title="Project Settings" 
-    description="Configure processing preferences and team permissions"
-    icon="FolderIcon"
-  />
-  <InfoCard 
-    title="Team Management" 
-    description="Invite members and manage role-based access control"
-    icon="Users"
-  />
-  <InfoCard 
-    title="API Authentication" 
-    description="Generate and manage API keys for programmatic access"
-    icon="Key"
-  />
-  <InfoCard 
-    title="Billing & Usage" 
-    description="Monitor consumption and manage subscription preferences"
-    icon="CreditCard"
-  />
-</div>
-
-## Quick Start Workflows
-
-### Upload Your First Video
-
-<Steps>
-  <Step>
-    **Start Upload**
-    
-    Navigate to the Videos section in your dashboard and click the upload button to select your files.
-  </Step>
-  <Step>
-    **Configure Settings**
-    
-    Set basic processing options and quality preferences.
-  </Step>
-  <Step>
-    **Monitor Processing**
-    
-    Track status: Uploading → Processing → Ready for delivery.
-  </Step>
-  <Step>
-    **Access Content**
-    
-    Get share URLs, embed codes, and view analytics.
-  </Step>
-</Steps>
-
-### Upload Your First Image
-
-<Steps>
-  <Step>
-    **Start Upload**
-    
-    Navigate to the Images section in your dashboard and click the upload button to select your files.
-  </Step>
-  <Step>
-    **Configure Settings**
-    
-    Set upload preferences and transformation options.
-  </Step>
-  <Step>
-    **Immediate Availability**
-    
-    Images are instantly available with real-time transformation capabilities.
-  </Step>
-  <Step>
-    **Optimize Delivery**
-    
-    Use URL-based transformations for automatic optimization and CDN delivery.
-  </Step>
-</Steps>
-
-## Navigation Essentials
-
-<div className="grid gap-6 sm:grid-cols-3 mt-6">
-  <InfoCard 
-    title="Project Switching" 
-    description="Use the project selector in the sidebar to switch between projects"
-    icon="Workflow"
-  />
-  <InfoCard 
-    title="Quick Actions" 
-    description="Most sections include quick action buttons for common tasks"
-    icon="Activity"
-  />
-  <InfoCard 
-    title="Usage Monitoring" 
-    description="Storage usage and recent activity are visible on the project home page"
-    icon="BarChart3"
-  />
-</div>
+<Columns cols={4}>
+  <Card title="Project Settings" icon="folder-icon">
+    Configure processing preferences and team permissions
+  </Card>
+  <Card title="Team Management" icon="users">
+    Invite members and manage role-based access control
+  </Card>
+  <Card title="API Authentication" icon="key">
+    Generate and manage API keys for programmatic access
+  </Card>
+  <Card title="Billing & Usage" icon="credit-card">
+    Monitor consumption and manage subscription preferences
+  </Card>
+</Columns>
 
 ## Key Management Areas
 
 ### Team & Account Setup
 
-<div className="grid gap-6 sm:grid-cols-2">
-  <InteractiveCard
+<Columns cols={2}>
+  <Card
     title="Team Management"
-    description="Set up your team and assign roles for collaborative work."
-  href="/platform/account-teams/organizations-overview"
-    icon="Users"
-  />
-  <InteractiveCard
+    href="/platform/account-teams/organizations-overview"
+    icon="users"
+  >
+    Set up your team and assign roles for collaborative work.
+  </Card>
+  <Card
     title="Account Settings"
-    description="Configure your personal account settings and security."
     href="/platform/account-teams"
-    icon="Settings"
-  />
-</div>
+    icon="settings"
+  >
+    Configure your personal account settings and security.
+  </Card>
+</Columns>
 
 ### API & Integration Setup
 
-<div className="grid gap-6 sm:grid-cols-2">
-  <InteractiveCard
+<Columns cols={2}>
+  <Card
     title="Create API Keys"
-    description="Generate your first API keys for programmatic access."
-  href="/platform/api-documentation/create-key"
-    icon="Key"
-  />
-  <InteractiveCard
+    href="/platform/api-documentation/create-key"
+    icon="key"
+  >
+    Generate your first API keys for programmatic access.
+  </Card>
+  <Card
     title="Billing Setup"
-    description="Configure your billing and subscription preferences."
-  href="/platform/billing/overview"
-    icon="CreditCard"
-  />
-</div>
+    href="/platform/billing/overview"
+    icon="credit-card"
+  >
+    Configure your billing and subscription preferences.
+  </Card>
+</Columns>
 
 ## Next Steps
 

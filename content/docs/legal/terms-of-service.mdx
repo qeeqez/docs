@@ -3,9 +3,8 @@ title: Terms of Service
 description: Terms and conditions for using RIXL's content delivery platform and services.
 ---
 
-import { Callout } from 'fumadocs-ui/components/callout';
+import { Callout, Columns, Card } from '@/components';
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
-import { Cards, Card } from 'fumadocs-ui/components/card';
 
 <Callout type="info">
 **Last Updated: September 2025**
@@ -35,9 +34,9 @@ By using our Services, you accept these Terms. If you do not agree, do not use o
 
 ## Account Registration and Security
 
-<Cards>
-  <Card title="Account Creation" description="Requirements for creating an account">
-    To use our Services, you must:
+<Columns cols={2}>
+  <Card title="Account Creation">
+    Requirements for creating an account. To use our Services, you must:
 
     - Provide accurate and complete registration information
     - Be at least 18 years old or have parental consent
@@ -45,15 +44,15 @@ By using our Services, you accept these Terms. If you do not agree, do not use o
     - Notify us immediately of any unauthorized access
   </Card>
 
-  <Card title="Account Responsibility" description="Your obligations as an account holder">
-    You are responsible for:
+  <Card title="Account Responsibility">
+    Your obligations as an account holder. You are responsible for:
 
     - All activities that occur under your account
     - Maintaining the confidentiality of your login credentials
     - Ensuring your account information remains current and accurate
     - Compliance with these Terms by all users of your account
   </Card>
-</Cards>
+</Columns>
 
 
 
@@ -82,32 +81,36 @@ You must comply with our Acceptable Use Policy and these Terms. Violations may r
   <Tab value="Prohibited Activities">
     **You may not use our Services to:**
 
-    <Cards>
-      <Card title="Illegal Content" description="Content that violates laws">
+    <Columns cols={4}>
+      <Card title="Illegal Content">
+        Content that violates laws. 
         - Upload, process, or distribute illegal, harmful, or infringing content
         - Violate any applicable laws or regulations
         - Facilitate illegal activities or purposes
       </Card>
 
-      <Card title="Security Violations" description="Actions that compromise security">
+      <Card title="Security Violations">
+        Actions that compromise security.
         - Distribute malware, viruses, or other harmful code
         - Attempt to gain unauthorized access to our systems
         - Interfere with or disrupt our Services
         - Circumvent security measures or access controls
       </Card>
 
-      <Card title="Intellectual Property" description="Respect for IP rights">
+      <Card title="Intellectual Property">
+        Respect for IP rights.
         - Infringe on the intellectual property rights of others
         - Upload copyrighted content without authorization
         - Reverse engineer our proprietary technology
       </Card>
 
-      <Card title="Commercial Violations" description="Unauthorized business activities">
+      <Card title="Commercial Violations">
+        Unauthorized business activities.
         - Use our Services for competitive analysis without permission
         - Resell or redistribute our Services without authorization
         - Create competing services using our platform
       </Card>
-    </Cards>
+    </Columns>
   </Tab>
 </Tabs>
 
@@ -161,25 +164,28 @@ We are committed to protecting your privacy. Our Privacy Policy, incorporated in
   <Tab value="Payment Processing">
     **Payment Processing**
 
-    <Cards>
-      <Card title="Secure Processing" description="Your payment information is protected">
+    <Columns cols={3}>
+      <Card title="Secure Processing">
+        Your payment information is protected.
         - Payments are processed through secure third-party payment processors
         - We do not store your complete payment information
         - All transactions are encrypted and secure
       </Card>
 
-      <Card title="Billing Cycle" description="How and when you're charged">
+      <Card title="Billing Cycle">
+        How and when you're charged.
         - Subscription fees are billed in advance on a monthly or annual basis
         - Billing occurs on the same date each cycle
         - Invoices are sent via email
       </Card>
 
-      <Card title="Refund Policy" description="Our refund terms">
+      <Card title="Refund Policy">
+        Our refund terms.
         - All fees are non-refundable except as required by law
         - Refunds may be considered for service outages or billing errors
         - Contact support for refund requests
       </Card>
-    </Cards>
+    </Columns>
   </Tab>
 
   <Tab value="Usage & Billing">
@@ -225,9 +231,9 @@ Support is provided according to your subscription plan. We offer:
 **Important Legal Notice**: The following limitations apply to the maximum extent permitted by law.
 </Callout>
 
-<Cards>
-  <Card title="Service Disclaimer" description="No warranties provided">
-    **OUR SERVICES ARE PROVIDED "AS IS"**
+<Columns cols={3}>
+  <Card title="Service Disclaimer">
+    No warranties provided. **OUR SERVICES ARE PROVIDED "AS IS"**
 
     Our Services are provided without warranties of any kind, express or implied, including:
     - Warranties of merchantability
@@ -240,8 +246,8 @@ Support is provided according to your subscription plan. We offer:
     </Callout>
   </Card>
 
-  <Card title="Limitation of Damages" description="Types of damages excluded">
-    **EXCLUDED DAMAGES**
+  <Card title="Limitation of Damages">
+    Types of damages excluded. **EXCLUDED DAMAGES**
 
     RIXL shall not be liable for any:
     - Indirect, incidental, or special damages
@@ -256,8 +262,8 @@ Support is provided according to your subscription plan. We offer:
     </Callout>
   </Card>
 
-  <Card title="Maximum Liability" description="Cap on our total liability">
-    **LIABILITY CAP**
+  <Card title="Maximum Liability">
+    Cap on our total liability. **LIABILITY CAP**
 
     Our total liability to you shall not exceed the amount you paid to RIXL in the 12 months preceding the claim.
 
@@ -265,7 +271,7 @@ Support is provided according to your subscription plan. We offer:
     This cap applies to all claims collectively, not per incident.
     </Callout>
   </Card>
-</Cards>
+</Columns>
 
 ## Indemnification
 
@@ -285,21 +291,23 @@ You agree to indemnify and hold RIXL harmless from any claims, damages, or expen
   <Tab value="Termination by You">
     **You may terminate your account at any time**
 
-    <Cards>
-      <Card title="Self-Service Cancellation" description="Cancel through your dashboard">
+    <Columns cols={2}>
+      <Card title="Self-Service Cancellation">
+        Cancel through your dashboard.
         - Access your account dashboard
         - Navigate to subscription settings
         - Follow the cancellation process
         - Confirm your cancellation request
       </Card>
 
-      <Card title="Support-Assisted Cancellation" description="Get help with cancellation">
+      <Card title="Support-Assisted Cancellation">
+        Get help with cancellation.
         - Contact our support team
         - Request account termination
         - Follow any additional steps provided
         - Receive confirmation of cancellation
       </Card>
-    </Cards>
+    </Columns>
 
     <Callout type="info">
     You can cancel at any time, but refunds are subject to our refund policy.
@@ -309,25 +317,28 @@ You agree to indemnify and hold RIXL harmless from any claims, damages, or expen
   <Tab value="Termination by RIXL">
     **We may terminate or suspend your account if you:**
 
-    <Cards>
-      <Card title="Policy Violations" description="Breaches of our terms">
+    <Columns cols={3}>
+      <Card title="Policy Violations">
+        Breaches of our terms.
         - Violate these Terms or our Acceptable Use Policy
         - Engage in prohibited activities
         - Abuse our platform or services
       </Card>
 
-      <Card title="Payment Issues" description="Billing and payment problems">
+      <Card title="Payment Issues">
+        Billing and payment problems.
         - Fail to pay required fees
         - Use fraudulent payment methods
         - Dispute legitimate charges
       </Card>
 
-      <Card title="Security Concerns" description="Threats to platform security">
+      <Card title="Security Concerns">
+        Threats to platform security.
         - Engage in fraudulent or harmful activities
         - Pose a security risk to our Services
         - Attempt unauthorized access
       </Card>
-    </Cards>
+    </Columns>
 
     <Callout type="warn">
     We will provide notice when possible, but may terminate immediately for serious violations.
@@ -337,25 +348,28 @@ You agree to indemnify and hold RIXL harmless from any claims, damages, or expen
   <Tab value="Effect of Termination">
     **Upon termination:**
 
-    <Cards>
-      <Card title="Immediate Effects" description="What happens right away">
+    <Columns cols={3}>
+      <Card title="Immediate Effects">
+        What happens right away.
         - Your access to our Services will cease
         - Active processing jobs may be stopped
         - API access will be revoked
       </Card>
 
-      <Card title="Data and Content" description="What happens to your data">
+      <Card title="Data and Content">
+        What happens to your data.
         - Your content may be deleted after a reasonable grace period
         - We may provide a limited time to export your data
         - Backups may be retained for legal compliance
       </Card>
 
-      <Card title="Financial Obligations" description="Outstanding payments">
+      <Card title="Financial Obligations">
+        Outstanding payments.
         - Outstanding fees remain due and payable
         - No refunds for unused portions of prepaid services
         - Final invoice will be generated
       </Card>
-    </Cards>
+    </Columns>
 
     <Callout type="info">
     Provisions that should survive termination (like payment obligations and liability limitations) will remain in effect.

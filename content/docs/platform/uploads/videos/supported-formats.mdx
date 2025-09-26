@@ -3,7 +3,7 @@ title: Supported Formats
 description: Video formats and encoding specifications supported by RIXL.
 ---
 
-import {InfoCard } from '@/components';
+import { Columns, Card } from '@/components';
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 
@@ -145,24 +145,20 @@ Understanding supported input formats helps you prepare videos for optimal proce
 
 ### Source File Optimization
 
-<div className="grid gap-6 sm:grid-cols-2 mt-6">
-    <InfoCard
-        title="Format: MP4 + H.264"
-        description="Fastest processing with universal compatibility"
-    />
-    <InfoCard
-        title="Resolution: Upload Highest Available"
-        description="Up to 4K for Pro tier, system scales down appropriately"
-    />
-    <InfoCard
-        title="Frame Rate: 30fps or 60fps"
-        description="Standard rates for optimal processing and compatibility"
-    />
-    <InfoCard
-        title="Audio: Opus Codec"
-        description="Best compatibility and quality for source material"
-    />
-</div>
+<Columns cols={2}>
+    <Card title="Format: MP4 + H.264">
+        Fastest processing with universal compatibility
+    </Card>
+    <Card title="Resolution: Upload Highest Available">
+        Up to 4K for Pro tier, system scales down appropriately
+    </Card>
+    <Card title="Frame Rate: 30fps or 60fps">
+        Standard rates for optimal processing and compatibility
+    </Card>
+    <Card title="Audio: Opus Codec">
+        Best compatibility and quality for source material
+    </Card>
+</Columns>
 
 ### Pre-processing Recommendations
 

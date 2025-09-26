@@ -3,160 +3,135 @@ title: Reference Documentation
 description: Complete technical reference for RIXL APIs, React SDK components, platform specifications, and integration guides.
 ---
 
-import { Callout, InfoCard, InteractiveCard } from "@/components";
+import { Callout, Columns, Card } from "@/components";
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 
 Welcome to the **RIXL Reference Documentation**—your comprehensive technical resource for APIs, SDKs, and platform specifications. Whether you're implementing REST endpoints, configuring React components, or understanding platform limits, find everything you need here.
 
 ## Quick Actions
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="REST API Reference"
-    description="Complete API documentation with live examples and response schemas."
     href="/platform/api-documentation/overview"
-    icon="Code"
-  />
-  <InteractiveCard
+    icon="code"
+  >
+    Complete API documentation with live examples and response schemas.
+  </Card>
+  <Card
     title="React SDK Components"
-    description="Video and Image component props and implementation guides. Feed component available."
     href="/sdk/getting-started/overview"
-    icon="Layers"
-  />
-  <InfoCard
-    title="Interactive API Docs"
-    description="Test API endpoints directly in your browser with live data. (Coming Soon)"
-    icon="Play"
-  />
-</div>
+    icon="layers"
+  >
+    Video and Image component props and implementation guides. Feed component
+    available.
+  </Card>
+  <Card title="Interactive API Docs" icon="play">
+    Test API endpoints directly in your browser with live data. (Coming Soon)
+  </Card>
+</Columns>
 
 ## API Documentation
 
 ### Core Endpoints
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="Video API"
-    description="Upload, process, and manage video content with quality tier selection and HLS streaming."
-    icon="Video"
-  />
-  <InfoCard
-    title="Image API"
-    description="Upload and optimize images with AVIF compression and responsive delivery."
-    icon="Image"
-  />
-  <InfoCard
-    title="Feed API"
-    description="Retrieve dynamic content feeds with creator filtering and pagination."
-    icon="Activity"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="Video API" icon="video">
+    Upload, process, and manage video content with quality tier selection and HLS
+    streaming.
+  </Card>
+  <Card title="Image API" icon="image">
+    Upload and optimize images with AVIF compression and responsive delivery.
+  </Card>
+  <Card title="Feed API" icon="activity">
+    Retrieve dynamic content feeds with creator filtering and pagination.
+  </Card>
+</Columns>
 
 ### Authentication & Security
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="API Keys"
-    description="Project-based authentication with secure key management and rotation."
-    icon="Key"
-  />
-  <InfoCard
-    title="Rate Limiting"
-    description="Request limits, burst handling, and quota management across subscription tiers."
-    icon="Shield"
-  />
-  <InfoCard
-    title="Error Handling"
-    description="Comprehensive error codes, messages, and troubleshooting guides."
-    icon="AlertTriangle"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="API Keys" icon="key">
+    Project-based authentication with secure key management and rotation.
+  </Card>
+  <Card title="Rate Limiting" icon="shield">
+    Request limits, burst handling, and quota management across subscription
+    tiers.
+  </Card>
+  <Card title="Error Handling" icon="alert-triangle">
+    Comprehensive error codes, messages, and troubleshooting guides.
+  </Card>
+</Columns>
 
 ## React SDK Reference
 
 ### Component Library
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="Video Component"
-    description="HLS video player with progress tracking, quality controls, and fullscreen support."
     href="/sdk/video-component"
-    icon="Video"
-  />
-  <InteractiveCard
+    icon="video"
+  >
+    HLS video player with progress tracking, quality controls, and fullscreen
+    support.
+  </Card>
+  <Card
     title="Image Component"
-    description="Optimized images with AVIF compression, lazy loading, and responsive sizing."
     href="/sdk/image-component"
-    icon="Image"
-  />
-  <InfoCard
-    title="Feed Component"
-    description="Dynamic content feeds with infinite scroll and real-time updates. (Coming Soon)"
-    icon="Activity"
-  />
-</div>
+    icon="image"
+  >
+    Optimized images with AVIF compression, lazy loading, and responsive sizing.
+  </Card>
+  <Card title="Feed Component" icon="activity">
+    Dynamic content feeds with infinite scroll and real-time updates. (Coming
+    Soon)
+  </Card>
+</Columns>
 
 ### Hooks & Utilities
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="useProgressBar"
-    description="Track video playback progress and duration with real-time updates."
-    icon="BarChart"
-  />
-  <InfoCard
-    title="TypeScript Support"
-    description="Full TypeScript definitions for all components and hooks."
-    icon="Code"
-  />
-  <InfoCard
-    title="Browser Compatibility"
-    description="Chrome 88+, Firefox 85+, Safari 14+, Edge 88+ support."
-    icon="Monitor"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="useProgressBar" icon="bar-chart">
+    Track video playback progress and duration with real-time updates.
+  </Card>
+  <Card title="TypeScript Support" icon="code">
+    Full TypeScript definitions for all components and hooks.
+  </Card>
+  <Card title="Browser Compatibility" icon="monitor">
+    Chrome 88+, Firefox 85+, Safari 14+, Edge 88+ support.
+  </Card>
+</Columns>
 
 ## Platform Specifications
 
 ### Media Processing
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="Video Formats"
-    description="MP4, MOV, AVI, WebM, MKV input. HLS output with adaptive streaming."
-    icon="Video"
-  />
-  <InfoCard
-    title="Image Formats"
-    description="JPEG, PNG, WebP, HEIC input. AVIF output with fallbacks."
-    icon="Image"
-  />
-  <InfoCard
-    title="Quality Tiers"
-    description="Basic (720p), Shorts (1080p), Pro (4K) with different processing speeds."
-    icon="Settings"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="Video Formats" icon="video">
+    MP4, MOV, AVI, WebM, MKV input. HLS output with adaptive streaming.
+  </Card>
+  <Card title="Image Formats" icon="image">
+    JPEG, PNG, WebP, HEIC input. AVIF output with fallbacks.
+  </Card>
+  <Card title="Quality Tiers" icon="settings">
+    Basic (720p), Shorts (1080p), Pro (4K) with different processing speeds.
+  </Card>
+</Columns>
 
 ### Platform Limits
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="File Size Limits"
-    description="Videos: 2GB max | Images: 100MB max | No quantity limits."
-    icon="HardDrive"
-  />
-  <InfoCard
-    title="API Rate Limits"
-    description="1000 requests/minute per key | Burst handling included."
-    icon="Zap"
-  />
-  <InfoCard
-    title="Processing Times"
-    description="Basic: ~1x | Shorts: ~1.5x | Pro: ~2-3x video length."
-    icon="Clock"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="File Size Limits" icon="hard-drive">
+    Videos: 2GB max | Images: 100MB max | No quantity limits.
+  </Card>
+  <Card title="API Rate Limits" icon="zap">
+    1000 requests/minute per key | Burst handling included.
+  </Card>
+  <Card title="Processing Times" icon="clock">
+    Basic: ~1x | Shorts: ~1.5x | Pro: ~2-3x video length.
+  </Card>
+</Columns>
 
 ## API Quick Reference
 
@@ -290,65 +265,49 @@ interface FeedProps extends HTMLProps<HTMLDivElement> {
 
 ### CDN & Performance
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="Global Edge Locations"
-    description="200+ edge locations worldwide with intelligent routing and caching."
-    icon="Globe"
-  />
-  <InfoCard
-    title="Adaptive Streaming"
-    description="HLS with multiple quality levels based on connection speed."
-    icon="Wifi"
-  />
-  <InfoCard
-    title="Smart Caching"
-    description="Intelligent cache invalidation and edge optimization."
-    icon="Database"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="Global Edge Locations" icon="globe">
+    200+ edge locations worldwide with intelligent routing and caching.
+  </Card>
+  <Card title="Adaptive Streaming" icon="wifi">
+    HLS with multiple quality levels based on connection speed.
+  </Card>
+  <Card title="Smart Caching" icon="database">
+    Intelligent cache invalidation and edge optimization.
+  </Card>
+</Columns>
 
 ## Developer Resources
 
 ### Integration Tools
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="OpenAPI Specification"
-    description="Complete API specification for code generation and testing tools. (Coming Soon)"
-    icon="FileText"
-  />
-  <InfoCard
-    title="Postman Collection"
-    description="Ready-to-use Postman collection for API testing and exploration. (Coming Soon)"
-    icon="Download"
-  />
-  <InfoCard
-    title="TypeScript Definitions"
-    description="Full TypeScript support included with @rixl/videosdk-react package."
-    icon="Code"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="OpenAPI Specification" icon="file-text">
+    Complete API specification for code generation and testing tools. (Coming
+    Soon)
+  </Card>
+  <Card title="Postman Collection" icon="download">
+    Ready-to-use Postman collection for API testing and exploration. (Coming
+    Soon)
+  </Card>
+  <Card title="TypeScript Definitions" icon="code">
+    Full TypeScript support included with @rixl/videosdk-react package.
+  </Card>
+</Columns>
 
 ### Support & Updates
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="API Versioning"
-    description="Semantic versioning with backward compatibility and migration guides."
-    icon="GitBranch"
-  />
-  <InfoCard
-    title="Status Page"
-    description="Real-time platform status and incident notifications."
-    icon="Monitor"
-  />
-  <InfoCard
-    title="Developer Support"
-    description="Direct technical support for integration questions and issues."
-    icon="MessageCircle"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="API Versioning" icon="git-branch">
+    Semantic versioning with backward compatibility and migration guides.
+  </Card>
+  <Card title="Status Page" icon="monitor">
+    Real-time platform status and incident notifications.
+  </Card>
+  <Card title="Developer Support" icon="message-circle">
+    Direct technical support for integration questions and issues.
+  </Card>
+</Columns>
 
 <div className="mt-12">
 <Callout type="tip" title="Ready to integrate?">

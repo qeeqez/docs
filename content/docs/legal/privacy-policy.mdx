@@ -4,9 +4,8 @@ description: How RIXL collects, uses, and protects your personal information whe
 index: true
 ---
 
-import { Callout } from 'fumadocs-ui/components/callout';
+import { Callout, Columns, Card } from '@/components';
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
-import { Cards, Card } from 'fumadocs-ui/components/card';
 
 <Callout type="info">
 **Last Updated: September 2025**
@@ -24,9 +23,9 @@ By using our services, you agree to this Privacy Policy.
 
 ## Information We Collect
 
-<Cards>
-  <Card title="Information You Provide" description="Data you directly share with us">
-    We collect information you provide directly to us, including:
+<Columns cols={3}>
+  <Card title="Information You Provide">
+    Data you directly share with us. We collect information you provide directly to us, including:
 
     - **Account Information**: Name, email address, company name, and billing information when you create an account
     - **Profile Information**: Optional profile details, preferences, and settings
@@ -36,8 +35,8 @@ By using our services, you agree to this Privacy Policy.
   </Card>
 
 
-  <Card title="Information We Collect Automatically" description="Data gathered during your use of our services">
-    When you use our Services, we automatically collect:
+  <Card title="Information We Collect Automatically">
+    Data gathered during your use of our services. When you use our Services, we automatically collect:
 
     - **Usage Data**: Information about how you use our Services, including features accessed, processing requests, and performance metrics
     - **Device Information**: Device type, operating system, browser type, IP address, and unique device identifiers
@@ -45,8 +44,8 @@ By using our services, you agree to this Privacy Policy.
     - **Analytics Data**: Aggregated usage statistics and performance metrics
   </Card>
 
-  <Card title="Cookies and Tracking Technologies" description="Technologies that enhance your experience">
-    We use cookies and similar technologies to:
+  <Card title="Cookies and Tracking Technologies">
+    Technologies that enhance your experience. We use cookies and similar technologies to:
 
     - Maintain your login session and preferences
     - Analyze usage patterns and improve our Services
@@ -57,7 +56,7 @@ By using our services, you agree to this Privacy Policy.
     You can control cookie preferences through your browser settings.
     </Callout>
   </Card>
-</Cards>
+</Columns>
 
 
 
@@ -113,9 +112,9 @@ We use the information we collect to:
 We do not sell your personal information. We may share it only in the following circumstances:
 </Callout>
 
-<Cards>
-  <Card title="Service Providers" description="Trusted partners who help operate our services">
-    We work with trusted third-party service providers who help us operate our Services, including:
+<Columns cols={4}>
+  <Card title="Service Providers">
+    Trusted partners who help operate our services. We work with trusted third-party service providers who help us operate our Services, including:
 
     - Cloud infrastructure providers
     - Payment processors
@@ -127,8 +126,8 @@ We do not sell your personal information. We may share it only in the following 
     </Callout>
   </Card>
 
-  <Card title="Legal Requirements" description="When required by law or for protection">
-    We may disclose your information when required by law or to:
+  <Card title="Legal Requirements">
+    When required by law or for protection. We may disclose your information when required by law or to:
 
     - Comply with legal processes or government requests
     - Protect our rights, property, or safety
@@ -136,14 +135,14 @@ We do not sell your personal information. We may share it only in the following 
     - Enforce our Terms of Service
   </Card>
 
-  <Card title="Business Transfers" description="In case of corporate changes">
-    If RIXL is involved in a merger, acquisition, or asset sale, your information may be transferred as part of the transaction. We will notify you of any change in ownership or control.
+  <Card title="Business Transfers">
+    In case of corporate changes. If RIXL is involved in a merger, acquisition, or asset sale, your information may be transferred as part of the transaction. We will notify you of any change in ownership or control.
   </Card>
 
-  <Card title="With Your Consent" description="Only when you explicitly agree">
-    We may share your information for other purposes only if you have provided your explicit consent, which can be withdrawn at any time by contacting us.
+  <Card title="With Your Consent">
+    Only when you explicitly agree. We may share your information for other purposes only if you have provided your explicit consent, which can be withdrawn at any time by contacting us.
   </Card>
-</Cards>
+</Columns>
 
 
 
@@ -180,32 +179,37 @@ If you delete your account, we will remove or anonymize your personal informatio
 
 Depending on your location, you may have the following rights regarding your personal information:
 
-<Cards>
-  <Card title="Access and Portability" description="Get your data">
+<Columns cols={3}>
+  <Card title="Access and Portability">
+    Get your data.
     - Request access to your personal information
     - Receive a copy of your data in a portable format
   </Card>
 
-  <Card title="Correction and Updates" description="Keep data accurate">
+  <Card title="Correction and Updates">
+    Keep data accurate.
     - Correct inaccurate or incomplete information
     - Update your account and profile information
   </Card>
 
-  <Card title="Deletion" description="Remove your data">
+  <Card title="Deletion">
+    Remove your data.
     - Request deletion of your personal information
     - Close your account and remove associated data
   </Card>
 
-  <Card title="Opt-Out" description="Control communications">
+  <Card title="Opt-Out">
+    Control communications.
     - Unsubscribe from marketing communications
     - Opt out of certain data processing activities
   </Card>
 
-  <Card title="Data Processing Objections" description="Control how we use your data">
+  <Card title="Data Processing Objections">
+    Control how we use your data.
     - Object to processing based on legitimate interests
     - Withdraw consent where processing is based on consent
   </Card>
-</Cards>
+</Columns>
 
 <Callout type="info">
 To exercise these rights, contact us at **privacy@rixl.com**. We will respond to your request within 30 days.

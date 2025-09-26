@@ -3,7 +3,8 @@ title: Quality Tiers
 description: Choose the right video processing tier for your content.
 ---
 
-import { Cards, Card } from 'fumadocs-ui/components/card';
+import { Card } from '@/components/mdx/card';
+import { Columns } from '@/components/mdx/columns';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Callout } from '@/components';
@@ -89,22 +90,25 @@ Pick a quality tier when you upload your videos. Each tier works best for differ
 
 ### Quick decision guide
 
-<Cards>
+<Columns cols={3}>
     <Card
         title="Choose Basic"
-        description="Source is 1080p or smaller. Fast loading, desktop-focused, quick processing."
-    />
+    >
+        Source is 1080p or smaller. Fast loading, desktop-focused, quick processing.
+    </Card>
 
     <Card
         title="Choose Shorts"
-        description="Mobile/vertical-first content, 60fps source, social platforms, primarily phone viewers."
-    />
+    >
+        Mobile/vertical-first content, 60fps source, social platforms, primarily phone viewers.
+    </Card>
 
     <Card
         title="Choose Pro"
-        description="2K/4K or higher source, HDR or broadcast requirements, production-quality output."
-    />
-</Cards>
+    >
+        2K/4K or higher source, HDR or broadcast requirements, production-quality output.
+    </Card>
+</Columns>
 
 ## Technical Details
 
@@ -147,12 +151,12 @@ The system automatically:
 
 ### Performance Benefits
 
-<Cards>
-<Card title="Optimal Quality" description="Viewers get the best quality their connection can handle" />
-<Card title="Fast Startup" description="Videos start playing faster with less buffering" />
-<Card title="Efficient Bandwidth" description="Uses internet bandwidth efficiently" />
-<Card title="Reliable Playback" description="Still works well on slow connections" />
-</Cards>
+<Columns cols={4}>
+<Card title="Optimal Quality">Viewers get the best quality their connection can handle</Card>
+<Card title="Fast Startup">Videos start playing faster with less buffering</Card>
+<Card title="Efficient Bandwidth">Uses internet bandwidth efficiently</Card>
+<Card title="Reliable Playback">Still works well on slow connections</Card>
+</Columns>
 
 ## Best Practices
 

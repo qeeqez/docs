@@ -3,33 +3,36 @@ title: Quick Start
 description: Get up and running with RIXL in under 5 minutes—from account setup to uploading your first media and seeing optimization in action.
 ---
 
-import { Callout, InfoCard, InteractiveCard } from "@/components";
+import { Callout, Columns, Card } from "@/components";
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
 Welcome to **RIXL**! This quick start guide will have you uploading and optimizing media in just a few minutes. No complex setup required—just create an account, upload media, and watch RIXL optimize automatically.
 
 ## Quick Actions
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="Dashboard Guide"
-    description="Upload your first media file and explore the dashboard in under 5 minutes."
     href="/platform/dashboard/guide"
-    icon="BookOpen"
-  />
-  <InteractiveCard
+    icon="book-open"
+  >
+    Upload your first media file and explore the dashboard in under 5 minutes.
+  </Card>
+  <Card
     title="API Integration"
-    description="Start building with our REST APIs and comprehensive documentation."
     href="/platform/api-documentation/overview"
-    icon="Code"
-  />
-  <InteractiveCard
+    icon="code"
+  >
+    Start building with our REST APIs and comprehensive documentation.
+  </Card>
+  <Card
     title="React SDK"
-    description="Drop-in components for video players and optimized images."
     href="/sdk/getting-started/overview"
-    icon="Layers"
-  />
-</div>
+    icon="layers"
+  >
+    Drop-in components for video players and optimized images.
+  </Card>
+</Columns>
 
 ## What You'll Need
 
@@ -42,23 +45,20 @@ Welcome to **RIXL**! This quick start guide will have you uploading and optimizi
 
 ## Choose Your Integration Path
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="Dashboard Upload"
-    description="Perfect for content creators and teams. Upload, organize, and manage media through our intuitive web interface."
-    icon="Monitor"
-  />
-  <InfoCard
-    title="API Integration"
-    description="Ideal for developers building backend integrations. Programmatic uploads, processing, and delivery."
-    icon="Code"
-  />
-  <InfoCard
-    title="React Components"
-    description="Frontend developers building React apps. Drop-in components with automatic optimization."
-    icon="Layers"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="Dashboard Upload" icon="monitor">
+    Perfect for content creators and teams. Upload, organize, and manage media
+    through our intuitive web interface.
+  </Card>
+  <Card title="API Integration" icon="code">
+    Ideal for developers building backend integrations. Programmatic uploads,
+    processing, and delivery.
+  </Card>
+  <Card title="React Components" icon="layers">
+    Frontend developers building React apps. Drop-in components with automatic
+    optimization.
+  </Card>
+</Columns>
 
 ## Get Started in 5 Minutes
 
@@ -133,51 +133,56 @@ Welcome to **RIXL**! This quick start guide will have you uploading and optimizi
   </Step>
 </Steps>
 
-
 ## What's Next?
 
 Now that you've uploaded your first media, explore these next steps:
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="Explore the Dashboard"
-    description="Learn about projects, media management, and team collaboration features."
     href="/platform/dashboard/overview"
-    icon="Monitor"
-  />
-  <InteractiveCard
+    icon="monitor"
+  >
+    Learn about projects, media management, and team collaboration features.
+  </Card>
+  <Card
     title="API Integration"
-    description="Build programmatic workflows with our comprehensive REST API."
     href="/platform/api-documentation/overview"
-    icon="Code"
-  />
-  <InteractiveCard
+    icon="code"
+  >
+    Build programmatic workflows with our comprehensive REST API.
+  </Card>
+  <Card
     title="React Components"
-    description="Drop-in Video and Image components for React applications."
     href="/sdk/getting-started/overview"
-    icon="Layers"
-  />
-  <InteractiveCard
+    icon="layers"
+  >
+    Drop-in Video and Image components for React applications.
+  </Card>
+  <Card
     title="Upload Optimization"
-    description="Learn about video quality tiers, image formats, and processing options."
     href="/platform/uploads/overview"
-    icon="Upload"
-  />
-  <InteractiveCard
+    icon="upload"
+  >
+    Learn about video quality tiers, image formats, and processing options.
+  </Card>
+  <Card
     title="Best Practices"
-    description="Production-ready tips for performance, security, and optimization."
     href="/getting-started/best-practices"
-    icon="CheckCircle"
-  />
-  <InteractiveCard
+    icon="check-circle"
+  >
+    Production-ready tips for performance, security, and optimization.
+  </Card>
+  <Card
     title="Team Collaboration"
-    description="Invite team members, set up organizations, and manage permissions."
     href="/platform/account-teams/organizations-overview"
-    icon="Users"
-  />
-</div>
+    icon="users"
+  >
+    Invite team members, set up organizations, and manage permissions.
+  </Card>
+</Columns>
 
-<div className="mt-12">
+<div class="mt-12">
 <Callout type="tip" title="Ready to build?">
   Start with our [Dashboard Guide](/platform/dashboard/guide) to explore all features, or jump into the [API Reference](/platform/api-documentation/overview) to start building programmatically. For React developers, check out our [SDK Components](/sdk/getting-started/overview) for drop-in media optimization.
 </Callout>

@@ -3,14 +3,14 @@ title: Upload Videos
 description: Upload, process, and distribute videos in the RIXL dashboard with automated transcoding and integration features.
 ---
 
-import { Callout, InfoCard } from '@/components';
-import { Step, Steps } from 'fumadocs-ui/components/steps';
-
+import {Callout, Card, Columns} from '@/components';
+import {Step, Steps} from 'fumadocs-ui/components/steps';
 
 Upload videos directly through the RIXL dashboard with **automatic transcoding, quality tiers, and project integration**.
 
 <Callout type="info">
-  For detailed technical specifications, formats, and encoding, see the [video processing documentation](/platform/uploads/videos-guide).
+  For detailed technical specifications, formats, and encoding, see the [video processing
+  documentation](/platform/uploads/videos-guide).
 </Callout>
 
 ---
@@ -18,26 +18,26 @@ Upload videos directly through the RIXL dashboard with **automatic transcoding, 
 ## Upload Workflow
 
 <Steps>
-<Step>
-**Access Video Upload**
+  <Step>
+    **Access Video Upload**
 
-Go to **Media → Videos** in your project dashboard.
-</Step>
-<Step>
-**Select Quality Tier**
+    Go to **Media → Videos** in your project dashboard.
+  </Step>
+  <Step>
+    **Select Quality Tier**
 
-Choose a **Quality Tier**: Basic, Shorts, or Pro.
-</Step>
-<Step>
-**Configure Video Settings**
+    Choose a **Quality Tier**: Basic, Shorts, or Pro.
+  </Step>
+  <Step>
+    **Configure Video Settings**
 
-Set metadata: title, description, tags, and project assignment.
-</Step>
-<Step>
-**Monitor Processing**
+    Set metadata: title, description, tags, and project assignment.
+  </Step>
+  <Step>
+    **Monitor Processing**
 
-Track progress with real-time transcoding updates.
-</Step>
+    Track progress with real-time transcoding updates.
+  </Step>
 </Steps>
 
 ---
@@ -47,7 +47,7 @@ Track progress with real-time transcoding updates.
 Choose the right processing tier for your content during upload:
 
 - **Basic**: Standard web content (720p, efficient processing)
-- **Shorts**: Optimized for mobile (1080p, 60fps support)  
+- **Shorts**: Optimized for mobile (1080p, 60fps support)
 - **Pro**: High-quality production (4K support, premium features)
 
 <Callout type="info">
@@ -58,23 +58,17 @@ Choose the right processing tier for your content during upload:
 
 ## Project Integration
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-6">
-  <InfoCard 
-    title="Project Assignment" 
-    description="Organize videos by project automatically"
-    icon="FolderPlus"
-  />
-  <InfoCard 
-    title="Processing Queue" 
-    description="Track transcoding progress in real-time"
-    icon="Clock"
-  />
-  <InfoCard 
-    title="Team Access" 
-    description="Collaborate and share with teammates"
-    icon="Users"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="Project Assignment" icon="folder-plus">
+    Organize videos by project automatically
+  </Card>
+  <Card title="Processing Queue" icon="clock">
+    Track transcoding progress in real-time
+  </Card>
+  <Card title="Team Access" icon="users">
+    Collaborate and share with teammates
+  </Card>
+</Columns>
 
 ---
 
@@ -82,28 +76,20 @@ Choose the right processing tier for your content during upload:
 
 Each video moves through clear dashboard states:
 
-<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-6">
-  <InfoCard
-    title="Uploaded"
-    description="Video queued for processing"
-    icon="Upload"
-  />
-  <InfoCard
-    title="Processing"
-    description="Transcoding in progress"
-    icon="Loader"
-  />
-  <InfoCard
-    title="Ready"
-    description="Available in all selected qualities"
-    icon="CheckCircle"
-  />
-  <InfoCard
-    title="Failed"
-    description="Processing error occurred"
-    icon="AlertTriangle"
-  />
-</div>
+<Columns cols={4}>
+  <Card title="Uploaded" icon="upload">
+    Video queued for processing
+  </Card>
+  <Card title="Processing" icon="loader">
+    Transcoding in progress
+  </Card>
+  <Card title="Ready" icon="check-circle">
+    Available in all selected qualities
+  </Card>
+  <Card title="Failed" icon="alert-triangle">
+    Processing error occurred
+  </Card>
+</Columns>
 
 ---
 
@@ -125,52 +111,44 @@ Uploaded videos appear in the **Media Library** with:
 ## Using Uploaded Videos
 
 <Steps>
-<Step>
-**Upload Videos**
+  <Step>
+    **Upload Videos**
 
-Add videos through dashboard with with your chosen tier.
-</Step>
-<Step>
-**Monitor Processing**
+    Add videos through dashboard with with your chosen tier.
+  </Step>
+  <Step>
+    **Monitor Processing**
 
-Track transcoding progress in real-time processing queue
-</Step>
-<Step>
-**Organize Content**
+    Track transcoding progress in real-time processing queue
+  </Step>
+  <Step>
+    **Organize Content**
 
-Structure your library with [media organization tools](/platform/dashboard/media/organize-media).
-</Step>
-<Step>
-**Create Feeds**
+    Structure your library with [media organization tools](/platform/dashboard/media/organize-media).
+  </Step>
+  <Step>
+    **Create Feeds**
 
-Add finished videos to [content feeds](/platform/dashboard/feeds/overview) for distribution.
-</Step>
+    Add finished videos to [content feeds](/platform/dashboard/feeds/overview) for distribution.
+  </Step>
 </Steps>
 
-### Export & Sharing 
+### Export & Sharing
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-6">
-  <InfoCard 
-    title="Streaming URLs" 
-    description="Adaptive playback across devices"
-    icon="Play"
-  />
-  <InfoCard 
-    title="Embed Codes" 
-    description="Player-ready HTML or Markdown snippets"
-    icon="Code"
-  />
-  <InfoCard 
-    title="API Access" 
-    description="Programmatic upload and management"
-    icon="Database"
-  />
-  <InfoCard 
-    title="Download Links" 
-    description="Access original or processed versions"
-    icon="Download"
-  />
-</div>
+<Columns cols={4}>
+  <Card title="Streaming URLs" icon="play">
+    Adaptive playback across devices
+  </Card>
+  <Card title="Embed Codes" icon="code">
+    Player-ready HTML or Markdown snippets
+  </Card>
+  <Card title="API Access" icon="database">
+    Programmatic upload and management
+  </Card>
+  <Card title="Download Links" icon="download">
+    Access original or processed versions
+  </Card>
+</Columns>
 
 ---
 
@@ -178,9 +156,9 @@ Add finished videos to [content feeds](/platform/dashboard/feeds/overview) for d
 
 All videos are transcoded automatically into multiple qualities with:
 
-- **Tier-based encoding settings**  
-- **Adaptive streaming support**  
-- **Optimized compression** for performance  
-- **Error handling** with retry and failure states  
+- **Tier-based encoding settings**
+- **Adaptive streaming support**
+- **Optimized compression** for performance
+- **Error handling** with retry and failure states
 
 For complete specifications, see the [video processing reference](/platform/uploads/videos-guide).

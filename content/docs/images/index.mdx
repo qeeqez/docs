@@ -3,7 +3,7 @@ title: Image Processing
 description: Transform any image into lightning-fast AVIF files with smart placeholders, responsive delivery, and global CDN distribution.
 ---
 
-import { Callout, InfoCard, InteractiveCard } from "@/components";
+import { Callout, Columns, Card } from "@/components";
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
@@ -11,26 +11,29 @@ Welcome to **RIXL Image Processing**—where every image becomes a performance p
 
 ## Quick Actions
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="Upload Images"
-    description="Transform images with automatic AVIF compression and smart placeholders."
     href="/platform/uploads/images"
-    icon="Upload"
-  />
-  <InteractiveCard
+    icon="upload"
+  >
+    Transform images with automatic AVIF compression and smart placeholders.
+  </Card>
+  <Card
     title="React Component"
-    description="Drop-in Image component with lazy loading and responsive sizing."
     href="/sdk/image-component"
-    icon="Layers"
-  />
-  <InteractiveCard
+    icon="layers"
+  >
+    Drop-in Image component with lazy loading and responsive sizing.
+  </Card>
+  <Card
     title="Dashboard Management"
-    description="Upload, organize, and manage images through our web interface."
     href="/platform/dashboard/media/overview"
-    icon="Monitor"
-  />
-</div>
+    icon="monitor"
+  >
+    Upload, organize, and manage images through our web interface.
+  </Card>
+</Columns>
 
 ## How RIXL Transforms Your Images
 
@@ -62,61 +65,43 @@ Welcome to **RIXL Image Processing**—where every image becomes a performance p
 
 ## Image Processing Features
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="AVIF Optimization"
-    description="50% smaller files than JPEG with no visible quality loss. Automatic fallbacks included."
-    icon="Zap"
-  />
-  <InfoCard
-    title="Smart Placeholders"
-    description="Instant blur placeholders prevent layout shift and improve perceived performance."
-    icon="Eye"
-  />
-  <InfoCard
-    title="Responsive Delivery"
-    description="Automatic sizing for different devices and screen densities."
-    icon="Smartphone"
-  />
-  <InfoCard
-    title="Lazy Loading"
-    description="Built-in lazy loading reduces initial page load and saves bandwidth."
-    icon="Clock"
-  />
-  <InfoCard
-    title="Format Fallbacks"
-    description="Automatic WebP and JPEG fallbacks for older browsers."
-    icon="Shield"
-  />
-  <InfoCard
-    title="Global CDN"
-    description="Edge caching and intelligent routing for instant delivery worldwide."
-    icon="Globe"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="AVIF Optimization" icon="zap">
+    50% smaller files than JPEG with no visible quality loss. Automatic fallbacks included.
+  </Card>
+  <Card title="Smart Placeholders" icon="eye">
+    Instant blur placeholders prevent layout shift and improve perceived performance.
+  </Card>
+  <Card title="Responsive Delivery" icon="smartphone">
+    Automatic sizing for different devices and screen densities.
+  </Card>
+  <Card title="Lazy Loading" icon="clock">
+    Built-in lazy loading reduces initial page load and saves bandwidth.
+  </Card>
+  <Card title="Format Fallbacks" icon="shield">
+    Automatic WebP and JPEG fallbacks for older browsers.
+  </Card>
+  <Card title="Global CDN" icon="globe">
+    Edge caching and intelligent routing for instant delivery worldwide.
+  </Card>
+</Columns>
 
 ## Supported Formats
 
 ### Input Formats
 RIXL accepts all common image formats for processing:
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="Common Formats"
-    description="JPEG, PNG, WebP, GIF, BMP - the formats you use every day."
-    icon="Image"
-  />
-  <InfoCard
-    title="Professional Formats"
-    description="HEIC/HEIF, TIFF, JPEG 2000 - high-quality formats from cameras and professional tools."
-    icon="Camera"
-  />
-  <InfoCard
-    title="Vector Graphics"
-    description="SVG files are preserved as-is for crisp scaling at any size."
-    icon="Layers"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="Common Formats" icon="image">
+    JPEG, PNG, WebP, GIF, BMP - the formats you use every day.
+  </Card>
+  <Card title="Professional Formats" icon="camera">
+    HEIC/HEIF, TIFF, JPEG 2000 - high-quality formats from cameras and professional tools.
+  </Card>
+  <Card title="Vector Graphics" icon="layers">
+    SVG files are preserved as-is for crisp scaling at any size.
+  </Card>
+</Columns>
 
 ### Output Optimization
 Every image is automatically optimized for web delivery:
@@ -290,88 +275,73 @@ const listImages = async (page = 0, limit = 25) => {
 
 ### E-commerce Applications
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="Product Galleries"
-    description="High-quality product images with instant loading and zoom functionality."
-    icon="ShoppingCart"
-  />
-  <InfoCard
-    title="User-Generated Content"
-    description="Customer photos and reviews with automatic optimization and moderation."
-    icon="Users"
-  />
-  <InfoCard
-    title="Category Banners"
-    description="Hero images and promotional banners optimized for all devices."
-    icon="Layout"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="Product Galleries" icon="shopping-cart">
+    High-quality product images with instant loading and zoom functionality.
+  </Card>
+  <Card title="User-Generated Content" icon="users">
+    Customer photos and reviews with automatic optimization and moderation.
+  </Card>
+  <Card title="Category Banners" icon="layout">
+    Hero images and promotional banners optimized for all devices.
+  </Card>
+</Columns>
 
 ### Content & Media
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="Editorial Content"
-    description="News articles, blog posts, and magazine-style layouts with optimized images."
-    icon="FileText"
-  />
-  <InfoCard
-    title="Portfolio Websites"
-    description="Photography and design portfolios with high-quality image delivery."
-    icon="Camera"
-  />
-  <InfoCard
-    title="Social Platforms"
-    description="User profiles, posts, and feeds with automatic image optimization."
-    icon="Users"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="Editorial Content" icon="file-text">
+    News articles, blog posts, and magazine-style layouts with optimized images.
+  </Card>
+  <Card title="Portfolio Websites" icon="camera">
+    Photography and design portfolios with high-quality image delivery.
+  </Card>
+  <Card title="Social Platforms" icon="users">
+    User profiles, posts, and feeds with automatic image optimization.
+  </Card>
+</Columns>
 
 ### Performance Benefits
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="50% Smaller Files"
-    description="AVIF compression reduces file sizes by 50% compared to JPEG with no quality loss."
-    icon="Zap"
-  />
-  <InfoCard
-    title="Faster Page Loads"
-    description="Lazy loading and smart placeholders improve perceived performance."
-    icon="Clock"
-  />
-  <InfoCard
-    title="Better SEO"
-    description="Faster loading images improve Core Web Vitals and search rankings."
-    icon="TrendingUp"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="50% Smaller Files" icon="zap">
+    AVIF compression reduces file sizes by 50% compared to JPEG with no quality loss.
+  </Card>
+  <Card title="Faster Page Loads" icon="clock">
+    Lazy loading and smart placeholders improve perceived performance.
+  </Card>
+  <Card title="Better SEO" icon="trending-up">
+    Faster loading images improve Core Web Vitals and search rankings.
+  </Card>
+</Columns>
 
 ## What's Next?
 
 Ready to optimize your images? Choose your approach:
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="Upload Your First Image"
-    description="See AVIF optimization in action with our dashboard upload."
     href="/platform/uploads/images"
-    icon="Upload"
-  />
-  <InteractiveCard
+    icon="upload"
+  >
+    See AVIF optimization in action with our dashboard upload.
+  </Card>
+  <Card
     title="React Integration"
-    description="Add the Image component to your React application."
     href="/sdk/image-component"
-    icon="Layers"
-  />
-  <InteractiveCard
+    icon="layers"
+  >
+    Add the Image component to your React application.
+  </Card>
+  <Card
     title="API Implementation"
-    description="Build custom image workflows with our REST API."
     href="/platform/api-documentation/overview"
-    icon="Code"
-  />
-</div>
+    icon="code"
+  >
+    Build custom image workflows with our REST API.
+  </Card>
+</Columns>
 
 <div className="mt-12">
 <Callout type="tip" title="Ready to see the difference?">

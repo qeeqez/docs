@@ -3,7 +3,7 @@ title: Create New Project
 description: Set up a project to organize your media and control access
 ---
 
-import { Callout, InfoCard } from '@/components';
+import { Callout, Columns, Card } from '@/components';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
@@ -63,12 +63,28 @@ See full details in the [Video Processing Guide](/platform/uploads/videos/qualit
 ## Project Templates
 
 
-<div className="grid gap-6 sm:grid-cols-2 mt-6">
-  <InfoCard title="Social Media" description={`Shorts video optimization\nFast processing for social feeds\nMobile-first delivery settings`} />
-  <InfoCard title="Professional VOD" description={`Pro video optimization\nMultiple quality levels\nAdvanced analytics`} />
-  <InfoCard title="E-commerce" description={`Image optimization for product galleries\nVideo previews and demonstrations\nFast loading for commerce sites`} />
-  <InfoCard title="Custom Setup" description={`Full Manual configuration of all settings\nFlexible optimization profiles\nCustom workflows and automation`} />
-</div>
+<Columns cols={2}>
+  <Card title="Social Media">
+    Shorts video optimization
+    Fast processing for social feeds
+    Mobile-first delivery settings
+  </Card>
+  <Card title="Professional VOD">
+    Pro video optimization
+    Multiple quality levels
+    Advanced analytics
+  </Card>
+  <Card title="E-commerce">
+    Image optimization for product galleries
+    Video previews and demonstrations
+    Fast loading for commerce sites
+  </Card>
+  <Card title="Custom Setup">
+    Full Manual configuration of all settings
+    Flexible optimization profiles
+    Custom workflows and automation
+  </Card>
+</Columns>
 
 ---
 

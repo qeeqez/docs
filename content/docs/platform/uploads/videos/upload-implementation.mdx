@@ -3,7 +3,7 @@ title: Upload Implementation
 description: Code examples and best practices for implementing video uploads
 ---
 
-import {  InfoCard } from '@/components';
+import { Columns, Card } from '@/components';
 import { Tabs, Tab} from 'fumadocs-ui/components/tabs';
 
 Implement video uploads with comprehensive code examples and best practices for reliable, efficient video processing.
@@ -19,24 +19,20 @@ Implement video uploads with comprehensive code examples and best practices for 
 
 ### Upload Optimization Guidelines
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    <InfoCard
-        title="Format: MP4 + H.264"
-        description="Fastest processing with universal compatibility"
-    />
-    <InfoCard
-        title="Resolution: Upload Highest Available"
-        description="Up to 4K for Pro tier, system scales down appropriately"
-    />
-    <InfoCard
-        title="Frame Rate: 30fps or 60fps"
-        description="Standard rates for optimal processing and compatibility"
-    />
-    <InfoCard
-        title="Audio: Opus Codec"
-        description="Best compatibility and quality for source material"
-    />
-</div>
+<Columns cols={3}>
+    <Card title="Format: MP4 + H.264">
+        Fastest processing with universal compatibility
+    </Card>
+    <Card title="Resolution: Upload Highest Available">
+        Up to 4K for Pro tier, system scales down appropriately
+    </Card>
+    <Card title="Frame Rate: 30fps or 60fps">
+        Standard rates for optimal processing and compatibility
+    </Card>
+    <Card title="Audio: Opus Codec">
+        Best compatibility and quality for source material
+    </Card>
+</Columns>
 
 ## Code Examples
 

@@ -3,7 +3,7 @@ title: Quick Links
 description: Fast access to essential guides, references, and resources for RIXL platform and SDK usage.
 ---
 
-import { Callout, InfoCard, InteractiveCard } from "@/components";
+import { Callout, Columns, Card } from "@/components";
 
 Jump straight to what you need with these curated links to the most important guides, references, and resources in the RIXL documentation.
 
@@ -11,44 +11,50 @@ Jump straight to what you need with these curated links to the most important gu
 
 **Jump directly to frequently needed guides:**
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="Upload Your First Video"
-    description="Step-by-step guide to upload and process your first video file."
     href="/platform/dashboard/media/upload-videos"
-    icon="Video"
-  />
-  <InteractiveCard
+    icon="video"
+  >
+    Step-by-step guide to upload and process your first video file.
+  </Card>
+  <Card
     title="Generate API Keys"
-    description="Create API keys for programmatic access to your projects."
     href="/platform/dashboard/api-keys"
-    icon="Key"
-  />
-  <InteractiveCard
+    icon="key"
+  >
+    Create API keys for programmatic access to your projects.
+  </Card>
+  <Card
     title="Install React SDK"
-    description="Add video and image components to your React application."
     href="/sdk/getting-started/installation"
-    icon="Download"
-  />
-  <InteractiveCard
+    icon="download"
+  >
+    Add video and image components to your React application.
+  </Card>
+  <Card
     title="Monitor Processing Status"
-    description="Track upload progress and processing completion."
     href="/platform/uploads/videos/monitoring-status"
-    icon="Monitor"
-  />
-  <InteractiveCard
+    icon="monitor"
+  >
+    Track upload progress and processing completion.
+  </Card>
+  <Card
     title="Choose Quality Tiers"
-    description="Select the right processing tier for your content type."
     href="/platform/uploads/videos/quality-tiers"
-    icon="Settings"
-  />
-  <InteractiveCard
+    icon="settings"
+  >
+    Select the right processing tier for your content type.
+  </Card>
+  <Card
     title="Organize Media Library"
-    description="Structure your content with folders, tags, and search."
     href="/platform/dashboard/media/organize-media"
-    icon="FolderOpen"
-  />
-</div>
+    icon="folder-open"
+  >
+    Structure your content with folders, tags, and search.
+  </Card>
+</Columns>
 
 ## Platform Essentials
 
@@ -56,89 +62,101 @@ Jump straight to what you need with these curated links to the most important gu
 
 ### Dashboard & Projects
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="Dashboard Overview"
-    description="Your central hub for media optimization, project management, and team collaboration."
-  href="/platform/dashboard/overview"
-    icon="LayoutDashboard"
-  />
-  <InteractiveCard
+    href="/platform/dashboard/overview"
+    icon="layout-dashboard"
+  >
+    Your central hub for media optimization, project management, and team
+    collaboration.
+  </Card>
+  <Card
     title="Create Your First Project"
-    description="Set up projects, choose server locations, and configure default settings."
     href="/platform/dashboard/projects/overview"
-    icon="FolderPlus"
-  />
-  <InteractiveCard
+    icon="folder-plus"
+  >
+    Set up projects, choose server locations, and configure default settings.
+  </Card>
+  <Card
     title="Project Settings"
-    description="Configure processing preferences, team permissions, and project details."
     href="/platform/dashboard/projects/project-settings"
-    icon="Settings"
-  />
-</div>
+    icon="settings"
+  >
+    Configure processing preferences, team permissions, and project details.
+  </Card>
+</Columns>
 
 ### Media Management
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="Media Library Overview"
-    description="Upload, organize, and manage all your media assets in one place."
-  href="/platform/dashboard/media/overview"
-    icon="Library"
-  />
-  <InteractiveCard
+    href="/platform/dashboard/media/overview"
+    icon="library"
+  >
+    Upload, organize, and manage all your media assets in one place.
+  </Card>
+  <Card
     title="Upload Videos"
-    description="Upload and process videos with quality tier selection and monitoring."
     href="/platform/dashboard/media/upload-videos"
-    icon="Video"
-  />
-  <InteractiveCard
+    icon="video"
+  >
+    Upload and process videos with quality tier selection and monitoring.
+  </Card>
+  <Card
     title="Upload Images"
-    description="Upload and optimize images with automatic format conversion."
     href="/platform/dashboard/media/upload-images"
-    icon="Image"
-  />
-  <InteractiveCard
+    icon="image"
+  >
+    Upload and optimize images with automatic format conversion.
+  </Card>
+  <Card
     title="Organize Media"
-    description="Structure your media library with folders, tags, and search capabilities."
     href="/platform/dashboard/media/organize-media"
-    icon="FolderOpen"
-  />
-</div>
+    icon="folder-open"
+  >
+    Structure your media library with folders, tags, and search capabilities.
+  </Card>
+</Columns>
 
 ### Account & Team Management
 
-<div className="grid gap-6 sm:grid-cols-2">
-  <InteractiveCard
+<Columns cols={2}>
+  <Card
     title="Account Overview"
-    description="Manage your personal account settings, security, and preferences."
-  href="/platform/account-teams/overview"
-    icon="User"
-  />
-  <InteractiveCard
+    href="/platform/account-teams/overview"
+    icon="user"
+  >
+    Manage your personal account settings, security, and preferences.
+  </Card>
+  <Card
     title="Organizations & Teams"
-    description="Create organizations, invite team members, and manage collaborative workflows."
     href="/platform/account-teams/organizations-overview"
-    icon="Users"
-  />
-</div>
+    icon="users"
+  >
+    Create organizations, invite team members, and manage collaborative workflows.
+  </Card>
+</Columns>
 
 ### API Access & Security
 
-<div className="grid gap-6 sm:grid-cols-2">
-  <InteractiveCard
+<Columns cols={2}>
+  <Card
     title="Generate API Keys"
-    description="Create and manage API keys for programmatic access to your projects."
     href="/platform/dashboard/api-keys"
-    icon="Key"
-  />
-  <InteractiveCard
+    icon="key"
+  >
+    Create and manage API keys for programmatic access to your projects.
+  </Card>
+  <Card
     title="API Access Setup"
-    description="Configure authentication and understand API security best practices."
     href="/platform/api-documentation/create-key"
-    icon="Shield"
-  />
-</div>
+    icon="shield"
+  >
+    Configure authentication and understand API security best practices.
+  </Card>
+</Columns>
 
 ## Developer Resources
 
@@ -146,37 +164,43 @@ Jump straight to what you need with these curated links to the most important gu
 
 ### SDK Documentation
 
-<div className="grid gap-6 sm:grid-cols-2">
-  <InteractiveCard
+<Columns cols={2}>
+  <Card
     title="Video SDK for React"
-    description="Complete SDK documentation with installation, components, and implementation guides."
-  href="/sdk/getting-started"
-    icon="Layers"
-  />
-  <InteractiveCard
+    href="/sdk/getting-started"
+    icon="layers"
+  >
+    Complete SDK documentation with installation, components, and implementation
+    guides.
+  </Card>
+  <Card
     title="Getting Started with SDK"
-    description="Installation guide and first steps for implementing video and image components."
     href="/sdk/getting-started/overview"
-    icon="BookOpen"
-  />
-</div>
+    icon="book-open"
+  >
+    Installation guide and first steps for implementing video and image components.
+  </Card>
+</Columns>
 
 ### API Reference & Implementation
 
-<div className="grid gap-6 sm:grid-cols-2">
-  <InteractiveCard
+<Columns cols={2}>
+  <Card
     title="API Reference"
-    description="Complete REST API documentation with endpoints, examples, and response formats."
     href="/platform/api-documentation/overview"
-    icon="Code"
-  />
-  <InteractiveCard
+    icon="code"
+  >
+    Complete REST API documentation with endpoints, examples, and response
+    formats.
+  </Card>
+  <Card
     title="Upload Implementation"
-    description="Code examples and best practices for implementing video uploads."
     href="/platform/uploads/videos/upload-implementation"
-    icon="Upload"
-  />
-</div>
+    icon="upload"
+  >
+    Code examples and best practices for implementing video uploads.
+  </Card>
+</Columns>
 
 ## Media Processing Guides
 
@@ -184,43 +208,49 @@ Jump straight to what you need with these curated links to the most important gu
 
 ### Video Processing
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="Video Processing Guide"
-    description="Understand the complete video processing pipeline and optimization."
     href="/platform/uploads/videos-guide"
-    icon="Video"
-  />
-  <InteractiveCard
+    icon="video"
+  >
+    Understand the complete video processing pipeline and optimization.
+  </Card>
+  <Card
     title="Quality Tiers"
-    description="Choose the right processing tier (Basic, Shorts, Pro) for your content."
     href="/platform/uploads/videos/quality-tiers"
-    icon="Settings"
-  />
-  <InteractiveCard
+    icon="settings"
+  >
+    Choose the right processing tier (Basic, Shorts, Pro) for your content.
+  </Card>
+  <Card
     title="Supported Formats"
-    description="Video formats, codecs, and preparation guidelines for optimal processing."
     href="/platform/uploads/videos/supported-formats"
-    icon="FileVideo"
-  />
-</div>
+    icon="file-video"
+  >
+    Video formats, codecs, and preparation guidelines for optimal processing.
+  </Card>
+</Columns>
 
 ### Image & Upload Processing
 
-<div className="grid gap-6 sm:grid-cols-2">
-  <InteractiveCard
+<Columns cols={2}>
+  <Card
     title="Image Optimization"
-    description="Transform images with AVIF compression, smart placeholders, and global delivery."
     href="/platform/uploads/images"
-    icon="Image"
-  />
-  <InteractiveCard
+    icon="image"
+  >
+    Transform images with AVIF compression, smart placeholders, and global
+    delivery.
+  </Card>
+  <Card
     title="Upload & Process Overview"
-    description="General upload workflows and processing optimization strategies."
-  href="/platform/uploads/overview"
-    icon="Upload"
-  />
-</div>
+    href="/platform/uploads/overview"
+    icon="upload"
+  >
+    General upload workflows and processing optimization strategies.
+  </Card>
+</Columns>
 
 ## Troubleshooting & Monitoring
 
@@ -228,20 +258,22 @@ Jump straight to what you need with these curated links to the most important gu
 
 ### Processing & Status
 
-<div className="grid gap-6 sm:grid-cols-2">
-  <InteractiveCard
+<Columns cols={2}>
+  <Card
     title="Monitor Processing Status"
-    description="Track upload progress, processing status, and handle errors effectively."
     href="/platform/uploads/videos/monitoring-status"
-    icon="Monitor"
-  />
-  <InteractiveCard
+    icon="monitor"
+  >
+    Track upload progress, processing status, and handle errors effectively.
+  </Card>
+  <Card
     title="Processing Pipeline"
-    description="Understand how RIXL processes your media from upload to delivery."
     href="/platform/uploads/videos-guide"
-    icon="GitBranch"
-  />
-</div>
+    icon="git-branch"
+  >
+    Understand how RIXL processes your media from upload to delivery.
+  </Card>
+</Columns>
 
 ### Common Issues & Solutions
 
@@ -260,43 +292,48 @@ Jump straight to what you need with these curated links to the most important gu
 
 ### Content Feeds & Organization
 
-<div className="grid gap-6 sm:grid-cols-2">
-  <InteractiveCard
+<Columns cols={2}>
+  <Card
     title="Feeds Overview"
-    description="Understand content feeds and dynamic delivery capabilities."
-  href="/platform/dashboard/feeds/overview"
-    icon="Rss"
-  />
-  <InteractiveCard
+    href="/platform/dashboard/feeds/overview"
+    icon="rss"
+  >
+    Understand content feeds and dynamic delivery capabilities.
+  </Card>
+  <Card
     title="Create Content Feeds"
-    description="Organize content into structured feeds for dynamic delivery."
     href="/platform/dashboard/feeds/create-feed"
-    icon="Plus"
-  />
-  <InteractiveCard
+    icon="plus"
+  >
+    Organize content into structured feeds for dynamic delivery.
+  </Card>
+  <Card
     title="Manage Feeds"
-    description="Advanced feed management, organization, and content curation."
     href="/platform/dashboard/feeds/manage-feeds"
-    icon="List"
-  />
-</div>
+    icon="list"
+  >
+    Advanced feed management, organization, and content curation.
+  </Card>
+</Columns>
 
 ### Advanced SDK Components
 
-<div className="grid gap-6 sm:grid-cols-2">
-  <InteractiveCard
+<Columns cols={2}>
+  <Card
     title="Video Component"
-    description="Rich video player with HLS streaming, subtitles, and quality controls."
-  href="/sdk/video-component"
-    icon="Video"
-  />
-  <InteractiveCard
+    href="/sdk/video-component"
+    icon="video"
+  >
+    Rich video player with HLS streaming, subtitles, and quality controls.
+  </Card>
+  <Card
     title="Image Component"
-    description="Optimized images with lazy loading and smart placeholders."
-  href="/sdk/image-component"
-    icon="Image"
-  />
-</div>
+    href="/sdk/image-component"
+    icon="image"
+  >
+    Optimized images with lazy loading and smart placeholders.
+  </Card>
+</Columns>
 
 ## Quick Reference
 
@@ -304,38 +341,28 @@ Jump straight to what you need with these curated links to the most important gu
 
 ### Limits & Specifications
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard
-    title="File Size Limits"
-    description="Videos: 2GB max | Images: 100MB max"
-    icon="HardDrive"
-  />
-  <InfoCard
-    title="Processing Times"
-    description="Basic: ~1x | Shorts: ~1.5x | Pro: ~2-3x video length"
-    icon="Clock"
-  />
-  <InfoCard
-    title="Browser Support"
-    description="Chrome 88+, Firefox 85+, Safari 14+, Edge 88+"
-    icon="Monitor"
-  />
-</div>
+<Columns cols={3}>
+  <Card title="File Size Limits" icon="hard-drive">
+    Videos: 2GB max | Images: 100MB max
+  </Card>
+  <Card title="Processing Times" icon="clock">
+    Basic: ~1x | Shorts: ~1.5x | Pro: ~2-3x video length
+  </Card>
+  <Card title="Browser Support" icon="monitor">
+    Chrome 88+, Firefox 85+, Safari 14+, Edge 88+
+  </Card>
+</Columns>
 
 ### Format Recommendations
 
-<div className="grid gap-6 sm:grid-cols-2">
-  <InfoCard
-    title="Recommended Video Format"
-    description="MP4 container with H.264 video and Opus audio for fastest processing"
-    icon="Video"
-  />
-  <InfoCard
-    title="Recommended Image Formats"
-    description="JPEG, PNG, WebP, HEIC supported. Automatic AVIF conversion included"
-    icon="Image"
-  />
-</div>
+<Columns cols={2}>
+  <Card title="Recommended Video Format" icon="video">
+    MP4 container with H.264 video and Opus audio for fastest processing
+  </Card>
+  <Card title="Recommended Image Formats" icon="image">
+    JPEG, PNG, WebP, HEIC supported. Automatic AVIF conversion included
+  </Card>
+</Columns>
 
 ## Need More Help?
 

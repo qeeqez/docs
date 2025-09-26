@@ -3,10 +3,9 @@ title: Video Processing Guide
 description: Complete guide to automated video transcoding system producing multiple quality levels and adaptive streaming formats for efficient delivery on any device.
 ---
 
-import { Callout } from 'fumadocs-ui/components/callout';
+import { Callout, Columns, Card } from '@/components';
 import { Steps, Step } from 'fumadocs-ui/components/steps';
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
-import { Cards, Card } from 'fumadocs-ui/components/card';
 import { Banner } from 'fumadocs-ui/components/banner';
 
 <Banner variant="info">
@@ -117,45 +116,37 @@ Choose a tier matching your content needs at upload initiation:
 
 RIXL conducts independent audio processing for efficient streaming:
 
-<Cards>
+<Columns cols={4}>
     <Card
         title="Codec: Opus"
-        description="128kbps, 48kHz for superior quality and compression"
-    />
+    >128kbps, 48kHz for superior quality and compression</Card>
     <Card
         title="Segmentation"
-        description="6-second audio segments for low-latency delivery"
-    />
+    >6-second audio segments for low-latency delivery</Card>
     <Card
         title="Independent Streaming"
-        description="Audio served separately to optimize bandwidth usage"
-    />
+    >Audio served separately to optimize bandwidth usage</Card>
     <Card
         title="Other Support"
-        description="Opus encoding for superior audio quality and compression"
-    />
-</Cards>
+    >Opus encoding for superior audio quality and compression</Card>
+</Columns>
 
 ## Advanced Processing Features
 
-<Cards>
+<Columns cols={4}>
     <Card
         title="Smart Resolution Scaling"
-        description="Preserves aspect ratios while targeting industry-standard resolutions"
-    />
+    >Preserves aspect ratios while targeting industry-standard resolutions</Card>
     <Card
         title="Frame Rate Intelligence"
-        description="Maintains native frame rates and optimizes for target platforms"
-    />
+    >Maintains native frame rates and optimizes for target platforms</Card>
     <Card
         title="HDR Processing"
-        description="Supports HDR with BT.2020 color space and 10-bit encoding"
-    />
+    >Supports HDR with BT.2020 color space and 10-bit encoding</Card>
     <Card
         title="Adaptive Quality Ladders"
-        description="Generates multiple renditions even from low-resolution sources"
-    />
-</Cards>
+    >Generates multiple renditions even from low-resolution sources</Card>
+</Columns>
 
 ## Performance Characteristics
 
@@ -199,24 +190,20 @@ Monitor your video's progress through the processing pipeline:
 
 **Source File Recommendations:**
 
-<Cards>
+<Columns cols={4}>
     <Card
         title="Format: MP4 + H.264"
-        description="Fastest processing with universal compatibility"
-    />
+    >Fastest processing with universal compatibility</Card>
     <Card
         title="Resolution: Upload Highest Available"
-        description="Up to 4K for Pro tier, system scales down appropriately"
-    />
+    >Up to 4K for Pro tier, system scales down appropriately</Card>
     <Card
         title="Frame Rate: 30fps or 60fps"
-        description="Standard rates for optimal processing and compatibility"
-    />
+    >Standard rates for optimal processing and compatibility</Card>
     <Card
         title="Audio: Opus Codec"
-        description="Best compatibility and quality for source material"
-    />
-</Cards>
+    >Best compatibility and quality for source material</Card>
+</Columns>
 
 **Large File Handling:**
 - **Multipart uploads** automatically enabled for files >100MB
@@ -401,7 +388,7 @@ def upload_video(
         upload_data = init_response.json()
 
         # Step 2: Upload video file
-        logger.info("📤 Uploading video file...")
+        logger.info(" Uploading video file...")
 
         with open(file_path, 'rb') as video_file:
             upload_response = session.put(

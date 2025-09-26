@@ -3,50 +3,56 @@ title: Upload & Optimize
 description: Transform your raw media into web-optimized assets. Automatic processing, multiple formats, global delivery—all handled seamlessly.
 ---
 
-import { InteractiveCard, InfoCard } from '@/components';
+import { Columns, Card } from '@/components';
 
 ## Quick Upload Actions
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <InteractiveCard
+<Columns cols={3}>
+  <Card
     title="Upload Images"
-    description="Transform any image into lightning-fast AVIF files with smart placeholders."
     href="/platform/uploads/images"
-    icon="Image"
-  />
-  <InteractiveCard
+    icon="image"
+  >
+    Transform any image into lightning-fast AVIF files with smart placeholders.
+  </Card>
+  <Card
     title="Upload Videos"
-    description="Professional video transcoding with adaptive streaming and instant delivery."
     href="/platform/uploads/videos/overview"
-    icon="Video"
-  />
-  <InteractiveCard
+    icon="video"
+  >
+    Professional video transcoding with adaptive streaming and instant delivery.
+  </Card>
+  <Card
     title="Posts"
-    description="Create social media-style posts by uploading media directly to feeds."
     href="/platform/uploads/posts"
-    icon="Archive"
-  />
-</div>
+    icon="archive"
+  >
+    Create social media-style posts by uploading media directly to feeds.
+  </Card>
+</Columns>
 
 ## Upload Methods
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-6">
-  <InfoCard
+<Columns cols={3}>
+  <Card
     title="Dashboard Upload"
-    description="Drag and drop files directly in the web interface with real-time progress tracking."
-    icon="Upload"
-  />
-  <InfoCard
+    icon="upload"
+  >
+    Drag and drop files directly in the web interface with real-time progress tracking.
+  </Card>
+  <Card
     title="API Integration"
-    description="Programmatic uploads via REST API for seamless app integration."
-    icon="Code"
-  />
-  <InfoCard
+    icon="code"
+  >
+    Programmatic uploads via REST API for seamless app integration.
+  </Card>
+  <Card
     title="Bulk Processing"
-    description="Handle large volumes of content with automated workflows and batch operations."
-    icon="Workflow"
-  />
-</div>
+    icon="workflow"
+  >
+    Handle large volumes of content with automated workflows and batch operations.
+  </Card>
+</Columns>
 
 ## Supported Formats
 

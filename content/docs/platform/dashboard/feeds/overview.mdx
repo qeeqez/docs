@@ -3,28 +3,31 @@ title: Feeds
 description: Create, manage, and distribute content feeds in RIXL for dynamic media delivery..
 ---
 
-import { Callout, InteractiveCard, InfoCard } from '@/components';
+import { Callout } from '@/components';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Columns, Card } from '@/components';
 
 Content Feeds in RIXL let you transform your media into dynamic, structured streams that power apps, websites, and campaigns. Think of feeds as **curated collections** of your media that update automatically as you add new content.
 
 ## Feed Management
 
-<div className="grid gap-6 sm:grid-cols-2">
-  <InteractiveCard
+<Columns cols={2}>
+  <Card
     title="Create Feed"
-    description="Set up new content feeds with custom organization and filtering rules."
     href="/platform/dashboard/feeds/create-feed"
-    icon="FolderPlus"
-  />
-  <InteractiveCard
+    icon="folder-plus"
+  >
+    Set up new content feeds with custom organization and filtering rules.
+  </Card>
+  <Card
     title="Manage Feeds"
-    description="Configure existing feeds, update settings, and monitor performance."
     href="/platform/dashboard/feeds/manage-feeds"
-    icon="Settings"
-  />
-</div>
+    icon="settings"
+  >
+    Configure existing feeds, update settings, and monitor performance.
+  </Card>
+</Columns>
 
 ## Getting Started
 
@@ -34,28 +37,20 @@ Feeds are project-specific content collections. Make sure you have a project sel
 
 ### Feed Types
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-6">
-  <InfoCard 
-    title="Video Feeds" 
-    description="Collections of video content with custom ordering and filtering"
-    icon="Video"
-  />
-  <InfoCard 
-    title="Image Feeds" 
-    description="Curated image collections with responsive delivery"
-    icon="Image"
-  />
-  <InfoCard 
-    title="Mixed Media" 
-    description="Combined video and image feeds with flexible organization"
-    icon="Layers"
-  />
-  <InfoCard 
-    title="Dynamic Feeds" 
-    description="Automatically updated feeds based on rules and criteria"
-    icon="Workflow"
-  />
-</div>
+<Columns cols={4}>
+  <Card title="Video Feeds" icon="video">
+    Collections of video content with custom ordering and filtering
+  </Card>
+  <Card title="Image Feeds" icon="image">
+    Curated image collections with responsive delivery
+  </Card>
+  <Card title="Mixed Media" icon="layers">
+    Combined video and image feeds with flexible organization
+  </Card>
+  <Card title="Dynamic Feeds" icon="workflow">
+    Automatically updated feeds based on rules and criteria
+  </Card>
+</Columns>
 
 ### Specialized Feed Types
 
@@ -65,12 +60,20 @@ Feeds are project-specific content collections. Make sure you have a project sel
 
 ## Feed Templates
 
-<div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-  <InfoCard title="TikTok-Style Feeds" description="Vertical scrolling optimized for short-form video content" />
-  <InfoCard title="Instagram Stories" description="Horizontal story-based layout with sequential content" />
-  <InfoCard title="Portfolio Grid" description="Professional grid layouts for showcasing work" />
-  <InfoCard title="News Feed" description="Article-style layout with chronological organization" />
-</div>
+<Columns cols={2}>
+  <Card title="TikTok-Style Feeds">
+    Vertical scrolling optimized for short-form video content
+  </Card>
+  <Card title="Instagram Stories">
+    Horizontal story-based layout with sequential content
+  </Card>
+  <Card title="Portfolio Grid">
+    Professional grid layouts for showcasing work
+  </Card>
+  <Card title="News Feed">
+    Article-style layout with chronological organization
+  </Card>
+</Columns>
 
 <Callout type="info">
 Feed templates let you quickly apply proven layouts for engagement, product showcases, or storytelling.
@@ -78,12 +81,20 @@ Feed templates let you quickly apply proven layouts for engagement, product show
 
 ## Key Features
 
-<div className="grid gap-6 sm:grid-cols-2 mt-6">
-  <InfoCard title="Structured Content" description="Organize media with custom ordering, filtering, and categorization" icon="FolderIcon" />
-  <InfoCard title="Dynamic Distribution" description="API-driven content delivery with real-time updates" icon="Activity" />
-  <InfoCard title="Social Integration" description="Built-in support for likes, comments, and interactions" icon="MessageCircle" />
-  <InfoCard title="Embeddable Widgets" description="Ready-to-use feed components for quick integration" icon="Code" />
-</div>
+<Columns cols={2}>
+  <Card title="Structured Content" icon="folder-icon">
+    Organize media with custom ordering, filtering, and categorization
+  </Card>
+  <Card title="Dynamic Distribution" icon="activity">
+    API-driven content delivery with real-time updates
+  </Card>
+  <Card title="Social Integration" icon="message-circle">
+    Built-in support for likes, comments, and interactions
+  </Card>
+  <Card title="Embeddable Widgets" icon="code">
+    Ready-to-use feed components for quick integration
+  </Card>
+</Columns>
 
 ## Common Use Cases
 
@@ -97,7 +108,3 @@ Feed templates let you quickly apply proven layouts for engagement, product show
 - [Create your first feed](/platform/dashboard/feeds/create-feed)
 - [Manage and configure feeds](/platform/dashboard/feeds/manage-feeds)
 - [Set up API access](/platform/api-documentation/create-key) for integrations
-
-
-
-

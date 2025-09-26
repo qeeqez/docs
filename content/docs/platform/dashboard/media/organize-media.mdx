@@ -3,10 +3,9 @@ title: Organize Media
 description: Structure and manage your media assets effectively in the RIXL Media.
 ---
 
-import { Callout, InfoCard } from '@/components';
+import { Callout, Columns, Card } from '@/components';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
-
 
 Manage your growing media library with **advanced organization, filtering, and collaboration features**. This guide explains how to structure, tag, and optimize assets for faster access and team workflows.
 
@@ -39,20 +38,20 @@ Manage your growing media library with **advanced organization, filtering, and c
 
 ### Folder Structure
 
-<div className="grid gap-4 sm:grid-cols-2">
-  <InfoCard title="Project Folders" description="Group assets by project or campaign">
+<Columns cols={2}>
+  <Card title="Project Folders">
     Dedicated folders with automated project tagging.
-  </InfoCard>
-  <InfoCard title="Content Type" description="Separate images, videos, and documents">
+  </Card>
+  <Card title="Content Type">
     Automatic detection with manual folder options.
-  </InfoCard>
-  <InfoCard title="Date-Based" description="Sort by upload or creation date">
+  </Card>
+  <Card title="Date-Based">
     Smart date-based grouping with custom ranges.
-  </InfoCard>
-  <InfoCard title="Custom Categories" description="Flexible organization system">
-    Create custom folder structures tailored to your workflow.
-  </InfoCard>
-</div>
+  </Card>
+  <Card title="Custom Categories">
+    Flexible organization system
+  </Card>
+</Columns>
 
 ### Tagging System
 
@@ -102,26 +101,26 @@ Manage your growing media library with **advanced organization, filtering, and c
 
 ### Filter Options
 
-<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-  <InfoCard title="Media Type" description="Images, videos, documents">
+<Columns cols={3}>
+  <Card title="Media Type">
     Filter by content type with format-specific options
-  </InfoCard>
-  <InfoCard title="Processing Status" description="Raw, processing, optimized">
+  </Card>
+  <Card title="Processing Status">
     View content by processing stage and optimization status
-  </InfoCard>
-  <InfoCard title="Upload Date" description="Today, week, month, custom range">
+  </Card>
+  <Card title="Upload Date">
     Date-based filtering with quick presets and custom ranges
-  </InfoCard>
-  <InfoCard title="Project Context" description="Filter by associated project">
+  </Card>
+  <Card title="Project Context">
     Project-specific content filtering and organization
-  </InfoCard>
-  <InfoCard title="File Size" description="Small, medium, large, custom range">
+  </Card>
+  <Card title="File Size">
     Size-based filtering for storage management
-  </InfoCard>
-  <InfoCard title="Usage Status" description="Used, unused, archived">
+  </Card>
+  <Card title="Usage Status">
     Track content usage across projects and campaigns
-  </InfoCard>
-</div>
+  </Card>
+</Columns>
 
 ---
 
@@ -224,21 +223,20 @@ Unused or outdated content can be archived for storage optimization
 
 ### Team Tools
 
-<Cards>
-  <Card title="Team Access" description="Collaborate on content organization">
+<Columns cols={2}>
+  <Card title="Team Access">
     Team-based permissions and collaborative organization features
   </Card>
-  <Card title="Comments" description="Add notes and feedback to content">
+  <Card title="Comments">
     Content-specific comments and review discussions
   </Card>
-  <Card title="Approval Workflow" description="Multi-stage content approval">
+  <Card title="Approval Workflow">
     Configurable approval processes for content publication
   </Card>
-  <Card title="Version History" description="Track content changes over time">
+  <Card title="Version History">
     Complete history of modifications and organizational changes
   </Card>
-</Cards>
-
+</Columns>
 
 ### Metadata Management
 

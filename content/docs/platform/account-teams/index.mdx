@@ -3,37 +3,42 @@ title: Account & Settings
 description: Manage your RIXL account, security, team access, and billing in one place.
 ---
 
-import { InteractiveCard } from '@/components';
+import { Columns, Card } from '@/components';
 
-<div className="grid gap-6 sm:grid-cols-2">
-  <InteractiveCard
+<Columns cols={2}>
+  <Card
     title="Account Overview"
-    description="View your account details, recent activity, and key settings."
     href="/platform/account-teams/overview"
-    icon="Users"
-  />
-  <InteractiveCard
+    icon="users"
+  >
+    View your account details, recent activity, and key settings.
+  </Card>
+  <Card
     title="Profile & Security"
-    description="Update your profile, change your password, and enable two-factor authentication."
     href="/platform/account-teams/general-settings"
-    icon="Settings"
-  />
-  <InteractiveCard
+    icon="settings"
+  >
+    Update your profile, change your password, and enable two-factor authentication.
+  </Card>
+  <Card
     title="Developer Access"
-    description="Create and manage API keys to connect RIXL to your applications."
-  href="/platform/api-documentation/create-key"
-    icon="Key"
-  />
-  <InteractiveCard
+    href="/platform/api-documentation/create-key"
+    icon="key"
+  >
+    Create and manage API keys to connect RIXL to your applications.
+  </Card>
+  <Card
     title="Billing & Usage"
-    description="Check your plan, track usage, update payment methods, and download invoices."
-  href="/platform/billing/overview"
-    icon="CreditCard"
-  />
-  <InteractiveCard
+    href="/platform/billing/overview"
+    icon="credit-card"
+  >
+    Check your plan, track usage, update payment methods, and download invoices.
+  </Card>
+  <Card
     title="Team & Organizations"
-    description="Create organizations, invite team members, and manage roles across projects."
-  href="/platform/account-teams/organizations-overview"
-    icon="Building"
-  />
-</div>
+    href="/platform/account-teams/organizations-overview"
+    icon="building"
+  >
+    Create organizations, invite team members, and manage roles across projects.
+  </Card>
+</Columns>

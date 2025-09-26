@@ -3,7 +3,7 @@ title: Upload Images
 description: Add and optimize image content in the RIXL dashboard with multiple workflows and integration options.
 ---
 
-import { Callout, InfoCard } from '@/components';
+import { Callout, Columns, Card } from '@/components';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
@@ -68,23 +68,26 @@ Track progress with real-time status updates.
 
 ## Project Management
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-6">
-  <InfoCard 
+<Columns cols={3}>
+  <Card 
     title="Project Assignment" 
-    description="Automatically link images to active projects"
-    icon="FolderPlus"
-  />
-  <InfoCard 
+    icon="folder-plus"
+  >
+    Automatically link images to active projects
+  </Card>
+  <Card 
     title="Team Collaboration" 
-    description="Share uploaded images with teammates"
-    icon="Users"
-  />
-  <InfoCard 
+    icon="users"
+  >
+    Share uploaded images with teammates
+  </Card>
+  <Card 
     title="Workflow Status" 
-    description="Track approval and review stages"
-    icon="CheckCircle"
-  />
-</div>
+    icon="check-circle"
+  >
+    Track approval and review stages
+  </Card>
+</Columns>
 
 ---
 
@@ -131,28 +134,32 @@ Use embed codes, shareable links, or APIs for distribution.
 
 ### Export & Distribution
 
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-6">
-  <InfoCard 
+<Columns cols={4}>
+  <Card 
     title="Direct URLs" 
-    description="Optimized links for websites and apps"
-    icon="Link"
-  />
-  <InfoCard 
+    icon="link"
+  >
+    Optimized links for websites and apps
+  </Card>
+  <Card 
     title="Embed Codes" 
-    description="Ready-to-use HTML/Markdown snippets"
-    icon="Code"
-  />
-  <InfoCard 
+    icon="code"
+  >
+    Ready-to-use HTML/Markdown snippets
+  </Card>
+  <Card 
     title="API Access" 
-    description="Programmatic management through API"
-    icon="Database"
-  />
-  <InfoCard 
+    icon="database"
+  >
+    Programmatic management through API
+  </Card>
+  <Card 
     title="Download Options" 
-    description="Access original or optimized files"
-    icon="Download"
-  />
-</div>
+    icon="download"
+  >
+    Access original or optimized files
+  </Card>
+</Columns>
 
 ---
 
