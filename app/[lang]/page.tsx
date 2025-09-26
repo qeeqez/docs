@@ -1,5 +1,10 @@
 import {redirect} from "next/navigation";
 
-export default function Redirect() {
-  redirect("/getting-started/overview");
+interface RedirectProps {
+    params: Promise<{ lang: string }>;
+}
+
+export default async function Redirect(props: RedirectProps) {
+    const params = await props.params;
+    redirect(`/${params.lang}/getting-started/overview`);
 }

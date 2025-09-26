@@ -1,6 +1,5 @@
 'use client';
 
-import {I18nLabel} from "fumadocs-ui/contexts/i18n";
 import {Edit, TriangleAlert} from "lucide-react";
 import type {ComponentProps} from "react";
 import {buttonVariants} from "@/components/ui/button";

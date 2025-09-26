@@ -22,6 +22,7 @@ interface PageProps {
 export default async function Page(props: PageProps) {
   const params = await props.params;
   const page = source.getPage(params.slug, params.lang);
+  const lang = params.lang;
 
   if (!page) notFound();
   const MDXContent = page.data.body;
@@ -65,7 +66,7 @@ export default async function Page(props: PageProps) {
               />
             </DocsBody>
           </DocsPage>
-          <Footer/>
+          <Footer lang={lang}/>
         </main>
         <SidebarWrapper className="hidden xl:block">
           <PageTOC>
@@ -79,7 +80,12 @@ export default async function Page(props: PageProps) {
 }
 
 export async function generateStaticParams() {
-  return source.generateParams();
+    const params = source.generateParams('slug', 'lang');
+
+    return params.map(param => ({
+        lang: param.lang,
+        slug: Array.isArray(param.slug) ? param.slug : [param.slug]
+    }));
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {

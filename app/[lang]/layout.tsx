@@ -7,7 +7,6 @@ import {Inter} from "next/font/google";
 import type {ReactNode} from "react";
 import {cn} from "@/lib/cn";
 import {source} from "@/lib/source";
-import {Provider} from "@/provider";
 import {i18n} from '@/lib/i18n';
 import {CustomTranslationProvider} from '@/components/custom-translation-provider';
 import SearchDialog from "@/components/search";
@@ -58,7 +57,10 @@ export default async function Layout({children, params}: LayoutProps) {
         )} suppressHydrationWarning>
         <body>
             <NextProvider>
-                <RootProvider i18n={provider(lang)} search={{SearchDialog}}>
+                <RootProvider
+                    i18n={provider(lang)}
+                    search={{SearchDialog}}
+                >
                     <CustomTranslationProvider locale={lang}>
                         <TreeContextProvider tree={tree}>
                             {children}
