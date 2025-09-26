@@ -28,16 +28,17 @@ const {provider} = defineI18nUI(i18n, {
             chooseLanguage: 'Choose Language',
             chooseTheme: 'Choose Theme',
         },
-        ru: {
-            displayName: 'Russian',
-            search: 'Искать',
-            toc: 'На этой странице',
-            tocNoHeadings: 'Заголовки не найдены',
-            lastUpdate: 'Последнее обновление',
-            searchNoResult: 'Ничего не найдено',
-            chooseLanguage: 'Выберите язык',
-            chooseTheme: 'Выберите тему',
-        },
+        // TODO: Uncomment to enable ru
+        // ru: {
+        //     displayName: 'Русский',
+        //     search: 'Искать',
+        //     toc: 'На этой странице',
+        //     tocNoHeadings: 'Заголовки не найдены',
+        //     lastUpdate: 'Последнее обновление',
+        //     searchNoResult: 'Ничего не найдено',
+        //     chooseLanguage: 'Выберите язык',
+        //     chooseTheme: 'Выберите тему',
+        // },
     },
 });
 

@@ -6,8 +6,8 @@ import GithubIcon from "@/public/socials/github.svg";
 import XIcon from "@/public/socials/x.svg";
 import YoutubeIcon from "@/public/socials/youtube.svg";
 import type {BaseLayoutProps} from "@/components/layout/shared";
-import { i18n } from '@/lib/i18n';
-// import { useTranslations } from '@/hooks/use-translations';
+// import { i18n } from '@/lib/i18n';
+import {getServerTranslations} from "@/hooks/use-server-translation";
 
 /**
  * Shared layout configurations
@@ -17,8 +17,10 @@ import { i18n } from '@/lib/i18n';
  * Docs Layout: app/docs/layout.tsx
  */
 export function baseOptions(lang: string): BaseLayoutProps {
+    const { t } = getServerTranslations(lang)
+
   return {
-      i18n,
+      // i18n, TODO: Enable language switcher
     nav: {
       title: (
         <LogoWide className="h-8 fill-black dark:invert"/>
@@ -28,7 +30,7 @@ export function baseOptions(lang: string): BaseLayoutProps {
     // see https://fumadocs.dev/docs/ui/navigation/links
     links: [
       {
-        text: "Home",
+        text: `${t('home')}`,
         url: `/${lang}/getting-started/overview`,
         active: "nested-url",
         activeSubfolders: [
