@@ -1,16 +1,20 @@
-import {I18nLabel} from "fumadocs-ui/contexts/i18n";
+'use client';
+
 import {Edit, TriangleAlert} from "lucide-react";
 import type {ComponentProps} from "react";
 import {buttonVariants} from "@/components/ui/button";
 import {cn} from "@/lib/cn";
 import type {GithubProps} from "@/components/layout/docs/page/page-github-type";
+import { useTranslations } from '@/hooks/use-translations';
+
 
 interface GithubEditOrIssueProps extends GithubProps, ComponentProps<"a"> {
   mode: "edit" | "issue";
 }
 
-export function GithubEditOrIssue({mode, owner, repo, sha, path, className}: GithubEditOrIssueProps) {
-  const ghPath = path.startsWith("/") ? path.slice(1) : path;
+export function GithubEditOrIssue({mode, owner, repo, sha = "main", path, className}: GithubEditOrIssueProps) {
+    const { t } = useTranslations();
+    const ghPath = path.startsWith("/") ? path.slice(1) : path;
   const href = mode === "edit"
     ? `https://github.com/${owner}/${repo}/blob/${sha}/${ghPath}`
     : `https://github.com/${owner}/${repo}/issues/new?title=Issue%20on%20docs&body=Path:%20${ghPath}`;
@@ -30,10 +34,12 @@ export function GithubEditOrIssue({mode, owner, repo, sha, path, className}: Git
     >
       {mode === "edit" ? (<>
         <Edit className="size-3.5"/>
-        <I18nLabel label="editOnGithub"/> {/* TODO add correct label */}
+          <span>{t('suggestEdits')}</span>
+        {/*<I18nLabel label="suggestEdits"/> /!* TODO add correct label *!/*/}
       </>) : (<>
         <TriangleAlert className="size-3.5"/>
-        <I18nLabel label="editOnGithub"/> {/* TODO add correct label */}
+          <span>{t('raiseIssue')}</span>
+        {/*<I18nLabel label="editOnGithub"/> /!* TODO add correct label *!/*/}
       </>)
       }
     </a>

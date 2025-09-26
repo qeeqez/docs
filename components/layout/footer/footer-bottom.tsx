@@ -2,8 +2,8 @@ import {useMemo} from "react";
 import {FooterBottomLinks} from "@/lib/layout.shared";
 import {FooterBottomLink} from "./footer-bottom-link";
 
-export function FooterBottom() {
-  const links = useMemo(() => FooterBottomLinks(), []);
+export function FooterBottom({lang}: { lang: string}) {
+  const links = useMemo(() => FooterBottomLinks(lang), [lang]);
 
   return (
     <div className="flex flex-wrap justify-center space-x-2 text-xs text-fd-muted-foreground">
