@@ -72,22 +72,29 @@ export function Callout({type = "info", title, children}: CalloutProps) {
   config[type] || config.info;
 
   return (
-    <div className={cn(
-      "rounded-lg border p-4 my-6 transition-colors",
-      "not-prose", // Prevent prose styling conflicts
-      bgClass,
-      borderClass,
-      textClass
-    )}>
+    <div
+      className={cn(
+        "rounded-2xl border p-4 my-6 transition-colors",
+        "not-prose",
+        bgClass,
+        borderClass,
+        textClass
+      )}
+    >
       <div className="flex items-start gap-3">
-        <div className="flex-shrink-0 mt-0.5">
-          <IconComponent className={cn("h-5 w-5", iconClass)}/>
+        <div className="flex-shrink-0 flex items-center">
+          <IconComponent className={cn("h-5 w-5", iconClass)} aria-hidden="true" />
         </div>
         <div className="flex-1 min-w-0">
           {title && (
-            <h4 className="font-semibold text-current m-0 mb-2 leading-tight">
-              {title}
-            </h4>
+            <header>
+              <h4 className={cn(
+                "font-semibold text-current m-0 leading-tight",
+                children && "mb-2"
+            )}>
+                {title}
+              </h4>
+            </header>
           )}
           <div className={cn(
             "text-sm leading-relaxed",
