@@ -3,7 +3,6 @@ title: Reference Documentation
 description: Complete technical reference for RIXL APIs, React SDK components, platform specifications, and integration guides.
 ---
 
-
 import {Callout, Card, Columns} from "@/components";
 import {Tab, Tabs} from 'fumadocs-ui/components/tabs';
 
@@ -42,7 +41,7 @@ Welcome to the **RIXL Reference Documentation**—your comprehensive technical r
     streaming.
   </Card>
   <Card title="Image API" icon="image">
-    Upload and optimize images with AVIF compression and responsive delivery.
+    Upload and deliver images with AVIF compression and responsive delivery.
   </Card>
   <Card title="Feed API" icon="activity">
     Retrieve dynamic content feeds with creator filtering and pagination.
@@ -82,7 +81,7 @@ Welcome to the **RIXL Reference Documentation**—your comprehensive technical r
     href="/sdk/image-component"
     icon="image"
   >
-    Optimized images with AVIF compression, lazy loading, and responsive sizing.
+    Delivered images with AVIF compression, lazy loading, and responsive sizing.
   </Card>
   <Card title="Feed Component" icon="activity">
     Dynamic content feeds with infinite scroll and real-time updates. (Coming
@@ -274,7 +273,7 @@ interface FeedProps extends HTMLProps<HTMLDivElement> {
     HLS with multiple quality levels based on connection speed.
   </Card>
   <Card title="Smart Caching" icon="database">
-    Intelligent cache invalidation and edge optimization.
+    Intelligent cache invalidation and edge performance.
   </Card>
 </Columns>
 
@@ -310,9 +309,8 @@ interface FeedProps extends HTMLProps<HTMLDivElement> {
   </Card>
 </Columns>
 
-<div className="mt-12">
-  <Callout type="tip" title="Ready to integrate?">
+<Callout type="tip" title="Ready to integrate?">
     Start with our [API Reference](/platform/api-documentation/overview) for REST endpoints, or explore [React SDK
     Components](/sdk/getting-started/overview) for frontend integration.
-  </Callout>
-</div>
+</Callout>
+

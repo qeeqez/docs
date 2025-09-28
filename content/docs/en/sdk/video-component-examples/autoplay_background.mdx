@@ -5,7 +5,7 @@ description: "Perfect for hero sections, landing pages, and marketing content wh
 
 
 import {Video} from '@rixl/videosdk-react'
-import {Callout} from 'fumadocs-ui/components/callout'
+import {Callout} from "@/components"
 
 
 ## Live Example
@@ -86,14 +86,11 @@ function HeroSection() {
 ## Best Practices
 
 <Callout type="info">
-  **Browser Autoplay**: Always combine `autoPlay={true}` with `muted={true}` to ensure videos play automatically across
-  all browsers.
+  <strong>Browser Autoplay:</strong> Always combine <code>autoPlay=&#123;true&#125;</code> with <code>muted=&#123;true&#125;</code> to ensure videos play automatically across all browsers.
 </Callout>
-
 <Callout type="warning">
-  **Performance**: Use shorter video loops (10-30 seconds) for better performance and faster loading.
+  <strong>Performance:</strong> Use shorter video loops (10-30 seconds) for better performance and faster loading.
 </Callout>
-
-<Callout type="default">
-  **Accessibility**: Provide a way for users to pause background videos if they find them distracting.
+<Callout type="info">
+  <strong>Accessibility:</strong> Provide a way for users to pause background videos if they find them distracting.
 </Callout>
