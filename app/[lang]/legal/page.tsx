@@ -16,5 +16,5 @@ interface RedirectProps {
 
 export default async function Redirect(props: RedirectProps) {
     const params = await props.params;
-  redirect(`${params.lang}/legal/privacy-policy`);
+  redirect(`/${params.lang}/legal/privacy-policy`);
 }

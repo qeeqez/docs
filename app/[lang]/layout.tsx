@@ -3,7 +3,7 @@ import {NextProvider} from "fumadocs-core/framework/next";
 import {TreeContextProvider} from "fumadocs-ui/contexts/tree";
 import {RootProvider} from 'fumadocs-ui/provider';
 import {defineI18nUI} from 'fumadocs-ui/i18n';
-import {Inter} from "next/font/google";
+import {Inter} from "next/font/google"
 import type {ReactNode} from "react";
 import {cn} from "@/lib/cn";
 import {source} from "@/lib/source";
