@@ -30,7 +30,7 @@ export default async function Page(props: PageProps) {
   return (
     <div id="nd-page" className="flex flex-row lg:gap-12 motion-safe:transition-all motion-safe:duration-300">
       <SidebarWrapper className="hidden lg:block">
-        <Sidebar/>
+        <Sidebar />
       </SidebarWrapper>
 
       <TOCProvider toc={page.data.toc}>
@@ -43,7 +43,7 @@ export default async function Page(props: PageProps) {
               github: {
                 owner: "qeeqez",
                 repo: "docs",
-                path: `content/docs/${page.path}`,
+                path: `content/docs/${lang}/${page.path}`,
                 sha: "main",
                 raiseIssue: true,
               },
@@ -100,7 +100,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     description: page.data.description,
     applicationName: appName,
       openGraph: {
-        title: `page.data.title`
+        title: page.data.title
       }
   };
 }
