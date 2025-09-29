@@ -12,6 +12,11 @@ const nextConfig: NextConfig = {
     productionBrowserSourceMaps: false,
     webpack: (config) => {
         config.module.rules.push({
+            test: /\.svg$/,
+            use: ["@svgr/webpack"],
+        });
+
+        config.module.rules.push({
             test: /\.map$/,
             use: "ignore-loader",
         });
