@@ -6,6 +6,8 @@ import GithubIcon from "@/public/socials/github.svg";
 import XIcon from "@/public/socials/x.svg";
 import YoutubeIcon from "@/public/socials/youtube.svg";
 import type {BaseLayoutProps} from "@/components/layout/shared";
+// import { i18n } from '@/lib/i18n';
+import {getServerTranslations} from "@/hooks/use-server-translation";
 
 /**
  * Shared layout configurations
@@ -14,8 +16,11 @@ import type {BaseLayoutProps} from "@/components/layout/shared";
  * Home Layout: app/(home)/layout.tsx
  * Docs Layout: app/docs/layout.tsx
  */
-export function baseOptions(): BaseLayoutProps {
+export function baseOptions(lang: string): BaseLayoutProps {
+    const { t } = getServerTranslations(lang)
+
   return {
+      // i18n, TODO: Enable language switcher
     nav: {
       title: (
         <LogoWide className="h-8 fill-black dark:invert"/>
@@ -25,8 +30,8 @@ export function baseOptions(): BaseLayoutProps {
     // see https://fumadocs.dev/docs/ui/navigation/links
     links: [
       {
-        text: "Home",
-        url: "/getting-started/overview",
+        text: `${t('home')}`,
+        url: `/${lang}/getting-started/overview`,
         active: "nested-url",
         activeSubfolders: [
           "/getting-started",
@@ -40,18 +45,18 @@ export function baseOptions(): BaseLayoutProps {
       },
       {
         text: 'SDKs',
-        url: '/sdk/getting-started',
+        url: `/${lang}/sdk/getting-started`,
         active: "nested-url",
         activeSubfolders: [
-          "/sdk/getting-started",
-          "/sdk/video-component",
-          "/sdk/image-component",
-          "/sdk/video-component-examples"
+          `/${lang}/sdk/getting-started`,
+          `/${lang}/sdk/video-component`,
+          `/${lang}/sdk/image-component`,
+          `/${lang}/sdk/video-component-examples`
         ]
       },
       {
         text: "APIs",
-        url: "/api",
+        url: `/${lang}/api`,
         active: "nested-url",
       },
       {
@@ -64,44 +69,44 @@ export function baseOptions(): BaseLayoutProps {
   };
 }
 
-export function FooterSections(): FooterSection[] {
+export function FooterSections(lang: string): FooterSection[] {
   // TODO translations and proper links
   return [
     {
       title: "Resources",
       links: [
-        {text: "API", url: "/api"},
-        {text: "Documentation", url: "/docs"},
-        {text: "Guides", url: "/guides"},
-        {text: "Examples", url: "/examples"},
+        {text: "API", url: `/${lang}/api`},
+        {text: "Documentation", url: `/${lang}/docs`},
+        {text: "Guides", url: `/${lang}/guides`},
+        {text: "Examples", url: `/${lang}/examples`},
       ],
     },
     {
       title: "Support",
       links: [
-        {text: "Help Center", url: "/help"},
-        {text: "Community", url: "/community"},
-        {text: "Contact", url: "/contact"},
-        {text: "Status", url: "/status"},
+        {text: "Help Center", url: `/${lang}/help`},
+        {text: "Community", url: `/${lang}/community`},
+        {text: "Contact", url: `/${lang}/contact`},
+        {text: "Status", url: `/${lang}/status`},
       ],
     },
     {
       title: "Company",
       links: [
         {text: "rixl.com", url: "https://www.rixl.com"},
-        {text: "About", url: "/about"},
-        {text: "Blog", url: "/blog"},
-        {text: "Careers", url: "/careers"},
-        {text: "Privacy", url: "/legal/privacy-policy"},
+        {text: "About", url: `/${lang}/about`},
+        {text: "Blog", url: `/${lang}/blog`},
+        {text: "Careers", url: `/${lang}/careers`},
+        {text: "Privacy", url: `/${lang}/legal/privacy-policy`},
       ],
     },
     {
       title: "Tools",
       links: [
-        {text: "CLI", url: "/cli"},
-        {text: "SDK", url: "/sdk"},
-        {text: "Integrations", url: "/integrations"},
-        {text: "Extensions", url: "/extensions"},
+        {text: "CLI", url: `/${lang}/cli`},
+        {text: "SDK", url: `/${lang}/sdk`},
+        {text: "Integrations", url: `/${lang}/integrations`},
+        {text: "Extensions", url: `/${lang}/extensions`},
       ],
     },
     {
@@ -116,11 +121,11 @@ export function FooterSections(): FooterSection[] {
   ];
 }
 
-export function FooterBottomLinks(): { text: string; url: string }[] {
+export function FooterBottomLinks(lang: string): { text: string; url: string }[] {
   // TODO translations
   return [
-    {text: "Privacy Policy", url: "/legal/privacy-policy"},
-    {text: "Terms of Service", url: "/legal/terms-of-service"},
-    {text: "Cookie Policy", url: "/legal/cookie-policy"},
+    {text: "Privacy Policy", url: `/${lang}/legal/privacy-policy`},
+    {text: "Terms of Service", url: `/${lang}/legal/terms-of-service`},
+    {text: "Cookie Policy", url: `/${lang}/legal/cookie-policy`},
   ];
 }

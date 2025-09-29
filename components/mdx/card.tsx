@@ -1,4 +1,4 @@
-import Link from "fumadocs-core/link";
+import Link from "next/link";
 import {ArrowUpRight} from "lucide-react";
 import type {IconName} from "lucide-react/dynamic";
 import type {HTMLAttributes, ReactNode} from "react";
@@ -31,10 +31,13 @@ const showArrow = (href?: string, arrow?: ArrowType) => {
 }
 
 export const Card = ({icon, title, description, href, arrow, cta, ...props}: Props) => {
-  const E = href ? Link : 'div';
+    const isExternal = !!href && isExternalLink(href);
+    const E: any = href ? (isExternal ? 'a' : Link) : 'div';
 
   return <E
     {...props}
+    {...(href ? { href } : {})}
+    {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
     className={cn(
       "block group relative overflow-hidden w-full",
       "my-2 p-6 rounded-2xl",
