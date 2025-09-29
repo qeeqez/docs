@@ -2,7 +2,7 @@ import {redirect} from "next/navigation";
 import {source} from "@/lib/source";
 
 interface RedirectProps {
-    params: Promise<{ lang: string }>;
+    params: { lang: string };
 }
 
 export async function generateStaticParams() {

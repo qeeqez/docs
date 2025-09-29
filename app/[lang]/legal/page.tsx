@@ -10,7 +10,7 @@ export async function generateStaticParams() {
 }
 
 interface RedirectProps {
-    params: Promise<{ lang: string }>;
+    params: { lang: string };
 }
 
 export default async function Redirect(props: RedirectProps) {
