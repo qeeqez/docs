@@ -1,8 +1,9 @@
 import type {LucideProps} from 'lucide-react';
-import type {IconName} from "lucide-react/dynamic";
-import dynamic from 'next/dynamic';
+import { icons } from 'lucide-react';
 import React, {type ComponentProps, type ReactElement} from 'react';
 import {cn} from "@/lib/cn";
+
+type IconName = keyof typeof icons;
 
 type IconProps = Omit<LucideProps, 'name'> &
   ({
@@ -19,13 +20,12 @@ export const Icon = ({name, icon, ...props}: IconProps) => {
     return React.cloneElement(icon, props);
   }
 
-  const LucideIcon = dynamic(
-    () => import(`lucide-react/dist/esm/icons/${name.toLowerCase()}`)
-      .catch(() => () => <SVGIcon {...props}/>),
-    {ssr: true}
-  );
+  if (name && name in icons) {
+    const LucideIcon = icons[name];
+    return <LucideIcon {...props} />;
+  }
 
-  return <LucideIcon {...props} />;
+  return <SVGIcon {...props} />;
 };
 
 const SVGIcon = (props: ComponentProps<'svg'>) => {
