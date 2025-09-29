@@ -33,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
-    // Documentation pages from Fumadocs source
+
     ...source.getPages().map((page) => {
       const { lastModified } = page.data;
 
