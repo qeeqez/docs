@@ -8,11 +8,10 @@ export default async function Page() {
 }
 
 export async function generateStaticParams() {
-    const params = source.generateParams('slug', 'lang');
+    const params = source.generateParams( 'lang');
 
     return params.map(param => ({
         lang: param.lang,
-        slug: Array.isArray(param.slug) ? param.slug : [param.slug]
     }));
 }
 

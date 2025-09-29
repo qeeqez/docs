@@ -31,11 +31,13 @@ const showArrow = (href?: string, arrow?: ArrowType) => {
 }
 
 export const Card = ({icon, title, description, href, arrow, cta, ...props}: Props) => {
-  const E = href ? (Link as any)  : 'div';
+    const isExternal = !!href && isExternalLink(href);
+    const E: any = href ? (isExternal ? 'a' : Link) : 'div';
 
   return <E
     {...props}
     {...(href ? { href } : {})}
+    {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
     className={cn(
       "block group relative overflow-hidden w-full",
       "my-2 p-6 rounded-2xl",

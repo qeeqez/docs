@@ -100,7 +100,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     description: page.data.description,
     applicationName: appName,
       openGraph: {
-        title: ``
+        title: `page.data.title`
       }
   };
 }
