@@ -4,19 +4,27 @@ import type {NextConfig} from "next";
 const withMDX = createMDX();
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true,
-  output: "export",
-  images: {
-    unoptimized: true
-  },
-  turbopack: {
-    rules: {
-      "*.svg": {
-        loaders: ["@svgr/webpack"],
-        as: "*.js",
-      },
+    reactStrictMode: true,
+    output: "export",
+    images: {
+        unoptimized: true
     },
-  },
+    turbopack: {
+        rules: {
+            "*.svg": {
+                loaders: ["@svgr/webpack"],
+                as: "*.js",
+            },
+        },
+    },
+    // async rewrites() {
+    //     return [
+    //         {
+    //             source: '/:path*.mdx',
+    //             destination: '/llms.mdx/:path*',
+    //         },
+    //     ];
+    // },
 };
 
 export default withMDX(nextConfig);
