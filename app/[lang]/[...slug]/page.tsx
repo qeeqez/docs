@@ -28,6 +28,8 @@ export default async function Page(props: PageProps) {
     if (!page) notFound();
     const MDXContent = page.data.body;
 
+    const insertLlmsSegment = (pageUrl: string)=> pageUrl.replace(/^\/(\w{2})\//, '/$1/llms/');
+
     return (
         <div id="nd-page" className="flex flex-row lg:gap-12 motion-safe:transition-all motion-safe:duration-300">
             <SidebarWrapper className="hidden lg:block">
@@ -59,7 +61,7 @@ export default async function Page(props: PageProps) {
                                     <DocsTitle>{page.data.title}</DocsTitle>
 
                                     <LLMCopyButton
-                                        markdownUrl={`${page.url}.mdx`}
+                                        markdownUrl={`${insertLlmsSegment(page.url)}.mdx`}
                                         githubUrl={`https://github.com/qeeqez/docs/blob/dev/apps/docs/content/docs/${page.path}`}
                                     />
                                 </div>
