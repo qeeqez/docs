@@ -55,7 +55,7 @@ export default async function Page(props: PageProps) {
                             <div className="space-y-2.5">
                                 <PageBreadcrumb/>
 
-                                <div className="flex items-center gap-2">
+                                <div className="flex items-center justify-between gap-2">
                                     <DocsTitle>{page.data.title}</DocsTitle>
 
                                     <LLMCopyButton

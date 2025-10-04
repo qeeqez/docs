@@ -1,4 +1,4 @@
-import { type NextRequest } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 import { getLLMText } from '@/lib/get-llm-text';
 import { source } from '@/lib/source';
 import { notFound } from 'next/navigation';
@@ -14,7 +14,7 @@ export async function GET(
 
     if (!page) notFound();
 
-    return new Response(await getLLMText(page));
+    return new NextResponse(await getLLMText(page));
 }
 
 export function generateStaticParams() {
