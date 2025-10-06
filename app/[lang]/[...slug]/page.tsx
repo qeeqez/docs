@@ -62,7 +62,7 @@ export default async function Page(props: PageProps) {
 
                                     <LLMCopyButton
                                         markdownUrl={`${insertLlmsSegment(page.url)}.mdx`}
-                                        githubUrl={`https://github.com/qeeqez/docs/blob/dev/apps/docs/content/docs/${page.path}`}
+                                        githubUrl={`https://github.com/qeeqez/docs/tree/main/content/docs/${page.path}`}
                                     />
                                 </div>
                             </div>
