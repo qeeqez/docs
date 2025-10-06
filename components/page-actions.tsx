@@ -246,6 +246,7 @@ export function ViewOptions({
                 <ChevronDown/>
             </PopoverTrigger>
             <PopoverContent
+              align="end"
                 className="flex flex-col overflow-auto bg-transparent border border-fd-muted-foreground mt-2">
                 <div
                     className={cn(optionVariants())}
