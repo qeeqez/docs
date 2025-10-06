@@ -10,13 +10,6 @@ const nextConfig: NextConfig = {
         unoptimized: true,
     },
     productionBrowserSourceMaps: false,
-    webpack: (config) => {
-        config.module.rules.push({
-            test: /\.map$/,
-            use: "ignore-loader",
-        });
-        return config;
-    },
     turbopack: {
         rules: {
             "*.svg": {
@@ -24,7 +17,7 @@ const nextConfig: NextConfig = {
                 as: "*.js",
             },
             "*.map": {
-                loaders: ["ignore-loader"],
+                loaders: ["raw-loader"],
             },
         },
     },
