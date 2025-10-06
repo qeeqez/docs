@@ -16,19 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: url('/getting-started/overview'),
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
       url: url('/api'),
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: url('/sdk/getting-started'),
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
