@@ -53,16 +53,16 @@ export function LLMCopyButton({
     });
 
     return (
-        <div className={cn('rounded-2xl [&_svg]:size-4 [&_svg]:cursor-pointer border text-sm ' +
-            'border-fd-muted-foreground flex items-center')}>
+        <div className={cn('rounded-lg [&_svg]:size-4 [&_svg]:cursor-pointer border text-sm ' +
+            'border-gray-200 flex items-center h-7')}>
             <button
                 type={`button`}
                 disabled={isLoading}
                 onClick={onClick}
-                className={cn('flex items-center gap-2 cursor-pointer py-2 px-2 border-r border-r-fd-muted-foreground/50 hover:bg-fd-muted-foreground/10')}
+                className={cn('flex items-center rounded-l-lg gap-2 cursor-pointer h-full px-2 border-r border-r-gray-200 hover:bg-fd-muted-foreground/10')}
             >
-                {checked ? <Check/> : <Copy/>}
-                {checked ? 'Copied' : 'Copy page'}
+                {checked ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                <span className="text-xs font-medium">{checked ? 'Copied' : 'Copy'}</span>
             </button>
 
             <ViewOptions markdownUrl={markdownUrl} githubUrl={githubUrl} onClick={onClick}/>
@@ -233,7 +233,7 @@ export function ViewOptions({
 
     return (
         <Popover open={open} onOpenChange={setOpen}>
-            <PopoverTrigger className="hover:bg-fd-muted-foreground/10 px-2 py-2"
+            <PopoverTrigger className="hover:bg-fd-muted-foreground/10 rounded-r-lg px-2 h-full "
                 // className={cn(
                 //   buttonVariants({
                 //     color: 'secondary',
@@ -243,7 +243,7 @@ export function ViewOptions({
                 // )}
             >
                 {/*Open*/}
-                <ChevronDown/>
+                <ChevronDown className="w-3.5 h-3.5"/>
             </PopoverTrigger>
             <PopoverContent
               align="end"
