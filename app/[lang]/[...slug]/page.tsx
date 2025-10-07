@@ -9,7 +9,7 @@ import {SidebarWrapper} from "@/components/layout/docs/sidebar/sidebar-wrapper";
 import {Footer} from "@/components/layout/footer/footer";
 import {DocsBody, DocsDescription, DocsPage, DocsTitle} from "@/components/layout/page";
 import {TOCProvider} from "@/components/ui/toc";
-import {source} from "@/lib/source";
+import {source, getPageImage} from "@/lib/source";
 import {getMDXComponents} from "@/mdx-components";
 import {LLMCopyButton} from "@/components/page-actions";
 
@@ -106,12 +106,23 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
     const appName = "Rixl";
 
+    const imageUrl = getPageImage(page).url
+
     return {
         title: `${page.data.title} - ${appName}`,
         description: page.data.description,
         applicationName: appName,
         openGraph: {
-            title: page.data.title
+            title: page.data.title,
+            description: page.data.description,
+            images: imageUrl,
+            siteName: appName,
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: page.data.title,
+            description: page.data.description,
+            images: imageUrl,
         }
     };
 }
