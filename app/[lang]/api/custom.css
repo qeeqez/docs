@@ -47,6 +47,9 @@
 
   --scalar-color-accent: var(--sc-color-accent);
   --scalar-background-accent: var(--sc-background-accent);
+
+  --scalar-border-color: var(--color-fd-border);
+  --scalar-sidebar-border-color: var(--color-fd-border);
 }
 
 .references-header {

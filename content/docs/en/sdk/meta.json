@@ -3,7 +3,6 @@
   "title": "SDK",
   "description": "Complete guide to the RIXL SDK Library",
   "pages": [
-    "index",
     "---Getting Started---",
     "...getting-started",
     "---Video---",
