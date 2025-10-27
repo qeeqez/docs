@@ -72,6 +72,10 @@ function HeroVideo() {
 }
 ```
 
+<Callout type="tip">
+    **See it in action:** Check out the [AutoPlay Background video](/en/sdk/examples/autoplay-background) for a complete background video autoplay implementation.
+</Callout>
+
 ### Content Video (Standard Player)
 
 ```tsx
@@ -97,6 +101,10 @@ function ContentVideo() {
   );
 }
 ```
+
+<Callout type="tip">
+    **See it in action:** Check out the [Standard player video example](/en/sdk/examples/standard-player) for a complete background video autoplay implementation.
+</Callout>
 
 ### Video Gallery/Playlist
 
@@ -144,27 +152,6 @@ function VideoGallery() {
             <div className="text-sm text-gray-500">{video.duration}</div>
           </button>
         ))}
-      </div>
-    </div>
-  );
-}
-```
-
-### Responsive Video with Aspect Ratio
-
-```tsx
-function ResponsiveVideo() {
-  return (
-    <div className="w-full max-w-4xl mx-auto">
-      {/* 16:9 Aspect Ratio Container */}
-      <div className="aspect-video w-full">
-        <Video
-          id="D3OCjdLP60"
-          className="w-fit h-fit bg-transparent"
-          progressBar={true}
-          allowFullscreen={true}
-          theme="minimal"
-        />
       </div>
     </div>
   );

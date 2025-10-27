@@ -3,7 +3,6 @@ title: "Basic Usage"
 description: "Learn how to implement the Image component with common patterns and examples"
 ---
 
-
 import {Tabs, TabsContent, TabsList, TabsTrigger} from 'fumadocs-ui/components/tabs'
 import {Callout} from 'fumadocs-ui/components/callout'
 
@@ -20,9 +19,9 @@ import { Image } from '@rixl/videosdk-react';
 Every Image component needs at minimum:
 
 ```tsx
-<Image
-  id="your-image-id" // Required: Your image ID from dash.rixl.com
-/>
+    <Image
+      id="your-image-id" // Required: Your image ID from dash.rixl.com
+    />
 ```
 
 ## Simple Image Display Example
@@ -57,33 +56,35 @@ function BasicImage() {
   <TabsContent value="hero">
     ```tsx
     function HeroImage() {
-    return (
-    <section className="relative h-96 overflow-hidden">
-    <Image
-    id="hero-image-id"
-    className="absolute inset-0 w-full h-full object-cover"
-    />
-    <div className="relative z-10 flex items-center justify-center h-full">
-    <h1 className="text-4xl font-bold text-white">Welcome</h1>
-    </div>
-    </section>
-    );
-  }
+        return (
+            <section className="relative h-96 overflow-hidden">
+                <Image
+                    id="hero-image-id"
+                    className="absolute inset-0 w-full h-full object-cover"
+                />
+
+                <div className="relative z-10 flex items-center justify-center h-full">
+                    <h1 className="text-4xl font-bold text-white">Welcome</h1>
+                </div>
+            </section>
+        );
+    }
     ```
   </TabsContent>
 
   <TabsContent value="contained">
     ```tsx
     function ContainedHero() {
+
     return (
-    <section className="max-w-4xl mx-auto py-12">
-    <div className="aspect-video rounded-xl overflow-hidden">
-    <Image
-    id="hero-image-id"
-    className="w-full h-full object-cover"
-    />
-    </div>
-    </section>
+        <section className="max-w-4xl mx-auto py-12">
+            <div className="aspect-video rounded-xl overflow-hidden">
+                <Image
+                id="hero-image-id"
+                className="w-full h-full object-cover"
+                />
+            </div>
+        </section>
     );
   }
     ```
@@ -116,56 +117,6 @@ function ImageGallery() {
 }
 ```
 
-### Product Images
-
-```tsx
-import { useState } from 'react';
-
-const productImages = [
-  { id: 'product-main', alt: 'Main product view' },
-  { id: 'product-side', alt: 'Side view' },
-  { id: 'product-detail', alt: 'Detail view' },
-  { id: 'product-back', alt: 'Back view' }
-];
-
-function ProductImages() {
-  const [selectedImage, setSelectedImage] = useState(productImages[0]);
-
-  return (
-    <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
-      {/* Main Image */}
-      <div className="lg:col-span-4 aspect-square">
-        <Image
-          key={selectedImage.id} // Force re-render on selection change
-          id={selectedImage.id}
-          className="w-full h-full object-contain rounded-lg"
-        />
-      </div>
-
-      {/* Thumbnails */}
-      <div className="lg:col-span-1 flex lg:flex-col gap-2">
-        {productImages.map((image) => (
-          <button
-            key={image.id}
-            onClick={() => setSelectedImage(image)}
-            className={`aspect-square rounded-md overflow-hidden border-2 ${
-              selectedImage.id === image.id
-                ? 'border-blue-500'
-                : 'border-transparent hover:border-gray-300'
-            }`}
-          >
-            <Image
-              id={image.id}
-              className="w-full h-full object-cover"
-            />
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
-```
-
 ### Profile/Avatar Images
 
 ```tsx
@@ -187,26 +138,8 @@ function UserProfile() {
 }
 ```
 
-### Responsive Image with Fixed Aspect Ratio
-
-```tsx
-function ResponsiveImage() {
-  return (
-    <div className="w-full max-w-lg mx-auto">
-      {/* 4:3 Aspect Ratio */}
-      <div className="aspect-[4/3] rounded-lg overflow-hidden bg-gray-100">
-        <Image
-          id="responsive-image-id"
-          className="w-full h-full object-contain"
-        />
-      </div>
-    </div>
-  );
-}
-```
 
 ## Best Practices
-
 
 <Callout type="default">
   **Aspect Ratios**: Use CSS aspect ratio classes to prevent layout shifts during image loading.

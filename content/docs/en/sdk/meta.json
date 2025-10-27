@@ -9,7 +9,7 @@
     "...video-component",
     "---Image---",
     "...image-component",
-    "---Video Examples---",
-    "...video-component-examples"
+    "---Examples---",
+    "...examples"
   ]
 }
