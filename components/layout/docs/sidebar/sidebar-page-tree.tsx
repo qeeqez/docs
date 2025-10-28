@@ -3,6 +3,7 @@
 import type {PageTree} from "fumadocs-core/server";
 import {useTreeContext} from "fumadocs-ui/contexts/tree";
 import {Fragment, type ReactNode, useMemo} from "react";
+import {usePathname} from "next/navigation";
 import type {SidebarComponents} from "@/components/layout/docs/sidebar/sidebar-components";
 import {SidebarItem} from "@/components/layout/docs/sidebar/sidebar-item";
 import {PageTreeFolder} from "@/components/layout/docs/sidebar/sidebar-page-tree-folder";
@@ -11,9 +12,25 @@ import {cn} from "@/lib/cn";
 
 export function SidebarPageTree(props: {components?: Partial<SidebarComponents>}) {
   const {root} = useTreeContext();
+  const pathname = usePathname();
 
   return useMemo(() => {
     const {Separator, Item, Folder} = props.components ?? {};
+
+    const isSdkRoute = /\/[a-zA-Z]{2}\/sdk(\/|$)/.test(pathname ?? "");
+
+    const filteredItems = isSdkRoute
+      ? root.children
+      : root.children.filter((node) => {
+          if (node.type === "folder") {
+            const hasSdk =
+              (node.index?.url && /\/[a-zA-Z]{2}\/sdk(\/|$)/.test(node.index.url)) ||
+              node.children.some((child) => child.type === "page" && /\/[a-zA-Z]{2}\/sdk(\/|$)/.test(child.url));
+            return !hasSdk;
+          }
+          if (node.type === "page") return !/\/[a-zA-Z]{2}\/sdk(\/|$)/.test(node.url);
+          return true;
+        });
 
     function renderSidebarList(items: PageTree.Node[], level: number): ReactNode[] {
       return items.map((item, i) => {
@@ -52,6 +69,6 @@ export function SidebarPageTree(props: {components?: Partial<SidebarComponents>}
       });
     }
 
-    return <Fragment key={root.$id}>{renderSidebarList(root.children, 1)}</Fragment>;
-  }, [props.components, root]);
+    return <Fragment key={root.$id}>{renderSidebarList(filteredItems, 1)}</Fragment>;
+  }, [props.components, root, pathname]);
 }
