@@ -3,7 +3,7 @@ title: "Video: Minimal Player"
 description: "Muted video with no controls for Feed components and custom UI implementations"
 ---
 
-import { Video } from '@rixl/videosdk-react'
+import { Video } from '@/components/rixl-player.tsx'
 import { Callout } from 'fumadocs-ui/components/callout'
 
 # Minimal Video Player
@@ -40,13 +40,13 @@ import { Video } from '@rixl/videosdk-react';
 ## What's Included
 
 **Available:**
-- ✅ Video playback
-- ✅ Autoplay support
+- Video playback
+- Autoplay support
 
 **NOT Available:**
-- ❌ No visible controls
-- ❌ No keyboard shortcuts
-- ❌ No audio (must be muted)
+- No visible controls
+- No keyboard shortcuts
+- No audio (must be muted)
 
 ## Use Cases
 
@@ -97,21 +97,15 @@ function FeedVideo({ videoId }) {
 
 ## When to Use
 
-**✅ Use Minimal Theme For:**
+**Use Minimal Theme For:**
 - Feed components
 - Video previews
 - Background videos
 - Custom player implementations
 
-**❌ Use Standard Theme Instead:**
+**Use Standard Theme Instead:**
 - Videos that need audio
 - Content requiring user controls
 - Educational or tutorial content
 
 Need audio or controls? Use the [Standard Video Player](/en/sdk/examples/video/standard-player) instead.
-
-## What's Next?
-
-- **[Standard Video Player](/en/sdk/examples/video/standard-player)** - Full controls and audio
-- **[Autoplay Background](/en/sdk/examples/video/autoplay-background)** - Hero section videos
-- **[Feed Component](/en/sdk/feed-component/overview)** - Complete Feed implementation

@@ -1,9 +1,11 @@
 {
   "pages": [
     "index",
-    "standard-video",
-    "autoplay_background",
-    "minimal-video-player",
+    "standard-player",
+    "autoplay-background",
+    "minimal-player",
+    "hero-image",
+    "profile-avatar",
     "..."
   ]
 }

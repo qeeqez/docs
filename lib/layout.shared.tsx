@@ -52,7 +52,7 @@ export function baseOptions(lang: string): BaseLayoutProps {
           `/getting-started`,
           `/video-component`,
           `/image-component`,
-          `/video-component-examples`
+          `/examples`
         ]
       },
       {

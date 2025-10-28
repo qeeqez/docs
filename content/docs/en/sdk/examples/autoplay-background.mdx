@@ -4,14 +4,14 @@ description: "Perfect for hero sections, landing pages, and marketing content wh
 ---
 
 
-import {Video} from '@rixl/videosdk-react'
+import {Video} from '@/components/rixl-player.tsx';
 import {Callout} from "@/components"
 
 
 ## Live Example
 <div className="relative h-96 overflow-hidden rounded-xl mb-8">
   <Video
-    className="absolute inset-0 w-full h-full object-contain"
+    className="absolute inset-0 w-fit h-fit object-contain"
     autoPlay={true}
     muted={true}
     loop={true}
