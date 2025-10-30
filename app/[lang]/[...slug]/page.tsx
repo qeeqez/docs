@@ -109,6 +109,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     const imageUrl = getPageImage(page).url
 
     return {
+        metadataBase: new URL('https://docs.rixl.com'),
         title: `${page.data.title} - ${appName}`,
         description: page.data.description,
         applicationName: appName,
