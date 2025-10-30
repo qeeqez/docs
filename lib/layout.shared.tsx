@@ -57,7 +57,7 @@ export function baseOptions(lang: string): BaseLayoutProps {
       },
       {
         text: "APIs",
-        url: `/${lang}/api`,
+        url: `/api`,
         active: "nested-url",
       },
       {
