@@ -1,7 +1,7 @@
 import "@/app/global.css";
 import {NextProvider} from "fumadocs-core/framework/next";
 import {TreeContextProvider} from "fumadocs-ui/contexts/tree";
-import {RootProvider} from 'fumadocs-ui/provider';
+import {RootProvider} from 'fumadocs-ui/provider/next';
 import {defineI18nUI} from 'fumadocs-ui/i18n';
 import {Inter} from "next/font/google"
 import type {ReactNode} from "react";

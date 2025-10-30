@@ -1,3 +1,3 @@
-import type {PageTree} from "fumadocs-core/server";
+import type {Item as PageTreeItem} from "fumadocs-core/page-tree";
 
-export type Item = Pick<PageTree.Item, "name" | "description" | "url">;
+export type Item = Pick<PageTreeItem, "name" | "description" | "url">;

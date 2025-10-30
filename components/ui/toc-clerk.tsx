@@ -1,10 +1,10 @@
 "use client";
-import type {TOCItemType} from "fumadocs-core/server";
+import type {TOCItemType} from "fumadocs-core/toc";
 import * as Primitive from "fumadocs-core/toc";
 import {useI18n} from "fumadocs-ui/contexts/i18n";
 import {type ComponentProps, useEffect, useRef, useState} from "react";
+import {mergeRefs} from "@/lib/merge-refs";
 import {cn} from "../../lib/cn";
-import {mergeRefs} from "../../lib/merge-refs";
 import {useTOCItems} from "./toc";
 import {TocThumb} from "./toc-thumb";
 

@@ -1,5 +1,4 @@
-import type {TOCItemType} from "fumadocs-core/server";
-import type {AnchorProviderProps} from "fumadocs-core/toc";
+import type {AnchorProviderProps, TOCItemType} from "fumadocs-core/toc";
 import {type ComponentProps, forwardRef, type ReactNode} from "react";
 import {PageArticle, PageRoot} from "@/components/layout/docs/page";
 import type {BreadcrumbProps} from "@/components/layout/docs/page/page-breadcrumb";

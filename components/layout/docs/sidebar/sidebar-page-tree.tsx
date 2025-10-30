@@ -1,9 +1,9 @@
 "use client";
 
-import type {PageTree} from "fumadocs-core/server";
+import type {Node} from "fumadocs-core/page-tree";
 import {useTreeContext} from "fumadocs-ui/contexts/tree";
-import {Fragment, type ReactNode, useMemo} from "react";
 import {usePathname} from "next/navigation";
+import {Fragment, type ReactNode, useMemo} from "react";
 import type {SidebarComponents} from "@/components/layout/docs/sidebar/sidebar-components";
 import {SidebarItem} from "@/components/layout/docs/sidebar/sidebar-item";
 import {PageTreeFolder} from "@/components/layout/docs/sidebar/sidebar-page-tree-folder";
@@ -33,7 +33,7 @@ export function SidebarPageTree(props: { components?: Partial<SidebarComponents>
                 return true;
             });
 
-        function renderSidebarList(items: PageTree.Node[], level: number): ReactNode[] {
+        function renderSidebarList(items: Node[], level: number): ReactNode[] {
             return items.map((item, i) => {
                 if (item.type === "separator") {
                     if (Separator) return <Separator key={i} item={item}/>;

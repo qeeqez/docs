@@ -1,6 +1,5 @@
 import type {BreadcrumbOptions} from "fumadocs-core/breadcrumb";
-import type {TOCItemType} from "fumadocs-core/server";
-import type {AnchorProviderProps} from "fumadocs-core/toc";
+import type {AnchorProviderProps, TOCItemType} from "fumadocs-core/toc";
 import type {ComponentProps, ReactNode} from "react";
 import type {FooterProps} from "@/components/layout/docs/page/page-footer";
 import type {GithubBlockProps} from "@/components/layout/docs/page/page-github-block";

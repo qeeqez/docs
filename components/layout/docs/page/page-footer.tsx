@@ -1,7 +1,7 @@
 "use client";
 
 import {usePathname} from "fumadocs-core/framework";
-import type {PageTree} from "fumadocs-core/server";
+import type {Node, Item as PageTreeItem} from "fumadocs-core/page-tree";
 import {useTreeContext} from "fumadocs-ui/contexts/tree";
 import {type ComponentProps, useMemo} from "react";
 import {FooterItem} from "@/components/layout/docs/page/page-footer-item";
@@ -11,7 +11,7 @@ import {isActive} from "@/lib/is-active";
 import {PageLastUpdate} from "@/components/layout/docs/page/page-last-update";
 import {GithubBlock, GithubBlockProps} from "@/components/layout/docs/page/page-github-block";
 
-const listCache = new Map<string, PageTree.Item[]>();
+const listCache = new Map<string, PageTreeItem[]>();
 
 export interface FooterProps extends ComponentProps<"div"> {
   /**
@@ -62,8 +62,8 @@ export function PageFooter({items, github, lastUpdate, className, ...props}: Foo
   );
 }
 
-function scanNavigationList(tree: PageTree.Node[]) {
-  const list: PageTree.Item[] = [];
+function scanNavigationList(tree: Node[]) {
+  const list: PageTreeItem[] = [];
 
   tree.forEach((node) => {
     if (node.type === "folder") {
