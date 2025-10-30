@@ -2,12 +2,12 @@
 
 import {NavProvider} from "fumadocs-ui/contexts/layout";
 import type {HTMLAttributes} from "react";
+import {Sidebar} from "@/components/layout/docs/sidebar/sidebar";
+import {SidebarWrapper} from "@/components/layout/docs/sidebar/sidebar-wrapper";
 import {Header} from "@/components/layout/header/header";
 import {Background} from "@/components/layout/home/background";
 import {cn} from "@/lib/cn";
 import type {BaseLayoutProps, NavOptions} from "../shared/index";
-import {SidebarWrapper} from "@/components/layout/docs/sidebar/sidebar-wrapper";
-import {Sidebar} from "@/components/layout/docs/sidebar/sidebar";
 
 export interface HomeLayoutProps extends BaseLayoutProps, HTMLAttributes<HTMLElement> {
   nav?: Partial<
@@ -27,12 +27,12 @@ export function HomeLayout({nav = {}, links, githubUrl, i18n, searchToggle, side
       <div id="nd-home-layout" {...rest} className={cn("relative z-10 flex min-h-svh flex-col", rest.className)}>
         <Background/>
         <Header links={links} nav={nav} searchToggle={searchToggle} i18n={i18n} githubUrl={githubUrl}/>
-        <div className="relative w-full max-w-[92rem] mx-auto lg:px-8">
+        <div className="relative w-full max-w-368 mx-auto lg:px-8">
           {!sidebar
             ? rest.children
             : (
               <div id="nd-page" className="flex flex-row lg:gap-8 motion-safe:transition-all motion-safe:duration-300">
-                <SidebarWrapper>
+                <SidebarWrapper className="hidden xl:block">
                   <Sidebar/>
                 </SidebarWrapper>
                 {rest.children}

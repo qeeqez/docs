@@ -13,8 +13,8 @@ import {getServerTranslations} from "@/hooks/use-server-translation";
  * Shared layout configurations
  *
  * you can customise layouts individually from:
- * Home Layout: app/(home)/layout.tsx
- * Docs Layout: app/docs/layout.tsx
+ * Home Layout: app/(home)/shared-layout.tsx
+ * Docs Layout: app/docs/shared-layout.tsx
  */
 export function baseOptions(lang: string): BaseLayoutProps {
     const { t } = getServerTranslations(lang)
