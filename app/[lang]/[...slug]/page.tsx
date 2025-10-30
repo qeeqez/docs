@@ -106,7 +106,8 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
     const appName = "Rixl";
 
-    const imageUrl = getPageImage(page).url
+    const rawImageUrl = getPageImage(page).url;
+    const imageUrl = rawImageUrl.replace(/\/og\//, `/${params.lang}/og/`);
 
     return {
         title: `${page.data.title} - ${appName}`,
