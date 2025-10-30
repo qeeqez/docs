@@ -1,10 +1,11 @@
-import type {ImageResponseOptions} from 'next/dist/compiled/@vercel/og/types';
+import fs from "node:fs/promises";
 import {ImageResponse} from 'next/og';
+import type {ImageResponseOptions} from "next/server";
 import type {ReactElement, ReactNode} from 'react';
 
 interface GenerateProps {
-  title: ReactNode;
-  description?: ReactNode;
+  title: string;
+  description?: string;
   icon?: ReactNode;
   primaryColor?: string;
   secondaryColor?: string;
@@ -12,9 +13,31 @@ interface GenerateProps {
   site?: ReactNode;
 }
 
-export function generateOGImage(
-  options: GenerateProps & ImageResponseOptions,
-): ImageResponse {
+const font = fs.readFile('./lib/og/Inter-Regular.ttf');
+const fontBold = fs.readFile('./lib/og/Inter-SemiBold.ttf');
+
+export async function getImageResponseOptions(): Promise<ImageResponseOptions> {
+  return {
+    width: 1200,
+    height: 630,
+    fonts: [
+      {
+        name: 'Inter',
+        data: await font,
+        weight: 400,
+      },
+      {
+        name: 'Inter',
+        data: await fontBold,
+        weight: 600,
+      },
+    ],
+  };
+}
+
+export async function generateOGImage(
+  options: GenerateProps,
+): Promise<ImageResponse> {
   const {
     title,
     description,
@@ -23,7 +46,6 @@ export function generateOGImage(
     primaryColor,
     secondaryColor,
     primaryTextColor,
-    ...rest
   } = options;
 
   return new ImageResponse(
@@ -36,17 +58,21 @@ export function generateOGImage(
       primaryColor,
       secondaryColor,
     }),
-    {
-      width: 1200,
-      height: 630,
-      ...rest,
-    },
+    await getImageResponseOptions(),
   );
 }
 
+const getTruncatedText = (maxLength: number, text?: string) => {
+  if (!text) return '';
+  if (text.length <= maxLength) {
+    return text;
+  }
+  return `${text.slice(0, maxLength)}...`;
+};
+
 export function generate({
-                           primaryColor = '#D33F49',
-                           secondaryColor = '#FFA41C',
+                           primaryColor = '#FFA41C',
+                           secondaryColor = '#D33F49',
                            primaryTextColor = '#FFFFFF',
                            ...props
                          }: GenerateProps): ReactElement {
@@ -55,50 +81,42 @@ export function generate({
       style={{
         display: 'flex',
         flexDirection: 'column',
+        justifyContent: "space-between",
         width: '100%',
         height: '100%',
         color: 'white',
         padding: '4rem',
-        backgroundImage: `linear-gradient(to top right, ${primaryColor}, ${secondaryColor})`,
+        // backgroundImage: `linear-gradient(to top left, ${primaryColor}, ${secondaryColor})`,
+        backgroundImage: `radial-gradient(at top right, ${primaryColor}, ${secondaryColor});`,
       }}
     >
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          gap: '16px',
-          marginBottom: '12px',
-          color: primaryTextColor,
-        }}
-      >
-        {props.icon}
+      <div style={{display: "flex"}}>{props.icon}</div>
+      <div style={{
+        display: "flex",
+        flexDirection: "column",
+        maxWidth: '80%'
+      }}>
         <p
           style={{
-            fontSize: '56px',
             fontWeight: 600,
+            fontSize: '82px',
+            marginTop: 0,
+            marginBottom: 0,
           }}
         >
-          {props.site}
+          {props.title}
+        </p>
+        <p
+          style={{
+            fontWeight: 400,
+            fontSize: '36px',
+            marginBottom: 0,
+            color: 'rgba(240,240,240,0.8)',
+          }}
+        >
+          {getTruncatedText(80, props.description)}
         </p>
       </div>
-
-      <p
-        style={{
-          fontWeight: 800,
-          fontSize: '82px',
-        }}
-      >
-        {props.title}
-      </p>
-      <p
-        style={{
-          fontSize: '52px',
-          color: 'rgba(240,240,240,0.8)',
-        }}
-      >
-        {props.description}
-      </p>
     </div>
   );
 }

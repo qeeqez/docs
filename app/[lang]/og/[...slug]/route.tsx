@@ -26,9 +26,7 @@ export async function GET(
   return generateOGImage({
     title: page.data.title,
     description: page.data.description,
-    icon: <LogoWide style={{height: 80, width: 480, fill: "#000000", filter: "invert(100%)"}}/>,
-    primaryColor: '#D33F49',
-    secondaryColor: '#FFA41C',
+    icon: <LogoWide style={{height: 60, width: 360, fill: "#000000", filter: "invert(100%)"}}/>
   })
 }
 
