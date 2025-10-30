@@ -18,8 +18,10 @@ export const source = loader({
 
 export function getPageImage(page: InferPageType<typeof source>) {
     const segments = [...page.slugs, 'image.png'];
+    const lang = page.locale || 'en';
+
     return {
         segments,
-        url: `/og/docs/${segments.join('/')}`,
+        url: `/${lang}/og/docs/${segments.join('/')}`,
     };
 }
