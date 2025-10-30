@@ -12,6 +12,7 @@ import {TOCProvider} from "@/components/ui/toc";
 import {source, getPageImage} from "@/lib/source";
 import {getMDXComponents} from "@/mdx-components";
 import {LLMCopyButton} from "@/components/page-actions";
+import {getBaseUrl} from "@/lib/base-url";
 
 interface PageProps {
     params: {
@@ -109,7 +110,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     const imageUrl = getPageImage(page).url
 
     return {
-        metadataBase: new URL('https://docs.rixl.com'),
+        metadataBase: getBaseUrl(),
         title: `${page.data.title} - ${appName}`,
         description: page.data.description,
         applicationName: appName,
