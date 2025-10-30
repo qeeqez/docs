@@ -6,7 +6,7 @@ export function SidebarSeparator(props: ComponentProps<'p'>) {
     <h5
       {...props}
       className={cn(
-        'flex items-center gap-2.5 pl-4 mb-3.5 lg:mb-2.5 ps-(--sidebar-item-offset) text-gray-900 dark:text-gray-200 text-sm font-medium empty:mb-0 [&_svg]:size-4 [&_svg]:shrink-0',
+        'flex items-center gap-2.5 mb-3.5 lg:mb-2.5 ps-(--sidebar-item-offset) text-gray-900 dark:text-gray-200 text-sm font-medium empty:mb-0 [&_svg]:size-4 [&_svg]:shrink-0',
         props.className,
       )}
     >
