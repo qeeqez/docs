@@ -1,8 +1,8 @@
-import { getPageImage, source } from '@/lib/source';
-import { notFound } from 'next/navigation';
-import { ImageResponse } from 'next/og';
-import { generate as DefaultImage } from 'fumadocs-ui/og';
-import {LucideHouse} from "lucide-react";
+import {source} from '@/lib/source';
+import {notFound} from 'next/navigation';
+import {ImageResponse} from 'next/og';
+import {generate as generateOG} from 'fumadocs-ui/og';
+import LogoWide from '@/assets/logo_wide.svg';
 
 export const revalidate = false;
 
@@ -17,7 +17,7 @@ interface RouteContext {
 export async function GET(
     _req: Request, context: RouteContext
 ) {
-    const { lang, slug } = await context.params;
+    const {lang, slug} = await context.params;
 
     const pageSlug = slug.slice(0, -1);
 
@@ -26,17 +26,13 @@ export async function GET(
     if (!page) notFound();
 
     return new ImageResponse(
-        (
-            <DefaultImage
-                title={page.data.title}
-                description={page.data.description}
-                site="RIXL DOCS"
-            />
-        ),
-        {
-            width: 1200,
-            height: 630,
-        },
+        generateOG({
+            title: <div style={{ fontSize: 64, lineHeight: 1.08, marginTop: '90px', }}>{page.data.title}</div>,
+            description: page.data.description,
+            icon: <LogoWide style={{ height: 72, width: 360 }} />,
+            primaryColor: '#ffa41cbf',
+        }),
+        {width: 1200, height: 630},
     );
 }
 

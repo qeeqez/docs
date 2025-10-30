@@ -40,7 +40,8 @@ export function baseOptions(lang: string): BaseLayoutProps {
           "/guides",
           "/reference",
           "/images",
-          "/video"
+          "/video",
+            "/sdk"
         ]
       },
       {
@@ -48,10 +49,10 @@ export function baseOptions(lang: string): BaseLayoutProps {
         url: `/${lang}/sdk/getting-started`,
         active: "nested-url",
         activeSubfolders: [
-          `/${lang}/sdk/getting-started`,
-          `/${lang}/sdk/video-component`,
-          `/${lang}/sdk/image-component`,
-          `/${lang}/sdk/video-component-examples`
+          `/getting-started`,
+          `/video-component`,
+          `/image-component`,
+          `/examples`
         ]
       },
       {
