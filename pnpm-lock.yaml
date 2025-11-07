@@ -15,8 +15,8 @@ importers:
         specifier: ^1.1.5
         version: 1.1.5(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@rixl/videosdk-react':
-        specifier: ^0.15.1
-        version: 0.15.1(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwindcss@4.1.16)(use-sync-external-store@1.6.0(react@19.2.0))
+        specifier: ^0.15.3
+        version: 0.15.3(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwindcss@4.1.16)(use-sync-external-store@1.6.0(react@19.2.0))
       '@scalar/api-reference-react':
         specifier: ^0.8.1
         version: 0.8.1(react@19.2.0)(tailwindcss@4.1.16)(typescript@5.9.3)
@@ -2210,14 +2210,14 @@ packages:
       '@codemirror/state': ^6.0.0
       '@codemirror/view': ^6.0.0
 
-  '@rixl/videosdk-react@0.15.1':
-    resolution: {integrity: sha512-OkekzIfyqr4L30MvUQVVBL+DXhu1J/Wk/rNLCGMTC3AEDpSpC4EgffpVHTT2Y6jZPyYGWeRoTuo6nU2PRdeBYQ==}
+  '@rixl/videosdk-react@0.15.3':
+    resolution: {integrity: sha512-elyt0TVGSnjVOZ+VfJ5yDn6KPy2tcMDjZFbD5KVsOA5lrtUWi2L80F9i79qJ3H6VGNkx0bgkxDcRA+qMKj0h2w==}
     peerDependencies:
       react: '>=18.0.0'
       tailwindcss: ^4.0.9
 
-  '@rixl/videosdk@0.15.1':
-    resolution: {integrity: sha512-6IgKaf3OG/ije7rngIStx9YeimjBPmALxXU34EOArpFvuQr29ZTZEBFD/VEo1zePjGulsNsx5Qn+w1JTeYYxyw==}
+  '@rixl/videosdk@0.15.3':
+    resolution: {integrity: sha512-NI8UZgnTIR623rJfSsd9YiCy6AcAfqHc3RaW44jLWCu+ouXWilHAObgmijO9KToNJYztHiH3ouBa0wD+UiZ/Bw==}
 
   '@scalar/analytics-client@1.0.0':
     resolution: {integrity: sha512-pnkghhqfmSH7hhdlFpu2M3V/6EjP2R0XbKVbmP77JSli12DdInxR1c4Oiw9V5f/jgxQhVczQQTt74cFYbLzI/Q==}
@@ -6580,10 +6580,10 @@ snapshots:
       '@codemirror/state': 6.5.2
       '@codemirror/view': 6.38.6
 
-  '@rixl/videosdk-react@0.15.1(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwindcss@4.1.16)(use-sync-external-store@1.6.0(react@19.2.0))':
+  '@rixl/videosdk-react@0.15.3(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwindcss@4.1.16)(use-sync-external-store@1.6.0(react@19.2.0))':
     dependencies:
       '@nanostores/react': 1.0.0(nanostores@1.0.1)(react@19.2.0)
-      '@rixl/videosdk': 0.15.1
+      '@rixl/videosdk': 0.15.3
       '@uidotdev/usehooks': 2.4.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       hls.js: 1.6.14
       nanostores: 1.0.1
@@ -6598,7 +6598,7 @@ snapshots:
       - react-dom
       - use-sync-external-store
 
-  '@rixl/videosdk@0.15.1':
+  '@rixl/videosdk@0.15.3':
     dependencies:
       nanostores: 1.0.1
 
