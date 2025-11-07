@@ -1,0 +1,65 @@
+---
+title: "Basic Usage"
+description: "Learn how to implement the Feed component with common patterns and use cases"
+---
+
+import {Callout} from "@/components";
+
+## Importing the Feed Component
+
+```tsx
+import { Feed } from '@rixl/videosdk-react';
+```
+
+## Essential Props
+
+Every Feed component needs at minimum:
+
+```tsx
+<Feed
+  feedId="your-feed-id" // Required: Your feed ID from dash.rixl.com
+/>
+```
+
+## Simple Feed Example
+
+Here's a basic implementation with common settings:
+
+```tsx
+import { Feed } from '@rixl/videosdk-react';
+
+function BasicFeed() {
+  return (
+        <div className={`md:w-2/5 w-[90%] mx-auto h-screen`}>
+            <Feed feedId={`id-from-dashboard`} />
+        </div>
+  );
+}
+```
+
+## Common Use Cases
+
+### Social Media Feed (Standard Implementation)
+
+```tsx
+function SocialFeed() {
+  return (
+    <main className="w-full h-screen bg-black">
+      <Feed
+        feedId="following-feed"
+      />
+    </main>
+  );
+}
+```
+
+<Callout type="tip">
+    **See it in action:** Check out the [Standard Feed example](/en/sdk/examples/standard-feed) for a complete feed implementation.
+</Callout>
+
+
+## Best Practices
+
+<Callout type="info">
+    **Mobile-First**: Design your feed layout with mobile devices in mind, as most feed interactions happen on mobile platforms.
+</Callout>

@@ -8,15 +8,13 @@ import { Callout } from 'fumadocs-ui/components/callout'
 
 ## Live Example
 
-<div className="max-w-4xl mx-auto mb-8">
-    <div className="relative w-full h-[500px] rounded-lg overflow-hidden">
-        <Image
-            id="Hq3GhYYwSX"
-            className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-            <h1 className="text-white text-5xl font-bold">Welcome</h1>
-        </div>
+<div className="relative w-full h-[500px] rounded-lg">
+    <Image
+        id="Hq3GhYYwSX"
+    />
+
+    <div className="absolute w-full inset-0 flex items-center justify-center bg-transparent">
+        <h1 className="text-white text-5xl font-bold">Welcome</h1>
     </div>
 </div>
 
@@ -27,15 +25,14 @@ import { Image } from '@rixl/videosdk-react';
 
 export function HeroSection() {
   return (
-    <div className="relative w-full h-[500px]">
-      <Image
-        id="your-hero-image-id"
-        alt="Hero background"
-        className="w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <h1 className="text-white text-5xl font-bold">Welcome</h1>
-      </div>
+    <div className="relative w-full h-[500px] rounded-lg">
+        <Image
+            id="Hq3GhYYwSX"
+        />
+
+        <div className="absolute w-full inset-0 flex items-center justify-center bg-transparent">
+            <h1 className="text-white text-5xl font-bold">Welcome</h1>
+        </div>
     </div>
   );
 }
@@ -48,11 +45,11 @@ export function HeroSection() {
 ## What's Included
 
 Available:
-* ✅ Automatic image optimization
-* ✅ Responsive scaling
-* ✅ Lazy loading
-* ✅ Text overlay support
-* ✅ Thumbhash placeholders
+* Automatic image optimization
+* Responsive scaling
+* Lazy loading
+* Text overlay support
+* Thumbhash placeholders
 
 ## Use Cases
 
@@ -124,7 +121,7 @@ Available:
 ## Common Props
 
 * `id` (required) - Image ID from dash.rixl.com
-* `className` - Tailwind CSS classes for styling
+* `className (optional)` - Tailwind CSS classes for styling
 
 
 <Callout type="warning">

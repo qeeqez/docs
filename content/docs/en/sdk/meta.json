@@ -9,6 +9,8 @@
     "...video-component",
     "---Image---",
     "...image-component",
+    "---Feed---",
+    "...feed-component",
     "---Examples---",
     "...examples"
   ]
