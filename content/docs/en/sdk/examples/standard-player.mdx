@@ -13,10 +13,10 @@ The standard video player provides a complete, professional media experience wit
 <div className="w-full h-[500px]">
     <Video
         className="w-fit h-fit bg-transparent"
-        muted={true}
+        muted={false}
         progressBar={true}
         loop={true}
-        autoPlay={true}
+        autoPlay={false}
         allowPlayPause={true}
         allowFullscreen={true}
         allowPictureInPicture={true}
@@ -37,8 +37,8 @@ function StandardVideoPlayer() {
         id="your-video-id"
         className="w-fit h-fit bg-transparent"
         // Playback Controls
-        autoPlay={true}
-        muted={true}
+        autoPlay={false}
+        muted={false}
         loop={true}
         volume={1.0}
         // UI Controls

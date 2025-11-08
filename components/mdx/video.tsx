@@ -18,6 +18,7 @@ declare interface VideoProps extends HTMLProps<HTMLVideoElement> {
   allowPictureInPicture?: boolean;
   volume?: number;
   theme?: VideoTheme;
+  lang?: "en" | "de" | "es" | "fr" | "it" | "pl" | "ru" | "tr" | "uk";
 }
 
 export const Video = (props: VideoProps) => {

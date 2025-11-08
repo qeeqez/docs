@@ -15,8 +15,8 @@ importers:
         specifier: ^1.1.5
         version: 1.1.5(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@rixl/videosdk-react':
-        specifier: ^0.14.4
-        version: 0.14.4(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwindcss@4.1.16)(use-sync-external-store@1.6.0(react@19.2.0))
+        specifier: ^0.15.3
+        version: 0.15.3(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwindcss@4.1.16)(use-sync-external-store@1.6.0(react@19.2.0))
       '@scalar/api-reference-react':
         specifier: ^0.8.1
         version: 0.8.1(react@19.2.0)(tailwindcss@4.1.16)(typescript@5.9.3)
@@ -2210,14 +2210,14 @@ packages:
       '@codemirror/state': ^6.0.0
       '@codemirror/view': ^6.0.0
 
-  '@rixl/videosdk-react@0.14.4':
-    resolution: {integrity: sha512-NzEHh5//dvX1oSD9cOsJDok/gtwnXV7MfRtJje0TlVTwarVkcuifE/sH578/9vepRwbRPvVxYHNPQ/+VurJP3g==}
+  '@rixl/videosdk-react@0.15.3':
+    resolution: {integrity: sha512-elyt0TVGSnjVOZ+VfJ5yDn6KPy2tcMDjZFbD5KVsOA5lrtUWi2L80F9i79qJ3H6VGNkx0bgkxDcRA+qMKj0h2w==}
     peerDependencies:
       react: '>=18.0.0'
       tailwindcss: ^4.0.9
 
-  '@rixl/videosdk@0.14.1':
-    resolution: {integrity: sha512-C1TqxNUhXL4IyZb6afXz94B97e42v4nPiehtPqiQbzXuagGrQVKo0PHZ0WUrOYYq2N7ZFwmLM5YH++7jXg2W1g==}
+  '@rixl/videosdk@0.15.3':
+    resolution: {integrity: sha512-NI8UZgnTIR623rJfSsd9YiCy6AcAfqHc3RaW44jLWCu+ouXWilHAObgmijO9KToNJYztHiH3ouBa0wD+UiZ/Bw==}
 
   '@scalar/analytics-client@1.0.0':
     resolution: {integrity: sha512-pnkghhqfmSH7hhdlFpu2M3V/6EjP2R0XbKVbmP77JSli12DdInxR1c4Oiw9V5f/jgxQhVczQQTt74cFYbLzI/Q==}
@@ -3288,8 +3288,8 @@ packages:
   highlightjs-vue@1.0.0:
     resolution: {integrity: sha512-PDEfEF102G23vHmPhLyPboFCD+BkMGu+GuJe2d9/eH4FsCwvgBpnc9n0pGE+ffKdph38s6foEZiEjdgHdzp+IA==}
 
-  hls.js@1.6.13:
-    resolution: {integrity: sha512-hNEzjZNHf5bFrUNvdS4/1RjIanuJ6szpWNfTaX5I6WfGynWXGT7K/YQLYtemSvFExzeMdgdE4SsyVLJbd5PcZA==}
+  hls.js@1.6.14:
+    resolution: {integrity: sha512-CSpT2aXsv71HST8C5ETeVo+6YybqCpHBiYrCRQSn3U5QUZuLTSsvtq/bj+zuvjLVADeKxoebzo16OkH8m1+65Q==}
 
   hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
@@ -4121,6 +4121,9 @@ packages:
 
   tailwindcss@4.1.16:
     resolution: {integrity: sha512-pONL5awpaQX4LN5eiv7moSiSPd/DLDzKVRJz8Q9PgzmAdd1R4307GQS2ZpfiN7ZmekdQrfhZZiSE5jkLR4WNaA==}
+
+  talkr@3.5.1:
+    resolution: {integrity: sha512-SxUohHvZLnwWsteXwFDauKue8Vx1vtuDQ2+FQ451lMaSvUB7U6TAKrxO8QNDt1i2CNSKWgUMpuT/cQeW2mMM8g==}
 
   tapable@2.3.0:
     resolution: {integrity: sha512-g9ljZiwki/LfxmQADO3dEY1CbpmXT5Hm2fJ+QaGKwSXUylMybePR7/67YW7jOrrvjEgL1Fmz5kzyAjWVWLlucg==}
@@ -6577,15 +6580,16 @@ snapshots:
       '@codemirror/state': 6.5.2
       '@codemirror/view': 6.38.6
 
-  '@rixl/videosdk-react@0.14.4(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwindcss@4.1.16)(use-sync-external-store@1.6.0(react@19.2.0))':
+  '@rixl/videosdk-react@0.15.3(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwindcss@4.1.16)(use-sync-external-store@1.6.0(react@19.2.0))':
     dependencies:
       '@nanostores/react': 1.0.0(nanostores@1.0.1)(react@19.2.0)
-      '@rixl/videosdk': 0.14.1
+      '@rixl/videosdk': 0.15.3
       '@uidotdev/usehooks': 2.4.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      hls.js: 1.6.13
+      hls.js: 1.6.14
       nanostores: 1.0.1
       react: 19.2.0
       tailwindcss: 4.1.16
+      talkr: 3.5.1
       thumbhash: 0.1.1
       zustand: 5.0.8(@types/react@19.2.2)(react@19.2.0)(use-sync-external-store@1.6.0(react@19.2.0))
     transitivePeerDependencies:
@@ -6594,7 +6598,7 @@ snapshots:
       - react-dom
       - use-sync-external-store
 
-  '@rixl/videosdk@0.14.1':
+  '@rixl/videosdk@0.15.3':
     dependencies:
       nanostores: 1.0.1
 
@@ -8062,7 +8066,7 @@ snapshots:
 
   highlightjs-vue@1.0.0: {}
 
-  hls.js@1.6.13: {}
+  hls.js@1.6.14: {}
 
   hookable@5.5.3: {}
 
@@ -9270,6 +9274,8 @@ snapshots:
   tailwind-merge@3.3.1: {}
 
   tailwindcss@4.1.16: {}
+
+  talkr@3.5.1: {}
 
   tapable@2.3.0: {}
 
