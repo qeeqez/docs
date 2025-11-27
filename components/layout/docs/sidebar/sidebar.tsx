@@ -6,7 +6,7 @@ import {SidebarProvider} from "@/components/layout/docs/sidebar/sidebar-provider
 export function Sidebar() {
   return (
     <SidebarProvider>
-      <SidebarPageTree/>
+      <SidebarPageTree />
     </SidebarProvider>
   );
 }

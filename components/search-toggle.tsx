@@ -22,7 +22,7 @@ export function SearchToggle({hideIfDisabled, size = "icon-sm", color = "ghost",
           size,
           color,
         }),
-        props.className,
+        props.className
       )}
       data-search=""
       aria-label="Open Search"
@@ -52,7 +52,7 @@ export function LargeSearchToggle({
       {...props}
       className={cn(
         "inline-flex items-center gap-2 rounded-lg border bg-fd-secondary/50 p-1.5 ps-2 text-sm text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground",
-        props.className,
+        props.className
       )}
       onClick={() => {
         setOpenSearch(true);

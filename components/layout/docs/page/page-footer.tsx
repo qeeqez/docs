@@ -49,14 +49,12 @@ export function PageFooter({items, github, lastUpdate, className, ...props}: Foo
   return (
     <div {...props} className={cn("space-y-4", className)}>
       <div className="flex flex-row flex-wrap items-center justify-between gap-4 empty:hidden">
-        {github &&
-          <GithubBlock owner={github.owner} repo={github.repo} path={github.path} raiseIssue={github.raiseIssue}/>}
-        {lastUpdate && <PageLastUpdate date={lastUpdate}/>}
+        {github && <GithubBlock owner={github.owner} repo={github.repo} path={github.path} raiseIssue={github.raiseIssue} />}
+        {lastUpdate && <PageLastUpdate date={lastUpdate} />}
       </div>
-      <div
-        className={cn("@container grid gap-4 pb-6", previous && next ? "grid-cols-2" : "grid-cols-1")}>
-        {previous ? <FooterItem item={previous} index={0}/> : null}
-        {next ? <FooterItem item={next} index={1}/> : null}
+      <div className={cn("@container grid gap-4 pb-6", previous && next ? "grid-cols-2" : "grid-cols-1")}>
+        {previous ? <FooterItem item={previous} index={0} /> : null}
+        {next ? <FooterItem item={next} index={1} /> : null}
       </div>
     </div>
   );

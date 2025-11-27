@@ -18,7 +18,7 @@ export function PageTOC(props: ComponentProps<"div">) {
       className={cn(
         "",
         // 'fixed bottom-0 pt-12 pb-2 pr-(--removed-body-scroll-bar-size,0) max-xl:hidden',
-        props.className,
+        props.className
       )}
       style={{
         ...props.style,

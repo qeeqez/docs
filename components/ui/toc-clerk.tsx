@@ -74,7 +74,7 @@ export default function ClerkTOCItems({ref, className, ...props}: ComponentProps
             maskImage: `url("data:image/svg+xml,${
               // Inline SVG
               encodeURIComponent(
-                `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svg.width} ${svg.height}"><path d="${svg.path}" stroke="black" stroke-width="1" fill="none" /></svg>`,
+                `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svg.width} ${svg.height}"><path d="${svg.path}" stroke="black" stroke-width="1" fill="none" /></svg>`
               )
             }")`,
           }}
@@ -123,7 +123,7 @@ function TOCItem({item, upper = item.depth, lower = item.depth}: {item: TOCItemT
         className={cn(
           "absolute inset-y-0 w-px bg-fd-foreground/10",
           offset !== upperOffset && "top-1.5",
-          offset !== lowerOffset && "bottom-1.5",
+          offset !== lowerOffset && "bottom-1.5"
         )}
         style={{
           insetInlineStart: offset,

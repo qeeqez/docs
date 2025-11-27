@@ -19,18 +19,14 @@ export const sidebarItemVariants = cva(
   {
     variants: {
       active: {
-        true: cn(
-          "bg-fd-primary/10 dark:bg-fd-primary/10",
-          "text-fd-primary",
-          "font-semibold"
-        ),
+        true: cn("bg-fd-primary/10 dark:bg-fd-primary/10", "text-fd-primary", "font-semibold"),
         false: cn(
           "hover:bg-gray-600/5 dark:hover:bg-gray-200/5",
           "text-fd-muted-foreground hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
         ),
       },
     },
-  },
+  }
 );
 
 export function SidebarItem({

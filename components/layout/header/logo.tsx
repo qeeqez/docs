@@ -8,7 +8,9 @@ interface LogoProps {
 }
 
 export function Logo({title, url, className}: LogoProps) {
-  return <Link href={url ?? "/"} className={className}>
-    {title}
-  </Link>
+  return (
+    <Link href={url ?? "/"} className={className}>
+      {title}
+    </Link>
+  );
 }

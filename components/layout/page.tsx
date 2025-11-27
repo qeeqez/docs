@@ -21,7 +21,7 @@ interface EditOnGitHubOptions extends Omit<ComponentProps<"a">, "href" | "childr
    * File path in the repo
    */
   path: string;
-  raiseIssue?: boolean
+  raiseIssue?: boolean;
 }
 
 interface BreadcrumbOptions extends BreadcrumbProps {
@@ -95,24 +95,16 @@ type TableOfContentOptions = Pick<AnchorProviderProps, "single"> & {
 type TableOfContentPopoverOptions = Omit<TableOfContentOptions, "single">;
 
 export function DocsPage({
-                           breadcrumb: {
-                             enabled: breadcrumbEnabled = true,
-                             component: breadcrumb,
-                             ...breadcrumbProps
-                           } = {},
-                           footer = {},
-                           container,
-                           full = false,
-                           tableOfContentPopover: {
-                             enabled: tocPopoverEnabled,
-                             component: tocPopover,
-                             ...tocPopoverOptions
-                           } = {},
-                           tableOfContent: {enabled: tocEnabled, component: tocReplace, ...tocOptions} = {},
-                           toc = [],
-                           article,
-                           children,
-                         }: DocsPageProps) {
+  breadcrumb: {enabled: breadcrumbEnabled = true, component: breadcrumb, ...breadcrumbProps} = {},
+  footer = {},
+  container,
+  full = false,
+  tableOfContentPopover: {enabled: tocPopoverEnabled, component: tocPopover, ...tocPopoverOptions} = {},
+  tableOfContent: {enabled: tocEnabled, component: tocReplace, ...tocOptions} = {},
+  toc = [],
+  article,
+  children,
+}: DocsPageProps) {
   // disable TOC on full mode, you can still enable it with `enabled` option.
   tocEnabled ??= !full && (toc.length > 0 || tocOptions.footer !== undefined || tocOptions.header !== undefined);
 
@@ -123,9 +115,9 @@ export function DocsPage({
       toc={
         tocEnabled || tocPopoverEnabled
           ? {
-            toc,
-            single: tocOptions.single,
-          }
+              toc,
+              single: tocOptions.single,
+            }
           : false
       }
       {...container}
@@ -133,14 +125,8 @@ export function DocsPage({
     >
       <PageArticle {...article}>
         {children}
-        {footer.enabled !== false && (footer.component ??
-          <PageFooter
-            items={footer.items}
-            github={footer.github}
-            lastUpdate={footer.lastUpdate}
-            className="py-8"
-          />)
-        }
+        {footer.enabled !== false &&
+          (footer.component ?? <PageFooter items={footer.items} github={footer.github} lastUpdate={footer.lastUpdate} className="py-8" />)}
       </PageArticle>
     </PageRoot>
   );

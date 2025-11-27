@@ -21,10 +21,10 @@ export function Header({nav = {}, i18n = false, links, githubUrl, searchToggle =
     <Navbar className={cn("sticky top-0 left-0 right-0 w-full z-[9999]", border)}>
       <div className="flex items-center h-header-top min-w-0 lg:px-12 mx-4 lg:mx-0">
         <div className={cn("h-full relative flex-1 flex items-center gap-x-4 min-w-0", border)}>
-          <Logo title={nav?.title} url={nav?.url} className="flex-1 flex items-center gap-x-4"/>
-          {searchToggle.enabled && <LargeSearchToggle
-            className="relative hidden lg:flex items-center gap-2.5 flex-1 cursor-pointer"
-            hideIfDisabled/>}
+          <Logo title={nav?.title} url={nav?.url} className="flex-1 flex items-center gap-x-4" />
+          {searchToggle.enabled && (
+            <LargeSearchToggle className="relative hidden lg:flex items-center gap-2.5 flex-1 cursor-pointer" hideIfDisabled />
+          )}
           <HeaderRight
             i18n={i18n}
             menuItems={finalLinks}
@@ -39,7 +39,7 @@ export function Header({nav = {}, i18n = false, links, githubUrl, searchToggle =
           {navItems
             .filter((item) => !isSecondary(item))
             .map((item, i) => (
-              <NavbarLinkItem key={i} item={item}/>
+              <NavbarLinkItem key={i} item={item} />
             ))}
         </div>
       </div>

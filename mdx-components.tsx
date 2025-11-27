@@ -8,12 +8,7 @@ import {Callout, Card, Columns, Video} from "@/components";
 
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
-  const {
-    Card: _,
-    Cards: __,
-    Callout: ___,
-    ...mdxComponents
-  } = defaultMdxComponents;
+  const {Card: _, Cards: __, Callout: ___, ...mdxComponents} = defaultMdxComponents;
 
   const rixlComponents = {
     Card,

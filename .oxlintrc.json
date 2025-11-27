@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/oxlint/configuration_schema.json",
+  "rules": {
+    "react": "warn",
+    "typescript": "warn",
+    "react-perf": "warn",
+    "jsx-a11y": "warn",
+    "nextjs": "warn"
+  },
+  "plugins": [
+    "react",
+    "react-perf",
+    "nextjs"
+  ],
+  "ignorePatterns": [
+    "node_modules",
+    ".next",
+    "dist",
+    "build",
+    "out",
+    ".fumadocs",
+    "routeTree.gen.ts"
+  ]
+}

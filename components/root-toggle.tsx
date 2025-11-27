@@ -53,7 +53,7 @@ export function RootToggle({
           {...props}
           className={cn(
             "flex items-center gap-2 rounded-lg p-2 border bg-fd-secondary/50 text-start text-fd-secondary-foreground transition-colors hover:bg-fd-accent data-[state=open]:bg-fd-accent data-[state=open]:text-fd-accent-foreground",
-            props.className,
+            props.className
           )}
         >
           {item}
@@ -73,7 +73,7 @@ export function RootToggle({
               {...item.props}
               className={cn(
                 "flex items-center gap-2 rounded-lg p-1.5 hover:bg-fd-accent hover:text-fd-accent-foreground",
-                item.props?.className,
+                item.props?.className
               )}
             >
               <div className="shrink-0 size-9 md:mt-1 md:mb-auto md:size-5">{item.icon}</div>

@@ -1,7 +1,7 @@
-import {notFound} from 'next/navigation';
-import LogoWide from '@/assets/logo_wide.svg';
+import {notFound} from "next/navigation";
+import LogoWide from "@/assets/logo_wide.svg";
 import {generateOGImage} from "@/lib/og";
-import {source} from '@/lib/source';
+import {source} from "@/lib/source";
 
 export const revalidate = false;
 
@@ -12,9 +12,7 @@ interface RouteContext {
   }>;
 }
 
-export async function GET(
-  _req: Request, context: RouteContext
-) {
+export async function GET(_req: Request, context: RouteContext) {
   const {lang, slug} = await context.params;
 
   const pageSlug = slug.slice(0, -1);
@@ -26,13 +24,13 @@ export async function GET(
   return generateOGImage({
     title: page.data.title,
     description: page.data.description,
-    icon: <LogoWide style={{height: 60, width: 360, fill: "#000000", filter: "invert(100%)"}}/>
-  })
+    icon: <LogoWide style={{height: 60, width: 360, fill: "#000000", filter: "invert(100%)"}} />,
+  });
 }
 
 export function generateStaticParams() {
   return source.getPages().map((page) => {
-    const segments = [...page.slugs, 'image.png'];
+    const segments = [...page.slugs, "image.png"];
 
     return {
       lang: page.locale,

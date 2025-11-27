@@ -36,7 +36,7 @@ const NavigationMenuContent = React.forwardRef<
     ref={ref}
     className={cn(
       "absolute inset-x-0 top-0 overflow-auto fd-scroll-container max-h-[80svh] data-[motion=from-end]:animate-fd-enterFromRight data-[motion=from-start]:animate-fd-enterFromLeft data-[motion=to-end]:animate-fd-exitToRight data-[motion=to-start]:animate-fd-exitToLeft",
-      className,
+      className
     )}
     {...props}
   />
@@ -54,7 +54,7 @@ const NavigationMenuViewport = React.forwardRef<
       {...props}
       className={cn(
         // "relative h-(--radix-navigation-menu-viewport-height) w-full origin-[top_center] overflow-hidden transition-[width,height] duration-300 data-[state=closed]:animate-fd-nav-menu-out data-[state=open]:animate-fd-nav-menu-in",
-        className,
+        className
       )}
     />
   </div>

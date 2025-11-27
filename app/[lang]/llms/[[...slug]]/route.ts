@@ -1,7 +1,7 @@
-import {notFound} from 'next/navigation';
-import type {NextRequest} from 'next/server';
-import {getLLMText} from '@/lib/get-llm-text';
-import {source} from '@/lib/source';
+import {notFound} from "next/navigation";
+import type {NextRequest} from "next/server";
+import {getLLMText} from "@/lib/get-llm-text";
+import {source} from "@/lib/source";
 
 export const revalidate = false;
 
@@ -20,15 +20,12 @@ export const revalidate = false;
  * generated files don't conflict with directories. We then strip the extension
  * in the GET handler to look up the correct page.
  */
-export async function GET(
-  _req: NextRequest,
-  {params}: { params: Promise<{ slug?: string[]; lang: string }> }
-) {
+export async function GET(_req: NextRequest, {params}: {params: Promise<{slug?: string[]; lang: string}>}) {
   const {slug, lang} = await params;
 
   // Remove the .mdx extension from the last segment to get the actual page slug
   const cleanSlug = slug?.map((segment, index) => {
-    if (index === slug.length - 1 && segment.endsWith('.mdx')) {
+    if (index === slug.length - 1 && segment.endsWith(".mdx")) {
       return segment.slice(0, -4);
     }
     return segment;
@@ -40,7 +37,7 @@ export async function GET(
 
   return new Response(await getLLMText(page), {
     headers: {
-      'Content-Type': 'text/plain; charset=utf-8',
+      "Content-Type": "text/plain; charset=utf-8",
     },
   });
 }

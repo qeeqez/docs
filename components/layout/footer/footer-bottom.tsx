@@ -2,7 +2,7 @@ import {useMemo} from "react";
 import {FooterBottomLinks} from "@/lib/layout.shared";
 import {FooterBottomLink} from "./footer-bottom-link";
 
-export function FooterBottom({lang}: { lang: string}) {
+export function FooterBottom({lang}: {lang: string}) {
   const links = useMemo(() => FooterBottomLinks(lang), [lang]);
 
   return (

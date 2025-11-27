@@ -6,5 +6,9 @@ interface LayoutProps {
 }
 
 export default function Layout({children}: LayoutProps) {
-  return <SharedLayout lang="en" sidebar={false} searchToggle={false}>{children}</SharedLayout>
+  return (
+    <SharedLayout lang="en" sidebar={false} searchToggle={false}>
+      {children}
+    </SharedLayout>
+  );
 }

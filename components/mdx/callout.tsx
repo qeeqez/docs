@@ -68,19 +68,10 @@ export function Callout({type = "info", title, children}: CalloutProps) {
     },
   };
 
-  const {icon: IconComponent, bgClass, borderClass, textClass, iconClass} =
-  config[type] || config.info;
+  const {icon: IconComponent, bgClass, borderClass, textClass, iconClass} = config[type] || config.info;
 
   return (
-    <div
-      className={cn(
-        "rounded-2xl border p-4 my-6 transition-colors",
-        "not-prose",
-        bgClass,
-        borderClass,
-        textClass
-      )}
-    >
+    <div className={cn("rounded-2xl border p-4 my-6 transition-colors", "not-prose", bgClass, borderClass, textClass)}>
       <div className="flex items-start gap-3">
         <div className="flex-shrink-0 flex items-center">
           <IconComponent className={cn("h-5 w-5", iconClass)} aria-hidden="true" />
@@ -88,21 +79,18 @@ export function Callout({type = "info", title, children}: CalloutProps) {
         <div className="flex-1 min-w-0">
           {title && (
             <header>
-              <h4 className={cn(
-                "font-semibold text-current m-0 leading-tight",
-                children && "mb-2"
-            )}>
-                {title}
-              </h4>
+              <h4 className={cn("font-semibold text-current m-0 leading-tight", children && "mb-2")}>{title}</h4>
             </header>
           )}
-          <div className={cn(
-            "text-sm leading-relaxed",
-            "[&>p]:mb-2 [&>p:last-child]:mb-0",
-            "[&>*:first-child]:mt-0 [&>*:last-child]:mb-0",
-            "[&_strong]:font-semibold [&_code]:font-mono [&_code]:text-xs",
-            "[&_a]:underline [&_a]:underline-offset-2"
-          )}>
+          <div
+            className={cn(
+              "text-sm leading-relaxed",
+              "[&>p]:mb-2 [&>p:last-child]:mb-0",
+              "[&>*:first-child]:mt-0 [&>*:last-child]:mb-0",
+              "[&_strong]:font-semibold [&_code]:font-mono [&_code]:text-xs",
+              "[&_a]:underline [&_a]:underline-offset-2"
+            )}
+          >
             {children}
           </div>
         </div>

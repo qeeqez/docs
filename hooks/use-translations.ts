@@ -1,5 +1,5 @@
-import { useCustomTranslations } from '@/components/custom-translation-provider';
+import {useCustomTranslations} from "@/components/custom-translation-provider";
 
 export function useTranslations() {
-    return useCustomTranslations();
+  return useCustomTranslations();
 }

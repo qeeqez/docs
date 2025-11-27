@@ -22,13 +22,13 @@ const CollapsibleContent = forwardRef<HTMLDivElement, React.ComponentPropsWithou
         className={cn(
           "overflow-hidden",
           mounted && "data-[state=closed]:animate-fd-collapsible-up data-[state=open]:animate-fd-collapsible-down",
-          props.className,
+          props.className
         )}
       >
         {children}
       </Primitive.CollapsibleContent>
     );
-  },
+  }
 );
 
 CollapsibleContent.displayName = Primitive.CollapsibleContent.displayName;

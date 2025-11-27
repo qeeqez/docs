@@ -12,7 +12,7 @@ import "@/app/global.css";
 
 const inter = Inter({
   subsets: ["latin"],
-  display: 'swap',
+  display: "swap",
 });
 
 interface LayoutProps {
@@ -27,29 +27,22 @@ export default function SharedLayout({lang, searchToggle = true, sidebar = true,
   const tree = source.pageTree[lang] ?? source.pageTree;
 
   options.searchToggle = {
-    enabled: searchToggle
+    enabled: searchToggle,
   };
 
   return (
-    <html
-      lang={lang}
-      className={cn(
-        "scroll-smooth overscroll-y-none",
-        inter.className
-      )}
-      suppressHydrationWarning
-    >
-    <Body>
-      <NextProvider>
-        <TreeContextProvider tree={tree}>
-          <Provider lang={lang}>
-            <HomeLayout {...options} sidebar={sidebar}>
-              {children}
-            </HomeLayout>
-          </Provider>
-        </TreeContextProvider>
-      </NextProvider>
-    </Body>
+    <html lang={lang} className={cn("scroll-smooth overscroll-y-none", inter.className)} suppressHydrationWarning>
+      <Body>
+        <NextProvider>
+          <TreeContextProvider tree={tree}>
+            <Provider lang={lang}>
+              <HomeLayout {...options} sidebar={sidebar}>
+                {children}
+              </HomeLayout>
+            </Provider>
+          </TreeContextProvider>
+        </NextProvider>
+      </Body>
     </html>
-  )
+  );
 }

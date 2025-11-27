@@ -9,12 +9,7 @@ import {cn} from "@/lib/cn";
 
 export type BreadcrumbProps = BreadcrumbOptions & ComponentProps<"div">;
 
-export function PageBreadcrumb({
-                                 includeRoot = false,
-                                 includeSeparator,
-                                 includePage = false,
-                                 ...props
-                               }: BreadcrumbProps) {
+export function PageBreadcrumb({includeRoot = false, includeSeparator, includePage = false, ...props}: BreadcrumbProps) {
   const path = useTreePath();
   const {root} = useTreeContext();
   const items = useMemo(() => {
@@ -34,7 +29,7 @@ export function PageBreadcrumb({
 
         return (
           <Fragment key={i}>
-            {i !== 0 && <ChevronRight className="size-3.5 shrink-0"/>}
+            {i !== 0 && <ChevronRight className="size-3.5 shrink-0" />}
             {item.url ? (
               <Link href={item.url} className={cn(className, "transition-opacity hover:opacity-80")}>
                 {item.name}

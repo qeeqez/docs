@@ -4,7 +4,7 @@ import {useI18n} from "fumadocs-ui/contexts/i18n";
 import {type ComponentProps, useEffect, useState} from "react";
 import {cn} from "@/lib/cn";
 
-interface LastUpdateProps extends Omit<ComponentProps<"p">, "children">  {
+interface LastUpdateProps extends Omit<ComponentProps<"p">, "children"> {
   date: Date | string | number;
 }
 

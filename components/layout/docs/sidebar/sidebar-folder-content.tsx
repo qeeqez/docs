@@ -16,7 +16,7 @@ export function SidebarFolderContent(props: Primitive.CollapsibleContentProps) {
           "before:content-[''] before:absolute before:w-px before:inset-y-1 before:bg-fd-border before:start-2.5",
           "**:data-[active=true]:before:content-[''] **:data-[active=true]:before:bg-fd-primary **:data-[active=true]:before:absolute **:data-[active=true]:before:w-px **:data-[active=true]:before:inset-y-2.5 **:data-[active=true]:before:start-2.5",
         ],
-        props.className,
+        props.className
       )}
       style={
         {
@@ -31,7 +31,7 @@ export function SidebarFolderContent(props: Primitive.CollapsibleContentProps) {
             ...ctx,
             level: level + 1,
           }),
-          [ctx, level],
+          [ctx, level]
         )}
       >
         {props.children}

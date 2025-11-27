@@ -3,10 +3,7 @@
 import dynamic from "next/dynamic";
 import type {HTMLProps} from "react";
 
-const RixlVideo = dynamic(
-  () => import("@rixl/videosdk-react")
-    .then((mod) => mod.Video),
-  {ssr: true})
+const RixlVideo = dynamic(() => import("@rixl/videosdk-react").then((mod) => mod.Video), {ssr: true});
 
 declare type VideoTheme = "default" | "minimal" | "hideUI";
 
@@ -22,7 +19,9 @@ declare interface VideoProps extends HTMLProps<HTMLVideoElement> {
 }
 
 export const Video = (props: VideoProps) => {
-  return <div className="flex overflow-hidden w-full h-[500px] rounded-0.25 drop-shadow-xl max-w-fd-container">
-    <RixlVideo {...props} />
-  </div>;
+  return (
+    <div className="flex overflow-hidden w-full h-[500px] rounded-0.25 drop-shadow-xl max-w-fd-container">
+      <RixlVideo {...props} />
+    </div>
+  );
 };

@@ -31,7 +31,7 @@ export function TOCScrollArea({ref, className, ...props}: ComponentProps<"div">)
       ref={mergeRefs(viewRef, ref)}
       className={cn(
         "relative min-h-0 text-sm ms-px overflow-auto [scrollbar-width:none] [mask-image:linear-gradient(to_bottom,transparent,white_16px,white_calc(100%-16px),transparent)] py-3",
-        className,
+        className
       )}
       {...props}
     >
@@ -68,7 +68,7 @@ function TOCItem({item}: {item: TOCItemType}) {
         "prose prose-gray py-1.5 text-sm text-fd-muted-foreground data-[active=false]:hover:text-fd-accent-foreground transition-colors [overflow-wrap:anywhere] first:pt-0 last:pb-0 data-[active=true]:text-fd-primary",
         item.depth <= 2 && "ps-3",
         item.depth === 3 && "ps-6",
-        item.depth >= 4 && "ps-8",
+        item.depth >= 4 && "ps-8"
       )}
     >
       {item.title}

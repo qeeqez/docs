@@ -1,4 +1,4 @@
-export {Callout} from "./callout"
+export {Callout} from "./callout";
 export {Card} from "./card";
 export {Columns} from "./columns";
 export {Icon} from "./icon";

@@ -9,7 +9,7 @@ const ScrollArea = React.forwardRef<React.ComponentRef<typeof Primitive.Root>, R
       <Primitive.Corner />
       <ScrollBar orientation="vertical" />
     </Primitive.Root>
-  ),
+  )
 );
 
 ScrollArea.displayName = Primitive.Root.displayName;
@@ -36,7 +36,7 @@ const ScrollBar = React.forwardRef<
       "flex select-none data-[state=hidden]:animate-fd-fade-out",
       orientation === "vertical" && "h-full w-1.5",
       orientation === "horizontal" && "h-1.5 flex-col",
-      className,
+      className
     )}
     {...props}
   >

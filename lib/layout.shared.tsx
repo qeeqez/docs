@@ -17,43 +17,27 @@ import {getServerTranslations} from "@/hooks/use-server-translation";
  * Docs Layout: app/docs/shared-layout.tsx
  */
 export function baseOptions(lang: string): BaseLayoutProps {
-    const { t } = getServerTranslations(lang)
+  const {t} = getServerTranslations(lang);
 
   return {
-      // i18n, TODO: Enable language switcher
+    // i18n, TODO: Enable language switcher
     nav: {
-      title: (
-        <LogoWide className="h-8 fill-black dark:invert"/>
-      ),
-      transparentMode: "top"
+      title: <LogoWide className="h-8 fill-black dark:invert" />,
+      transparentMode: "top",
     },
     // see https://fumadocs.dev/docs/ui/navigation/links
     links: [
       {
-        text: `${t('home')}`,
+        text: `${t("home")}`,
         url: `/${lang}/getting-started/overview`,
         active: "nested-url",
-        activeSubfolders: [
-          "/getting-started",
-          "/platform",
-          "/legal",
-          "/guides",
-          "/reference",
-          "/images",
-          "/video",
-            "/sdk"
-        ]
+        activeSubfolders: ["/getting-started", "/platform", "/legal", "/guides", "/reference", "/images", "/video", "/sdk"],
       },
       {
-        text: 'SDKs',
+        text: "SDKs",
         url: `/${lang}/sdk/getting-started`,
         active: "nested-url",
-        activeSubfolders: [
-          `/getting-started`,
-          `/video-component`,
-          `/image-component`,
-          `/examples`
-        ]
+        activeSubfolders: [`/getting-started`, `/video-component`, `/image-component`, `/examples`],
       },
       {
         text: "APIs",
@@ -61,11 +45,15 @@ export function baseOptions(lang: string): BaseLayoutProps {
         active: "nested-url",
       },
       {
-        type: 'button',
-        text: <>Get Started <ChevronRightIcon/></>,
+        type: "button",
+        text: (
+          <>
+            Get Started <ChevronRightIcon />
+          </>
+        ),
         url: "https://dash.rixl.com",
         secondary: true,
-      }
+      },
     ],
   };
 }
@@ -122,7 +110,7 @@ export function FooterSections(lang: string): FooterSection[] {
   ];
 }
 
-export function FooterBottomLinks(lang: string): { text: string; url: string }[] {
+export function FooterBottomLinks(lang: string): {text: string; url: string}[] {
   // TODO translations
   return [
     {text: "Privacy Policy", url: `/${lang}/legal/privacy-policy`},

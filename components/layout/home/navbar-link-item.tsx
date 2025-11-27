@@ -1,15 +1,9 @@
 import Link from "fumadocs-core/link";
 import {Fragment} from "react";
-import {
-  NavbarLink,
-  NavbarMenu,
-  NavbarMenuContent,
-  NavbarMenuLink,
-  NavbarMenuTrigger
-} from "@/components/layout/home/navbar";
+import {NavbarLink, NavbarMenu, NavbarMenuContent, NavbarMenuLink, NavbarMenuTrigger} from "@/components/layout/home/navbar";
 import type {LinkItemType} from "@/components/layout/shared";
 
-export function NavbarLinkItem({item, ...props}: { item: LinkItemType; className?: string }) {
+export function NavbarLinkItem({item, ...props}: {item: LinkItemType; className?: string}) {
   if (item.type === "custom") return <div {...props}>{item.children}</div>;
 
   if (item.type === "menu") {
@@ -17,8 +11,7 @@ export function NavbarLinkItem({item, ...props}: { item: LinkItemType; className
       if (child.type === "custom") return <Fragment key={j}>{child.children}</Fragment>;
 
       const {
-        banner = child.icon ?
-          <div className="w-fit rounded-md border bg-fd-muted p-1 [&_svg]:size-4">{child.icon}</div> : null,
+        banner = child.icon ? <div className="w-fit rounded-md border bg-fd-muted p-1 [&_svg]:size-4">{child.icon}</div> : null,
         ...rest
       } = child.menu ?? {};
 
@@ -37,9 +30,7 @@ export function NavbarLinkItem({item, ...props}: { item: LinkItemType; className
 
     return (
       <NavbarMenu>
-        <NavbarMenuTrigger {...props}>
-          {item.url ? <Link href={item.url}>{item.text}</Link> : item.text}
-        </NavbarMenuTrigger>
+        <NavbarMenuTrigger {...props}>{item.url ? <Link href={item.url}>{item.text}</Link> : item.text}</NavbarMenuTrigger>
         <NavbarMenuContent>{children}</NavbarMenuContent>
       </NavbarMenu>
     );
@@ -48,11 +39,13 @@ export function NavbarLinkItem({item, ...props}: { item: LinkItemType; className
   return (
     <NavbarLink
       className="relative h-full"
-      {...props} item={item} variant={item.type} aria-label={item.type === "icon" ? item.label : undefined}
+      {...props}
+      item={item}
+      variant={item.type}
+      aria-label={item.type === "icon" ? item.label : undefined}
     >
       {item.type === "icon" ? item.icon : item.text}
-      <div
-        className="absolute bottom-0 h-[1.5px] w-full group-data-[active=true]:bg-fd-primary group-hover:bg-fd-primary-foreground"/>
+      <div className="absolute bottom-0 h-[1.5px] w-full group-data-[active=true]:bg-fd-primary group-hover:bg-fd-primary-foreground" />
     </NavbarLink>
   );
 }

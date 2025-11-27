@@ -19,7 +19,7 @@ import {buttonVariants} from "../../ui/button";
 import {BaseLinkItem} from "../shared/index";
 
 const navItemVariants = cva(
-  "inline-flex items-center gap-1 py-2 text-fd-muted-foreground transition-colors hover:text-fd-accent-foreground font-medium data-[active=true]:text-fd-primary [&_svg]:size-4",
+  "inline-flex items-center gap-1 py-2 text-fd-muted-foreground transition-colors hover:text-fd-accent-foreground font-medium data-[active=true]:text-fd-primary [&_svg]:size-4"
 );
 
 export function Navbar(props: ComponentProps<"div">) {
@@ -28,22 +28,20 @@ export function Navbar(props: ComponentProps<"div">) {
 
   return (
     <NavigationMenu value={value} onValueChange={setValue} asChild>
-      <header
-        id="nd-nav"
-        {...props}
-        className={cn("max-w-[92rem] mx-auto relative", props.className)}
-      >
-        <div id="navbar-transition"
-             className={cn(
-               "absolute w-full h-full flex-none",
-               "backdrop-blur",
-               // "transition-colors duration-500 data-[is-opaque=true]:bg-background-light data-[is-opaque=true]:supports-backdrop-blur:bg-background-light/95 data-[is-opaque=true]:dark:bg-background-dark/75 data-[is-opaque=false]:supports-backdrop-blur:bg-background-light/60 data-[is-opaque=false]:dark:bg-transparent",
-             )}
-             data-is-opaque="false"></div>
+      <header id="nd-nav" {...props} className={cn("max-w-[92rem] mx-auto relative", props.className)}>
+        <div
+          id="navbar-transition"
+          className={cn(
+            "absolute w-full h-full flex-none",
+            "backdrop-blur"
+            // "transition-colors duration-500 data-[is-opaque=true]:bg-background-light data-[is-opaque=true]:supports-backdrop-blur:bg-background-light/95 data-[is-opaque=true]:dark:bg-background-dark/75 data-[is-opaque=false]:supports-backdrop-blur:bg-background-light/60 data-[is-opaque=false]:dark:bg-transparent",
+          )}
+          data-is-opaque="false"
+        ></div>
         <NavigationMenuList asChild>
           <nav>{props.children}</nav>
         </NavigationMenuList>
-        <NavigationMenuViewport/>
+        <NavigationMenuViewport />
       </header>
     </NavigationMenu>
   );
@@ -53,8 +51,7 @@ export const NavbarMenu = NavigationMenuItem;
 
 export function NavbarMenuContent(props: Primitive.NavigationMenuContentProps) {
   return (
-    <NavigationMenuContent {...props}
-                           className={cn("grid grid-cols-1 gap-2 p-4 md:grid-cols-2 lg:grid-cols-3", props.className)}>
+    <NavigationMenuContent {...props} className={cn("grid grid-cols-1 gap-2 p-4 md:grid-cols-2 lg:grid-cols-3", props.className)}>
       {props.children}
     </NavigationMenuContent>
   );
@@ -75,7 +72,7 @@ export function NavbarMenuLink(props: LinkProps) {
         {...props}
         className={cn(
           "flex flex-col gap-2 rounded-lg border bg-fd-card p-3 transition-colors hover:bg-fd-accent/80 hover:text-fd-accent-foreground",
-          props.className,
+          props.className
         )}
       >
         {props.children}
@@ -103,11 +100,7 @@ const linkVariants = cva("", {
   },
 });
 
-export function NavbarLink({
-                             item,
-                             variant,
-                             ...props
-                           }: ComponentProps<typeof BaseLinkItem> & VariantProps<typeof linkVariants>) {
+export function NavbarLink({item, variant, ...props}: ComponentProps<typeof BaseLinkItem> & VariantProps<typeof linkVariants>) {
   return (
     <NavigationMenuItem asChild>
       <NavigationMenuLink asChild>

@@ -28,7 +28,7 @@ export default async function Page(props: PageProps) {
   if (!page) notFound();
   const MDXContent = page.data.body;
 
-  const insertLlmsSegment = (pageUrl: string) => pageUrl.replace(/^\/(\w{2})\//, '/$1/llms/');
+  const insertLlmsSegment = (pageUrl: string) => pageUrl.replace(/^\/(\w{2})\//, "/$1/llms/");
 
   return (
     <TOCProvider toc={page.data.toc}>
@@ -51,7 +51,7 @@ export default async function Page(props: PageProps) {
           >
             <header className="relative space-y-2">
               <div className="space-y-2.5">
-                <PageBreadcrumb/>
+                <PageBreadcrumb />
 
                 <div className="flex items-center justify-between gap-2">
                   <DocsTitle>{page.data.title}</DocsTitle>
@@ -73,12 +73,12 @@ export default async function Page(props: PageProps) {
               />
             </DocsBody>
           </DocsPage>
-          <Footer lang={lang}/>
+          <Footer lang={lang} />
         </main>
         <SidebarWrapper className="hidden xl:block">
           <PageTOC>
-            <PageTOCTitle/>
-            <PageTOCItems variant="normal"/>
+            <PageTOCTitle />
+            <PageTOCItems variant="normal" />
           </PageTOC>
         </SidebarWrapper>
       </div>
@@ -87,11 +87,11 @@ export default async function Page(props: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const params = source.generateParams('slug', 'lang');
+  const params = source.generateParams("slug", "lang");
 
-  return params.map(param => ({
+  return params.map((param) => ({
     lang: param.lang,
-    slug: Array.isArray(param.slug) ? param.slug : [param.slug]
+    slug: Array.isArray(param.slug) ? param.slug : [param.slug],
   }));
 }
 
@@ -102,7 +102,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
   const appName = "Rixl";
 
-  const imageUrl = getPageImage(page).url
+  const imageUrl = getPageImage(page).url;
 
   return {
     metadataBase: getBaseUrl(),
@@ -120,6 +120,6 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       title: page.data.title,
       description: page.data.description,
       images: imageUrl,
-    }
+    },
   };
 }

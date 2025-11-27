@@ -1,18 +1,13 @@
-import type {InferPageType} from 'fumadocs-core/source';
-import {
-  type FileObject,
-  printErrors,
-  scanURLs,
-  validateFiles,
-} from 'next-validate-link';
-import {source} from '@/lib/source';
+import type {InferPageType} from "fumadocs-core/source";
+import {type FileObject, printErrors, scanURLs, validateFiles} from "next-validate-link";
+import {source} from "@/lib/source";
 
 async function checkLinks() {
   const scanned = await scanURLs({
     // pick a preset for your React framework
-    preset: 'next',
+    preset: "next",
     populate: {
-      '[...slug]': source.getPages().map((page) => {
+      "[...slug]": source.getPages().map((page) => {
         return {
           value: {
             slug: page.slugs,
@@ -29,14 +24,14 @@ async function checkLinks() {
       // check `href` attributes in different MDX components
       markdown: {
         components: {
-          Card: {attributes: ['href']},
-          Link: {attributes: ['href']},
+          Card: {attributes: ["href"]},
+          Link: {attributes: ["href"]},
         },
       },
       // check relative paths
-      checkRelativePaths: 'as-url',
+      checkRelativePaths: "as-url",
     }),
-    true,
+    true
   );
 }
 
@@ -48,10 +43,10 @@ function getFiles() {
   const promises = source.getPages().map(
     async (page): Promise<FileObject> => ({
       path: page.absolutePath,
-      content: await page.data.getText('raw'),
+      content: await page.data.getText("raw"),
       url: page.url,
       data: page.data,
-    }),
+    })
   );
 
   return Promise.all(promises);

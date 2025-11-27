@@ -1,23 +1,23 @@
-import {defineConfig, defineDocs, frontmatterSchema, metaSchema} from 'fumadocs-mdx/config';
+import {defineConfig, defineDocs, frontmatterSchema, metaSchema} from "fumadocs-mdx/config";
 
 // You can customise Zod schemas for frontmatter and `meta.json` here
 // see https://fumadocs.dev/docs/mdx/collections#define-docs
 export const docs = defineDocs({
-    dir: 'content/docs',
-    docs: {
-        schema: frontmatterSchema,
-        postprocess: {
-            includeProcessedMarkdown: true,
-        },
+  dir: "content/docs",
+  docs: {
+    schema: frontmatterSchema,
+    postprocess: {
+      includeProcessedMarkdown: true,
     },
-    meta: {
-        schema: metaSchema,
-    },
+  },
+  meta: {
+    schema: metaSchema,
+  },
 });
 
 export default defineConfig({
-    lastModifiedTime: "git",
-    mdxOptions: {
-        // MDX options
-    },
+  lastModifiedTime: "git",
+  mdxOptions: {
+    // MDX options
+  },
 });
