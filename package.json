@@ -9,13 +9,14 @@
     "lint": "oxlint . && fumadocs-mdx && bun ./scripts/lint.ts",
     "lint:fix": "oxlint --fix .",
     "format": "oxfmt",
-    "postinstall": "fumadocs-mdx"
+    "postinstall": "fumadocs-mdx",
+    "prepare": "husky"
   },
   "dependencies": {
     "@orama/orama": "^3.1.16",
     "@radix-ui/react-presence": "^1.1.5",
     "@rixl/videosdk-react": "^0.15.3",
-    "@scalar/api-reference-react": "^0.8.1",
+    "@scalar/api-reference-react": "^0.8.6",
     "class-variance-authority": "^0.7.1",
     "fumadocs-core": "16.0.5",
     "fumadocs-mdx": "13.0.2",
@@ -26,23 +27,31 @@
     "radix-ui": "^1.4.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "shiki": "^3.14.0",
-    "tailwind-merge": "^3.3.1"
+    "shiki": "^3.17.0",
+    "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
-    "@tailwindcss/postcss": "^4.1.16",
-    "@types/bun": "^1.3.1",
+    "@tailwindcss/postcss": "^4.1.17",
+    "@types/bun": "^1.3.3",
     "@types/mdx": "^2.0.13",
     "@types/node": "24.9.2",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "next-validate-link": "^1.6.3",
     "oxfmt": "^0.15.0",
     "oxlint": "^1.30.0",
-    "tailwindcss": "^4.1.16",
+    "tailwindcss": "^4.1.17",
     "typescript": "^5.9.3",
-    "wrangler": "^4.45.2"
+    "wrangler": "^4.51.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "bunx oxlint --fix",
+      "bunx oxfmt"
+    ]
   },
   "packageManager": "bun@1.3.3"
 }
