@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "pnpm lint && next build",
+    "build": "bun lint && next build",
     "dev": "next dev",
-    "serve": "pnpx serve@latest out",
+    "serve": "bunx serve@latest out",
     "lint": "oxlint . && fumadocs-mdx && bun ./scripts/lint.ts",
     "lint:fix": "oxlint --fix .",
     "format": "oxfmt",
@@ -44,5 +44,5 @@
     "typescript": "^5.9.3",
     "wrangler": "^4.45.2"
   },
-  "packageManager": "pnpm@10.20.0"
+  "packageManager": "bun@1.3.3"
 }
