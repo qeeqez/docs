@@ -6,23 +6,7 @@ import {type FooterProps, PageFooter} from "@/components/layout/docs/page/page-f
 import type {GithubBlockProps} from "@/components/layout/docs/page/page-github-block";
 import {cn} from "../../lib/cn";
 
-interface EditOnGitHubOptions extends Omit<ComponentProps<"a">, "href" | "children"> {
-  owner: string;
-  repo: string;
-
-  /**
-   * SHA or ref (branch or tag) name.
-   *
-   * @defaultValue main
-   */
-  sha?: string;
-
-  /**
-   * File path in the repo
-   */
-  path: string;
-  raiseIssue?: boolean;
-}
+// Removed unused interface EditOnGitHubOptions
 
 interface BreadcrumbOptions extends BreadcrumbProps {
   enabled: boolean;
@@ -95,12 +79,12 @@ type TableOfContentOptions = Pick<AnchorProviderProps, "single"> & {
 type TableOfContentPopoverOptions = Omit<TableOfContentOptions, "single">;
 
 export function DocsPage({
-  breadcrumb: {enabled: breadcrumbEnabled = true, component: breadcrumb, ...breadcrumbProps} = {},
+  breadcrumb: {enabled: _breadcrumbEnabled = true, component: _breadcrumb, ..._breadcrumbProps} = {},
   footer = {},
   container,
   full = false,
-  tableOfContentPopover: {enabled: tocPopoverEnabled, component: tocPopover, ...tocPopoverOptions} = {},
-  tableOfContent: {enabled: tocEnabled, component: tocReplace, ...tocOptions} = {},
+  tableOfContentPopover: {enabled: tocPopoverEnabled, component: _tocPopover, ...tocPopoverOptions} = {},
+  tableOfContent: {enabled: tocEnabled, component: _tocReplace, ...tocOptions} = {},
   toc = [],
   article,
   children,

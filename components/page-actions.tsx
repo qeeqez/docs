@@ -4,6 +4,7 @@ import {cva} from "class-variance-authority";
 import {Popover, PopoverContent} from "fumadocs-ui/components/ui/popover";
 import {useCopyButton} from "fumadocs-ui/utils/use-copy-button";
 import {Check, ChevronDown, Copy, ExternalLinkIcon} from "lucide-react";
+import Link from "next/link";
 import {useCallback, useMemo, useState} from "react";
 import {cn} from "../lib/cn";
 import {PopoverTrigger} from "@/components/ui/popover";
@@ -80,7 +81,7 @@ interface Props {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export function ViewOptions({markdownUrl, githubUrl, onClick}: Props) {
+export function ViewOptions({markdownUrl, githubUrl: _githubUrl, onClick}: Props) {
   const [open, setOpen] = useState(false);
 
   const handleCopyClick = useCallback(
@@ -153,9 +154,9 @@ export function ViewOptions({markdownUrl, githubUrl, onClick}: Props) {
       <PopoverContent align="end" className="flex flex-col overflow-auto border mt-2 bg-fd-background">
         {options.map((option) =>
           option.href ? (
-            <a key={option.key} href={option.href} rel="noreferrer noopener" target="_blank" className={cn(optionVariants())}>
+            <Link key={option.key} href={option.href} rel="noreferrer noopener" target="_blank" className={cn(optionVariants())}>
               {renderOptionContent(option)}
-            </a>
+            </Link>
           ) : (
             <button key={option.key} type="button" className={cn(optionVariants())} onClick={option.onClick}>
               {renderOptionContent(option)}

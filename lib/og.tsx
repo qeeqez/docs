@@ -63,7 +63,7 @@ const getTruncatedText = (maxLength: number, text?: string) => {
 export function generate({
   primaryColor = "#FFA41C",
   secondaryColor = "#D33F49",
-  primaryTextColor = "#FFFFFF",
+  primaryTextColor: _primaryTextColor = "#FFFFFF",
   ...props
 }: GenerateProps): ReactElement {
   return (

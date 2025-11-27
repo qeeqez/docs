@@ -13,7 +13,6 @@ export function Header({nav = {}, i18n = false, links, githubUrl, searchToggle =
   const finalLinks = useMemo(() => getLinks(links, githubUrl), [links, githubUrl]);
 
   const navItems = finalLinks.filter((item) => ["nav", "all"].includes(item.on ?? "all"));
-  const menuItems = finalLinks.filter((item) => ["menu", "all"].includes(item.on ?? "all"));
 
   const border = cn("border-b border-gray-500/5 dark:border-gray-300/[0.06]");
 

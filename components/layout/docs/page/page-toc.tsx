@@ -1,12 +1,10 @@
 "use client";
 
-import {useSidebar} from "fumadocs-ui/contexts/sidebar";
 import type {ComponentProps} from "react";
 import {useTOCItems} from "@/components/ui/toc";
 import {cn} from "@/lib/cn";
 
 export function PageTOC(props: ComponentProps<"div">) {
-  const {collapsed} = useSidebar();
   const items = useTOCItems();
 
   if (items.length === 0) return null;

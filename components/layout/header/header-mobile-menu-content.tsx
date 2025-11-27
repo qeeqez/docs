@@ -2,13 +2,9 @@ import type {I18nConfig} from "fumadocs-core/i18n";
 import {ChevronDown, Languages} from "lucide-react";
 import {LanguageToggle, LanguageToggleText} from "@/components/language-toggle";
 import {ThemeToggle} from "@/components/theme-toggle";
-import {cn} from "@/lib/cn";
-import {SearchToggle} from "@/components/search-toggle";
-import {Menu, MenuContent, MenuLinkItem, MenuTrigger} from "@/components/layout/home/menu";
-import {buttonVariants} from "@/components/ui/button";
+import {MenuContent, MenuLinkItem} from "@/components/layout/home/menu";
 import type {LinkItemType} from "@/components/layout/shared";
 import {isSecondary} from "@/components/layout/header/is-secondary";
-import {Sidebar} from "@/components/layout/docs/sidebar/sidebar";
 
 interface Props {
   i18n: boolean | I18nConfig<string>;

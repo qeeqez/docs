@@ -30,7 +30,7 @@ const showArrow = (href?: string, arrow?: ArrowType) => {
   return isExternalLink(href);
 };
 
-export const Card = ({icon, title, description, href, arrow, cta, ...props}: Props) => {
+export const Card = ({icon, title, description: _description, href, arrow, cta: _cta, ...props}: Props) => {
   const isExternal = !!href && isExternalLink(href);
   const E: any = href ? (isExternal ? "a" : Link) : "div";
 

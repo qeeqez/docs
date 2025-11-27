@@ -2,6 +2,7 @@
 
 import {Edit, TriangleAlert} from "lucide-react";
 import type {ComponentProps} from "react";
+import Link from "next/link";
 import {buttonVariants} from "@/components/ui/button";
 import {cn} from "@/lib/cn";
 import type {GithubProps} from "@/components/layout/docs/page/page-github-type";
@@ -19,7 +20,7 @@ export function GithubEditOrIssue({mode, owner, repo, sha = "main", path, classN
       ? `https://github.com/${owner}/${repo}/blob/${sha}/${ghPath}`
       : `https://github.com/${owner}/${repo}/issues/new?title=Issue%20on%20docs&body=Path:%20${ghPath}`;
   return (
-    <a
+    <Link
       href={href}
       target="_blank"
       rel="noreferrer noopener"
@@ -45,6 +46,6 @@ export function GithubEditOrIssue({mode, owner, repo, sha = "main", path, classN
           {/*<I18nLabel label="editOnGithub"/> /!* TODO add correct label *!/*/}
         </>
       )}
-    </a>
+    </Link>
   );
 }

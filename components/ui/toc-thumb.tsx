@@ -56,7 +56,8 @@ export function TocThumb({
     return () => {
       observer.disconnect();
     };
-  }, [containerRef, onResize]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [containerRef]);
 
   useOnChange(active, () => {
     if (!containerRef.current || !thumbRef.current) return;
