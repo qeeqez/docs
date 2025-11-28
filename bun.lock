@@ -7,7 +7,7 @@
       "dependencies": {
         "@orama/orama": "^3.1.16",
         "@radix-ui/react-presence": "^1.1.5",
-        "@rixl/videosdk-react": "^0.15.3",
+        "@rixl/videosdk-react": "0.17.0",
         "@scalar/api-reference-react": "^0.8.6",
         "class-variance-authority": "^0.7.1",
         "fumadocs-core": "16.1.0",
@@ -624,9 +624,9 @@
 
     "@replit/codemirror-css-color-picker": ["@replit/codemirror-css-color-picker@6.3.0", "", { "peerDependencies": { "@codemirror/language": "^6.0.0", "@codemirror/state": "^6.0.0", "@codemirror/view": "^6.0.0" } }, "sha512-19biDANghUm7Fz7L1SNMIhK48tagaWuCOHj4oPPxc7hxPGkTVY2lU/jVZ8tsbTKQPVG7BO2CBDzs7CBwb20t4A=="],
 
-    "@rixl/videosdk": ["@rixl/videosdk@0.15.3", "", { "dependencies": { "nanostores": "^1.0.1" } }, "sha512-NI8UZgnTIR623rJfSsd9YiCy6AcAfqHc3RaW44jLWCu+ouXWilHAObgmijO9KToNJYztHiH3ouBa0wD+UiZ/Bw=="],
+    "@rixl/videosdk": ["@rixl/videosdk@0.17.0", "", { "dependencies": { "nanostores": "^1.0.1" } }, "sha512-avBqpvUufEZFL+8NWZ8TrxxqPJAW8aTXa4A82KB4XXhR7b/cCdxQCE+3WRIw5VU9QLqXCzzKiBQaCVxac7IUFw=="],
 
-    "@rixl/videosdk-react": ["@rixl/videosdk-react@0.15.3", "", { "dependencies": { "@nanostores/react": "^1.0.0", "@rixl/videosdk": "^0.15.3", "@uidotdev/usehooks": "^2.4.1", "hls.js": "^1.6.14", "nanostores": "^1.0.1", "talkr": "^3.5.1", "thumbhash": "^0.1.1", "zustand": "^5.0.8" }, "peerDependencies": { "react": ">=18.0.0", "tailwindcss": "^4.0.9" } }, "sha512-elyt0TVGSnjVOZ+VfJ5yDn6KPy2tcMDjZFbD5KVsOA5lrtUWi2L80F9i79qJ3H6VGNkx0bgkxDcRA+qMKj0h2w=="],
+    "@rixl/videosdk-react": ["@rixl/videosdk-react@0.17.0", "", { "dependencies": { "@nanostores/react": "^1.0.0", "@rixl/videosdk": "0.17.0", "@uidotdev/usehooks": "^2.4.1", "hls.js": "^1.6.14", "nanostores": "^1.0.1", "talkr": "^3.5.1", "thumbhash": "^0.1.1", "zustand": "^5.0.8" }, "peerDependencies": { "react": ">=18.0.0", "tailwindcss": "^4.0.9" } }, "sha512-iZJ5nbBlqe3evYrsHuduGG97y5d/7lHU23I+n1pR6YbkgW+RaM80ICfRvPfE2A7bkN1HKTp6aTXk9I6ax7OWng=="],
 
     "@scalar/analytics-client": ["@scalar/analytics-client@1.0.0", "", { "dependencies": { "zod": "3.24.1" } }, "sha512-pnkghhqfmSH7hhdlFpu2M3V/6EjP2R0XbKVbmP77JSli12DdInxR1c4Oiw9V5f/jgxQhVczQQTt74cFYbLzI/Q=="],
 
