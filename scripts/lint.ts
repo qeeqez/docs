@@ -36,13 +36,16 @@ async function checkLinks() {
 }
 
 function getHeadings({data}: InferPageType<typeof source>): string[] {
+  if (!data.toc || !Array.isArray(data.toc)) {
+    return [];
+  }
   return data.toc.map((item) => item.url.slice(1));
 }
 
 function getFiles() {
   const promises = source.getPages().map(
     async (page): Promise<FileObject> => ({
-      path: page.absolutePath,
+      path: page.absolutePath ?? "",
       content: await page.data.getText("raw"),
       url: page.url,
       data: page.data,
