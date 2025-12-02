@@ -3,6 +3,7 @@ import {docs} from "@/.source/server";
 import {icons} from "lucide-react";
 import {createElement} from "react";
 import {i18n} from "@/lib/i18n";
+import {openapiPlugin} from "fumadocs-openapi/server";
 
 // See https://fumadocs.vercel.app/docs/headless/source-api for more info
 export const source = loader({
@@ -13,6 +14,7 @@ export const source = loader({
     if (icon && icon in icons) return createElement(icons[icon as keyof typeof icons]);
   },
   source: docs.toFumadocsSource(),
+  plugins: [openapiPlugin()],
 });
 
 export function getPageImage(page: InferPageType<typeof source>) {

@@ -34,15 +34,16 @@ export function baseOptions(lang: string): BaseLayoutProps {
         activeSubfolders: ["/getting-started", "/platform", "/legal", "/guides", "/reference", "/images", "/video", "/sdk"],
       },
       {
-        text: "SDKs",
+        text: "SDK",
         url: `/${lang}/sdk/getting-started`,
         active: "nested-url",
         activeSubfolders: [`/getting-started`, `/video-component`, `/image-component`, `/examples`],
       },
       {
-        text: "APIs",
-        url: `/api`,
+        text: "API",
+        url: `/${lang}/api/images/images/get`,
         active: "nested-url",
+        activeSubfolders: ["/images", "/videos", "/feeds"],
       },
       {
         type: "button",

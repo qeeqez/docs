@@ -1,0 +1,7 @@
+{
+  "title": "Video by ID",
+  "pages": [
+    "get",
+    "delete"
+  ]
+}
