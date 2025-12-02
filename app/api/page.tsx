@@ -1,3 +1,4 @@
+import "@scalar/api-reference/style.css";
 import "./custom.css";
 import type {Metadata} from "next";
 import {ApiWrapper} from "@/components/api-wrapper";
