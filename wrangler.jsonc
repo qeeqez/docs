@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "docs",
-  "compatibility_date": "2025-09-21",
+  "compatibility_date": "2025-12-02",
   "assets": {
     "directory": "./out",
     "not_found_handling": "single-page-application"
