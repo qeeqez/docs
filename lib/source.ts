@@ -1,5 +1,5 @@
 import {type InferPageType, loader} from "fumadocs-core/source";
-import {docs} from "@/.source";
+import {docs} from "@/.source/server";
 import {icons} from "lucide-react";
 import {createElement} from "react";
 import {i18n} from "@/lib/i18n";

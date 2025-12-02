@@ -1,7 +1,7 @@
 "use client";
 import {usePathname} from "fumadocs-core/framework";
 import Link from "fumadocs-core/link";
-import {useSidebar} from "fumadocs-ui/contexts/sidebar";
+import {useSidebar} from "fumadocs-ui/components/sidebar/base";
 import type {SidebarTab} from "fumadocs-ui/utils/get-sidebar-tabs";
 import {Check, ChevronsUpDown} from "lucide-react";
 import {type ComponentProps, type ReactNode, useMemo, useState} from "react";

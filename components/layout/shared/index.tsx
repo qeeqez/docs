@@ -1,8 +1,7 @@
 import type {I18nConfig} from "fumadocs-core/i18n";
-import type {NavProviderProps} from "fumadocs-ui/contexts/layout";
 import type {HTMLAttributes, ReactNode} from "react";
 
-export interface NavOptions extends NavProviderProps {
+export interface NavOptions {
   enabled: boolean;
   component: ReactNode;
 
@@ -13,6 +12,13 @@ export interface NavOptions extends NavProviderProps {
    * @defaultValue '/'
    */
   url?: string;
+
+  /**
+   * Use transparent background
+   *
+   * @defaultValue 'none'
+   */
+  transparentMode?: "always" | "top" | "none";
 
   children?: ReactNode;
 }
