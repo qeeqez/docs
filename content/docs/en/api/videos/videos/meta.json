@@ -1,8 +1,0 @@
-{
-  "title": "Videos API",
-  "pages": [
-    "get",
-    "videoid",
-    "upload"
-  ]
-}

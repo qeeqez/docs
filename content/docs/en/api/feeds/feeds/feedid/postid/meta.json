@@ -1,7 +1,0 @@
-{
-  "title": "Post by ID",
-  "pages": [
-    "get",
-    "delete"
-  ]
-}

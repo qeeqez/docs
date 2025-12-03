@@ -1,8 +1,0 @@
-{
-  "title": "Images API",
-  "pages": [
-    "get",
-    "imageid",
-    "upload"
-  ]
-}
