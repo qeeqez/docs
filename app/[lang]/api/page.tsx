@@ -1,6 +1,10 @@
 import {redirect} from "next/navigation";
 import {source} from "@/lib/source";
 
+interface RedirectProps {
+  params: {lang: string};
+}
+
 export async function generateStaticParams() {
   const params = source.generateParams("lang");
 
@@ -9,11 +13,7 @@ export async function generateStaticParams() {
   }));
 }
 
-interface RedirectProps {
-  params: {lang: string};
-}
-
 export default async function Redirect(props: RedirectProps) {
   const params = await props.params;
-  redirect(`/${params.lang}/legal/privacy-policy`);
+  redirect(`/${params.lang}/api/images/images/get`);
 }

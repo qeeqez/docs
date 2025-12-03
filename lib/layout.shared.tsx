@@ -29,7 +29,7 @@ export function baseOptions(lang: string): BaseLayoutProps {
     links: [
       {
         text: `${t("home")}`,
-        url: `/${lang}/getting-started/overview`,
+        url: `/${lang}/home/getting-started/overview`,
         active: "nested-url",
         activeSubfolders: ["/getting-started", "/platform", "/legal", "/guides", "/reference", "/images", "/video", "/sdk"],
       },
