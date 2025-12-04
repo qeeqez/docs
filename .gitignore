@@ -9,10 +9,13 @@
 # test & build
 /coverage
 /.next/
+/.nitro
+/.output
 /out/
 /build
+/dist
 *.tsbuildinfo
-dist
+.tanstack
 
 # misc
 .DS_Store
@@ -22,6 +25,7 @@ dist
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+bun-debug.log*
 
 # others
 .env*.local
