@@ -4,13 +4,11 @@
     "react": "warn",
     "typescript": "warn",
     "react-perf": "warn",
-    "jsx-a11y": "warn",
-    "nextjs": "warn"
+    "jsx-a11y": "warn"
   },
   "plugins": [
     "react",
-    "react-perf",
-    "nextjs"
+    "react-perf"
   ],
   "ignorePatterns": [
     "node_modules",
