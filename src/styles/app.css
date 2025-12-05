@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@import "fumadocs-ui/css/black.css";
+@import "fumadocs-ui/css/preset.css";
+
+@theme {
+  --height-header-top: calc(var(--spacing) * 16);
+  --header-border: 1px;
+  --height-header-bottom: 0;
+  --height-header: calc(var(--height-header-top) + var(--height-header-bottom) + var(--header-border));
+
+  --sidebar-height: calc(100vh - var(--height-header));
+
+  --width-sidebar: calc(var(--spacing) * 64);
+  --padding-sidebar: calc(var(--spacing) * 4);
+  --spacing-sidebar-top: calc(var(--height-header) + var(--padding-sidebar));
+
+  --color-fd-primary: rgb(255, 164, 28);
+  --color-fd-background: rgb(255, 255, 255);
+  --color-fd-card: rgb(255, 255, 255);
+
+  --color-fd-primary-foreground: var(--color-gray-200);
+  --color-fd-accent-foreground: var(--color-gray-900);
+  --color-fd-muted-foreground: var(--color-gray-500);
+
+  --color-background-light: rgb(255, 255, 255);
+  --color-background-dark: rgb(14, 12, 11);
+
+  --color-gray-50: rgb(250, 247, 243);
+  --color-gray-100: rgb(245, 243, 238);
+  --color-gray-200: rgb(230, 227, 223);
+  --color-gray-300: rgb(213, 211, 206);
+  --color-gray-400: rgb(166, 163, 159);
+  --color-gray-500: rgb(119, 116, 112);
+  --color-gray-600: rgb(87, 85, 80);
+  --color-gray-700: rgb(70, 67, 63);
+  --color-gray-800: rgb(45, 42, 38);
+  --color-gray-900: rgb(30, 27, 23);
+  --color-gray-950: rgb(17, 15, 11);
+}
+
+.dark {
+  --color-fd-background: rgb(14, 12, 11);
+  --color-fd-card: rgb(14, 12, 11);
+
+  --color-fd-primary-foreground: var(--color-gray-700);
+  --color-fd-accent-foreground: var(--color-gray-300);
+  --color-fd-muted-foreground: var(--color-gray-400);
+
+  --color-fd-primary: rgb(255, 164, 28);
+}
+
+@utility prose-gray {
+  --tw-prose-body: var(--color-gray-500);
+}
+
+@utility prose-gray-invert {
+  --tw-prose-body: var(--color-gray-400);
+}
+
+@media (min-width: var(--breakpoint-lg)) {
+  @theme {
+    --height-header-bottom: calc(var(--spacing) * 12);
+    --header-border: 2px;
+  }
+}
+
+@layer utilities {
+  /* Chrome, Safari, and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* IE, Edge, and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}

@@ -1,6 +1,6 @@
 import type {InferPageType} from "fumadocs-core/source";
 import {type FileObject, printErrors, scanURLs, validateFiles} from "next-validate-link";
-import {source} from "@/lib/source";
+import {source} from "@/lib/source.ts";
 
 async function checkLinks() {
   const scanned = await scanURLs({
