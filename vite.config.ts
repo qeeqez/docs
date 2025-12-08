@@ -32,4 +32,9 @@ export default defineConfig({
     }),
     react(),
   ],
+  resolve: {
+    alias: {
+      "@/snippets": `${__dirname}/src/components/mdx`,
+    },
+  },
 });
