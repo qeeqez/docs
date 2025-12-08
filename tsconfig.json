@@ -1,9 +1,7 @@
 {
   "include": [
     "**/*.ts",
-    "**/*.tsx",
-    "**/*.mdx",
-    ".source/**/*"
+    "**/*.tsx"
   ],
   "compilerOptions": {
     "target": "ES2022",
@@ -36,7 +34,7 @@
       "@/*": [
         "./src/*"
       ],
-      "@/components": [
+      "@/snippets": [
         "./src/components/mdx"
       ],
       "fumadocs-mdx:collections/*": [
