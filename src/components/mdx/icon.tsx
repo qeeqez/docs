@@ -1,9 +1,7 @@
+import type {LucideProps} from "lucide-react";
 import {cloneElement, type ComponentProps, type ReactElement} from "react";
-import dynamicIconImports from "lucide-react/dynamic";
-import {HousePlugIcon, LucideProps} from "lucide-react";
+import {iconMap, type IconName} from "@/generated/icons";
 import {cn} from "@/lib/cn";
-
-export type IconName = keyof typeof dynamicIconImports;
 
 type IconProps = Omit<LucideProps, "name"> &
   (
@@ -17,22 +15,15 @@ type IconProps = Omit<LucideProps, "name"> &
       }
   );
 
+export type {IconName};
+
 export const Icon = ({name, icon, ...props}: IconProps) => {
   if (icon) return cloneElement(icon, props);
 
-  // TODO fix dynamic icon loading
-  return HousePlugIcon;
+  const IconComponent = name ? iconMap[name] : null;
+  if (!IconComponent) return <SVGIcon {...props} />;
 
-  // const iconName = name?.toLowerCase() as IconName;
-  // const iconLoader = dynamicIconImports[iconName];
-  //
-  // if (!iconLoader) return <SVGIcon {...props} />;
-  // const LucideIcon = lazy(iconLoader);
-  // return (
-  //   <Suspense fallback={<SVGIcon {...props} />}>
-  //     <LucideIcon {...props} />
-  //   </Suspense>
-  // );
+  return <IconComponent {...props} />;
 };
 
 const SVGIcon = (props: ComponentProps<"svg">) => {

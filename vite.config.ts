@@ -5,9 +5,11 @@ import tailwindcss from "@tailwindcss/vite";
 import svgr from "vite-plugin-svgr";
 import tsConfigPaths from "vite-tsconfig-paths";
 import mdx from "fumadocs-mdx/vite";
+import {extractIconsPlugin} from "./plugins/vite-plugin-extract-icons";
 
 export default defineConfig({
   plugins: [
+    extractIconsPlugin(),
     mdx(await import("./source.config")),
     tailwindcss(),
     tsConfigPaths({projects: ["./tsconfig.json"]}),
