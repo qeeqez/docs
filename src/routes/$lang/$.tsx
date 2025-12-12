@@ -6,10 +6,10 @@ import browserCollections from "fumadocs-mdx:collections/browser";
 import SharedLayout from "@/components/layout/shared/shared-layout";
 import {TOCProvider} from "@/components/ui/toc";
 import {PageBreadcrumb} from "@/components/layout/docs/page/page-breadcrumb";
-import {LLMCopyButton} from "@/components/page-actions";
 import {getMDXComponents} from "@/components/mdx-components";
 import {Footer} from "@/components/layout/footer/footer";
 import {staticFunctionMiddleware} from "@tanstack/start-static-server-functions";
+import {LLMCopyButton} from "@/components/page-actions/llm-copy-button.tsx";
 
 export const Route = createFileRoute("/$lang/$")({
   component: Page,
