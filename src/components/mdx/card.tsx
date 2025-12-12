@@ -56,19 +56,19 @@ export const Card = ({icon, title, description: _description, href, arrow, cta: 
           className={cn("absolute top-5 right-5 h-4 w-4", "text-fd-muted-foreground group-hover:text-fd-primary transition-colors")}
         />
       )}
-      {/*{icon && Icon && ( TODO fix icon*/}
-      {/*  <div*/}
-      {/*    className={cn(*/}
-      {/*      "w-fit h-fit p-2 rounded-lg",*/}
-      {/*      "border shadow-sm",*/}
-      {/*      href*/}
-      {/*        ? "border-fd-primary/10 shadow-fd-primary/10 dark:border-fd-primary/20 dark:shadow-fd-primary/20 bg-fd-primary/10 dark:bg-fd-primary/20"*/}
-      {/*        : "border-fd-border shadow-fd-border bg-fd-background"*/}
-      {/*    )}*/}
-      {/*  >*/}
-      {/*    <Icon name={icon} className={cn("h-5 w-5 text-fd-primary", href ? "text-fd-primary" : "text-fd-muted-foreground")} />*/}
-      {/*  </div>*/}
-      {/*)}*/}
+      {icon && Icon && (
+        <div
+          className={cn(
+            "w-fit h-fit p-2 rounded-lg",
+            "border shadow-sm",
+            href
+              ? "border-fd-primary/10 shadow-fd-primary/10 dark:border-fd-primary/20 dark:shadow-fd-primary/20 bg-fd-primary/10 dark:bg-fd-primary/20"
+              : "border-fd-border shadow-fd-border bg-fd-background"
+          )}
+        >
+          <Icon name={icon} className={cn("h-5 w-5 text-fd-primary", href ? "text-fd-primary" : "text-fd-muted-foreground")} />
+        </div>
+      )}
       <h2
         className={cn(
           "not-prose text-lg font-semibold text-fd-foreground",
