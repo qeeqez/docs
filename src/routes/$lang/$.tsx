@@ -1,20 +1,22 @@
 import {createFileRoute, notFound} from "@tanstack/react-router";
 import {createServerFn} from "@tanstack/react-start";
-import {source} from "@/lib/source.ts";
+import {source} from "@/lib/source";
 import {DocsBody, DocsDescription, DocsPage, DocsTitle} from "@/components/layout/page";
 import browserCollections from "fumadocs-mdx:collections/browser";
-import SharedLayout from "@/components/layout/shared/shared-layout.tsx";
-import {TOCProvider} from "@/components/ui/toc.tsx";
-import {PageBreadcrumb} from "@/components/layout/docs/page/page-breadcrumb.tsx";
-import {LLMCopyButton} from "@/components/page-actions.tsx";
-import {getMDXComponents} from "@/components/mdx-components.tsx";
-import {Footer} from "@/components/layout/footer/footer.tsx";
+import SharedLayout from "@/components/layout/shared/shared-layout";
+import {TOCProvider} from "@/components/ui/toc";
+import {PageBreadcrumb} from "@/components/layout/docs/page/page-breadcrumb";
+import {LLMCopyButton} from "@/components/page-actions";
+import {getMDXComponents} from "@/components/mdx-components";
+import {Footer} from "@/components/layout/footer/footer";
+import {staticFunctionMiddleware} from "@tanstack/start-static-server-functions";
 
 export const Route = createFileRoute("/$lang/$")({
   component: Page,
   loader: async ({params}) => {
-    const slugs = params._splat?.split("/") ?? [];
-    const data = await loader({data: {slugs: slugs, lang: params.lang}});
+    const splat = params._splat ?? "";
+    const slugs = splat ? splat.split("/") : [];
+    const data = await loader({data: {slugs, lang: params.lang}});
     await clientLoader.preload(data.path);
     return data;
   },
@@ -46,7 +48,7 @@ const loader = createServerFn({
   method: "GET",
 })
   .inputValidator((params: {slugs: string[]; lang?: string}) => params)
-  // .middleware([staticFunctionMiddleware]) TODO check what is this
+  .middleware([staticFunctionMiddleware]) // used for tanstack static rendering
   .handler(async ({data: {slugs, lang}}) => {
     const page = source.getPage(slugs, lang);
     if (!page) throw notFound();
@@ -107,24 +109,6 @@ const clientLoader = browserCollections.docs.createClientLoader({
     );
   },
 });
-
-// const clientLoader = browserCollections.docs.createClientLoader({
-//   component({toc, frontmatter, default: MDX}) {
-//     return (
-//       <DocsPage toc={toc}>
-//         <DocsTitle>{frontmatter.title}</DocsTitle>
-//         <DocsDescription>{frontmatter.description}</DocsDescription>
-//         <DocsBody>
-//           <MDX
-//             components={{
-//               ...defaultMdxComponents,
-//             }}
-//           />
-//         </DocsBody>
-//       </DocsPage>
-//     );
-//   },
-// });
 
 function Page() {
   const {lang} = Route.useParams();
