@@ -61,7 +61,6 @@ const loader = createServerFn({
 const clientLoader = browserCollections.docs.createClientLoader({
   component({toc, frontmatter, default: MDX}) {
     const {lang, _splat} = Route.useParams();
-    const slug = _splat;
 
     return (
       <TOCProvider toc={toc}>
@@ -74,7 +73,7 @@ const clientLoader = browserCollections.docs.createClientLoader({
               github: {
                 owner: "qeeqez",
                 repo: "docs",
-                path: `content/docs/${lang}/${slug}`,
+                path: `content/docs/${lang}/${_splat}`,
                 sha: "main",
                 raiseIssue: true,
               },
@@ -88,8 +87,8 @@ const clientLoader = browserCollections.docs.createClientLoader({
                 <div className="flex items-center justify-between gap-2">
                   <DocsTitle>{frontmatter.title}</DocsTitle>
                   <LLMCopyButton
-                    markdownUrl={`${_splat}.mdx`}
-                    githubUrl={`https://github.com/qeeqez/docs/tree/main/content/docs/${slug}`}
+                    markdownUrl={`/${lang}/${_splat}.md`}
+                    githubUrl={`https://github.com/qeeqez/docs/tree/main/content/${lang}/${_splat}`}
                   />
                 </div>
               </div>
