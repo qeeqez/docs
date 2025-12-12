@@ -13,9 +13,9 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as SitemapXmlRouteImport } from './routes/sitemap.xml'
 import { Route as RobotsTxtRouteImport } from './routes/robots.txt'
 import { Route as ApiSearchRouteImport } from './routes/api/search'
+import { Route as LangLlmsFullDottxtRouteImport } from './routes/$lang/llms-full[.]txt'
 import { Route as LangSplatRouteImport } from './routes/$lang/$'
-import { Route as LangLlmsFullRouteImport } from './routes/$lang/llms/full'
-import { Route as LangLlmsSlugDotmdRouteImport } from './routes/$lang/llms/$slug[.]md'
+import { Route as LangLlmsSplatRouteImport } from './routes/$lang/llms.$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -37,88 +37,88 @@ const ApiSearchRoute = ApiSearchRouteImport.update({
   path: '/api/search',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LangLlmsFullDottxtRoute = LangLlmsFullDottxtRouteImport.update({
+  id: '/$lang/llms-full.txt',
+  path: '/$lang/llms-full.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LangSplatRoute = LangSplatRouteImport.update({
   id: '/$lang/$',
   path: '/$lang/$',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LangLlmsFullRoute = LangLlmsFullRouteImport.update({
-  id: '/$lang/llms/full',
-  path: '/$lang/llms/full',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LangLlmsSlugDotmdRoute = LangLlmsSlugDotmdRouteImport.update({
-  id: '/$lang/llms/$slug.md',
-  path: '/$lang/llms/$slug.md',
+const LangLlmsSplatRoute = LangLlmsSplatRouteImport.update({
+  id: '/$lang/llms/$',
+  path: '/$lang/llms/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$lang/$': typeof LangSplatRoute
+  '/$lang/llms-full.txt': typeof LangLlmsFullDottxtRoute
   '/api/search': typeof ApiSearchRoute
   '/robots/txt': typeof RobotsTxtRoute
   '/sitemap/xml': typeof SitemapXmlRoute
-  '/$lang/llms/$slug.md': typeof LangLlmsSlugDotmdRoute
-  '/$lang/llms/full': typeof LangLlmsFullRoute
+  '/$lang/llms/$': typeof LangLlmsSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$lang/$': typeof LangSplatRoute
+  '/$lang/llms-full.txt': typeof LangLlmsFullDottxtRoute
   '/api/search': typeof ApiSearchRoute
   '/robots/txt': typeof RobotsTxtRoute
   '/sitemap/xml': typeof SitemapXmlRoute
-  '/$lang/llms/$slug.md': typeof LangLlmsSlugDotmdRoute
-  '/$lang/llms/full': typeof LangLlmsFullRoute
+  '/$lang/llms/$': typeof LangLlmsSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$lang/$': typeof LangSplatRoute
+  '/$lang/llms-full.txt': typeof LangLlmsFullDottxtRoute
   '/api/search': typeof ApiSearchRoute
   '/robots/txt': typeof RobotsTxtRoute
   '/sitemap/xml': typeof SitemapXmlRoute
-  '/$lang/llms/$slug.md': typeof LangLlmsSlugDotmdRoute
-  '/$lang/llms/full': typeof LangLlmsFullRoute
+  '/$lang/llms/$': typeof LangLlmsSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/$lang/$'
+    | '/$lang/llms-full.txt'
     | '/api/search'
     | '/robots/txt'
     | '/sitemap/xml'
-    | '/$lang/llms/$slug.md'
-    | '/$lang/llms/full'
+    | '/$lang/llms/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/$lang/$'
+    | '/$lang/llms-full.txt'
     | '/api/search'
     | '/robots/txt'
     | '/sitemap/xml'
-    | '/$lang/llms/$slug.md'
-    | '/$lang/llms/full'
+    | '/$lang/llms/$'
   id:
     | '__root__'
     | '/'
     | '/$lang/$'
+    | '/$lang/llms-full.txt'
     | '/api/search'
     | '/robots/txt'
     | '/sitemap/xml'
-    | '/$lang/llms/$slug.md'
-    | '/$lang/llms/full'
+    | '/$lang/llms/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LangSplatRoute: typeof LangSplatRoute
+  LangLlmsFullDottxtRoute: typeof LangLlmsFullDottxtRoute
   ApiSearchRoute: typeof ApiSearchRoute
   RobotsTxtRoute: typeof RobotsTxtRoute
   SitemapXmlRoute: typeof SitemapXmlRoute
-  LangLlmsSlugDotmdRoute: typeof LangLlmsSlugDotmdRoute
-  LangLlmsFullRoute: typeof LangLlmsFullRoute
+  LangLlmsSplatRoute: typeof LangLlmsSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -151,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiSearchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$lang/llms-full.txt': {
+      id: '/$lang/llms-full.txt'
+      path: '/$lang/llms-full.txt'
+      fullPath: '/$lang/llms-full.txt'
+      preLoaderRoute: typeof LangLlmsFullDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/$lang/$': {
       id: '/$lang/$'
       path: '/$lang/$'
@@ -158,18 +165,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/$lang/llms/full': {
-      id: '/$lang/llms/full'
-      path: '/$lang/llms/full'
-      fullPath: '/$lang/llms/full'
-      preLoaderRoute: typeof LangLlmsFullRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/$lang/llms/$slug.md': {
-      id: '/$lang/llms/$slug.md'
-      path: '/$lang/llms/$slug.md'
-      fullPath: '/$lang/llms/$slug.md'
-      preLoaderRoute: typeof LangLlmsSlugDotmdRouteImport
+    '/$lang/llms/$': {
+      id: '/$lang/llms/$'
+      path: '/$lang/llms/$'
+      fullPath: '/$lang/llms/$'
+      preLoaderRoute: typeof LangLlmsSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -178,21 +178,22 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LangSplatRoute: LangSplatRoute,
+  LangLlmsFullDottxtRoute: LangLlmsFullDottxtRoute,
   ApiSearchRoute: ApiSearchRoute,
   RobotsTxtRoute: RobotsTxtRoute,
   SitemapXmlRoute: SitemapXmlRoute,
-  LangLlmsSlugDotmdRoute: LangLlmsSlugDotmdRoute,
-  LangLlmsFullRoute: LangLlmsFullRoute,
+  LangLlmsSplatRoute: LangLlmsSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
 
 import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
+import type { startInstance } from './start.ts'
 declare module '@tanstack/react-start' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
   }
 }
