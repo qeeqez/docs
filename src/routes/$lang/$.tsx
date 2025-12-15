@@ -1,6 +1,7 @@
 import {createFileRoute, notFound} from "@tanstack/react-router";
 import {createServerFn} from "@tanstack/react-start";
 import {source} from "@/lib/source";
+import {getPageImage} from "@/lib/images";
 import {DocsBody, DocsDescription, DocsPage, DocsTitle} from "@/components/layout/page";
 import browserCollections from "fumadocs-mdx:collections/browser";
 import SharedLayout from "@/components/layout/shared/shared-layout";
@@ -20,28 +21,28 @@ export const Route = createFileRoute("/$lang/$")({
     await clientLoader.preload(data.path);
     return data;
   },
-  // head: ({loaderData: _loaderData}) => {
-  //   // TODO head
-  //   // const {page} = _loaderData;
-  //   // const appName = "Rixl";
-  //   // const imageUrl = getPageImage(page).url;
-  //   //
-  //   // return {
-  //   //   meta: [
-  //   //     {title: `${page.data.title} - ${appName}`},
-  //   //     {name: "description", content: page.data.description},
-  //   //     {name: "application-name", content: appName},
-  //   //     {property: "og:title", content: page.data.title},
-  //   //     {property: "og:description", content: page.data.description},
-  //   //     {property: "og:image", content: imageUrl},
-  //   //     {property: "og:site_name", content: appName},
-  //   //     {name: "twitter:card", content: "summary_large_image"},
-  //   //     {name: "twitter:title", content: page.data.title},
-  //   //     {name: "twitter:description", content: page.data.description},
-  //   //     {name: "twitter:image", content: imageUrl},
-  //   //   ],
-  //   // };
-  // },
+  head: ({loaderData: _loaderData}) => {
+    if (!_loaderData) return {};
+    const {page} = _loaderData;
+    const appName = "Rixl";
+    const imageUrl = getPageImage(page.slugs, page.locale).url;
+
+    return {
+      meta: [
+        {title: `${page.data.title} - ${appName}`},
+        {name: "description", content: page.data.description},
+        {name: "application-name", content: appName},
+        {property: "og:title", content: page.data.title},
+        {property: "og:description", content: page.data.description},
+        {property: "og:image", content: imageUrl},
+        {property: "og:site_name", content: appName},
+        {name: "twitter:card", content: "summary_large_image"},
+        {name: "twitter:title", content: page.data.title},
+        {name: "twitter:description", content: page.data.description},
+        {name: "twitter:image", content: imageUrl},
+      ],
+    };
+  },
 });
 
 const loader = createServerFn({
@@ -55,6 +56,14 @@ const loader = createServerFn({
     return {
       tree: source.getPageTree(lang) as object,
       path: page.path,
+      page: {
+        slugs: page.slugs,
+        locale: page.locale,
+        data: {
+          title: page.data.title,
+          description: page.data.description,
+        },
+      },
     };
   });
 
