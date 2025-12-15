@@ -15,6 +15,7 @@ import { Route as RobotsTxtRouteImport } from './routes/robots.txt'
 import { Route as ApiSearchRouteImport } from './routes/api/search'
 import { Route as LangLlmsFullDottxtRouteImport } from './routes/$lang/llms-full[.]txt'
 import { Route as LangSplatRouteImport } from './routes/$lang/$'
+import { Route as LangOgSplatRouteImport } from './routes/$lang/og/$'
 import { Route as LangLlmsSplatRouteImport } from './routes/$lang/llms.$'
 
 const IndexRoute = IndexRouteImport.update({
@@ -47,6 +48,11 @@ const LangSplatRoute = LangSplatRouteImport.update({
   path: '/$lang/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LangOgSplatRoute = LangOgSplatRouteImport.update({
+  id: '/$lang/og/$',
+  path: '/$lang/og/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LangLlmsSplatRoute = LangLlmsSplatRouteImport.update({
   id: '/$lang/llms/$',
   path: '/$lang/llms/$',
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/robots/txt': typeof RobotsTxtRoute
   '/sitemap/xml': typeof SitemapXmlRoute
   '/$lang/llms/$': typeof LangLlmsSplatRoute
+  '/$lang/og/$': typeof LangOgSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/robots/txt': typeof RobotsTxtRoute
   '/sitemap/xml': typeof SitemapXmlRoute
   '/$lang/llms/$': typeof LangLlmsSplatRoute
+  '/$lang/og/$': typeof LangOgSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/robots/txt': typeof RobotsTxtRoute
   '/sitemap/xml': typeof SitemapXmlRoute
   '/$lang/llms/$': typeof LangLlmsSplatRoute
+  '/$lang/og/$': typeof LangOgSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +100,7 @@ export interface FileRouteTypes {
     | '/robots/txt'
     | '/sitemap/xml'
     | '/$lang/llms/$'
+    | '/$lang/og/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/robots/txt'
     | '/sitemap/xml'
     | '/$lang/llms/$'
+    | '/$lang/og/$'
   id:
     | '__root__'
     | '/'
@@ -109,6 +120,7 @@ export interface FileRouteTypes {
     | '/robots/txt'
     | '/sitemap/xml'
     | '/$lang/llms/$'
+    | '/$lang/og/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,6 +131,7 @@ export interface RootRouteChildren {
   RobotsTxtRoute: typeof RobotsTxtRoute
   SitemapXmlRoute: typeof SitemapXmlRoute
   LangLlmsSplatRoute: typeof LangLlmsSplatRoute
+  LangOgSplatRoute: typeof LangOgSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -165,6 +178,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$lang/og/$': {
+      id: '/$lang/og/$'
+      path: '/$lang/og/$'
+      fullPath: '/$lang/og/$'
+      preLoaderRoute: typeof LangOgSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/$lang/llms/$': {
       id: '/$lang/llms/$'
       path: '/$lang/llms/$'
@@ -183,6 +203,7 @@ const rootRouteChildren: RootRouteChildren = {
   RobotsTxtRoute: RobotsTxtRoute,
   SitemapXmlRoute: SitemapXmlRoute,
   LangLlmsSplatRoute: LangLlmsSplatRoute,
+  LangOgSplatRoute: LangOgSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -6,8 +6,6 @@ import {type FooterProps, PageFooter} from "@/components/layout/docs/page/page-f
 import type {GithubBlockProps} from "@/components/layout/docs/page/page-github-block";
 import {cn} from "../../lib/cn";
 
-// Removed unused interface EditOnGitHubOptions
-
 interface BreadcrumbOptions extends BreadcrumbProps {
   enabled: boolean;
   component: ReactNode;
