@@ -1,6 +1,4 @@
-import {createFileRoute, notFound} from "@tanstack/react-router";
-import {createServerFn} from "@tanstack/react-start";
-import {source} from "@/lib/source";
+import {createFileRoute} from "@tanstack/react-router";
 import {getPageImage} from "@/lib/images";
 import {DocsBody, DocsDescription, DocsPage, DocsTitle} from "@/components/layout/page";
 import browserCollections from "fumadocs-mdx:collections/browser";
@@ -9,8 +7,8 @@ import {TOCProvider} from "@/components/ui/toc";
 import {PageBreadcrumb} from "@/components/layout/docs/page/page-breadcrumb";
 import {getMDXComponents} from "@/components/mdx-components";
 import {Footer} from "@/components/layout/footer/footer";
-import {staticFunctionMiddleware} from "@tanstack/start-static-server-functions";
 import {LLMCopyButton} from "@/components/page-actions/llm-copy-button.tsx";
+import {loader} from "@/lib/server/docs-loader";
 
 export const Route = createFileRoute("/$lang/$")({
   component: Page,
@@ -44,28 +42,6 @@ export const Route = createFileRoute("/$lang/$")({
     };
   },
 });
-
-const loader = createServerFn({
-  method: "GET",
-})
-  .inputValidator((params: {slugs: string[]; lang?: string}) => params)
-  .middleware([staticFunctionMiddleware]) // used for tanstack static rendering
-  .handler(async ({data: {slugs, lang}}) => {
-    const page = source.getPage(slugs, lang);
-    if (!page) throw notFound();
-    return {
-      tree: source.getPageTree(lang) as object,
-      path: page.path,
-      page: {
-        slugs: page.slugs,
-        locale: page.locale,
-        data: {
-          title: page.data.title,
-          description: page.data.description,
-        },
-      },
-    };
-  });
 
 const clientLoader = browserCollections.docs.createClientLoader({
   component({toc, frontmatter, default: MDX}) {

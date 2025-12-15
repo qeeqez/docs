@@ -1,20 +1,10 @@
-import {createFileRoute, notFound} from "@tanstack/react-router";
-import {source} from "@/lib/source";
+import {createFileRoute} from "@tanstack/react-router";
+import {llmsHandler} from "@/lib/server/llms-handler";
 
 export const Route = createFileRoute("/$lang/llms/$")({
   server: {
     handlers: {
-      GET: async ({params}) => {
-        const slugs = params._splat?.split("/") ?? [];
-        const page = source.getPage(slugs, params.lang);
-        if (!page) throw notFound();
-
-        return new Response(await page.data.getText("raw"), {
-          headers: {
-            "Content-Type": "text/markdown",
-          },
-        });
-      },
+      GET: llmsHandler,
     },
   },
 });
