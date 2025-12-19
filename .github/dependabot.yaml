@@ -4,6 +4,9 @@ updates:
     directories: [ "/" ]
     schedule:
       interval: "weekly"
+    assignees:
+      - "theqeeqez"
+      - "muhtoyyib"
     groups:
       dependencies:
         patterns:
