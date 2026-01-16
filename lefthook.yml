@@ -1,0 +1,11 @@
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: "*.{js,ts,jsx,tsx}"
+      run: bunx oxlint --max-warnings=0 {staged_files} && bunx fumadocs-mdx && bun ./scripts/lint.ts
+      stage_fixed: true
+    format:
+      glob: "*.{js,ts,jsx,tsx,json,md}"
+      run: bunx oxfmt {staged_files}
+      stage_fixed: true
