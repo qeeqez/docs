@@ -6,7 +6,7 @@
     "build": "bun lint && next build",
     "dev": "next dev",
     "serve": "bunx serve@latest out",
-    "lint": "oxlint && fumadocs-mdx && bun ./scripts/lint.ts",
+    "lint": "oxlint --max-warnings=0 && fumadocs-mdx && bun ./scripts/lint.ts",
     "lint:fix": "oxlint --fix",
     "format": "oxfmt",
     "postinstall": "fumadocs-mdx",

@@ -7,5 +7,5 @@ pre-commit:
       stage_fixed: true
     format:
       glob: "*.{js,ts,jsx,tsx,json,md}"
-      run: bunx oxfmt {staged_files}
+      run: bun format {staged_files}
       stage_fixed: true
