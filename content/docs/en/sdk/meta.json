@@ -11,6 +11,8 @@
     "...image-component",
     "---Feed---",
     "...feed-component",
+    "---Types---",
+    "...types",
     "---Examples---",
     "...examples"
   ]

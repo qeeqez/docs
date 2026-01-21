@@ -1,0 +1,191 @@
+---
+title: "TypeScript Types"
+description: "Complete TypeScript type definitions for the RIXL SDK"
+---
+
+## Component Props
+
+### VideoProps
+
+```typescript
+interface VideoProps extends HTMLProps<HTMLVideoElement> {
+  id?: string;
+  progressBar?: boolean;
+  allowPlayPause?: boolean;
+  allowFullscreen?: boolean;
+  allowPictureInPicture?: boolean;
+  volume?: number;
+  theme?: VideoTheme;
+  lang?: SupportedLanguage;
+  analytics?: boolean;
+  analyticsPage?: Page;
+  heatmap?: boolean;
+  hotSegments?: boolean;
+  resumeProgress?: boolean;
+  userId?: string;
+  userProperties?: Record<string, string>;
+}
+
+type VideoTheme = "default" | "minimal" | "hideUI";
+
+type SupportedLanguage = "en" | "de" | "es" | "fr" | "it" | "pl" | "ru" | "tr" | "uk";
+
+type Page = "feed" | "standalone" | "profile";
+```
+
+### ImageProps
+
+```typescript
+interface ImageProps extends HTMLProps<HTMLImageElement> {
+  id?: string;
+  alt?: string;
+  analytics?: boolean;
+  analyticsPage?: Page;
+}
+```
+
+### FeedProps
+
+```typescript
+interface FeedProps extends HTMLProps<HTMLDivElement> {
+  feedId: string;
+}
+```
+
+## Data Types
+
+### VideoData
+
+Represents video metadata returned from the API.
+
+```typescript
+interface VideoData {
+  id: string;
+  file: FileData;
+  poster: ImageData;
+  duration: number;
+  width: number;
+  height: number;
+  codec: string;
+  bitrate: number;
+  framerate: string;
+  hdr: boolean;
+  chapters?: Chapter[];
+}
+
+interface Chapter {
+  title: string;
+  start_time_sec: number;
+  end_time_sec: number;
+  duration_label: string;
+}
+```
+
+### ImageData
+
+Represents image metadata returned from the API.
+
+```typescript
+interface ImageData {
+  id: string;
+  thumbhash: string;
+  width: number;
+  height: number;
+  attached_to_video: boolean;
+  file: FileData;
+}
+```
+
+### FeedPost
+
+Represents a post within a feed.
+
+```typescript
+interface FeedPost {
+  id: string;
+  projectId: string;
+  creatorId: string;
+  type: "image" | "video";
+  feedId: string;
+  description: string;
+  image?: ImageData;
+  video?: VideoData;
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface FeedPostsResponse {
+  posts: FeedPost[];
+  total: number;
+  offset: number;
+  limit: number;
+}
+```
+
+### FileData
+
+Represents file metadata for videos and images.
+
+```typescript
+interface FileData {
+  id: string;
+  project_id: string;
+  format: string;
+  url: string;
+  name: string;
+  size: number;
+  status: FileStatus;
+  created_at: Date;
+  updated_at: Date;
+}
+
+type FileStatus = "uploading" | "uploaded" | "processing" | "ready" | "error";
+```
+
+## Analytics Types
+
+### ContentViewEvent
+
+Event structure for content view tracking.
+
+```typescript
+interface ContentViewEvent {
+  _type: "content_views";
+  timestamp?: number;
+  content_id: string;
+  content_type: "video" | "image";
+  view_type: "start" | "watch" | "end";
+  watch_duration_ms: number;
+  page: Page;
+  feed_id?: string;
+  post_id?: string;
+  video_position_ms?: number;
+  video_total_duration_ms?: number;
+  device_id?: string;
+  country?: string;
+}
+```
+
+### VideoHeatmap
+
+Viewer engagement heatmap data.
+
+```typescript
+interface VideoHeatmap {
+  video_id: string;
+  total_duration_ms: number;
+  data: number[];
+}
+```
+
+### HotSegment
+
+Represents a high-engagement segment of a video.
+
+```typescript
+interface HotSegment {
+  start_second: number;
+  end_second: number;
+  multiplier: number;
+}
+```
