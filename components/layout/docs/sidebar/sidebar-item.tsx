@@ -1,8 +1,8 @@
 import {cva} from "class-variance-authority";
 import {usePathname} from "fumadocs-core/framework";
 import Link, {type LinkProps} from "fumadocs-core/link";
-import {ExternalLink} from "fumadocs-ui/internal/icons";
-import {isActive} from "fumadocs-ui/utils/is-active";
+import {ExternalLink} from "lucide-react";
+import {isActive} from "@fumadocs/ui/urls";
 import type {ReactNode} from "react";
 import {useInternalContext} from "@/components/layout/docs/sidebar/sidebar-provider";
 import {cn} from "@/lib/cn";
