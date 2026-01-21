@@ -193,16 +193,6 @@ Displays a visual heatmap overlay on the progress bar showing viewer engagement 
 <Video id="D3OCjdLP60" heatmap={true} />
 ```
 
-### `hotSegments` **(Optional)**
-
-**Type:** `boolean` | **Default:** `false`
-
-Highlights the most-watched sections of the video on the progress bar. Helps viewers quickly identify popular moments.
-
-```tsx
-<Video id="D3OCjdLP60" hotSegments={true} />
-```
-
 ### `resumeProgress` **(Optional)**
 
 **Type:** `boolean` | **Default:** `false`
@@ -247,7 +237,6 @@ interface VideoProps extends HTMLProps<HTMLVideoElement> {
 
   // Engagement Features
   heatmap?: boolean;
-  hotSegments?: boolean;
   resumeProgress?: boolean;
 }
 ```
