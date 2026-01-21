@@ -22,6 +22,8 @@ The standard video player provides a complete, professional media experience wit
         allowPictureInPicture={true}
         theme={"default"}
         volume={1.0}
+        heatmap={true}
+        resumeProgress={true}
     />
 </div>
 
@@ -48,6 +50,9 @@ function StandardVideoPlayer() {
         allowPictureInPicture={true}
         // Theming
         theme="default"
+        // Engagement Features
+        heatmap={true}
+        resumeProgress={true}
       />
     </div>
   );
@@ -256,6 +261,47 @@ Real-time network and buffering information
 
 <Callout type="default">
     Buffer display is useful for debugging playback issues or monitoring network performance.
+</Callout>
+
+### Engagement Heatmap
+
+Display viewer engagement patterns directly on the progress bar. The heatmap shows which parts of the video have the highest viewership, helping viewers identify popular moments.
+
+```tsx
+<Video
+  id="your-video-id"
+  heatmap={true} // Enable engagement heatmap
+/>
+```
+
+**Features:**
+- **Visual Overlay**: Brighter areas on the progress bar indicate higher viewership
+- **Real-time Data**: Based on aggregated viewer behavior
+- **Non-intrusive**: Blends naturally with the progress bar
+
+<Callout type="info">
+    Heatmap data requires sufficient view history. New videos may not display heatmap data until enough views have been collected.
+</Callout>
+
+### Resume Progress
+
+Automatically remember where users stopped watching and resume from that point on their next visit.
+
+```tsx
+<Video
+  id="your-video-id"
+  resumeProgress={true} // Enable resume functionality
+/>
+```
+
+**Features:**
+- **Automatic Save**: Progress is saved as the video plays
+- **Per-Video Storage**: Each video's progress is tracked independently
+- **Local Storage**: Progress is stored in the browser
+- **Seamless Resume**: Video starts from the saved position automatically
+
+<Callout type="info">
+    Resume progress is especially useful for long-form content like tutorials, courses, or documentaries where users may watch in multiple sessions.
 </Callout>
 
 ## Theming Options
