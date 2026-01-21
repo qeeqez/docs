@@ -1,6 +1,6 @@
 import {usePathname} from "fumadocs-core/framework";
 import Link, {type LinkProps} from "fumadocs-core/link";
-import {isActive} from "fumadocs-ui/utils/is-active";
+import {isActive} from "@fumadocs/ui/urls";
 import {ChevronDown} from "lucide-react";
 import {useFolderContext} from "@/components/layout/docs/sidebar/sidebar-folder";
 import {sidebarItemVariants} from "@/components/layout/docs/sidebar/sidebar-item";

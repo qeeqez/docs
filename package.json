@@ -9,8 +9,7 @@
     "lint": "oxlint --max-warnings=0 && fumadocs-mdx && bun ./scripts/lint.ts",
     "lint:fix": "oxlint --fix",
     "format": "oxfmt",
-    "postinstall": "fumadocs-mdx",
-    "prepare": "lefthook install"
+    "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
     "@orama/orama": "^3.1.18",
