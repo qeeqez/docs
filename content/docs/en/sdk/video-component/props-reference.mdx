@@ -203,6 +203,20 @@ Automatically resumes playback from where the user previously stopped watching. 
 <Video id="D3OCjdLP60" resumeProgress={true} />
 ```
 
+### `chapters` **(Optional)**
+
+**Type:** `boolean` | **Default:** `false`
+
+Enables video chapters on the progress bar. When enabled, chapters you've added to the video on your [RIXL dashboard](https://dash.rixl.com) will be displayed, allowing viewers to quickly navigate to specific sections of the video—similar to YouTube chapters.
+
+```tsx
+<Video id="D3OCjdLP60" chapters={true} />
+```
+
+<Callout type="info">
+  To use chapters, first add them to your video in the RIXL dashboard. Each chapter requires a timestamp and title. Once added, enable this prop to display them in the player.
+</Callout>
+
 ## TypeScript Interface
 
 ```typescript
@@ -234,5 +248,6 @@ interface VideoProps extends HTMLProps<HTMLVideoElement> {
   // Engagement Features
   heatmap?: boolean;
   resumeProgress?: boolean;
+  chapters?: boolean;
 }
 ```
