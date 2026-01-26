@@ -9,7 +9,7 @@ description: "Complete TypeScript type definitions for the RIXL SDK"
 
 ```typescript
 interface VideoProps extends HTMLProps<HTMLVideoElement> {
-  id?: string;
+  id: string;
   progressBar?: boolean;
   allowPlayPause?: boolean;
   allowFullscreen?: boolean;
@@ -21,8 +21,10 @@ interface VideoProps extends HTMLProps<HTMLVideoElement> {
   analyticsPage?: Page;
   heatmap?: boolean;
   resumeProgress?: boolean;
-  userId?: string;
-  userProperties?: Record<string, string>;
+  chapters?: boolean;
+  muted?: boolean;
+  autoplay?:boolean;
+  loop?:boolean;
 }
 
 type VideoTheme = "default" | "minimal" | "hideUI";
@@ -40,6 +42,7 @@ interface ImageProps extends HTMLProps<HTMLImageElement> {
   alt?: string;
   analytics?: boolean;
   analyticsPage?: Page;
+  className?: string;
 }
 ```
 
