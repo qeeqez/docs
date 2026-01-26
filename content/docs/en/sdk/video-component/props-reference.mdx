@@ -149,7 +149,105 @@ Selects the player theme and control styling.
 
 Sets the language of the player.
 
-
 ```tsx
 <Video id="D3OCjdLP60" lang="de" />
+```
+
+## Analytics
+
+### `analytics` **(Optional)**
+
+**Type:** `boolean` | **Default:** `true`
+
+Enables built-in view tracking and engagement analytics. When enabled, the SDK automatically tracks video views, watch duration, and engagement metrics.
+
+```tsx
+<Video id="D3OCjdLP60" analytics={true} />
+```
+
+### `analyticsPage` **(Optional)**
+
+**Type:** `"feed" | "standalone" | "profile"` | **Default:** `"standalone"`
+
+Specifies the page context for analytics reporting. This helps segment your analytics data by where the video is being viewed.
+
+```tsx
+<Video id="D3OCjdLP60" analyticsPage="feed" />
+```
+
+**Available Contexts:**
+- `'standalone'` - Video on its own dedicated page
+- `'feed'` - Video within a scrolling feed
+- `'profile'` - Video on a user profile page
+
+
+## Engagement Features
+
+### `heatmap` **(Optional)**
+
+**Type:** `boolean` | **Default:** `false`
+
+Displays a visual heatmap overlay on the progress bar showing viewer engagement patterns. Brighter areas indicate sections with higher viewership.
+
+```tsx
+<Video id="D3OCjdLP60" heatmap={true} />
+```
+
+### `resumeProgress` **(Optional)**
+
+**Type:** `boolean` | **Default:** `false`
+
+Automatically resumes playback from where the user previously stopped watching. Progress is stored locally per video.
+
+```tsx
+<Video id="D3OCjdLP60" resumeProgress={true} />
+```
+
+### `chapters` **(Optional)**
+
+**Type:** `boolean` | **Default:** `false`
+
+Enables video chapters on the progress bar. When enabled, chapters you've added to the video on your [RIXL dashboard](https://dash.rixl.com) will be displayed, allowing viewers to quickly navigate to specific sections of the video—similar to YouTube chapters.
+
+```tsx
+<Video id="D3OCjdLP60" chapters={true} />
+```
+
+<Callout type="info">
+  To use chapters, first add them to your video in the RIXL dashboard. Each chapter requires a timestamp and title. Once added, enable this prop to display them in the player.
+</Callout>
+
+## TypeScript Interface
+
+```typescript
+interface VideoProps extends HTMLProps<HTMLVideoElement> {
+  // Core
+  id: string;
+  className?: string;
+
+  // Playback
+  muted?: boolean;
+  autoPlay?: boolean;
+  loop?: boolean;
+  volume?: number;
+
+  // UI Controls
+  progressBar?: boolean;
+  allowPlayPause?: boolean;
+  allowFullscreen?: boolean;
+  allowPictureInPicture?: boolean;
+
+  // Theme & Localization
+  theme?: "default" | "minimal" | "hideUI";
+  lang?: "en" | "de" | "es" | "fr" | "it" | "pl" | "ru" | "tr" | "uk";
+
+  // Analytics
+  analytics?: boolean;
+  analyticsPage?: "feed" | "standalone" | "profile";
+
+  // Engagement Features
+  heatmap?: boolean;
+  resumeProgress?: boolean;
+  chapters?: boolean;
+}
 ```

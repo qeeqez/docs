@@ -1,0 +1,51 @@
+---
+title: "Props Reference"
+description: "Complete API reference for all Feed component props and TypeScript interfaces"
+---
+
+import {Callout} from "@/components"
+
+## Core Props
+
+### `feedId` **(Required)**
+
+**Type:** `string`
+
+The unique feed identifier from your RIXL dashboard. Create a feed at [dash.rixl.com](https://dash.rixl.com) to get this ID.
+
+```tsx
+<Feed feedId="your-feed-id" />
+```
+
+<Callout type="info">
+  Each feed can contain multiple posts with videos and images. Manage your feed content through the RIXL dashboard.
+</Callout>
+
+
+## Layout Recommendations
+
+The Feed component works best when given explicit height constraints:
+
+```tsx
+// Full viewport height
+<div className="h-screen">
+  <Feed feedId="your-feed-id" />
+</div>
+
+// Fixed height container
+<div className="h-[600px]">
+  <Feed feedId="your-feed-id" />
+</div>
+```
+
+<Callout type="warning">
+  The Feed component requires a parent container with a defined height. Without height constraints, the infinite scroll behavior may not work correctly.
+</Callout>
+
+## TypeScript Interface
+
+```typescript
+interface FeedProps extends HTMLProps<HTMLDivElement> {
+  feedId: string;
+}
+```
