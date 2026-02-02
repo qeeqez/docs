@@ -93,7 +93,6 @@ bun format    # Format code with Oxfmt
 ### Don't:
 
 - Create components with multiple responsibilities
-- Keep components over 150–200 lines
 - Duplicate code – extract and reuse instead
 - Put multiple component definitions in one file
 - Use inline styles – use Tailwind classes instead
