@@ -47,7 +47,7 @@ The official documentation site for Rixl, built with Next.js and Fumadocs. Featu
 
 ```bash
 bun dev       # Start Next.js development server
-bun build     # Lint + Next.js production build
+bun run build     # Lint + Next.js production build
 bun serve     # Serve static build output
 bun lint      # Run Oxlint + fumadocs-mdx + custom lint
 bun lint:fix  # Auto-fix Oxlint issues
