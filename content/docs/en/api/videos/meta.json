@@ -1,0 +1,23 @@
+{
+  "pages": [
+    "get-videos",
+    "get-videos-languages",
+    "get-videos-videoid",
+    "post-videos-upload-complete",
+    "post-videos-upload-init",
+    "post-videos-videoid-audio-tracks",
+    "post-videos-videoid-subtitles",
+    "put-videos-videoid-audio-tracks-lang_code",
+    "put-videos-videoid-chapters",
+    "put-videos-videoid-subtitles-lang_code",
+    "put-videos-videoid-thumbnail",
+    "delete-videos-videoid-audio-tracks",
+    "delete-videos-videoid-audio-tracks-lang_code",
+    "delete-videos-videoid-audio-tracks-trackid",
+    "delete-videos-videoid-chapters",
+    "delete-videos-videoid-delete",
+    "delete-videos-videoid-subtitles",
+    "delete-videos-videoid-subtitles-lang_code",
+    "delete-videos-videoid-subtitles-subtitleid"
+  ]
+}

@@ -1,0 +1,3 @@
+{
+  "pages": ["get-images", "get-images-imageid", "post-images-upload-complete", "post-images-upload-init", "delete-images-imageid"]
+}
