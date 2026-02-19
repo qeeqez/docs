@@ -6,6 +6,19 @@ import {openapi} from "@/lib/openapi";
 const output = "./content/docs/en/api";
 const filesToKeep = new Set(["meta.json"]);
 
+function toFlatFileName(value: string) {
+  const flattened = value
+    .replace(/^\//, "")
+    .replace(/[{}]/g, "")
+    .replace(/\//g, "-")
+    .replace(/[^a-zA-Z0-9-_]/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "")
+    .toLowerCase();
+
+  return flattened.length > 0 ? flattened : "root";
+}
+
 async function cleanupApiDocsOutput(outputDir: string) {
   let entries;
 
@@ -37,6 +50,12 @@ void (async () => {
     output,
     per: "operation",
     groupBy: "tag",
+    name(entry) {
+      const method = entry.item.method.toLowerCase();
+      const target = entry.type === "operation" ? entry.item.path : entry.item.name;
+
+      return `${method}-${toFlatFileName(target)}`;
+    },
     includeDescription: true,
   });
 })();

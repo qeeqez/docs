@@ -1,12 +1,5 @@
 {
   "root": true,
   "title": "API Reference",
-  "pages": [
-    "---Images API---",
-    "images",
-    "---Videos API---",
-    "videos",
-    "---Feeds API---",
-    "feeds"
-  ]
+  "pages": ["---Images API---", "...images", "---Videos API---", "...videos", "---Feeds API---", "...feeds"]
 }
