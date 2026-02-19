@@ -61,17 +61,16 @@
           "400": {
             "description": "Invalid feed ID or query parameters",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "500": {
             "description": "Internal server error",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           }
-        },
-        "x-order": 2
+        }
       }
     },
     "/feeds/{feedId}/creators/{creatorId}": {
@@ -125,145 +124,16 @@
           "400": {
             "description": "Invalid feed ID, creator ID, or query parameters",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "500": {
             "description": "Internal server error",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           }
-        },
-        "x-order": 3
-      }
-    },
-    "/feeds/{feedId}/upload/complete": {
-      "post": {
-        "security": [
-          {
-            "ApiKeyAuth": []
-          }
-        ],
-        "description": "Mark a post upload as complete after successful file upload using API key authentication",
-        "consumes": ["application/json"],
-        "produces": ["application/json"],
-        "tags": ["Feeds"],
-        "summary": "Upload: Mark as complete",
-        "parameters": [
-          {
-            "description": "Post upload completion request",
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/internal_posts.PostUploadCompleteRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Post"
-            }
-          },
-          "400": {
-            "description": "Invalid request",
-            "schema": {
-              "$ref": "#/definitions/ResponseError"
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Invalid API key",
-            "schema": {
-              "$ref": "#/definitions/ResponseError"
-            }
-          },
-          "403": {
-            "description": "Access denied",
-            "schema": {
-              "$ref": "#/definitions/ResponseError"
-            }
-          },
-          "404": {
-            "description": "Post not found",
-            "schema": {
-              "$ref": "#/definitions/ResponseError"
-            }
-          },
-          "500": {
-            "description": "Failed to complete upload",
-            "schema": {
-              "$ref": "#/definitions/ResponseError"
-            }
-          }
-        },
-        "x-order": 5
-      }
-    },
-    "/feeds/{feedId}/upload/init": {
-      "post": {
-        "security": [
-          {
-            "ApiKeyAuth": []
-          }
-        ],
-        "description": "Initialize post creation and get presigned URLs for content upload using API key authentication",
-        "consumes": ["application/json"],
-        "produces": ["application/json"],
-        "tags": ["Feeds"],
-        "summary": "Upload: Init",
-        "parameters": [
-          {
-            "description": "Post upload initialization request",
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/internal_posts.PostUploadInitRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/internal_posts.PostUploadInitResponse"
-            }
-          },
-          "400": {
-            "description": "Invalid request body or parameters",
-            "schema": {
-              "$ref": "#/definitions/ResponseError"
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Invalid API key",
-            "schema": {
-              "$ref": "#/definitions/ResponseError"
-            }
-          },
-          "403": {
-            "description": "Access denied",
-            "schema": {
-              "$ref": "#/definitions/ResponseError"
-            }
-          },
-          "404": {
-            "description": "Feed not found",
-            "schema": {
-              "$ref": "#/definitions/ResponseError"
-            }
-          },
-          "500": {
-            "description": "Failed to initialize upload",
-            "schema": {
-              "$ref": "#/definitions/ResponseError"
-            }
-          }
-        },
-        "x-order": 4
+        }
       }
     },
     "/feeds/{feedId}/{postId}": {
@@ -298,73 +168,16 @@
           "400": {
             "description": "Bad Request",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "404": {
             "description": "Not Found",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           }
-        },
-        "x-order": 1
-      },
-      "delete": {
-        "security": [
-          {
-            "ApiKeyAuth": []
-          }
-        ],
-        "description": "delete a post by ID",
-        "tags": ["Feeds"],
-        "summary": "Delete a post",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "Feed ID",
-            "name": "feedId",
-            "in": "path",
-            "required": true
-          },
-          {
-            "type": "string",
-            "description": "Post ID",
-            "name": "postId",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Post deleted successfully"
-          },
-          "400": {
-            "description": "Invalid project ID or query parameters",
-            "schema": {
-              "$ref": "#/definitions/ResponseError"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/ResponseError"
-            }
-          },
-          "403": {
-            "description": "Access denied",
-            "schema": {
-              "$ref": "#/definitions/ResponseError"
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "schema": {
-              "$ref": "#/definitions/ResponseError"
-            }
-          }
-        },
-        "x-order": 6
+        }
       }
     },
     "/images": {
@@ -421,25 +234,25 @@
           "400": {
             "description": "Invalid query parameters",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "401": {
             "description": "Unauthorized",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "403": {
             "description": "Forbidden",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "500": {
             "description": "Internal server error",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           }
         },
@@ -465,7 +278,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/internal_images.UploadCompleteRequest"
+              "$ref": "#/definitions/internal_images_handler.completeRequest"
             }
           }
         ],
@@ -479,31 +292,31 @@
           "400": {
             "description": "Invalid request body",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "401": {
             "description": "Unauthorized - Invalid API key",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "403": {
             "description": "Access denied",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "404": {
             "description": "File not found",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "500": {
             "description": "Failed to complete upload or create image",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           }
         },
@@ -529,7 +342,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/internal_images.UploadInitRequest"
+              "$ref": "#/definitions/internal_images_handler.uploadInitRequest"
             }
           }
         ],
@@ -537,31 +350,31 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/internal_images.UploadInitResponse"
+              "$ref": "#/definitions/internal_images_handler.initResponse"
             }
           },
           "400": {
             "description": "Invalid request body",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "401": {
             "description": "Unauthorized - Invalid API key",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "403": {
             "description": "Access denied",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "500": {
             "description": "Failed to initialize upload",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           }
         },
@@ -598,31 +411,31 @@
           "400": {
             "description": "Invalid image ID",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "401": {
             "description": "Unauthorized",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "403": {
             "description": "Forbidden",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "404": {
             "description": "Image not found",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "500": {
             "description": "Internal server error",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           }
         },
@@ -653,31 +466,31 @@
           "400": {
             "description": "Invalid project ID or image ID",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "401": {
             "description": "Unauthorized",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "403": {
             "description": "Access denied",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "404": {
             "description": "Image not found",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "500": {
             "description": "Failed to delete image",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           }
         },
@@ -738,29 +551,48 @@
           "400": {
             "description": "Invalid query parameters",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "401": {
             "description": "Unauthorized",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "403": {
             "description": "Forbidden",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "500": {
             "description": "Internal server error",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           }
         },
         "x-order": 2
+      }
+    },
+    "/videos/languages": {
+      "get": {
+        "description": "Get list of supported languages for subtitles",
+        "produces": ["application/json"],
+        "tags": ["Videos"],
+        "summary": "List available subtitle languages",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/internal_videos_handler_subtitles.languageResponse"
+              }
+            }
+          }
+        }
       }
     },
     "/videos/upload/complete": {
@@ -782,7 +614,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/internal_videos.UploadCompleteRequest"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_videos_handler_upload.CompleteRequest"
             }
           }
         ],
@@ -796,31 +628,31 @@
           "400": {
             "description": "Invalid request body",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "401": {
             "description": "Unauthorized - Invalid API key",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "403": {
             "description": "Access denied",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "404": {
             "description": "File not found",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "500": {
             "description": "Failed to complete upload",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           }
         },
@@ -846,7 +678,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/internal_videos.UploadInitRequest"
+              "$ref": "#/definitions/VideoUploadInitRequest"
             }
           }
         ],
@@ -854,31 +686,31 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/internal_videos.UploadInitResponse"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_videos_handler_upload.InitResponse"
             }
           },
           "400": {
             "description": "Invalid request body",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "401": {
             "description": "Unauthorized - Invalid API key",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "403": {
             "description": "Access denied",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "500": {
             "description": "Failed to initialize upload",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           }
         },
@@ -915,36 +747,398 @@
           "400": {
             "description": "Invalid video ID",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "401": {
             "description": "Unauthorized",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "403": {
             "description": "Forbidden",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "404": {
             "description": "Video not found",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "500": {
             "description": "Internal server error",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           }
         },
         "x-order": 1
+      }
+    },
+    "/videos/{videoId}/audio-tracks": {
+      "post": {
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "description": "Replace all audio tracks with the provided ones using API key authentication",
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+        "tags": ["Videos"],
+        "summary": "Bulk upsert video audio tracks",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Video ID",
+            "name": "videoId",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "file"
+            },
+            "collectionFormat": "multi",
+            "description": "Audio files (.mp3, .opus, .flac, .wav, .ac3, .m4a, .aac)",
+            "name": "files",
+            "in": "formData",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Comma-separated language codes",
+            "name": "language_codes",
+            "in": "formData",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Comma-separated labels",
+            "name": "labels",
+            "in": "formData",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AudioTrack"
+              }
+            }
+          }
+        },
+        "x-order": 10
       },
+      "delete": {
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "description": "Remove all additional audio tracks from a video using API key authentication",
+        "tags": ["Videos"],
+        "summary": "Delete all audio tracks",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Video ID",
+            "name": "videoId",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AudioTrackDelete"
+            }
+          }
+        },
+        "x-order": 10.3
+      }
+    },
+    "/videos/{videoId}/audio-tracks/{lang_code}": {
+      "put": {
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "description": "Add or replace an audio track for a specific language using API key authentication",
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+        "tags": ["Videos"],
+        "summary": "Upsert video audio track",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Video ID",
+            "name": "videoId",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Language Code (BCP 47)",
+            "name": "lang_code",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "file",
+            "description": "Audio file (.mp3, .opus, .flac, .wav, .ac3, .m4a, .aac)",
+            "name": "file",
+            "in": "formData",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Label (e.g. English)",
+            "name": "label",
+            "in": "formData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AudioTrack"
+            }
+          }
+        },
+        "x-order": 10.1
+      },
+      "delete": {
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "description": "Remove an audio track for a specific language using API key authentication",
+        "tags": ["Videos"],
+        "summary": "Delete audio track by language",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Video ID",
+            "name": "videoId",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Language Code (BCP 47)",
+            "name": "lang_code",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AudioTrackDelete"
+            }
+          }
+        },
+        "x-order": 10.2
+      }
+    },
+    "/videos/{videoId}/audio-tracks/{trackId}": {
+      "delete": {
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "description": "Remove an additional audio track from a video using API key authentication",
+        "tags": ["Videos"],
+        "summary": "Delete audio track",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Video ID",
+            "name": "videoId",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Audio Track ID",
+            "name": "trackId",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AudioTrackDelete"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          }
+        },
+        "x-order": 11
+      }
+    },
+    "/videos/{videoId}/chapters": {
+      "put": {
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "description": "Replace all chapters for a video (atomic PUT operation) using API key authentication",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "tags": ["Videos"],
+        "summary": "Update video chapters",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Video ID",
+            "name": "videoId",
+            "in": "path",
+            "required": true
+          },
+          {
+            "description": "Chapters array",
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateChaptersRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UpdateChaptersResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid request body or video duration not available",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid API key",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Access denied",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Video not found",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Failed to update chapters",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          }
+        },
+        "x-order": 12
+      },
+      "delete": {
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "description": "Remove all chapters from a video using API key authentication",
+        "produces": ["application/json"],
+        "tags": ["Videos"],
+        "summary": "Delete video chapters",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Video ID",
+            "name": "videoId",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UpdateChaptersResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid API key",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Access denied",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Video not found",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Failed to delete chapters",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          }
+        },
+        "x-order": 13
+      }
+    },
+    "/videos/{videoId}/delete": {
       "delete": {
         "security": [
           {
@@ -970,39 +1164,418 @@
           "400": {
             "description": "Invalid project ID or video ID",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "401": {
             "description": "Unauthorized",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "403": {
             "description": "Access denied",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "404": {
             "description": "Video not found",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           },
           "500": {
             "description": "Failed to delete video",
             "schema": {
-              "$ref": "#/definitions/ResponseError"
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           }
         },
         "x-order": 5
       }
+    },
+    "/videos/{videoId}/subtitles": {
+      "post": {
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "description": "Replace all subtitles with the provided ones using API key authentication",
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+        "tags": ["Videos"],
+        "summary": "Bulk upsert video subtitles",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Video ID",
+            "name": "videoId",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "file"
+            },
+            "collectionFormat": "multi",
+            "description": "Subtitle files (.srt or .vtt)",
+            "name": "files",
+            "in": "formData",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Comma-separated language codes",
+            "name": "language_codes",
+            "in": "formData",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Comma-separated labels",
+            "name": "labels",
+            "in": "formData",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Subtitle"
+              }
+            }
+          }
+        },
+        "x-order": 8
+      },
+      "delete": {
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "description": "Remove all subtitles from a video using API key authentication",
+        "tags": ["Videos"],
+        "summary": "Delete all subtitles",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Video ID",
+            "name": "videoId",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SubtitleDelete"
+            }
+          }
+        },
+        "x-order": 8.3
+      }
+    },
+    "/videos/{videoId}/subtitles/{lang_code}": {
+      "put": {
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "description": "Add or replace a subtitle for a specific language using API key authentication",
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+        "tags": ["Videos"],
+        "summary": "Upsert video subtitle",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Video ID",
+            "name": "videoId",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Language Code (BCP 47)",
+            "name": "lang_code",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "file",
+            "description": "Subtitle file (.srt or .vtt)",
+            "name": "file",
+            "in": "formData",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Label (e.g. English)",
+            "name": "label",
+            "in": "formData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Subtitle"
+            }
+          }
+        },
+        "x-order": 8.1
+      },
+      "delete": {
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "description": "Remove a subtitle for a specific language using API key authentication",
+        "tags": ["Videos"],
+        "summary": "Delete subtitle by language",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Video ID",
+            "name": "videoId",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Language Code (BCP 47)",
+            "name": "lang_code",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SubtitleDelete"
+            }
+          }
+        },
+        "x-order": 8.2
+      }
+    },
+    "/videos/{videoId}/subtitles/{subtitleId}": {
+      "delete": {
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "description": "Remove a subtitle from a video using API key authentication",
+        "tags": ["Videos"],
+        "summary": "Delete subtitle",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Video ID",
+            "name": "videoId",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Subtitle ID",
+            "name": "subtitleId",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SubtitleDelete"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          }
+        },
+        "x-order": 9
+      }
+    },
+    "/videos/{videoId}/thumbnail": {
+      "put": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "Update the thumbnail image for an existing video",
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+        "tags": ["Videos"],
+        "summary": "Update video thumbnail",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Video ID",
+            "name": "videoId",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "file",
+            "description": "Thumbnail image file (max 5MB, image/*)",
+            "name": "thumbnail",
+            "in": "formData",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Video with updated thumbnail",
+            "schema": {
+              "$ref": "#/definitions/Video"
+            }
+          },
+          "400": {
+            "description": "Invalid file or request",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Access denied",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Video not found",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Upload or update failed",
+            "schema": {
+              "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
+    "AudioTrack": {
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "example": "2025-12-21T12:00:00Z"
+        },
+        "format": {
+          "type": "string",
+          "example": "mp3"
+        },
+        "id": {
+          "type": "string",
+          "example": "3n7v9k4m2p"
+        },
+        "label": {
+          "type": "string",
+          "example": "Spanish"
+        },
+        "language_code": {
+          "type": "string",
+          "example": "es-ES"
+        },
+        "name": {
+          "type": "string",
+          "example": "spanish_audio.mp3"
+        },
+        "size": {
+          "type": "integer",
+          "example": 2048576
+        },
+        "url": {
+          "type": "string",
+          "example": "https://cdn.rixl.io/audio_tracks/project_id/video_id/es-ES-3n7v9k4m2p.mp3"
+        },
+        "video_id": {
+          "type": "string",
+          "example": "x8n2p5v9k7"
+        }
+      }
+    },
+    "AudioTrackDelete": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Audio track deleted"
+        },
+        "status": {
+          "type": "string",
+          "example": "ok"
+        }
+      }
+    },
+    "Chapter": {
+      "type": "object",
+      "properties": {
+        "duration_label": {
+          "type": "string",
+          "example": "02:25"
+        },
+        "end_time_sec": {
+          "type": "number",
+          "example": 145
+        },
+        "start_time_sec": {
+          "type": "number",
+          "example": 0
+        },
+        "title": {
+          "type": "string",
+          "example": "Introduction"
+        }
+      }
+    },
     "File": {
       "type": "object",
       "properties": {
@@ -1033,7 +1606,7 @@
         "status": {
           "allOf": [
             {
-              "$ref": "#/definitions/github_com_qeeqez_api_db_sqlc.FileStatus"
+              "$ref": "#/definitions/FileStatus"
             }
           ],
           "example": "ready"
@@ -1047,6 +1620,25 @@
           "example": "https://images.rixl.com/Bq4y3QB38S/FpvLwyDMqu"
         }
       }
+    },
+    "FileStatus": {
+      "type": "string",
+      "enum": ["uploading", "uploaded", "processing", "preparing", "ready", "error"],
+      "x-enum-comments": {
+        "FileStatusError": "error happened, file is corrupt",
+        "FileStatusProcessing": "asset is currently processing Other",
+        "FileStatusReady": "file is ready to consume",
+        "FileStatusUploaded": "upload finished",
+        "FileStatusUploading": "upload is currently happening"
+      },
+      "x-enum-varnames": [
+        "FileStatusUploading",
+        "FileStatusUploaded",
+        "FileStatusProcessing",
+        "FileStatusPreparing",
+        "FileStatusReady",
+        "FileStatusError"
+      ]
     },
     "Image": {
       "type": "object",
@@ -1102,11 +1694,19 @@
         "image": {
           "$ref": "#/definitions/Image"
         },
+        "plan_type": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/github_com_qeeqez_api_db_sqlc.PlanType"
+            }
+          ],
+          "example": "free"
+        },
         "type": {
           "enum": ["video", "image"],
           "allOf": [
             {
-              "$ref": "#/definitions/github_com_qeeqez_api_db_sqlc.PostType"
+              "$ref": "#/definitions/PostType"
             }
           ],
           "example": "video"
@@ -1120,23 +1720,84 @@
         }
       }
     },
-    "ResponseError": {
+    "PostType": {
+      "type": "string",
+      "enum": ["image", "video"],
+      "x-enum-varnames": ["PostTypeImage", "PostTypeVideo"]
+    },
+    "Subtitle": {
       "type": "object",
       "properties": {
-        "code": {
-          "description": "HTTP status code",
+        "created_at": {
+          "type": "string",
+          "example": "2025-12-21T12:00:00Z"
+        },
+        "id": {
+          "type": "string",
+          "example": "5m9k8p2v7q"
+        },
+        "label": {
+          "type": "string",
+          "example": "English"
+        },
+        "language_code": {
+          "type": "string",
+          "example": "en-US"
+        },
+        "name": {
+          "type": "string",
+          "example": "english_subs.srt"
+        },
+        "size": {
           "type": "integer",
-          "example": 400
+          "example": 1024
         },
-        "details": {
-          "description": "Optional details about the error",
+        "url": {
           "type": "string",
-          "example": "The provided ID is not valid"
+          "example": "https://cdn.rixl.io/subtitles/project_id/video_id/en-US-5m9k8p2v7q.srt"
         },
-        "error": {
-          "description": "Error message describing what went wrong",
+        "video_id": {
           "type": "string",
-          "example": "Invalid request"
+          "example": "x8n2p5v9k7"
+        }
+      }
+    },
+    "SubtitleDelete": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Subtitle deleted"
+        },
+        "status": {
+          "type": "string",
+          "example": "ok"
+        }
+      }
+    },
+    "UpdateChaptersRequest": {
+      "type": "object",
+      "properties": {
+        "chapters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/github_com_qeeqez_api_internal_videos_types.ChapterInput"
+          }
+        }
+      }
+    },
+    "UpdateChaptersResponse": {
+      "type": "object",
+      "properties": {
+        "chapters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Chapter"
+          }
+        },
+        "video_id": {
+          "type": "string",
+          "example": "x8n2p5v9k7"
         }
       }
     },
@@ -1145,6 +1806,12 @@
       "properties": {
         "bitrate": {
           "type": "integer"
+        },
+        "chapters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Chapter"
+          }
         },
         "codec": {
           "type": "string"
@@ -1167,6 +1834,14 @@
         "id": {
           "type": "string"
         },
+        "plan_type": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/github_com_qeeqez_api_db_sqlc.PlanType"
+            }
+          ],
+          "example": "free"
+        },
         "poster": {
           "$ref": "#/definitions/Image"
         },
@@ -1175,22 +1850,105 @@
         }
       }
     },
-    "github_com_qeeqez_api_db_sqlc.FileStatus": {
-      "type": "string",
-      "enum": ["uploading", "uploaded", "processing", "ready", "error"],
-      "x-enum-varnames": ["FileStatusUploading", "FileStatusUploaded", "FileStatusProcessing", "FileStatusReady", "FileStatusError"]
+    "VideoUploadInitRequest": {
+      "type": "object",
+      "required": ["file_name"],
+      "properties": {
+        "file_name": {
+          "type": "string",
+          "example": "my-video.mp4"
+        },
+        "image_format": {
+          "type": "string",
+          "example": "jpg"
+        },
+        "video_quality": {
+          "enum": ["basic", "shorts", "pro"],
+          "allOf": [
+            {
+              "$ref": "#/definitions/github_com_qeeqez_api_db_sqlc.VideoQuality"
+            }
+          ],
+          "example": "shorts"
+        }
+      }
     },
-    "github_com_qeeqez_api_db_sqlc.PostType": {
+    "github_com_qeeqez_api_db_sqlc.PlanType": {
       "type": "string",
-      "enum": ["image", "video"],
-      "x-enum-varnames": ["PostTypeImage", "PostTypeVideo"]
+      "enum": ["free", "pro", "custom", "pay_as_you_go"],
+      "x-enum-varnames": ["PlanTypeFree", "PlanTypePro", "PlanTypeCustom", "PlanTypePayAsYouGo"]
     },
     "github_com_qeeqez_api_db_sqlc.VideoQuality": {
       "type": "string",
       "enum": ["basic", "shorts", "pro"],
       "x-enum-varnames": ["VideoQualityBasic", "VideoQualityShorts", "VideoQualityPro"]
     },
-    "internal_images.UploadCompleteRequest": {
+    "github_com_qeeqez_api_internal_errors.ErrorResponse": {
+      "description": "Standard error response returned by the API",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "HTTP status code",
+          "type": "integer",
+          "example": 400
+        },
+        "details": {
+          "description": "Optional details about the error",
+          "type": "string",
+          "example": "The provided ID is not valid"
+        },
+        "error": {
+          "description": "Error message describing what went wrong",
+          "type": "string",
+          "example": "Invalid request"
+        }
+      }
+    },
+    "github_com_qeeqez_api_internal_videos_handler_upload.CompleteRequest": {
+      "type": "object",
+      "properties": {
+        "video_id": {
+          "type": "string"
+        }
+      }
+    },
+    "github_com_qeeqez_api_internal_videos_handler_upload.InitResponse": {
+      "type": "object",
+      "properties": {
+        "poster_id": {
+          "type": "string",
+          "example": "PS5IMKoFLm"
+        },
+        "poster_presigned_url": {
+          "type": "string",
+          "example": "https://images.rixl.com/Bq4y3QB38S/PS5IMKoFLm?X-Amz-Algorithm=AWS4-HMAC-SHA256\u0026X-Amz-Credential=AKIAEXAMPLE%2F20250831%2Fus-east-1%2Fs3%2Faws4_request\u0026X-Amz-Date=20250831T103000Z\u0026X-Amz-Expires=3600\u0026X-Amz-SignedHeaders=host\u0026X-Amz-Signature=b228dbec8c1008c80c162e1210e4503dceead1e4d4d55"
+        },
+        "upload_expires": {
+          "type": "integer",
+          "example": 1640995200
+        },
+        "video_id": {
+          "type": "string",
+          "example": "VI9VXQxWXQ"
+        },
+        "video_presigned_url": {
+          "type": "string",
+          "example": "https://videos.rixl.com/Bq4y3QB38S/VI9VXQxWXQ?X-Amz-Algorithm=AWS4-HMAC-SHA256\u0026X-Amz-Credential=AKIAEXAMPLE%2F20250831%2Fus-east-1%2Fs3%2Faws4_request\u0026X-Amz-Date=20250831T103000Z\u0026X-Amz-Expires=3600\u0026X-Amz-SignedHeaders=host\u0026X-Amz-Signature=b228dbec8c1008c80c162e1210e4503dceead1e4d4d55"
+        }
+      }
+    },
+    "github_com_qeeqez_api_internal_videos_types.ChapterInput": {
+      "type": "object",
+      "properties": {
+        "start_time_sec": {
+          "type": "number"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "internal_images_handler.completeRequest": {
       "type": "object",
       "properties": {
         "attached_to_video": {
@@ -1203,20 +1961,7 @@
         }
       }
     },
-    "internal_images.UploadInitRequest": {
-      "type": "object",
-      "properties": {
-        "format": {
-          "type": "string",
-          "example": "jpg"
-        },
-        "name": {
-          "type": "string",
-          "example": "my-image.jpg"
-        }
-      }
-    },
-    "internal_images.UploadInitResponse": {
+    "internal_images_handler.initResponse": {
       "type": "object",
       "properties": {
         "image_id": {
@@ -1233,137 +1978,27 @@
         }
       }
     },
-    "internal_posts.PostUploadCompleteRequest": {
+    "internal_images_handler.uploadInitRequest": {
       "type": "object",
-      "required": ["post_id"],
       "properties": {
-        "post_id": {
-          "type": "string",
-          "example": "PS5IMKoFLm"
-        }
-      }
-    },
-    "internal_posts.PostUploadInitRequest": {
-      "type": "object",
-      "required": ["content_type", "file_name", "format"],
-      "properties": {
-        "content_type": {
-          "type": "string",
-          "enum": ["image", "video"],
-          "example": "video"
-        },
-        "creator_id": {
-          "type": "string",
-          "example": "CR8y3QB38S"
-        },
-        "description": {
-          "type": "string",
-          "example": "My awesome post"
-        },
-        "file_name": {
-          "type": "string",
-          "example": "my-video.mp4"
-        },
         "format": {
           "type": "string",
-          "example": "mp4"
-        },
-        "image_format": {
-          "type": "string",
           "example": "jpg"
         },
-        "video_quality": {
-          "enum": ["basic", "shorts", "pro"],
-          "allOf": [
-            {
-              "$ref": "#/definitions/github_com_qeeqez_api_db_sqlc.VideoQuality"
-            }
-          ],
-          "example": "shorts"
+        "name": {
+          "type": "string",
+          "example": "my-image.jpg"
         }
       }
     },
-    "internal_posts.PostUploadInitResponse": {
+    "internal_videos_handler_subtitles.languageResponse": {
       "type": "object",
       "properties": {
-        "content_id": {
-          "type": "string",
-          "example": "VI9VXQxWXQ"
-        },
-        "content_presigned_url": {
-          "type": "string",
-          "example": "https://videos.rixl.com/Bq4y3QB38S/VI9VXQxWXQ?X-Amz-Algorithm=AWS4-HMAC-SHA256\u0026X-Amz-Credential=AKIAEXAMPLE%2F20250831%2Fus-east-1%2Fs3%2Faws4_request\u0026X-Amz-Date=20250831T103000Z\u0026X-Amz-Expires=3600\u0026X-Amz-SignedHeaders=host\u0026X-Amz-Signature=b228dbec8c1008c80c162e1210e4503dceead1e4d4751b4d9787314fd6da4d55"
-        },
-        "post_id": {
-          "type": "string",
-          "example": "PS5IMKoFLm"
-        },
-        "poster_id": {
-          "type": "string",
-          "example": "IM8y3QB38S"
-        },
-        "poster_presigned_url": {
-          "type": "string",
-          "example": "https://images.rixl.com/Bq4y3QB38S/IM8y3QB38S?X-Amz-Algorithm=AWS4-HMAC-SHA256\u0026X-Amz-Credential=AKIAEXAMPLE%2F20250831%2Fus-east-1%2Fs3%2Faws4_request\u0026X-Amz-Date=20250831T103000Z\u0026X-Amz-Expires=3600\u0026X-Amz-SignedHeaders=host\u0026X-Amz-Signature=b228dbec8c1008c80c162e1210e4503dceead1e4d4751b4d9787314fd6da4d55"
-        },
-        "upload_expires": {
-          "type": "integer",
-          "example": 1640995200
-        }
-      }
-    },
-    "internal_videos.UploadCompleteRequest": {
-      "type": "object",
-      "properties": {
-        "video_id": {
+        "code": {
           "type": "string"
-        }
-      }
-    },
-    "internal_videos.UploadInitRequest": {
-      "type": "object",
-      "properties": {
-        "file_name": {
-          "type": "string",
-          "example": "my-video.mp4"
         },
-        "image_format": {
-          "type": "string",
-          "example": "jpg"
-        },
-        "video_quality": {
-          "enum": ["basic", "shorts", "pro"],
-          "allOf": [
-            {
-              "$ref": "#/definitions/github_com_qeeqez_api_db_sqlc.VideoQuality"
-            }
-          ],
-          "example": "shorts"
-        }
-      }
-    },
-    "internal_videos.UploadInitResponse": {
-      "type": "object",
-      "properties": {
-        "poster_id": {
-          "type": "string",
-          "example": "PS5IMKoFLm"
-        },
-        "poster_presigned_url": {
-          "type": "string",
-          "example": "https://images.rixl.com/Bq4y3QB38S/PS5IMKoFLm?X-Amz-Algorithm=AWS4-HMAC-SHA256\u0026X-Amz-Credential=AKIAEXAMPLE%2F20250831%2Fus-east-1%2Fs3%2Faws4_request\u0026X-Amz-Date=20250831T103000Z\u0026X-Amz-Expires=3600\u0026X-Amz-SignedHeaders=host\u0026X-Amz-Signature=b228dbec8c1008c80c162e1210e4503dceead1e4d4751b4d9787314fd6da4d55"
-        },
-        "upload_expires": {
-          "type": "integer",
-          "example": 1640995200
-        },
-        "video_id": {
-          "type": "string",
-          "example": "VI9VXQxWXQ"
-        },
-        "video_presigned_url": {
-          "type": "string",
-          "example": "https://videos.rixl.com/Bq4y3QB38S/VI9VXQxWXQ?X-Amz-Algorithm=AWS4-HMAC-SHA256\u0026X-Amz-Credential=AKIAEXAMPLE%2F20250831%2Fus-east-1%2Fs3%2Faws4_request\u0026X-Amz-Date=20250831T103000Z\u0026X-Amz-Expires=3600\u0026X-Amz-SignedHeaders=host\u0026X-Amz-Signature=b228dbec8c1008c80c162e1210e4503dceead1e4d4751b4d9787314fd6da4d55"
+        "name": {
+          "type": "string"
         }
       }
     },
