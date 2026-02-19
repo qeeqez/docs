@@ -28,7 +28,6 @@ async function cleanupApiDocsOutput(outputDir: string) {
   );
 }
 
-// TODO generate automatically
 // TODO add page layout = full
 void (async () => {
   await cleanupApiDocsOutput(output);
