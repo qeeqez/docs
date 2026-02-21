@@ -13,8 +13,8 @@ const CollapsibleContent = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<t
   ({children, ...props}, ref) => {
     const mounted = useSyncExternalStore(subscribe, () => true, () => false);
     const hasRenderedRef = useRef(false);
-    if (mounted) hasRenderedRef.current = true;
     const animationsEnabled = hasRenderedRef.current;
+    if (mounted) hasRenderedRef.current = true;
 
     return (
       <Primitive.CollapsibleContent

@@ -5,7 +5,7 @@ import {Popover, PopoverContent} from "fumadocs-ui/components/ui/popover";
 import {useCopyButton} from "fumadocs-ui/utils/use-copy-button";
 import {Check, ChevronDown, Copy, ExternalLinkIcon} from "lucide-react";
 import Link from "next/link";
-import {type ReactNode, useCallback, useMemo, useState} from "react";
+import {type MouseEvent, type MouseEventHandler, type ReactNode, useCallback, useMemo, useState} from "react";
 import {cn} from "../lib/cn";
 import {PopoverTrigger} from "@/components/ui/popover";
 
@@ -95,14 +95,14 @@ interface Props {
    * Source file URL on GitHub
    */
   githubUrl: string;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick: MouseEventHandler<HTMLButtonElement>;
 }
 
 function ViewOptions({markdownUrl, githubUrl: _githubUrl, onClick}: Props) {
   const [open, setOpen] = useState(false);
 
   const handleCopyClick = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
+    (event: MouseEvent<HTMLButtonElement>) => {
       onClick?.(event);
       setOpen(false);
     },
