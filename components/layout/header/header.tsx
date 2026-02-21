@@ -41,7 +41,7 @@ export function Header({nav = EMPTY_NAV, i18n = false, links, githubUrl, searchT
           {navItems
             .filter((item) => !isSecondary(item))
             .map((item, i) => (
-              <NavbarLinkItem key={"url" in item ? item.url : `item-${i}`} item={item} />
+              <NavbarLinkItem key={"url" in item && item.url ? item.url : `item-${i}`} item={item} />
             ))}
         </div>
       </div>

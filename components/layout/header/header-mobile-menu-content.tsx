@@ -19,7 +19,7 @@ export function HeaderMobileMenuContent({i18n, menuItems}: Props) {
         {menuItems
           .filter((item) => !isSecondary(item))
           .map((item, i) => (
-            <MenuLinkItem key={"url" in item ? item.url : `item-${i}`} item={item} />
+            <MenuLinkItem key={"url" in item && item.url ? item.url : `item-${i}`} item={item} />
           ))}
       </div>
       <div className="-ms-1.5 flex flex-row items-center justify-between max-sm:mt-2">

@@ -1,13 +1,15 @@
 "use client";
 import {Collapsible as Primitive} from "radix-ui";
-import {forwardRef, useRef, useSyncExternalStore} from "react";
+import {type ComponentPropsWithoutRef, forwardRef, useRef, useSyncExternalStore} from "react";
 import {cn} from "../../lib/cn";
+
+const Collapsible = Primitive.Root;
 
 const CollapsibleTrigger = Primitive.CollapsibleTrigger;
 
 const subscribe = () => () => {};
 
-const CollapsibleContent = forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<typeof Primitive.CollapsibleContent>>(
+const CollapsibleContent = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<typeof Primitive.CollapsibleContent>>(
   ({children, ...props}, ref) => {
     const mounted = useSyncExternalStore(subscribe, () => true, () => false);
     const hasRenderedRef = useRef(false);
@@ -32,4 +34,4 @@ const CollapsibleContent = forwardRef<HTMLDivElement, React.ComponentPropsWithou
 
 CollapsibleContent.displayName = Primitive.CollapsibleContent.displayName;
 
-export {CollapsibleTrigger};
+export {Collapsible, CollapsibleTrigger, CollapsibleContent};

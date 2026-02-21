@@ -51,7 +51,7 @@ export function MenuLinkItem({item, ...props}: {item: LinkItemType; className?: 
           )}
         </p>
         {item.items.map((child, i) => (
-          <MenuLinkItem key={child.type === "custom" ? `custom-${i}` : child.url} item={child} />
+          <MenuLinkItem key={child.type === "custom" ? `custom-${i}` : (child.url ?? `item-${i}`)} item={child} />
         ))}
       </div>
     );

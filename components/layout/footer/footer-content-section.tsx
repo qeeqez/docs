@@ -12,7 +12,7 @@ export function FooterContentSection({title, links}: FooterSection) {
       <ul className="space-y-2">
         {links.map((link) => (
           <FooterContentSectionLink
-            key={link.text}
+            key={link.url}
             text={link.text}
             url={link.url}
             external={link.external}

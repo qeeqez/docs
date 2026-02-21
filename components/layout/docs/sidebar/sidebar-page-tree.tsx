@@ -28,7 +28,7 @@ function SidebarNodeList({items, level}: {items: Node[]; level: number}): ReactN
     }
 
     return (
-      <SidebarItem key={item.url} href={item.url} external={item.external} icon={item.icon}>
+      <SidebarItem key={item.$id ?? item.url} href={item.url} external={item.external} icon={item.icon}>
         {item.name}
       </SidebarItem>
     );

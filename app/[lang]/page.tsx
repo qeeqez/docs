@@ -1,11 +1,6 @@
 import {redirect} from "next/navigation";
 import {source} from "@/lib/source";
 
-export const metadata = {
-  title: "Rixl Documentation",
-  description: "Rixl documentation and developer guides.",
-};
-
 interface RedirectProps {
   params: Promise<{lang: string}>;
 }

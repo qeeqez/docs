@@ -5,7 +5,7 @@ import {Popover, PopoverContent} from "fumadocs-ui/components/ui/popover";
 import {useCopyButton} from "fumadocs-ui/utils/use-copy-button";
 import {Check, ChevronDown, Copy, ExternalLinkIcon} from "lucide-react";
 import Link from "next/link";
-import {useCallback, useMemo, useState} from "react";
+import {type ReactNode, useCallback, useMemo, useState} from "react";
 import {cn} from "../lib/cn";
 import {PopoverTrigger} from "@/components/ui/popover";
 
@@ -68,7 +68,7 @@ const optionVariants = cva(
   cn("group p-2 [&_svg]:size-4 rounded-lg inline-flex items-center gap-2 cursor-pointer", "hover:bg-fd-muted-foreground/5", "text-sm")
 );
 
-function OptionContent({title, desc, icon, href}: {title: string; desc: string; icon: React.ReactNode; href?: string}) {
+function OptionContent({title, desc, icon, href}: {title: string; desc: string; icon: ReactNode; href?: string}) {
   return (
     <>
       <span className="w-10 h-10 border text-fd-muted-foreground/75 group-hover:text-fd-accent-foreground/80 flex items-center justify-center rounded-lg">
