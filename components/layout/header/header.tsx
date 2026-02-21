@@ -9,7 +9,10 @@ import {getLinks} from "@/components/layout/shared";
 import {LargeSearchToggle} from "@/components/search-toggle";
 import {cn} from "@/lib/cn";
 
-export function Header({nav = {}, i18n = false, links, githubUrl, searchToggle = {}}: HomeLayoutProps) {
+const EMPTY_NAV: NonNullable<HomeLayoutProps["nav"]> = {};
+const EMPTY_SEARCH_TOGGLE: NonNullable<HomeLayoutProps["searchToggle"]> = {};
+
+export function Header({nav = EMPTY_NAV, i18n = false, links, githubUrl, searchToggle = EMPTY_SEARCH_TOGGLE}: HomeLayoutProps) {
   const finalLinks = useMemo(() => getLinks(links, githubUrl), [links, githubUrl]);
 
   const navItems = finalLinks.filter((item) => ["nav", "all"].includes(item.on ?? "all"));
@@ -38,7 +41,7 @@ export function Header({nav = {}, i18n = false, links, githubUrl, searchToggle =
           {navItems
             .filter((item) => !isSecondary(item))
             .map((item, i) => (
-              <NavbarLinkItem key={i} item={item} />
+              <NavbarLinkItem key={"url" in item && item.url ? item.url : `item-${i}`} item={item} />
             ))}
         </div>
       </div>

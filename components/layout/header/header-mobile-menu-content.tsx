@@ -19,13 +19,13 @@ export function HeaderMobileMenuContent({i18n, menuItems}: Props) {
         {menuItems
           .filter((item) => !isSecondary(item))
           .map((item, i) => (
-            <MenuLinkItem key={i} item={item} />
+            <MenuLinkItem key={"url" in item && item.url ? item.url : `item-${i}`} item={item} />
           ))}
       </div>
       <div className="-ms-1.5 flex flex-row items-center justify-between max-sm:mt-2">
         <div className="flex flex-row gap-1.5">
           {menuItems.filter(isSecondary).map((item, i) => (
-            <MenuLinkItem key={i} item={item} className="-me-1.5" />
+            <MenuLinkItem key={"url" in item ? item.url : `item-${i}`} item={item} className="-me-1.5" />
           ))}
         </div>
         <div>

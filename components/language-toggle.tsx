@@ -5,7 +5,7 @@ import {cn} from "../lib/cn";
 import {buttonVariants} from "./ui/button";
 import {Popover, PopoverContent, PopoverTrigger} from "./ui/popover";
 
-export type LanguageSelectProps = ButtonHTMLAttributes<HTMLButtonElement>;
+type LanguageSelectProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
 export function LanguageToggle(props: LanguageSelectProps): React.ReactElement {
   const context = useI18n();
