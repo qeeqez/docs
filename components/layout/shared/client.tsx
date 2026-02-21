@@ -4,7 +4,7 @@ import {usePathname} from "fumadocs-core/framework";
 import Link from "fumadocs-core/link";
 import type {ComponentProps} from "react";
 import {isActive} from "@/lib/is-active";
-import type {BaseLinkType} from "./index";
+import type {BaseLinkType} from "./";
 
 export function BaseLinkItem({ref, item, ...props}: Omit<ComponentProps<"a">, "href"> & {item: BaseLinkType}) {
   const pathname = usePathname();

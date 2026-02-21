@@ -98,5 +98,3 @@ export function Callout({type = "info", title, children}: CalloutProps) {
     </div>
   );
 }
-
-export default Callout;

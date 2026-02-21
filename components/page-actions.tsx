@@ -68,6 +68,23 @@ const optionVariants = cva(
   cn("group p-2 [&_svg]:size-4 rounded-lg inline-flex items-center gap-2 cursor-pointer", "hover:bg-fd-muted-foreground/5", "text-sm")
 );
 
+function OptionContent({title, desc, icon, href}: {title: string; desc: string; icon: React.ReactNode; href?: string}) {
+  return (
+    <>
+      <span className="w-10 h-10 border text-fd-muted-foreground/75 group-hover:text-fd-accent-foreground/80 flex items-center justify-center rounded-lg">
+        {icon}
+      </span>
+      <span className={cn("block")}>
+        <span className={cn("flex gap-2 items-center font-medium")}>
+          {title}
+          {href ? <ExternalLinkIcon className="text-fd-muted-foreground size-3.5" /> : null}
+        </span>
+        <span className={cn("text-xs text-fd-muted-foreground")}>{desc}</span>
+      </span>
+    </>
+  );
+}
+
 interface Props {
   /**
    * A URL to the raw Markdown/MDX content of page
@@ -81,7 +98,7 @@ interface Props {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export function ViewOptions({markdownUrl, githubUrl: _githubUrl, onClick}: Props) {
+function ViewOptions({markdownUrl, githubUrl: _githubUrl, onClick}: Props) {
   const [open, setOpen] = useState(false);
 
   const handleCopyClick = useCallback(
@@ -131,21 +148,6 @@ export function ViewOptions({markdownUrl, githubUrl: _githubUrl, onClick}: Props
     ];
   }, [handleCopyClick, markdownUrl]);
 
-  const renderOptionContent = (option: {title: string; desc: string; icon: React.ReactNode; href?: string}) => (
-    <>
-      <span className="w-10 h-10 border text-fd-muted-foreground/75 group-hover:text-fd-accent-foreground/80 flex items-center justify-center rounded-lg">
-        {option.icon}
-      </span>
-      <span className={cn("block")}>
-        <span className={cn("flex gap-2 items-center font-medium")}>
-          {option.title}
-          {option.href ? <ExternalLinkIcon className="text-fd-muted-foreground size-3.5" /> : null}
-        </span>
-        <span className={cn("text-xs text-fd-muted-foreground")}>{option.desc}</span>
-      </span>
-    </>
-  );
-
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger className="cursor-pointer text-fd-accent-foreground hover:bg-fd-muted-foreground/10 rounded-r-lg px-2 h-full">
@@ -155,11 +157,11 @@ export function ViewOptions({markdownUrl, githubUrl: _githubUrl, onClick}: Props
         {options.map((option) =>
           option.href ? (
             <Link key={option.key} href={option.href} rel="noreferrer noopener" target="_blank" className={cn(optionVariants())}>
-              {renderOptionContent(option)}
+              <OptionContent title={option.title} desc={option.desc} icon={option.icon} href={option.href} />
             </Link>
           ) : (
             <button key={option.key} type="button" className={cn(optionVariants())} onClick={option.onClick}>
-              {renderOptionContent(option)}
+              <OptionContent title={option.title} desc={option.desc} icon={option.icon} />
             </button>
           )
         )}

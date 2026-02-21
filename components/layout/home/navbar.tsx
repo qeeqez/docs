@@ -15,7 +15,7 @@ import {
   NavigationMenuViewport,
 } from "../../navigation-menu";
 import {buttonVariants} from "../../ui/button";
-import {BaseLinkItem} from "../shared/index";
+import {BaseLinkItem} from "../shared/client";
 
 const navItemVariants = cva(
   "inline-flex items-center gap-1 py-2 text-fd-muted-foreground transition-colors hover:text-fd-accent-foreground font-medium data-[active=true]:text-fd-primary [&_svg]:size-4"
