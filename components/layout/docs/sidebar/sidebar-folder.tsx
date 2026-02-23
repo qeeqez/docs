@@ -20,7 +20,7 @@ export function SidebarFolder({
 }: ComponentProps<"div"> & {
   defaultOpen?: boolean;
 }) {
-  const [open, setOpen] = useState(defaultOpen);
+  const [open, setOpen] = useState(() => defaultOpen);
 
   useOnChange(defaultOpen, (v) => {
     if (v) setOpen(v);

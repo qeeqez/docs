@@ -6,7 +6,7 @@ import {SidebarWrapper} from "@/components/layout/docs/sidebar/sidebar-wrapper";
 import {Header} from "@/components/layout/header/header";
 import {Background} from "@/components/layout/home/background";
 import {cn} from "@/lib/cn";
-import type {BaseLayoutProps, NavOptions} from "../shared/index";
+import type {BaseLayoutProps, NavOptions} from "../shared";
 
 export interface HomeLayoutProps extends BaseLayoutProps, HTMLAttributes<HTMLElement> {
   nav?: Partial<
@@ -20,7 +20,9 @@ export interface HomeLayoutProps extends BaseLayoutProps, HTMLAttributes<HTMLEle
   sidebar?: boolean;
 }
 
-export function HomeLayout({nav = {}, links, githubUrl, i18n, searchToggle, sidebar = true, ...rest}: HomeLayoutProps) {
+const EMPTY_NAV: NonNullable<HomeLayoutProps["nav"]> = {};
+
+export function HomeLayout({nav = EMPTY_NAV, links, githubUrl, i18n, searchToggle, sidebar = true, ...rest}: HomeLayoutProps) {
   return (
     <div id="nd-home-layout" {...rest} className={cn("relative z-10 flex min-h-svh flex-col", rest.className)}>
       <Background />

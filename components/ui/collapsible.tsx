@@ -1,19 +1,20 @@
 "use client";
 import {Collapsible as Primitive} from "radix-ui";
-import {forwardRef, useEffect, useState} from "react";
+import {type ComponentPropsWithoutRef, forwardRef, useRef, useSyncExternalStore} from "react";
 import {cn} from "../../lib/cn";
 
 const Collapsible = Primitive.Root;
 
 const CollapsibleTrigger = Primitive.CollapsibleTrigger;
 
-const CollapsibleContent = forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<typeof Primitive.CollapsibleContent>>(
-  ({children, ...props}, ref) => {
-    const [mounted, setMounted] = useState(false);
+const subscribe = () => () => {};
 
-    useEffect(() => {
-      setMounted(true);
-    }, []);
+const CollapsibleContent = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<typeof Primitive.CollapsibleContent>>(
+  ({children, ...props}, ref) => {
+    const mounted = useSyncExternalStore(subscribe, () => true, () => false);
+    const hasRenderedRef = useRef(false);
+    const animationsEnabled = hasRenderedRef.current;
+    if (mounted) hasRenderedRef.current = true;
 
     return (
       <Primitive.CollapsibleContent
@@ -21,7 +22,7 @@ const CollapsibleContent = forwardRef<HTMLDivElement, React.ComponentPropsWithou
         {...props}
         className={cn(
           "overflow-hidden",
-          mounted && "data-[state=closed]:animate-fd-collapsible-up data-[state=open]:animate-fd-collapsible-down",
+          animationsEnabled && "data-[state=closed]:animate-fd-collapsible-up data-[state=open]:animate-fd-collapsible-down",
           props.className
         )}
       >

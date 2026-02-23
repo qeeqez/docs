@@ -22,7 +22,7 @@ export function HeaderRight({i18n, menuItems, menuEnableHoverToOpen = false, sea
     <div className={cn("flex items-center space-x-4", className)}>
       <div className="hidden lg:flex space-x-4">
         {menuItems.filter(isSecondary).map((item, i) => (
-          <MenuLinkItem key={i} item={item} />
+          <MenuLinkItem key={"url" in item && item.url ? item.url : `item-${i}`} item={item} />
         ))}
         <ThemeToggle mode="light-dark" className="hidden lg:flex" />
         {i18n ? (

@@ -16,7 +16,7 @@ interface GenerateProps {
 const font = fs.readFile("./lib/og/Inter-Regular.ttf");
 const fontBold = fs.readFile("./lib/og/Inter-SemiBold.ttf");
 
-export async function getImageResponseOptions(): Promise<ImageResponseOptions> {
+async function getImageResponseOptions(): Promise<ImageResponseOptions> {
   return {
     width: 1200,
     height: 630,
@@ -60,7 +60,7 @@ const getTruncatedText = (maxLength: number, text?: string) => {
   return `${text.slice(0, maxLength)}...`;
 };
 
-export function generate({
+function generate({
   primaryColor = "#FFA41C",
   secondaryColor = "#D33F49",
   primaryTextColor: _primaryTextColor = "#FFFFFF",

@@ -29,7 +29,7 @@ interface FooterOptions extends FooterProps {
   lastUpdate?: Date | string | number;
 }
 
-export interface DocsPageProps {
+interface DocsPageProps {
   toc?: TOCItemType[];
   tableOfContent?: Partial<TableOfContentOptions>;
   tableOfContentPopover?: Partial<TableOfContentPopoverOptions>;
@@ -78,14 +78,20 @@ type TableOfContentOptions = Pick<AnchorProviderProps, "single"> & {
 
 type TableOfContentPopoverOptions = Omit<TableOfContentOptions, "single">;
 
+const EMPTY_BREADCRUMB: NonNullable<DocsPageProps["breadcrumb"]> = {};
+const EMPTY_FOOTER: NonNullable<DocsPageProps["footer"]> = {};
+const EMPTY_TOC_POPOVER: NonNullable<DocsPageProps["tableOfContentPopover"]> = {};
+const EMPTY_TOC: NonNullable<DocsPageProps["tableOfContent"]> = {};
+const EMPTY_TOC_ITEMS: NonNullable<DocsPageProps["toc"]> = [];
+
 export function DocsPage({
-  breadcrumb: {enabled: _breadcrumbEnabled = true, component: _breadcrumb, ..._breadcrumbProps} = {},
-  footer = {},
+  breadcrumb: {enabled: _breadcrumbEnabled = true, component: _breadcrumb, ..._breadcrumbProps} = EMPTY_BREADCRUMB,
+  footer = EMPTY_FOOTER,
   container,
   full = false,
-  tableOfContentPopover: {enabled: tocPopoverEnabled, component: _tocPopover, ...tocPopoverOptions} = {},
-  tableOfContent: {enabled: tocEnabled, component: _tocReplace, ...tocOptions} = {},
-  toc = [],
+  tableOfContentPopover: {enabled: tocPopoverEnabled, component: _tocPopover, ...tocPopoverOptions} = EMPTY_TOC_POPOVER,
+  tableOfContent: {enabled: tocEnabled, component: _tocReplace, ...tocOptions} = EMPTY_TOC,
+  toc = EMPTY_TOC_ITEMS,
   article,
   children,
 }: DocsPageProps) {
@@ -150,13 +156,3 @@ export const DocsTitle = forwardRef<HTMLHeadingElement, ComponentProps<"h1">>((p
 
 DocsTitle.displayName = "DocsTitle";
 
-/**
- * For separate MDX page
- */
-export function withArticle(props: ComponentProps<"main">): ReactNode {
-  return (
-    <main {...props} className={cn("container py-12", props.className)}>
-      <article className="prose">{props.children}</article>
-    </main>
-  );
-}

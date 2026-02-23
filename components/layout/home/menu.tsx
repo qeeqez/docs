@@ -6,7 +6,8 @@ import type {ComponentPropsWithoutRef} from "react";
 import {cn} from "../../../lib/cn";
 import {NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuTrigger} from "../../navigation-menu";
 import {buttonVariants} from "../../ui/button";
-import {BaseLinkItem, type LinkItemType} from "../shared/index";
+import {BaseLinkItem} from "../shared/client";
+import type {LinkItemType} from "../shared";
 
 const menuItemVariants = cva("", {
   variants: {
@@ -50,7 +51,7 @@ export function MenuLinkItem({item, ...props}: {item: LinkItemType; className?: 
           )}
         </p>
         {item.items.map((child, i) => (
-          <MenuLinkItem key={i} item={child} />
+          <MenuLinkItem key={child.type === "custom" ? `custom-${i}` : (child.url ?? `item-${i}`)} item={child} />
         ))}
       </div>
     );

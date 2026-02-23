@@ -10,9 +10,9 @@ export function FooterContentSection({title, links}: FooterSection) {
     <div>
       <h3 className="font-medium text-xs text-fd-muted-foreground mb-3 uppercase tracking-wide">{title}</h3>
       <ul className="space-y-2">
-        {links.map((link, index) => (
+        {links.map((link) => (
           <FooterContentSectionLink
-            key={`${index}-${link.text}`}
+            key={link.url}
             text={link.text}
             url={link.url}
             external={link.external}

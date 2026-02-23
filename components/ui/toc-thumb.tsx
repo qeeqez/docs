@@ -9,7 +9,7 @@ function useEffectEvent<F extends (...args: unknown[]) => void>(callback: F): F 
   return useCallback(((...args) => callbackRef.current(...args)) as F, []);
 }
 
-export type TOCThumb = [top: number, height: number];
+type TOCThumb = [top: number, height: number];
 
 function calc(container: HTMLElement, active: string[]): TOCThumb {
   if (active.length === 0 || container.clientHeight === 0) {

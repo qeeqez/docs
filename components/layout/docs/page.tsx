@@ -19,9 +19,6 @@ export function PageTOCItems({variant = "normal", ...props}: ComponentProps<"div
   return <TOCScrollArea {...props}>{variant === "clerk" ? <ClerkTOCItems /> : <TOCItems />}</TOCScrollArea>;
 }
 
-export function PageTOCPopoverItems({variant = "normal", ...props}: ComponentProps<"div"> & {variant?: "clerk" | "normal"}) {
-  return <TOCScrollArea {...props}>{variant === "clerk" ? <ClerkTOCItems /> : <TOCItems />}</TOCScrollArea>;
-}
 
 export function PageArticle(props: ComponentProps<"article">) {
   return (
@@ -31,7 +28,7 @@ export function PageArticle(props: ComponentProps<"article">) {
   );
 }
 
-export interface RootProps extends ComponentProps<"div"> {
+interface RootProps extends ComponentProps<"div"> {
   toc?: Omit<AnchorProviderProps, "children"> | false;
 }
 

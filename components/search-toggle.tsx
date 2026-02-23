@@ -62,7 +62,7 @@ export function LargeSearchToggle({
       {text.search}
       <div className="ms-auto inline-flex gap-0.5">
         {hotKey.map((k, i) => (
-          <kbd key={i} className="rounded-md border bg-fd-background px-1.5">
+          <kbd key={typeof k.key === "string" ? k.key : i} className="rounded-md border bg-fd-background px-1.5">
             {k.display}
           </kbd>
         ))}
