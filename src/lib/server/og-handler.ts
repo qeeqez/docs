@@ -2,7 +2,7 @@ import {generateOGImage} from "@/lib/og";
 import {source} from "@/lib/source";
 import {notFound} from "@tanstack/react-router";
 
-export const ogImageHandler = async ({params}: {params: {lang: string; _splat?: string}}) => {
+export const ogImageHandler = async ({params, request}: {params: {lang: string; _splat?: string}; request: Request}) => {
   const splat = params._splat || "";
   // The URL is like /path/to/page/image.png
 
@@ -18,5 +18,16 @@ export const ogImageHandler = async ({params}: {params: {lang: string; _splat?: 
     throw notFound();
   }
 
-  return await generateOGImage(page);
+  const image = await generateOGImage(page);
+
+  if (request.headers.get("x-og-prerender") === "base64") {
+    const base64 = Buffer.from(await image.arrayBuffer()).toString("base64");
+    return new Response(base64, {
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+      },
+    });
+  }
+
+  return image;
 };

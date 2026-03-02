@@ -12,7 +12,13 @@ import {i18n} from "./src/lib/i18n";
 
 // import { nitro } from 'nitro/vite'
 
-async function getDocsPrerenderPages() {
+interface DocsPrerenderPages {
+  docs: string[];
+  og: string[];
+  llmsFull: string[];
+}
+
+async function getDocsPrerenderPages(): Promise<DocsPrerenderPages> {
   const contentDir = path.resolve(__dirname, "content");
   const docsPages = new Set<string>();
   const langs = new Set<string>();
@@ -47,21 +53,48 @@ async function getDocsPrerenderPages() {
 
   await walk(contentDir);
 
-  const pages = new Set<string>(docsPages);
+  const og = new Set<string>();
+
   for (const pagePath of docsPages) {
     const [, lang, ...slugSegments] = pagePath.split("/");
     if (!lang || slugSegments.length === 0) continue;
-    pages.add(`/${lang}/og/${slugSegments.join("/")}/image.png`);
+    og.add(`/${lang}/og/${slugSegments.join("/")}/image.png`);
   }
 
+  const llmsFull = new Set<string>();
   for (const lang of langs) {
-    pages.add(`/${lang}/llms-full.txt`);
+    llmsFull.add(`/${lang}/llms-full.txt`);
   }
 
-  return Array.from(pages).sort((a, b) => a.localeCompare(b));
+  const sort = (value: Set<string>) => Array.from(value).sort((a, b) => a.localeCompare(b));
+
+  return {
+    docs: sort(docsPages),
+    og: sort(og),
+    llmsFull: sort(llmsFull),
+  };
 }
 
-const docsPrerenderPages = (await getDocsPrerenderPages()).map((pagePath) => ({path: pagePath}));
+const docsPrerenderPages = await getDocsPrerenderPages();
+const ogOutputDir = path.resolve(__dirname, "dist/client");
+
+const ogPrerenderPages = docsPrerenderPages.og.map((pagePath) => ({
+  path: pagePath,
+  prerender: {
+    crawlLinks: false,
+    headers: {
+      "x-og-prerender": "base64",
+    },
+    onSuccess: async ({page, html}: {page: {path: string}; html: string}) => {
+      const outputPath = path.join(ogOutputDir, page.path.replace(/^\//, ""));
+      await fs.mkdir(path.dirname(outputPath), {recursive: true});
+      await fs.writeFile(outputPath, Buffer.from(html.trim(), "base64"));
+    },
+  },
+}));
+
+const staticDocsPages = docsPrerenderPages.docs.map((pagePath) => ({path: pagePath}));
+const staticLLMSPages = docsPrerenderPages.llmsFull.map((pagePath) => ({path: pagePath}));
 
 export default defineConfig({
   plugins: [
@@ -100,7 +133,9 @@ export default defineConfig({
         {
           path: "/sitemap.xml",
         },
-        ...docsPrerenderPages,
+        ...staticDocsPages,
+        ...ogPrerenderPages,
+        ...staticLLMSPages,
       ],
     }),
     react(),
