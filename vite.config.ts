@@ -29,8 +29,6 @@ async function getDocsPrerenderPages() {
 
       if (!entry.isFile()) continue;
       if (!entry.name.endsWith(".mdx") && !entry.name.endsWith(".md")) continue;
-      if (fullPath.includes(`${path.sep}includes${path.sep}`)) continue;
-
       const relativePath = path.relative(contentDir, fullPath).replaceAll(path.sep, "/");
       const noExt = relativePath.replace(/\.(mdx|md)$/, "");
       const [lang, ...segments] = noExt.split("/");
@@ -49,8 +47,6 @@ async function getDocsPrerenderPages() {
 
   const pages = new Set<string>(docsPages);
   for (const pagePath of docsPages) {
-    pages.add(`${pagePath}.md`);
-
     const [, lang, ...slugSegments] = pagePath.split("/");
     if (!lang || slugSegments.length === 0) continue;
     pages.add(`/${lang}/og/${slugSegments.join("/")}/image.png`);

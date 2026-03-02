@@ -5,14 +5,15 @@
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "build": "bun lint && vite build && bun run build:og",
+    "build": "bun lint && vite build && bun run build:md && bun run build:og",
+    "build:md": "bun ./scripts/generate-md.ts",
     "build:og": "bun ./scripts/generate-og.ts",
     "dev": "vite dev",
     "start": "vite preview",
     "serve": "bunx serve@latest dist/client -l 4173",
     "serve:spa": "bunx serve@latest -s dist/client -l 4173",
     "lint": "oxlint --max-warnings=0 && fumadocs-mdx",
-    "lint:links": "bun ./scripts/lint.ts || true",
+    "lint:links": "bun ./scripts/lint.ts",
     "lint:fix": "oxlint --fix",
     "format": "oxfmt",
     "postinstall": "fumadocs-mdx"

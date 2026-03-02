@@ -1,9 +1,9 @@
 import {createFileRoute, redirect} from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
-  loader: () => {
+  beforeLoad: () => {
     throw redirect({
-      to: "/en/home/getting-started/overview", // TODO lang dependent url
+      to: "/en/home/getting-started/overview",
     });
   },
 });

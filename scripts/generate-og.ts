@@ -60,8 +60,6 @@ async function collectPages(contentDir: string): Promise<PageEntry[]> {
 
       if (!entry.isFile()) continue;
       if (!entry.name.endsWith(".mdx") && !entry.name.endsWith(".md")) continue;
-      if (fullPath.includes(`${path.sep}includes${path.sep}`)) continue;
-
       const relative = path.relative(contentDir, fullPath).replaceAll(path.sep, "/");
       const noExt = relative.replace(/\.(mdx|md)$/u, "");
       const [lang, ...segments] = noExt.split("/");
