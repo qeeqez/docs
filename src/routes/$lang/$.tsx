@@ -1,4 +1,5 @@
 import {createFileRoute} from "@tanstack/react-router";
+import {getPageImage} from "@/lib/images";
 import {DocsBody, DocsDescription, DocsPage, DocsTitle} from "@/components/layout/page";
 import browserCollections from "fumadocs-mdx:collections/browser";
 import SharedLayout from "@/components/layout/shared/shared-layout";
@@ -6,6 +7,7 @@ import {TOCProvider} from "@/components/ui/toc";
 import {PageBreadcrumb} from "@/components/layout/docs/page/page-breadcrumb";
 import {getMDXComponents} from "@/components/mdx-components";
 import {Footer} from "@/components/layout/footer/footer";
+import {LLMCopyButton} from "@/components/page-actions/llm-copy-button";
 import {loader} from "@/lib/server/docs-loader";
 
 export const Route = createFileRoute("/$lang/$")({
@@ -21,6 +23,7 @@ export const Route = createFileRoute("/$lang/$")({
     if (!_loaderData) return {};
     const {page} = _loaderData;
     const appName = "Rixl";
+    const imageUrl = getPageImage(page.slugs, page.locale).url;
 
     return {
       meta: [
@@ -29,10 +32,12 @@ export const Route = createFileRoute("/$lang/$")({
         {name: "application-name", content: appName},
         {property: "og:title", content: page.data.title},
         {property: "og:description", content: page.data.description},
+        {property: "og:image", content: imageUrl},
         {property: "og:site_name", content: appName},
         {name: "twitter:card", content: "summary_large_image"},
         {name: "twitter:title", content: page.data.title},
         {name: "twitter:description", content: page.data.description},
+        {name: "twitter:image", content: imageUrl},
       ],
     };
   },
@@ -67,6 +72,10 @@ const clientLoader = browserCollections.docs.createClientLoader({
 
                 <div className="flex items-center justify-between gap-2">
                   <DocsTitle>{frontmatter.title}</DocsTitle>
+                  <LLMCopyButton
+                    markdownUrl={`/${lang}/${_splat}.md`}
+                    githubUrl={`https://github.com/qeeqez/docs/tree/main/content/${lang}/${_splat}`}
+                  />
                 </div>
               </div>
               <DocsDescription>{frontmatter.description}</DocsDescription>
