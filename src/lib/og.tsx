@@ -20,7 +20,11 @@ const boldPath = path.join(process.cwd(), "src/lib/og/Inter-SemiBold.ttf");
 const font = await fs.readFile(regularPath);
 const fontBold = await fs.readFile(boldPath);
 
-export async function generateOGImage(page: InferPageType<any>): Promise<Response> {
+interface OGImageOptions {
+  icon?: ReactNode;
+}
+
+export async function generateOGImage(page: InferPageType<any>, options?: OGImageOptions): Promise<Response> {
   const title = page.data.title;
   const description = page.data.description;
 
@@ -46,6 +50,7 @@ export async function generateOGImage(page: InferPageType<any>): Promise<Respons
     generate({
       title,
       description,
+      icon: options?.icon,
     }),
     imageOptions
   );
