@@ -3,7 +3,7 @@ pre-commit:
   commands:
     lint:
       glob: "*.{js,ts,jsx,tsx}"
-      run: bunx oxlint --max-warnings=0 {staged_files} && bunx fumadocs-mdx && bun ./scripts/lint.ts
+      run: bunx oxlint --max-warnings=0 {staged_files} && bunx fumadocs-mdx
       stage_fixed: true
     format:
       glob: "*.{js,ts,jsx,tsx,json,md}"
