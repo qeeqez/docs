@@ -2,7 +2,7 @@ import {createFileRoute} from "@tanstack/react-router";
 import {source} from "@/lib/source.ts";
 import {getBaseUrl} from "@/lib/base-url";
 
-export const Route = createFileRoute("/sitemap/xml")({
+export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {

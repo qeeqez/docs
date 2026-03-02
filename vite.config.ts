@@ -30,6 +30,12 @@ export default defineConfig({
         {
           path: "/api/search",
         },
+        {
+          path: "/robots.txt",
+        },
+        {
+          path: "/sitemap.xml",
+        },
       ],
     }),
     react(),
