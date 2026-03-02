@@ -1,7 +1,7 @@
 import {generateOGImage} from "@/lib/og";
 import {source} from "@/lib/source";
 import {notFound} from "@tanstack/react-router";
-import LogoWide from "@/assets/logo_wide.svg?react";
+import LogoWideWhite from "@/assets/logo_wide_white.svg?react";
 import {createElement} from "react";
 
 export const ogImageHandler = async ({params, request}: {params: {lang: string; _splat?: string}; request: Request}) => {
@@ -21,8 +21,8 @@ export const ogImageHandler = async ({params, request}: {params: {lang: string; 
   }
 
   const image = await generateOGImage(page, {
-    icon: createElement(LogoWide, {
-      style: {height: 60, width: 360, fill: "#000000", filter: "invert(100%)"},
+    icon: createElement(LogoWideWhite, {
+      style: {height: 60, width: 360},
     }),
   });
 
