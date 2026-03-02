@@ -1,138 +1,70 @@
-import {readdir, rm, writeFile} from "node:fs/promises";
-import {join} from "node:path";
+import {mkdir, rm} from "node:fs/promises";
 import {generateFiles} from "fumadocs-openapi";
 import {openapi} from "../src/lib/openapi";
 
 const output = "./content/en/api";
-const filesToKeep = new Set(["meta.json"]);
-const methodOrder = new Map([
-  ["get", 0],
-  ["post", 1],
-  ["put", 2],
-  ["delete", 3],
-]);
+const apiDescription = "Generated API reference from OpenAPI schema";
 
-function toFlatFileName(value: string) {
-  const flattened = value
-    .replace(/^\//, "")
-    .replace(/[{}]/g, "")
-    .replace(/\//g, "-")
-    .replace(/[^a-zA-Z0-9-_]/g, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "")
-    .toLowerCase();
-
-  return flattened.length > 0 ? flattened : "root";
+function stripMdxExtension(filePath: string) {
+  return filePath.endsWith(".mdx") ? filePath.slice(0, -4) : filePath;
 }
 
-async function cleanupApiDocsOutput(outputDir: string) {
-  let entries;
-
-  try {
-    entries = await readdir(outputDir, {withFileTypes: true});
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") return;
-    throw error;
-  }
-
-  await Promise.all(
-    entries
-      .filter((entry) => !filesToKeep.has(entry.name))
-      .map((entry) =>
-        rm(join(outputDir, entry.name), {
-          force: true,
-          recursive: entry.isDirectory(),
-        })
-      )
-  );
-}
-
-function compareByMethod(left: string, right: string) {
-  const leftMethod = left.split("-")[0];
-  const rightMethod = right.split("-")[0];
-  const leftPriority = methodOrder.get(leftMethod) ?? Number.MAX_SAFE_INTEGER;
-  const rightPriority = methodOrder.get(rightMethod) ?? Number.MAX_SAFE_INTEGER;
-
-  if (leftPriority !== rightPriority) return leftPriority - rightPriority;
-  return left.localeCompare(right);
-}
-
-async function writeTagMetaFiles(outputDir: string) {
-  const entries = await readdir(outputDir, {withFileTypes: true});
-  const tagDirectories = entries.filter((entry) => entry.isDirectory());
-
-  await Promise.all(
-    tagDirectories.map(async (entry) => {
-      const dirPath = join(outputDir, entry.name);
-      const files = await readdir(dirPath, {withFileTypes: true});
-      const pages = files
-        .filter((file) => file.isFile() && file.name.endsWith(".mdx"))
-        .map((file) => file.name.slice(0, -4))
-        .sort(compareByMethod);
-
-      await writeFile(join(dirPath, "meta.json"), `${JSON.stringify({pages}, null, 2)}\n`);
-    })
-  );
-}
-
-async function writeRootMetaFile(outputDir: string) {
-  const entries = await readdir(outputDir, {withFileTypes: true});
-  const tags = entries
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name)
-    .sort((left, right) => left.localeCompare(right));
-
-  const pages = ["index", ...tags.map((tag) => `...${tag}`)];
-
-  await writeFile(
-    join(outputDir, "meta.json"),
-    `${JSON.stringify(
-      {
-        title: "API Reference",
-        description: "Generated API reference from OpenAPI schema",
-        pages,
-      },
-      null,
-      2
-    )}\n`
-  );
-}
-
-async function writeRootIndex(outputDir: string) {
-  await writeFile(
-    join(outputDir, "index.mdx"),
-    [
-      "---",
-      "title: API Reference",
-      "description: Generated API reference from OpenAPI schema",
-      "---",
-      "",
-      "This section is generated from `api.json`.",
-      "",
-      "Use the sidebar to browse endpoints by tag.",
-      "",
-    ].join("\n")
-  );
+function toApiUrl(filePath: string) {
+  const pagePath = stripMdxExtension(filePath)
+    .replaceAll("\\", "/")
+    .replace(/^\.?\//, "");
+  return pagePath === "index" ? "/en/api" : `/en/api/${pagePath}`;
 }
 
 void (async () => {
-  await cleanupApiDocsOutput(output);
+  // Keep the API section fully generated from OpenAPI.
+  await rm(output, {recursive: true, force: true});
+  await mkdir(output, {recursive: true});
 
   await generateFiles({
     input: openapi,
     output,
-    per: "operation",
-    groupBy: "tag",
-    name(entry) {
-      const method = entry.item.method.toLowerCase();
-      const target = entry.type === "operation" ? entry.item.path : entry.item.name;
-
-      return `${method}-${toFlatFileName(target)}`;
+    per: "tag",
+    index: {
+      items: [
+        {
+          path: "index",
+          title: "API Reference",
+          description: apiDescription,
+        },
+      ],
+      url: toApiUrl,
     },
     includeDescription: true,
-  });
+    beforeWrite(files) {
+      for (const file of files) {
+        if (!file.path.endsWith(".mdx")) continue;
+        file.content = file.content.replaceAll("<br>", "<br />");
+      }
 
-  await writeTagMetaFiles(output);
-  await writeRootMetaFile(output);
-  await writeRootIndex(output);
+      const pages = [];
+
+      for (const file of files) {
+        if (!file.path.endsWith(".mdx")) continue;
+        const pagePath = stripMdxExtension(file.path);
+        if (pagePath === "index") continue;
+        pages.push(pagePath);
+      }
+
+      pages.sort((left, right) => left.localeCompare(right));
+
+      files.push({
+        path: "meta.json",
+        content: `${JSON.stringify(
+          {
+            title: "API Reference",
+            description: apiDescription,
+            pages: ["index", ...pages],
+          },
+          null,
+          2
+        )}\n`,
+      });
+    },
+  });
 })();
