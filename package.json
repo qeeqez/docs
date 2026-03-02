@@ -34,7 +34,6 @@
     "fumadocs-ui": "16.6.8",
     "lucide-react": "^0.576.0",
     "lucide-static": "^0.576.0",
-    "nitro": "^3.0.1-alpha.2",
     "radix-ui": "^1.4.3",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",

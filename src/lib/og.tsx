@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import type {ReactElement, ReactNode} from "react";
 import type {InferPageType} from "fumadocs-core/source";
 import ImageResponse from "@takumi-rs/image-response";
+import path from "node:path";
 
 interface GenerateProps {
   title: string;
@@ -13,8 +14,11 @@ interface GenerateProps {
   site?: ReactNode;
 }
 
-const font = fs.readFile("./src/lib/og/Inter-Regular.ttf");
-const fontBold = fs.readFile("./src/lib/og/Inter-SemiBold.ttf");
+const regularPath = path.join(process.cwd(), "src/lib/og/Inter-Regular.ttf");
+const boldPath = path.join(process.cwd(), "src/lib/og/Inter-SemiBold.ttf");
+
+const font = await fs.readFile(regularPath);
+const fontBold = await fs.readFile(boldPath);
 
 export async function generateOGImage(page: InferPageType<any>): Promise<Response> {
   const title = page.data.title;
@@ -27,12 +31,12 @@ export async function generateOGImage(page: InferPageType<any>): Promise<Respons
     fonts: [
       {
         name: "Inter",
-        data: await font,
+        data: font,
         weight: 400 as const,
       },
       {
         name: "Inter",
-        data: await fontBold,
+        data: fontBold,
         weight: 600 as const,
       },
     ],
@@ -71,8 +75,7 @@ function generate({
         height: "100%",
         color: "white",
         padding: "4rem",
-        // backgroundImage: `linear-gradient(to top left, ${primaryColor}, ${secondaryColor})`,
-        backgroundImage: `radial-gradient(at top right, ${primaryColor}, ${secondaryColor});`,
+        backgroundImage: `radial-gradient(at top right, ${primaryColor}, ${secondaryColor})`,
       }}
     >
       <div style={{display: "flex"}}>{props.icon}</div>
