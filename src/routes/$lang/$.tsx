@@ -48,6 +48,7 @@ const clientLoader = browserCollections.docs.createClientLoader({
           <DocsPage
             container={{className: "pt-[calc(var(--padding-sidebar)*2)]"}}
             full={false}
+            toc={toc}
             footer={{
               enabled: true,
               github: {

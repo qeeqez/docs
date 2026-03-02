@@ -5,12 +5,13 @@ export const Route = createFileRoute("/robots.txt")({
   server: {
     handlers: {
       GET: async () => {
-        const baseUrl = getBaseUrl().toString();
+        const baseUrl = getBaseUrl();
+        const sitemapUrl = new URL("/sitemap.xml", baseUrl).toString();
 
         const robots = `User-agent: *
 Allow: /
 
-Sitemap: ${baseUrl}/sitemap.xml`;
+Sitemap: ${sitemapUrl}`;
 
         return new Response(robots, {
           headers: {

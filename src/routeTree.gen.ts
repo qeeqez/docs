@@ -8,213 +8,132 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as SitemapXmlRouteImport } from './routes/sitemap.xml'
-import { Route as RobotsTxtRouteImport } from './routes/robots.txt'
-import { Route as ApiSearchRouteImport } from './routes/api/search'
-import { Route as LangLlmsFullDottxtRouteImport } from './routes/$lang/llms-full[.]txt'
-import { Route as LangSplatRouteImport } from './routes/$lang/$'
-import { Route as LangOgSplatRouteImport } from './routes/$lang/og/$'
-import { Route as LangLlmsSplatRouteImport } from './routes/$lang/llms.$'
+import {Route as rootRouteImport} from "./routes/__root";
+import {Route as SitemapDotxmlRouteImport} from "./routes/sitemap[.]xml";
+import {Route as RobotsDottxtRouteImport} from "./routes/robots[.]txt";
+import {Route as IndexRouteImport} from "./routes/index";
+import {Route as ApiSearchRouteImport} from "./routes/api/search";
+import {Route as LangSplatRouteImport} from "./routes/$lang/$";
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: "/sitemap.xml",
+  path: "/sitemap.xml",
+  getParentRoute: () => rootRouteImport,
+} as any);
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: "/robots.txt",
+  path: "/robots.txt",
+  getParentRoute: () => rootRouteImport,
+} as any);
 const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+  id: "/",
+  path: "/",
   getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapXmlRoute = SitemapXmlRouteImport.update({
-  id: '/sitemap/xml',
-  path: '/sitemap/xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RobotsTxtRoute = RobotsTxtRouteImport.update({
-  id: '/robots/txt',
-  path: '/robots/txt',
-  getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 const ApiSearchRoute = ApiSearchRouteImport.update({
-  id: '/api/search',
-  path: '/api/search',
+  id: "/api/search",
+  path: "/api/search",
   getParentRoute: () => rootRouteImport,
-} as any)
-const LangLlmsFullDottxtRoute = LangLlmsFullDottxtRouteImport.update({
-  id: '/$lang/llms-full.txt',
-  path: '/$lang/llms-full.txt',
-  getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 const LangSplatRoute = LangSplatRouteImport.update({
-  id: '/$lang/$',
-  path: '/$lang/$',
+  id: "/$lang/$",
+  path: "/$lang/$",
   getParentRoute: () => rootRouteImport,
-} as any)
-const LangOgSplatRoute = LangOgSplatRouteImport.update({
-  id: '/$lang/og/$',
-  path: '/$lang/og/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LangLlmsSplatRoute = LangLlmsSplatRouteImport.update({
-  id: '/$lang/llms/$',
-  path: '/$lang/llms/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/$lang/$': typeof LangSplatRoute
-  '/$lang/llms-full.txt': typeof LangLlmsFullDottxtRoute
-  '/api/search': typeof ApiSearchRoute
-  '/robots/txt': typeof RobotsTxtRoute
-  '/sitemap/xml': typeof SitemapXmlRoute
-  '/$lang/llms/$': typeof LangLlmsSplatRoute
-  '/$lang/og/$': typeof LangOgSplatRoute
+  "/": typeof IndexRoute;
+  "/robots.txt": typeof RobotsDottxtRoute;
+  "/sitemap.xml": typeof SitemapDotxmlRoute;
+  "/$lang/$": typeof LangSplatRoute;
+  "/api/search": typeof ApiSearchRoute;
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/$lang/$': typeof LangSplatRoute
-  '/$lang/llms-full.txt': typeof LangLlmsFullDottxtRoute
-  '/api/search': typeof ApiSearchRoute
-  '/robots/txt': typeof RobotsTxtRoute
-  '/sitemap/xml': typeof SitemapXmlRoute
-  '/$lang/llms/$': typeof LangLlmsSplatRoute
-  '/$lang/og/$': typeof LangOgSplatRoute
+  "/": typeof IndexRoute;
+  "/robots.txt": typeof RobotsDottxtRoute;
+  "/sitemap.xml": typeof SitemapDotxmlRoute;
+  "/$lang/$": typeof LangSplatRoute;
+  "/api/search": typeof ApiSearchRoute;
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/$lang/$': typeof LangSplatRoute
-  '/$lang/llms-full.txt': typeof LangLlmsFullDottxtRoute
-  '/api/search': typeof ApiSearchRoute
-  '/robots/txt': typeof RobotsTxtRoute
-  '/sitemap/xml': typeof SitemapXmlRoute
-  '/$lang/llms/$': typeof LangLlmsSplatRoute
-  '/$lang/og/$': typeof LangOgSplatRoute
+  __root__: typeof rootRouteImport;
+  "/": typeof IndexRoute;
+  "/robots.txt": typeof RobotsDottxtRoute;
+  "/sitemap.xml": typeof SitemapDotxmlRoute;
+  "/$lang/$": typeof LangSplatRoute;
+  "/api/search": typeof ApiSearchRoute;
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/$lang/$'
-    | '/$lang/llms-full.txt'
-    | '/api/search'
-    | '/robots/txt'
-    | '/sitemap/xml'
-    | '/$lang/llms/$'
-    | '/$lang/og/$'
-  fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/$lang/$'
-    | '/$lang/llms-full.txt'
-    | '/api/search'
-    | '/robots/txt'
-    | '/sitemap/xml'
-    | '/$lang/llms/$'
-    | '/$lang/og/$'
-  id:
-    | '__root__'
-    | '/'
-    | '/$lang/$'
-    | '/$lang/llms-full.txt'
-    | '/api/search'
-    | '/robots/txt'
-    | '/sitemap/xml'
-    | '/$lang/llms/$'
-    | '/$lang/og/$'
-  fileRoutesById: FileRoutesById
+  fileRoutesByFullPath: FileRoutesByFullPath;
+  fullPaths: "/" | "/robots.txt" | "/sitemap.xml" | "/$lang/$" | "/api/search";
+  fileRoutesByTo: FileRoutesByTo;
+  to: "/" | "/robots.txt" | "/sitemap.xml" | "/$lang/$" | "/api/search";
+  id: "__root__" | "/" | "/robots.txt" | "/sitemap.xml" | "/$lang/$" | "/api/search";
+  fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  LangSplatRoute: typeof LangSplatRoute
-  LangLlmsFullDottxtRoute: typeof LangLlmsFullDottxtRoute
-  ApiSearchRoute: typeof ApiSearchRoute
-  RobotsTxtRoute: typeof RobotsTxtRoute
-  SitemapXmlRoute: typeof SitemapXmlRoute
-  LangLlmsSplatRoute: typeof LangLlmsSplatRoute
-  LangOgSplatRoute: typeof LangOgSplatRoute
+  IndexRoute: typeof IndexRoute;
+  RobotsDottxtRoute: typeof RobotsDottxtRoute;
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute;
+  LangSplatRoute: typeof LangSplatRoute;
+  ApiSearchRoute: typeof ApiSearchRoute;
 }
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap/xml': {
-      id: '/sitemap/xml'
-      path: '/sitemap/xml'
-      fullPath: '/sitemap/xml'
-      preLoaderRoute: typeof SitemapXmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/robots/txt': {
-      id: '/robots/txt'
-      path: '/robots/txt'
-      fullPath: '/robots/txt'
-      preLoaderRoute: typeof RobotsTxtRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/search': {
-      id: '/api/search'
-      path: '/api/search'
-      fullPath: '/api/search'
-      preLoaderRoute: typeof ApiSearchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/$lang/llms-full.txt': {
-      id: '/$lang/llms-full.txt'
-      path: '/$lang/llms-full.txt'
-      fullPath: '/$lang/llms-full.txt'
-      preLoaderRoute: typeof LangLlmsFullDottxtRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/$lang/$': {
-      id: '/$lang/$'
-      path: '/$lang/$'
-      fullPath: '/$lang/$'
-      preLoaderRoute: typeof LangSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/$lang/og/$': {
-      id: '/$lang/og/$'
-      path: '/$lang/og/$'
-      fullPath: '/$lang/og/$'
-      preLoaderRoute: typeof LangOgSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/$lang/llms/$': {
-      id: '/$lang/llms/$'
-      path: '/$lang/llms/$'
-      fullPath: '/$lang/llms/$'
-      preLoaderRoute: typeof LangLlmsSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+    "/sitemap.xml": {
+      id: "/sitemap.xml";
+      path: "/sitemap.xml";
+      fullPath: "/sitemap.xml";
+      preLoaderRoute: typeof SitemapDotxmlRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/robots.txt": {
+      id: "/robots.txt";
+      path: "/robots.txt";
+      fullPath: "/robots.txt";
+      preLoaderRoute: typeof RobotsDottxtRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/": {
+      id: "/";
+      path: "/";
+      fullPath: "/";
+      preLoaderRoute: typeof IndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/api/search": {
+      id: "/api/search";
+      path: "/api/search";
+      fullPath: "/api/search";
+      preLoaderRoute: typeof ApiSearchRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/$lang/$": {
+      id: "/$lang/$";
+      path: "/$lang/$";
+      fullPath: "/$lang/$";
+      preLoaderRoute: typeof LangSplatRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   LangSplatRoute: LangSplatRoute,
-  LangLlmsFullDottxtRoute: LangLlmsFullDottxtRoute,
   ApiSearchRoute: ApiSearchRoute,
-  RobotsTxtRoute: RobotsTxtRoute,
-  SitemapXmlRoute: SitemapXmlRoute,
-  LangLlmsSplatRoute: LangLlmsSplatRoute,
-  LangOgSplatRoute: LangOgSplatRoute,
-}
-export const routeTree = rootRouteImport
-  ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+};
+export const routeTree = rootRouteImport._addFileChildren(rootRouteChildren)._addFileTypes<FileRouteTypes>();
 
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
+import type {getRouter} from "./router.tsx";
+import type {startInstance} from "./start.ts";
+declare module "@tanstack/react-start" {
   interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+    ssr: true;
+    router: Awaited<ReturnType<typeof getRouter>>;
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>;
   }
 }

@@ -1,6 +1,7 @@
 import type {AnchorProviderProps, TOCItemType} from "fumadocs-core/toc";
 import {type ComponentProps, forwardRef, type ReactNode} from "react";
-import {PageArticle, PageRoot} from "@/components/layout/docs/page";
+import {PageArticle, PageRoot, PageTOCItems, PageTOCTitle} from "@/components/layout/docs/page";
+import {PageTOC} from "@/components/layout/docs/page/page-toc";
 import type {BreadcrumbProps} from "@/components/layout/docs/page/page-breadcrumb";
 import {type FooterProps, PageFooter} from "@/components/layout/docs/page/page-footer";
 import type {GithubBlockProps} from "@/components/layout/docs/page/page-github-block";
@@ -116,6 +117,15 @@ export function DocsPage({
         {footer.enabled !== false &&
           (footer.component ?? <PageFooter items={footer.items} github={footer.github} lastUpdate={footer.lastUpdate} className="py-8" />)}
       </PageArticle>
+      {tocEnabled &&
+        (_tocReplace ?? (
+          <PageTOC className="sticky top-(--fd-docs-row-1) h-[calc(var(--fd-docs-height)-var(--fd-docs-row-1))] flex flex-col w-(--fd-toc-width) pt-12 pe-4 pb-2 max-xl:hidden">
+            {tocOptions.header}
+            <PageTOCTitle id="toc-title" />
+            <PageTOCItems variant={tocOptions.style === "clerk" ? "clerk" : "normal"} />
+            {tocOptions.footer}
+          </PageTOC>
+        ))}
     </PageRoot>
   );
 }
@@ -153,4 +163,3 @@ export const DocsTitle = forwardRef<HTMLHeadingElement, ComponentProps<"h1">>((p
 });
 
 DocsTitle.displayName = "DocsTitle";
-

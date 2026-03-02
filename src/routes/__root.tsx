@@ -35,7 +35,12 @@ function RootDocument({children}: {children: React.ReactNode}) {
   const {lang} = useParams({strict: false});
 
   return (
-    <html suppressHydrationWarning className="scroll-smooth overscroll-y-none" style={{fontFamily: "Inter, system-ui, sans-serif"}}>
+    <html
+      lang={lang ?? "en"}
+      suppressHydrationWarning
+      className="scroll-smooth overscroll-y-none"
+      style={{fontFamily: "Inter, system-ui, sans-serif"}}
+    >
       <head>
         <HeadContent />
       </head>
