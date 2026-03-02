@@ -8,10 +8,13 @@ import svgr from "vite-plugin-svgr";
 import tsConfigPaths from "vite-tsconfig-paths";
 import mdx from "fumadocs-mdx/vite";
 import {extractIconsPlugin} from "./plugins/vite-plugin-extract-icons";
+import {i18n} from "./src/lib/i18n";
 
 async function getDocsPrerenderPages() {
   const contentDir = path.resolve(__dirname, "content");
-  const pages = new Set<string>();
+  const docsPages = new Set<string>();
+  const langs = new Set<string>();
+  const supportedLanguages = new Set(i18n.languages);
 
   async function walk(dir: string) {
     const entries = await fs.readdir(dir, {withFileTypes: true});
@@ -31,25 +34,36 @@ async function getDocsPrerenderPages() {
       const relativePath = path.relative(contentDir, fullPath).replaceAll(path.sep, "/");
       const noExt = relativePath.replace(/\.(mdx|md)$/, "");
       const [lang, ...segments] = noExt.split("/");
-      if (!lang || segments.length === 0) continue;
-      if (lang !== "en") continue;
+      if (!lang || !supportedLanguages.has(lang) || segments.length === 0) continue;
 
       const leaf = segments.at(-1);
       const routeSegments = leaf === "index" ? segments.slice(0, -1) : segments;
       if (routeSegments.length === 0) continue;
 
-      pages.add(`/${lang}/${routeSegments.join("/")}`);
+      langs.add(lang);
+      docsPages.add(`/${lang}/${routeSegments.join("/")}`);
     }
   }
 
   await walk(contentDir);
 
-  return Array.from(pages)
-    .sort((a, b) => a.localeCompare(b))
-    .map((pagePath) => ({path: pagePath}));
+  const pages = new Set<string>(docsPages);
+  for (const pagePath of docsPages) {
+    pages.add(`${pagePath}.md`);
+
+    const [, lang, ...slugSegments] = pagePath.split("/");
+    if (!lang || slugSegments.length === 0) continue;
+    pages.add(`/${lang}/og/${slugSegments.join("/")}/image.png`);
+  }
+
+  for (const lang of langs) {
+    pages.add(`/${lang}/llms-full.txt`);
+  }
+
+  return Array.from(pages).sort((a, b) => a.localeCompare(b));
 }
 
-const docsPrerenderPages = await getDocsPrerenderPages();
+const docsPrerenderPages = (await getDocsPrerenderPages()).map((pagePath) => ({path: pagePath}));
 
 export default defineConfig({
   plugins: [

@@ -5,7 +5,8 @@
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "build": "bun lint && vite build",
+    "build": "bun lint && vite build && bun run build:og",
+    "build:og": "bun ./scripts/generate-og.ts",
     "dev": "vite dev",
     "start": "vite preview",
     "serve": "bunx serve@latest dist/client -l 4173",
