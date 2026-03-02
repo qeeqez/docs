@@ -54,9 +54,9 @@ export function baseOptions(lang: string): BaseLayoutProps {
       },
       {
         text: "API",
-        url: `/${lang}/home/platform/api-documentation/reference`,
+        url: `/${lang}/api`,
         active: "nested-url",
-        activeSubfolders: [`/${lang}/home/platform/api-documentation`],
+        activeSubfolders: [`/${lang}/api`],
       },
       {
         type: "button",
@@ -78,7 +78,7 @@ export function FooterSections(lang: string): FooterSection[] {
     {
       title: "Resources",
       links: [
-        {text: "API", url: `/${lang}/home/platform/api-documentation/reference`},
+        {text: "API", url: `/${lang}/api`},
         {text: "Documentation", url: `/${lang}/home/getting-started/overview`},
         {text: "Guides", url: `/${lang}/home/guides`},
         {text: "Examples", url: `/${lang}/sdk/examples`},
