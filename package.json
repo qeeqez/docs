@@ -5,9 +5,8 @@
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "build": "bun run build:api && bun lint && vite build && bun run build:md && bun run build:og",
+    "build": "bun run build:api && bun lint && vite build && bun run build:md",
     "build:md": "bun ./scripts/generate-md.ts",
-    "build:og": "bun ./scripts/generate-og.ts",
     "build:api": "bun ./scripts/generate-api.ts",
     "dev": "vite dev",
     "start": "vite preview",

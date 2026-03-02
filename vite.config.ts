@@ -59,9 +59,26 @@ async function getDocsPrerenderPages() {
   return Array.from(pages).sort((a, b) => a.localeCompare(b));
 }
 
+async function getTakumiTraceInclude() {
+  try {
+    const raw = await fs.readFile(path.resolve(__dirname, "node_modules/@takumi-rs/core/package.json"), "utf8");
+    const pkg = JSON.parse(raw) as {optionalDependencies?: Record<string, string>};
+    return Object.keys(pkg.optionalDependencies ?? {});
+  } catch {
+    return [];
+  }
+}
+
 const docsPrerenderPages = (await getDocsPrerenderPages()).map((pagePath) => ({path: pagePath}));
+const takumiTraceInclude = await getTakumiTraceInclude();
 
 export default defineConfig({
+  nitro: {
+    externals: {
+      external: ["@takumi-rs/core"],
+      traceInclude: takumiTraceInclude,
+    },
+  },
   plugins: [
     extractIconsPlugin(),
     mdx(await import("./source.config")),
