@@ -30,19 +30,33 @@ export function baseOptions(lang: string): BaseLayoutProps {
         text: "Home", // TODO kek `${t("home")}`,
         url: `/${lang}/home/getting-started/overview`,
         active: "nested-url",
-        activeSubfolders: ["/getting-started", "/platform", "/legal", "/guides", "/reference", "/images", "/video", "/sdk"],
+        activeSubfolders: [
+          `/${lang}/home/getting-started`,
+          `/${lang}/home/platform`,
+          `/${lang}/home/legal`,
+          `/${lang}/home/guides`,
+          `/${lang}/home/reference`,
+          `/${lang}/home/images`,
+          `/${lang}/home/video`,
+        ],
       },
       {
         text: "SDK",
         url: `/${lang}/sdk/getting-started`,
         active: "nested-url",
-        activeSubfolders: [`/getting-started`, `/video-component`, `/image-component`, `/examples`],
+        activeSubfolders: [
+          `/${lang}/sdk/getting-started`,
+          `/${lang}/sdk/video-component`,
+          `/${lang}/sdk/image-component`,
+          `/${lang}/sdk/examples`,
+          `/${lang}/sdk/feed-component`,
+        ],
       },
       {
         text: "API",
-        url: `/${lang}/api/images/images/get`,
+        url: `/${lang}/home/platform/api-documentation/reference`,
         active: "nested-url",
-        activeSubfolders: ["/images", "/videos", "/feeds"],
+        activeSubfolders: [`/${lang}/home/platform/api-documentation`],
       },
       {
         type: "button",
@@ -64,10 +78,10 @@ export function FooterSections(lang: string): FooterSection[] {
     {
       title: "Resources",
       links: [
-        {text: "API", url: `/${lang}/api`},
-        {text: "Documentation", url: `/${lang}/docs`},
-        {text: "Guides", url: `/${lang}/guides`},
-        {text: "Examples", url: `/${lang}/examples`},
+        {text: "API", url: `/${lang}/home/platform/api-documentation/reference`},
+        {text: "Documentation", url: `/${lang}/home/getting-started/overview`},
+        {text: "Guides", url: `/${lang}/home/guides`},
+        {text: "Examples", url: `/${lang}/sdk/examples`},
       ],
     },
     {
@@ -83,19 +97,19 @@ export function FooterSections(lang: string): FooterSection[] {
       title: "Company",
       links: [
         {text: "rixl.com", url: "https://www.rixl.com"},
-        {text: "About", url: `/${lang}/about`},
-        {text: "Blog", url: `/${lang}/blog`},
-        {text: "Careers", url: `/${lang}/careers`},
-        {text: "Privacy", url: `/${lang}/legal/privacy-policy`},
+        {text: "About", url: `/${lang}/home/getting-started/overview`},
+        {text: "Blog", url: "https://www.rixl.com/blog"},
+        {text: "Careers", url: "https://www.rixl.com/careers"},
+        {text: "Privacy", url: `/${lang}/home/legal/privacy-policy`},
       ],
     },
     {
       title: "Tools",
       links: [
-        {text: "CLI", url: `/${lang}/cli`},
+        {text: "CLI", url: `/${lang}/home/platform/api-documentation/overview`},
         {text: "SDK", url: `/${lang}/sdk`},
-        {text: "Integrations", url: `/${lang}/integrations`},
-        {text: "Extensions", url: `/${lang}/extensions`},
+        {text: "Integrations", url: `/${lang}/home/guides`},
+        {text: "Extensions", url: `/${lang}/sdk/examples`},
       ],
     },
     {
@@ -113,8 +127,8 @@ export function FooterSections(lang: string): FooterSection[] {
 export function FooterBottomLinks(lang: string): {text: string; url: string}[] {
   // TODO translations
   return [
-    {text: "Privacy Policy", url: `/${lang}/legal/privacy-policy`},
-    {text: "Terms of Service", url: `/${lang}/legal/terms-of-service`},
-    {text: "Cookie Policy", url: `/${lang}/legal/cookie-policy`},
+    {text: "Privacy Policy", url: `/${lang}/home/legal/privacy-policy`},
+    {text: "Terms of Service", url: `/${lang}/home/legal/terms-of-service`},
+    {text: "Cookie Policy", url: `/${lang}/home/legal/cookie-policy`},
   ];
 }

@@ -119,7 +119,7 @@ export function DocsPage({
       </PageArticle>
       {tocEnabled &&
         (_tocReplace ?? (
-          <PageTOC className="sticky top-(--fd-docs-row-1) h-[calc(var(--fd-docs-height)-var(--fd-docs-row-1))] flex flex-col w-(--fd-toc-width) pt-12 pe-4 pb-2 max-xl:hidden">
+          <PageTOC className="sticky top-(--fd-docs-row-1) h-[calc(var(--fd-docs-height)-var(--fd-docs-row-1))] flex flex-col w-(--fd-toc-width) pt-12 pe-4 pb-2 max-lg:hidden">
             {tocOptions.header}
             <PageTOCTitle id="toc-title" />
             <PageTOCItems variant={tocOptions.style === "clerk" ? "clerk" : "normal"} />
