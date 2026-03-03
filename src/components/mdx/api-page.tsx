@@ -9,11 +9,26 @@ interface StaticOpenApiSchema {
   dereferenced: unknown;
 }
 
-function withRawRef(schema: StaticOpenApiSchema) {
+interface CachedSchema extends StaticOpenApiSchema {
+  getRawRef: () => undefined;
+}
+
+const schemaPromiseCache = new Map<string, Promise<CachedSchema>>();
+
+function withRawRef(schema: StaticOpenApiSchema): CachedSchema {
   return {
     ...schema,
     getRawRef: () => undefined,
   };
+}
+
+function getCachedSchemaPromise(schema: StaticOpenApiSchema): Promise<CachedSchema> {
+  const cached = schemaPromiseCache.get(schema.id);
+  if (cached) return cached;
+
+  const next = Promise.resolve(withRawRef(schema));
+  schemaPromiseCache.set(schema.id, next);
+  return next;
 }
 
 export function APIPage({
@@ -22,7 +37,7 @@ export function APIPage({
 }: Omit<Parameters<typeof APIPageImpl>[0], "document"> & {
   document: StaticOpenApiSchema | Promise<StaticOpenApiSchema>;
 }) {
-  const resolved = Promise.resolve(document).then(withRawRef);
+  const resolved = typeof document === "object" && document !== null && "id" in document ? getCachedSchemaPromise(document) : document;
 
   return <APIPageImpl {...props} document={resolved} />;
 }
