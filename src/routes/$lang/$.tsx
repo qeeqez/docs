@@ -6,11 +6,9 @@ import SharedLayout from "@/components/layout/shared/shared-layout";
 import {getMDXComponents} from "@/components/mdx-components";
 import {Footer} from "@/components/layout/footer/footer";
 import {LLMCopyButton} from "@/components/page-actions/llm-copy-button";
-import {APIPage} from "@/components/mdx/api-page";
 import {loader} from "@/lib/server/docs-loader";
 import {Suspense} from "react";
 import {useFumadocsLoader} from "fumadocs-core/source/client";
-import type {ApiPageProps} from "fumadocs-openapi/ui";
 
 export const Route = createFileRoute("/$lang/$")({
   component: Page,
@@ -59,13 +57,8 @@ interface LoadedDoc {
 }
 
 interface StaticOpenApiPage {
-  props: ApiPageProps;
-  schema: {
-    id: string;
-    bundled: unknown;
-    dereferenced: unknown;
-  };
   toc: unknown;
+  html: string;
 }
 
 const clientLoader = browserCollections.docs.createClientLoader({
@@ -82,6 +75,14 @@ function Page() {
       api: string;
     };
     path: string;
+    page: {
+      slugs: string[];
+      locale: string;
+      data: {
+        title: string;
+        description: string;
+      };
+    };
     apiPage?: StaticOpenApiPage;
   };
   const data = useFumadocsLoader(loaderData);
@@ -91,26 +92,51 @@ function Page() {
 
   return (
     <SharedLayout lang={lang} dataTree={data.tree} sectionLinks={loaderData.sectionLinks} treeKey={`${lang}:${section}`}>
-      {isApiPage ? <ApiContent apiPage={loaderData.apiPage} /> : Content ? <Content /> : null}
+      {isApiPage ? <ApiContent apiPage={loaderData.apiPage} page={loaderData.page} /> : Content ? <Content /> : null}
     </SharedLayout>
   );
 }
 
-function ApiContent({apiPage}: {apiPage?: StaticOpenApiPage}) {
-  const {lang} = Route.useParams();
+function ApiContent({
+  apiPage,
+  page,
+}: {
+  apiPage?: StaticOpenApiPage;
+  page: {
+    slugs: string[];
+    locale: string;
+    data: {
+      title: string;
+      description: string;
+    };
+  };
+}) {
+  const {lang, _splat} = Route.useParams();
   if (!apiPage) return null;
+  const pageSlug = _splat ?? "";
+  const markdownPath = pageSlug ? `/${lang}/${pageSlug}.md` : `/${lang}.md`;
+  const githubPath = pageSlug ? `content/${lang}/${pageSlug}` : `content/${lang}`;
 
   return (
     <DocsPage
       className="pt-4 md:pt-4 xl:pt-4"
-      full={false}
+      full
       toc={apiPage.toc}
       footer={{
         children: <Footer lang={lang} />,
       }}
     >
+      <header className="relative space-y-2">
+        <div className="space-y-2.5">
+          <div className="flex items-center justify-between gap-2">
+            <DocsTitle>{page.data.title}</DocsTitle>
+            <LLMCopyButton markdownUrl={markdownPath} githubUrl={`https://github.com/qeeqez/docs/tree/main/${githubPath}`} />
+          </div>
+        </div>
+        <DocsDescription>{page.data.description}</DocsDescription>
+      </header>
       <DocsBody>
-        <APIPage {...apiPage.props} document={apiPage.schema} />
+        <div suppressHydrationWarning dangerouslySetInnerHTML={{__html: apiPage.html}} />
       </DocsBody>
     </DocsPage>
   );

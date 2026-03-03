@@ -2,8 +2,11 @@ import {notFound} from "@tanstack/react-router";
 import {createServerFn} from "@tanstack/react-start";
 import {staticFunctionMiddleware} from "@tanstack/start-static-server-functions";
 import type {Folder, Node, Root} from "fumadocs-core/page-tree";
+import {renderToReadableStream} from "react-dom/server";
+import {createElement} from "react";
 import type {ApiPageProps} from "fumadocs-openapi/ui";
 import {source} from "@/lib/source";
+import {APIPage} from "@/components/mdx/api-page";
 
 export const loader = createServerFn({
   method: "GET",
@@ -18,6 +21,7 @@ export const loader = createServerFn({
     const sectionLinks = getSectionLinks(tree, page.locale);
     const normalizedTree = slugs[0] === "api" && lang ? extractApiTree(tree, lang) : tree;
     const apiPage = getApiPage(page.data);
+    const apiPageHtml = apiPage ? await renderApiPageHtml(apiPage) : undefined;
 
     return {
       tree: await source.serializePageTree(normalizedTree),
@@ -31,7 +35,12 @@ export const loader = createServerFn({
           description: page.data.description,
         },
       },
-      apiPage,
+      apiPage: apiPage
+        ? {
+            toc: apiPage.toc,
+            html: apiPageHtml ?? "",
+          }
+        : undefined,
     };
   });
 
@@ -45,6 +54,12 @@ interface StaticOpenApiPage {
   props: ApiPageProps;
   schema: StaticOpenApiSchema;
   toc: unknown;
+}
+
+async function renderApiPageHtml(apiPage: StaticOpenApiPage): Promise<string> {
+  const stream = await renderToReadableStream(createElement(APIPage, {...apiPage.props, document: apiPage.schema}));
+  await stream.allReady;
+  return await new Response(stream).text();
 }
 
 function getApiPage(data: unknown): StaticOpenApiPage | undefined {
