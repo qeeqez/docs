@@ -8,6 +8,7 @@ import {PageBreadcrumb} from "@/components/layout/docs/page/page-breadcrumb";
 import {getMDXComponents} from "@/components/mdx-components";
 import {Footer} from "@/components/layout/footer/footer";
 import {LLMCopyButton} from "@/components/page-actions/llm-copy-button";
+import {preloadAPIPageRuntime} from "@/components/mdx/api-page";
 import {loader} from "@/lib/server/docs-loader";
 import {Suspense} from "react";
 
@@ -16,6 +17,9 @@ export const Route = createFileRoute("/$lang/$")({
   loader: async ({params}) => {
     const splat = params._splat ?? "";
     const slugs = splat ? splat.split("/") : [];
+    if (slugs[0] === "api") {
+      await preloadAPIPageRuntime();
+    }
     const data = await loader({data: {slugs, lang: params.lang}});
     await clientLoader.preload(data.path);
     return data;
