@@ -1,3 +1,4 @@
+import {useRouter} from "@tanstack/react-router";
 import {usePathname} from "fumadocs-core/framework";
 import Link, {type LinkProps} from "fumadocs-core/link";
 import {isActive} from "@/lib/is-active";
@@ -9,11 +10,13 @@ import {cn} from "@/lib/cn";
 import {useInternalContext} from "./sidebar-provider";
 
 export function SidebarFolderLink(props: LinkProps) {
+  const router = useRouter();
   const {open, setOpen} = useFolderContext();
   const {prefetch} = useInternalContext();
 
   const pathname = usePathname();
   const active = props.href !== undefined && isActive(props.href, pathname, false);
+  const href = typeof props.href === "string" ? props.href : undefined;
 
   const handleClick = (e: MouseEvent<HTMLElement>) => {
     if (e.target instanceof Element && e.target.matches("[data-icon], [data-icon] *")) {
@@ -24,6 +27,12 @@ export function SidebarFolderLink(props: LinkProps) {
     }
   };
 
+  const handleMouseEnter = (event: MouseEvent<HTMLAnchorElement>) => {
+    props.onMouseEnter?.(event);
+    if (!href || props.external || !href.startsWith("/")) return;
+    void router.preloadRoute({to: href});
+  };
+
   return (
     <Link
       {...props}
@@ -31,6 +40,8 @@ export function SidebarFolderLink(props: LinkProps) {
       className={cn(sidebarItemVariants({active}), "w-full", props.className)}
       onClick={handleClick}
       prefetch={prefetch}
+      preloadDelay={0}
+      onMouseEnter={handleMouseEnter}
     >
       {props.children}
       <ChevronDown data-icon className={cn("ms-auto transition-transform", !open && "-rotate-90")} />

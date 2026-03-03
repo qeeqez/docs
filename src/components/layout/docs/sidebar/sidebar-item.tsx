@@ -1,9 +1,10 @@
 import {cva} from "class-variance-authority";
+import {useRouter} from "@tanstack/react-router";
 import {usePathname} from "fumadocs-core/framework";
 import Link, {type LinkProps} from "fumadocs-core/link";
 import {ExternalLink} from "lucide-react";
 import {isActive} from "@/lib/is-active";
-import type {ReactNode} from "react";
+import type {MouseEvent, ReactNode} from "react";
 import {useInternalContext} from "@/components/layout/docs/sidebar/sidebar-provider";
 import {cn} from "@/lib/cn";
 
@@ -35,12 +36,27 @@ export function SidebarItem({
 }: LinkProps & {
   icon?: ReactNode;
 }) {
+  const router = useRouter();
   const pathname = usePathname();
   const active = props.href !== undefined && isActive(props.href, pathname, false);
   const {prefetch} = useInternalContext();
+  const href = typeof props.href === "string" ? props.href : undefined;
+
+  const handleMouseEnter = (event: MouseEvent<HTMLAnchorElement>) => {
+    props.onMouseEnter?.(event);
+    if (!href || props.external || !href.startsWith("/")) return;
+    void router.preloadRoute({to: href});
+  };
 
   return (
-    <Link {...props} data-active={active} className={cn(sidebarItemVariants({active}), props.className)} prefetch={prefetch}>
+    <Link
+      {...props}
+      data-active={active}
+      className={cn(sidebarItemVariants({active}), props.className)}
+      prefetch={prefetch}
+      preloadDelay={0}
+      onMouseEnter={handleMouseEnter}
+    >
       {icon ?? (props.external ? <ExternalLink /> : null)}
       {props.children}
     </Link>
