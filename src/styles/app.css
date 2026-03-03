@@ -85,6 +85,11 @@
     display: none;
   }
 
+  #nd-sidebar {
+    background-color: transparent !important;
+    border-inline-end: 0 !important;
+  }
+
   #nd-docs-layout [data-sidebar-panel] {
     display: none !important;
   }
