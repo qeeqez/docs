@@ -119,8 +119,8 @@ function ApiContent({
 
   return (
     <DocsPage
-      className="pt-4 md:pt-4 xl:pt-4"
-      full
+      className="api-docs-page pt-4 md:pt-4 xl:pt-4"
+      full={false}
       toc={apiPage.toc}
       footer={{
         children: <Footer lang={lang} />,
