@@ -66,6 +66,11 @@
 }
 
 @layer utilities {
+  #nd-docs-layout [data-sidebar-placeholder] {
+    top: calc(var(--spacing) * 14);
+    height: calc(100dvh - calc(var(--spacing) * 14));
+  }
+
   #nd-sidebar > :first-child {
     display: none;
   }
