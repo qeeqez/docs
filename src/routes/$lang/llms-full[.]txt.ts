@@ -8,8 +8,8 @@ export const Route = createFileRoute("/$lang/llms-full.txt")({
       GET: async ({params}) => {
         const scan = source
           .getPages()
-          .filter((page) => page.locale === params.lang)
-          .map(getLLMText);
+          .filter((page) => page.locale === params.lang && typeof page.data.getText === "function")
+          .map((page) => getLLMText(page as Parameters<typeof getLLMText>[0]));
         const scanned = await Promise.all(scan);
         return new Response(scanned.join("\n\n"), {
           headers: {

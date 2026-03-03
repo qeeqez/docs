@@ -6,19 +6,17 @@ import SharedLayout from "@/components/layout/shared/shared-layout";
 import {getMDXComponents} from "@/components/mdx-components";
 import {Footer} from "@/components/layout/footer/footer";
 import {LLMCopyButton} from "@/components/page-actions/llm-copy-button";
-import {preloadAPIRuntime} from "@/lib/api-preload";
-import {getEagerApiDoc} from "@/lib/api-docs-eager";
+import {APIPage} from "@/components/mdx/api-page";
 import {loader} from "@/lib/server/docs-loader";
 import {Suspense} from "react";
+import {useFumadocsLoader} from "fumadocs-core/source/client";
+import type {ApiPageProps} from "fumadocs-openapi/ui";
 
 export const Route = createFileRoute("/$lang/$")({
   component: Page,
   loader: async ({params}) => {
     const splat = params._splat ?? "";
     const slugs = splat ? splat.split("/") : [];
-    if (slugs[0] === "api") {
-      await preloadAPIRuntime();
-    }
     const data = await loader({data: {slugs, lang: params.lang}});
     if (slugs[0] !== "api") {
       void clientLoader.preload(data.path);
@@ -60,29 +58,67 @@ interface LoadedDoc {
   }>;
 }
 
+interface StaticOpenApiPage {
+  props: ApiPageProps;
+  schema: {
+    id: string;
+    bundled: unknown;
+    dereferenced: unknown;
+  };
+  toc: unknown;
+}
+
 const clientLoader = browserCollections.docs.createClientLoader({
   component: DocsContent,
 });
 
 function Page() {
   const {lang, _splat} = Route.useParams();
-  const data = Route.useLoaderData();
-  const isApiPage = (_splat ?? "").startsWith("api");
-  const eagerApiDoc = isApiPage ? (getEagerApiDoc(data.path) as LoadedDoc | undefined) : undefined;
-  const Content = eagerApiDoc ? undefined : clientLoader.getComponent(data.path);
+  const loaderData = Route.useLoaderData() as {
+    tree: unknown;
+    sectionLinks: {
+      home: string;
+      sdk: string;
+      api: string;
+    };
+    path: string;
+    apiPage?: StaticOpenApiPage;
+  };
+  const data = useFumadocsLoader(loaderData);
+  const isApiPage = !!loaderData.apiPage;
+  const Content = isApiPage ? undefined : clientLoader.getComponent(loaderData.path);
   const section = _splat?.split("/")[0] ?? "root";
 
   return (
-    <SharedLayout lang={lang} dataTree={data.tree} sectionLinks={data.sectionLinks} treeKey={`${lang}:${section}`}>
-      {eagerApiDoc ? <DocsContent {...eagerApiDoc} /> : Content ? <Content /> : null}
+    <SharedLayout lang={lang} dataTree={data.tree} sectionLinks={loaderData.sectionLinks} treeKey={`${lang}:${section}`}>
+      {isApiPage ? <ApiContent apiPage={loaderData.apiPage} /> : Content ? <Content /> : null}
     </SharedLayout>
+  );
+}
+
+function ApiContent({apiPage}: {apiPage?: StaticOpenApiPage}) {
+  const {lang} = Route.useParams();
+  if (!apiPage) return null;
+
+  return (
+    <DocsPage
+      className="pt-4 md:pt-4 xl:pt-4"
+      full={false}
+      toc={apiPage.toc}
+      footer={{
+        children: <Footer lang={lang} />,
+      }}
+    >
+      <DocsBody>
+        <APIPage {...apiPage.props} document={apiPage.schema} />
+      </DocsBody>
+    </DocsPage>
   );
 }
 
 function DocsContent({toc, frontmatter, default: MDX}: LoadedDoc) {
   const {lang, _splat} = Route.useParams();
   const pageSlug = _splat ?? "";
-  const isApiPage = pageSlug === "api" || pageSlug.startsWith("api/");
   const category = getCategoryFromSlug(pageSlug);
   const markdownPath = pageSlug ? `/${lang}/${pageSlug}.md` : `/${lang}.md`;
   const githubPath = pageSlug ? `content/${lang}/${pageSlug}` : `content/${lang}`;
@@ -99,7 +135,7 @@ function DocsContent({toc, frontmatter, default: MDX}: LoadedDoc) {
       >
         <header className="relative space-y-2">
           <div className="space-y-2.5">
-            {!isApiPage ? <p className="text-sm font-medium text-fd-primary">{category}</p> : null}
+            <p className="text-sm font-medium text-fd-primary">{category}</p>
 
             <div className="flex items-center justify-between gap-2">
               <DocsTitle>{frontmatter.title}</DocsTitle>

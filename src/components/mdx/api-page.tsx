@@ -2,23 +2,27 @@ import {createAPIPage} from "fumadocs-openapi/ui";
 import {openapi} from "@/lib/openapi";
 
 const APIPageImpl = createAPIPage(openapi);
-let apiSchemaPromise:
-  | Promise<{
-      bundled: unknown;
-      dereferenced: unknown;
-      getRawRef: () => undefined;
-    }>
-  | undefined;
 
-export function preloadApiSchema() {
-  apiSchemaPromise ??= import("@/lib/generated/openapi-schema.json").then(({default: schema}) => ({
-    ...schema,
-    getRawRef: () => undefined,
-  }));
-
-  return apiSchemaPromise;
+interface StaticOpenApiSchema {
+  id: string;
+  bundled: unknown;
+  dereferenced: unknown;
 }
 
-export function APIPage({document: _document, ...props}: Parameters<typeof APIPageImpl>[0]) {
-  return <APIPageImpl {...props} document={preloadApiSchema()} />;
+function withRawRef(schema: StaticOpenApiSchema) {
+  return {
+    ...schema,
+    getRawRef: () => undefined,
+  };
+}
+
+export function APIPage({
+  document,
+  ...props
+}: Omit<Parameters<typeof APIPageImpl>[0], "document"> & {
+  document: StaticOpenApiSchema | Promise<StaticOpenApiSchema>;
+}) {
+  const resolved = Promise.resolve(document).then(withRawRef);
+
+  return <APIPageImpl {...props} document={resolved} />;
 }

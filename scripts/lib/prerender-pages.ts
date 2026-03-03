@@ -1,5 +1,8 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import {openapiSource} from "fumadocs-openapi/server";
+import {openapi} from "../../src/lib/openapi";
+import {openApiPagesOptions} from "../../src/lib/openapi-pages";
 
 export interface DocsPrerenderPages {
   docs: string[];
@@ -49,6 +52,7 @@ export async function collectDocsPrerenderPages({
   }
 
   await walk(contentDir);
+  await collectOpenApiPages(docsPages, langs, supportedLanguageSet);
 
   const ogPages = new Set<string>();
   for (const pagePath of docsPages) {
@@ -68,6 +72,25 @@ export async function collectDocsPrerenderPages({
     og: sort(ogPages),
     llmsFull: sort(llmsFullPages),
   };
+}
+
+async function collectOpenApiPages(docsPages: Set<string>, langs: Set<string>, supportedLanguageSet: Set<string>) {
+  // Build once, then localize to every supported language path.
+  const openApiPages = await openapiSource(openapi, {
+    ...openApiPagesOptions,
+    baseDir: "__lang__/api",
+  });
+
+  for (const file of openApiPages.files) {
+    if (file.type !== "page") continue;
+    const noExt = file.path.replace(/\.(mdx|md)$/u, "");
+
+    for (const language of supportedLanguageSet) {
+      const localized = noExt.replace(/^__lang__/u, language);
+      langs.add(language);
+      docsPages.add(`/${localized}`);
+    }
+  }
 }
 
 export function toStaticPages(paths: string[]) {

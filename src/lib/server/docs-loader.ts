@@ -2,6 +2,7 @@ import {notFound} from "@tanstack/react-router";
 import {createServerFn} from "@tanstack/react-start";
 import {staticFunctionMiddleware} from "@tanstack/start-static-server-functions";
 import type {Folder, Node, Root} from "fumadocs-core/page-tree";
+import type {ApiPageProps} from "fumadocs-openapi/ui";
 import {source} from "@/lib/source";
 
 export const loader = createServerFn({
@@ -16,9 +17,10 @@ export const loader = createServerFn({
     const tree = source.getPageTree(lang) as Root;
     const sectionLinks = getSectionLinks(tree, page.locale);
     const normalizedTree = slugs[0] === "api" && lang ? extractApiTree(tree, lang) : tree;
+    const apiPage = getApiPage(page.data);
 
     return {
-      tree: normalizedTree as object,
+      tree: await source.serializePageTree(normalizedTree),
       sectionLinks,
       path: page.path,
       page: {
@@ -29,8 +31,55 @@ export const loader = createServerFn({
           description: page.data.description,
         },
       },
+      apiPage,
     };
   });
+
+interface StaticOpenApiSchema {
+  id: string;
+  bundled: unknown;
+  dereferenced: unknown;
+}
+
+interface StaticOpenApiPage {
+  props: ApiPageProps;
+  schema: StaticOpenApiSchema;
+  toc: unknown;
+}
+
+function getApiPage(data: unknown): StaticOpenApiPage | undefined {
+  if (!isOpenApiData(data)) return;
+
+  const schema = data.getSchema();
+  return {
+    props: data.getAPIPageProps(),
+    schema: {
+      id: schema.id,
+      bundled: schema.bundled,
+      dereferenced: schema.dereferenced,
+    },
+    toc: data.toc,
+  };
+}
+
+function isOpenApiData(data: unknown): data is {
+  getAPIPageProps: () => ApiPageProps;
+  getSchema: () => {
+    id: string;
+    bundled: unknown;
+    dereferenced: unknown;
+  };
+  toc: unknown;
+} {
+  return (
+    typeof data === "object" &&
+    data !== null &&
+    "getAPIPageProps" in data &&
+    typeof data.getAPIPageProps === "function" &&
+    "getSchema" in data &&
+    typeof data.getSchema === "function"
+  );
+}
 
 function getSectionLinks(tree: Root, lang: string) {
   const fallback = {

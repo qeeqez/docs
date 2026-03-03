@@ -1,7 +1,12 @@
-import {source} from "@/lib/source.ts";
-import type {InferPageType} from "fumadocs-core/source";
+interface LLMPage {
+  url: string;
+  data: {
+    title: string;
+    getText: (format: "processed") => Promise<string>;
+  };
+}
 
-export async function getLLMText(page: InferPageType<typeof source>) {
+export async function getLLMText(page: LLMPage) {
   const processed = await page.data.getText("processed");
 
   return `# ${page.data.title} (${page.url})
