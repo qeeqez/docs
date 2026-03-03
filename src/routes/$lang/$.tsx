@@ -55,7 +55,14 @@ const clientLoader = browserCollections.docs.createClientLoader({
 
     return (
       <>
-        <DocsPage className="pt-[calc(var(--padding-sidebar)*2)]" full={false} toc={toc}>
+        <DocsPage
+          className="pt-[calc(var(--padding-sidebar)*2)]"
+          full={false}
+          toc={toc}
+          footer={{
+            children: <Footer lang={lang} />,
+          }}
+        >
           <header className="relative space-y-2">
             <div className="space-y-2.5">
               <PageBreadcrumb />
@@ -77,7 +84,6 @@ const clientLoader = browserCollections.docs.createClientLoader({
             </Suspense>
           </DocsBody>
         </DocsPage>
-        <Footer lang={lang} />
       </>
     );
   },
