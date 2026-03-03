@@ -8,7 +8,7 @@ import {useEffect, useMemo} from "react";
 import {SidebarItem} from "@/components/layout/docs/sidebar/sidebar-item";
 import {PageTreeFolder} from "@/components/layout/docs/sidebar/sidebar-page-tree-folder";
 import {SidebarSeparator} from "@/components/layout/docs/sidebar/sidebar-separator";
-import {preloadAPIPageRuntime} from "@/components/mdx/api-page";
+import {preloadAPIRuntime} from "@/lib/api-preload";
 import {cn} from "@/lib/cn";
 
 function SidebarNodeList({items, level}: {items: Node[]; level: number}): ReactNode {
@@ -49,7 +49,7 @@ export function SidebarPageTree() {
 
     let cancelled = false;
     const warm = async () => {
-      await preloadAPIPageRuntime();
+      await preloadAPIRuntime();
       if (cancelled) return;
       await Promise.allSettled(pageUrls.map((to) => router.preloadRoute({to})));
     };
