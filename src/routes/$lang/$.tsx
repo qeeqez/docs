@@ -1,6 +1,6 @@
 import {createFileRoute} from "@tanstack/react-router";
 import {getPageImage} from "@/lib/images";
-import {DocsBody, DocsDescription, DocsPage, DocsTitle, PageBreadcrumb} from "fumadocs-ui/page";
+import {DocsBody, DocsDescription, DocsPage, DocsTitle} from "fumadocs-ui/page";
 import browserCollections from "fumadocs-mdx:collections/browser";
 import SharedLayout from "@/components/layout/shared/shared-layout";
 import {getMDXComponents} from "@/components/mdx-components";
@@ -50,13 +50,14 @@ const clientLoader = browserCollections.docs.createClientLoader({
   component: function DocsContent({toc, frontmatter, default: MDX}) {
     const {lang, _splat} = Route.useParams();
     const pageSlug = _splat ?? "";
+    const category = getCategoryFromSlug(pageSlug);
     const markdownPath = pageSlug ? `/${lang}/${pageSlug}.md` : `/${lang}.md`;
     const githubPath = pageSlug ? `content/${lang}/${pageSlug}` : `content/${lang}`;
 
     return (
       <>
         <DocsPage
-          className="pt-[calc(var(--padding-sidebar)*2)]"
+          className="pt-0 md:pt-0 xl:pt-0"
           full={false}
           toc={toc}
           footer={{
@@ -65,7 +66,7 @@ const clientLoader = browserCollections.docs.createClientLoader({
         >
           <header className="relative space-y-2">
             <div className="space-y-2.5">
-              <PageBreadcrumb />
+              <p className="text-sm font-medium text-fd-primary">{category}</p>
 
               <div className="flex items-center justify-between gap-2">
                 <DocsTitle>{frontmatter.title}</DocsTitle>
@@ -100,4 +101,15 @@ function Page() {
       <Content />
     </SharedLayout>
   );
+}
+
+function getCategoryFromSlug(pageSlug: string): string {
+  const segments = pageSlug.split("/").filter(Boolean);
+  const category = segments[1] ?? segments[0] ?? "Documentation";
+
+  return category
+    .split("-")
+    .filter(Boolean)
+    .map((segment) => segment[0]?.toUpperCase() + segment.slice(1))
+    .join(" ");
 }
