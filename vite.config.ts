@@ -23,7 +23,11 @@ const ogPrerenderPages = createOgPrerenderPages({
 });
 const staticDocsPages = toStaticPages(docsPrerenderPages.docs);
 const staticLLMSPages = toStaticPages(docsPrerenderPages.llmsFull);
-const apiRootRedirectPages = i18n.languages.map((lang) => ({path: `/${lang}/api`}));
+const sectionRootRedirectPages = i18n.languages.flatMap((lang) => [
+  {path: `/${lang}/home`},
+  {path: `/${lang}/sdk`},
+  {path: `/${lang}/api`},
+]);
 
 export default defineConfig({
   plugins: [
@@ -62,7 +66,7 @@ export default defineConfig({
         {
           path: "/sitemap.xml",
         },
-        ...apiRootRedirectPages,
+        ...sectionRootRedirectPages,
         ...staticDocsPages,
         ...ogPrerenderPages,
         ...staticLLMSPages,

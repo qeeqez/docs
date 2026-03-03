@@ -27,7 +27,7 @@ export function baseOptions(
 
 export function baseOptionsWithSectionLinks(
   lang: string,
-  sectionLinks?: {
+  _sectionLinks?: {
     home: string;
     sdk: string;
     api: string;
@@ -35,9 +35,9 @@ export function baseOptionsWithSectionLinks(
 ): BaseLayoutProps {
   // TODO tanstack translations
   // const {t} = getServerTranslations(lang);
-  const homeUrl = sectionLinks?.home ?? `/${lang}/home/getting-started/overview`;
-  const sdkUrl = sectionLinks?.sdk ?? `/${lang}/sdk/getting-started/overview`;
-  const apiUrl = sectionLinks?.api ?? `/${lang}/api`;
+  const homeUrl = `/${lang}/home`;
+  const sdkUrl = `/${lang}/sdk`;
+  const apiUrl = `/${lang}/api`;
 
   return {
     // i18n, TODO: Enable language switcher
