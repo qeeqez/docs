@@ -38,7 +38,7 @@ export function SidebarFolderLink({active: activeFolder = false, ...props}: Link
     <Link
       {...props}
       data-active={active}
-      className={cn(sidebarItemVariants({active}), "w-full", props.className)}
+      className={cn(sidebarItemVariants({active}), "w-full overflow-hidden", props.className)}
       onClick={handleClick}
       prefetch={prefetch}
       preloadDelay={0}

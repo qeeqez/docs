@@ -9,7 +9,7 @@ export function SidebarFolderTrigger({className, active = false, ...props}: Prim
   const {open} = useFolderContext();
 
   return (
-    <CollapsibleTrigger data-active={active} className={cn(sidebarItemVariants({active}), "w-full", className)} {...props}>
+    <CollapsibleTrigger data-active={active} className={cn(sidebarItemVariants({active}), "w-full overflow-hidden", className)} {...props}>
       {props.children}
       <ChevronDown data-icon className={cn("ms-auto transition-transform", !open && "-rotate-90")} />
     </CollapsibleTrigger>

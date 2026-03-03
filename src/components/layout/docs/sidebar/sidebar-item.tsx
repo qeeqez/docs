@@ -12,7 +12,7 @@ import {cn} from "@/lib/cn";
 export const sidebarItemVariants = cva(
   cn(
     "relative flex flex-row items-center",
-    "gap-2 rounded-xl p-2 ps-(--sidebar-item-offset)",
+    "gap-1.5 rounded-lg py-1 pe-2.5 ps-(--sidebar-item-offset)",
     "min-w-0 text-start text-sm font-normal antialiased",
     "[&_svg]:size-4 [&_svg]:shrink-0",
     "transition-colors hover:transition-none cursor-pointer"
@@ -42,6 +42,7 @@ export function SidebarItem({
   const {prefetch} = useInternalContext();
   const href = typeof props.href === "string" ? props.href : undefined;
   const method = getHttpMethodFromPath(href);
+  const methodLabel = method === "DELETE" ? "DEL" : method;
 
   const handleMouseEnter = (event: MouseEvent<HTMLAnchorElement>) => {
     props.onMouseEnter?.(event);
@@ -53,27 +54,29 @@ export function SidebarItem({
     <Link
       {...props}
       data-active={active}
-      className={cn(sidebarItemVariants({active}), "w-full", props.className)}
+      className={cn(sidebarItemVariants({active}), "w-full overflow-hidden", props.className)}
       prefetch={prefetch}
       preloadDelay={0}
       onMouseEnter={handleMouseEnter}
     >
       {icon ?? (props.external ? <ExternalLink /> : null)}
-      <span className="min-w-0 flex-1 truncate whitespace-nowrap">{props.children}</span>
+      <span className={cn("min-w-0 flex-1", method ? "whitespace-normal break-words leading-5" : "truncate whitespace-nowrap")}>
+        {props.children}
+      </span>
       {method ? (
         <span
           className={cn(
-            "ms-auto shrink-0 whitespace-nowrap ps-2 text-[0.75rem] leading-none font-semibold tracking-[0.04em] uppercase",
-            method === "GET" && "text-emerald-400/90",
-            method === "POST" && "text-sky-400/90",
-            method === "PUT" && "text-amber-300/90",
-            method === "DELETE" && "text-rose-400/90",
+            "ms-2 inline-flex min-w-[4.75rem] shrink-0 justify-end whitespace-nowrap text-right text-[0.72rem] leading-5 font-semibold tracking-[0.08em] uppercase",
+            method === "POST" && "text-emerald-400/90",
+            method === "GET" && "text-sky-400/90",
+            method === "PUT" && "text-amber-400/90",
+            method === "DELETE" && "text-red-400/90",
             method === "PATCH" && "text-violet-400/90",
             method === "HEAD" && "text-teal-300/90",
             method === "OPTIONS" && "text-fuchsia-400/90"
           )}
         >
-          {method}
+          {methodLabel}
         </span>
       ) : null}
     </Link>

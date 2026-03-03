@@ -19,12 +19,12 @@ export function PageTreeFolder({item, ...props}: {item: Folder; children: ReactN
       {item.index ? (
         <SidebarFolderLink href={item.index.url} external={item.index.external} active={active} {...props}>
           {item.icon}
-          {item.name}
+          <span className="min-w-0 flex-1 truncate whitespace-nowrap">{item.name}</span>
         </SidebarFolderLink>
       ) : (
         <SidebarFolderTrigger active={active} {...props}>
           {item.icon}
-          {item.name}
+          <span className="min-w-0 flex-1 truncate whitespace-nowrap">{item.name}</span>
         </SidebarFolderTrigger>
       )}
       <SidebarFolderContent>{props.children}</SidebarFolderContent>

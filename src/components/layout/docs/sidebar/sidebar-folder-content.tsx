@@ -20,7 +20,7 @@ export function SidebarFolderContent(props: Primitive.CollapsibleContentProps) {
       )}
       style={
         {
-          "--sidebar-item-offset": `calc(var(--spacing) * ${(level + 1) * 3})`,
+          "--sidebar-item-offset": `calc(var(--spacing) * ${(level + 1) * 2})`,
           ...props.style,
         } as object
       }
