@@ -11,12 +11,17 @@ interface LayoutProps {
   sidebar?: boolean;
   children: ReactNode;
   dataTree: object;
+  sectionLinks?: {
+    home: string;
+    sdk: string;
+    api: string;
+  };
   treeKey?: string;
 }
 
-export default function SharedLayout({lang, searchToggle = true, sidebar = true, dataTree, treeKey, children}: LayoutProps) {
+export default function SharedLayout({lang, searchToggle = true, sidebar = true, dataTree, sectionLinks, treeKey, children}: LayoutProps) {
   const tree = useMemo(() => transformPageTree(dataTree as Folder), [dataTree]);
-  const options = baseOptions(lang);
+  const options = baseOptions(lang, sectionLinks);
 
   const topSearchOptions = {
     enabled: searchToggle,

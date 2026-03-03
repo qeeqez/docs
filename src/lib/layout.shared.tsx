@@ -14,9 +14,30 @@ import {ChevronRightIcon} from "lucide-react";
  * Home Layout: app/(home)/shared-layout.tsx
  * Docs Layout: app/docs/shared-layout.tsx
  */
-export function baseOptions(lang: string): BaseLayoutProps {
+export function baseOptions(
+  lang: string,
+  sectionLinks?: {
+    home: string;
+    sdk: string;
+    api: string;
+  }
+): BaseLayoutProps {
+  return baseOptionsWithSectionLinks(lang, sectionLinks);
+}
+
+export function baseOptionsWithSectionLinks(
+  lang: string,
+  sectionLinks?: {
+    home: string;
+    sdk: string;
+    api: string;
+  }
+): BaseLayoutProps {
   // TODO tanstack translations
   // const {t} = getServerTranslations(lang);
+  const homeUrl = sectionLinks?.home ?? `/${lang}/home/getting-started/overview`;
+  const sdkUrl = sectionLinks?.sdk ?? `/${lang}/sdk/getting-started/overview`;
+  const apiUrl = sectionLinks?.api ?? `/${lang}/api`;
 
   return {
     // i18n, TODO: Enable language switcher
@@ -28,21 +49,24 @@ export function baseOptions(lang: string): BaseLayoutProps {
     links: [
       {
         text: "Home", // TODO kek `${t("home")}`,
-        url: `/${lang}/home`,
+        url: homeUrl,
         on: "nav",
         active: "nested-url",
+        activeSubfolders: [`/${lang}/home`],
       },
       {
         text: "SDK",
-        url: `/${lang}/sdk`,
+        url: sdkUrl,
         on: "nav",
         active: "nested-url",
+        activeSubfolders: [`/${lang}/sdk`],
       },
       {
         text: "API",
-        url: `/${lang}/api`,
+        url: apiUrl,
         on: "nav",
         active: "nested-url",
+        activeSubfolders: [`/${lang}/api`],
       },
       {
         type: "button",

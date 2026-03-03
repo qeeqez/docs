@@ -97,7 +97,7 @@ function Page() {
   const section = _splat?.split("/")[0] ?? "root";
 
   return (
-    <SharedLayout lang={lang} dataTree={data.tree} treeKey={`${lang}:${section}`}>
+    <SharedLayout lang={lang} dataTree={data.tree} sectionLinks={data.sectionLinks} treeKey={`${lang}:${section}`}>
       <Content />
     </SharedLayout>
   );

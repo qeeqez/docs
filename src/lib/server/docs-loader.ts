@@ -14,10 +14,12 @@ export const loader = createServerFn({
     if (!page) throw notFound();
 
     const tree = source.getPageTree(lang) as Root;
+    const sectionLinks = getSectionLinks(tree, page.locale);
     const normalizedTree = slugs[0] === "api" && lang ? extractApiTree(tree, lang) : tree;
 
     return {
       tree: normalizedTree as object,
+      sectionLinks,
       path: page.path,
       page: {
         slugs: page.slugs,
@@ -29,6 +31,37 @@ export const loader = createServerFn({
       },
     };
   });
+
+function getSectionLinks(tree: Root, lang: string) {
+  const fallback = {
+    home: `/${lang}/home/getting-started/overview`,
+    sdk: `/${lang}/sdk/getting-started/overview`,
+    api: `/${lang}/api`,
+  };
+
+  return {
+    home: findFirstPageUrlByPrefix(tree, `/${lang}/home`) ?? fallback.home,
+    sdk: findFirstPageUrlByPrefix(tree, `/${lang}/sdk`) ?? fallback.sdk,
+    api: findFirstPageUrlByPrefix(tree, `/${lang}/api`) ?? fallback.api,
+  };
+}
+
+function findFirstPageUrlByPrefix(root: Root, prefix: string): string | undefined {
+  for (const node of root.children) {
+    const match = findFirstNodePageUrlByPrefix(node, prefix);
+    if (match) return match;
+  }
+}
+
+function findFirstNodePageUrlByPrefix(node: Node, prefix: string): string | undefined {
+  if (node.type === "page") return node.url.startsWith(prefix) ? node.url : undefined;
+  if (node.type !== "folder") return;
+
+  for (const child of node.children) {
+    const match = findFirstNodePageUrlByPrefix(child, prefix);
+    if (match) return match;
+  }
+}
 
 function extractApiTree(root: Root, lang: string): Root {
   const apiPrefix = `/${lang}/api`;
