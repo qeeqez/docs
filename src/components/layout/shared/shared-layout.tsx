@@ -4,6 +4,7 @@ import {ReactNode} from "react";
 import {baseOptions} from "@/lib/layout.shared";
 import type {Root} from "fumadocs-core/page-tree";
 import {Background} from "@/components/layout/home/background";
+import {LargeSearchToggle} from "@/components/search-toggle";
 
 interface LayoutProps {
   lang: string;
@@ -23,18 +24,23 @@ export default function SharedLayout({lang, searchToggle = true, sidebar = true,
   const tree = dataTree as Root;
   const options = baseOptions(lang, sectionLinks);
 
-  const topSearchOptions = {
-    enabled: searchToggle,
-  };
-
   return (
     <div className="relative z-10 flex min-h-svh flex-col">
       <Background />
-      <HomeLayout {...options} searchToggle={topSearchOptions} className="flex-1">
+      <HomeLayout
+        {...options}
+        searchToggle={{
+          enabled: false,
+        }}
+        className="flex-1 xl:[--fd-layout-width:1760px]"
+      >
         <DocsLayout
           key={treeKey}
           tree={tree}
           {...options}
+          containerProps={{
+            className: "xl:layout:[--fd-layout-width:1760px]",
+          }}
           nav={{
             ...options.nav,
             enabled: false,
@@ -42,7 +48,7 @@ export default function SharedLayout({lang, searchToggle = true, sidebar = true,
             children: null,
           }}
           searchToggle={{
-            enabled: false,
+            enabled: searchToggle,
           }}
           themeSwitch={{
             enabled: false,
@@ -50,6 +56,11 @@ export default function SharedLayout({lang, searchToggle = true, sidebar = true,
           sidebar={{
             enabled: sidebar,
             tabs: false,
+            banner: (
+              <div className="mb-2">
+                <LargeSearchToggle hideIfDisabled className="w-full rounded-xl bg-fd-card/80" />
+              </div>
+            ),
             footer: null,
             collapsible: false,
           }}
