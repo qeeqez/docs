@@ -9,13 +9,14 @@ import {sidebarItemVariants} from "@/components/layout/docs/sidebar/sidebar-item
 import {cn} from "@/lib/cn";
 import {useInternalContext} from "./sidebar-provider";
 
-export function SidebarFolderLink(props: LinkProps) {
+export function SidebarFolderLink({active: activeFolder = false, ...props}: LinkProps & {active?: boolean}) {
   const router = useRouter();
   const {open, setOpen} = useFolderContext();
   const {prefetch} = useInternalContext();
 
   const pathname = usePathname();
-  const active = props.href !== undefined && isActive(props.href, pathname, false);
+  const selfActive = props.href !== undefined && isActive(props.href, pathname, false);
+  const active = activeFolder || selfActive;
   const href = typeof props.href === "string" ? props.href : undefined;
 
   const handleClick = (e: MouseEvent<HTMLElement>) => {
@@ -23,7 +24,7 @@ export function SidebarFolderLink(props: LinkProps) {
       setOpen(!open);
       e.preventDefault();
     } else {
-      setOpen(active ? !open : true);
+      setOpen(selfActive ? !open : true);
     }
   };
 

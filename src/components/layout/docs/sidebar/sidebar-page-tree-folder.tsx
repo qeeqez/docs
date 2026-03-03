@@ -12,16 +12,17 @@ import {useInternalContext} from "./sidebar-provider";
 export function PageTreeFolder({item, ...props}: {item: Folder; children: ReactNode}) {
   const {defaultOpenLevel, level} = useInternalContext();
   const path = useTreePath();
+  const active = path.includes(item);
 
   return (
-    <SidebarFolder defaultOpen={(item.defaultOpen ?? defaultOpenLevel >= level) || path.includes(item)}>
+    <SidebarFolder defaultOpen={(item.defaultOpen ?? defaultOpenLevel >= level) || active}>
       {item.index ? (
-        <SidebarFolderLink href={item.index.url} external={item.index.external} {...props}>
+        <SidebarFolderLink href={item.index.url} external={item.index.external} active={active} {...props}>
           {item.icon}
           {item.name}
         </SidebarFolderLink>
       ) : (
-        <SidebarFolderTrigger {...props}>
+        <SidebarFolderTrigger active={active} {...props}>
           {item.icon}
           {item.name}
         </SidebarFolderTrigger>

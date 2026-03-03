@@ -13,8 +13,7 @@ export const sidebarItemVariants = cva(
   cn(
     "relative flex flex-row items-center",
     "gap-2 rounded-xl p-2 ps-(--sidebar-item-offset)",
-    "text-start text-sm font-normal antialiased",
-    "[overflow-wrap:anywhere]",
+    "min-w-0 text-start text-sm font-normal antialiased",
     "[&_svg]:size-4 [&_svg]:shrink-0",
     "transition-colors hover:transition-none cursor-pointer"
   ),
@@ -54,24 +53,24 @@ export function SidebarItem({
     <Link
       {...props}
       data-active={active}
-      className={cn(sidebarItemVariants({active}), props.className)}
+      className={cn(sidebarItemVariants({active}), "w-full", props.className)}
       prefetch={prefetch}
       preloadDelay={0}
       onMouseEnter={handleMouseEnter}
     >
       {icon ?? (props.external ? <ExternalLink /> : null)}
-      {props.children}
+      <span className="min-w-0 flex-1 truncate whitespace-nowrap">{props.children}</span>
       {method ? (
         <span
           className={cn(
-            "ms-auto rounded-md border px-1.5 py-0.5 text-[10px] leading-none font-medium font-mono uppercase",
-            method === "GET" && "text-emerald-500 border-emerald-500/35 bg-emerald-500/10",
-            method === "POST" && "text-sky-500 border-sky-500/35 bg-sky-500/10",
-            method === "PUT" && "text-amber-500 border-amber-500/35 bg-amber-500/10",
-            method === "DELETE" && "text-rose-500 border-rose-500/35 bg-rose-500/10",
-            method === "PATCH" && "text-violet-500 border-violet-500/35 bg-violet-500/10",
-            method === "HEAD" && "text-teal-500 border-teal-500/35 bg-teal-500/10",
-            method === "OPTIONS" && "text-fuchsia-500 border-fuchsia-500/35 bg-fuchsia-500/10"
+            "ms-auto shrink-0 whitespace-nowrap ps-2 text-[0.95rem] leading-none font-semibold uppercase",
+            method === "GET" && "text-emerald-400",
+            method === "POST" && "text-sky-400",
+            method === "PUT" && "text-amber-400",
+            method === "DELETE" && "text-rose-400",
+            method === "PATCH" && "text-violet-400",
+            method === "HEAD" && "text-teal-400",
+            method === "OPTIONS" && "text-fuchsia-400"
           )}
         >
           {method}
