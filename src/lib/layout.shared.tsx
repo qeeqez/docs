@@ -29,6 +29,7 @@ export function baseOptions(lang: string): BaseLayoutProps {
       {
         text: "Home", // TODO kek `${t("home")}`,
         url: `/${lang}/home/getting-started/overview`,
+        on: "nav",
         active: "nested-url",
         activeSubfolders: [
           `/${lang}/home/getting-started`,
@@ -43,6 +44,7 @@ export function baseOptions(lang: string): BaseLayoutProps {
       {
         text: "SDK",
         url: `/${lang}/sdk/getting-started`,
+        on: "nav",
         active: "nested-url",
         activeSubfolders: [
           `/${lang}/sdk/getting-started`,
@@ -55,11 +57,13 @@ export function baseOptions(lang: string): BaseLayoutProps {
       {
         text: "API",
         url: `/${lang}/api`,
+        on: "nav",
         active: "nested-url",
         activeSubfolders: [`/${lang}/api`],
       },
       {
         type: "button",
+        on: "nav",
         text: (
           <>
             Get Started <ChevronRightIcon />

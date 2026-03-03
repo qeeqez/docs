@@ -1,10 +1,8 @@
 import {createFileRoute} from "@tanstack/react-router";
 import {getPageImage} from "@/lib/images";
-import {DocsBody, DocsDescription, DocsPage, DocsTitle} from "@/components/layout/page";
+import {DocsBody, DocsDescription, DocsPage, DocsTitle, PageBreadcrumb} from "fumadocs-ui/page";
 import browserCollections from "fumadocs-mdx:collections/browser";
 import SharedLayout from "@/components/layout/shared/shared-layout";
-import {TOCProvider} from "@/components/ui/toc";
-import {PageBreadcrumb} from "@/components/layout/docs/page/page-breadcrumb";
 import {getMDXComponents} from "@/components/mdx-components";
 import {Footer} from "@/components/layout/footer/footer";
 import {LLMCopyButton} from "@/components/page-actions/llm-copy-button";
@@ -51,53 +49,36 @@ export const Route = createFileRoute("/$lang/$")({
 const clientLoader = browserCollections.docs.createClientLoader({
   component: function DocsContent({toc, frontmatter, default: MDX}) {
     const {lang, _splat} = Route.useParams();
+    const pageSlug = _splat ?? "";
+    const markdownPath = pageSlug ? `/${lang}/${pageSlug}.md` : `/${lang}.md`;
+    const githubPath = pageSlug ? `content/${lang}/${pageSlug}` : `content/${lang}`;
 
     return (
-      <TOCProvider toc={toc}>
-        <main className="grow overflow-y-auto min-h-screen relative">
-          <DocsPage
-            container={{className: "pt-[calc(var(--padding-sidebar)*2)]"}}
-            full={false}
-            toc={toc}
-            footer={{
-              enabled: true,
-              github: {
-                owner: "qeeqez",
-                repo: "docs",
-                path: `content/${lang}/${_splat}`,
-                sha: "main",
-                raiseIssue: true,
-              },
-              lastUpdate: undefined,
-            }}
-          >
-            <header className="relative space-y-2">
-              <div className="space-y-2.5">
-                <PageBreadcrumb />
+      <main className="grow overflow-y-auto min-h-screen relative">
+        <DocsPage className="pt-[calc(var(--padding-sidebar)*2)]" full={false} toc={toc}>
+          <header className="relative space-y-2">
+            <div className="space-y-2.5">
+              <PageBreadcrumb />
 
-                <div className="flex items-center justify-between gap-2">
-                  <DocsTitle>{frontmatter.title}</DocsTitle>
-                  <LLMCopyButton
-                    markdownUrl={`/${lang}/${_splat}.md`}
-                    githubUrl={`https://github.com/qeeqez/docs/tree/main/content/${lang}/${_splat}`}
-                  />
-                </div>
+              <div className="flex items-center justify-between gap-2">
+                <DocsTitle>{frontmatter.title}</DocsTitle>
+                <LLMCopyButton markdownUrl={markdownPath} githubUrl={`https://github.com/qeeqez/docs/tree/main/${githubPath}`} />
               </div>
-              <DocsDescription>{frontmatter.description}</DocsDescription>
-            </header>
-            <DocsBody>
-              <Suspense fallback={null}>
-                <MDX
-                  components={getMDXComponents({
-                    // a: createRelativeLink(source, page), TODO keke
-                  })}
-                />
-              </Suspense>
-            </DocsBody>
-          </DocsPage>
-          <Footer lang={lang} />
-        </main>
-      </TOCProvider>
+            </div>
+            <DocsDescription>{frontmatter.description}</DocsDescription>
+          </header>
+          <DocsBody>
+            <Suspense fallback={null}>
+              <MDX
+                components={getMDXComponents({
+                  // a: createRelativeLink(source, page), TODO keke
+                })}
+              />
+            </Suspense>
+          </DocsBody>
+        </DocsPage>
+        <Footer lang={lang} />
+      </main>
     );
   },
 });
