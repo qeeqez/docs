@@ -63,14 +63,14 @@ export function SidebarItem({
       {method ? (
         <span
           className={cn(
-            "ms-auto shrink-0 whitespace-nowrap ps-2 text-[0.95rem] leading-none font-semibold uppercase",
-            method === "GET" && "text-emerald-400",
-            method === "POST" && "text-sky-400",
-            method === "PUT" && "text-amber-400",
-            method === "DELETE" && "text-rose-400",
-            method === "PATCH" && "text-violet-400",
-            method === "HEAD" && "text-teal-400",
-            method === "OPTIONS" && "text-fuchsia-400"
+            "ms-auto shrink-0 whitespace-nowrap ps-2 text-[0.75rem] leading-none font-semibold tracking-[0.04em] uppercase",
+            method === "GET" && "text-emerald-400/90",
+            method === "POST" && "text-sky-400/90",
+            method === "PUT" && "text-amber-300/90",
+            method === "DELETE" && "text-rose-400/90",
+            method === "PATCH" && "text-violet-400/90",
+            method === "HEAD" && "text-teal-300/90",
+            method === "OPTIONS" && "text-fuchsia-400/90"
           )}
         >
           {method}
