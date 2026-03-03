@@ -121,7 +121,10 @@ function ApiContent({
     <DocsPage
       className="api-docs-page pt-4 md:pt-4 xl:pt-4"
       full={false}
-      toc={false}
+      toc={(apiPage.toc as never) ?? []}
+      tableOfContent={{
+        enabled: true,
+      }}
       footer={{
         children: <Footer lang={lang} />,
       }}
@@ -148,6 +151,30 @@ function StaticApiHtml({html}: {html: string}) {
   useEffect(() => {
     const root = ref.current;
     if (!root) return;
+    const toc = document.getElementById("nd-toc");
+    const rail = findApiRail(root);
+    const hiddenTocChildren: HTMLElement[] = [];
+    let railParent: ParentNode | null = null;
+    let railNextSibling: ChildNode | null = null;
+
+    const shouldDock = typeof window !== "undefined" && window.matchMedia("(min-width: 1280px)").matches;
+
+    if (toc && rail && shouldDock) {
+      for (const child of Array.from(toc.children)) {
+        if (child instanceof HTMLElement) {
+          hiddenTocChildren.push(child);
+          child.style.display = "none";
+        }
+      }
+
+      railParent = rail.parentNode;
+      railNextSibling = rail.nextSibling;
+      rail.classList.add("api-toc-rail");
+      toc.dataset.apiRail = "true";
+      toc.appendChild(rail);
+    }
+
+    const panelRoot = rail ?? root;
 
     const setExpanded = (button: HTMLButtonElement, expanded: boolean) => {
       const panelId = button.getAttribute("aria-controls");
@@ -184,7 +211,7 @@ function StaticApiHtml({html}: {html: string}) {
         const panelId = tab.getAttribute("aria-controls");
         if (!panelId) continue;
 
-        const panel = root.querySelector<HTMLElement>(`#${CSS.escape(panelId)}`);
+        const panel = panelRoot.querySelector<HTMLElement>(`#${CSS.escape(panelId)}`);
         if (!panel) continue;
 
         panel.setAttribute("data-state", selected ? "active" : "inactive");
@@ -199,7 +226,10 @@ function StaticApiHtml({html}: {html: string}) {
     const onClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement | null;
       const button = target?.closest<HTMLButtonElement>("button");
-      if (!button || !root.contains(button)) return;
+      if (!button) return;
+      const inApiRoot = root.contains(button);
+      const inRail = panelRoot !== root && panelRoot.contains(button);
+      if (!inApiRoot && !inRail) return;
 
       if (button.getAttribute("role") === "tab") {
         event.preventDefault();
@@ -217,13 +247,62 @@ function StaticApiHtml({html}: {html: string}) {
       setExpanded(button, !expanded);
     };
 
-    root.addEventListener("click", onClick);
+    document.addEventListener("click", onClick);
     return () => {
-      root.removeEventListener("click", onClick);
+      document.removeEventListener("click", onClick);
+
+      if (toc) {
+        delete toc.dataset.apiRail;
+        for (const child of hiddenTocChildren) {
+          child.style.removeProperty("display");
+        }
+      }
+
+      if (rail && railParent) {
+        rail.classList.remove("api-toc-rail");
+        if (railNextSibling && railParent.contains(railNextSibling)) {
+          railParent.insertBefore(rail, railNextSibling);
+        } else {
+          railParent.appendChild(rail);
+        }
+      }
     };
   }, [html]);
 
   return <div ref={ref} suppressHydrationWarning dangerouslySetInnerHTML={{__html: html}} />;
+}
+
+function findApiRail(root: HTMLElement): HTMLElement | null {
+  const tablists = Array.from(root.querySelectorAll<HTMLElement>('[role="tablist"]'));
+  const languageTabs = tablists.find((tablist) => {
+    const labels = Array.from(tablist.querySelectorAll<HTMLButtonElement>('[role="tab"]'))
+      .map((tab) => tab.textContent?.trim().toLowerCase() ?? "")
+      .filter(Boolean);
+
+    return labels.includes("curl") && labels.includes("javascript");
+  });
+
+  if (languageTabs) {
+    const stickyRail = languageTabs.closest<HTMLElement>('[class*="sticky"][class*="top-"]');
+    if (stickyRail) {
+      return stickyRail;
+    }
+
+    const horizontalCard = languageTabs.closest<HTMLElement>('[data-orientation="horizontal"]');
+    if (horizontalCard) {
+      for (let current: HTMLElement | null = horizontalCard; current && current !== root; current = current.parentElement) {
+        if (current.parentElement === root) return current;
+      }
+    }
+  }
+
+  for (const node of root.querySelectorAll<HTMLElement>("div")) {
+    if (node.className.includes("@4xl:w-[400px]") && node.querySelector('[role="tablist"]')) {
+      return node;
+    }
+  }
+
+  return null;
 }
 
 function DocsContent({toc, frontmatter, default: MDX}: LoadedDoc) {

@@ -117,25 +117,14 @@
     margin-inline-start: 0 !important;
   }
 
-  @media (min-width: 1280px) {
-    /* Keep OpenAPI request examples in a right rail on desktop even with sidebars enabled. */
-    #nd-page.api-docs-page .prose .\@container > .flex.flex-col.gap-x-6.gap-y-4 {
-      display: grid !important;
-      grid-template-columns: minmax(0, 1fr) 400px !important;
-      align-items: start !important;
-    }
+  #nd-toc[data-api-rail="true"] {
+    gap: calc(var(--spacing) * 3);
+    padding-top: calc(var(--spacing) * 4);
+  }
 
-    #nd-page.api-docs-page .prose .\@container > .flex.flex-col.gap-x-6.gap-y-4 > :first-child {
-      min-width: 0;
-      width: 100%;
-    }
-
-    #nd-page.api-docs-page .prose .\@container > .flex.flex-col.gap-x-6.gap-y-4 > :last-child {
-      position: sticky;
-      top: calc(var(--spacing) * 14 + var(--spacing) * 2);
-      width: 400px;
-      align-self: start;
-    }
+  #nd-toc[data-api-rail="true"] .api-toc-rail {
+    position: static !important;
+    width: 100% !important;
   }
 
   /* Chrome, Safari, and Opera */
