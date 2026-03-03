@@ -1,5 +1,4 @@
 {
-  "title": "API Reference",
-  "description": "Generated API reference from OpenAPI schema",
-  "pages": ["index", "...feeds", "...images", "...videos"]
+  "title": "API",
+  "pages": ["feeds", "images", "videos"]
 }
