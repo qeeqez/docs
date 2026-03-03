@@ -119,7 +119,7 @@ function ApiContent({
 
   return (
     <DocsPage
-      className="api-docs-page pt-4 md:pt-4 xl:pt-4"
+      className="api-docs-page max-w-[1120px] pt-4 md:pt-4 xl:pt-4 xl:layout:[--fd-toc-width:420px] 2xl:layout:[--fd-toc-width:460px]"
       full={false}
       toc={(apiPage.toc as never) ?? []}
       tableOfContent={{
