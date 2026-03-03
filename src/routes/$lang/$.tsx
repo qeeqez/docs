@@ -54,7 +54,7 @@ const clientLoader = browserCollections.docs.createClientLoader({
     const githubPath = pageSlug ? `content/${lang}/${pageSlug}` : `content/${lang}`;
 
     return (
-      <main className="grow overflow-y-auto min-h-screen relative">
+      <>
         <DocsPage className="pt-[calc(var(--padding-sidebar)*2)]" full={false} toc={toc}>
           <header className="relative space-y-2">
             <div className="space-y-2.5">
@@ -78,7 +78,7 @@ const clientLoader = browserCollections.docs.createClientLoader({
           </DocsBody>
         </DocsPage>
         <Footer lang={lang} />
-      </main>
+      </>
     );
   },
 });
