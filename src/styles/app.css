@@ -120,20 +120,21 @@
   @media (min-width: 1280px) {
     /* Keep OpenAPI request examples in a right rail on desktop even with sidebars enabled. */
     #nd-page[data-full="true"] .prose .\@container > .flex.flex-col.gap-x-6.gap-y-4 {
-      flex-direction: row;
-      align-items: flex-start;
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) 400px !important;
+      align-items: start !important;
     }
 
     #nd-page[data-full="true"] .prose .\@container > .flex.flex-col.gap-x-6.gap-y-4 > :first-child {
       min-width: 0;
-      flex: 1 1 auto;
+      width: 100%;
     }
 
     #nd-page[data-full="true"] .prose .\@container > .flex.flex-col.gap-x-6.gap-y-4 > :last-child {
       position: sticky;
-      top: calc(var(--fd-docs-row-1, 2rem) + 1rem);
+      top: calc(var(--spacing) * 14 + var(--spacing) * 2);
       width: 400px;
-      flex: 0 0 400px;
+      align-self: start;
     }
   }
 
