@@ -7,9 +7,11 @@ export function isActive(url: string, pathname: string, nested = true, activeSub
   url = normalize(url);
   pathname = normalize(pathname);
 
-  return (
-    url === pathname ||
-    (nested && pathname.startsWith(`${url}/`)) ||
-    (activeSubfolders?.some((subfolder) => pathname.startsWith(`${subfolder}`)) ?? false)
-  );
+  const isSubfolderActive =
+    activeSubfolders?.some((subfolder) => {
+      const normalizedSubfolder = normalize(subfolder);
+      return pathname === normalizedSubfolder || pathname.startsWith(`${normalizedSubfolder}/`);
+    }) ?? false;
+
+  return url === pathname || (nested && pathname.startsWith(`${url}/`)) || isSubfolderActive;
 }

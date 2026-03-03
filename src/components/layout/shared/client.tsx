@@ -9,7 +9,7 @@ import type {BaseLinkType} from "./";
 export function BaseLinkItem({ref, item, ...props}: Omit<ComponentProps<"a">, "href"> & {item: BaseLinkType}) {
   const pathname = usePathname();
   const activeType = item.active ?? "url";
-  const active = activeType !== "none" && isActive(item.url, pathname);
+  const active = activeType !== "none" && isActive(item.url, pathname, activeType === "nested-url", item.activeSubfolders);
 
   return (
     <Link ref={ref} href={item.url} external={item.external} {...props} data-active={active}>
