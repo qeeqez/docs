@@ -67,10 +67,10 @@ export function SidebarItem({
         <span
           className={cn(
             "ms-2 inline-flex min-w-[4.75rem] shrink-0 justify-end whitespace-nowrap text-right text-[0.72rem] leading-5 font-semibold tracking-[0.08em] uppercase",
-            method === "POST" && "text-emerald-400/90",
-            method === "GET" && "text-sky-400/90",
-            method === "PUT" && "text-amber-400/90",
-            method === "DELETE" && "text-red-400/90",
+            method === "GET" && "text-green-600 dark:text-green-400",
+            method === "POST" && "text-blue-600 dark:text-blue-400",
+            method === "PUT" && "text-yellow-600 dark:text-yellow-400",
+            method === "DELETE" && "text-red-600 dark:text-red-400",
             method === "PATCH" && "text-violet-400/90",
             method === "HEAD" && "text-teal-300/90",
             method === "OPTIONS" && "text-fuchsia-400/90"
