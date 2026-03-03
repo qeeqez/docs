@@ -71,6 +71,16 @@
     height: calc(100dvh - calc(var(--spacing) * 14));
   }
 
+  #nd-docs-layout #nd-toc {
+    top: calc(var(--spacing) * 14);
+    height: calc(100dvh - calc(var(--spacing) * 14));
+    padding-top: calc(var(--spacing) * 4);
+  }
+
+  #nd-docs-layout [data-toc-popover] {
+    top: calc(var(--spacing) * 14);
+  }
+
   #nd-sidebar > :first-child {
     display: none;
   }

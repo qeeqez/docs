@@ -57,7 +57,7 @@ const clientLoader = browserCollections.docs.createClientLoader({
     return (
       <>
         <DocsPage
-          className="pt-0 md:pt-0 xl:pt-0"
+          className="pt-4 md:pt-4 xl:pt-4"
           full={false}
           toc={toc}
           footer={{
