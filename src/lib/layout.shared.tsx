@@ -28,38 +28,21 @@ export function baseOptions(lang: string): BaseLayoutProps {
     links: [
       {
         text: "Home", // TODO kek `${t("home")}`,
-        url: `/${lang}/home/getting-started/overview`,
+        url: `/${lang}/home`,
         on: "nav",
         active: "nested-url",
-        activeSubfolders: [
-          `/${lang}/home/getting-started`,
-          `/${lang}/home/platform`,
-          `/${lang}/home/legal`,
-          `/${lang}/home/guides`,
-          `/${lang}/home/reference`,
-          `/${lang}/home/images`,
-          `/${lang}/home/video`,
-        ],
       },
       {
         text: "SDK",
-        url: `/${lang}/sdk/getting-started`,
+        url: `/${lang}/sdk`,
         on: "nav",
         active: "nested-url",
-        activeSubfolders: [
-          `/${lang}/sdk/getting-started`,
-          `/${lang}/sdk/video-component`,
-          `/${lang}/sdk/image-component`,
-          `/${lang}/sdk/examples`,
-          `/${lang}/sdk/feed-component`,
-        ],
       },
       {
         text: "API",
         url: `/${lang}/api`,
         on: "nav",
         active: "nested-url",
-        activeSubfolders: [`/${lang}/api`],
       },
       {
         type: "button",
