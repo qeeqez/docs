@@ -50,6 +50,7 @@ const clientLoader = browserCollections.docs.createClientLoader({
   component: function DocsContent({toc, frontmatter, default: MDX}) {
     const {lang, _splat} = Route.useParams();
     const pageSlug = _splat ?? "";
+    const isApiPage = pageSlug === "api" || pageSlug.startsWith("api/");
     const category = getCategoryFromSlug(pageSlug);
     const markdownPath = pageSlug ? `/${lang}/${pageSlug}.md` : `/${lang}.md`;
     const githubPath = pageSlug ? `content/${lang}/${pageSlug}` : `content/${lang}`;
@@ -66,7 +67,7 @@ const clientLoader = browserCollections.docs.createClientLoader({
         >
           <header className="relative space-y-2">
             <div className="space-y-2.5">
-              <p className="text-sm font-medium text-fd-primary">{category}</p>
+              {!isApiPage ? <p className="text-sm font-medium text-fd-primary">{category}</p> : null}
 
               <div className="flex items-center justify-between gap-2">
                 <DocsTitle>{frontmatter.title}</DocsTitle>
