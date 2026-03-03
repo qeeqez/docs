@@ -1,7 +1,5 @@
-"use client";
-
 import {defineI18nUI} from "fumadocs-ui/i18n";
-import {RootProvider} from "fumadocs-ui/provider/tanstack";
+import {RootProvider} from "fumadocs-ui/provider/base";
 import type {ReactNode} from "react";
 import {lazy} from "react";
 import {CustomTranslationProvider} from "@/components/custom-translation-provider";

@@ -1,4 +1,5 @@
 import {createRootRoute, HeadContent, Outlet, Scripts, useParams} from "@tanstack/react-router";
+import {TanstackProvider} from "fumadocs-core/framework/tanstack";
 import * as React from "react";
 import appCss from "@/styles/app.css?url";
 import {Provider} from "@/components/layout/shared/provider.tsx";
@@ -42,7 +43,9 @@ function RootDocument({children}: {children: React.ReactNode}) {
         <HeadContent />
       </head>
       <Body>
-        <Provider lang={lang}>{children}</Provider>
+        <TanstackProvider>
+          <Provider lang={lang}>{children}</Provider>
+        </TanstackProvider>
         <Scripts />
       </Body>
     </html>
