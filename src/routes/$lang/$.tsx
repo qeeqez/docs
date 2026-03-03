@@ -7,6 +7,7 @@ import {getMDXComponents} from "@/components/mdx-components";
 import {Footer} from "@/components/layout/footer/footer";
 import {LLMCopyButton} from "@/components/page-actions/llm-copy-button";
 import {preloadAPIRuntime} from "@/lib/api-preload";
+import {getEagerApiDoc} from "@/lib/api-docs-eager";
 import {loader} from "@/lib/server/docs-loader";
 import {Suspense} from "react";
 
@@ -16,10 +17,12 @@ export const Route = createFileRoute("/$lang/$")({
     const splat = params._splat ?? "";
     const slugs = splat ? splat.split("/") : [];
     if (slugs[0] === "api") {
-      void preloadAPIRuntime();
+      await preloadAPIRuntime();
     }
     const data = await loader({data: {slugs, lang: params.lang}});
-    void clientLoader.preload(data.path);
+    if (slugs[0] !== "api") {
+      void clientLoader.preload(data.path);
+    }
     return data;
   },
   head: ({loaderData: _loaderData}) => {
@@ -46,61 +49,76 @@ export const Route = createFileRoute("/$lang/$")({
   },
 });
 
+interface LoadedDoc {
+  toc: unknown;
+  frontmatter: {
+    title?: string;
+    description?: string;
+  };
+  default: React.ComponentType<{
+    components?: ReturnType<typeof getMDXComponents>;
+  }>;
+}
+
 const clientLoader = browserCollections.docs.createClientLoader({
-  component: function DocsContent({toc, frontmatter, default: MDX}) {
-    const {lang, _splat} = Route.useParams();
-    const pageSlug = _splat ?? "";
-    const isApiPage = pageSlug === "api" || pageSlug.startsWith("api/");
-    const category = getCategoryFromSlug(pageSlug);
-    const markdownPath = pageSlug ? `/${lang}/${pageSlug}.md` : `/${lang}.md`;
-    const githubPath = pageSlug ? `content/${lang}/${pageSlug}` : `content/${lang}`;
-
-    return (
-      <>
-        <DocsPage
-          className="pt-4 md:pt-4 xl:pt-4"
-          full={false}
-          toc={toc}
-          footer={{
-            children: <Footer lang={lang} />,
-          }}
-        >
-          <header className="relative space-y-2">
-            <div className="space-y-2.5">
-              {!isApiPage ? <p className="text-sm font-medium text-fd-primary">{category}</p> : null}
-
-              <div className="flex items-center justify-between gap-2">
-                <DocsTitle>{frontmatter.title}</DocsTitle>
-                <LLMCopyButton markdownUrl={markdownPath} githubUrl={`https://github.com/qeeqez/docs/tree/main/${githubPath}`} />
-              </div>
-            </div>
-            <DocsDescription>{frontmatter.description}</DocsDescription>
-          </header>
-          <DocsBody>
-            <Suspense fallback={null}>
-              <MDX
-                components={getMDXComponents({
-                  // a: createRelativeLink(source, page), TODO keke
-                })}
-              />
-            </Suspense>
-          </DocsBody>
-        </DocsPage>
-      </>
-    );
-  },
+  component: DocsContent,
 });
 
 function Page() {
   const {lang, _splat} = Route.useParams();
   const data = Route.useLoaderData();
-  const Content = clientLoader.getComponent(data.path);
+  const isApiPage = (_splat ?? "").startsWith("api");
+  const eagerApiDoc = isApiPage ? (getEagerApiDoc(data.path) as LoadedDoc | undefined) : undefined;
+  const Content = eagerApiDoc ? undefined : clientLoader.getComponent(data.path);
   const section = _splat?.split("/")[0] ?? "root";
 
   return (
     <SharedLayout lang={lang} dataTree={data.tree} sectionLinks={data.sectionLinks} treeKey={`${lang}:${section}`}>
-      <Content />
+      {eagerApiDoc ? <DocsContent {...eagerApiDoc} /> : Content ? <Content /> : null}
     </SharedLayout>
+  );
+}
+
+function DocsContent({toc, frontmatter, default: MDX}: LoadedDoc) {
+  const {lang, _splat} = Route.useParams();
+  const pageSlug = _splat ?? "";
+  const isApiPage = pageSlug === "api" || pageSlug.startsWith("api/");
+  const category = getCategoryFromSlug(pageSlug);
+  const markdownPath = pageSlug ? `/${lang}/${pageSlug}.md` : `/${lang}.md`;
+  const githubPath = pageSlug ? `content/${lang}/${pageSlug}` : `content/${lang}`;
+
+  return (
+    <>
+      <DocsPage
+        className="pt-4 md:pt-4 xl:pt-4"
+        full={false}
+        toc={toc}
+        footer={{
+          children: <Footer lang={lang} />,
+        }}
+      >
+        <header className="relative space-y-2">
+          <div className="space-y-2.5">
+            {!isApiPage ? <p className="text-sm font-medium text-fd-primary">{category}</p> : null}
+
+            <div className="flex items-center justify-between gap-2">
+              <DocsTitle>{frontmatter.title}</DocsTitle>
+              <LLMCopyButton markdownUrl={markdownPath} githubUrl={`https://github.com/qeeqez/docs/tree/main/${githubPath}`} />
+            </div>
+          </div>
+          <DocsDescription>{frontmatter.description}</DocsDescription>
+        </header>
+        <DocsBody>
+          <Suspense fallback={null}>
+            <MDX
+              components={getMDXComponents({
+                // a: createRelativeLink(source, page), TODO keke
+              })}
+            />
+          </Suspense>
+        </DocsBody>
+      </DocsPage>
+    </>
   );
 }
 
