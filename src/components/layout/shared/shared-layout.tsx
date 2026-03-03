@@ -1,6 +1,6 @@
 import {DocsLayout} from "fumadocs-ui/layouts/docs";
 import {HomeLayout} from "fumadocs-ui/layouts/home";
-import {ReactNode, useMemo} from "react";
+import {CSSProperties, ReactNode, useMemo} from "react";
 import {baseOptions} from "@/lib/layout.shared";
 import type {Folder, Node, Root} from "fumadocs-core/page-tree";
 import {Background} from "@/components/layout/home/background";
@@ -17,6 +17,7 @@ interface LayoutProps {
 export default function SharedLayout({lang, searchToggle = true, sidebar = true, dataTree, treeKey, children}: LayoutProps) {
   const tree = useMemo(() => transformPageTree(dataTree as Folder), [dataTree]);
   const options = baseOptions(lang);
+  const docsContainerStyle = {"--fd-banner-height": "calc(var(--spacing) * 14)"} as CSSProperties;
 
   const topSearchOptions = {
     enabled: searchToggle,
@@ -30,9 +31,14 @@ export default function SharedLayout({lang, searchToggle = true, sidebar = true,
           key={treeKey}
           tree={tree}
           {...options}
+          containerProps={{
+            style: docsContainerStyle,
+          }}
           nav={{
             ...options.nav,
             enabled: false,
+            title: null,
+            children: null,
           }}
           searchToggle={{
             enabled: false,
@@ -44,6 +50,7 @@ export default function SharedLayout({lang, searchToggle = true, sidebar = true,
             enabled: sidebar,
             tabs: false,
             footer: null,
+            collapsible: false,
           }}
         >
           {children}

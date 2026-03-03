@@ -66,6 +66,22 @@
 }
 
 @layer utilities {
+  #nd-sidebar > :first-child {
+    display: none;
+  }
+
+  #nd-docs-layout [data-sidebar-panel] {
+    display: none !important;
+  }
+
+  #nd-sidebar [data-radix-scroll-area-viewport] {
+    overflow-y: visible !important;
+  }
+
+  #nd-sidebar [data-radix-scroll-area-scrollbar] {
+    display: none !important;
+  }
+
   /* Chrome, Safari, and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
