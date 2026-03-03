@@ -4,7 +4,6 @@ import {cva} from "class-variance-authority";
 import Link from "fumadocs-core/link";
 import type {ComponentPropsWithoutRef} from "react";
 import {cn} from "../../../lib/cn";
-import {isApiDocsRoute} from "@/lib/is-api-docs-route";
 import {NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuTrigger} from "../../navigation-menu";
 import {buttonVariants} from "../../ui/button";
 import {BaseLinkItem} from "../shared/client";
@@ -33,7 +32,6 @@ export function MenuLinkItem({item, ...props}: {item: LinkItemType; className?: 
   if (item.type === "custom") return <div className={cn("grid", props.className)}>{item.children}</div>;
 
   if (item.type === "menu") {
-    const useDocumentNavigation = item.url !== undefined && isApiDocsRoute(item.url);
     const header = (
       <>
         {item.icon}
@@ -46,7 +44,7 @@ export function MenuLinkItem({item, ...props}: {item: LinkItemType; className?: 
         <p className="mb-1 text-sm text-fd-muted-foreground">
           {item.url ? (
             <NavigationMenuLink asChild>
-              {useDocumentNavigation ? <a href={item.url}>{header}</a> : <Link href={item.url}>{header}</Link>}
+              <Link href={item.url}>{header}</Link>
             </NavigationMenuLink>
           ) : (
             header

@@ -5,12 +5,10 @@ import {useI18n} from "fumadocs-ui/contexts/i18n";
 import {ChevronLeft, ChevronRight} from "lucide-react";
 import type {Item} from "@/components/layout/docs/page/types";
 import {cn} from "@/lib/cn";
-import {isApiDocsRoute} from "@/lib/is-api-docs-route";
 
 export function FooterItem({item, index}: {item: Item; index: 0 | 1}) {
   const {text} = useI18n();
   const Icon = index === 0 ? ChevronLeft : ChevronRight;
-  const useDocumentNavigation = isApiDocsRoute(item.url);
 
   const className = cn(
     "flex flex-col gap-2 rounded-lg border p-4 text-sm transition-colors hover:bg-fd-accent/80 hover:text-fd-accent-foreground @max-lg:col-span-full",
@@ -26,14 +24,6 @@ export function FooterItem({item, index}: {item: Item; index: 0 | 1}) {
       <p className="text-fd-muted-foreground truncate">{item.description ?? (index === 0 ? text.previousPage : text.nextPage)}</p>
     </>
   );
-
-  if (useDocumentNavigation) {
-    return (
-      <a href={item.url} className={className}>
-        {content}
-      </a>
-    );
-  }
 
   return (
     <Link href={item.url} className={className}>

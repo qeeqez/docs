@@ -3,7 +3,6 @@ import {usePathname} from "fumadocs-core/framework";
 import Link, {type LinkProps} from "fumadocs-core/link";
 import {ExternalLink} from "lucide-react";
 import {isActive} from "@/lib/is-active";
-import {isApiDocsRoute} from "@/lib/is-api-docs-route";
 import type {ReactNode} from "react";
 import {useInternalContext} from "@/components/layout/docs/sidebar/sidebar-provider";
 import {cn} from "@/lib/cn";
@@ -39,16 +38,6 @@ export function SidebarItem({
   const pathname = usePathname();
   const active = props.href !== undefined && isActive(props.href, pathname, false);
   const {prefetch} = useInternalContext();
-  const useDocumentNavigation = props.href !== undefined && isApiDocsRoute(props.href);
-
-  if (useDocumentNavigation) {
-    return (
-      <a href={props.href} data-active={active} className={cn(sidebarItemVariants({active}), props.className)}>
-        {icon ?? (props.external ? <ExternalLink /> : null)}
-        {props.children}
-      </a>
-    );
-  }
 
   return (
     <Link {...props} data-active={active} className={cn(sidebarItemVariants({active}), props.className)} prefetch={prefetch}>

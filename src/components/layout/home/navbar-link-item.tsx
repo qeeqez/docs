@@ -1,14 +1,12 @@
 import Link from "fumadocs-core/link";
 import {Fragment} from "react";
 import {NavbarLink, NavbarMenu, NavbarMenuContent, NavbarMenuLink, NavbarMenuTrigger} from "@/components/layout/home/navbar";
-import {isApiDocsRoute} from "@/lib/is-api-docs-route";
 import type {LinkItemType} from "@/components/layout/shared";
 
 export function NavbarLinkItem({item, ...props}: {item: LinkItemType; className?: string}) {
   if (item.type === "custom") return <div {...props}>{item.children}</div>;
 
   if (item.type === "menu") {
-    const useDocumentNavigation = item.url !== undefined && isApiDocsRoute(item.url);
     const children = item.items.map((child, j) => {
       if (child.type === "custom") return <Fragment key={j}>{child.children}</Fragment>;
 
@@ -32,9 +30,7 @@ export function NavbarLinkItem({item, ...props}: {item: LinkItemType; className?
 
     return (
       <NavbarMenu>
-        <NavbarMenuTrigger {...props}>
-          {item.url ? useDocumentNavigation ? <a href={item.url}>{item.text}</a> : <Link href={item.url}>{item.text}</Link> : item.text}
-        </NavbarMenuTrigger>
+        <NavbarMenuTrigger {...props}>{item.url ? <Link href={item.url}>{item.text}</Link> : item.text}</NavbarMenuTrigger>
         <NavbarMenuContent>{children}</NavbarMenuContent>
       </NavbarMenu>
     );
