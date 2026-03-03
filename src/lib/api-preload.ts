@@ -1,3 +1,8 @@
+import {preloadApiSchema} from "@/components/mdx/api-page";
+
+let apiRuntimePromise: Promise<void> | undefined;
+
 export async function preloadAPIRuntime() {
-  await Promise.all([import("@/lib/generated/openapi-schema.json"), import("@fumari/json-schema-ts")]);
+  apiRuntimePromise ??= Promise.all([preloadApiSchema(), import("@fumari/json-schema-ts")]).then(() => undefined);
+  await apiRuntimePromise;
 }

@@ -16,10 +16,10 @@ export const Route = createFileRoute("/$lang/$")({
     const splat = params._splat ?? "";
     const slugs = splat ? splat.split("/") : [];
     if (slugs[0] === "api") {
-      await preloadAPIRuntime();
+      void preloadAPIRuntime();
     }
     const data = await loader({data: {slugs, lang: params.lang}});
-    await clientLoader.preload(data.path);
+    void clientLoader.preload(data.path);
     return data;
   },
   head: ({loaderData: _loaderData}) => {
@@ -77,7 +77,7 @@ const clientLoader = browserCollections.docs.createClientLoader({
             <DocsDescription>{frontmatter.description}</DocsDescription>
           </header>
           <DocsBody>
-            <Suspense fallback={null}>
+            <Suspense fallback={<DocsBodyFallback isApiPage={isApiPage} />}>
               <MDX
                 components={getMDXComponents({
                   // a: createRelativeLink(source, page), TODO keke
@@ -113,4 +113,18 @@ function getCategoryFromSlug(pageSlug: string): string {
     .filter(Boolean)
     .map((segment) => segment[0]?.toUpperCase() + segment.slice(1))
     .join(" ");
+}
+
+function DocsBodyFallback({isApiPage}: {isApiPage: boolean}) {
+  if (isApiPage) {
+    return (
+      <div className="space-y-4 py-2">
+        <div className="h-8 w-2/3 animate-pulse rounded-md bg-fd-muted" />
+        <div className="h-8 w-full animate-pulse rounded-md bg-fd-muted" />
+        <div className="h-64 w-full animate-pulse rounded-xl bg-fd-muted/80" />
+      </div>
+    );
+  }
+
+  return <div className="h-24 animate-pulse rounded-lg bg-fd-muted/60" />;
 }
