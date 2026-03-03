@@ -7,6 +7,7 @@ import {Check, ChevronsUpDown} from "lucide-react";
 import {type ComponentProps, type ReactNode, useMemo, useState} from "react";
 import {cn} from "../lib/cn";
 import {isTabActive} from "../lib/is-active";
+import {isApiDocsRoute} from "../lib/is-api-docs-route";
 import {Popover, PopoverContent, PopoverTrigger} from "./ui/popover";
 
 export interface Option extends SidebarTab {
@@ -64,18 +65,15 @@ export function RootToggle({
         {options.map((item) => {
           const isActive = selected && item.url === selected.url;
           if (!isActive && item.unlisted) return;
+          const useDocumentNavigation = isApiDocsRoute(item.url);
 
-          return (
-            <Link
-              key={item.url}
-              href={item.url}
-              onClick={onClick}
-              {...item.props}
-              className={cn(
-                "flex items-center gap-2 rounded-lg p-1.5 hover:bg-fd-accent hover:text-fd-accent-foreground",
-                item.props?.className
-              )}
-            >
+          const className = cn(
+            "flex items-center gap-2 rounded-lg p-1.5 hover:bg-fd-accent hover:text-fd-accent-foreground",
+            item.props?.className
+          );
+
+          const content = (
+            <>
               <div className="shrink-0 size-9 md:mt-1 md:mb-auto md:size-5">{item.icon}</div>
               <div>
                 <p className="text-sm font-medium">{item.title}</p>
@@ -83,6 +81,20 @@ export function RootToggle({
               </div>
 
               <Check className={cn("shrink-0 ms-auto size-3.5 text-fd-primary", !isActive && "invisible")} />
+            </>
+          );
+
+          if (useDocumentNavigation) {
+            return (
+              <a key={item.url} href={item.url} onClick={onClick} {...item.props} className={className}>
+                {content}
+              </a>
+            );
+          }
+
+          return (
+            <Link key={item.url} href={item.url} onClick={onClick} {...item.props} className={className}>
+              {content}
             </Link>
           );
         })}

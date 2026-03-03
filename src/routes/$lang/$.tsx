@@ -9,6 +9,7 @@ import {getMDXComponents} from "@/components/mdx-components";
 import {Footer} from "@/components/layout/footer/footer";
 import {LLMCopyButton} from "@/components/page-actions/llm-copy-button";
 import {loader} from "@/lib/server/docs-loader";
+import {Suspense} from "react";
 
 export const Route = createFileRoute("/$lang/$")({
   component: Page,
@@ -81,11 +82,13 @@ const clientLoader = browserCollections.docs.createClientLoader({
               <DocsDescription>{frontmatter.description}</DocsDescription>
             </header>
             <DocsBody>
-              <MDX
-                components={getMDXComponents({
-                  // a: createRelativeLink(source, page), TODO keke
-                })}
-              />
+              <Suspense fallback={null}>
+                <MDX
+                  components={getMDXComponents({
+                    // a: createRelativeLink(source, page), TODO keke
+                  })}
+                />
+              </Suspense>
             </DocsBody>
           </DocsPage>
           <Footer lang={lang} />

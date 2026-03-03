@@ -1,8 +1,9 @@
-import {mkdir, rm} from "node:fs/promises";
+import {mkdir, rm, writeFile} from "node:fs/promises";
 import {generateFiles} from "fumadocs-openapi";
 import {openapi} from "../src/lib/openapi";
 
 const output = "./content/en/api";
+const generatedOutput = "./src/lib/generated/openapi-schema.json";
 const apiDescription = "Generated API reference from OpenAPI schema";
 const methodOrder = new Map([
   ["get", 0],
@@ -147,4 +148,14 @@ ${indexCards.join("\n")}
       }
     },
   });
+
+  // Generate a client-safe processed schema snapshot for static APIPage hydration.
+  const schema = await openapi.getSchema("./api.json");
+  const serializedSchema = {
+    bundled: schema.bundled,
+    dereferenced: schema.dereferenced,
+  };
+
+  await mkdir("./src/lib/generated", {recursive: true});
+  await writeFile(generatedOutput, `${JSON.stringify(serializedSchema)}\n`);
 })();

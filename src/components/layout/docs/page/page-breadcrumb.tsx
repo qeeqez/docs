@@ -6,6 +6,7 @@ import {useTreeContext, useTreePath} from "fumadocs-ui/contexts/tree";
 import {ChevronRight} from "lucide-react";
 import {type ComponentProps, Fragment, useMemo} from "react";
 import {cn} from "@/lib/cn";
+import {isApiDocsRoute} from "@/lib/is-api-docs-route";
 
 export type BreadcrumbProps = BreadcrumbOptions & ComponentProps<"div">;
 
@@ -31,9 +32,15 @@ export function PageBreadcrumb({includeRoot = false, includeSeparator, includePa
           <Fragment key={item.url ?? (typeof item.name === "string" ? item.name : `item-${i}`)}>
             {i !== 0 && <ChevronRight className="size-3.5 shrink-0" />}
             {item.url ? (
-              <Link href={item.url} className={cn(className, "transition-opacity hover:opacity-80")}>
-                {item.name}
-              </Link>
+              isApiDocsRoute(item.url) ? (
+                <a href={item.url} className={cn(className, "transition-opacity hover:opacity-80")}>
+                  {item.name}
+                </a>
+              ) : (
+                <Link href={item.url} className={cn(className, "transition-opacity hover:opacity-80")}>
+                  {item.name}
+                </Link>
+              )
             ) : (
               <span className={className}>{item.name}</span>
             )}
