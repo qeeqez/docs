@@ -99,12 +99,13 @@ const clientLoader = browserCollections.docs.createClientLoader({
 });
 
 function Page() {
-  const {lang} = Route.useParams();
+  const {lang, _splat} = Route.useParams();
   const data = Route.useLoaderData();
   const Content = clientLoader.getComponent(data.path);
+  const section = _splat?.split("/")[0] ?? "root";
 
   return (
-    <SharedLayout lang={lang} dataTree={data.tree}>
+    <SharedLayout lang={lang} dataTree={data.tree} treeKey={`${lang}:${section}`}>
       <Content />
     </SharedLayout>
   );

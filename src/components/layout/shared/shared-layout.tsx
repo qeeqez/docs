@@ -10,9 +10,10 @@ interface LayoutProps {
   sidebar?: boolean;
   children: ReactNode;
   dataTree: object;
+  treeKey?: string;
 }
 
-export default function SharedLayout({lang, searchToggle = true, sidebar = true, dataTree, children}: LayoutProps) {
+export default function SharedLayout({lang, searchToggle = true, sidebar = true, dataTree, treeKey, children}: LayoutProps) {
   const options = baseOptions(lang);
 
   const tree = useMemo(() => transformPageTree(dataTree as Folder), [dataTree]);
@@ -22,7 +23,7 @@ export default function SharedLayout({lang, searchToggle = true, sidebar = true,
   };
 
   return (
-    <TreeContextProvider tree={tree}>
+    <TreeContextProvider key={treeKey} tree={tree}>
       <HomeLayout {...options} sidebar={sidebar}>
         {children}
       </HomeLayout>
