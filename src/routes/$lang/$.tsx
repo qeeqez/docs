@@ -151,13 +151,18 @@ function StaticApiHtml({html}: {html: string}) {
   useEffect(() => {
     const root = ref.current;
     if (!root) return;
+
     const toc = document.getElementById("nd-toc");
     const rail = findApiRail(root);
     const hiddenTocChildren: HTMLElement[] = [];
-    let railParent: ParentNode | null = null;
-    let railNextSibling: ChildNode | null = null;
 
     const shouldDock = typeof window !== "undefined" && window.matchMedia("(min-width: 1280px)").matches;
+
+    if (toc) {
+      for (const stale of Array.from(toc.querySelectorAll<HTMLElement>(".api-toc-rail"))) {
+        if (stale !== rail) stale.remove();
+      }
+    }
 
     if (toc && rail && shouldDock) {
       for (const child of Array.from(toc.children)) {
@@ -167,20 +172,16 @@ function StaticApiHtml({html}: {html: string}) {
         }
       }
 
-      railParent = rail.parentNode;
-      railNextSibling = rail.nextSibling;
       rail.classList.add("api-toc-rail");
       toc.dataset.apiRail = "true";
       toc.appendChild(rail);
     }
 
-    const panelRoot = rail ?? root;
-
     const setExpanded = (button: HTMLButtonElement, expanded: boolean) => {
       const panelId = button.getAttribute("aria-controls");
       if (!panelId) return;
 
-      const panel = root.querySelector<HTMLElement>(`#${CSS.escape(panelId)}`);
+      const panel = document.getElementById(panelId);
       if (!panel) return;
 
       button.setAttribute("aria-expanded", expanded ? "true" : "false");
@@ -190,11 +191,8 @@ function StaticApiHtml({html}: {html: string}) {
       item?.setAttribute("data-state", expanded ? "open" : "closed");
 
       panel.setAttribute("data-state", expanded ? "open" : "closed");
-      if (expanded) {
-        panel.removeAttribute("hidden");
-      } else {
-        panel.setAttribute("hidden", "");
-      }
+      if (expanded) panel.removeAttribute("hidden");
+      else panel.setAttribute("hidden", "");
     };
 
     const activateTab = (button: HTMLButtonElement) => {
@@ -211,15 +209,12 @@ function StaticApiHtml({html}: {html: string}) {
         const panelId = tab.getAttribute("aria-controls");
         if (!panelId) continue;
 
-        const panel = panelRoot.querySelector<HTMLElement>(`#${CSS.escape(panelId)}`);
+        const panel = document.getElementById(panelId);
         if (!panel) continue;
 
         panel.setAttribute("data-state", selected ? "active" : "inactive");
-        if (selected) {
-          panel.removeAttribute("hidden");
-        } else {
-          panel.setAttribute("hidden", "");
-        }
+        if (selected) panel.removeAttribute("hidden");
+        else panel.setAttribute("hidden", "");
       }
     };
 
@@ -227,9 +222,10 @@ function StaticApiHtml({html}: {html: string}) {
       const target = event.target as HTMLElement | null;
       const button = target?.closest<HTMLButtonElement>("button");
       if (!button) return;
+
       const inApiRoot = root.contains(button);
-      const inRail = panelRoot !== root && panelRoot.contains(button);
-      if (!inApiRoot && !inRail) return;
+      const inTocRail = !!toc?.contains(button) && button.closest(".api-toc-rail") !== null;
+      if (!inApiRoot && !inTocRail) return;
 
       if (button.getAttribute("role") === "tab") {
         event.preventDefault();
@@ -237,10 +233,9 @@ function StaticApiHtml({html}: {html: string}) {
         return;
       }
 
-      const hasExpanded = button.hasAttribute("aria-expanded");
-      const hasPopup = button.hasAttribute("aria-haspopup");
-      const isAccordionTrigger = !!button.closest('[data-orientation="vertical"]');
-      if (!hasExpanded || hasPopup || !isAccordionTrigger) return;
+      if (!button.hasAttribute("aria-controls") || !button.hasAttribute("aria-expanded") || button.hasAttribute("aria-haspopup")) {
+        return;
+      }
 
       event.preventDefault();
       const expanded = button.getAttribute("aria-expanded") === "true";
@@ -251,19 +246,15 @@ function StaticApiHtml({html}: {html: string}) {
     return () => {
       document.removeEventListener("click", onClick);
 
+      if (rail?.classList.contains("api-toc-rail")) {
+        rail.classList.remove("api-toc-rail");
+        rail.remove();
+      }
+
       if (toc) {
         delete toc.dataset.apiRail;
         for (const child of hiddenTocChildren) {
           child.style.removeProperty("display");
-        }
-      }
-
-      if (rail && railParent) {
-        rail.classList.remove("api-toc-rail");
-        if (railNextSibling && railParent.contains(railNextSibling)) {
-          railParent.insertBefore(rail, railNextSibling);
-        } else {
-          railParent.appendChild(rail);
         }
       }
     };
