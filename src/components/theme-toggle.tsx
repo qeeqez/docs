@@ -41,7 +41,7 @@ export function ThemeToggle({
   return (
     <button
       className={cn(
-        "inline-flex size-9 cursor-pointer items-center justify-center rounded-lg border border-fd-border/60 bg-transparent text-fd-muted-foreground transition-colors hover:text-fd-accent-foreground",
+        "inline-flex size-9 cursor-pointer items-center justify-center rounded-lg bg-transparent text-fd-muted-foreground transition-colors hover:text-fd-accent-foreground",
         className
       )}
       aria-label="Toggle theme"
