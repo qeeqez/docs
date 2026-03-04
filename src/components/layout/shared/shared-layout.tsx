@@ -9,6 +9,7 @@ interface LayoutProps {
   lang: string;
   searchToggle?: boolean;
   sidebar?: boolean;
+  isApiPage?: boolean;
   children: ReactNode;
   dataTree: object;
   sectionLinks?: {
@@ -19,9 +20,20 @@ interface LayoutProps {
   treeKey?: string;
 }
 
-export default function SharedLayout({lang, searchToggle = true, sidebar = true, dataTree, sectionLinks, treeKey, children}: LayoutProps) {
+export default function SharedLayout({
+  lang,
+  searchToggle = true,
+  sidebar = true,
+  isApiPage = false,
+  dataTree,
+  sectionLinks,
+  treeKey,
+  children,
+}: LayoutProps) {
   const tree = dataTree as Root;
   const options = baseOptions(lang, sectionLinks);
+  const layoutWidthClass = isApiPage ? "xl:[--fd-layout-width:2200px]" : "xl:[--fd-layout-width:1760px]";
+  const docsLayoutWidthClass = isApiPage ? "xl:layout:[--fd-layout-width:2200px]" : "xl:layout:[--fd-layout-width:1760px]";
 
   return (
     <div className="relative z-10 flex min-h-svh flex-col">
@@ -31,14 +43,14 @@ export default function SharedLayout({lang, searchToggle = true, sidebar = true,
         searchToggle={{
           enabled: false,
         }}
-        className="flex-1 xl:[--fd-layout-width:1760px]"
+        className={`flex-1 ${layoutWidthClass}`}
       >
         <DocsLayout
           key={treeKey}
           tree={tree}
           {...options}
           containerProps={{
-            className: "xl:layout:[--fd-layout-width:1760px]",
+            className: docsLayoutWidthClass,
           }}
           nav={{
             ...options.nav,

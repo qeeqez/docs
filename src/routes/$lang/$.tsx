@@ -91,7 +91,13 @@ function Page() {
   const section = _splat?.split("/")[0] ?? "root";
 
   return (
-    <SharedLayout lang={lang} dataTree={data.tree} sectionLinks={loaderData.sectionLinks} treeKey={`${lang}:${section}`}>
+    <SharedLayout
+      lang={lang}
+      dataTree={data.tree}
+      sectionLinks={loaderData.sectionLinks}
+      treeKey={`${lang}:${section}`}
+      isApiPage={isApiPage}
+    >
       {isApiPage ? <ApiContent apiPage={loaderData.apiPage} page={loaderData.page} /> : Content ? <Content /> : null}
     </SharedLayout>
   );
