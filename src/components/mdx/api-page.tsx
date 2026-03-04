@@ -12,6 +12,7 @@ import {javascript} from "fumadocs-openapi/requests/generators/javascript";
 import {python} from "fumadocs-openapi/requests/generators/python";
 import {isValidElement} from "react";
 import {sample} from "openapi-sampler";
+import {ChevronRight} from "lucide-react";
 
 const APIPageImpl = createAPIPage(openapi, {
   playground: {
@@ -83,6 +84,7 @@ const APIPageImpl = createAPIPage(openapi, {
     async renderOperationLayout(slots, ctx, method) {
       const path = findOperationPath(ctx, method, slots.header);
       const rail = path ? await renderStaticExampleTabs({path, method, ctx}) : slots.apiExample;
+      const requestBody = await renderStaticRequestBodySection(method, ctx);
       const responses = await renderStaticResponseSection(method, ctx);
 
       return (
@@ -93,11 +95,11 @@ const APIPageImpl = createAPIPage(openapi, {
             {slots.description}
             {slots.authSchemes}
             {slots.paremeters}
-            {slots.body}
+            {requestBody}
             {responses}
             {slots.callbacks}
           </div>
-          <div className="@4xl:sticky @4xl:top-[calc(var(--fd-docs-row-1,2rem)+1rem)] @4xl:w-[400px]">{rail}</div>
+          <div className="@4xl:sticky @4xl:top-[calc(var(--fd-docs-row-2,var(--fd-docs-row-1,2rem))+1rem)] @4xl:w-[400px]">{rail}</div>
         </div>
       );
     },
@@ -123,7 +125,25 @@ interface MethodWithPath {
   method?: string;
   operationId?: string;
   summary?: string;
+  requestBody?: RequestBodyLite;
   responses?: Record<string, ResponseObjectLite>;
+}
+
+interface RequestBodyLite {
+  required?: boolean;
+  content?: Record<string, RequestMediaTypeLite>;
+}
+
+interface RequestMediaTypeLite {
+  example?: unknown;
+  examples?: Record<string, RequestExampleLite>;
+  schema?: SchemaLite;
+}
+
+interface RequestExampleLite {
+  summary?: string;
+  description?: string;
+  value?: unknown;
 }
 
 interface ResponseObjectLite {
@@ -141,6 +161,18 @@ interface ResponseExampleLite {
   summary?: string;
   description?: string;
   value?: unknown;
+}
+
+interface SchemaLite {
+  type?: string | string[];
+  description?: string;
+  properties?: Record<string, SchemaLite>;
+  required?: string[];
+  items?: SchemaLite;
+  enum?: unknown[];
+  oneOf?: SchemaLite[];
+  anyOf?: SchemaLite[];
+  allOf?: SchemaLite[];
 }
 
 async function renderStaticExampleTabs({
@@ -213,26 +245,41 @@ async function renderStaticResponseSection(method: MethodWithPath, ctx: Paramete
       const mediaEntries = Object.entries(response.content ?? {});
       const mediaBlocks = await Promise.all(
         mediaEntries.map(async ([mediaType, media]) => {
-          const examples = collectResponseExamples(media).map(async (example) => ({
-            ...example,
-            code: await ctx.renderCodeBlock(
-              "json",
-              JSON.stringify(normalizeResponseSample(example.sample, status, response.description), null, 2)
-            ),
-          }));
-          const renderedExamples = await Promise.all(examples);
+          const properties = getObjectProperties(media.schema as SchemaLite | undefined);
+          const renderedProperties = await Promise.all(
+            properties.map(async ({name, schema, required}) => {
+              const description = schema.description ? await ctx.renderMarkdown(schema.description) : null;
+              return {name, schema, required, description};
+            })
+          );
+
+          let exampleNode: unknown = null;
+          if (renderedProperties.length === 0) {
+            const [example] = collectResponseExamples(media);
+            if (example) {
+              exampleNode = await ctx.renderCodeBlock(
+                "json",
+                JSON.stringify(normalizeResponseSample(example.sample, status, response.description), null, 2)
+              );
+            }
+          }
 
           return {
             mediaType,
-            examples: renderedExamples,
+            rootType: media.schema ? schemaTypeLabel(media.schema as SchemaLite) : null,
+            properties: renderedProperties,
+            exampleNode,
           };
         })
       );
 
       return (
-        <details key={status} className="scroll-m-20 border-b border-fd-border py-2">
-          <summary className="not-prose flex cursor-pointer items-center justify-between gap-2 py-1 font-mono text-fd-foreground">
-            <span>{status}</span>
+        <details key={status} className="group scroll-m-20 border-b border-fd-border py-2">
+          <summary className="not-prose flex list-none cursor-pointer items-center justify-between gap-2 py-1 font-mono text-fd-foreground [&::-webkit-details-marker]:hidden">
+            <span className="inline-flex items-center gap-1.5">
+              <ChevronRight className="size-3.5 text-fd-muted-foreground transition-transform group-open:rotate-90" />
+              {status}
+            </span>
             {mediaEntries.length === 1 ? <code className="text-xs text-fd-muted-foreground">{mediaEntries[0]?.[0]}</code> : null}
           </summary>
           <div className="prose-no-margin space-y-4 pt-2 ps-4">
@@ -240,18 +287,40 @@ async function renderStaticResponseSection(method: MethodWithPath, ctx: Paramete
             {mediaBlocks.map((mediaBlock) => (
               <div key={`${status}:${mediaBlock.mediaType}`} className="space-y-3">
                 {mediaEntries.length > 1 ? <p className="text-xs font-mono text-fd-muted-foreground">{mediaBlock.mediaType}</p> : null}
-                {mediaBlock.examples.length > 0 ? (
-                  mediaBlock.examples.map((example, index) => (
-                    <div key={`${status}:${mediaBlock.mediaType}:${example.label}:${index}`} className="space-y-2">
-                      {mediaBlock.examples.length > 1 ? (
-                        <p className="text-xs font-medium text-fd-muted-foreground">{example.label}</p>
-                      ) : null}
-                      {example.description ? (
-                        <div className="prose-no-margin text-xs text-fd-muted-foreground">{ctx.renderMarkdown(example.description)}</div>
-                      ) : null}
-                      {example.code}
-                    </div>
-                  ))
+                {mediaBlock.rootType ? <p className="text-xs font-mono text-fd-muted-foreground">type: {mediaBlock.rootType}</p> : null}
+                {mediaBlock.properties.length > 0 ? (
+                  <div className="flex flex-col">
+                    {mediaBlock.properties.map((property) => (
+                      <div key={`${status}:${mediaBlock.mediaType}:${property.name}`} className="text-sm border-t py-4 first:border-t-0">
+                        <div className="flex flex-wrap items-center gap-3 not-prose">
+                          <span className="font-medium font-mono text-fd-primary">
+                            {property.name}
+                            {property.required ? (
+                              <span className="text-red-400">*</span>
+                            ) : (
+                              <span className="text-fd-muted-foreground">?</span>
+                            )}
+                          </span>
+                          <span className="text-sm font-mono text-fd-muted-foreground">{schemaTypeLabel(property.schema)}</span>
+                        </div>
+
+                        <div className="prose-no-margin pt-2.5 empty:hidden">{property.description}</div>
+
+                        {property.schema.enum && property.schema.enum.length > 0 ? (
+                          <div className="flex flex-row gap-2 flex-wrap my-2 not-prose">
+                            <div className="flex flex-row items-start gap-2 bg-fd-secondary border rounded-lg text-xs p-1.5 shadow-md max-w-full">
+                              <span className="font-medium">Value in</span>
+                              <code className="min-w-0 flex-1 text-fd-muted-foreground truncate">
+                                {property.schema.enum.map((value) => JSON.stringify(value)).join(" | ")}
+                              </code>
+                            </div>
+                          </div>
+                        ) : null}
+                      </div>
+                    ))}
+                  </div>
+                ) : mediaBlock.exampleNode ? (
+                  mediaBlock.exampleNode
                 ) : (
                   <p className="text-sm text-fd-muted-foreground">No response body.</p>
                 )}
@@ -267,6 +336,78 @@ async function renderStaticResponseSection(method: MethodWithPath, ctx: Paramete
     <section className="mt-10">
       <h2 className="text-2xl font-semibold tracking-tight mb-2">Response Body</h2>
       <div className="divide-y divide-fd-border">{sections}</div>
+    </section>
+  );
+}
+
+async function renderStaticRequestBodySection(method: MethodWithPath, ctx: Parameters<typeof getExampleRequests>[2]) {
+  const requestBody = method.requestBody;
+  const mediaEntries = Object.entries(requestBody?.content ?? {});
+  if (mediaEntries.length === 0) return null;
+
+  const mediaSections = await Promise.all(
+    mediaEntries.map(async ([mediaType, media]) => {
+      const example = getRequestExample(media);
+      const renderedExample = example === undefined ? null : await ctx.renderCodeBlock("json", JSON.stringify(example, null, 2));
+      const properties = getObjectProperties(media.schema);
+      const renderedProperties = await Promise.all(
+        properties.map(async ({name, schema, required}) => {
+          const description = schema.description ? await ctx.renderMarkdown(schema.description) : null;
+          return {name, schema, required, description};
+        })
+      );
+
+      return {
+        mediaType,
+        renderedExample,
+        properties: renderedProperties,
+      };
+    })
+  );
+
+  return (
+    <section className="mt-10 space-y-4">
+      <div className="flex items-center justify-between gap-2">
+        <h2 className="text-2xl font-semibold tracking-tight my-0">Request Body</h2>
+        {requestBody?.required ? <span className="text-xs text-fd-muted-foreground">required</span> : null}
+      </div>
+
+      {mediaSections.map((section) => (
+        <div key={section.mediaType} className="space-y-4">
+          <code className="text-xs text-fd-muted-foreground">{section.mediaType}</code>
+
+          {section.renderedExample}
+
+          {section.properties.length > 0 ? (
+            <div className="flex flex-col">
+              {section.properties.map((property) => (
+                <div key={`${section.mediaType}:${property.name}`} className="text-sm border-t py-4 first:border-t-0">
+                  <div className="flex flex-wrap items-center gap-3 not-prose">
+                    <span className="font-medium font-mono text-fd-primary">
+                      {property.name}
+                      {property.required ? <span className="text-red-400">*</span> : <span className="text-fd-muted-foreground">?</span>}
+                    </span>
+                    <span className="text-sm font-mono text-fd-muted-foreground">{schemaTypeLabel(property.schema)}</span>
+                  </div>
+
+                  <div className="prose-no-margin pt-2.5 empty:hidden">{property.description}</div>
+
+                  {property.schema.enum && property.schema.enum.length > 0 ? (
+                    <div className="flex flex-row gap-2 flex-wrap my-2 not-prose">
+                      <div className="flex flex-row items-start gap-2 bg-fd-secondary border rounded-lg text-xs p-1.5 shadow-md max-w-full">
+                        <span className="font-medium">Value in</span>
+                        <code className="min-w-0 flex-1 text-fd-muted-foreground truncate">
+                          {property.schema.enum.map((value) => JSON.stringify(value)).join(" | ")}
+                        </code>
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      ))}
     </section>
   );
 }
@@ -309,6 +450,69 @@ function sampleSchema(schema: unknown): unknown {
   } catch {
     return schema;
   }
+}
+
+function getRequestExample(media: RequestMediaTypeLite): unknown {
+  if (media.examples) {
+    const firstExample = Object.values(media.examples)[0];
+    if (firstExample && "value" in firstExample) return firstExample.value;
+  }
+  if (media.example !== undefined) return media.example;
+  if (media.schema !== undefined) return sampleSchema(media.schema);
+  return undefined;
+}
+
+function getObjectProperties(schema?: SchemaLite): Array<{name: string; schema: SchemaLite; required: boolean}> {
+  if (!schema || typeof schema !== "object") return [];
+
+  const mergedSchema = mergeAllOf(schema);
+  if (mergedSchema.type === "array" && mergedSchema.items) {
+    return getObjectProperties(mergedSchema.items);
+  }
+  const properties = mergedSchema.properties ?? {};
+  const required = new Set(mergedSchema.required ?? []);
+
+  return Object.entries(properties).map(([name, value]) => ({
+    name,
+    schema: value,
+    required: required.has(name),
+  }));
+}
+
+function mergeAllOf(schema: SchemaLite): SchemaLite {
+  const allOf = schema.allOf ?? [];
+  if (allOf.length === 0) return schema;
+
+  const mergedProperties: Record<string, SchemaLite> = {...(schema.properties ?? {})};
+  const mergedRequired = new Set(schema.required ?? []);
+
+  for (const item of allOf) {
+    for (const [name, value] of Object.entries(item.properties ?? {})) {
+      mergedProperties[name] = value;
+    }
+    for (const name of item.required ?? []) {
+      mergedRequired.add(name);
+    }
+  }
+
+  return {
+    ...schema,
+    properties: mergedProperties,
+    required: Array.from(mergedRequired),
+  };
+}
+
+function schemaTypeLabel(schema: SchemaLite): string {
+  if (Array.isArray(schema.type)) return schema.type.join(" | ");
+  if (schema.type === "array") {
+    const itemType = schema.items ? schemaTypeLabel(schema.items) : "unknown";
+    return `array<${itemType}>`;
+  }
+  if (schema.type) return schema.type;
+  if (schema.oneOf && schema.oneOf.length > 0) return schema.oneOf.map(schemaTypeLabel).join(" | ");
+  if (schema.anyOf && schema.anyOf.length > 0) return schema.anyOf.map(schemaTypeLabel).join(" | ");
+  if ((schema.properties && Object.keys(schema.properties).length > 0) || (schema.allOf && schema.allOf.length > 0)) return "object";
+  return "unknown";
 }
 
 function findOperationPath(ctx: Parameters<typeof getExampleRequests>[2], method: MethodWithPath, headerNode: unknown): string | undefined {
