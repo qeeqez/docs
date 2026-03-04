@@ -26,7 +26,10 @@ const APIPageImpl = createAPIPage(openapi, {
           const renderedExamples = await Promise.all(
             examples.map(async (example) => ({
               ...example,
-              code: await ctx.renderCodeBlock("json", JSON.stringify(normalizeResponseSample(example.sample, tab.code), null, 2)),
+              code: await ctx.renderCodeBlock(
+                "json",
+                JSON.stringify(normalizeResponseSample(example.sample, tab.code, tab.response.description), null, 2)
+              ),
             }))
           );
 
@@ -253,19 +256,39 @@ function resolveRequestPath(pathname: string, data: EncodedRequestData): string 
   return query.length > 0 ? `${pathPart}?${query}` : pathPart;
 }
 
-function normalizeResponseSample(sample: unknown, responseCode: string): unknown {
+function normalizeResponseSample(sample: unknown, responseCode: string, responseDescription?: string): unknown {
   const statusCode = Number(responseCode);
-  if (!Number.isFinite(statusCode)) return sample;
+  const isHttpStatusCode = Number.isFinite(statusCode);
   if (!sample || typeof sample !== "object" || Array.isArray(sample)) return sample;
 
   const record = sample as Record<string, unknown>;
-  if (typeof record.code !== "number") return sample;
-  if (record.code === statusCode) return sample;
+  const normalized: Record<string, unknown> = {...record};
+  let changed = false;
 
-  return {
-    ...record,
-    code: statusCode,
-  };
+  if (isHttpStatusCode) {
+    if (typeof record.code === "number" && record.code !== statusCode) {
+      normalized.code = statusCode;
+      changed = true;
+    }
+    if (typeof record.code === "string" && record.code !== String(statusCode)) {
+      normalized.code = statusCode;
+      changed = true;
+    }
+  }
+
+  const errorMessage = typeof responseDescription === "string" ? responseDescription.trim() : "";
+  if (
+    errorMessage.length > 0 &&
+    isHttpStatusCode &&
+    statusCode >= 400 &&
+    typeof normalized.error === "string" &&
+    normalized.error !== errorMessage
+  ) {
+    normalized.error = errorMessage;
+    changed = true;
+  }
+
+  return changed ? normalized : sample;
 }
 
 interface StaticOpenApiSchema {
