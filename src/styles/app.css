@@ -111,7 +111,7 @@
     gap: calc(var(--spacing) * 1);
     padding: calc(var(--spacing) * 0.75);
     border: 1px solid color-mix(in srgb, var(--color-fd-border) 70%, transparent);
-    border-radius: calc(var(--spacing) * 5);
+    border-radius: calc(var(--spacing) * 2.5);
     background: color-mix(in srgb, var(--color-fd-card) 88%, transparent);
     backdrop-filter: blur(10px);
   }
@@ -119,17 +119,17 @@
   #nd-nav nav > ul:first-of-type [data-active="true"] {
     color: var(--color-fd-accent-foreground);
     background-color: color-mix(in srgb, var(--color-fd-accent) 55%, transparent);
-    border-radius: calc(var(--spacing) * 3);
+    border-radius: calc(var(--spacing) * 1.75);
   }
 
   #nd-nav [data-search-full] {
-    border-radius: calc(var(--spacing) * 6);
+    border-radius: calc(var(--spacing) * 2);
     min-width: 220px;
     background: color-mix(in srgb, var(--color-fd-card) 86%, transparent);
   }
 
   #nd-nav a[href="https://dash.rixl.com"] {
-    border-radius: 9999px;
+    border-radius: calc(var(--spacing) * 2);
     font-weight: 600;
     padding-inline: calc(var(--spacing) * 3.5);
     box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-fd-primary) 34%, transparent) inset;
