@@ -4,7 +4,6 @@ import {ReactNode} from "react";
 import {baseOptions} from "@/lib/layout.shared";
 import type {Root} from "fumadocs-core/page-tree";
 import {Background} from "@/components/layout/home/background";
-import {LargeSearchToggle} from "@/components/search-toggle";
 
 interface LayoutProps {
   lang: string;
@@ -56,11 +55,6 @@ export default function SharedLayout({lang, searchToggle = true, sidebar = true,
           sidebar={{
             enabled: sidebar,
             tabs: false,
-            banner: (
-              <div className="mb-2">
-                <LargeSearchToggle hideIfDisabled className="w-full rounded-xl bg-fd-card/80" />
-              </div>
-            ),
             footer: null,
             collapsible: false,
           }}

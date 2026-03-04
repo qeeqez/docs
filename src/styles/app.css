@@ -81,10 +81,6 @@
     top: calc(var(--spacing) * 14);
   }
 
-  #nd-sidebar > :first-child {
-    display: none;
-  }
-
   #nd-sidebar {
     background-color: transparent !important;
     border-inline-end: 0 !important;
@@ -100,6 +96,16 @@
 
   #nd-sidebar [data-radix-scroll-area-scrollbar] {
     display: none !important;
+  }
+
+  #nd-nav nav {
+    position: relative;
+  }
+
+  #nd-nav nav > ul:first-of-type {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   /* Keep OpenAPI method badges pinned to the right edge in sidebar items. */
