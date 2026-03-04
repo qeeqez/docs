@@ -1,10 +1,6 @@
 import type {BaseLayoutProps} from "@/components/layout/shared";
 import {FooterSection} from "@/components/layout/footer/footer-content-section.tsx";
-import LogoWide from "@/assets/logo_wide.svg?react";
-import DiscordIcon from "@/assets/socials/discord.svg?react";
-import GithubIcon from "@/assets/socials/github.svg?react";
-import XIcon from "@/assets/socials/x.svg?react";
-import YoutubeIcon from "@/assets/socials/youtube.svg?react";
+import {DiscordIcon, GithubIcon, LogoWide, XIcon, YoutubeIcon} from "@/components/icons";
 import {ArrowUpRightIcon} from "lucide-react";
 import {ThemeToggle} from "@/components/theme-toggle";
 
