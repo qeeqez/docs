@@ -81,7 +81,7 @@ export function baseOptionsWithSectionLinks(
           </>
         ),
         url: "https://dash.rixl.com",
-        secondary: false,
+        secondary: true,
       },
     ],
   };
