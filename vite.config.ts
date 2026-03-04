@@ -22,6 +22,7 @@ const ogPrerenderPages = createOgPrerenderPages({
   outputDir: ogOutputDir,
 });
 const staticDocsPages = toStaticPages(docsPrerenderPages.docs);
+const staticMarkdownPages = toStaticPages(docsPrerenderPages.markdown);
 const staticLLMSPages = toStaticPages(docsPrerenderPages.llmsFull);
 const sectionRootRedirectPages = i18n.languages.flatMap((lang) => [
   {path: `/${lang}/home`},
@@ -68,6 +69,7 @@ export default defineConfig({
         },
         ...sectionRootRedirectPages,
         ...staticDocsPages,
+        ...staticMarkdownPages,
         ...ogPrerenderPages,
         ...staticLLMSPages,
       ],

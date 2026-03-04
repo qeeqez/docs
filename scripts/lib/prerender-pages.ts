@@ -6,6 +6,7 @@ import {openApiPagesOptions} from "../../src/lib/openapi-pages";
 
 export interface DocsPrerenderPages {
   docs: string[];
+  markdown: string[];
   og: string[];
   llmsFull: string[];
 }
@@ -55,10 +56,12 @@ export async function collectDocsPrerenderPages({
   await collectOpenApiPages(docsPages, langs, supportedLanguageSet);
 
   const ogPages = new Set<string>();
+  const markdownPages = new Set<string>();
   for (const pagePath of docsPages) {
     const [, lang, ...slugSegments] = pagePath.split("/");
     if (!lang || slugSegments.length === 0) continue;
     ogPages.add(`/${lang}/og/${slugSegments.join("/")}/image.png`);
+    markdownPages.add(`${pagePath}.md`);
   }
 
   const llmsFullPages = new Set<string>();
@@ -69,6 +72,7 @@ export async function collectDocsPrerenderPages({
   const sort = (value: Set<string>) => Array.from(value).sort((a, b) => a.localeCompare(b));
   return {
     docs: sort(docsPages),
+    markdown: sort(markdownPages),
     og: sort(ogPages),
     llmsFull: sort(llmsFullPages),
   };

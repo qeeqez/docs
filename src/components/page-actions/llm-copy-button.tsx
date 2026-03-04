@@ -31,7 +31,15 @@ export function LLMCopyButton({markdownUrl, githubUrl}: LLMCopyButtonProps) {
       await navigator.clipboard.write([
         new ClipboardItem({
           "text/plain": fetch(markdownUrl).then(async (res) => {
+            if (!res.ok) {
+              throw new Error(`Failed to fetch Markdown: ${res.status}`);
+            }
+
             const content = await res.text();
+            if (content.trim().startsWith("<!DOCTYPE") || content.trim().startsWith("<html")) {
+              throw new Error("Markdown endpoint returned HTML");
+            }
+
             cache.set(markdownUrl, content);
             return content;
           }),

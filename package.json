@@ -5,8 +5,7 @@
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "build": "bun run clean && bun lint && vite build && bun run build:md",
-    "build:md": "bun ./scripts/generate-md.ts",
+    "build": "bun run clean && bun lint && vite build",
     "clean": "rm -rf dist",
     "dev": "vite dev",
     "start": "vite preview",
