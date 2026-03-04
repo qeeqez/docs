@@ -4,7 +4,7 @@ description: Create, use, rotate, and revoke API keys for secure server-side API
 ---
 
 
-import {Callout, Card, Columns} from "@/snippets";
+import {Callout} from "@/snippets";
 import {Step, Steps} from 'fumadocs-ui/components/steps';
 
 RIXL authenticates API requests with project-scoped keys sent in the `X-API-Key` header.
@@ -12,23 +12,6 @@ RIXL authenticates API requests with project-scoped keys sent in the `X-API-Key`
 <Callout type="warning" title="Server-Side Only">
   Never expose API keys in frontend code, mobile binaries, or public repositories.
 </Callout>
-
-## Key Capabilities
-
-<Columns cols={2}>
-  <Card title="Generated API Reference" href="/en/api" icon="code">
-    Endpoint methods, request schemas, and response models.
-  </Card>
-  <Card title="Error Handling" href="/en/home/platform/api-documentation/error-handling" icon="alert-triangle">
-    Diagnose `401`, `403`, `429`, and `5xx` responses quickly.
-  </Card>
-  <Card title="Rate Limits" href="/en/home/platform/api-documentation/rate-limits" icon="gauge">
-    Implement safe retry and backoff behavior for throttled traffic.
-  </Card>
-  <Card title="API Integration Overview" href="/en/home/platform/api-documentation" icon="book-open">
-    Functional docs hub for API auth, reliability, and integration setup.
-  </Card>
-</Columns>
 
 ## Create an API Key
 
@@ -90,13 +73,13 @@ Revoke compromised or unused keys immediately.
 ## Security Checklist
 
 - Use separate keys per environment (`dev`, `staging`, `prod`).
+- Use separate keys per service to improve auditability and blast-radius control.
 - Use descriptive key names for service ownership and audits.
 - Keep keys in secret managers, not source code.
 - Monitor and alert on repeated `401`/`403` errors.
 
 ## Related
 
-- [API Integration Overview](/en/home/platform/api-documentation)
 - [Rate Limits](/en/home/platform/api-documentation/rate-limits)
 - [Error Handling](/en/home/platform/api-documentation/error-handling)
 - [API Reference](/en/api)

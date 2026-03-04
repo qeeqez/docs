@@ -1,5 +1,5 @@
 {
   "title": "API Integration",
   "description": "Authentication, limits, and troubleshooting guides for API consumers",
-  "pages": ["index", "---Authentication---", "api-keys", "---Reliability---", "rate-limits", "error-handling"]
+  "pages": ["api-keys", "rate-limits", "error-handling"]
 }
