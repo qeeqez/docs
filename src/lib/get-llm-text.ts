@@ -2,6 +2,8 @@ import type {ApiPageProps, OperationItem, WebhookItem} from "fumadocs-openapi/ui
 import {openapiSource} from "fumadocs-openapi/server";
 import {openapi} from "@/lib/openapi";
 import {openApiPagesOptions} from "@/lib/openapi-pages";
+import {resolveOpenApiServers} from "@/lib/api-base-url";
+import type {ApiServer, ApiServerRoot} from "@/lib/api-base-url";
 
 interface OpenApiSchema {
   $ref?: string;
@@ -29,11 +31,7 @@ interface OpenApiResponse {
   content?: Record<string, OpenApiMediaType | undefined>;
 }
 
-interface OpenApiServer {
-  url?: string;
-  description?: string;
-  variables?: Record<string, {default?: string; description?: string} | undefined>;
-}
+type OpenApiServer = ApiServer;
 
 interface OpenApiSecurityRequirement {
   [schemeName: string]: string[] | undefined;
@@ -74,7 +72,7 @@ interface OpenApiOperation {
   responses?: Record<string, OpenApiResponse | undefined>;
 }
 
-interface OpenApiDereferencedSchema {
+interface OpenApiDereferencedSchema extends ApiServerRoot {
   paths?: Record<string, Record<string, OpenApiOperation | undefined> | undefined>;
   webhooks?: Record<string, Record<string, OpenApiOperation | undefined> | undefined>;
   components?: {
@@ -82,10 +80,6 @@ interface OpenApiDereferencedSchema {
   };
   securityDefinitions?: Record<string, OpenApiSecurityScheme | undefined>;
   security?: OpenApiSecurityRequirement[];
-  servers?: OpenApiServer[];
-  host?: string;
-  basePath?: string;
-  schemes?: string[];
 }
 
 interface OpenApiRootSchema {
@@ -430,15 +424,7 @@ function formatSecuritySchemeSummary(schemeName: string, scheme: OpenApiSecurity
 }
 
 function resolveServers(operation: OpenApiOperation, schema: OpenApiDereferencedSchema | undefined) {
-  if (operation.servers && operation.servers.length > 0) return operation.servers;
-  if (schema?.servers && schema.servers.length > 0) return schema.servers;
-  if (!schema?.host) return [];
-
-  const schemes = schema.schemes && schema.schemes.length > 0 ? schema.schemes : ["https"];
-  const basePath = schema.basePath ?? "";
-  return schemes.map((scheme) => ({
-    url: `${scheme}://${schema.host}${basePath}`,
-  }));
+  return resolveOpenApiServers(schema, operation.servers);
 }
 
 function getRequestBodies(operation: OpenApiOperation) {

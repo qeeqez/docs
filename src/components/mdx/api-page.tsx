@@ -13,6 +13,8 @@ import {python} from "fumadocs-openapi/requests/generators/python";
 import {isValidElement} from "react";
 import {sample} from "openapi-sampler";
 import {ChevronRight} from "lucide-react";
+import {joinApiUrl, resolveOpenApiBaseUrl} from "@/lib/api-base-url";
+import type {ApiServer, ApiServerRoot} from "@/lib/api-base-url";
 
 const APIPageImpl = createAPIPage(openapi, {
   playground: {
@@ -125,6 +127,7 @@ interface MethodWithPath {
   method?: string;
   operationId?: string;
   summary?: string;
+  servers?: ApiServer[];
   requestBody?: RequestBodyLite;
   responses?: Record<string, ResponseObjectLite>;
 }
@@ -187,7 +190,11 @@ async function renderStaticExampleTabs({
   const [firstExample] = getExampleRequests(path, method, ctx);
   if (!firstExample) return <ResponseTabs operation={method} ctx={ctx} />;
 
-  const requestUrl = `https://loading${resolveRequestPath(path, firstExample.encoded as EncodedRequestData)}`;
+  const rootSchema = (ctx.schema as {dereferenced?: unknown}).dereferenced as ApiServerRoot | undefined;
+  const requestUrl = joinApiUrl(
+    resolveOpenApiBaseUrl(rootSchema, method.servers),
+    resolveRequestPath(path, firstExample.encoded as EncodedRequestData)
+  );
   const items = requestCodeGenerators.map((generator) => ({
     id: generator === javascript ? "js" : generator.lang === "bash" ? "curl" : generator.lang,
     label: generator.label ?? generator.lang,
