@@ -26,7 +26,7 @@ const APIPageImpl = createAPIPage(openapi, {
           const renderedExamples = await Promise.all(
             examples.map(async (example) => ({
               ...example,
-              code: await ctx.renderCodeBlock("json", JSON.stringify(example.sample, null, 2)),
+              code: await ctx.renderCodeBlock("json", JSON.stringify(normalizeResponseSample(example.sample, tab.code), null, 2)),
             }))
           );
 
@@ -251,6 +251,21 @@ function resolveRequestPath(pathname: string, data: EncodedRequestData): string 
 
   const query = searchParams.toString();
   return query.length > 0 ? `${pathPart}?${query}` : pathPart;
+}
+
+function normalizeResponseSample(sample: unknown, responseCode: string): unknown {
+  const statusCode = Number(responseCode);
+  if (!Number.isFinite(statusCode)) return sample;
+  if (!sample || typeof sample !== "object" || Array.isArray(sample)) return sample;
+
+  const record = sample as Record<string, unknown>;
+  if (typeof record.code !== "number") return sample;
+  if (record.code === statusCode) return sample;
+
+  return {
+    ...record,
+    code: statusCode,
+  };
 }
 
 interface StaticOpenApiSchema {
