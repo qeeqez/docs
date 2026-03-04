@@ -119,11 +119,11 @@ function ApiContent({
 
   return (
     <DocsPage
-      className="api-docs-page max-w-[1320px] pt-6 md:pt-8 xl:pt-10 md:px-7 xl:px-10 xl:layout:[--fd-toc-width:440px] 2xl:layout:[--fd-toc-width:500px]"
+      className="api-docs-page max-w-[1720px] pt-6 md:pt-8 xl:pt-10 md:px-7 xl:px-10"
       full={false}
       toc={(apiPage.toc as never) ?? []}
       tableOfContent={{
-        enabled: true,
+        enabled: false,
       }}
       footer={{
         children: <Footer lang={lang} />,
@@ -152,29 +152,18 @@ function StaticApiHtml({html}: {html: string}) {
     const root = ref.current;
     if (!root) return;
 
-    const toc = document.getElementById("nd-toc");
-    const rail = findApiRail(root);
-    const hiddenTocChildren: HTMLElement[] = [];
-
-    const shouldDock = typeof window !== "undefined" && window.matchMedia("(min-width: 1280px)").matches;
-
-    if (toc) {
-      for (const stale of Array.from(toc.querySelectorAll<HTMLElement>(".api-toc-rail"))) {
-        if (stale !== rail) stale.remove();
-      }
+    for (const stale of Array.from(document.querySelectorAll<HTMLElement>(".api-toc-rail"))) {
+      stale.classList.remove("api-toc-rail");
+      stale.remove();
     }
-
-    if (toc && rail && shouldDock) {
+    const toc = document.getElementById("nd-toc");
+    if (toc) {
+      delete toc.dataset.apiRail;
       for (const child of Array.from(toc.children)) {
         if (child instanceof HTMLElement) {
-          hiddenTocChildren.push(child);
-          child.style.display = "none";
+          child.style.removeProperty("display");
         }
       }
-
-      rail.classList.add("api-toc-rail");
-      toc.dataset.apiRail = "true";
-      toc.appendChild(rail);
     }
 
     const setExpanded = (button: HTMLButtonElement, expanded: boolean) => {
@@ -224,8 +213,7 @@ function StaticApiHtml({html}: {html: string}) {
       if (!button) return;
 
       const inApiRoot = root.contains(button);
-      const inTocRail = !!toc?.contains(button) && button.closest(".api-toc-rail") !== null;
-      if (!inApiRoot && !inTocRail) return;
+      if (!inApiRoot) return;
 
       if (button.getAttribute("role") === "tab") {
         event.preventDefault();
@@ -245,55 +233,10 @@ function StaticApiHtml({html}: {html: string}) {
     document.addEventListener("click", onClick);
     return () => {
       document.removeEventListener("click", onClick);
-
-      if (rail?.classList.contains("api-toc-rail")) {
-        rail.classList.remove("api-toc-rail");
-        rail.remove();
-      }
-
-      if (toc) {
-        delete toc.dataset.apiRail;
-        for (const child of hiddenTocChildren) {
-          child.style.removeProperty("display");
-        }
-      }
     };
   }, [html]);
 
   return <div ref={ref} suppressHydrationWarning dangerouslySetInnerHTML={{__html: html}} />;
-}
-
-function findApiRail(root: HTMLElement): HTMLElement | null {
-  const tablists = Array.from(root.querySelectorAll<HTMLElement>('[role="tablist"]'));
-  const languageTabs = tablists.find((tablist) => {
-    const labels = Array.from(tablist.querySelectorAll<HTMLButtonElement>('[role="tab"]'))
-      .map((tab) => tab.textContent?.trim().toLowerCase() ?? "")
-      .filter(Boolean);
-
-    return labels.includes("curl") && labels.includes("javascript");
-  });
-
-  if (languageTabs) {
-    const stickyRail = languageTabs.closest<HTMLElement>('[class*="sticky"][class*="top-"]');
-    if (stickyRail) {
-      return stickyRail;
-    }
-
-    const horizontalCard = languageTabs.closest<HTMLElement>('[data-orientation="horizontal"]');
-    if (horizontalCard) {
-      for (let current: HTMLElement | null = horizontalCard; current && current !== root; current = current.parentElement) {
-        if (current.parentElement === root) return current;
-      }
-    }
-  }
-
-  for (const node of root.querySelectorAll<HTMLElement>("div")) {
-    if (node.className.includes("@4xl:w-[400px]") && node.querySelector('[role="tablist"]')) {
-      return node;
-    }
-  }
-
-  return null;
 }
 
 function DocsContent({toc, frontmatter, default: MDX}: LoadedDoc) {
