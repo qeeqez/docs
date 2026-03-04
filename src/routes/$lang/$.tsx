@@ -119,7 +119,7 @@ function ApiContent({
 
   return (
     <DocsPage
-      className="api-docs-page max-w-[1720px] pt-6 md:pt-8 xl:pt-10 md:px-7 xl:px-10"
+      className="api-docs-page max-w-[1880px] pt-3 md:pt-4 xl:pt-5 md:px-6 xl:px-8"
       full={false}
       toc={(apiPage.toc as never) ?? []}
       tableOfContent={{
@@ -129,16 +129,13 @@ function ApiContent({
         children: <Footer lang={lang} />,
       }}
     >
-      <header className="relative space-y-2">
-        <div className="space-y-2.5">
-          <div className="flex items-center justify-between gap-2">
-            <DocsTitle>{page.data.title}</DocsTitle>
-            <LLMCopyButton markdownUrl={markdownPath} githubUrl={`https://github.com/qeeqez/docs/tree/main/${githubPath}`} />
-          </div>
+      <header className="relative">
+        <div className="flex items-center justify-between gap-2">
+          <DocsTitle>{page.data.title}</DocsTitle>
+          <LLMCopyButton markdownUrl={markdownPath} githubUrl={`https://github.com/qeeqez/docs/tree/main/${githubPath}`} />
         </div>
-        <DocsDescription>{page.data.description}</DocsDescription>
       </header>
-      <DocsBody>
+      <DocsBody className="max-w-none">
         <StaticApiHtml html={apiPage.html} />
       </DocsBody>
     </DocsPage>
