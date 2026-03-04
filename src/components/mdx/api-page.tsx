@@ -91,6 +91,7 @@ const APIPageImpl = createAPIPage(openapi, {
             {slots.authSchemes}
             {slots.paremeters}
             {slots.body}
+            {slots.responses}
             {slots.callbacks}
           </div>
           <div className="@4xl:sticky @4xl:top-[calc(var(--fd-docs-row-1,2rem)+1rem)] @4xl:w-[400px]">{rail}</div>
