@@ -109,15 +109,24 @@
     left: 50%;
     transform: translateX(-50%);
     gap: calc(var(--spacing) * 1);
-    padding: calc(var(--spacing) * 0.75);
+    padding: 0;
     border: 0;
     border-radius: calc(var(--spacing) * 2.5);
   }
 
   #nd-nav nav > ul:first-of-type [data-active="true"] {
     color: var(--color-fd-accent-foreground);
-    background-color: transparent;
+    background-color: color-mix(in srgb, var(--color-fd-accent) 78%, transparent);
     border-radius: calc(var(--spacing) * 1.75);
+  }
+
+  #nd-nav nav > ul:first-of-type a {
+    border-radius: calc(var(--spacing) * 1.75);
+    transition: background-color 140ms ease, color 140ms ease;
+  }
+
+  #nd-nav nav > ul:first-of-type a:not([data-active="true"]):hover {
+    background-color: color-mix(in srgb, var(--color-fd-accent) 38%, transparent);
   }
 
   #nd-nav [data-search-full] {
