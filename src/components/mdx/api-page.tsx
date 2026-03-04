@@ -11,11 +11,13 @@ import {java} from "fumadocs-openapi/requests/generators/java";
 import {javascript} from "fumadocs-openapi/requests/generators/javascript";
 import {python} from "fumadocs-openapi/requests/generators/python";
 import {isValidElement} from "react";
+import {sample} from "openapi-sampler";
 
 const APIPageImpl = createAPIPage(openapi, {
   playground: {
     enabled: false,
   },
+  showResponseSchema: false,
   content: {
     async renderResponseTabs(tabs, ctx) {
       if (tabs.length === 0) return null;
@@ -81,6 +83,7 @@ const APIPageImpl = createAPIPage(openapi, {
     async renderOperationLayout(slots, ctx, method) {
       const path = findOperationPath(ctx, method, slots.header);
       const rail = path ? await renderStaticExampleTabs({path, method, ctx}) : slots.apiExample;
+      const responses = await renderStaticResponseSection(method, ctx);
 
       return (
         <div className="flex flex-col gap-x-6 gap-y-4 @4xl:flex-row @4xl:items-start">
@@ -91,7 +94,7 @@ const APIPageImpl = createAPIPage(openapi, {
             {slots.authSchemes}
             {slots.paremeters}
             {slots.body}
-            {slots.responses}
+            {responses}
             {slots.callbacks}
           </div>
           <div className="@4xl:sticky @4xl:top-[calc(var(--fd-docs-row-1,2rem)+1rem)] @4xl:w-[400px]">{rail}</div>
@@ -120,6 +123,24 @@ interface MethodWithPath {
   method?: string;
   operationId?: string;
   summary?: string;
+  responses?: Record<string, ResponseObjectLite>;
+}
+
+interface ResponseObjectLite {
+  description?: string;
+  content?: Record<string, ResponseMediaTypeLite>;
+}
+
+interface ResponseMediaTypeLite {
+  example?: unknown;
+  examples?: Record<string, ResponseExampleLite>;
+  schema?: unknown;
+}
+
+interface ResponseExampleLite {
+  summary?: string;
+  description?: string;
+  value?: unknown;
 }
 
 async function renderStaticExampleTabs({
@@ -180,6 +201,114 @@ async function renderStaticExampleTabs({
       <ResponseTabs operation={method} ctx={ctx} />
     </div>
   );
+}
+
+async function renderStaticResponseSection(method: MethodWithPath, ctx: Parameters<typeof getExampleRequests>[2]) {
+  const responseEntries = Object.entries(method.responses ?? {});
+  if (responseEntries.length === 0) return null;
+
+  const sections = await Promise.all(
+    responseEntries.map(async ([status, response]) => {
+      const descriptionNode = response.description ? await ctx.renderMarkdown(response.description) : null;
+      const mediaEntries = Object.entries(response.content ?? {});
+      const mediaBlocks = await Promise.all(
+        mediaEntries.map(async ([mediaType, media]) => {
+          const examples = collectResponseExamples(media).map(async (example) => ({
+            ...example,
+            code: await ctx.renderCodeBlock(
+              "json",
+              JSON.stringify(normalizeResponseSample(example.sample, status, response.description), null, 2)
+            ),
+          }));
+          const renderedExamples = await Promise.all(examples);
+
+          return {
+            mediaType,
+            examples: renderedExamples,
+          };
+        })
+      );
+
+      return (
+        <details key={status} className="scroll-m-20 border-b border-fd-border py-2">
+          <summary className="not-prose flex cursor-pointer items-center justify-between gap-2 py-1 font-mono text-fd-foreground">
+            <span>{status}</span>
+            {mediaEntries.length === 1 ? <code className="text-xs text-fd-muted-foreground">{mediaEntries[0]?.[0]}</code> : null}
+          </summary>
+          <div className="prose-no-margin space-y-4 pt-2 ps-4">
+            {descriptionNode}
+            {mediaBlocks.map((mediaBlock) => (
+              <div key={`${status}:${mediaBlock.mediaType}`} className="space-y-3">
+                {mediaEntries.length > 1 ? <p className="text-xs font-mono text-fd-muted-foreground">{mediaBlock.mediaType}</p> : null}
+                {mediaBlock.examples.length > 0 ? (
+                  mediaBlock.examples.map((example, index) => (
+                    <div key={`${status}:${mediaBlock.mediaType}:${example.label}:${index}`} className="space-y-2">
+                      {mediaBlock.examples.length > 1 ? (
+                        <p className="text-xs font-medium text-fd-muted-foreground">{example.label}</p>
+                      ) : null}
+                      {example.description ? (
+                        <div className="prose-no-margin text-xs text-fd-muted-foreground">{ctx.renderMarkdown(example.description)}</div>
+                      ) : null}
+                      {example.code}
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-sm text-fd-muted-foreground">No response body.</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </details>
+      );
+    })
+  );
+
+  return (
+    <section className="mt-10">
+      <h2 className="text-2xl font-semibold tracking-tight mb-2">Response Body</h2>
+      <div className="divide-y divide-fd-border">{sections}</div>
+    </section>
+  );
+}
+
+function collectResponseExamples(media: ResponseMediaTypeLite): Array<{label: string; description?: string; sample: unknown}> {
+  const examples: Array<{label: string; description?: string; sample: unknown}> = [];
+  if (media.examples) {
+    for (const [key, entry] of Object.entries(media.examples)) {
+      examples.push({
+        label: entry.summary || `Example ${key}`,
+        description: entry.description,
+        sample: entry.value,
+      });
+    }
+    return examples;
+  }
+
+  if (media.example !== undefined) {
+    examples.push({
+      label: "Example",
+      sample: media.example,
+    });
+    return examples;
+  }
+
+  if (media.schema !== undefined) {
+    examples.push({
+      label: "Example",
+      sample: sampleSchema(media.schema),
+    });
+  }
+
+  return examples;
+}
+
+function sampleSchema(schema: unknown): unknown {
+  if (!schema || typeof schema !== "object") return schema;
+  try {
+    return sample(schema as object);
+  } catch {
+    return schema;
+  }
 }
 
 function findOperationPath(ctx: Parameters<typeof getExampleRequests>[2], method: MethodWithPath, headerNode: unknown): string | undefined {
