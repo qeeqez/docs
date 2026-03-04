@@ -1,61 +1,84 @@
 ---
-title: API Key Error Solutions
-description: Resolve common API authentication errors with step-by-step troubleshooting guides.
+title: API Error Handling
+description: Troubleshoot common API failures and implement resilient retry behavior.
 ---
 
-import {Callout, Card} from "@/snippets";
-import {Step, Steps} from 'fumadocs-ui/components/steps';
+import {Callout} from "@/snippets";
 
 
-This guide helps you fix the most common problems when using Rixl API keys.
+Use this page to diagnose the most common RIXL API failures and choose the correct recovery strategy.
 
-### 401 Unauthorized
+## Status Code Triage
 
-<Card title="401 Unauthorized">
-  This error means your API key isn't working or is missing.
+| Code | Meaning | Primary Fix |
+|------|---------|-------------|
+| `401` | Missing, invalid, revoked, or expired API key | Verify `X-API-Key`, then rotate key if needed |
+| `403` | Key cannot access this resource scope | Check project/key scope and endpoint target |
+| `404` | Resource does not exist | Validate ID and route |
+| `429` | Request rate exceeded | Retry with backoff and lower concurrency |
+| `5xx` | Server-side failure | Retry with capped backoff, then escalate |
 
-  - Make sure you copied the full API key with no extra spaces or missing parts.
-  - Add `X-API-Key` in the Request header.
-  - Go to your dashboard and make sure your key hasn't expired or been deleted.
-</Card>
+## 401 Unauthorized
 
-### 403 Forbidden
+Check in this order:
 
-<Card title="403 Forbidden">
-  Your key works, but it doesn't have permission to do what you're trying to do.
+- Ensure `X-API-Key` header is present.
+- Ensure you are using `https://api.rixl.com` as base URL.
+- Ensure the key value is complete (no truncation or extra characters).
+- If still failing, revoke and create a replacement key.
 
-  - Your key only works for the project where you created it. Make sure you're not trying to access a different project.
-</Card>
+## 403 Forbidden
 
-### 429 Too Many Requests
+The key is valid but not authorized for the target resource.
 
-<Card title="429 Too Many Requests">
-  You're making too many requests too quickly.
+- Confirm the key belongs to the same project/resource you are requesting.
+- Verify the endpoint path and identifiers.
+- Re-test with a known-good read endpoint first (for example, list projects/videos).
 
-  - Add Delays and try again after a short break when this happens.
-  - Make fewer calls to reduce requests by saving responses or combining operations.
-  - If this keeps happening, you need to **Upgrade Your Plan** with higher limits.
-</Card>
+## 404 Not Found
 
-### Lost API Key
+A 404 typically means the ID or route is wrong.
 
-<Callout type="error" title="Lost Keys Can't Be Found">
-  If you lose an API key, we can't show it to you again. For security, we only show keys once when you create them. You need to delete the lost key and create a new one.
+- Re-check path parameters (`videoId`, `imageId`, `feedId`).
+- Confirm you are calling the expected method on the expected path.
+- Ensure resource creation completed before retrieval.
+
+## 429 Too Many Requests
+
+Implement adaptive retry with exponential backoff and jitter:
+
+```javascript
+async function requestWithRetry(send, maxAttempts = 5, baseDelayMs = 500) {
+  for (let attempt = 0; attempt < maxAttempts; attempt += 1) {
+    const response = await send();
+    if (response.status !== 429 && response.status < 500) return response;
+
+    const jitter = Math.floor(Math.random() * 200);
+    const delay = baseDelayMs * (2 ** attempt) + jitter;
+    await new Promise((resolve) => setTimeout(resolve, delay));
+  }
+
+  throw new Error("Request failed after retries");
+}
+```
+
+For more throttling guidance, see [Rate Limits](/en/home/platform/api-documentation/rate-limits).
+
+## 5xx Server Errors
+
+- Retry idempotent operations with capped exponential backoff.
+- Record request IDs, endpoint, and timestamp for incident review.
+- If persistent, escalate with reproducible request details.
+
+## Lost API Key
+
+<Callout type="error" title="Keys Cannot Be Retrieved">
+  API keys are shown once at creation. If the value is lost, revoke the key and create a new one.
 </Callout>
 
-### To delete a key
-<Steps>
+## Related
 
-  <Step>
-    Go to your API key section on your RIXL Dashboard.
-  </Step>
-
-  <Step>
-    Find the key you want to delete and click **Revoke**.
-  </Step>
-
-  <Step>
-    Confirm you want to delete it. The key will stop working immediately.
-  </Step>
-
-</Steps>
+- [API Keys](/en/home/platform/api-documentation/api-keys)
+- [Rate Limits](/en/home/platform/api-documentation/rate-limits)
+- [API Keys](/en/home/platform/api-documentation/api-keys)
+- [API Reference](/en/api)

@@ -1,0 +1,29 @@
+---
+title: API Integration
+description: Start here for API authentication, limits, and troubleshooting before using the generated endpoint reference.
+---
+
+import {Card, Columns, Callout} from "@/snippets";
+
+Use this section for integration setup and operational guidance.  
+For endpoint-by-endpoint schemas and request/response details, use the generated API reference.
+
+<Columns cols={2}>
+  <Card title="Generated API Reference" href="/en/api" icon="code">
+    OpenAPI-generated endpoint docs with methods, params, and example requests.
+  </Card>
+  <Card title="API Key Setup" href="/en/home/platform/api-documentation/api-keys" icon="key">
+    Create, store, and verify API keys for secure server-side API access.
+  </Card>
+  <Card title="Rate Limits" href="/en/home/platform/api-documentation/rate-limits" icon="gauge">
+    Understand throttling behavior and how to build reliable retry logic.
+  </Card>
+  <Card title="Error Handling" href="/en/home/platform/api-documentation/error-handling" icon="alert-triangle">
+    Diagnose common API failures and resolve them with targeted checks.
+  </Card>
+</Columns>
+
+<Callout type="info" title="API Key Management">
+  Use [API Keys](/en/home/platform/api-documentation/api-keys) for key lifecycle guidance:
+  creation, verification, rotation, and revocation.
+</Callout>

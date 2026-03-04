@@ -1,15 +1,5 @@
 {
   "title": "Dashboard",
-  "description": "Visual interface for managing projects and media",
-  "pages": [
-    "overview",
-    "guide",
-    "api-keys",
-    "---Media Management---",
-    "...media",
-    "---Feeds Management---",
-    "...feeds",
-    "---Projects Management---",
-    "...projects"
-  ]
+  "description": "Manage projects, media, and feeds in the dashboard",
+  "pages": ["overview", "guide", "---Projects---", "...projects", "---Media---", "...media", "---Feeds---", "...feeds"]
 }
