@@ -245,13 +245,7 @@ async function renderStaticResponseSection(method: MethodWithPath, ctx: Paramete
       const mediaEntries = Object.entries(response.content ?? {});
       const mediaBlocks = await Promise.all(
         mediaEntries.map(async ([mediaType, media]) => {
-          const properties = getObjectProperties(media.schema as SchemaLite | undefined);
-          const renderedProperties = await Promise.all(
-            properties.map(async ({name, schema, required}) => {
-              const description = schema.description ? await ctx.renderMarkdown(schema.description) : null;
-              return {name, schema, required, description};
-            })
-          );
+          const renderedProperties = await buildRenderedSchemaProperties(media.schema as SchemaLite | undefined, ctx);
 
           let exampleNode: unknown = null;
           if (renderedProperties.length === 0) {
@@ -289,36 +283,7 @@ async function renderStaticResponseSection(method: MethodWithPath, ctx: Paramete
                 {mediaEntries.length > 1 ? <p className="text-xs font-mono text-fd-muted-foreground">{mediaBlock.mediaType}</p> : null}
                 {mediaBlock.rootType ? <p className="text-xs font-mono text-fd-muted-foreground">type: {mediaBlock.rootType}</p> : null}
                 {mediaBlock.properties.length > 0 ? (
-                  <div className="flex flex-col">
-                    {mediaBlock.properties.map((property) => (
-                      <div key={`${status}:${mediaBlock.mediaType}:${property.name}`} className="text-sm border-t py-4 first:border-t-0">
-                        <div className="flex flex-wrap items-center gap-3 not-prose">
-                          <span className="font-medium font-mono text-fd-primary">
-                            {property.name}
-                            {property.required ? (
-                              <span className="text-red-400">*</span>
-                            ) : (
-                              <span className="text-fd-muted-foreground">?</span>
-                            )}
-                          </span>
-                          <span className="text-sm font-mono text-fd-muted-foreground">{schemaTypeLabel(property.schema)}</span>
-                        </div>
-
-                        <div className="prose-no-margin pt-2.5 empty:hidden">{property.description}</div>
-
-                        {property.schema.enum && property.schema.enum.length > 0 ? (
-                          <div className="flex flex-row gap-2 flex-wrap my-2 not-prose">
-                            <div className="flex flex-row items-start gap-2 bg-fd-secondary border rounded-lg text-xs p-1.5 shadow-md max-w-full">
-                              <span className="font-medium">Value in</span>
-                              <code className="min-w-0 flex-1 text-fd-muted-foreground truncate">
-                                {property.schema.enum.map((value) => JSON.stringify(value)).join(" | ")}
-                              </code>
-                            </div>
-                          </div>
-                        ) : null}
-                      </div>
-                    ))}
-                  </div>
+                  <div className="flex flex-col">{renderSchemaProperties(mediaBlock.properties, `${status}:${mediaBlock.mediaType}`)}</div>
                 ) : mediaBlock.exampleNode ? (
                   mediaBlock.exampleNode
                 ) : (
@@ -349,13 +314,7 @@ async function renderStaticRequestBodySection(method: MethodWithPath, ctx: Param
     mediaEntries.map(async ([mediaType, media]) => {
       const example = getRequestExample(media);
       const renderedExample = example === undefined ? null : await ctx.renderCodeBlock("json", JSON.stringify(example, null, 2));
-      const properties = getObjectProperties(media.schema);
-      const renderedProperties = await Promise.all(
-        properties.map(async ({name, schema, required}) => {
-          const description = schema.description ? await ctx.renderMarkdown(schema.description) : null;
-          return {name, schema, required, description};
-        })
-      );
+      const renderedProperties = await buildRenderedSchemaProperties(media.schema, ctx);
 
       return {
         mediaType,
@@ -379,32 +338,7 @@ async function renderStaticRequestBodySection(method: MethodWithPath, ctx: Param
           {section.renderedExample}
 
           {section.properties.length > 0 ? (
-            <div className="flex flex-col">
-              {section.properties.map((property) => (
-                <div key={`${section.mediaType}:${property.name}`} className="text-sm border-t py-4 first:border-t-0">
-                  <div className="flex flex-wrap items-center gap-3 not-prose">
-                    <span className="font-medium font-mono text-fd-primary">
-                      {property.name}
-                      {property.required ? <span className="text-red-400">*</span> : <span className="text-fd-muted-foreground">?</span>}
-                    </span>
-                    <span className="text-sm font-mono text-fd-muted-foreground">{schemaTypeLabel(property.schema)}</span>
-                  </div>
-
-                  <div className="prose-no-margin pt-2.5 empty:hidden">{property.description}</div>
-
-                  {property.schema.enum && property.schema.enum.length > 0 ? (
-                    <div className="flex flex-row gap-2 flex-wrap my-2 not-prose">
-                      <div className="flex flex-row items-start gap-2 bg-fd-secondary border rounded-lg text-xs p-1.5 shadow-md max-w-full">
-                        <span className="font-medium">Value in</span>
-                        <code className="min-w-0 flex-1 text-fd-muted-foreground truncate">
-                          {property.schema.enum.map((value) => JSON.stringify(value)).join(" | ")}
-                        </code>
-                      </div>
-                    </div>
-                  ) : null}
-                </div>
-              ))}
-            </div>
+            <div className="flex flex-col">{renderSchemaProperties(section.properties, section.mediaType)}</div>
           ) : null}
         </div>
       ))}
@@ -460,6 +394,78 @@ function getRequestExample(media: RequestMediaTypeLite): unknown {
   if (media.example !== undefined) return media.example;
   if (media.schema !== undefined) return sampleSchema(media.schema);
   return undefined;
+}
+
+interface RenderedSchemaProperty {
+  name: string;
+  schema: SchemaLite;
+  required: boolean;
+  description: unknown;
+  children: RenderedSchemaProperty[];
+}
+
+async function buildRenderedSchemaProperties(
+  schema: SchemaLite | undefined,
+  ctx: Parameters<typeof getExampleRequests>[2],
+  depth = 0,
+  seen: Set<SchemaLite> = new Set()
+): Promise<RenderedSchemaProperty[]> {
+  if (!schema || depth > 3) return [];
+
+  const props = getObjectProperties(schema);
+  if (props.length === 0) return [];
+
+  return Promise.all(
+    props.map(async ({name, schema: propertySchema, required}) => {
+      const nextSeen = new Set(seen);
+      const canRecurse = !nextSeen.has(propertySchema);
+      nextSeen.add(propertySchema);
+
+      return {
+        name,
+        schema: propertySchema,
+        required,
+        description: propertySchema.description ? await ctx.renderMarkdown(propertySchema.description) : null,
+        children: canRecurse ? await buildRenderedSchemaProperties(propertySchema, ctx, depth + 1, nextSeen) : [],
+      };
+    })
+  );
+}
+
+function renderSchemaProperties(properties: RenderedSchemaProperty[], keyPrefix: string, depth = 0): JSX.Element[] {
+  return properties.map((property, index) => (
+    <div
+      key={`${keyPrefix}:${depth}:${property.name}:${index}`}
+      className={`text-sm ${depth === 0 ? "border-t py-4 first:border-t-0" : "border-t py-3 first:border-t-0"}`}
+    >
+      <div className={`flex flex-wrap items-center gap-3 not-prose ${depth > 0 ? "ps-1" : ""}`}>
+        <span className="font-medium font-mono text-fd-primary">
+          {property.name}
+          {property.required ? <span className="text-red-400">*</span> : <span className="text-fd-muted-foreground">?</span>}
+        </span>
+        <span className="text-sm font-mono text-fd-muted-foreground">{schemaTypeLabel(property.schema)}</span>
+      </div>
+
+      <div className="prose-no-margin pt-2.5 empty:hidden">{property.description}</div>
+
+      {property.schema.enum && property.schema.enum.length > 0 ? (
+        <div className="flex flex-row gap-2 flex-wrap my-2 not-prose">
+          <div className="flex flex-row items-start gap-2 bg-fd-secondary border rounded-lg text-xs p-1.5 shadow-md max-w-full">
+            <span className="font-medium">Value in</span>
+            <code className="min-w-0 flex-1 text-fd-muted-foreground truncate">
+              {property.schema.enum.map((value) => JSON.stringify(value)).join(" | ")}
+            </code>
+          </div>
+        </div>
+      ) : null}
+
+      {property.children.length > 0 ? (
+        <div className="mt-2 border-s border-fd-border/70 ps-4">
+          {renderSchemaProperties(property.children, `${keyPrefix}:${property.name}`, depth + 1)}
+        </div>
+      ) : null}
+    </div>
+  ));
 }
 
 function getObjectProperties(schema?: SchemaLite): Array<{name: string; schema: SchemaLite; required: boolean}> {
