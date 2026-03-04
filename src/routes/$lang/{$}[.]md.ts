@@ -9,8 +9,11 @@ export const Route = createFileRoute("/$lang/{$}.md")({
         const splat = params._splat ?? "";
         const slugs = splat ? splat.split("/") : [];
         const page = source.getPage(slugs, params.lang);
-
-        if (!page || typeof page.data.getText !== "function") throw notFound();
+        const hasMarkdownText = typeof page?.data?.getText === "function";
+        const hasOpenApiData =
+          typeof (page?.data as {getAPIPageProps?: unknown} | undefined)?.getAPIPageProps === "function" &&
+          typeof (page?.data as {getSchema?: unknown} | undefined)?.getSchema === "function";
+        if (!page || (!hasMarkdownText && !hasOpenApiData)) throw notFound();
 
         const content = await getLLMText(page as Parameters<typeof getLLMText>[0]);
         return new Response(content, {
