@@ -5,7 +5,8 @@ import DiscordIcon from "@/assets/socials/discord.svg?react";
 import GithubIcon from "@/assets/socials/github.svg?react";
 import XIcon from "@/assets/socials/x.svg?react";
 import YoutubeIcon from "@/assets/socials/youtube.svg?react";
-import {ChevronRightIcon} from "lucide-react";
+import {ArrowUpRightIcon} from "lucide-react";
+import {ThemeToggle} from "@/components/theme-toggle";
 
 /**
  * Shared layout configurations
@@ -45,6 +46,9 @@ export function baseOptionsWithSectionLinks(
       title: <LogoWide className="h-8 fill-black dark:invert" />,
       transparentMode: "top",
     },
+    themeSwitch: {
+      component: <ThemeToggle />,
+    },
     // see https://fumadocs.dev/docs/ui/navigation/links
     links: [
       {
@@ -73,11 +77,11 @@ export function baseOptionsWithSectionLinks(
         on: "nav",
         text: (
           <>
-            Get Started <ChevronRightIcon />
+            Dashboard <ArrowUpRightIcon className="size-4" />
           </>
         ),
         url: "https://dash.rixl.com",
-        secondary: true,
+        secondary: false,
       },
     ],
   };
