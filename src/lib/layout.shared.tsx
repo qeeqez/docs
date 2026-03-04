@@ -47,7 +47,7 @@ export function baseOptionsWithSectionLinks(
       transparentMode: "top",
     },
     themeSwitch: {
-      component: <ThemeToggle />,
+      enabled: false,
     },
     // see https://fumadocs.dev/docs/ui/navigation/links
     links: [
@@ -82,6 +82,12 @@ export function baseOptionsWithSectionLinks(
         ),
         url: "https://dash.rixl.com",
         secondary: true,
+      },
+      {
+        type: "custom",
+        on: "nav",
+        secondary: true,
+        children: <ThemeToggle />,
       },
     ],
   };
