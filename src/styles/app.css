@@ -148,15 +148,19 @@
     border-radius: calc(var(--spacing) * 2);
     font-weight: 600;
     padding-inline: calc(var(--spacing) * 3.5);
-    background: transparent !important;
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--spacing) * 1);
+    background: var(--color-fd-primary) !important;
+    color: var(--color-gray-950) !important;
     border: 0 !important;
     box-shadow: none !important;
-    transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+    transition: none !important;
   }
 
   #nd-nav a[href="https://dash.rixl.com"]:hover {
-    transform: translateY(-1px);
-    filter: brightness(1.04);
+    background: var(--color-fd-primary) !important;
+    color: var(--color-gray-950) !important;
     box-shadow: none !important;
   }
 
