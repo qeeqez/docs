@@ -26,6 +26,7 @@
         "parameters": [
           {
             "type": "string",
+            "example": "F4edRI23XL",
             "description": "Feed ID",
             "name": "feedId",
             "in": "path",
@@ -82,6 +83,7 @@
         "parameters": [
           {
             "type": "string",
+            "example": "F4edRI23XL",
             "description": "Feed ID",
             "name": "feedId",
             "in": "path",
@@ -89,6 +91,7 @@
           },
           {
             "type": "string",
+            "example": "C6rtRI23XL",
             "description": "Creator ID",
             "name": "creatorId",
             "in": "path",
@@ -145,6 +148,7 @@
         "parameters": [
           {
             "type": "string",
+            "example": "F4edRI23XL",
             "description": "Feed ID",
             "name": "feedId",
             "in": "path",
@@ -152,6 +156,7 @@
           },
           {
             "type": "string",
+            "example": "P5stRI23XL",
             "description": "Post ID",
             "name": "postId",
             "in": "path",
@@ -182,11 +187,6 @@
     },
     "/images": {
       "get": {
-        "security": [
-          {
-            "ApiKeyAuth": []
-          }
-        ],
         "description": "Retrieve all images for a specific project, with pagination and sorting.",
         "produces": ["application/json"],
         "tags": ["Images"],
@@ -213,12 +213,14 @@
           },
           {
             "type": "string",
+            "example": "created_at",
             "description": "Field to sort by (created_at, name, size, updated_at)",
             "name": "sort",
             "in": "query"
           },
           {
             "type": "string",
+            "example": "desc",
             "description": "Sort order (asc, desc)",
             "name": "order",
             "in": "query"
@@ -256,16 +258,16 @@
             }
           }
         },
-        "x-order": 2
-      }
-    },
-    "/images/upload/complete": {
-      "post": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 2
+      }
+    },
+    "/images/upload/complete": {
+      "post": {
         "description": "Complete the upload process and create the image record using API key authentication",
         "consumes": ["application/json"],
         "produces": ["application/json"],
@@ -320,16 +322,16 @@
             }
           }
         },
-        "x-order": 4
-      }
-    },
-    "/images/upload/init": {
-      "post": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 4
+      }
+    },
+    "/images/upload/init": {
+      "post": {
         "description": "Initialize a presigned URL upload for an image file using API key authentication",
         "consumes": ["application/json"],
         "produces": ["application/json"],
@@ -378,16 +380,16 @@
             }
           }
         },
-        "x-order": 3
-      }
-    },
-    "/images/{imageId}": {
-      "get": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 3
+      }
+    },
+    "/images/{imageId}": {
+      "get": {
         "description": "Retrieve an image by its ID for a specific project.",
         "produces": ["application/json"],
         "tags": ["Images"],
@@ -395,6 +397,7 @@
         "parameters": [
           {
             "type": "string",
+            "example": "M1uxRI23XL",
             "description": "Image ID",
             "name": "imageId",
             "in": "path",
@@ -439,20 +442,21 @@
             }
           }
         },
-        "x-order": 1
-      },
-      "delete": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 1
+      },
+      "delete": {
         "description": "delete an image by marking it as deleted",
         "tags": ["Images"],
         "summary": "Delete image",
         "parameters": [
           {
             "type": "string",
+            "example": "M1uxRI23XL",
             "description": "Image ID",
             "name": "imageId",
             "in": "path",
@@ -494,16 +498,16 @@
             }
           }
         },
-        "x-order": 5
-      }
-    },
-    "/videos": {
-      "get": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 5
+      }
+    },
+    "/videos": {
+      "get": {
         "description": "Retrieve all videos for a specific project, with pagination and sorting.",
         "produces": ["application/json"],
         "tags": ["Videos"],
@@ -530,12 +534,14 @@
           },
           {
             "type": "string",
+            "example": "created_at",
             "description": "Field to sort by (created_at, name, size, updated_at, duration)",
             "name": "sort",
             "in": "query"
           },
           {
             "type": "string",
+            "example": "desc",
             "description": "Sort order (asc, desc)",
             "name": "order",
             "in": "query"
@@ -573,6 +579,11 @@
             }
           }
         },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "x-order": 2
       }
     },
@@ -597,11 +608,6 @@
     },
     "/videos/upload/complete": {
       "post": {
-        "security": [
-          {
-            "ApiKeyAuth": []
-          }
-        ],
         "description": "Mark a video upload as complete after successful upload to storage using API key authentication",
         "consumes": ["application/json"],
         "produces": ["application/json"],
@@ -656,16 +662,16 @@
             }
           }
         },
-        "x-order": 4
-      }
-    },
-    "/videos/upload/init": {
-      "post": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 4
+      }
+    },
+    "/videos/upload/init": {
+      "post": {
         "description": "Initialize a video upload and get presigned URLs for video and poster using API key authentication",
         "consumes": ["application/json"],
         "produces": ["application/json"],
@@ -714,16 +720,16 @@
             }
           }
         },
-        "x-order": 3
-      }
-    },
-    "/videos/{videoId}": {
-      "get": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 3
+      }
+    },
+    "/videos/{videoId}": {
+      "get": {
         "description": "Retrieve a video by its ID for a specific project.",
         "produces": ["application/json"],
         "tags": ["Videos"],
@@ -731,6 +737,7 @@
         "parameters": [
           {
             "type": "string",
+            "example": "V3idRI23XL",
             "description": "Video ID",
             "name": "videoId",
             "in": "path",
@@ -775,16 +782,16 @@
             }
           }
         },
-        "x-order": 1
-      }
-    },
-    "/videos/{videoId}/audio-tracks": {
-      "post": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 1
+      }
+    },
+    "/videos/{videoId}/audio-tracks": {
+      "post": {
         "description": "Replace all audio tracks with the provided ones using API key authentication",
         "consumes": ["multipart/form-data"],
         "produces": ["application/json"],
@@ -793,6 +800,7 @@
         "parameters": [
           {
             "type": "string",
+            "example": "V3idRI23XL",
             "description": "Video ID",
             "name": "videoId",
             "in": "path",
@@ -811,6 +819,7 @@
           },
           {
             "type": "string",
+            "example": "en-US,es-ES",
             "description": "Comma-separated language codes",
             "name": "language_codes",
             "in": "formData",
@@ -818,6 +827,7 @@
           },
           {
             "type": "string",
+            "example": "English,Spanish",
             "description": "Comma-separated labels",
             "name": "labels",
             "in": "formData",
@@ -835,20 +845,21 @@
             }
           }
         },
-        "x-order": 10
-      },
-      "delete": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 10
+      },
+      "delete": {
         "description": "Remove all additional audio tracks from a video using API key authentication",
         "tags": ["Videos"],
         "summary": "Delete all audio tracks",
         "parameters": [
           {
             "type": "string",
+            "example": "V3idRI23XL",
             "description": "Video ID",
             "name": "videoId",
             "in": "path",
@@ -863,16 +874,16 @@
             }
           }
         },
-        "x-order": 10.3
-      }
-    },
-    "/videos/{videoId}/audio-tracks/{lang_code}": {
-      "put": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 10.3
+      }
+    },
+    "/videos/{videoId}/audio-tracks/{lang_code}": {
+      "put": {
         "description": "Add or replace an audio track for a specific language using API key authentication",
         "consumes": ["multipart/form-data"],
         "produces": ["application/json"],
@@ -881,6 +892,7 @@
         "parameters": [
           {
             "type": "string",
+            "example": "V3idRI23XL",
             "description": "Video ID",
             "name": "videoId",
             "in": "path",
@@ -888,6 +900,7 @@
           },
           {
             "type": "string",
+            "example": "en-US",
             "description": "Language Code (BCP 47)",
             "name": "lang_code",
             "in": "path",
@@ -902,6 +915,7 @@
           },
           {
             "type": "string",
+            "example": "English",
             "description": "Label (e.g. English)",
             "name": "label",
             "in": "formData"
@@ -915,20 +929,21 @@
             }
           }
         },
-        "x-order": 10.1
-      },
-      "delete": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 10.1
+      },
+      "delete": {
         "description": "Remove an audio track for a specific language using API key authentication",
         "tags": ["Videos"],
         "summary": "Delete audio track by language",
         "parameters": [
           {
             "type": "string",
+            "example": "V3idRI23XL",
             "description": "Video ID",
             "name": "videoId",
             "in": "path",
@@ -936,6 +951,7 @@
           },
           {
             "type": "string",
+            "example": "en-US",
             "description": "Language Code (BCP 47)",
             "name": "lang_code",
             "in": "path",
@@ -950,22 +966,23 @@
             }
           }
         },
-        "x-order": 10.2
-      }
-    },
-    "/videos/{videoId}/audio-tracks/{trackId}": {
-      "delete": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 10.2
+      }
+    },
+    "/videos/{videoId}/audio-tracks/{trackId}": {
+      "delete": {
         "description": "Remove an additional audio track from a video using API key authentication",
         "tags": ["Videos"],
         "summary": "Delete audio track",
         "parameters": [
           {
             "type": "string",
+            "example": "V3idRI23XL",
             "description": "Video ID",
             "name": "videoId",
             "in": "path",
@@ -973,6 +990,7 @@
           },
           {
             "type": "string",
+            "example": "A7trRI23XL",
             "description": "Audio Track ID",
             "name": "trackId",
             "in": "path",
@@ -1011,16 +1029,16 @@
             }
           }
         },
-        "x-order": 11
-      }
-    },
-    "/videos/{videoId}/chapters": {
-      "put": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 11
+      }
+    },
+    "/videos/{videoId}/chapters": {
+      "put": {
         "description": "Replace all chapters for a video (atomic PUT operation) using API key authentication",
         "consumes": ["application/json"],
         "produces": ["application/json"],
@@ -1029,6 +1047,7 @@
         "parameters": [
           {
             "type": "string",
+            "example": "V3idRI23XL",
             "description": "Video ID",
             "name": "videoId",
             "in": "path",
@@ -1036,7 +1055,7 @@
           },
           {
             "description": "Chapters array",
-            "name": "body",
+            "name": "request",
             "in": "body",
             "required": true,
             "schema": {
@@ -1082,14 +1101,14 @@
             }
           }
         },
-        "x-order": 12
-      },
-      "delete": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 12
+      },
+      "delete": {
         "description": "Remove all chapters from a video using API key authentication",
         "produces": ["application/json"],
         "tags": ["Videos"],
@@ -1097,6 +1116,7 @@
         "parameters": [
           {
             "type": "string",
+            "example": "V3idRI23XL",
             "description": "Video ID",
             "name": "videoId",
             "in": "path",
@@ -1135,22 +1155,23 @@
             }
           }
         },
-        "x-order": 13
-      }
-    },
-    "/videos/{videoId}/delete": {
-      "delete": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 13
+      }
+    },
+    "/videos/{videoId}/delete": {
+      "delete": {
         "description": "Delete a video by its ID within a project",
         "tags": ["Videos"],
         "summary": "Delete video",
         "parameters": [
           {
             "type": "string",
+            "example": "V3idRI23XL",
             "description": "Video ID",
             "name": "videoId",
             "in": "path",
@@ -1192,16 +1213,16 @@
             }
           }
         },
-        "x-order": 5
-      }
-    },
-    "/videos/{videoId}/subtitles": {
-      "post": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 5
+      }
+    },
+    "/videos/{videoId}/subtitles": {
+      "post": {
         "description": "Replace all subtitles with the provided ones using API key authentication",
         "consumes": ["multipart/form-data"],
         "produces": ["application/json"],
@@ -1210,6 +1231,7 @@
         "parameters": [
           {
             "type": "string",
+            "example": "V3idRI23XL",
             "description": "Video ID",
             "name": "videoId",
             "in": "path",
@@ -1228,6 +1250,7 @@
           },
           {
             "type": "string",
+            "example": "en-US,es-ES",
             "description": "Comma-separated language codes",
             "name": "language_codes",
             "in": "formData",
@@ -1235,6 +1258,7 @@
           },
           {
             "type": "string",
+            "example": "English,Spanish",
             "description": "Comma-separated labels",
             "name": "labels",
             "in": "formData",
@@ -1252,20 +1276,21 @@
             }
           }
         },
-        "x-order": 8
-      },
-      "delete": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 8
+      },
+      "delete": {
         "description": "Remove all subtitles from a video using API key authentication",
         "tags": ["Videos"],
         "summary": "Delete all subtitles",
         "parameters": [
           {
             "type": "string",
+            "example": "V3idRI23XL",
             "description": "Video ID",
             "name": "videoId",
             "in": "path",
@@ -1280,16 +1305,16 @@
             }
           }
         },
-        "x-order": 8.3
-      }
-    },
-    "/videos/{videoId}/subtitles/{lang_code}": {
-      "put": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 8.3
+      }
+    },
+    "/videos/{videoId}/subtitles/{lang_code}": {
+      "put": {
         "description": "Add or replace a subtitle for a specific language using API key authentication",
         "consumes": ["multipart/form-data"],
         "produces": ["application/json"],
@@ -1298,6 +1323,7 @@
         "parameters": [
           {
             "type": "string",
+            "example": "V3idRI23XL",
             "description": "Video ID",
             "name": "videoId",
             "in": "path",
@@ -1305,6 +1331,7 @@
           },
           {
             "type": "string",
+            "example": "en",
             "description": "Language Code (BCP 47)",
             "name": "lang_code",
             "in": "path",
@@ -1319,6 +1346,7 @@
           },
           {
             "type": "string",
+            "example": "English",
             "description": "Label (e.g. English)",
             "name": "label",
             "in": "formData"
@@ -1332,20 +1360,21 @@
             }
           }
         },
-        "x-order": 8.1
-      },
-      "delete": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 8.1
+      },
+      "delete": {
         "description": "Remove a subtitle for a specific language using API key authentication",
         "tags": ["Videos"],
         "summary": "Delete subtitle by language",
         "parameters": [
           {
             "type": "string",
+            "example": "V3idRI23XL",
             "description": "Video ID",
             "name": "videoId",
             "in": "path",
@@ -1353,6 +1382,7 @@
           },
           {
             "type": "string",
+            "example": "en",
             "description": "Language Code (BCP 47)",
             "name": "lang_code",
             "in": "path",
@@ -1367,22 +1397,23 @@
             }
           }
         },
-        "x-order": 8.2
-      }
-    },
-    "/videos/{videoId}/subtitles/{subtitleId}": {
-      "delete": {
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
+        "x-order": 8.2
+      }
+    },
+    "/videos/{videoId}/subtitles/{subtitleId}": {
+      "delete": {
         "description": "Remove a subtitle from a video using API key authentication",
         "tags": ["Videos"],
         "summary": "Delete subtitle",
         "parameters": [
           {
             "type": "string",
+            "example": "V3idRI23XL",
             "description": "Video ID",
             "name": "videoId",
             "in": "path",
@@ -1390,6 +1421,7 @@
           },
           {
             "type": "string",
+            "example": "S4ubRI23XL",
             "description": "Subtitle ID",
             "name": "subtitleId",
             "in": "path",
@@ -1428,16 +1460,16 @@
             }
           }
         },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "x-order": 9
       }
     },
     "/videos/{videoId}/thumbnail": {
       "put": {
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
         "description": "Update the thumbnail image for an existing video",
         "consumes": ["multipart/form-data"],
         "produces": ["application/json"],
@@ -1496,7 +1528,12 @@
               "$ref": "#/definitions/github_com_qeeqez_api_internal_errors.ErrorResponse"
             }
           }
-        }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
       }
     }
   },
@@ -1716,7 +1753,7 @@
           "example": "2025-01-01T00:00:00Z"
         },
         "video": {
-          "$ref": "#/definitions/Video"
+          "$ref": "#/definitions/github_com_qeeqez_api_internal_videos.VideoResponse"
         }
       }
     },
@@ -1904,11 +1941,61 @@
         }
       }
     },
+    "github_com_qeeqez_api_internal_videos.VideoResponse": {
+      "type": "object",
+      "properties": {
+        "bitrate": {
+          "type": "integer"
+        },
+        "chapters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Chapter"
+          }
+        },
+        "codec": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "number"
+        },
+        "file": {
+          "$ref": "#/definitions/File"
+        },
+        "framerate": {
+          "type": "string"
+        },
+        "hdr": {
+          "type": "boolean"
+        },
+        "height": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "string"
+        },
+        "plan_type": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/github_com_qeeqez_api_db_sqlc.PlanType"
+            }
+          ],
+          "example": "free"
+        },
+        "poster": {
+          "$ref": "#/definitions/Image"
+        },
+        "width": {
+          "type": "integer"
+        }
+      }
+    },
     "github_com_qeeqez_api_internal_videos_handler_upload.CompleteRequest": {
       "type": "object",
       "properties": {
         "video_id": {
-          "type": "string"
+          "type": "string",
+          "example": "VI9VXQxWXQ"
         }
       }
     },

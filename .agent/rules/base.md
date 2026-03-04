@@ -25,7 +25,7 @@ The official documentation site for Rixl, built with Next.js and Fumadocs. Featu
 - public/ - Static assets
 - scripts/ - Build and utility scripts
   - lint.ts - Custom linting
-  - generate-api-docs.ts - API docs generation
+  - generate-api.ts - API docs generation
 
 ## Technology Stack
 
@@ -100,6 +100,7 @@ bun format    # Format code with Oxfmt
 ## Static Export
 
 This project uses Next.js static export (`output: 'export'`):
+
 - All pages are pre-rendered at build time
 - No server-side rendering
 - API routes are build-time only (search index, OG images)
@@ -108,6 +109,7 @@ This project uses Next.js static export (`output: 'export'`):
 ## Linting
 
 The project uses multiple linting tools:
+
 - Oxlint for TypeScript/React code
 - fumadocs-mdx for MDX content validation
 - Custom lint script for additional checks
