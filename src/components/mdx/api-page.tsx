@@ -17,6 +17,64 @@ const APIPageImpl = createAPIPage(openapi, {
     enabled: false,
   },
   content: {
+    async renderResponseTabs(tabs, ctx) {
+      if (tabs.length === 0) return null;
+
+      const panels = await Promise.all(
+        tabs.map(async (tab) => {
+          const examples = tab.examples ?? [];
+          const renderedExamples = await Promise.all(
+            examples.map(async (example) => ({
+              ...example,
+              code: await ctx.renderCodeBlock("json", JSON.stringify(example.sample, null, 2)),
+            }))
+          );
+
+          return {
+            code: tab.code,
+            mediaType: tab.mediaType,
+            description: tab.response.description,
+            examples: renderedExamples,
+          };
+        })
+      );
+
+      return (
+        <Tabs groupId="fumadocs_openapi_responses" defaultValue={panels[0].code} className="bg-fd-card rounded-xl border overflow-hidden">
+          <CodeBlockTabsList>
+            {panels.map((tab) => (
+              <CodeBlockTabsTrigger key={tab.code} value={tab.code}>
+                {tab.code}
+              </CodeBlockTabsTrigger>
+            ))}
+          </CodeBlockTabsList>
+
+          {panels.map((tab) => (
+            <Tab key={tab.code} value={tab.code} className="p-4 space-y-4 bg-fd-background rounded-none data-[state=inactive]:hidden">
+              {tab.description ? <div className="prose-no-margin text-sm">{ctx.renderMarkdown(tab.description)}</div> : null}
+
+              {tab.mediaType ? <p className="text-xs text-fd-muted-foreground font-mono">{tab.mediaType}</p> : null}
+
+              {tab.examples.length > 0 ? (
+                <div className="space-y-4">
+                  {tab.examples.map((example, index) => (
+                    <div key={`${tab.code}:${index}`} className="space-y-2">
+                      {tab.examples.length > 1 ? <p className="text-xs font-medium text-fd-muted-foreground">{example.label}</p> : null}
+                      {example.description ? (
+                        <div className="prose-no-margin text-xs text-fd-muted-foreground">{ctx.renderMarkdown(example.description)}</div>
+                      ) : null}
+                      {example.code}
+                    </div>
+                  ))}
+                </div>
+              ) : tab.description ? null : (
+                <p className="text-sm text-fd-muted-foreground">No response body.</p>
+              )}
+            </Tab>
+          ))}
+        </Tabs>
+      );
+    },
     async renderOperationLayout(slots, ctx, method) {
       const path = findOperationPath(ctx, method, slots.header);
       const rail = path ? await renderStaticExampleTabs({path, method, ctx}) : slots.apiExample;
