@@ -133,7 +133,7 @@
 
   #nd-nav nav > ul:first-of-type a:not([data-active="true"]):hover {
     color: var(--color-fd-accent-foreground);
-    background-color: color-mix(in srgb, var(--color-fd-accent) 24%, transparent);
+    background-color: color-mix(in srgb, var(--color-fd-primary) 12%, transparent);
   }
 
   #nd-nav [data-search-full] {
