@@ -159,7 +159,7 @@
   }
 
   #nd-nav a[href="https://dash.rixl.com"]:hover {
-    background: var(--color-fd-primary) !important;
+    background: color-mix(in srgb, var(--color-fd-primary) 88%, white) !important;
     color: var(--color-gray-950) !important;
     box-shadow: none !important;
   }
