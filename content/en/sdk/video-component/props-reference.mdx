@@ -64,6 +64,10 @@ Automatically starts playback when the component loads. The SDK automatically ha
   The SDK handles browser autoplay policies internally — the video starts muted until the user interacts with the player. Sound controls remain visible so users can unmute at any time. You only need `muted={true}` if you want to permanently disable audio (e.g. background videos).
 </Callout>
 
+<Callout type="warning">
+  **Hover theme exception:** When `theme="hover"` is set, `autoPlay` is ignored. The video is paused by default and only plays when the user hovers over it. See the [Hover Preview](/en/sdk/examples/hover-preview) example for details.
+</Callout>
+
 ### `loop` **(Optional)**
 
 **Type:** `boolean` | **Default:** `false`
