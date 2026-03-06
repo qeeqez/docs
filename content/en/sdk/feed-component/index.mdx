@@ -10,28 +10,39 @@ The Feed component provides a professional-grade, infinite-scrolling feed experi
 ### Key Capabilities
 
 **Scrolling & Content Loading**
-- Infinite vertical scrolling with automatic content loading
-- Virtualized rendering for optimal performance
-- Smart preloading of upcoming content
-- Seamless transitions between posts
+- Infinite vertical scrolling with CSS snap scrolling for TikTok-style navigation
+- 5-component carousel recycling for memory-efficient rendering
+- Next video preloaded automatically, distant videos (5+ positions away) unloaded
+- New content fetched automatically when within 3 posts of the end
+- Posts cached locally in localStorage (up to 50 posts)
 
 **Media Playback**
-- Automatic video play/pause based on viewport visibility
-- Smooth playback transitions
-- Optimized for mobile and desktop
-- Support for both videos and images
+- Videos **loop by default** and start **muted** at **0.5 volume**
+- Auto-unmute on first user interaction
+- Automatic play/pause based on scroll position (current post plays, others pause)
+- Fullscreen is disabled in feed
+- Support for both video and image posts
+
+**Post Descriptions**
+- 2-line truncation by default with "More/Less" toggle
+- Expands up to 70% viewport height when toggled
+- Automatically collapses when scrolling to the next post
+
+**Image Posts**
+- Thumbhash placeholder shown while loading
+- Smooth fade-in transition on load
+- Aspect ratio preserved (contain for wide images, cover for tall)
 
 **User Interaction**
-- Touch gesture support (swipe, tap, double-tap)
-- Deep linking to specific posts
-- Creator-specific filtering
+- Touch gesture support via native scroll snapping
+- Keyboard shortcuts (Space to play/pause, M to mute, arrows for volume)
 - Responsive design with mobile-first approach
 
 **Performance**
-- Efficient memory management
-- Lazy loading of off-screen content
-- Optimized for low-bandwidth connections
-- Automatic quality adjustment
+- 5-component carousel recycles DOM elements for memory efficiency
+- Preload states: current video buffers fully, next 1 preloads, rest load metadata only
+- Passive scroll listeners for smooth performance
+- Async image decoding
 
 <Callout type="info">
     All content is automatically optimized for your users' devices and connection speeds. No additional configuration

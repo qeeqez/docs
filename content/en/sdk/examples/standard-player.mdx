@@ -426,8 +426,8 @@ function ResponsivePlayer() {
     from there.
 </Callout>
 
-<Callout type="warning">
-    **Autoplay Policy**: If you need autoplay, always set `muted={true}`. Browsers block unmuted autoplay.
+<Callout type="info">
+    **Autoplay Policy**: Just use `autoPlay={true}` — the SDK handles browser compliance by starting muted until the user interacts. Only add `muted={true}` if you want to permanently disable audio.
 </Callout>
 
 
@@ -482,10 +482,9 @@ function ResponsivePlayer() {
 ### Video Not Playing
 
 ```tsx
-// Check browser autoplay policies
+// The SDK handles autoplay compliance automatically
 <Video
   id="your-video-id"
-  muted={true} // Required for autoplay
   autoPlay={true}
   onError={(error) => console.error('Playback error:', error)}
 />

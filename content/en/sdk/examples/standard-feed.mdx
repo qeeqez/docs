@@ -97,6 +97,26 @@ export default function FeedWithTabs() {
 ```
 
 
+## Localized Feed
+
+Set the `lang` prop to localize feed UI elements like the "More"/"Less" description toggle:
+
+```tsx
+import { Feed } from '@rixl/videosdk-react';
+
+export default function LocalizedFeed() {
+  return (
+    <div className="h-screen">
+      <Feed feedId="HhUQ5uOQjI" lang="fr" />
+    </div>
+  );
+}
+```
+
+<Callout type="info">
+    **Supported languages**: `en`, `de`, `es`, `fr`, `it`, `pl`, `ru`, `tr`, `uk`. Defaults to `en`.
+</Callout>
+
 ## Best Practices
 
 <Callout type="info">

@@ -58,11 +58,12 @@ function HeroVideo() {
                 id="D3OCjdLP60"
                 className="absolute inset-0 w-full h-full object-cover"
                 autoPlay={true}
-                muted={true} // Required for autoplay in most browsers
+                muted={true}
                 loop={true}
                 progressBar={false}
                 allowPlayPause={false}
                 allowFullscreen={false}
+                theme={"hideUI"}
             />
             <div className="relative z-10 flex items-center justify-center h-full">
                 <h1 className="text-6xl font-bold text-white">Welcome</h1>
@@ -164,8 +165,8 @@ function VideoGallery() {
   **Aspect Ratio**: Use `w-fit h-fit` classes to respect the video's natural aspect ratio, preventing distortion.
 </Callout>
 
-<Callout type="warning">
-  **Autoplay**: Always set `muted={true}` when using `autoPlay={true}` to comply with browser autoplay policies.
+<Callout type="info">
+  **Autoplay**: The SDK handles browser autoplay compliance automatically — just use `autoPlay={true}`. The video starts muted until the user interacts, and sound controls stay visible. Only add `muted={true}` for background videos where audio should be permanently disabled.
 </Callout>
 
 <Callout type="info">

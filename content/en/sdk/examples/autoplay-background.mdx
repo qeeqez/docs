@@ -94,7 +94,7 @@ function HeroSection() {
 | Prop                    | Value      | Purpose                           |
 |-------------------------|------------|-----------------------------------|
 | `autoPlay`              | `true`     | Start video immediately           |
-| `muted`                 | `true`     | Required for autoplay to work     |
+| `muted`                 | `true`     | Permanently disable audio         |
 | `loop`                  | `true`     | Restart video when it ends        |
 | `allowPlayPause`        | `false`    | Disable play/pause interaction    |
 | `allowFullscreen`       | `false`    | Remove fullscreen option          |
@@ -104,7 +104,7 @@ function HeroSection() {
 ## Best Practices
 
 <Callout type="info">
-  <strong>Browser Autoplay:</strong> Always combine <code>autoPlay=&#123;true&#125;</code> with <code>muted=&#123;true&#125;</code> to ensure videos play automatically across all browsers.
+  <strong>Browser Autoplay:</strong> The SDK handles autoplay compliance automatically. For background videos like this, <code>muted=&#123;true&#125;</code> permanently disables audio and hides sound controls — which is the desired behavior when using <code>hideUI</code>.
 </Callout>
 <Callout type="warning">
   <strong>Performance:</strong> Use shorter video loops (10-30 seconds) for better performance and faster loading.

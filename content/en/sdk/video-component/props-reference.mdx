@@ -37,31 +37,31 @@ CSS classes for styling the video container. Supports all CSS frameworks includi
 
 **Type:** `boolean` | **Default:** `false`
 
-Controls the initial mute state of the video. Required for autoplay in most browsers.
+Permanently disables audio and hides all sound controls (mute button, volume slider). Use this for background or ambient videos where sound should never play.
 
 ```tsx
 <Video id="D3OCjdLP60" muted={true} />
 ```
 
+<Callout type="warning">
+  When `muted={true}` is set, the mute button and volume controls are completely hidden. Users will not be able to unmute the video. Only use this for background videos or scenarios where audio is intentionally disabled. For autoplay with the ability to unmute, use `autoPlay={true}` without `muted={true}`.
+</Callout>
+
 ### `autoPlay` **(Optional)**
 
 **Type:** `boolean` | **Default:** `false`
 
-Automatically starts playback when the component loads. Must be combined with `muted={true}` for browser compliance.
+Automatically starts playback when the component loads. The SDK automatically handles browser autoplay compliance by starting the video muted, so you do **not** need to pass `muted={true}`. The player shows sound controls that let users unmute when they choose.
 
 ```tsx
 <Video
   id="D3OCjdLP60"
   autoPlay={true}
-  muted={true} // Required for autoplay
 />
 ```
 
-<Callout type="warning">
-  Many modern browsers block videos from playing audio automatically to improve user experience.
-  To ensure a video starts playing without user interaction, you must use both the `muted={true}` and `autoPlay={true}`
-  attributes.
-  This allows the video to begin playing silently until the user decides to unmute it.
+<Callout type="info">
+  The SDK handles browser autoplay policies internally — the video starts muted until the user interacts with the player. Sound controls remain visible so users can unmute at any time. You only need `muted={true}` if you want to permanently disable audio (e.g. background videos).
 </Callout>
 
 ### `loop` **(Optional)**
@@ -130,7 +130,7 @@ Enables Picture-in-Picture mode support for supported browsers.
 
 ### `theme` **(Optional)**
 
-**Type:** `'default' | 'minimal' | 'hideUI'` | **Default:** `'default'`
+**Type:** `'default' | 'minimal' | 'hover' | 'feed' | 'hideUI'` | **Default:** `'default'`
 
 Selects the player theme and control styling.
 
@@ -141,6 +141,8 @@ Selects the player theme and control styling.
 **Available Themes:**
 - `'default'` - Full-featured player with all standard controls
 - `'minimal'` - Clean, simplified interface with Progressbar and Mute button only
+- `'hover'` - Video plays on mouse enter, pauses on mouse leave. Shows only a mute button and progress bar. Ideal for video thumbnails and preview cards.
+- `'feed'` - Always-visible UI with expandable video description, mute button, and progress bar. Used internally by the Feed component. Use this when building custom feed layouts.
 - `'hideUI'` -  No UI is shown and all playback controls are completely hidden, providing the user with no control over the video.
 
 ### `lang` **(Optional)**
@@ -185,27 +187,27 @@ Specifies the page context for analytics reporting. This helps segment your anal
 
 ### `heatmap` **(Optional)**
 
-**Type:** `boolean` | **Default:** `false`
+**Type:** `boolean` | **Default:** `true`
 
 Displays a visual heatmap overlay on the progress bar showing viewer engagement patterns. Brighter areas indicate sections with higher viewership.
 
 ```tsx
-<Video id="D3OCjdLP60" heatmap={true} />
+<Video id="D3OCjdLP60" heatmap={false} />
 ```
 
 ### `resumeProgress` **(Optional)**
 
-**Type:** `boolean` | **Default:** `false`
+**Type:** `boolean` | **Default:** `true`
 
-Automatically resumes playback from where the user previously stopped watching. Progress is stored locally per video.
+Automatically resumes playback from where the user previously stopped watching. Progress is saved every 2 seconds to localStorage per video. Resume is skipped if the saved position is within the first or last 5 seconds.
 
 ```tsx
-<Video id="D3OCjdLP60" resumeProgress={true} />
+<Video id="D3OCjdLP60" resumeProgress={false} />
 ```
 
 ### `chapters` **(Optional)**
 
-**Type:** `boolean` | **Default:** `false`
+**Type:** `boolean` | **Default:** `true`
 
 Enables video chapters on the progress bar. When enabled, chapters you've added to the video on your [RIXL dashboard](https://dash.rixl.com/videos) will be displayed, allowing viewers to quickly navigate to specific sections of the video—similar to YouTube chapters.
 
@@ -238,7 +240,7 @@ interface VideoProps extends HTMLProps<HTMLVideoElement> {
   allowPictureInPicture?: boolean;
 
   // Theme & Localization
-  theme?: "default" | "minimal" | "hideUI";
+  theme?: "default" | "minimal" | "hover" | "feed" | "hideUI";
   lang?: "en" | "de" | "es" | "fr" | "it" | "pl" | "ru" | "tr" | "uk";
 
   // Analytics

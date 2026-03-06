@@ -207,12 +207,23 @@ Videos may include multiple audio tracks:
 
 ### Seeking Controls
 
-| Action            | Keyboard Shortcut | Description           |
-|-------------------|-------------------|-----------------------|
-| Seek Forward 5s   | `→` (Right Arrow) | Jump ahead 10 seconds |
-| Seek Backward 5s  | `←` (Left Arrow)  | Jump back 10 seconds  |
-| Seek Forward 10s  | `L`               | Quick forward jump    |
-| Seek Backward 10s | `J`               | Quick backward jump   |
+| Action            | Keyboard Shortcut | Description              |
+|-------------------|-------------------|--------------------------|
+| Seek Forward 5s   | `→` (Right Arrow) | Jump ahead 5 seconds     |
+| Seek Backward 5s  | `←` (Left Arrow)  | Jump back 5 seconds      |
+| Seek Forward 10s  | `L`               | Jump ahead 10 seconds    |
+| Seek Backward 10s | `J`               | Jump back 10 seconds     |
+
+### Chapter Navigation
+
+| Action           | Keyboard Shortcut | Description                          |
+|------------------|-------------------|--------------------------------------|
+| Next Chapter     | `Shift + N`       | Jump to the next chapter             |
+| Previous Chapter | `Shift + P`       | Jump to the previous chapter         |
+
+<Callout type="info">
+  Chapter shortcuts are only active when the video has chapters enabled via the `chapters` prop.
+</Callout>
 
 ### Audio Controls
 
@@ -224,10 +235,11 @@ Videos may include multiple audio tracks:
 
 ### Display Controls
 
-| Action            | Keyboard Shortcut | Alternative                |
-|-------------------|-------------------|----------------------------|
-| Toggle Fullscreen | `F`               | Enter/exit fullscreen      |
-| Information/Stats | `I`               | Enter/exit Picture-picture |
+| Action              | Keyboard Shortcut | Description                    |
+|---------------------|-------------------|--------------------------------|
+| Toggle Fullscreen   | `F`               | Enter/exit fullscreen          |
+| Picture-in-Picture  | `I`               | Enter/exit Picture-in-Picture  |
+| Double-click        | Double-click      | Toggle fullscreen              |
 
 ### Quick Navigation
 
@@ -304,3 +316,23 @@ The floating window includes basic controls:
 
 - Use keyboard shortcuts for quick control without showing the control bar
 - Press `Esc` to quickly exit fullscreen mode
+- Double-click anywhere on the video to toggle fullscreen
+
+## Interaction Behaviors
+
+### Controls Auto-hide
+
+In the default theme, player controls automatically hide after **3 seconds** of inactivity. This applies in both normal and fullscreen modes.
+
+- **Mouse movement** reveals the controls
+- **Cursor hides** along with the controls when they auto-hide
+- Controls **stay visible** while the settings menu is open
+- Controls are **always visible** in the `feed` theme
+
+### Action Feedback
+
+When toggling play/pause, the player shows an animated feedback icon at the center of the video with a blurred backdrop. This provides clear visual confirmation of the action.
+
+### Thumbhash Placeholder
+
+While the video is loading, a blurred thumbhash placeholder image is displayed. This prevents layout shift and provides a smooth loading experience. The placeholder is generated from the video's poster image.

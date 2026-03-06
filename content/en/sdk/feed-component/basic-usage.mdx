@@ -58,8 +58,67 @@ function SocialFeed() {
 </Callout>
 
 
+### Localized Feed
+
+```tsx
+function LocalizedFeed() {
+  return (
+    <div className="h-screen">
+      <Feed feedId="your-feed-id" lang="de" />
+    </div>
+  );
+}
+```
+
+### Feed with Custom Font
+
+```tsx
+function StyledFeed() {
+  return (
+    <div className="h-screen">
+      <Feed feedId="your-feed-id" feedFont="proportional_sans" />
+    </div>
+  );
+}
+```
+
+## Feed Behavior
+
+### Scroll Snapping
+
+The feed uses CSS scroll snapping (`snap-y snap-mandatory`) for TikTok-style navigation. Each post snaps into view as the user scrolls, and the current post starts playing automatically.
+
+### Post Descriptions
+
+Video posts can include descriptions that appear at the bottom of the video:
+
+- Truncated to **2 lines** by default
+- A **"More"/"Less"** toggle appears if the text is longer than 2 lines or 300 characters
+- Expands up to **70% of viewport height** when toggled
+- Automatically **collapses** when scrolling to the next post
+
+### Video & Image Posts
+
+The feed supports both video and image posts:
+
+- **Video posts** play automatically when scrolled into view, loop by default, and start muted
+- **Image posts** show a blurred thumbhash placeholder while loading, then fade in smoothly
+
+### Preloading
+
+The feed uses a tiered preloading strategy for performance:
+
+- **Current post** — fully buffered
+- **Next 1 post** — preloaded in background
+- **2–5 posts away** — metadata only
+- **5+ posts away** — unloaded from memory
+
 ## Best Practices
 
 <Callout type="info">
     **Mobile-First**: Design your feed layout with mobile devices in mind, as most feed interactions happen on mobile platforms.
+</Callout>
+
+<Callout type="info">
+    **Container Height**: Always provide a defined height on the feed's parent container (`h-screen`, `h-full`, or a fixed height). Without it, scroll snapping won't work correctly.
 </Callout>

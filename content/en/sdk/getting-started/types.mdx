@@ -27,7 +27,7 @@ interface VideoProps extends HTMLProps<HTMLVideoElement> {
   loop?:boolean;
 }
 
-type VideoTheme = "default" | "minimal" | "hideUI";
+type VideoTheme = "default" | "minimal" | "hover" | "feed" | "hideUI";
 
 type SupportedLanguage = "en" | "de" | "es" | "fr" | "it" | "pl" | "ru" | "tr" | "uk";
 
@@ -51,7 +51,18 @@ interface ImageProps extends HTMLProps<HTMLImageElement> {
 ```typescript
 interface FeedProps extends HTMLProps<HTMLDivElement> {
   feedId: string;
+  lang?: SupportedLanguage;
+  feedFont?: FontFamilyKey;
 }
+
+type FontFamilyKey =
+  | "monospace_serif"
+  | "proportional_serif"
+  | "monospace_sans"
+  | "proportional_sans"
+  | "casual"
+  | "cursive"
+  | "small_caps";
 ```
 
 ## Data Types
