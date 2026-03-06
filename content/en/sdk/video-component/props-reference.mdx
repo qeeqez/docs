@@ -146,7 +146,7 @@ Selects the player theme and control styling.
 - `'default'` - Full-featured player with all standard controls
 - `'minimal'` - Clean, simplified interface with Progressbar and Mute button only
 - `'hover'` - Video plays on mouse enter, pauses on mouse leave. Shows only a mute button and progress bar. Ideal for video thumbnails and preview cards.
-- `'feed'` - Always-visible UI with expandable video description, mute button, and progress bar. Used internally by the Feed component. Use this when building custom feed layouts.
+- `'feed'` - Always-visible UI with expandable video description, mute button, and progress bar. This is the theme used by the Feed component. Use this when building custom feed layouts.
 - `'hideUI'` -  No UI is shown and all playback controls are completely hidden, providing the user with no control over the video.
 
 ### `lang` **(Optional)**
@@ -203,7 +203,7 @@ Displays a visual heatmap overlay on the progress bar showing viewer engagement 
 
 **Type:** `boolean` | **Default:** `true`
 
-Automatically resumes playback from where the user previously stopped watching. Progress is saved every 2 seconds to localStorage per video. Resume is skipped if the saved position is within the first or last 5 seconds.
+Automatically resumes playback from where the user previously stopped watching.
 
 ```tsx
 <Video id="D3OCjdLP60" resumeProgress={false} />
