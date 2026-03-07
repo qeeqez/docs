@@ -58,8 +58,36 @@ function SocialFeed() {
 </Callout>
 
 
+### Localized Feed
+
+```tsx
+function LocalizedFeed() {
+  return (
+    <div className="h-screen">
+      <Feed feedId="your-feed-id" lang="de" />
+    </div>
+  );
+}
+```
+
+### Feed with Custom Font
+
+```tsx
+function StyledFeed() {
+  return (
+    <div className="h-screen">
+      <Feed feedId="your-feed-id" feedFont="proportional_sans" />
+    </div>
+  );
+}
+```
+
 ## Best Practices
 
 <Callout type="info">
     **Mobile-First**: Design your feed layout with mobile devices in mind, as most feed interactions happen on mobile platforms.
+</Callout>
+
+<Callout type="info">
+    **Container Height**: Always provide a defined height on the feed's parent container (`h-screen`, `h-full`, or a fixed height). Without it, scroll snapping won't work correctly.
 </Callout>

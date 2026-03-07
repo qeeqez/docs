@@ -161,11 +161,7 @@ To select quality:
   Auto quality provides the best balance of video quality and smooth playback. It will automatically upgrade or
   downgrade quality as needed.
 
-  The **Auto** setting automatically adjusts video quality based on:
-  - Your internet connection speed
-  - Current network conditions
-  - Device capabilities
-  - Buffer health
+  The **Auto** setting automatically adjusts video quality based on your internet connection and device capabilities.
 </Callout>
 
 Choose a specific quality when you want to:
@@ -207,12 +203,23 @@ Videos may include multiple audio tracks:
 
 ### Seeking Controls
 
-| Action            | Keyboard Shortcut | Description           |
-|-------------------|-------------------|-----------------------|
-| Seek Forward 5s   | `→` (Right Arrow) | Jump ahead 10 seconds |
-| Seek Backward 5s  | `←` (Left Arrow)  | Jump back 10 seconds  |
-| Seek Forward 10s  | `L`               | Quick forward jump    |
-| Seek Backward 10s | `J`               | Quick backward jump   |
+| Action            | Keyboard Shortcut | Description              |
+|-------------------|-------------------|--------------------------|
+| Seek Forward 5s   | `→` (Right Arrow) | Jump ahead 5 seconds     |
+| Seek Backward 5s  | `←` (Left Arrow)  | Jump back 5 seconds      |
+| Seek Forward 10s  | `L`               | Jump ahead 10 seconds    |
+| Seek Backward 10s | `J`               | Jump back 10 seconds     |
+
+### Chapter Navigation
+
+| Action           | Keyboard Shortcut | Description                          |
+|------------------|-------------------|--------------------------------------|
+| Next Chapter     | `Shift + N`       | Jump to the next chapter             |
+| Previous Chapter | `Shift + P`       | Jump to the previous chapter         |
+
+<Callout type="info">
+  Chapter shortcuts are only active when the video has chapters enabled via the `chapters` prop.
+</Callout>
 
 ### Audio Controls
 
@@ -224,10 +231,11 @@ Videos may include multiple audio tracks:
 
 ### Display Controls
 
-| Action            | Keyboard Shortcut | Alternative                |
-|-------------------|-------------------|----------------------------|
-| Toggle Fullscreen | `F`               | Enter/exit fullscreen      |
-| Information/Stats | `I`               | Enter/exit Picture-picture |
+| Action              | Shortcut / Interaction | Description                    |
+|---------------------|------------------------|--------------------------------|
+| Toggle Fullscreen   | `F`                    | Enter/exit fullscreen          |
+| Picture-in-Picture  | `I`                    | Enter/exit Picture-in-Picture  |
+| Double-click        | Double-click           | Toggle fullscreen              |
 
 ### Quick Navigation
 
@@ -263,7 +271,7 @@ Videos may include multiple audio tracks:
 
 **Enabling PiP Mode**:
 
-1. Click the **Picture-in-Picture** icon in the control bar  or Press `F` on your keyboard
+1. Click the **Picture-in-Picture** icon in the control bar  or Press `I` on your keyboard
 2. The video opens in a floating window
 3. Continue working in other applications while the video plays
 4. The PiP window stays on top of other content
@@ -304,3 +312,5 @@ The floating window includes basic controls:
 
 - Use keyboard shortcuts for quick control without showing the control bar
 - Press `Esc` to quickly exit fullscreen mode
+- Double-click anywhere on the video to toggle fullscreen
+

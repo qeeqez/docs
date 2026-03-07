@@ -29,12 +29,12 @@ import { Video } from '@rixl/videosdk-react';
 <Video
   id="your-video-id"
   theme="minimal"
-  muted={true} // Required
+  muted={true} // Permanently disables audio and hides sound controls
 />
 ```
 
-<Callout type="warning">
-    **Must be muted**: No UI controls, no keyboard shortcuts, requires `muted={true}`. This is a blank canvas for custom implementations.
+<Callout type="info">
+    Setting `muted={true}` permanently disables audio and hides the mute button and volume controls. This is ideal for feed components and custom UI implementations where you handle audio separately.
 </Callout>
 
 ## What's Included

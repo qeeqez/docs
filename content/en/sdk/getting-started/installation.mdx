@@ -12,7 +12,7 @@ import {Tabs, TabsContent, TabsList, TabsTrigger} from 'fumadocs-ui/components/t
 Before installing the RIXL Video SDK for React, ensure your project meets these requirements:
 
 - **React**: 18.0 or higher
-- **Node.js**: 16.0 or higher
+- **Node.js**: 24.0 or higher
 - **TailwindCSS**: 4.0.9 or higher *(recommended but optional)*
 
 ## NPM Installation
@@ -76,15 +76,17 @@ Before using the SDK, you need to upload your media content:
   </Step>
 </Steps>
 
-### 2. Import the Components
+### 2. Import the Styles and Components
 
 ```tsx
-import { Video, Image } from '@rixl/videosdk-react';
+import "@rixl/videosdk-react/style.css";
+import { Video, Image, Feed } from '@rixl/videosdk-react';
 ```
 
 ### 3. Use in Your Component
 
 ```tsx
+import "@rixl/videosdk-react/style.css";
 import { Video } from '@rixl/videosdk-react';
 
 function App() {
@@ -108,6 +110,7 @@ Here's a complete example showing how to integrate RIXL components into a React 
 
 ```tsx
 import React from 'react';
+import "@rixl/videosdk-react/style.css";
 import { Video, Image } from '@rixl/videosdk-react';
 
 function MediaShowcase() {
