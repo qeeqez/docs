@@ -1,22 +1,19 @@
 {
   "$schema": "node_modules/oxlint/configuration_schema.json",
   "rules": {
-    "react": "warn",
-    "typescript": "warn",
-    "react-perf": "warn",
-    "jsx-a11y": "warn"
+    "react": "error",
+    "react-perf": "error",
+    "jsx-a11y": "warn",
+    "typescript": "error",
+    "typescript/no-explicit-any": "warn",
+    "eslint/complexity": ["error", {"max": 10}],
+    "eslint/max-lines-per-function": ["error", {"max": 50, "skipComments": true}],
+    "eslint/max-lines": ["error", {"max": 250, "skipBlankLines": true, "skipComments": true}],
+    "eslint/max-params": ["error", 3],
+    "eslint/max-depth": ["error", 3],
+    "eslint/max-statements": ["error", 25],
+    "eslint/max-classes-per-file": ["error", 1]
   },
-  "plugins": [
-    "react",
-    "react-perf"
-  ],
-  "ignorePatterns": [
-    "node_modules",
-    ".next",
-    "dist",
-    "build",
-    "out",
-    ".fumadocs",
-    "routeTree.gen.ts"
-  ]
+  "plugins": ["react", "react-perf", "typescript", "jsx-a11y"],
+  "ignorePatterns": ["*.html"]
 }
