@@ -25,50 +25,50 @@ interface CalloutProps {
   children: ReactNode;
 }
 
+const CALLOUT_CONFIG: Record<CalloutType, CalloutConfig> = {
+  tip: {
+    icon: CheckCircle,
+    bgClass: "bg-green-50 dark:bg-green-900/20",
+    borderClass: "border-green-200 dark:border-green-600/50",
+    textClass: "text-green-800 dark:text-green-100",
+    iconClass: "text-green-600 dark:text-green-300",
+  },
+  info: {
+    icon: Info,
+    bgClass: "bg-blue-50 dark:bg-blue-900/20",
+    borderClass: "border-blue-200 dark:border-blue-600/50",
+    textClass: "text-blue-800 dark:text-blue-100",
+    iconClass: "text-blue-600 dark:text-blue-300",
+  },
+  warning: {
+    icon: AlertTriangle,
+    bgClass: "bg-yellow-50 dark:bg-yellow-900/20",
+    borderClass: "border-yellow-200 dark:border-yellow-600/50",
+    textClass: "text-yellow-800 dark:text-yellow-100",
+    iconClass: "text-yellow-600 dark:text-yellow-300",
+  },
+  warn: {
+    icon: AlertTriangle,
+    bgClass: "bg-yellow-50 dark:bg-yellow-900/20",
+    borderClass: "border-yellow-200 dark:border-yellow-600/50",
+    textClass: "text-yellow-800 dark:text-yellow-100",
+    iconClass: "text-yellow-600 dark:text-yellow-300",
+  },
+  error: {
+    icon: AlertCircle,
+    bgClass: "bg-red-50 dark:bg-red-900/20",
+    borderClass: "border-red-200 dark:border-red-600/50",
+    textClass: "text-red-800 dark:text-red-100",
+    iconClass: "text-red-600 dark:text-red-300",
+  },
+};
+
 /**
  * Callout - Theme-aware alert component with semantic colors
  * MDX-compatible version with proper contrast ratios and accessibility
  */
 export function Callout({type = "info", title, children}: CalloutProps) {
-  const config: Record<CalloutType, CalloutConfig> = {
-    tip: {
-      icon: CheckCircle,
-      bgClass: "bg-green-50 dark:bg-green-900/20",
-      borderClass: "border-green-200 dark:border-green-600/50",
-      textClass: "text-green-800 dark:text-green-100",
-      iconClass: "text-green-600 dark:text-green-300",
-    },
-    info: {
-      icon: Info,
-      bgClass: "bg-blue-50 dark:bg-blue-900/20",
-      borderClass: "border-blue-200 dark:border-blue-600/50",
-      textClass: "text-blue-800 dark:text-blue-100",
-      iconClass: "text-blue-600 dark:text-blue-300",
-    },
-    warning: {
-      icon: AlertTriangle,
-      bgClass: "bg-yellow-50 dark:bg-yellow-900/20",
-      borderClass: "border-yellow-200 dark:border-yellow-600/50",
-      textClass: "text-yellow-800 dark:text-yellow-100",
-      iconClass: "text-yellow-600 dark:text-yellow-300",
-    },
-    warn: {
-      icon: AlertTriangle,
-      bgClass: "bg-yellow-50 dark:bg-yellow-900/20",
-      borderClass: "border-yellow-200 dark:border-yellow-600/50",
-      textClass: "text-yellow-800 dark:text-yellow-100",
-      iconClass: "text-yellow-600 dark:text-yellow-300",
-    },
-    error: {
-      icon: AlertCircle,
-      bgClass: "bg-red-50 dark:bg-red-900/20",
-      borderClass: "border-red-200 dark:border-red-600/50",
-      textClass: "text-red-800 dark:text-red-100",
-      iconClass: "text-red-600 dark:text-red-300",
-    },
-  };
-
-  const {icon: IconComponent, bgClass, borderClass, textClass, iconClass} = config[type] || config.info;
+  const {icon: IconComponent, bgClass, borderClass, textClass, iconClass} = CALLOUT_CONFIG[type] || CALLOUT_CONFIG.info;
 
   return (
     <div className={cn("rounded-2xl border p-4 my-6 transition-colors", "not-prose", bgClass, borderClass, textClass)}>

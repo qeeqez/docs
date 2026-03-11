@@ -7,8 +7,9 @@ import {getMDXComponents} from "@/components/mdx-components";
 import {Footer} from "@/components/layout/footer/footer";
 import {LLMCopyButton} from "@/components/page-actions/llm-copy-button";
 import {loader} from "@/lib/server/docs-loader";
-import {Suspense, useEffect, useRef} from "react";
+import {Suspense} from "react";
 import {useFumadocsLoader} from "fumadocs-core/source/client";
+import {StaticApiHtml} from "@/components/mdx/static-api-html";
 
 export const Route = createFileRoute("/$lang/$")({
   component: Page,
@@ -146,100 +147,6 @@ function ApiContent({
       </DocsBody>
     </DocsPage>
   );
-}
-
-function StaticApiHtml({html}: {html: string}) {
-  const ref = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const root = ref.current;
-    if (!root) return;
-
-    for (const stale of Array.from(document.querySelectorAll<HTMLElement>(".api-toc-rail"))) {
-      stale.classList.remove("api-toc-rail");
-      stale.remove();
-    }
-    const toc = document.getElementById("nd-toc");
-    if (toc) {
-      delete toc.dataset.apiRail;
-      for (const child of Array.from(toc.children)) {
-        if (child instanceof HTMLElement) {
-          child.style.removeProperty("display");
-        }
-      }
-    }
-
-    const setExpanded = (button: HTMLButtonElement, expanded: boolean) => {
-      const panelId = button.getAttribute("aria-controls");
-      if (!panelId) return;
-
-      const panel = document.getElementById(panelId);
-      if (!panel) return;
-
-      button.setAttribute("aria-expanded", expanded ? "true" : "false");
-      button.setAttribute("data-state", expanded ? "open" : "closed");
-
-      const item = button.closest<HTMLElement>("[data-state]");
-      item?.setAttribute("data-state", expanded ? "open" : "closed");
-
-      panel.setAttribute("data-state", expanded ? "open" : "closed");
-      if (expanded) panel.removeAttribute("hidden");
-      else panel.setAttribute("hidden", "");
-    };
-
-    const activateTab = (button: HTMLButtonElement) => {
-      const tabList = button.closest<HTMLElement>('[role="tablist"]');
-      if (!tabList) return;
-
-      const tabs = tabList.querySelectorAll<HTMLButtonElement>('[role="tab"]');
-      for (const tab of tabs) {
-        const selected = tab === button;
-        tab.setAttribute("aria-selected", selected ? "true" : "false");
-        tab.setAttribute("data-state", selected ? "active" : "inactive");
-        tab.tabIndex = selected ? 0 : -1;
-
-        const panelId = tab.getAttribute("aria-controls");
-        if (!panelId) continue;
-
-        const panel = document.getElementById(panelId);
-        if (!panel) continue;
-
-        panel.setAttribute("data-state", selected ? "active" : "inactive");
-        if (selected) panel.removeAttribute("hidden");
-        else panel.setAttribute("hidden", "");
-      }
-    };
-
-    const onClick = (event: MouseEvent) => {
-      const target = event.target as HTMLElement | null;
-      const button = target?.closest<HTMLButtonElement>("button");
-      if (!button) return;
-
-      const inApiRoot = root.contains(button);
-      if (!inApiRoot) return;
-
-      if (button.getAttribute("role") === "tab") {
-        event.preventDefault();
-        activateTab(button);
-        return;
-      }
-
-      if (!button.hasAttribute("aria-controls") || !button.hasAttribute("aria-expanded") || button.hasAttribute("aria-haspopup")) {
-        return;
-      }
-
-      event.preventDefault();
-      const expanded = button.getAttribute("aria-expanded") === "true";
-      setExpanded(button, !expanded);
-    };
-
-    document.addEventListener("click", onClick);
-    return () => {
-      document.removeEventListener("click", onClick);
-    };
-  }, [html]);
-
-  return <div ref={ref} suppressHydrationWarning dangerouslySetInnerHTML={{__html: html}} />;
 }
 
 function DocsContent({toc, frontmatter, default: MDX}: LoadedDoc) {

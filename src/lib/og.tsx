@@ -1,5 +1,5 @@
 import fs from "node:fs/promises";
-import type {ReactElement, ReactNode} from "react";
+import type {CSSProperties, ReactElement, ReactNode} from "react";
 import type {InferPageType} from "fumadocs-core/source";
 import ImageResponse from "@takumi-rs/image-response";
 import path from "node:path";
@@ -24,7 +24,12 @@ interface OGImageOptions {
   icon?: ReactNode;
 }
 
-export async function generateOGImage(page: InferPageType<any>, options?: OGImageOptions): Promise<Response> {
+type PageData = {
+  title: string;
+  description?: string;
+};
+
+export async function generateOGImage(page: InferPageType<PageData>, options?: OGImageOptions): Promise<Response> {
   const title = page.data.title;
   const description = page.data.description;
 
@@ -64,54 +69,50 @@ const getTruncatedText = (maxLength: number, text?: string) => {
   return `${text.slice(0, maxLength)}...`;
 };
 
+const iconRowStyle: CSSProperties = {display: "flex"};
+const contentStyle: CSSProperties = {display: "flex", flexDirection: "column", maxWidth: "80%"};
+const titleStyle: CSSProperties = {fontWeight: 600, fontSize: "82px", marginTop: 0, marginBottom: 0};
+const descriptionStyle: CSSProperties = {
+  fontWeight: 400,
+  fontSize: "36px",
+  marginBottom: 0,
+  color: "rgba(240,240,240,0.8)",
+};
+
+function buildRootStyle(primaryColor: string, secondaryColor: string, primaryTextColor: string): CSSProperties {
+  return {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    width: "100%",
+    height: "100%",
+    color: primaryTextColor,
+    padding: "4rem",
+    backgroundImage: `radial-gradient(at top right, ${primaryColor}, ${secondaryColor})`,
+  };
+}
+
+function TextBlock({title, description}: {title: string; description?: string}) {
+  return (
+    <div style={contentStyle}>
+      <p style={titleStyle}>{title}</p>
+      <p style={descriptionStyle}>{getTruncatedText(80, description)}</p>
+    </div>
+  );
+}
+
 function generate({
   primaryColor = "#FFA41C",
   secondaryColor = "#D33F49",
-  primaryTextColor: _primaryTextColor = "#FFFFFF",
-  ...props
+  primaryTextColor = "#FFFFFF",
+  title,
+  description,
+  icon,
 }: GenerateProps): ReactElement {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        width: "100%",
-        height: "100%",
-        color: "white",
-        padding: "4rem",
-        backgroundImage: `radial-gradient(at top right, ${primaryColor}, ${secondaryColor})`,
-      }}
-    >
-      <div style={{display: "flex"}}>{props.icon}</div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          maxWidth: "80%",
-        }}
-      >
-        <p
-          style={{
-            fontWeight: 600,
-            fontSize: "82px",
-            marginTop: 0,
-            marginBottom: 0,
-          }}
-        >
-          {props.title}
-        </p>
-        <p
-          style={{
-            fontWeight: 400,
-            fontSize: "36px",
-            marginBottom: 0,
-            color: "rgba(240,240,240,0.8)",
-          }}
-        >
-          {getTruncatedText(80, props.description)}
-        </p>
-      </div>
+    <div style={buildRootStyle(primaryColor, secondaryColor, primaryTextColor)}>
+      <div style={iconRowStyle}>{icon}</div>
+      <TextBlock title={title} description={description} />
     </div>
   );
 }

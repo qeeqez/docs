@@ -20,6 +20,54 @@ interface LayoutProps {
   treeKey?: string;
 }
 
+type LayoutWidthClasses = {
+  layoutWidthClass: string;
+  docsLayoutWidthClass: string;
+};
+
+type DocsLayoutPropsConfig = {
+  tree: Root;
+  options: ReturnType<typeof baseOptions>;
+  docsLayoutWidthClass: string;
+  searchToggle: boolean;
+  sidebar: boolean;
+};
+
+function getLayoutWidthClasses(isApiPage: boolean): LayoutWidthClasses {
+  return {
+    layoutWidthClass: isApiPage ? "xl:[--fd-layout-width:2200px]" : "xl:[--fd-layout-width:1760px]",
+    docsLayoutWidthClass: isApiPage ? "xl:layout:[--fd-layout-width:2200px]" : "xl:layout:[--fd-layout-width:1760px]",
+  };
+}
+
+function buildDocsLayoutProps({tree, options, docsLayoutWidthClass, searchToggle, sidebar}: DocsLayoutPropsConfig) {
+  return {
+    tree,
+    ...options,
+    containerProps: {
+      className: docsLayoutWidthClass,
+    },
+    nav: {
+      ...options.nav,
+      enabled: false,
+      title: null,
+      children: null,
+    },
+    searchToggle: {
+      enabled: searchToggle,
+    },
+    themeSwitch: {
+      enabled: false,
+    },
+    sidebar: {
+      enabled: sidebar,
+      tabs: false,
+      footer: null,
+      collapsible: false,
+    },
+  };
+}
+
 export default function SharedLayout({
   lang,
   searchToggle = true,
@@ -32,8 +80,14 @@ export default function SharedLayout({
 }: LayoutProps) {
   const tree = dataTree as Root;
   const options = baseOptions(lang, sectionLinks);
-  const layoutWidthClass = isApiPage ? "xl:[--fd-layout-width:2200px]" : "xl:[--fd-layout-width:1760px]";
-  const docsLayoutWidthClass = isApiPage ? "xl:layout:[--fd-layout-width:2200px]" : "xl:layout:[--fd-layout-width:1760px]";
+  const {layoutWidthClass, docsLayoutWidthClass} = getLayoutWidthClasses(isApiPage);
+  const docsLayoutProps = buildDocsLayoutProps({
+    tree,
+    options,
+    docsLayoutWidthClass,
+    searchToggle,
+    sidebar,
+  });
 
   return (
     <div className="relative z-10 flex min-h-svh flex-col">
@@ -47,29 +101,7 @@ export default function SharedLayout({
       >
         <DocsLayout
           key={treeKey}
-          tree={tree}
-          {...options}
-          containerProps={{
-            className: docsLayoutWidthClass,
-          }}
-          nav={{
-            ...options.nav,
-            enabled: false,
-            title: null,
-            children: null,
-          }}
-          searchToggle={{
-            enabled: searchToggle,
-          }}
-          themeSwitch={{
-            enabled: false,
-          }}
-          sidebar={{
-            enabled: sidebar,
-            tabs: false,
-            footer: null,
-            collapsible: false,
-          }}
+          {...docsLayoutProps}
         >
           {children}
         </DocsLayout>

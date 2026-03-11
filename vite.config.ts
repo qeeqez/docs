@@ -78,4 +78,10 @@ export default defineConfig({
       "@/snippets": `${__dirname}/src/components/mdx`,
     },
   },
+  optimizeDeps: {
+    include: ["xml-js/lib/js2xml"],
+  },
+  ssr: {
+    noExternal: ["@rixl/videosdk-react"],
+  },
 });

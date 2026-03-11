@@ -3,7 +3,13 @@ function normalize(url: string) {
   return url;
 }
 
-export function isActive(url: string, pathname: string, nested = true, activeSubfolders?: string[]): boolean {
+type ActiveOptions = {
+  nested?: boolean;
+  activeSubfolders?: string[];
+};
+
+export function isActive(url: string, pathname: string, options: ActiveOptions = {}): boolean {
+  const {nested = true, activeSubfolders} = options;
   url = normalize(url);
   pathname = normalize(pathname);
 
