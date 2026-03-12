@@ -30,27 +30,68 @@ const showArrow = (href?: string, arrow?: ArrowType) => {
   return isExternalLink(href);
 };
 
-export const Card = ({icon, title, description: _description, href, arrow, cta: _cta, ...props}: Props) => {
-  const isExternal = !!href && isExternalLink(href);
-  const E: any = href ? (isExternal ? "a" : Link) : "div";
+type CardWrapperProps = Omit<HTMLAttributes<HTMLElement>, "title" | "children"> & {
+  href?: string;
+  isExternal: boolean;
+  title: ReactNode;
+  className?: string;
+  children: ReactNode;
+};
+
+function buildCardClassName(href: string | undefined, className: string | undefined) {
+  return cn(
+    "block group relative overflow-hidden w-full",
+    "my-2 p-6 rounded-2xl",
+    "font-normal",
+    "bg-fd-card border border-fd-border",
+    href && "no-underline cursor-pointer",
+    href && "focus-within:ring-2 focus-within:ring-fd-primary focus-within:ring-offset-2 focus-within:ring-offset-fd-background",
+    href && "hover:-translate-y-0.5 hover:border-fd-primary/30 hover:shadow-lg dark:hover:shadow-2xl transition-all duration-200",
+    className
+  );
+}
+
+function CardWrapper({href, isExternal, title, className, children, ...props}: CardWrapperProps) {
+  const ariaLabel = href ? `Navigate to ${title}` : undefined;
+
+  if (!href) {
+    return (
+      <div {...props} className={className} aria-label={ariaLabel}>
+        {children}
+      </div>
+    );
+  }
+
+  if (isExternal) {
+    return (
+      <a {...props} href={href} className={className} aria-label={ariaLabel} target="_blank" rel="noopener noreferrer">
+        {children}
+      </a>
+    );
+  }
 
   return (
-    <E
-      {...props}
-      {...(href ? {href} : {})}
-      {...(isExternal ? {target: "_blank", rel: "noopener noreferrer"} : {})}
-      className={cn(
-        "block group relative overflow-hidden w-full",
-        "my-2 p-6 rounded-2xl",
-        "font-normal",
-        "bg-fd-card border border-fd-border",
-        href && "no-underline cursor-pointer",
-        href && "focus-within:ring-2 focus-within:ring-fd-primary focus-within:ring-offset-2 focus-within:ring-offset-fd-background",
-        href && "hover:-translate-y-0.5 hover:border-fd-primary/30 hover:shadow-lg dark:hover:shadow-2xl transition-all duration-200",
-        props.className
-      )}
-      aria-label={href ? `Navigate to ${title}` : undefined}
-    >
+    <Link {...props} to={href} className={className} aria-label={ariaLabel}>
+      {children}
+    </Link>
+  );
+}
+
+function CardContent({
+  icon,
+  title,
+  href,
+  arrow,
+  children,
+}: {
+  icon?: IconName;
+  title: ReactNode;
+  href?: string;
+  arrow?: ArrowType;
+  children: ReactNode;
+}) {
+  return (
+    <>
       {showArrow(href, arrow) && (
         <ArrowUpRight
           className={cn("absolute top-5 right-5 h-4 w-4", "text-fd-muted-foreground group-hover:text-fd-primary transition-colors")}
@@ -79,8 +120,31 @@ export const Card = ({icon, title, description: _description, href, arrow, cta: 
         {title}
       </h2>
       <div className="mt-1 font-normal text-sm leading-6 text-gray-600 dark:text-gray-400 [&>p]:mb-2 [&>p:last-child]:mb-0">
-        {props.children}
+        {children}
       </div>
-    </E>
+    </>
+  );
+}
+
+export const Card = ({
+  icon,
+  title,
+  description: _description,
+  href,
+  arrow,
+  cta: _cta,
+  className,
+  children,
+  ...props
+}: Props) => {
+  const isExternal = Boolean(href) && isExternalLink(href);
+  const cardClassName = buildCardClassName(href, className);
+
+  return (
+    <CardWrapper href={href} isExternal={isExternal} title={title} className={cardClassName} {...props}>
+      <CardContent icon={icon} title={title} href={href} arrow={arrow}>
+        {children}
+      </CardContent>
+    </CardWrapper>
   );
 };

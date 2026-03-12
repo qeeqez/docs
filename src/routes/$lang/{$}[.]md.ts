@@ -2,6 +2,38 @@ import {createFileRoute, notFound} from "@tanstack/react-router";
 import {getLLMText} from "@/lib/get-llm-text";
 import {source} from "@/lib/source";
 
+type OpenApiData = {
+  getAPIPageProps?: unknown;
+  getSchema?: unknown;
+};
+
+type LLMPage = {
+  data?: {
+    getText?: unknown;
+  } & OpenApiData;
+};
+
+function hasMarkdownText(page: LLMPage | undefined): boolean {
+  return typeof page?.data?.getText === "function";
+}
+
+function hasOpenApiData(page: LLMPage | undefined): boolean {
+  const data = page?.data;
+  return typeof data?.getAPIPageProps === "function" && typeof data?.getSchema === "function";
+}
+
+function isSupportedPage(page: LLMPage | undefined): boolean {
+  return hasMarkdownText(page) || hasOpenApiData(page);
+}
+
+function buildMarkdownResponse(content: string): Response {
+  return new Response(content, {
+    headers: {
+      "Content-Type": "text/markdown; charset=utf-8",
+    },
+  });
+}
+
 export const Route = createFileRoute("/$lang/{$}.md")({
   server: {
     handlers: {
@@ -9,18 +41,10 @@ export const Route = createFileRoute("/$lang/{$}.md")({
         const splat = params._splat ?? "";
         const slugs = splat ? splat.split("/") : [];
         const page = source.getPage(slugs, params.lang);
-        const hasMarkdownText = typeof page?.data?.getText === "function";
-        const hasOpenApiData =
-          typeof (page?.data as {getAPIPageProps?: unknown} | undefined)?.getAPIPageProps === "function" &&
-          typeof (page?.data as {getSchema?: unknown} | undefined)?.getSchema === "function";
-        if (!page || (!hasMarkdownText && !hasOpenApiData)) throw notFound();
+        if (!page || !isSupportedPage(page as LLMPage | undefined)) throw notFound();
 
         const content = await getLLMText(page as Parameters<typeof getLLMText>[0]);
-        return new Response(content, {
-          headers: {
-            "Content-Type": "text/markdown; charset=utf-8",
-          },
-        });
+        return buildMarkdownResponse(content);
       },
     },
   },

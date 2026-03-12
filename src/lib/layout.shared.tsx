@@ -22,20 +22,57 @@ export function baseOptions(
   return baseOptionsWithSectionLinks(lang, sectionLinks);
 }
 
-export function baseOptionsWithSectionLinks(
-  lang: string,
-  _sectionLinks?: {
-    home: string;
-    sdk: string;
-    api: string;
-  }
-): BaseLayoutProps {
-  // TODO tanstack translations
-  // const {t} = getServerTranslations(lang);
+type SectionLinks = {
+  home: string;
+  sdk: string;
+  api: string;
+};
+
+function buildPrimaryLink(text: string, url: string) {
+  return {
+    text,
+    url,
+    on: "nav" as const,
+    active: "nested-url" as const,
+    activeSubfolders: [url],
+  };
+}
+
+function buildNavLinks(lang: string) {
   const homeUrl = `/${lang}/home`;
   const sdkUrl = `/${lang}/sdk`;
   const apiUrl = `/${lang}/api`;
 
+  return [
+    buildPrimaryLink("Home", homeUrl),
+    buildPrimaryLink("SDK", sdkUrl),
+    buildPrimaryLink("API", apiUrl),
+    {
+      type: "button" as const,
+      on: "nav" as const,
+      text: (
+        <>
+          Dashboard <ArrowUpRightIcon className="size-4" />
+        </>
+      ),
+      url: "https://dash.rixl.com",
+      secondary: true,
+    },
+    {
+      type: "custom" as const,
+      on: "nav" as const,
+      secondary: true,
+      children: <ThemeToggle />,
+    },
+  ];
+}
+
+export function baseOptionsWithSectionLinks(
+  lang: string,
+  _sectionLinks?: SectionLinks
+): BaseLayoutProps {
+  // TODO tanstack translations
+  // const {t} = getServerTranslations(lang);
   return {
     // i18n, TODO: Enable language switcher
     nav: {
@@ -46,46 +83,7 @@ export function baseOptionsWithSectionLinks(
       enabled: false,
     },
     // see https://fumadocs.dev/docs/ui/navigation/links
-    links: [
-      {
-        text: "Home", // TODO kek `${t("home")}`,
-        url: homeUrl,
-        on: "nav",
-        active: "nested-url",
-        activeSubfolders: [`/${lang}/home`],
-      },
-      {
-        text: "SDK",
-        url: sdkUrl,
-        on: "nav",
-        active: "nested-url",
-        activeSubfolders: [`/${lang}/sdk`],
-      },
-      {
-        text: "API",
-        url: apiUrl,
-        on: "nav",
-        active: "nested-url",
-        activeSubfolders: [`/${lang}/api`],
-      },
-      {
-        type: "button",
-        on: "nav",
-        text: (
-          <>
-            Dashboard <ArrowUpRightIcon className="size-4" />
-          </>
-        ),
-        url: "https://dash.rixl.com",
-        secondary: true,
-      },
-      {
-        type: "custom",
-        on: "nav",
-        secondary: true,
-        children: <ThemeToggle />,
-      },
-    ],
+    links: buildNavLinks(lang),
   };
 }
 
