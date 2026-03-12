@@ -3,7 +3,6 @@ import {defineConfig} from "vite";
 import {tanstackStart} from "@tanstack/react-start/plugin/vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-import tsConfigPaths from "vite-tsconfig-paths";
 import mdx from "fumadocs-mdx/vite";
 import {extractIconsPlugin} from "./plugins/vite-plugin-extract-icons";
 import {i18n} from "./src/lib/i18n";
@@ -34,7 +33,6 @@ export default defineConfig({
     extractIconsPlugin(),
     mdx(await import("./source.config")),
     tailwindcss(),
-    tsConfigPaths({projects: ["./tsconfig.json"]}),
     tanstackStart({
       spa: {
         enabled: true,
@@ -77,6 +75,7 @@ export default defineConfig({
     alias: {
       "@/snippets": `${__dirname}/src/components/mdx`,
     },
+    tsconfigPaths: true,
   },
   optimizeDeps: {
     include: ["xml-js/lib/js2xml"],
