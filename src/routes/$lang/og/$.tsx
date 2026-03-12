@@ -1,10 +1,12 @@
 import {createFileRoute} from "@tanstack/react-router";
-import {ogImageHandler} from "@/lib/server/og-handler";
 
 export const Route = createFileRoute("/$lang/og/$")({
   server: {
     handlers: {
-      GET: ogImageHandler,
+      GET: async (ctx) => {
+        const {ogImageHandler} = await import("@/lib/server/og-handler.server");
+        return ogImageHandler(ctx);
+      },
     },
   },
 });

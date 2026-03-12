@@ -1,3 +1,4 @@
+import "@tanstack/react-start/server-only";
 import fs from "node:fs/promises";
 import type {CSSProperties, ReactElement, ReactNode} from "react";
 import type {InferPageType} from "fumadocs-core/source";

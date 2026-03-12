@@ -1,6 +1,7 @@
+import "@tanstack/react-start/server-only";
 import type {ApiPageProps} from "fumadocs-openapi/ui";
 import {openapiSource} from "fumadocs-openapi/server";
-import {openapi} from "@/lib/openapi";
+import {openapi} from "@/lib/openapi.server";
 import {openApiPagesOptions} from "@/lib/openapi-pages";
 import {renderOpenApiMarkdown} from "./render-openapi";
 import type {LLMPage, OpenApiPageData, OpenApiRootSchema} from "./types";
@@ -20,7 +21,6 @@ export async function getLLMText(page: LLMPage) {
   }
 
   const processed = await page.data.getText("processed");
-  // Some virtual sources can return placeholder JSON instead of processed markdown.
   if (isNotFoundPayload(processed)) {
     const fallback = await renderOpenApiFallbackByUrl(page);
     if (fallback) return fallback;
@@ -81,9 +81,7 @@ function isNotFoundPayload(processed: string) {
   return compact.includes('"isNotFound":true');
 }
 
-function isOpenAPIPage(
-  page: LLMPage
-): page is LLMPage & {
+function isOpenAPIPage(page: LLMPage): page is LLMPage & {
   data: LLMPage["data"] & {
     getAPIPageProps: () => Omit<ApiPageProps, "document">;
     getSchema: () => OpenApiRootSchema;

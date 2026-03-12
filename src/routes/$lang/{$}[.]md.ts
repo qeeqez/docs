@@ -1,6 +1,4 @@
 import {createFileRoute, notFound} from "@tanstack/react-router";
-import {getLLMText} from "@/lib/get-llm-text";
-import {source} from "@/lib/source";
 
 type OpenApiData = {
   getAPIPageProps?: unknown;
@@ -38,6 +36,7 @@ export const Route = createFileRoute("/$lang/{$}.md")({
   server: {
     handlers: {
       GET: async ({params}) => {
+        const [{getLLMText}, {source}] = await Promise.all([import("@/lib/get-llm-text/index.server"), import("@/lib/source.server")]);
         const splat = params._splat ?? "";
         const slugs = splat ? splat.split("/") : [];
         const page = source.getPage(slugs, params.lang);

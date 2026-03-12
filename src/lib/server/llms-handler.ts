@@ -1,4 +1,4 @@
-import {source} from "@/lib/source";
+import {source} from "@/lib/source.server";
 import {notFound} from "@tanstack/react-router";
 
 export const llmsHandler = async ({params}: {params: {lang: string; _splat?: string}}) => {

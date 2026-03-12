@@ -5,8 +5,8 @@ import type {Folder, Node, Root} from "fumadocs-core/page-tree";
 import {renderToReadableStream} from "react-dom/server";
 import {createElement} from "react";
 import type {ApiPageProps} from "fumadocs-openapi/ui";
-import {source} from "@/lib/source";
-import {APIPage} from "@/components/mdx/api-page";
+import {source} from "../../lib/source.server";
+import {APIPage} from "../../components/mdx/api-page.server";
 
 export const loader = createServerFn({
   method: "GET",

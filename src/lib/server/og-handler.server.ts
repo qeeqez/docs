@@ -1,15 +1,13 @@
-import {generateOGImage} from "@/lib/og";
-import {source} from "@/lib/source";
+import "@tanstack/react-start/server-only";
+import {generateOGImage} from "@/lib/og.server";
+import {source} from "@/lib/source.server";
 import {notFound} from "@tanstack/react-router";
 import {LogoWideWhite} from "@/components/icons";
 import {createElement} from "react";
 
 export const ogImageHandler = async ({params, request}: {params: {lang: string; _splat?: string}; request: Request}) => {
   const splat = params._splat || "";
-  // The URL is like /path/to/page/image.png
-
   const segments = splat.split("/");
-  // Remove the last segment if it is "image.png"
   if (segments[segments.length - 1] === "image.png") {
     segments.pop();
   }
