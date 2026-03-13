@@ -8,15 +8,19 @@ import {Body} from "@/components/layout/shared/layout-client.tsx";
 export const Route = createRootRoute({
   head: () => ({
     meta: [
-      {
-        charSet: "utf-8",
-      },
-      {
-        name: "viewport",
-        content: "width=device-width, initial-scale=1",
-      },
+      {charSet: "utf-8"},
+      {name: "viewport", content: "width=device-width, initial-scale=1"},
+      {name: "theme-color", content: "#000000"},
     ],
-    links: [{rel: "stylesheet", href: appCss}],
+    links: [
+      {rel: "icon", type: "image/x-icon", href: "/favicon.ico", sizes: "any"},
+      {rel: "icon", type: "image/svg+xml", href: "/favicon.svg"},
+      {rel: "icon", type: "image/png", href: "/icon.png", sizes: "512x512"},
+      {rel: "apple-touch-icon", href: "/apple-icon.png", sizes: "180x180"},
+      {rel: "mask-icon", href: "/mask-icon.svg", color: "#000000"},
+      {rel: "manifest", href: "/manifest.json"},
+      {rel: "stylesheet", href: appCss},
+    ],
   }),
   component: RootComponent,
 });
