@@ -6,7 +6,7 @@ import {renderStaticExampleTabs} from "@/components/mdx/api-page/render-static-e
 import {renderStaticRequestBodySection} from "@/components/mdx/api-page/render-static-request-body";
 import {renderStaticResponseSection} from "@/components/mdx/api-page/render-static-response-section";
 import {findOperationPath} from "@/components/mdx/api-page/path-utils";
-import {getCachedSchemaPromise, isStaticOpenApiSchema} from "@/components/mdx/api-page/schema-cache";
+import {getCachedSchema, isStaticOpenApiSchema} from "@/components/mdx/api-page/schema-cache";
 import type {MethodWithPath, OpenApiRenderContext, StaticOpenApiSchema} from "@/components/mdx/api-page/types";
 
 const APIPageImpl = createAPIPage(openapi, {
@@ -31,7 +31,7 @@ const APIPageImpl = createAPIPage(openapi, {
             {slots.apiPlayground}
             {slots.description}
             {slots.authSchemes}
-            {slots.paremeters}
+            {slots.parameters}
             {requestBody}
             {responses}
             {slots.callbacks}
@@ -49,6 +49,6 @@ export function APIPage({
 }: Omit<Parameters<typeof APIPageImpl>[0], "document"> & {
   document: StaticOpenApiSchema | Promise<StaticOpenApiSchema>;
 }) {
-  const resolved = isStaticOpenApiSchema(document) ? getCachedSchemaPromise(document) : document;
+  const resolved = isStaticOpenApiSchema(document) ? getCachedSchema(document) : document;
   return <APIPageImpl {...props} document={resolved} />;
 }

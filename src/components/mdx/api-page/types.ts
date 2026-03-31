@@ -1,17 +1,23 @@
 import type {ReactNode} from "react";
+import type {MediaAdapter} from "fumadocs-openapi/requests/media/adapter";
 import type {ApiServer} from "@/lib/api-base-url";
 
-export interface PathParameter {
-  value: string;
+export interface EncodedParameter {
+  readonly value: string;
 }
 
-export interface QueryParameter {
-  values: string[];
+export interface EncodedParameterMultiple {
+  readonly values: string[];
 }
 
 export interface EncodedRequestData {
-  path: Record<string, PathParameter>;
-  query: Record<string, QueryParameter>;
+  method: string;
+  path: Record<string, EncodedParameter>;
+  query: Record<string, EncodedParameterMultiple>;
+  header: Record<string, EncodedParameter>;
+  cookie: Record<string, EncodedParameter>;
+  body?: unknown;
+  bodyMediaType?: string;
 }
 
 export interface MethodWithPath {
@@ -90,7 +96,7 @@ export interface OpenApiRenderContext {
   renderMarkdown: RenderMarkdown;
   renderCodeBlock: RenderCodeBlock;
   schema: unknown;
-  mediaAdapters: unknown;
+  mediaAdapters: Record<string, MediaAdapter>;
 }
 
 export interface ResponseTabExample {
