@@ -1,10 +1,10 @@
 import type {StaticOpenApiSchema} from "./types";
 
 interface CachedSchema extends StaticOpenApiSchema {
-  getRawRef: () => undefined;
+  getRawRef: (obj: object) => string | undefined;
 }
 
-const schemaPromiseCache = new Map<string, Promise<CachedSchema>>();
+const schemaCache = new Map<string, CachedSchema>();
 
 function withRawRef(schema: StaticOpenApiSchema): CachedSchema {
   return {
@@ -13,12 +13,12 @@ function withRawRef(schema: StaticOpenApiSchema): CachedSchema {
   };
 }
 
-export function getCachedSchemaPromise(schema: StaticOpenApiSchema): Promise<CachedSchema> {
-  const cached = schemaPromiseCache.get(schema.id);
+export function getCachedSchema(schema: StaticOpenApiSchema): CachedSchema {
+  const cached = schemaCache.get(schema.id);
   if (cached) return cached;
 
-  const next = Promise.resolve(withRawRef(schema));
-  schemaPromiseCache.set(schema.id, next);
+  const next = withRawRef(schema);
+  schemaCache.set(schema.id, next);
   return next;
 }
 

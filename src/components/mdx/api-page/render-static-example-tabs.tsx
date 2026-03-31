@@ -1,7 +1,10 @@
 import {CodeBlockTabsList, CodeBlockTabsTrigger} from "fumadocs-ui/components/codeblock";
 import {Tab, Tabs} from "fumadocs-ui/components/tabs";
+// @ts-expect-error -- runtime export exists but not in .d.ts
 import {ResponseTabs} from "../../../../node_modules/fumadocs-openapi/dist/ui/operation/response-tabs.js";
-import {getExampleRequests} from "../../../../node_modules/fumadocs-openapi/dist/ui/operation/request-tabs.js";
+// @ts-expect-error -- runtime export exists but not in .d.ts
+import {getExampleRequests} from "../../../../node_modules/fumadocs-openapi/dist/ui/operation/get-example-requests.js";
+import type {CodeUsageGenerator} from "fumadocs-openapi/requests/generators";
 import {csharp} from "fumadocs-openapi/requests/generators/csharp";
 import {curl} from "fumadocs-openapi/requests/generators/curl";
 import {go} from "fumadocs-openapi/requests/generators/go";
@@ -14,20 +17,7 @@ import type {ApiServerRoot} from "@/lib/api-base-url";
 import type {EncodedRequestData, MethodWithPath, OpenApiRenderContext} from "./types";
 import {resolveRequestPath} from "./path-utils";
 
-type RequestGenerator = {
-  lang: string;
-  label?: string;
-  generate: (
-    url: string,
-    data: EncodedRequestData,
-    options: {
-      mediaAdapters: OpenApiRenderContext["mediaAdapters"];
-      server: null;
-    }
-  ) => string;
-};
-
-const requestCodeGenerators: RequestGenerator[] = [curl, javascript, go, python, java, csharp];
+const requestCodeGenerators: CodeUsageGenerator[] = [curl, javascript, go, python, java, csharp];
 
 type RequestTabItem = {
   id: string;
@@ -40,7 +30,7 @@ type HighlightedTabItem = RequestTabItem & {
   node: ReactNode;
 };
 
-function resolveGeneratorId(generator: RequestGenerator): string {
+function resolveGeneratorId(generator: CodeUsageGenerator): string {
   if (generator === javascript) return "js";
   if (generator.lang === "bash") return "curl";
   return generator.lang;
