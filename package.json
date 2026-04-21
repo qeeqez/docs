@@ -33,6 +33,7 @@
     "fumadocs-ui": "^16.7.16",
     "lucide-react": "^1.8.0",
     "lucide-static": "^1.8.0",
+    "openapi-sampler": "^1.7.2",
     "radix-ui": "^1.4.3",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
