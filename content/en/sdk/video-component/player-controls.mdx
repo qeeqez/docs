@@ -7,6 +7,11 @@ description: "Complete guide to using the video player controls, settings, and c
 import {Tabs, TabsContent, TabsList, TabsTrigger} from 'fumadocs-ui/components/tabs'
 import {Callout} from 'fumadocs-ui/components/callout'
 
+<Callout type="info">
+  Building your own control bar? See the [Hooks](/en/sdk/hooks) docs. Custom controls for the public `Video`
+  component should use a shared `playerId` plus `theme="hideUI"`.
+</Callout>
+
 ## Control Bar Overview
 
 The video player features a comprehensive control bar with the following elements:
@@ -313,4 +318,3 @@ The floating window includes basic controls:
 - Use keyboard shortcuts for quick control without showing the control bar
 - Press `Esc` to quickly exit fullscreen mode
 - Double-click anywhere on the video to toggle fullscreen
-

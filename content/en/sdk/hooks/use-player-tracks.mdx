@@ -1,0 +1,76 @@
+---
+title: "usePlayerTracks"
+description: "Read and change player-scoped audio and subtitle track selection."
+---
+
+`usePlayerTracks(playerId)` exposes the current audio and subtitle track selection for one player.
+
+## Signature
+
+```tsx
+const tracks = usePlayerTracks(playerId);
+```
+
+It returns:
+
+- `audioTrack`
+- `availableAudioTracks`
+- `subtitleTrack`
+- `availableSubtitleTracks`
+- `setAudioTrack(trackIndex)`
+- `setSubtitleTrack(trackIndex)`
+
+## Example
+
+```tsx
+import {Video, usePlayerTracks} from "@rixl/videosdk-react";
+
+const playerId = "00000000-0000-0000-0000-000000000107";
+
+function CustomTrackControls() {
+  const {
+    audioTrack,
+    availableAudioTracks,
+    subtitleTrack,
+    availableSubtitleTracks,
+    setAudioTrack,
+    setSubtitleTrack,
+  } = usePlayerTracks(playerId);
+
+  return (
+    <div className="space-y-3">
+      <Video
+        id="your-video-id"
+        playerId={playerId}
+        theme="hideUI"
+        analytics={false}
+      />
+
+      <div className="space-y-2">
+        <label>
+          Audio
+          <select value={audioTrack} onChange={(event) => setAudioTrack(Number(event.target.value))}>
+            {availableAudioTracks.map((track) => (
+              <option key={track.index} value={track.index}>
+                {track.label}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <button type="button" onClick={() => setSubtitleTrack(subtitleTrack === -1 ? 0 : -1)}>
+          {subtitleTrack === -1 ? "Turn captions on" : "Turn captions off"}
+        </button>
+
+        <div>{`Subtitle options: ${availableSubtitleTracks.length}`}</div>
+      </div>
+    </div>
+  );
+}
+```
+
+## Notes
+
+- Track arrays can be empty until the stream metadata is ready.
+- `subtitleTrack === -1` means subtitles are off.
+- This hook is intentionally limited to track selection. Global caption styling and caption preference state are outside this API.

@@ -5,6 +5,12 @@ description: "Feature-rich video player for RIXL content with HLS streaming, qua
 
 The Video component is a professional-grade video player optimized for media platforms. It delivers adaptive streaming with automatic quality selection, comprehensive accessibility features, and a customizable interface that works seamlessly across all modern browsers and devices.
 
+### Custom Controls
+
+Need custom controls instead of the built-in UI? Use the public [Hooks](/en/sdk/hooks) section.
+
+The supported pattern is to pass a stable `playerId` to `<Video />`, render the player with `theme="hideUI"`, and call the hooks with that same `playerId`.
+
 ### Key Capabilities
 
 **Streaming & Quality**

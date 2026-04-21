@@ -1,0 +1,70 @@
+---
+title: "Overview"
+description: "Use the public VideoSDK hooks to build custom player controls and coordinate multiple players."
+---
+
+The React package exports a small set of public hooks for building custom controls on top of the public `Video` component.
+
+## Recommended Pattern
+
+When you build custom controls for a `Video`, use a stable shared `playerId` and render the player with `theme="hideUI"`.
+
+```tsx
+import {Video, usePlayback, usePlayerProgress} from "@rixl/videosdk-react";
+
+const playerId = "00000000-0000-0000-0000-000000000001";
+
+function ProductDemoPlayer() {
+  const {paused, togglePlay} = usePlayback(playerId);
+  const {progress, seekBy} = usePlayerProgress(playerId);
+
+  return (
+    <div className="space-y-3">
+      <Video
+        id="your-video-id"
+        playerId={playerId}
+        theme="hideUI"
+        analytics={false}
+      />
+
+      <div className="flex items-center gap-3">
+        <button type="button" onClick={() => void togglePlay()}>
+          {paused ? "Play" : "Pause"}
+        </button>
+        <button type="button" onClick={() => seekBy(10)}>
+          Skip +10s
+        </button>
+        <span>{Math.round(progress * 100)}%</span>
+      </div>
+    </div>
+  );
+}
+```
+
+If you omit `playerId`, the `Video` component generates one internally. That is fine for built-in controls, but external hook-driven controls cannot target that auto-generated id.
+
+## Choose a Hook
+
+| Hook | Use it for | Notes |
+| --- | --- | --- |
+| `useMediaSettings(playerId)` | Mute, unmute, volume, and previous volume | Player-scoped audio only |
+| `usePlayback(playerId)` | Play, pause, playback rate, loading, ended | Best for transport controls |
+| `usePlayerProgress(playerId)` | Current time, duration, buffered progress, seeking | Preferred public timeline hook |
+| `usePlayerUI(playerId)` | Fullscreen, Picture-in-Picture, controls visibility | Exposes durable chrome state only |
+| `usePlayerTracks(playerId)` | Audio track and subtitle track selection | Track styling and global caption prefs stay elsewhere |
+| `useGlobalPlayerSettings()` | Page-level coordination across mounted players | Advanced API for shared controls |
+| `useProgressBar({video})` | Low-level drag handling for a raw `HTMLVideoElement` | Prefer `usePlayerProgress(playerId)` with `Video` |
+
+## Which Hook Should Most Apps Start With?
+
+- Start with `usePlayback(playerId)` for play/pause UI.
+- Add `usePlayerProgress(playerId)` for a custom timeline or seek buttons.
+- Add `useMediaSettings(playerId)` for mute and volume controls.
+- Add `usePlayerTracks(playerId)` only if your videos expose audio or subtitle track choices.
+- Use `useGlobalPlayerSettings()` only when one page-level control should affect several mounted players.
+
+## Related Docs
+
+- [Video component overview](/en/sdk/video-component)
+- [Video props reference](/en/sdk/video-component/props-reference)
+- [Player controls guide](/en/sdk/video-component/player-controls)

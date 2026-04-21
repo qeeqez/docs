@@ -1,0 +1,69 @@
+---
+title: "usePlayback"
+description: "Control playback, loading state, and playback speed for one Video instance."
+---
+
+`usePlayback(playerId)` exposes player-scoped transport state and actions.
+
+## Signature
+
+```tsx
+const playback = usePlayback(playerId);
+```
+
+It returns:
+
+- `paused`
+- `loading`
+- `ended`
+- `hasInteracted`
+- `playbackRate`
+- `play()`
+- `pause()`
+- `togglePlay()`
+- `setPlaybackRate(rate)`
+
+## Example
+
+```tsx
+import {Video, usePlayback} from "@rixl/videosdk-react";
+
+const playerId = "00000000-0000-0000-0000-0000000000d4";
+
+function CustomPlaybackControls() {
+  const {paused, playbackRate, togglePlay, setPlaybackRate} = usePlayback(playerId);
+
+  return (
+    <div className="space-y-3">
+      <Video
+        id="your-video-id"
+        playerId={playerId}
+        theme="hideUI"
+        analytics={false}
+      />
+
+      <div className="flex items-center gap-3">
+        <button type="button" onClick={() => void togglePlay()}>
+          {paused ? "Play" : "Pause"}
+        </button>
+
+        <button type="button" onClick={() => setPlaybackRate(1)}>
+          1x
+        </button>
+
+        <button type="button" onClick={() => setPlaybackRate(1.5)}>
+          1.5x
+        </button>
+
+        <span>{playbackRate.toFixed(2)}x</span>
+      </div>
+    </div>
+  );
+}
+```
+
+## Notes
+
+- `play()` and `togglePlay()` return promises because browser media playback can fail.
+- Playback rate is player-scoped and clamped by the SDK.
+- Use this hook for transport controls. Use [`usePlayerProgress(playerId)`](/en/sdk/hooks/use-player-progress) for timeline reads and seeking.
