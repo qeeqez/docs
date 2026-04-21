@@ -151,134 +151,123 @@ Choose the right processing tier for your content and audience:
     import {Video} from '@rixl/videosdk-react';
 
     function VideoPlayer({videoId}) {
+      return (
+        <Video
+          id={videoId}
+          className="w-full h-auto rounded-lg"
+          progressBar={true}
+          allowFullscreen={true}
+          autoPlay={false}
+          muted={false}
+        />
+      );
+    }
+    ```
+  </Tab>
+
+<Tab value="Advanced Player">
+  ```jsx
+  import {Video, usePlayback, usePlayerProgress} from '@rixl/videosdk-react';
+
+  function AdvancedVideoPlayer({videoId, playerId}) {
+    const {paused, ended} = usePlayback(playerId);
+    const {progress, duration, currentTime} = usePlayerProgress(playerId);
+
     return (
-    <Video
-    id={videoId}
-       className="w-full h-auto rounded-lg"
-       progressBar={true}
-       allowFullscreen={true}
-       autoplay={false}
-       muted={false}
-  />
-  );
+      <div className="video-container">
+        <Video
+          id={videoId}
+          playerId={playerId}
+          className="w-full h-auto rounded-lg shadow-lg"
+          progressBar={true}
+          allowFullscreen={true}
+        />
+
+        <div className="video-info mt-4 p-4 bg-gray-100 rounded">
+          <div className="flex justify-between items-center">
+            <span>Progress: {Math.round(progress * 100)}%</span>
+            <span>Time: {Math.round(currentTime)}s / {Math.round(duration)}s</span>
+            <span className={`status ${paused ? 'text-gray-600' : 'text-green-600'}`}>
+              {ended ? 'Ended' : paused ? 'Paused' : 'Playing'}
+            </span>
+          </div>
+        </div>
+      </div>
+    );
   }
   ```
 </Tab>
 
-<Tab value="Advanced Player">
-  ```jsx
-  import {Video, useProgressBar} from '@rixl/videosdk-react';
-  import {useRef} from 'react';
-
-  function AdvancedVideoPlayer({videoId, onComplete}) {
-  const videoRef = useRef(null);
-  const {progress, duration, isPlaying} = useProgressBar({video: videoRef.current});
-
-  return (
-  <div className="video-container">
-  <Video
-  ref={videoRef}
-     id={videoId}
-     className="w-full h-auto rounded-lg shadow-lg"
-     progressBar={true}
-     allowFullscreen={true}
-     controls={true}
-     poster={`https://cdn.rixl.com/${videoId}/thumbnail.jpg`}
-     onPlay={() => console.log('Video started')}
-     onPause={() => console.log('Video paused')}
-     onEnded={onComplete}
-/>
-
-<div className="video-info mt-4 p-4 bg-gray-100 rounded">
-  <div className="flex justify-between items-center">
-    <span>Progress: {Math.round(progress * 100)}%</span>
-    <span>Duration: {Math.round(duration)}s</span>
-    <span className={`status ${isPlaying ? 'text-green-600' : 'text-gray-600'}`}>
-            {isPlaying ? 'Playing' : 'Paused'}
-          </span>
-  </div>
-</div>
-</div>
-);
-}
-```
-</Tab>
-
 <Tab value="Custom Controls">
   ```jsx
-  import {Video, useProgressBar} from '@rixl/videosdk-react';
-  import {useState, useRef} from 'react';
+  import {Video, useMediaSettings, usePlayback, usePlayerProgress} from '@rixl/videosdk-react';
+  import {useState} from 'react';
 
-  function CustomVideoPlayer({videoId}) {
-  const videoRef = useRef(null);
-  const {progress, duration, isPlaying} = useProgressBar({video: videoRef.current});
-  const [showControls, setShowControls] = useState(true);
+  function CustomVideoPlayer({videoId, playerId}) {
+    const [showControls, setShowControls] = useState(true);
+    const {paused, togglePlay} = usePlayback(playerId);
+    const {muted, toggleMute} = useMediaSettings(playerId);
+    const {progress, duration, currentTime, seekTo} = usePlayerProgress(playerId);
 
-  const handlePlayPause = () => {
-  if (videoRef.current) {
-  if (isPlaying) {
-  videoRef.current.pause();
-} else {
-  videoRef.current.play();
-}
-}
-};
+    return (
+      <div
+        className="relative video-container"
+        onMouseEnter={() => setShowControls(true)}
+        onMouseLeave={() => setShowControls(false)}
+      >
+        <Video
+          id={videoId}
+          playerId={playerId}
+          className="w-full h-auto"
+          theme="hideUI"
+        />
 
-  const handleSeek = (value) => {
-  if (videoRef.current && duration) {
-  videoRef.current.currentTime = value * duration;
-}
-};
+        {showControls && (
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => void togglePlay()}
+                className="text-white hover:text-gray-300"
+              >
+                {paused ? 'Play' : 'Pause'}
+              </button>
 
-  return (
-  <div
-  className="relative video-container"
-  onMouseEnter={() => setShowControls(true)}
-     onMouseLeave={() => setShowControls(false)}
->
-  <Video
-    ref={videoRef}
-    id={videoId}
-    className="w-full h-auto"
-    progressBar={false}
-    controls={false}
-    allowFullscreen={true}
-  />
+              <button
+                onClick={toggleMute}
+                className="text-white hover:text-gray-300"
+              >
+                {muted ? 'Unmute' : 'Mute'}
+              </button>
 
-  {showControls && (
-    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-      <div className="flex items-center gap-4">
-        <button
-          onClick={handlePlayPause}
-          className="text-white hover:text-gray-300"
-        >
-          {isPlaying ? '⏸️' : '▶️'}
-        </button>
+              <div className="flex-1">
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value={progress}
+                  onChange={(e) => seekTo(parseFloat(e.target.value) * duration)}
+                  className="w-full"
+                />
+              </div>
 
-        <div className="flex-1">
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.01"
-            value={progress}
-            onChange={(e) => handleSeek(parseFloat(e.target.value))}
-            className="w-full"
-          />
-        </div>
-
-        <span className="text-white text-sm">
-              {Math.round(progress * duration)}s / {Math.round(duration)}s
-            </span>
+              <span className="text-white text-sm">
+                {Math.round(currentTime)}s / {Math.round(duration)}s
+              </span>
+            </div>
+          </div>
+        )}
       </div>
-    </div>
-  )}
-</div>
-);
-}
-```
+    );
+  }
+  ```
 </Tab>
 </Tabs>
+
+<Callout type="info">
+  For hook-driven controls, pass the same stable `playerId` to both `<Video />` and your player hooks. `theme="hideUI"`
+  is the supported way to render the SDK player without built-in controls.
+</Callout>
 
 ### API Integration
 

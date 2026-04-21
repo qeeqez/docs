@@ -116,33 +116,31 @@ Welcome to the **RIXL Guides** — your comprehensive resource for building medi
 <Tabs items={['Video Player', 'Image Gallery', 'Content Feed']}>
   <Tab value="Video Player">
     ```jsx
-    import {Video, useProgressBar} from '@rixl/videosdk-react';
-    import {useRef} from 'react';
+    import {Video, usePlayerProgress} from '@rixl/videosdk-react';
 
-    function VideoPlayer({videoId}) {
-    const videoRef = useRef(null);
-    const {progress, duration} = useProgressBar({video: videoRef.current});
+    function VideoPlayer({videoId, playerId}) {
+      const {progress, duration, currentTime} = usePlayerProgress(playerId);
 
-    return (
-    <div className="video-container">
-    <Video
-    ref={videoRef}
-       id={videoId}
-       className="w-full h-auto rounded-lg"
-       progressBar={true}
-       allowFullscreen={true}
-       autoplay={false}
-       muted={false}
-  />
-  <div className="video-info">
-    <p>Progress: {Math.round(progress * 100)}%</p>
-    <p>Duration: {duration}s</p>
-  </div>
-</div>
-);
-}
-```
-</Tab>
+      return (
+        <div className="video-container">
+          <Video
+            id={videoId}
+            playerId={playerId}
+            className="w-full h-auto rounded-lg"
+            progressBar={true}
+            allowFullscreen={true}
+            autoPlay={false}
+            muted={false}
+          />
+          <div className="video-info">
+            <p>Progress: {Math.round(progress * 100)}%</p>
+            <p>Time: {Math.round(currentTime)}s / {Math.round(duration)}s</p>
+          </div>
+        </div>
+      );
+    }
+    ```
+  </Tab>
 
 <Tab value="Image Gallery">
   ```jsx
@@ -188,6 +186,11 @@ Welcome to the **RIXL Guides** — your comprehensive resource for building medi
 ```
 </Tab>
 </Tabs>
+
+<Callout type="info">
+  If you want custom playback UI, give the `Video` component a stable `playerId` and use the same `playerId` with the
+  hook APIs. Reach for `theme="hideUI"` when you want to replace the built-in controls entirely.
+</Callout>
 
 ### API Integration Examples
 
