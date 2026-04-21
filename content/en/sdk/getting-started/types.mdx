@@ -8,8 +8,11 @@ description: "Complete TypeScript type definitions for the RIXL SDK"
 ### VideoProps
 
 ```typescript
-interface VideoProps extends HTMLProps<HTMLVideoElement> {
-  id: string;
+type UUID = `${string}-${string}-${string}-${string}-${string}`;
+
+interface VideoProps extends Omit<HTMLProps<HTMLVideoElement>, "onEnded"> {
+  id?: string;
+  playerId?: UUID;
   progressBar?: boolean;
   allowPlayPause?: boolean;
   allowFullscreen?: boolean;
@@ -20,11 +23,11 @@ interface VideoProps extends HTMLProps<HTMLVideoElement> {
   analytics?: boolean;
   analyticsPage?: Page;
   heatmap?: boolean;
+  hotSegments?: boolean;
   resumeProgress?: boolean;
+  userId?: string;
+  userProperties?: Record<string, string>;
   chapters?: boolean;
-  muted?: boolean;
-  autoplay?:boolean;
-  loop?:boolean;
 }
 
 type VideoTheme = "default" | "minimal" | "hover" | "feed" | "hideUI";
@@ -33,6 +36,8 @@ type SupportedLanguage = "en" | "de" | "es" | "fr" | "it" | "pl" | "ru" | "tr" |
 
 type Page = "feed" | "standalone" | "profile";
 ```
+
+`VideoProps` also inherits standard HTML video props such as `className`, `muted`, `autoPlay`, `loop`, `playsInline`, and DOM event handlers.
 
 ### ImageProps
 
@@ -63,6 +68,127 @@ type FontFamilyKey =
   | "casual"
   | "cursive"
   | "small_caps";
+```
+
+## Hook Types
+
+### Player-Scoped Hooks
+
+These hooks all target a specific player instance and require the same `playerId` you pass to `<Video playerId={...} />`.
+
+```typescript
+type UUID = `${string}-${string}-${string}-${string}-${string}`;
+
+interface UseMediaSettingsResult {
+  muted: boolean;
+  volume: number;
+  previousVolume: number;
+  mute: () => void;
+  unmute: () => void;
+  toggleMute: () => void;
+  setVolume: (volume: number) => void;
+}
+
+declare function useMediaSettings(playerId: UUID): UseMediaSettingsResult;
+
+interface UsePlaybackResult {
+  paused: boolean;
+  loading: boolean;
+  ended: boolean;
+  hasInteracted: boolean;
+  playbackRate: number;
+  play: () => Promise<void>;
+  pause: () => void;
+  togglePlay: () => Promise<void>;
+  setPlaybackRate: (playbackRate: number) => void;
+}
+
+declare function usePlayback(playerId: UUID): UsePlaybackResult;
+
+interface UsePlayerProgressResult {
+  currentTime: number;
+  duration: number;
+  progress: number;
+  buffered: number;
+  seekTo: (seconds: number) => void;
+  seekBy: (deltaSeconds: number) => void;
+}
+
+declare function usePlayerProgress(playerId: UUID): UsePlayerProgressResult;
+
+interface UsePlayerUIResult {
+  controlsVisible: boolean;
+  isFullscreen: boolean;
+  isPictureInPicture: boolean;
+  showControls: () => void;
+  hideControls: () => void;
+  toggleFullscreen: () => Promise<void>;
+  togglePictureInPicture: () => Promise<void>;
+}
+
+declare function usePlayerUI(playerId: UUID): UsePlayerUIResult;
+
+interface UsePlayerTracksResult {
+  audioTrack: number;
+  availableAudioTracks: {
+    index: number;
+    label: string;
+    language: string;
+    kind: string;
+  }[];
+  subtitleTrack: number;
+  availableSubtitleTracks: {
+    index: number;
+    label: string;
+    language: string;
+    kind: string;
+  }[];
+  setAudioTrack: (trackIndex: number) => void;
+  setSubtitleTrack: (trackIndex: number) => void;
+}
+
+declare function usePlayerTracks(playerId: UUID): UsePlayerTracksResult;
+```
+
+### Global Hook
+
+```typescript
+type UUID = `${string}-${string}-${string}-${string}-${string}`;
+
+interface UseGlobalPlayerSettingsResult {
+  muted: boolean;
+  volume: number;
+  playbackRate: number;
+  preferredQuality: number | undefined;
+  preferredAudioLanguage: string | undefined;
+  preferredSubtitleLanguage: string | undefined;
+  setMuted: (muted: boolean) => void;
+  setVolume: (volume: number) => void;
+  setPlaybackRate: (rate: number) => void;
+  setPreferredQuality: (quality: number | undefined) => void;
+  setPreferredAudioLanguage: (language: string | undefined) => void;
+  setPreferredSubtitleLanguage: (language: string | undefined) => void;
+  pauseAll: () => void;
+  pauseOthers: (playerId: UUID) => void;
+}
+
+declare function useGlobalPlayerSettings(): UseGlobalPlayerSettingsResult;
+```
+
+### DOM Progress Helper
+
+`useProgressBar` is a lower-level hook for a raw `HTMLVideoElement`. For the public `Video` component, prefer `usePlayerProgress(playerId)` when building custom controls.
+
+```typescript
+interface UseProgressBarProps {
+  video: HTMLVideoElement | null;
+}
+
+declare function useProgressBar(props: UseProgressBarProps): {
+  progress: number;
+  isDragging: boolean;
+  handleDragStart: (event: MouseEvent | TouchEvent) => void;
+};
 ```
 
 ## Data Types

@@ -102,6 +102,10 @@ function App() {
 }
 ```
 
+<Callout type="info">
+  Need custom controls instead of the built-in player UI? Pass a stable `playerId` to `<Video theme="hideUI" />` and pair it with hooks like [`usePlayback`](/en/sdk/hooks/use-playback) and [`usePlayerProgress`](/en/sdk/hooks/use-player-progress).
+</Callout>
+
 ## Basic Implementation Example
 
 Here's a complete example showing how to integrate RIXL components into a React application:
@@ -240,5 +244,6 @@ You can use regular CSS classes or CSS-in-JS solutions:
 Now that you have the RIXL Video SDK installed and working:
 
 - Learn about [Video Component](/en/sdk/video-component) properties and advanced features
+- Explore [Hooks](/en/sdk/hooks) when you want custom controls or player state
 - Explore [Image Component](/en/sdk/image-component) optimization options
 - Browse [SDK Overview](/en/sdk/getting-started) for complete documentation
