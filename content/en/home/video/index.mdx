@@ -167,30 +167,36 @@ Choose the right processing tier for your content and audience:
 
 <Tab value="Advanced Player">
   ```jsx
-  import {Video, usePlayback, usePlayerProgress} from '@rixl/videosdk-react';
+  import {Video, VideoPlayer, usePlayback, usePlayerProgress} from '@rixl/videosdk-react';
 
-  function AdvancedVideoPlayer({videoId, playerId}) {
-    const {paused, ended} = usePlayback(playerId);
-    const {progress, duration, currentTime} = usePlayerProgress(playerId);
+  function AdvancedVideoPlayer({videoId}) {
+    return (
+      <VideoPlayer>
+        <div className="video-container">
+          <Video
+            id={videoId}
+            className="w-full h-auto rounded-lg shadow-lg"
+            progressBar={true}
+            allowFullscreen={true}
+          />
+          <PlaybackStatus />
+        </div>
+      </VideoPlayer>
+    );
+  }
+
+  function PlaybackStatus() {
+    const {paused, ended} = usePlayback();
+    const {progress, duration, currentTime} = usePlayerProgress();
 
     return (
-      <div className="video-container">
-        <Video
-          id={videoId}
-          playerId={playerId}
-          className="w-full h-auto rounded-lg shadow-lg"
-          progressBar={true}
-          allowFullscreen={true}
-        />
-
-        <div className="video-info mt-4 p-4 bg-gray-100 rounded">
-          <div className="flex justify-between items-center">
-            <span>Progress: {Math.round(progress * 100)}%</span>
-            <span>Time: {Math.round(currentTime)}s / {Math.round(duration)}s</span>
-            <span className={`status ${paused ? 'text-gray-600' : 'text-green-600'}`}>
-              {ended ? 'Ended' : paused ? 'Paused' : 'Playing'}
-            </span>
-          </div>
+      <div className="video-info mt-4 p-4 bg-gray-100 rounded">
+        <div className="flex justify-between items-center">
+          <span>Progress: {Math.round(progress * 100)}%</span>
+          <span>Time: {Math.round(currentTime)}s / {Math.round(duration)}s</span>
+          <span className={`status ${paused ? 'text-gray-600' : 'text-green-600'}`}>
+            {ended ? 'Ended' : paused ? 'Paused' : 'Playing'}
+          </span>
         </div>
       </div>
     );
@@ -200,14 +206,19 @@ Choose the right processing tier for your content and audience:
 
 <Tab value="Custom Controls">
   ```jsx
-  import {Video, useMediaSettings, usePlayback, usePlayerProgress} from '@rixl/videosdk-react';
+  import {Video, VideoPlayer, useMediaSettings, usePlayback, usePlayerProgress} from '@rixl/videosdk-react';
   import {useState} from 'react';
 
-  function CustomVideoPlayer({videoId, playerId}) {
+  function CustomVideoPlayer({videoId}) {
+    return (
+      <VideoPlayer>
+        <CustomPlayerShell videoId={videoId} />
+      </VideoPlayer>
+    );
+  }
+
+  function CustomPlayerShell({videoId}) {
     const [showControls, setShowControls] = useState(true);
-    const {paused, togglePlay} = usePlayback(playerId);
-    const {muted, toggleMute} = useMediaSettings(playerId);
-    const {progress, duration, currentTime, seekTo} = usePlayerProgress(playerId);
 
     return (
       <div
@@ -217,46 +228,53 @@ Choose the right processing tier for your content and audience:
       >
         <Video
           id={videoId}
-          playerId={playerId}
           className="w-full h-auto"
           theme="hideUI"
         />
 
-        {showControls && (
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => void togglePlay()}
-                className="text-white hover:text-gray-300"
-              >
-                {paused ? 'Play' : 'Pause'}
-              </button>
+        {showControls && <CustomControls />}
+      </div>
+    );
+  }
 
-              <button
-                onClick={toggleMute}
-                className="text-white hover:text-gray-300"
-              >
-                {muted ? 'Unmute' : 'Mute'}
-              </button>
+  function CustomControls() {
+    const {paused, togglePlay} = usePlayback();
+    const {muted, toggleMute} = useMediaSettings();
+    const {progress, duration, currentTime, seekTo} = usePlayerProgress();
 
-              <div className="flex-1">
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.01"
-                  value={progress}
-                  onChange={(e) => seekTo(parseFloat(e.target.value) * duration)}
-                  className="w-full"
-                />
-              </div>
+    return (
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => void togglePlay()}
+            className="text-white hover:text-gray-300"
+          >
+            {paused ? 'Play' : 'Pause'}
+          </button>
 
-              <span className="text-white text-sm">
-                {Math.round(currentTime)}s / {Math.round(duration)}s
-              </span>
-            </div>
+          <button
+            onClick={toggleMute}
+            className="text-white hover:text-gray-300"
+          >
+            {muted ? 'Unmute' : 'Mute'}
+          </button>
+
+          <div className="flex-1">
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value={progress}
+              onChange={(e) => seekTo(parseFloat(e.target.value) * duration)}
+              className="w-full"
+            />
           </div>
-        )}
+
+          <span className="text-white text-sm">
+            {Math.round(currentTime)}s / {Math.round(duration)}s
+          </span>
+        </div>
       </div>
     );
   }
@@ -265,8 +283,8 @@ Choose the right processing tier for your content and audience:
 </Tabs>
 
 <Callout type="info">
-  For hook-driven controls, pass the same stable `playerId` to both `<Video />` and your player hooks. `theme="hideUI"`
-  is the supported way to render the SDK player without built-in controls.
+  For hook-driven controls, put your controls inside `<Video theme="hideUI">` or wrap `<Video>` and sibling controls in
+  `<VideoPlayer>`. Player hooks automatically bind to the enclosing scope.
 </Callout>
 
 ### API Integration

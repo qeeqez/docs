@@ -9,7 +9,8 @@ import {Callout} from 'fumadocs-ui/components/callout'
 
 <Callout type="info">
   Building your own control bar? See the [Hooks](/en/sdk/hooks) docs. Custom controls for the public `Video`
-  component should use a shared `playerId` plus `theme="hideUI"`.
+  component should use `theme="hideUI"` and the scope-based hook model. Put controls inside `<Video>` when possible,
+  or wrap detached sibling controls in `<VideoPlayer>`.
 </Callout>
 
 ## Control Bar Overview

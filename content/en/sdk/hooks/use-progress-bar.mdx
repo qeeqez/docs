@@ -19,7 +19,7 @@ It returns:
 
 ## Important
 
-If you are building on top of the public `Video` component, prefer [`usePlayerProgress(playerId)`](/en/sdk/hooks/use-player-progress).
+If you are building on top of the public `Video` component, prefer [`usePlayerProgress()`](/en/sdk/hooks/use-player-progress) — it binds to the enclosing player scope and needs no arguments.
 
 The public `Video` component does not expose a DOM video ref, so `useProgressBar` is only practical when you already own the underlying `<video>` element.
 

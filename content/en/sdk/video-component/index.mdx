@@ -9,7 +9,12 @@ The Video component is a professional-grade video player optimized for media pla
 
 Need custom controls instead of the built-in UI? Use the public [Hooks](/en/sdk/hooks) section.
 
-The supported pattern is to pass a stable `playerId` to `<Video />`, render the player with `theme="hideUI"`, and call the hooks with that same `playerId`.
+The supported pattern is:
+
+- inline controls inside `<Video theme="hideUI">`
+- detached sibling controls inside `<VideoPlayer>`
+
+The public player hooks are zero-argument and resolve the current player from scope.
 
 ### Key Capabilities
 

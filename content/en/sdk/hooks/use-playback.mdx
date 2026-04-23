@@ -1,14 +1,14 @@
 ---
 title: "usePlayback"
-description: "Control playback, loading state, and playback speed for one Video instance."
+description: "Control playback, loading state, and playback speed for the current scoped Video instance."
 ---
 
-`usePlayback(playerId)` exposes player-scoped transport state and actions.
+`usePlayback()` exposes player-scoped transport state and actions.
 
 ## Signature
 
 ```tsx
-const playback = usePlayback(playerId);
+const playback = usePlayback();
 ```
 
 It returns:
@@ -22,42 +22,44 @@ It returns:
 - `pause()`
 - `togglePlay()`
 - `setPlaybackRate(rate)`
+- `pauseOthers()`
 
 ## Example
 
 ```tsx
 import {Video, usePlayback} from "@rixl/videosdk-react";
 
-const playerId = "00000000-0000-0000-0000-0000000000d4";
-
 function CustomPlaybackControls() {
-  const {paused, playbackRate, togglePlay, setPlaybackRate} = usePlayback(playerId);
+  const {paused, playbackRate, togglePlay, setPlaybackRate, pauseOthers} = usePlayback();
 
   return (
-    <div className="space-y-3">
-      <Video
-        id="your-video-id"
-        playerId={playerId}
-        theme="hideUI"
-        analytics={false}
-      />
+    <div className="flex items-center gap-3">
+      <button type="button" onClick={() => void togglePlay()}>
+        {paused ? "Play" : "Pause"}
+      </button>
 
-      <div className="flex items-center gap-3">
-        <button type="button" onClick={() => void togglePlay()}>
-          {paused ? "Play" : "Pause"}
-        </button>
+      <button type="button" onClick={() => setPlaybackRate(1)}>
+        1x
+      </button>
 
-        <button type="button" onClick={() => setPlaybackRate(1)}>
-          1x
-        </button>
+      <button type="button" onClick={() => setPlaybackRate(1.5)}>
+        1.5x
+      </button>
 
-        <button type="button" onClick={() => setPlaybackRate(1.5)}>
-          1.5x
-        </button>
+      <button type="button" onClick={() => pauseOthers()}>
+        Pause others
+      </button>
 
-        <span>{playbackRate.toFixed(2)}x</span>
-      </div>
+      <span>{playbackRate.toFixed(2)}x</span>
     </div>
+  );
+}
+
+function CustomPlayer() {
+  return (
+    <Video id="your-video-id" theme="hideUI" analytics={false}>
+      <CustomPlaybackControls />
+    </Video>
   );
 }
 ```
@@ -66,4 +68,5 @@ function CustomPlaybackControls() {
 
 - `play()` and `togglePlay()` return promises because browser media playback can fail.
 - Playback rate is player-scoped and clamped by the SDK.
-- Use this hook for transport controls. Use [`usePlayerProgress(playerId)`](/en/sdk/hooks/use-player-progress) for timeline reads and seeking.
+- `pauseOthers()` is player-relative: it pauses every other mounted player without pausing the current one.
+- Use this hook for transport controls. Use [`usePlayerProgress()`](/en/sdk/hooks/use-player-progress) for timeline reads and seeking.

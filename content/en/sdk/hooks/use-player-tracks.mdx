@@ -3,12 +3,12 @@ title: "usePlayerTracks"
 description: "Read and change player-scoped audio and subtitle track selection."
 ---
 
-`usePlayerTracks(playerId)` exposes the current audio and subtitle track selection for one player.
+`usePlayerTracks()` exposes the current audio and subtitle track selection for the current scoped player.
 
 ## Signature
 
 ```tsx
-const tracks = usePlayerTracks(playerId);
+const tracks = usePlayerTracks();
 ```
 
 It returns:
@@ -25,8 +25,6 @@ It returns:
 ```tsx
 import {Video, usePlayerTracks} from "@rixl/videosdk-react";
 
-const playerId = "00000000-0000-0000-0000-000000000107";
-
 function CustomTrackControls() {
   const {
     audioTrack,
@@ -35,36 +33,35 @@ function CustomTrackControls() {
     availableSubtitleTracks,
     setAudioTrack,
     setSubtitleTrack,
-  } = usePlayerTracks(playerId);
+  } = usePlayerTracks();
 
   return (
-    <div className="space-y-3">
-      <Video
-        id="your-video-id"
-        playerId={playerId}
-        theme="hideUI"
-        analytics={false}
-      />
+    <div className="space-y-2">
+      <label>
+        Audio
+        <select value={audioTrack} onChange={(event) => setAudioTrack(Number(event.target.value))}>
+          {availableAudioTracks.map((track) => (
+            <option key={track.index} value={track.index}>
+              {track.label}
+            </option>
+          ))}
+        </select>
+      </label>
 
-      <div className="space-y-2">
-        <label>
-          Audio
-          <select value={audioTrack} onChange={(event) => setAudioTrack(Number(event.target.value))}>
-            {availableAudioTracks.map((track) => (
-              <option key={track.index} value={track.index}>
-                {track.label}
-              </option>
-            ))}
-          </select>
-        </label>
+      <button type="button" onClick={() => setSubtitleTrack(subtitleTrack === -1 ? 0 : -1)}>
+        {subtitleTrack === -1 ? "Turn captions on" : "Turn captions off"}
+      </button>
 
-        <button type="button" onClick={() => setSubtitleTrack(subtitleTrack === -1 ? 0 : -1)}>
-          {subtitleTrack === -1 ? "Turn captions on" : "Turn captions off"}
-        </button>
-
-        <div>{`Subtitle options: ${availableSubtitleTracks.length}`}</div>
-      </div>
+      <div>{`Subtitle options: ${availableSubtitleTracks.length}`}</div>
     </div>
+  );
+}
+
+function CustomPlayer() {
+  return (
+    <Video id="your-video-id" theme="hideUI" analytics={false}>
+      <CustomTrackControls />
+    </Video>
   );
 }
 ```

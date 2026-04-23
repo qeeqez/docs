@@ -8,11 +8,8 @@ description: "Complete TypeScript type definitions for the RIXL SDK"
 ### VideoProps
 
 ```typescript
-type UUID = `${string}-${string}-${string}-${string}-${string}`;
-
 interface VideoProps extends Omit<HTMLProps<HTMLVideoElement>, "onEnded"> {
   id?: string;
-  playerId?: UUID;
   progressBar?: boolean;
   allowPlayPause?: boolean;
   allowFullscreen?: boolean;
@@ -38,6 +35,16 @@ type Page = "feed" | "standalone" | "profile";
 ```
 
 `VideoProps` also inherits standard HTML video props such as `className`, `muted`, `autoPlay`, `loop`, `playsInline`, and DOM event handlers.
+
+### VideoPlayerProps
+
+```typescript
+interface VideoPlayerProps {
+  children?: ReactNode;
+}
+```
+
+`VideoPlayer` establishes a player scope for detached controls — render a `<Video>` and sibling hook consumers as children to share a single player instance without prop wiring.
 
 ### ImageProps
 
@@ -74,11 +81,9 @@ type FontFamilyKey =
 
 ### Player-Scoped Hooks
 
-These hooks all target a specific player instance and require the same `playerId` you pass to `<Video playerId={...} />`.
+These hooks read state from the enclosing player scope. Call them inside a component rendered within `<Video>` or `<VideoPlayer>` — they take no arguments and automatically bind to the current player.
 
 ```typescript
-type UUID = `${string}-${string}-${string}-${string}-${string}`;
-
 interface UseMediaSettingsResult {
   muted: boolean;
   volume: number;
@@ -89,7 +94,7 @@ interface UseMediaSettingsResult {
   setVolume: (volume: number) => void;
 }
 
-declare function useMediaSettings(playerId: UUID): UseMediaSettingsResult;
+declare function useMediaSettings(): UseMediaSettingsResult;
 
 interface UsePlaybackResult {
   paused: boolean;
@@ -101,9 +106,10 @@ interface UsePlaybackResult {
   pause: () => void;
   togglePlay: () => Promise<void>;
   setPlaybackRate: (playbackRate: number) => void;
+  pauseOthers: () => void;
 }
 
-declare function usePlayback(playerId: UUID): UsePlaybackResult;
+declare function usePlayback(): UsePlaybackResult;
 
 interface UsePlayerProgressResult {
   currentTime: number;
@@ -114,7 +120,7 @@ interface UsePlayerProgressResult {
   seekBy: (deltaSeconds: number) => void;
 }
 
-declare function usePlayerProgress(playerId: UUID): UsePlayerProgressResult;
+declare function usePlayerProgress(): UsePlayerProgressResult;
 
 interface UsePlayerUIResult {
   controlsVisible: boolean;
@@ -126,7 +132,7 @@ interface UsePlayerUIResult {
   togglePictureInPicture: () => Promise<void>;
 }
 
-declare function usePlayerUI(playerId: UUID): UsePlayerUIResult;
+declare function usePlayerUI(): UsePlayerUIResult;
 
 interface UsePlayerTracksResult {
   audioTrack: number;
@@ -147,14 +153,12 @@ interface UsePlayerTracksResult {
   setSubtitleTrack: (trackIndex: number) => void;
 }
 
-declare function usePlayerTracks(playerId: UUID): UsePlayerTracksResult;
+declare function usePlayerTracks(): UsePlayerTracksResult;
 ```
 
 ### Global Hook
 
 ```typescript
-type UUID = `${string}-${string}-${string}-${string}-${string}`;
-
 interface UseGlobalPlayerSettingsResult {
   muted: boolean;
   volume: number;
@@ -169,15 +173,16 @@ interface UseGlobalPlayerSettingsResult {
   setPreferredAudioLanguage: (language: string | undefined) => void;
   setPreferredSubtitleLanguage: (language: string | undefined) => void;
   pauseAll: () => void;
-  pauseOthers: (playerId: UUID) => void;
 }
 
 declare function useGlobalPlayerSettings(): UseGlobalPlayerSettingsResult;
 ```
 
+To pause every other player relative to the current scope, use the scoped `pauseOthers()` returned from [`usePlayback()`](/en/sdk/hooks/use-playback).
+
 ### DOM Progress Helper
 
-`useProgressBar` is a lower-level hook for a raw `HTMLVideoElement`. For the public `Video` component, prefer `usePlayerProgress(playerId)` when building custom controls.
+`useProgressBar` is a lower-level hook for a raw `HTMLVideoElement`. For the public `Video` component, prefer `usePlayerProgress()` when building custom controls.
 
 ```typescript
 interface UseProgressBarProps {

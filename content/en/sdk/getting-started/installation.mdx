@@ -103,7 +103,7 @@ function App() {
 ```
 
 <Callout type="info">
-  Need custom controls instead of the built-in player UI? Pass a stable `playerId` to `<Video theme="hideUI" />` and pair it with hooks like [`usePlayback`](/en/sdk/hooks/use-playback) and [`usePlayerProgress`](/en/sdk/hooks/use-player-progress).
+  Need custom controls instead of the built-in player UI? Render them inside `<Video theme="hideUI">` or wrap `<Video>` and sibling controls in `<VideoPlayer>`, then read state with hooks like [`usePlayback`](/en/sdk/hooks/use-playback) and [`usePlayerProgress`](/en/sdk/hooks/use-player-progress) — they bind to the enclosing player scope automatically.
 </Callout>
 
 ## Basic Implementation Example
