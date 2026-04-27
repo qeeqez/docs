@@ -8,11 +8,11 @@ import {Callout} from "@/snippets"
 
 ## Core Props
 
-### `id` **(Optional in type, usually required)**
+### `id` **(Required)**
 
-**Type:** `string` | **Default:** `undefined`
+**Type:** `string`
 
-The media identifier from your RIXL dashboard. In normal standalone usage, you should pass an `id` so the `Video` component can load media for you.
+The media identifier from your RIXL dashboard. Pass this to `<Video />` so the SDK can load the video metadata and source URLs it needs for playback.
 
 ```tsx
 <Video id="D3OCjdLP60" />
@@ -265,7 +265,7 @@ Enables video chapters on the progress bar. When enabled, chapters you've added 
 
 ```typescript
 interface VideoProps extends Omit<HTMLProps<HTMLVideoElement>, "onEnded"> {
-  id?: string;
+  id: string;
   volume?: number;
 
   // UI Controls
@@ -292,4 +292,4 @@ interface VideoProps extends Omit<HTMLProps<HTMLVideoElement>, "onEnded"> {
 }
 ```
 
-`VideoProps` also supports standard HTML video props through inheritance, including `className`, `muted`, `autoPlay`, `loop`, `playsInline`, and event handlers.
+`VideoProps` also supports most standard HTML video props through inheritance, including `className`, `muted`, `autoPlay`, `loop`, `playsInline`, and most event handlers. `onEnded` is not part of the public `<Video />` props surface; for custom UI, use `usePlayback().ended` inside the player scope instead.

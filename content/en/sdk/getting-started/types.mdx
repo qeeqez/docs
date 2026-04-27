@@ -9,7 +9,7 @@ description: "Complete TypeScript type definitions for the RIXL SDK"
 
 ```typescript
 interface VideoProps extends Omit<HTMLProps<HTMLVideoElement>, "onEnded"> {
-  id?: string;
+  id: string;
   progressBar?: boolean;
   allowPlayPause?: boolean;
   allowFullscreen?: boolean;
@@ -34,7 +34,7 @@ type SupportedLanguage = "en" | "de" | "es" | "fr" | "it" | "pl" | "ru" | "tr" |
 type Page = "feed" | "standalone" | "profile";
 ```
 
-`VideoProps` also inherits standard HTML video props such as `className`, `muted`, `autoPlay`, `loop`, `playsInline`, and DOM event handlers.
+`VideoProps` also inherits most standard HTML video props such as `className`, `muted`, `autoPlay`, `loop`, `playsInline`, and most DOM event handlers. `onEnded` is excluded from the public `<Video />` props surface; use `usePlayback().ended` inside the player scope when you need end-of-playback state for custom UI.
 
 ### VideoPlayerProps
 
