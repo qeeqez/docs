@@ -12,11 +12,16 @@ import {Callout} from "@/snippets"
 
 **Type:** `string`
 
-The unique media identifier from your RIXL dashboard. Upload your video to [dash.rixl.com/videos](https://dash.rixl.com/videos) to get this ID.
+The media identifier from your RIXL dashboard. Pass this to `<Video />` so the SDK can load the video metadata and source URLs it needs for playback.
 
 ```tsx
 <Video id="D3OCjdLP60" />
 ```
+
+<Callout type="info">
+  Need custom controls? Render them inside `<Video theme="hideUI">` when possible, or wrap detached sibling controls in
+  `<VideoPlayer>`. Player hooks read from the enclosing scope automatically — no prop wiring needed.
+</Callout>
 
 ### `className` **(Optional)**
 
@@ -147,7 +152,7 @@ Selects the player theme and control styling.
 - `'minimal'` - Clean, simplified interface with Progressbar and Mute button only
 - `'hover'` - Video plays on mouse enter, pauses on mouse leave. Shows only a mute button and progress bar. Ideal for video thumbnails and preview cards.
 - `'feed'` - Always-visible UI with expandable video description, mute button, and progress bar. This is the theme used by the Feed component. Use this when building custom feed layouts.
-- `'hideUI'` -  No UI is shown and all playback controls are completely hidden, providing the user with no control over the video.
+- `'hideUI'` - No built-in controls are shown. Use this when you want to provide your own controls through the hook APIs.
 
 ### `lang` **(Optional)**
 
@@ -199,6 +204,16 @@ Displays a visual heatmap overlay on the progress bar showing viewer engagement 
 <Video id="D3OCjdLP60" heatmap={false} />
 ```
 
+### `hotSegments` **(Optional)**
+
+**Type:** `boolean` | **Default:** `true`
+
+Shows high-engagement segments on the player timeline when heatmap data is available.
+
+```tsx
+<Video id="D3OCjdLP60" hotSegments={false} />
+```
+
 ### `resumeProgress` **(Optional)**
 
 **Type:** `boolean` | **Default:** `true`
@@ -207,6 +222,29 @@ Automatically resumes playback from where the user previously stopped watching.
 
 ```tsx
 <Video id="D3OCjdLP60" resumeProgress={false} />
+```
+
+### `userId` **(Optional)**
+
+**Type:** `string` | **Default:** `undefined`
+
+Associates player analytics and progress restoration with a stable application user identifier.
+
+```tsx
+<Video id="D3OCjdLP60" userId="user_123" />
+```
+
+### `userProperties` **(Optional)**
+
+**Type:** `Record<string, string>` | **Default:** `undefined`
+
+Adds custom string properties to analytics events for this player.
+
+```tsx
+<Video
+  id="D3OCjdLP60"
+  userProperties={{plan: "pro", team: "growth"}}
+/>
 ```
 
 ### `chapters` **(Optional)**
@@ -226,15 +264,8 @@ Enables video chapters on the progress bar. When enabled, chapters you've added 
 ## TypeScript Interface
 
 ```typescript
-interface VideoProps extends HTMLProps<HTMLVideoElement> {
-  // Core
+interface VideoProps extends Omit<HTMLProps<HTMLVideoElement>, "onEnded"> {
   id: string;
-  className?: string;
-
-  // Playback
-  muted?: boolean;
-  autoPlay?: boolean;
-  loop?: boolean;
   volume?: number;
 
   // UI Controls
@@ -253,7 +284,12 @@ interface VideoProps extends HTMLProps<HTMLVideoElement> {
 
   // Engagement Features
   heatmap?: boolean;
+  hotSegments?: boolean;
   resumeProgress?: boolean;
+  userId?: string;
+  userProperties?: Record<string, string>;
   chapters?: boolean;
 }
 ```
+
+`VideoProps` also supports most standard HTML video props through inheritance, including `className`, `muted`, `autoPlay`, `loop`, `playsInline`, and most event handlers. `onEnded` is not part of the public `<Video />` props surface; for custom UI, use `usePlayback().ended` inside the player scope instead.
