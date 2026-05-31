@@ -8,15 +8,47 @@ import {Callout} from "@/snippets"
 
 ## Core Props
 
-### `id` **(Required)**
+### `id` **(Optional)**
 
 **Type:** `string`
 
 The unique image identifier from your RIXL dashboard. Upload your image to [dash.rixl.com/images](https://dash.rixl.com/images) to get this ID.
 
+When provided, the component fetches the image data from the API automatically.
+
 ```tsx
 <Image id="your-image-id" />
 ```
+
+<Callout type="info">
+  Either `id` or `imageData` must be provided. Use `id` for standalone images, or `imageData` when you already have pre-fetched image data (e.g., from a feed).
+</Callout>
+
+### `imageData` **(Optional)**
+
+**Type:** `ImageData`
+
+Pre-fetched image data object. Use this when you already have the image data (e.g., from a feed or batch API call) to avoid redundant fetches.
+
+```tsx
+const imageData = {
+  id: "img_123",
+  width: 1920,
+  height: 1080,
+  thumbhash: "...",
+  file: {
+    url: "https://cdn.rixl.com/...",
+    // ... other file properties
+  }
+};
+
+<Image imageData={imageData} />
+```
+
+**When to use:**
+- Rendering images from a feed (data already fetched)
+- Batch-loaded galleries
+- Server-side rendered content with pre-fetched data
 
 ### `alt` **(Recommended)**
 
@@ -73,14 +105,143 @@ Specifies the page context for analytics reporting. This helps segment your anal
 - `'feed'` - Image within a scrolling feed
 - `'profile'` - Image on a user profile page
 
+## Feed Context Props
+
+These props are primarily used when rendering images within feeds or carousels where analytics tracking needs additional context.
+
+### `isCurrent` **(Optional)**
+
+**Type:** `boolean` | **Default:** `true` when `id` is provided, `undefined` when `imageData` is provided
+
+Indicates whether this image is currently visible/active in a feed or carousel. When `true`, enables watch interval analytics (tracks every 5 seconds).
+
+```tsx
+// In a feed
+<Image 
+  imageData={post.image}
+  isCurrent={currentIndex === index}
+  feedId={feedId}
+/>
+```
+
+**Behavior:**
+- `true` - Tracks with watch intervals every 5 seconds
+- `false` - No tracking
+- `undefined` - No tracking (default for `imageData` usage)
+
+### `feedId` **(Optional)**
+
+**Type:** `string` | **Default:** `undefined`
+
+Associates the image view with a specific feed for analytics segmentation.
+
+```tsx
+<Image 
+  imageData={post.image}
+  feedId="feed_homepage"
+  isCurrent={true}
+/>
+```
+
+### `postId` **(Optional)**
+
+**Type:** `string` | **Default:** `undefined`
+
+Associates the image view with a specific post for analytics tracking.
+
+```tsx
+<Image 
+  imageData={post.image}
+  postId={post.id}
+  feedId={feedId}
+  isCurrent={true}
+/>
+```
+
+## Events
+
+### `onLoadingChange` **(Optional)**
+
+**Type:** `(isLoading: boolean) => void` | **Default:** `undefined`
+
+Callback fired when the image loading state changes. Useful for showing loading indicators or skeleton screens.
+
+```tsx
+function ImageWithLoader() {
+  const [isLoading, setIsLoading] = useState(true);
+  
+  return (
+    <div>
+      {isLoading && <div className="skeleton-loader" />}
+      <Image 
+        id="your-image-id"
+        onLoadingChange={setIsLoading}
+      />
+    </div>
+  );
+}
+```
+
+**Fired when:**
+- Image data is resolved → `true`
+- Image finishes loading → `false`
+- Image load errors → `false`
+
 ## TypeScript Interface
 
 ```typescript
-interface ImageProps extends HTMLProps<HTMLImageElement> {
+interface ImageProps extends Omit<HTMLAttributes<HTMLElement>, "children"> {
+  // Either id OR imageData must be provided
   id?: string;
+  imageData?: ImageData;
+  
+  // Display
   alt?: string;
   className?: string;
+  
+  // Analytics
   analytics?: boolean;
-  analyticsPage?: "feed" | "standalone" | "profile";
+  analyticsPage?: Page;
+  
+  // Feed context
+  isCurrent?: boolean;
+  feedId?: string;
+  postId?: string;
+  
+  // Events
+  onLoadingChange?: (isLoading: boolean) => void;
 }
+
+interface ImageData {
+  id: string;
+  width: number;
+  height: number;
+  thumbhash: string;
+  attached_to_video: boolean;
+  file: {
+    id: string;
+    project_id: string;
+    url: string;
+    format: string;
+    name: string;
+    size: number;
+    status: string;
+    created_at: Date;
+    updated_at: Date;
+  };
+}
+```
+
+## Migration from ImageCore
+
+If you were previously using `ImageCore` from `@rixl/media-react/dev`, it's now just an alias to the unified `Image` component. All props work identically.
+
+```tsx
+// Before (still works)
+import { ImageCore } from '@rixl/media-react/dev';
+<ImageCore imageData={data} isCurrent={true} />
+
+// After (recommended)
+import { Image } from '@rixl/media-react';
+<Image imageData={data} isCurrent={true} />
 ```

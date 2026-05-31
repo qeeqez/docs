@@ -14,15 +14,31 @@ import {Callout} from 'fumadocs-ui/components/callout'
 import { Image } from '@rixl/videosdk-react';
 ```
 
-## Essential Props
+## Two Ways to Use Image Component
 
-Every Image component needs at minimum:
+The Image component supports two usage patterns:
+
+### 1. **Fetch by ID** (Recommended for standalone images)
 
 ```tsx
-    <Image
-      id="your-image-id" // Required: Your image ID from dash.rixl.com/images
-    />
+<Image
+  id="your-image-id" // Fetches automatically
+  className="w-full h-full object-cover"
+/>
 ```
+
+### 2. **Pre-fetched Data** (Recommended for feeds/galleries)
+
+```tsx
+<Image
+  imageData={imageData} // Already fetched
+  className="w-full h-full object-cover"
+/>
+```
+
+<Callout type="info">
+  Use `id` when displaying a single image. Use `imageData` when rendering multiple images from a feed or batch API call to avoid redundant fetches.
+</Callout>
 
 ## Simple Image Display Example
 
@@ -36,6 +52,7 @@ function BasicImage() {
     <div className="max-w-2xl mx-auto">
       <Image
         id="your-image-id"
+        alt="Product showcase"
         className="object-contain w-full h-full rounded-lg"
       />
     </div>
@@ -91,7 +108,7 @@ function BasicImage() {
   </TabsContent>
 </Tabs>
 
-### Image Gallery
+### Image Gallery (with ID)
 
 ```tsx
 const galleryImages = [
@@ -108,9 +125,34 @@ function ImageGallery() {
         <div key={image.id} className="aspect-square rounded-lg overflow-hidden">
           <Image
             id={image.id}
+            alt={image.alt}
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           />
         </div>
+      ))}
+    </div>
+  );
+}
+```
+
+### Feed with Pre-fetched Data
+
+```tsx
+function FeedImages({ posts }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  return (
+    <div className="space-y-4">
+      {posts.map((post, index) => (
+        <Image
+          key={post.id}
+          imageData={post.image}
+          isCurrent={index === currentIndex}
+          feedId="homepage-feed"
+          postId={post.id}
+          alt={post.title}
+          className="w-full aspect-video object-cover"
+        />
       ))}
     </div>
   );
@@ -139,6 +181,27 @@ function UserProfile() {
 ```
 
 
+### Loading States with Callback
+
+```tsx
+function ImageWithLoader() {
+  const [isLoading, setIsLoading] = useState(true);
+  
+  return (
+    <div className="relative">
+      {isLoading && (
+        <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-lg" />
+      )}
+      <Image
+        id="your-image-id"
+        onLoadingChange={setIsLoading}
+        className="w-full h-full object-cover rounded-lg"
+      />
+    </div>
+  );
+}
+```
+
 ## Best Practices
 
 <Callout type="default">
@@ -148,4 +211,8 @@ function UserProfile() {
 <Callout type="warning">
   **Object Fit**: Use `object-contain` to preserve aspect ratio or `object-cover` to fill the container while cropping
   if necessary.
+</Callout>
+
+<Callout type="info">
+  **Pre-fetched Data**: When rendering multiple images (galleries, feeds), fetch all data in one API call and pass `imageData` to avoid N+1 query problems.
 </Callout>
